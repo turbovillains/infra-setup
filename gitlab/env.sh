@@ -35,7 +35,7 @@ include_env() {
 
 _main() {
     local source_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-    local deploy_environment=${DEPLOY_ENVIRONMENT:-}
+    local deploy_environment=${DEPLOY_ENVIRONMENT:-default}
     include_env ${source_dir} ${deploy_environment}
 }
 
