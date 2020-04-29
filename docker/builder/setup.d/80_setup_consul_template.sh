@@ -1,0 +1,17 @@
+#!/usr/bin/env bash -eux
+
+CONSUL_TEMPLATE_VERSION=${CONSUL_TEMPLATE_VERSION:-0.22.0}
+CONSUL_TEMPLATE_URL=https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip
+CONSUL_TEMPLATE_SHA256=5a1e7e7b35ea0c24116b14ae61e11a462eeeb75fc518d76c80894c245b9791ef
+CONSUL_TEMPLATE_TARGET=/usr/local/bin/consul-template
+
+CONSUL_TEMPLATE_ZIP=$(mktemp --tmpdir=/tmp consul-template.XXXXXXXXX.zip)
+curl -s -o ${CONSUL_TEMPLATE_ZIP} ${CONSUL_TEMPLATE_URL}
+
+sha256sum ${CONSUL_TEMPLATE_ZIP} | grep ${CONSUL_TEMPLATE_SHA256}
+
+unzip -p ${CONSUL_TEMPLATE_ZIP} > ${CONSUL_TEMPLATE_TARGET} && chmod +x ${CONSUL_TEMPLATE_TARGET}
+
+rm -f ${CONSUL_TEMPLATE_ZIP}
+
+# End of file

@@ -1,0 +1,46 @@
+---
+variables:
+  DOCKER_NAMESPACE: infra
+  FREERADIUS_VERSION: 3.0.21-alpine
+  TRAEFIK_VERSION: v1.7.24
+  MKDOCS_VERSION: 5.1.1
+
+stages:
+  - import-images
+  - build
+
+import-images:
+  stage: import-images
+  script:
+    - ./gitlab/${CI_JOB_STAGE}.sh
+
+deployer:
+  stage: build
+  script:
+    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+
+builder:
+  stage: build
+  script:
+    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+
+radius:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg FREERADIUS_VERSION
+
+mkdocs:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg MKDOCS_VERSION
+
+traefik:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg TRAEFIK_VERSION
