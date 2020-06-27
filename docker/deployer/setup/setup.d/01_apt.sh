@@ -1,5 +1,6 @@
 #!/usr/bin/env bash -eux
 
+export DEBIAN_FRONTEND=noninteractive
 export HTTP_PROXY=${HTTP_PROXY:-}
 export HTTPS_PROXY=${HTTPS_PROXY:-}
 export NO_PROXY=${NO_PROXY:-}
