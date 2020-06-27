@@ -61,8 +61,6 @@ import_images() {
     declare -a images=(
         "ubuntu:${UBUNTU_VERSION:-focal}"
         "debian:${DEBIAN_VERSION:-10-slim}"
-        "alpine:3.11"
-        "golang:1.14-alpine"
         "traefik:${TRAEFIK_VERSION:-latest}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"
         "freeradius/freeradius-server:${FREERADIUS_VERSION:-latest}"
