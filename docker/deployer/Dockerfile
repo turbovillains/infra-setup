@@ -1,5 +1,8 @@
 ARG DOCKER_HUB
-FROM ${DOCKER_HUB}/ubuntu:bionic
+ARG UBUNTU_VERSION
+FROM ${DOCKER_HUB}/ubuntu:${UBUNTU_VERSION}
+
+MAINTAINER Noroutine UG <info@noroutine.me>
 
 ADD setup /setup
 

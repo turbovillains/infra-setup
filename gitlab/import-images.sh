@@ -59,8 +59,8 @@ line() {
 
 import_images() {
     declare -a images=(
-        "ubuntu:bionic"
-        "debian:10.3-slim"
+        "ubuntu:${UBUNTU_VERSION:-focal}"
+        "debian:${DEBIAN_VERSION:-10-slim}"
         "alpine:3.11"
         "golang:1.14-alpine"
         "traefik:${TRAEFIK_VERSION:-latest}"

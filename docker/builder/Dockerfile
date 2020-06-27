@@ -1,5 +1,6 @@
 ARG DOCKER_HUB
-FROM ${DOCKER_HUB}/debian:10.3-slim
+ARG DEBIAN_VERSION
+FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION}
 
 MAINTAINER Noroutine UG <info@noroutine.me>
 
