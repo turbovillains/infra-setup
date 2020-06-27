@@ -2,8 +2,8 @@
 variables:
   DOCKER_NAMESPACE: infra
   FREERADIUS_VERSION: 3.0.21-alpine
-  TRAEFIK_VERSION: v2.2
-  MKDOCS_VERSION: 5.1.1
+  TRAEFIK_VERSION: v2.2.1
+  MKDOCS_VERSION: 5.3.3
 
 stages:
   - import-images
