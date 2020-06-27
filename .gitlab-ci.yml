@@ -1,8 +1,8 @@
 ---
 variables:
   DOCKER_NAMESPACE: infra
-  UBUNTU_VERSION: focal
-  DEBIAN_VERSION: 10.4-slim
+  DEPLOYER_BASE: ubuntu:focal
+  BUILDER_BASE: debian:10.4-slim
   FREERADIUS_VERSION: 3.0.21-alpine
   TRAEFIK_VERSION: v2.2.1
   MKDOCS_VERSION: 5.3.3
@@ -20,12 +20,13 @@ deployer:
   stage: build
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg DEBIAN_VERSION
+        --build-arg DEPLOYER_BASE
+
 builder:
   stage: build
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg UBUNTU_VERSION
+        --build-arg BUILDER_BASE
 
 radius:
   stage: build

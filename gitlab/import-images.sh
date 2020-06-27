@@ -59,8 +59,8 @@ line() {
 
 import_images() {
     declare -a images=(
-        "ubuntu:${UBUNTU_VERSION:-focal}"
-        "debian:${DEBIAN_VERSION:-10-slim}"
+        "${DEPLOYER_BASE:-ubuntu:focal}"
+        "${BUILDER_BASE:-debian:10-slim}"
         "traefik:${TRAEFIK_VERSION:-latest}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"
         "freeradius/freeradius-server:${FREERADIUS_VERSION:-latest}"
