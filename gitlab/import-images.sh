@@ -61,6 +61,7 @@ import_images() {
     declare -a images=(
         "${DEPLOYER_BASE:-ubuntu:focal}"
         "${BUILDER_BASE:-debian:10-slim}"
+        "${POWERDNS_BASE:-debian:10-slim}"
         "traefik:${TRAEFIK_VERSION:-latest}"
         "jekyll/jekyll:${JEKYLL_VERSION:-latest}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"

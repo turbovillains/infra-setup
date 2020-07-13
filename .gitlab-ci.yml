@@ -7,6 +7,8 @@ variables:
   TRAEFIK_VERSION: v2.2.4
   MKDOCS_VERSION: 5.4.0
   JEKYLL_VERSION: 4.1.0
+  POWERDNS_BASE: debian:10.4-slim
+  POWERDNS_VERSION: 4.3.0
 
 stages:
   - import-images
@@ -56,3 +58,10 @@ jekyll:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg JEKYLL_VERSION
+
+powerdns:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg POWERDNS_BASE
