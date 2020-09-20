@@ -62,6 +62,8 @@ import_images() {
         "${DEPLOYER_BASE:-ubuntu:focal}"
         "${BUILDER_BASE:-debian:10-slim}"
         "${POWERDNS_BASE:-debian:10-slim}"
+        "${GATSBY_BASE:-alpine:edge}"
+        "${GATSBY_BUILD_BASE:-node:14-buster}"
         "traefik:${TRAEFIK_VERSION:-latest}"
         "jekyll/jekyll:${JEKYLL_VERSION:-latest}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"

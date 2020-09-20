@@ -9,6 +9,9 @@ variables:
   JEKYLL_VERSION: 4.1.0
   POWERDNS_BASE: debian:10.4-slim
   POWERDNS_VERSION: 4.3.0
+  GATSBY_BUILD_BASE: node:14-buster
+  GATSBY_VERSION: 2.12.99
+  GATSBY_BASE: alpine:edge
 
 stages:
   - import-images
@@ -58,6 +61,20 @@ jekyll:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg JEKYLL_VERSION
+
+gatsby-build:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg GATSBY_BUILD_BASE --build-arg GATSBY_VERSION
+
+gatsby:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg GATSBY_BASE
 
 powerdns:
   stage: build
