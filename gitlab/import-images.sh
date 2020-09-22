@@ -64,6 +64,7 @@ import_images() {
         "${POWERDNS_BASE:-debian:10-slim}"
         "${GATSBY_BASE:-alpine:edge}"
         "${GATSBY_BUILD_BASE:-node:14-buster}"
+        "${LATEX_BASE:-ubuntu:focal}"
         "traefik:${TRAEFIK_VERSION:-latest}"
         "jekyll/jekyll:${JEKYLL_VERSION:-latest}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"
