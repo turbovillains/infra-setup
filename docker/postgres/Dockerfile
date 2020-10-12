@@ -1,0 +1,6 @@
+ARG DOCKER_HUB
+ARG POSTGRES_VERSION
+
+FROM ${DOCKER_HUB}/postgres:${POSTGRES_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
