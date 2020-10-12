@@ -1,3 +1,5 @@
 ARG DOCKER_HUB
 ARG TRAEFIK_VERSION
 FROM ${DOCKER_HUB}/traefik:${TRAEFIK_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

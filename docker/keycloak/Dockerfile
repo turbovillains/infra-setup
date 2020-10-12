@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG KEYCLOAK_VERSION
+FROM ${DOCKER_HUB}/keycloak/keycloak:${KEYCLOAK_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

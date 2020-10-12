@@ -2,3 +2,5 @@ ARG DOCKER_HUB
 ARG JEKYLL_VERSION
 
 FROM ${DOCKER_HUB}/jekyll/jekyll:${JEKYLL_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

@@ -3,7 +3,7 @@ ARG POWERDNS_BASE
 
 FROM ${DOCKER_HUB}/${POWERDNS_BASE}
 
-MAINTAINER Noroutine UG <info@noroutine.me>
+MAINTAINER Noroutine GmbH <info@noroutine.me>
 
 RUN apt-get update && apt-get install -y \
     gnupg2 curl \
