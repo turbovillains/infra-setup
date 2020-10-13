@@ -71,7 +71,7 @@ import_images() {
         "freeradius/freeradius-server:${FREERADIUS_VERSION:-latest}"
         "quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-11.0.2}"
         "postgres:${POSTGRES_VERSION:-13.0}"
-        "atlassian/jira-software:${JIRA_VERSION:-8.5.9}"
+        "atlassian/jira-software:${JIRA_VERSION:-8.13.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}

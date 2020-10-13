@@ -15,7 +15,7 @@ variables:
   LATEX_BASE: ubuntu:focal
   KEYCLOAK_VERSION: "11.0.2"
   POSTGRES_VERSION: "13.0"
-  JIRA_VERSION: "8.5.9"
+  JIRA_VERSION: "8.13.0"
 
 stages:
   - import-images
