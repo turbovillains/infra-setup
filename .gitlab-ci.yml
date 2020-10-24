@@ -17,7 +17,7 @@ variables:
   POSTGRES_VERSION: "13.0"
   JIRA_VERSION: "8.13.0"
   MAILSERVER_VERSION: "release-v7.1.0"
-  NEXTCLOUD_VERSION: "20.0.0-fpm-alpine"
+  NEXTCLOUD_VERSION: "20.0.0-apache"
 
 stages:
   - import-images
