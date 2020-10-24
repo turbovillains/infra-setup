@@ -1,8 +1,8 @@
 #!/usr/bin/env bash -eux
 
-CONSUL_VERSION=${CONSUL_VERSION:-1.6.1}
+CONSUL_VERSION=${CONSUL_VERSION:-1.8.4}
 CONSUL_URL=https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
-CONSUL_SHA256=a8568ca7b6797030b2c32615b4786d4cc75ce7aee2ed9025996fe92b07b31f7e
+CONSUL_SHA256=0d74525ee101254f1cca436356e8aee51247d460b56fc2b4f7faef8a6853141f
 CONSUL_TARGET=/usr/local/bin/consul
 
 CONSUL_ZIP=$(mktemp --tmpdir=/tmp consul.XXXXXXXXX.zip)

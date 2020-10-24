@@ -1,8 +1,8 @@
 #!/usr/bin/env bash -eux
 
-TERRAFORM_VERSION=${TERRAFORM_VERSION:-0.12.23}
+TERRAFORM_VERSION=${TERRAFORM_VERSION:-0.13.5}
 TERRAFORM_URL=https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-TERRAFORM_SHA256=78fd53c0fffd657ee0ab5decac604b0dea2e6c0d4199a9f27db53f081d831a45
+TERRAFORM_SHA256=f7b7a7b1bfbf5d78151cfe3d1d463140b5fd6a354e71a7de2b5644e652ca5147
 TERRAFORM_TARGET=/usr/local/bin/terraform
 
 TERRAFORM_ZIP=$(mktemp --tmpdir=/tmp terraform.XXXXXXXXX.zip)
