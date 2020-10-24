@@ -73,6 +73,7 @@ import_images() {
         "postgres:${POSTGRES_VERSION:-13.0}"
         "atlassian/jira-software:${JIRA_VERSION:-8.13.0}"
         "tvial/docker-mailserver:${MAILSERVER_VERSION:-release-v7.1.0}"
+        "nextcloud:${NEXTCLOUD_VERSION:20.0.0-fpm-alpine}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}

@@ -1,0 +1,6 @@
+ARG DOCKER_HUB
+ARG NEXTCLOUD_VERSION
+
+FROM ${DOCKER_HUB}/nextcloud:${NEXTCLOUD_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
