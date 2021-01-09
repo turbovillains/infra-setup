@@ -12,7 +12,8 @@ build_image() {
 
     test ! -z ${DOCKER_HUB:-}
 
-    local implicit_args="--build-arg HTTP_PROXY \
+    local implicit_args="--no-cache \
+        --build-arg HTTP_PROXY \
         --build-arg HTTPS_PROXY \
         --build-arg NO_PROXY \
         --build-arg DOCKER_HUB \
