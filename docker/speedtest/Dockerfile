@@ -1,7 +1,7 @@
 FROM golang:1.15.3-alpine3.12 AS build_base
 ARG SPEEDTEST_VERSION
-ENV GOARCH arm64
-#ENV GOARCH amd64
+# ENV GOARCH arm64
+ENV GOARCH amd64
 RUN apk add --no-cache git gcc ca-certificates libc-dev \
 && mkdir -p /go/src/github.com/librespeed/ \
 && cd /go/src/github.com/librespeed/ \
