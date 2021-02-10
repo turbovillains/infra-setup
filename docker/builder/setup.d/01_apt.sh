@@ -105,6 +105,7 @@ update-ca-certificates
 
 cat << SOURCES >> /etc/apt/sources.list.d/noroutine.list
 deb https://twix.noroutine.me/apt/bootstrap buster main
+deb https://bo01-vm-nexus01.node.bo01.noroutine.me/repository/apps-apt/ noroutine main
 SOURCES
 
 cat <<NOROUTINEREPO | apt-key add -

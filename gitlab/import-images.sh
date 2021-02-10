@@ -77,6 +77,7 @@ import_images() {
         "tvial/docker-mailserver:${MAILSERVER_VERSION:-release-v7.1.0}"
         "nextcloud:${NEXTCLOUD_VERSION:-20.0.0-fpm-alpine}"
         "haproxytech/haproxy-debian:${HAPROXY_VERSION:-2.3.4}"
+        "minio/minio:${MINIO_VERSION:-RELEASE.2021-02-07T01-31-02Z}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}

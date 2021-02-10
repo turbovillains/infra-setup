@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG MINIO_VERSION
+FROM ${DOCKER_HUB}/minio/minio:${MINIO_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
