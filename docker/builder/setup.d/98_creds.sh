@@ -2,10 +2,9 @@
 
 export DOCKER_HUB=bo01-vm-nexus01.node.bo01.noroutine.me:5000
 
-if [[ ! -r ~/.docker/config.json ]]; then
-	mkdir -p ~/.docker
+mkdir -p /root/.docker /home/builder/.docker
 
-	cat | base64 --decode > ~/.docker/config.json <<END
+cat <<END | base64 --decode | tee /root/.docker/config.json | tee /home/builder/.docker/config.json
 ewogICAgICJhdXRocyI6IHsKICAgICAgICAgICJibzAxLXZtLW5leHVzMDEubm9kZS5ibzAxLm5v
 cm91dGluZS5tZTo1MDAwIjogewogICAgICAgICAgICAgICAiYXV0aCI6ICJiMnhsYTNOcGFUb3hN
 ak15TXpRek5EVT0iLCAKICAgICAgICAgICAgICAgImVtYWlsIjogbnVsbAogICAgICAgICAgfSwg
@@ -18,5 +17,3 @@ ImVtYWlsIjogbnVsbAogICAgICAgICAgfSwgCiAgICAgICAgICAibmV4dXMubm9yb3V0aW5lLm1l
 OjUwMDAiOiB7CiAgICAgICAgICAgICAgICJhdXRoIjogImIyeGxhM05wYVRveE1qTXlNelF6TkRV
 PSIsIAogICAgICAgICAgICAgICAiZW1haWwiOiBudWxsCiAgICAgICAgICB9CiAgICAgfQp9
 END
-
-fi

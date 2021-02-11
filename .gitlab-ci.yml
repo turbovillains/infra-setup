@@ -41,7 +41,8 @@ builder:
   stage: build
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg BUILDER_BASE --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} --build-arg SSH_PRIVATE_KEY
+        --build-arg BUILDER_BASE --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} --build-arg SSH_PRIVATE_KEY \
+        --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
 
 radius:
   stage: build

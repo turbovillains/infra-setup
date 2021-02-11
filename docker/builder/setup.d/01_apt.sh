@@ -4,24 +4,30 @@ export HTTP_PROXY=${HTTP_PROXY:-}
 export NO_PROXY=${NO_PROXY:-}
 
 if [[ ! -z "${HTTP_PROXY}" ]]; then
-    echo "Acquire::http::Proxy \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf.d/00aptitude
-    echo "Acquire::https::Proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf.d/00aptitude
+    echo "Acquire::http::Proxy \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf.d/00proxy
+    echo "Acquire::https::Proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf.d/00proxy
 fi
 
 export DEBIAN_FRONTEND=noninteractive
+
+cat << SOURCES > /etc/apt/sources.list
+deb http://deb.debian.org/debian buster main
+deb http://security.debian.org/debian-security buster/updates main
+deb http://deb.debian.org/debian buster-updates main
+SOURCES
 
 apt-get update -yyq
 apt-get -y install unzip \
 	python3 python3-pip virtualenv \
 	socat netcat curl \
-    protobuf-compiler \
-    rsync \
-    make build-essential \
-    apt-transport-https apt-utils \
-    ca-certificates \
-    curl \
-    gnupg2 \
-    software-properties-common
+  protobuf-compiler \
+  rsync \
+  make build-essential \
+  apt-transport-https apt-utils \
+  ca-certificates \
+  curl \
+  gnupg2 \
+  software-properties-common
 
 # Noroutine
 export CA_CERTS_DIR=/usr/local/share/ca-certificates/noroutine
@@ -284,3 +290,9 @@ add-apt-repository \
 
 apt-get update -yyq
 apt-get install -yyq docker-ce docker-ce-cli containerd.io
+
+# Should match runner GID
+groupmod --gid ${HOST_DOCKER_GID} docker
+
+
+apt-get install -yyq sudo
