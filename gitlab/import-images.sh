@@ -39,13 +39,15 @@ migrate_image() {
 
     set +e
     docker manifest inspect ${target_registry}/${image_name}:${image_tag} 2>&1> /dev/null
+    local inspect_code=$?
+    set -e
 
-    if [[ "$?" != 0 ]]; then    
+    if [[ "${inspect_code}" != 0 ]]; then    
         docker pull ${source_registry}/${image_name}:${image_tag}
         docker tag ${source_registry}/${image_name}:${image_tag} ${target_registry}/${image_name}:${image_tag}
         docker push ${target_registry}/${image_name}:${image_tag}
     fi
-    set -e
+
 }
 
 line() {
