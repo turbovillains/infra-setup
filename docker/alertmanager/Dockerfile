@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG ALERTMANAGER_VERSION
+FROM ${DOCKER_HUB}/prom/alertmanager:${ALERTMANAGER_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

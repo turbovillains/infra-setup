@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG SSL_EXPORTER_VERSION
+FROM ${DOCKER_HUB}/ribbybibby/ssl-exporter:${SSL_EXPORTER_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

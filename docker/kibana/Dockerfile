@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG KIBANA_VERSION
+FROM ${DOCKER_HUB}/kibana/kibana:${KIBANA_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

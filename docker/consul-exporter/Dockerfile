@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG CONSUL_EXPORTER_VERSION
+FROM ${DOCKER_HUB}/prom/consul-exporter:${CONSUL_EXPORTER_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

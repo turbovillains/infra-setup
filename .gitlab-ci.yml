@@ -3,6 +3,7 @@ variables:
   DOCKER_NAMESPACE: infra
   DEPLOYER_BASE: ubuntu:focal-20210217 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   BUILDER_BASE: debian:10.8-slim  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
+  DEBIAN_VERSION: 10.8-slim
   FREERADIUS_VERSION: 3.0.21-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3.0.21
   TRAEFIK_VERSION: "v2.4.6" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
   MKDOCS_VERSION: "7.0.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
@@ -21,6 +22,28 @@ variables:
   SPEEDTEST_VERSION: v1.1.2
   HAPROXY_VERSION: 2.3.6 # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
   MINIO_VERSION: RELEASE.2021-03-04T00-53-13Z # https://hub.docker.com/r/minio/minio/tags?page=1&ordering=last_updated
+  ETCD_VERSION: v3.4.15
+  PROMETHEUS_VERSION: v2.25.0
+  ALERTMANAGER_VERSION: v0.21.0
+  NODE_EXPORTER_VERSION: v1.1.2
+  CONSUL_EXPORTER_VERSION: v0.7.1
+  BLACKBOX_EXPORTER_VERSION: v0.18.0
+  SNMP_EXPORTER_VERSION: v0.20.0
+  IPMI_EXPORTER_VERSION: v1.3.2
+  GRAFANA_VERSION: 7.4.3 # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated&name=7.4
+  M3DBNODE_VERSION: v1.0.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
+  M3COORDINATOR_VERSION: v1.0.0
+  PROMETHEUS_ES_EXPORTER_VERSION: 0.14.0
+  SSL_EXPORTER_VERSION: v2.2.0
+  CADVISOR_VERSION: v0.37.5
+  KARMA_VERSION: v0.80
+  PUSHGATEWAY_VERSION: v1.4.0
+  LDAP_EXPORTER_VERSION: 0.0.3-2-dev
+  LOGSTASH_VERSION: 7.11.1
+  KIBANA_VERSION: 7.11.1
+  CORTEX_VERSION: v1.7.0
+  ALERTA_VERSION: 8.4.1
+  MONGO_VERSION: 4.4.4-bionic
 
 stages:
   - import-images
@@ -155,3 +178,164 @@ minio:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg MINIO_VERSION
+
+prometheus:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg PROMETHEUS_VERSION
+
+karma:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KARMA_VERSION
+
+alertmanager:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg ALERTMANAGER_VERSION
+
+pushgateway:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg PUSHGATEWAY_VERSION
+
+blackbox-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg BLACKBOX_EXPORTER_VERSION
+
+snmp-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg SNMP_EXPORTER_VERSION
+
+ipmi-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg IPMI_EXPORTER_VERSION --build-arg DEBIAN_VERSION
+
+cadvisor:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg CADVISOR_VERSION
+
+node-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg NODE_EXPORTER_VERSION
+
+consul-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg CONSUL_EXPORTER_VERSION
+
+prometheus-es-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg PROMETHEUS_ES_EXPORTER_VERSION
+
+ssl-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg SSL_EXPORTER_VERSION
+
+rsyslog:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg DEBIAN_VERSION
+
+ioping-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+
+ldap-exporter:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg LDAP_EXPORTER_VERSION
+
+grafana:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg GRAFANA_VERSION \
+        --build-arg HTTP_PROXY \
+        --build-arg NO_PROXY
+
+m3dbnode:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg M3DBNODE_VERSION
+
+m3coordinator:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg M3COORDINATOR_VERSION
+
+cortex:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg CORTEX_VERSION
+
+logstash:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg LOGSTASH_VERSION
+
+kibana:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KIBANA_VERSION
+mongo:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg MONGO_VERSION
+
+alerta:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg ALERTA_VERSION

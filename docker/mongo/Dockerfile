@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG MONGO_VERSION
+FROM ${DOCKER_HUB}/mongo:${MONGO_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

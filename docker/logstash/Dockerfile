@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG LOGSTASH_VERSION
+FROM ${DOCKER_HUB}/logstash/logstash:${LOGSTASH_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG NODE_EXPORTER_VERSION
+FROM ${DOCKER_HUB}/prom/node-exporter:${NODE_EXPORTER_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
