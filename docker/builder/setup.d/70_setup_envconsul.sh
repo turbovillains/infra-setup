@@ -1,8 +1,8 @@
 #!/usr/bin/env bash -eux
 
-ENVCONSUL_VERSION=${ENVCONSUL_VERSION:-0.10.0}
+ENVCONSUL_VERSION=${ENVCONSUL_VERSION:-0.11.0}
 ENVCONSUL_URL=https://releases.hashicorp.com/envconsul/${ENVCONSUL_VERSION}/envconsul_${ENVCONSUL_VERSION}_linux_amd64.zip
-ENVCONSUL_SHA256=ac459fbfaa2cdb259bf27b0c4b83c64a537d22293e8a60d76a053cea7f204eee
+ENVCONSUL_SHA256=e52fe2036cacec12b24431044af2c71989c21271ef4d880d3f0e713aee203bc0
 ENVCONSUL_TARGET=/usr/local/bin/envconsul
 
 ENVCONSUL_ZIP=$(mktemp --tmpdir=/tmp envconsul.XXXXXXXXX.zip)

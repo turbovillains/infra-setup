@@ -1,26 +1,26 @@
 ---
 variables:
   DOCKER_NAMESPACE: infra
-  DEPLOYER_BASE: ubuntu:focal-20201106
-  BUILDER_BASE: debian:10.7-slim
-  FREERADIUS_VERSION: 3.0.21-alpine
-  TRAEFIK_VERSION: "v2.4.0"
-  MKDOCS_VERSION: "6.2.5"
-  JEKYLL_VERSION: "4.2.0"
-  POWERDNS_BASE: debian:10.7-slim
-  POWERDNS_VERSION: "4.3.0"
-  GATSBY_BUILD_BASE: node:14-buster
-  GATSBY_VERSION: "2.12.99"
-  GATSBY_BASE: alpine:edge
-  LATEX_BASE: ubuntu:focal-20201106
-  KEYCLOAK_VERSION: "12.0.2"
-  POSTGRES_VERSION: "13.1"
-  JIRA_VERSION: "8.13.0"
+  DEPLOYER_BASE: ubuntu:focal-20210217 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  BUILDER_BASE: debian:10.8-slim  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
+  FREERADIUS_VERSION: 3.0.21-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3.0.21
+  TRAEFIK_VERSION: "v2.4.6" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
+  MKDOCS_VERSION: "7.0.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
+  JEKYLL_VERSION: "4.2.0" # https://hub.docker.com/r/jekyll/jekyll/tags?page=1&ordering=last_updated
+  POWERDNS_BASE: debian:10.8-slim # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
+  POWERDNS_VERSION: "4.4.1" # https://www.powerdns.com/downloads.html
+  GATSBY_BUILD_BASE: node:15-buster # https://hub.docker.com/_/node?tab=description&page=1&ordering=last_updated
+  GATSBY_VERSION: "2.12.99" # https://www.npmjs.com/package/gatsby
+  GATSBY_BASE: alpine:3.12.4 # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.12.4
+  LATEX_BASE: ubuntu:focal-20210217 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  KEYCLOAK_VERSION: "12.0.4" # https://hub.docker.com/r/jboss/keycloak/tags?page=1&ordering=last_updated&name=12.0
+  POSTGRES_VERSION: "13.2" # https://hub.docker.com/_/postgres
+  JIRA_VERSION: "8.15.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
   MAILSERVER_VERSION: "release-v7.1.0"
-  NEXTCLOUD_VERSION: "20.0.5-apache"
+  NEXTCLOUD_VERSION: "20.0.8-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: v1.1.2
-  HAPROXY_VERSION: 2.3.4
-  MINIO_VERSION: RELEASE.2021-02-07T01-31-02Z
+  HAPROXY_VERSION: 2.3.6 # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
+  MINIO_VERSION: RELEASE.2021-03-04T00-53-13Z # https://hub.docker.com/r/minio/minio/tags?page=1&ordering=last_updated
 
 stages:
   - import-images
