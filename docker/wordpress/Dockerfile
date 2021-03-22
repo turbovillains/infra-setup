@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG WORDPRESS_VERSION
+FROM ${DOCKER_HUB}/wordpress:${WORDPRESS_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

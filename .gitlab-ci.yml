@@ -44,6 +44,7 @@ variables:
   CORTEX_VERSION: v1.7.0
   ALERTA_VERSION: 8.4.1
   MONGO_VERSION: 4.4.4-bionic
+  WORDPRESS_VERSION: 5.7.0-apache   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
 
 stages:
   - import-images
@@ -339,3 +340,10 @@ alerta:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg ALERTA_VERSION
+
+wordpress:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg WORDPRESS_VERSION

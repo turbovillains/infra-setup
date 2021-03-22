@@ -100,6 +100,7 @@ import_images() {
         "docker.elastic.co/kibana/kibana:${KIBANA_VERSION:-latest}"
         "alerta/alerta-web:${ALERTA_VERSION:-latest}"
         "mongo:${MONGO_VERSION:-latest}"
+        "wordpress:${WORDPRESS_VERSION:-5.7.0-apache}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}
