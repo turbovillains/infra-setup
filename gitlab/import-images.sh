@@ -101,6 +101,7 @@ import_images() {
         "alerta/alerta-web:${ALERTA_VERSION:-latest}"
         "mongo:${MONGO_VERSION:-latest}"
         "wordpress:${WORDPRESS_VERSION:-5.7.0-apache}"
+        "dpage/pgadmin4:${PGADMIN4_VERSION:-5.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}

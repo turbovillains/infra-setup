@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG PGADMIN_VERSION
+FROM ${DOCKER_HUB}/dpage/pgadmin4:${PGADMIN_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
