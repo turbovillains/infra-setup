@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG MYSQL_VERSION
+FROM ${DOCKER_HUB}/mysql:${MYSQL_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

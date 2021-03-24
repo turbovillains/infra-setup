@@ -33,7 +33,7 @@ variables:
   GRAFANA_VERSION: "7.4.3" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated&name=7.4
   M3DBNODE_VERSION: v1.0.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.0.0
-  PROMETHEUS_ES_EXPORTER_VERSION: 0.14.0
+  PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"
   SSL_EXPORTER_VERSION: v2.2.0
   CADVISOR_VERSION: v0.37.5
   KARMA_VERSION: v0.80
@@ -46,6 +46,8 @@ variables:
   MONGO_VERSION: 4.4.4-bionic
   WORDPRESS_VERSION: 5.7.0-apache   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "5.0"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  MYSQL_VERSION: "8.0.23" # https://registry.hub.docker.com/_/mysql/
+  MARIADB_VERSION: 10.5.9-focal # https://hub.docker.com/_/mariadb
 
 stages:
   - import-images
@@ -355,3 +357,17 @@ pgadmin:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg PGADMIN_VERSION
+
+mysql:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg MYSQL_VERSION
+
+mariadb:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg MARIADB_VERSION

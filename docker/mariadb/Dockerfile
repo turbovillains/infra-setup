@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG MARIADB_VERSION
+FROM ${DOCKER_HUB}/mariadb:${MARIADB_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

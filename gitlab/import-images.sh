@@ -102,6 +102,8 @@ import_images() {
         "mongo:${MONGO_VERSION:-latest}"
         "wordpress:${WORDPRESS_VERSION:-5.7.0-apache}"
         "dpage/pgadmin4:${PGADMIN4_VERSION:-5.0}"
+        "mysql:${MYSQL_VERSION}"
+        "mariadb:${MARIADB_VERSION}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}
