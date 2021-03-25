@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG KAFKA_SCHEMA_REGISTRY_VERSION
+FROM ${DOCKER_HUB}/confluentinc/cp-schema-registry:${KAFKA_SCHEMA_REGISTRY_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

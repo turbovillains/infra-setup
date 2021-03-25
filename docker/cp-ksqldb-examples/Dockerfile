@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG KAFKA_KSQLDB_EXAMPLES_VERSION
+FROM ${DOCKER_HUB}/confluentinc/ksqldb-examples:${KAFKA_KSQLDB_EXAMPLES_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

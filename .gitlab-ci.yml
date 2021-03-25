@@ -49,10 +49,23 @@ variables:
   MYSQL_VERSION: "8.0.23" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: 10.5.9-focal # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: a9f17f0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
+  KAFKA_ZOOKEEPER_VERSION: 6.1.1
+  KAFKA_SERVER_VERSION: 6.1.1
+  KAFKA_SCHEMA_REGISTRY_VERSION: 6.1.1
+  KAFKA_SERVER_CONNECT_DATAGEN_VERSION: 0.4.0-6.1.0
+  KAFKA_ENTERPRISE_CONTROL_CENTER_VERSION: 6.1.1
+  KAFKA_KSQLDB_SERVER_VERSION: 6.1.1
+  KAFKA_KSQLDB_CLI_VERSION: 6.1.1
+  KAFKA_REST_VERSION: 6.1.1
+  KAFKA_KSQLDB_EXAMPLES_VERSION: 6.1.1
 
 stages:
   - import-images
   - build
+  - build-kafka
+  - build-builder
+  - build-deployer
+  - build-latex
 
 import-images:
   stage: import-images
@@ -60,13 +73,13 @@ import-images:
     - ./gitlab/${CI_JOB_STAGE}.sh
 
 deployer:
-  stage: build
+  stage: build-deployer
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg DEPLOYER_BASE
 
 builder:
-  stage: build
+  stage: build-builder
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg BUILDER_BASE --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} --build-arg SSH_PRIVATE_KEY \
@@ -115,7 +128,7 @@ gatsby:
         --build-arg GATSBY_BASE
 
 latex:
-  stage: build
+  stage: build-latex
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
@@ -379,3 +392,66 @@ httpbin:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg HTTPBIN_VERSION
+
+cp-zookeeper:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_ZOOKEEPER_VERSION
+
+cp-server:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_SERVER_VERSION
+
+cp-schema-registry:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_SCHEMA_REGISTRY_VERSION
+
+cp-server-connect-datagen:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_SERVER_CONNECT_DATAGEN_VERSION
+
+cp-enterprise-control-center:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_ENTERPRISE_CONTROL_CENTER_VERSION
+
+cp-ksqldb-server:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_KSQLDB_SERVER_VERSION
+
+cp-ksqldb-cli:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_KSQLDB_CLI_VERSION
+
+cp-ksqldb-examples:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_KSQLDB_EXAMPLES_VERSION
+
+cp-kafka-rest:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg KAFKA_REST_VERSION
