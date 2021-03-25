@@ -48,6 +48,7 @@ variables:
   PGADMIN_VERSION: "5.0"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.23" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: 10.5.9-focal # https://hub.docker.com/_/mariadb
+  HTTPBIN_VERSION: a9f17f0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
 
 stages:
   - import-images
@@ -371,3 +372,10 @@ mariadb:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg MARIADB_VERSION
+
+httpbin:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg HTTPBIN_VERSION

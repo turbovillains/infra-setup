@@ -104,6 +104,7 @@ import_images() {
         "dpage/pgadmin4:${PGADMIN4_VERSION:-5.0}"
         "mysql:${MYSQL_VERSION}"
         "mariadb:${MARIADB_VERSION}"
+        "mccutchen/go-httpbin:${HTTPBIN_VERSION}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}
