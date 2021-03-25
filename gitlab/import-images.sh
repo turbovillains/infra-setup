@@ -108,7 +108,7 @@ import_images() {
         "confluentinc/cp-zookeeper:${KAFKA_ZOOKEEPER_VERSION:-6.1.1}"
         "confluentinc/cp-server:${KAFKA_SERVER_VERSION:-6.1.1}"
         "confluentinc/cp-schema-registry:${KAFKA_SCHEMA_REGISTRY_VERSION:-6.1.1}"
-        "confluentinc/cp-server-connect-datagen:${KAFKA_SERVER_CONNECT_DATAGEN_VERSION:-0.4.0-6.1.0}"
+        "cnfldemos/cp-server-connect-datagen:${KAFKA_SERVER_CONNECT_DATAGEN_VERSION:-0.4.0-6.1.0}"
         "confluentinc/cp-enterprise-control-center:${KAFKA_ENTERPRISE_CONTROL_CENTER_VERSION:-6.1.1}"
         "confluentinc/cp-ksqldb-server:${KAFKA_KSQLDB_SERVER_VERSION:-6.1.1}"
         "confluentinc/cp-ksqldb-cli:${KAFKA_KSQLDB_CLI_VERSION:-6.1.1}"

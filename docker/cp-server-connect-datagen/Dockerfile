@@ -1,5 +1,5 @@
 ARG DOCKER_HUB
 ARG KAFKA_SERVER_CONNECT_DATAGEN_VERSION
-FROM ${DOCKER_HUB}/confluentinc/cp-server-connect-datagen:${KAFKA_SERVER_CONNECT_DATAGEN_VERSION}
+FROM ${DOCKER_HUB}/cnfldemos/cp-server-connect-datagen:${KAFKA_SERVER_CONNECT_DATAGEN_VERSION}
 
 MAINTAINER Noroutine GmbH <info@noroutine.me>
