@@ -1,51 +1,51 @@
 ---
 variables:
   DOCKER_NAMESPACE: infra
-  DEPLOYER_BASE: ubuntu:focal-20210217 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  BUILDER_BASE: debian:10.8-slim  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
-  DEBIAN_VERSION: 10.8-slim
+  DEPLOYER_BASE: ubuntu:focal-20210325 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  BUILDER_BASE: debian:10.9-slim  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
+  DEBIAN_VERSION: 10.9-slim
   FREERADIUS_VERSION: 3.0.21-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3.0.21
-  TRAEFIK_VERSION: "v2.4.6" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
-  MKDOCS_VERSION: "7.0.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
+  TRAEFIK_VERSION: "v2.4.8" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
+  MKDOCS_VERSION: "7.1.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   JEKYLL_VERSION: "4.2.0" # https://hub.docker.com/r/jekyll/jekyll/tags?page=1&ordering=last_updated
-  POWERDNS_BASE: debian:10.8-slim # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
+  POWERDNS_BASE: debian:10.9-slim # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
   POWERDNS_VERSION: "4.4.1" # https://www.powerdns.com/downloads.html
-  GATSBY_BUILD_BASE: node:15-buster # https://hub.docker.com/_/node?tab=description&page=1&ordering=last_updated
+  GATSBY_BUILD_BASE: node:15.12.0-buster # https://hub.docker.com/_/node?tab=description&page=1&ordering=last_updated
   GATSBY_VERSION: "2.12.99" # https://www.npmjs.com/package/gatsby
   GATSBY_BASE: alpine:3.12.4 # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.12.4
-  LATEX_BASE: ubuntu:focal-20210217 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  LATEX_BASE: ubuntu:focal-20210325 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "12.0.4" # https://hub.docker.com/r/jboss/keycloak/tags?page=1&ordering=last_updated&name=12.0
   POSTGRES_VERSION: "13.2" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.15.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
   MAILSERVER_VERSION: "release-v7.1.0"
   NEXTCLOUD_VERSION: "20.0.8-apache" # https://hub.docker.com/_/nextcloud
-  SPEEDTEST_VERSION: v1.1.2
-  HAPROXY_VERSION: "2.3.6" # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
-  MINIO_VERSION: RELEASE.2021-03-04T00-53-13Z # https://hub.docker.com/r/minio/minio/tags?page=1&ordering=last_updated
-  ETCD_VERSION: v3.4.15
-  PROMETHEUS_VERSION: v2.25.0
+  SPEEDTEST_VERSION: v1.1.3 # https://github.com/librespeed/speedtest-go/releases
+  HAPROXY_VERSION: "2.3.9" # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
+  MINIO_VERSION: RELEASE.2021-03-26T00-00-41Z # https://github.com/minio/minio/releases
+  ETCD_VERSION: v3.4.15 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
+  PROMETHEUS_VERSION: v2.26.0 # https://prometheus.io/download/
   ALERTMANAGER_VERSION: v0.21.0
   NODE_EXPORTER_VERSION: v1.1.2
   CONSUL_EXPORTER_VERSION: v0.7.1
   BLACKBOX_EXPORTER_VERSION: v0.18.0
-  SNMP_EXPORTER_VERSION: v0.20.0
-  IPMI_EXPORTER_VERSION: v1.3.2
-  GRAFANA_VERSION: "7.4.3" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated&name=7.4
-  M3DBNODE_VERSION: v1.0.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
-  M3COORDINATOR_VERSION: v1.0.0
-  PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"
-  SSL_EXPORTER_VERSION: v2.2.0
-  CADVISOR_VERSION: v0.37.5
-  KARMA_VERSION: v0.80
+  SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
+  IPMI_EXPORTER_VERSION: v1.3.2 # https://github.com/soundcloud/ipmi_exporter/releases
+  GRAFANA_VERSION: "7.4.5" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated&name=7.4
+  M3DBNODE_VERSION: v1.1.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
+  M3COORDINATOR_VERSION: v1.1.0
+  PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
+  SSL_EXPORTER_VERSION: v2.2.0 # https://github.com/ribbybibby/ssl_exporter/releases
+  CADVISOR_VERSION: v0.39.0 # https://github.com/google/cadvisor/releases
+  KARMA_VERSION: v0.81 # https://github.com/prymitive/karma/releases
   PUSHGATEWAY_VERSION: v1.4.0
   LDAP_EXPORTER_VERSION: 0.0.3-2-dev
-  LOGSTASH_VERSION: "7.11.1"
-  KIBANA_VERSION: "7.11.1"
-  CORTEX_VERSION: v1.7.0
-  ALERTA_VERSION: "8.4.1"
-  MONGO_VERSION: 4.4.4-bionic
+  LOGSTASH_VERSION: "7.12.0"
+  KIBANA_VERSION: "7.12.0"
+  CORTEX_VERSION: v1.8.0 # https://github.com/cortexproject/cortex/releases
+  ALERTA_VERSION: "8.4.1" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
+  MONGO_VERSION: 4.4.4-bionic # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: 5.7.0-apache   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
-  PGADMIN_VERSION: "5.0"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  PGADMIN_VERSION: "5.1"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.23" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: 10.5.9-focal # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: a9f17f0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
