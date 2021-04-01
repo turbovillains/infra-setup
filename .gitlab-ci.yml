@@ -61,11 +61,11 @@ variables:
 
 stages:
   - import-images
+  - build-builder
   - build
   - build-monitoring
   - build-kafka
-  - build-builder
-  - build-deployer
+  # - build-deployer
   - build-latex
 
 import-images:
@@ -73,11 +73,11 @@ import-images:
   script:
     - ./gitlab/${CI_JOB_STAGE}.sh
 
-deployer:
-  stage: build-deployer
-  script:
-    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg DEPLOYER_BASE
+# deployer:
+#   stage: build-deployer
+#   script:
+#     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+#         --build-arg DEPLOYER_BASE
 
 builder:
   stage: build-builder
