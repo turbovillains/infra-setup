@@ -1,7 +1,7 @@
 #!/usr/bin/env bash -eux
 
-echo kernel.unprivileged_userns_clone = 1 | sudo tee -a /etc/sysctl.d/containers.conf
-systemctl -p /etc/sysctl.d/containers.conf
+# echo kernel.unprivileged_userns_clone = 1 | sudo tee -a /etc/sysctl.d/containers.conf
+# systemctl -p /etc/sysctl.d/containers.conf
 
 cat << EOK | apt-key add -
 -----BEGIN PGP PUBLIC KEY BLOCK-----
