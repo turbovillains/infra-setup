@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG ELASTICSEARCH_VERSION
+FROM ${DOCKER_HUB}/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

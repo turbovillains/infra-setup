@@ -96,6 +96,7 @@ import_images() {
         "gcr.io/cadvisor/cadvisor:${CADVISOR_VERSION:-latest}"
         "lmierzwa/karma:${KARMA_VERSION:-latest}"
         "quay.io/cortexproject/cortex:${CORTEX_VERSION:-latest}"
+        "docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION:-latest}"
         "docker.elastic.co/logstash/logstash:${LOGSTASH_VERSION:-latest}"
         "docker.elastic.co/kibana/kibana:${KIBANA_VERSION:-latest}"
         "alerta/alerta-web:${ALERTA_VERSION:-latest}"
