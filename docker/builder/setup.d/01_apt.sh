@@ -27,6 +27,7 @@ apt-get -y install unzip \
   ca-certificates \
   curl \
   gnupg2 \
+  jq \
   software-properties-common
 
 # Noroutine
