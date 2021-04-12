@@ -8,6 +8,7 @@ variables:
   TRAEFIK_VERSION: "v2.4.8" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
   MKDOCS_VERSION: "7.1.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   JEKYLL_VERSION: "4.2.0" # https://hub.docker.com/r/jekyll/jekyll/tags?page=1&ordering=last_updated
+  UNBOUND_BASE: debian:10.9-slim # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
   POWERDNS_BASE: debian:10.9-slim # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
   POWERDNS_VERSION: "4.4.1" # https://www.powerdns.com/downloads.html
   GATSBY_BUILD_BASE: node:15.12.0-buster # https://hub.docker.com/_/node?tab=description&page=1&ordering=last_updated
@@ -142,6 +143,13 @@ powerdns:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg POWERDNS_BASE
+
+unbound:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg UNBOUND_BASE
 
 keycloak:
   stage: build
