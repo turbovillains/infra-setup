@@ -24,4 +24,4 @@ ENV HOST_DOCKER_GID=${HOST_DOCKER_GID}
 
 EXPOSE 3000
 
-CMD [ "/usr/local/bin/ttyd", "-p", "3000"]
+CMD [ "/usr/local/bin/ttyd", "-p", "3000", "/bin/bash"]
