@@ -28,6 +28,7 @@ apt-get -y install unzip \
   curl \
   gnupg2 \
   jq \
+  iputils-ping dnsutils \
   software-properties-common
 
 # Noroutine
