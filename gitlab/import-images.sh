@@ -115,6 +115,7 @@ import_images() {
         "confluentinc/cp-ksqldb-cli:${KAFKA_KSQLDB_CLI_VERSION:-6.1.1}"
         "confluentinc/cp-kafka-rest:${KAFKA_REST_VERSION:-6.1.1}"
         "confluentinc/ksqldb-examples:${KAFKA_KSQLDB_EXAMPLES_VERSION:-6.1.1}"
+        "quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2_PROXY_VERSION:-v7.1.2-amd64}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}

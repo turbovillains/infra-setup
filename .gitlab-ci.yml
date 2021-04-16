@@ -60,6 +60,7 @@ variables:
   KAFKA_KSQLDB_CLI_VERSION: 6.1.1
   KAFKA_REST_VERSION: 6.1.1
   KAFKA_KSQLDB_EXAMPLES_VERSION: 6.1.1
+  OAUTH2_PROXY_VERSION: v7.1.2-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
 
 stages:
   - import-images
@@ -409,6 +410,13 @@ httpbin:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg HTTPBIN_VERSION
+
+oauth2-proxy:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg OAUTH2_PROXY_VERSION
 
 # cp-zookeeper:
 #   stage: build-kafka

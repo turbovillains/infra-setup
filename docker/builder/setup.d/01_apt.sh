@@ -28,6 +28,7 @@ apt-get -y install unzip \
   curl \
   gnupg2 \
   jq \
+  postgresql-client \
   iputils-ping dnsutils \
   software-properties-common
 
