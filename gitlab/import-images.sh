@@ -67,6 +67,7 @@ import_images() {
         "${GATSBY_BASE:-alpine:edge}"
         "${GATSBY_BUILD_BASE:-node:14-buster}"
         "${LATEX_BASE:-ubuntu:focal}"
+        "php:7.4-apache"
         "alpine:3.12.1"
         "golang:1.15.3-alpine3.12"
         "traefik:${TRAEFIK_VERSION:-latest}"
