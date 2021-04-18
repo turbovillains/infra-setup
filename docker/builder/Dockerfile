@@ -23,5 +23,6 @@ ENV SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY}
 ENV HOST_DOCKER_GID=${HOST_DOCKER_GID}
 
 EXPOSE 3000
+WORKDIR /home/builder
 
 CMD [ "/usr/local/bin/ttyd", "-p", "3000", "/bin/bash"]
