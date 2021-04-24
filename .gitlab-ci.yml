@@ -12,7 +12,7 @@ variables:
   POWERDNS_BASE: debian:10.9-slim # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
   POWERDNS_VERSION: "4.4.1" # https://www.powerdns.com/downloads.html
   GATSBY_BUILD_BASE: node:15.12.0-buster # https://hub.docker.com/_/node?tab=description&page=1&ordering=last_updated
-  GATSBY_VERSION: "2.12.99" # https://www.npmjs.com/package/gatsby
+  GATSBY_VERSION: "3.3.1" # https://www.npmjs.com/package/gatsby
   GATSBY_BASE: alpine:3.12.4 # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.12.4
   LATEX_BASE: ubuntu:focal-20210325 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "12.0.4" # https://hub.docker.com/r/jboss/keycloak/tags?page=1&ordering=last_updated&name=12.0
@@ -66,10 +66,6 @@ variables:
 stages:
   - import-images
   - build
-  - build
-  # - build-kafka
-  # - build-deployer
-  # - build-latex
 
 import-images:
   stage: import-images
