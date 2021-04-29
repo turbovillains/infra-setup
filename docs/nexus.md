@@ -1,5 +1,15 @@
 nexus.md
 ===
+# Guide for npm
+https://blog.theodo.com/2016/01/speed-up-npm-install-with-a-nexus-proxy-to-cache-packages/
+
+# Some npm packages are not found 
+
+https://github.com/npm/npm/issues/13541#issuecomment-260777973
+```
+AllowEncodedSlashes NoDecode 
+AllowEncodedSlashes On
+```
 
 # Upgrade
 
