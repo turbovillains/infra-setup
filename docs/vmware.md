@@ -1,6 +1,10 @@
 vmWare
 ====
 
+# Remove old NSX 6.x UI plugins
+
+https://vmwaretrobleshooting.com/2020/05/31/completely-remove-nsx-6-4-from-vcenter/
+
 # vCenter Simple Update Error
 
 https://tinkertry.com/how-to-workaround-unexpected-error-occurred-while-fetching-the-updates-error-during-vcsa-7-upgrade
