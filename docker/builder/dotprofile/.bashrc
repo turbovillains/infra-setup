@@ -1,3 +1,4 @@
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -12,8 +13,12 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 # SSH agent
-eval $(ssh-agent -s)
-ssh-add <(echo "$SSH_PRIVATE_KEY")
+eval $(ssh-agent -s) > /dev/null
+if [[ ! -z ${SSH_PRIVATE_KEY:-} ]]; then
+    echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+    chmod 600 ~/.ssh/id_rsa
+fi
+ssh-add -q <(echo "$SSH_PRIVATE_KEY") > /dev/null
 
 # Git 
 git config --global user.email "info@noroutine.me"
@@ -21,6 +26,12 @@ git config --global user.name "Git Robot"
 
 # Docker
 export DOCKER_HUB=bo01-vm-nexus01.node.bo01.noroutine.me:5000
+export DOCKER_CLI_EXPERIMENTAL=enabled
+
+if [[ ! -z ${DOCKER_CFG:-} ]]; then
+    mkdir -p ~/.docker
+    echo "${DOCKER_CFG:-}" | base64 --decode > ~/.docker/config.json 
+fi
 
 # If not running interactively, end here
 case $- in
