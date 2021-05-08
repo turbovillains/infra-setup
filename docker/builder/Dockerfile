@@ -10,6 +10,7 @@ ARG HOST_DOCKER_GID
 
 ADD setup.sh /setup.sh
 ADD setup.d /setup.d
+ADD dotprofile/.bashrc /root/.bashrc
 
 ENV GIT_SERVER_HOST=${GIT_SERVER_HOST}
 ENV SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY}

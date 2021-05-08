@@ -26,10 +26,3 @@ export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 mkdir -p /root/.ansible /home/builder/.ansible
 echo 123234345 | tee /root/.ansible/vault-password | tee /home/builder/.ansible/vault-password
-
-cat <<'EOF' | tee -a /root/.bashrc | tee -a /home/builder/.bashrc
-
-# Python
-[ -s "${HOME}/.py3/bin/activate" ] && \. "${HOME}/.py3/bin/activate"  # This loads py3
-export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-EOF
