@@ -38,6 +38,9 @@ shasum -a 256 kubecolor.tar.gz | grep 3008b902c75e471c217c4b48d7804814d389f65b8c
 tar zOxvf kubecolor.tar.gz kubecolor > /usr/local/bin/kubecolor
 rm kubecolor.tar.gz
 
+# Pack
+(curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.18.1/pack-v0.18.1-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
+
 # ttyd
 curl -sLo /usr/local/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64
 
