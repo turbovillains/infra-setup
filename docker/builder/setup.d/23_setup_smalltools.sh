@@ -42,7 +42,11 @@ rm kubecolor.tar.gz
 (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.18.1/pack-v0.18.1-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
 mkdir -p /root/.pack /home/builder/.pack
 cat <<EOF | tee /root/.pack/config.toml | tee /home/builder/.pack/config.toml
-default-builder-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/heroku/buildpacks:20"
+default-builder-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/heroku-buildpacks:v0.0.50"
+lifecycle-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/buildpacksio-lifecycle:v0.0.50"
+
+[[trusted-builders]]
+  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/heroku-buildpacks:v0.0.50"
 
 [[trusted-builders]]
   name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/heroku/buildpacks:20"

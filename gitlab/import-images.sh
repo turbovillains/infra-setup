@@ -122,6 +122,7 @@ import_images() {
         "paketobuildpacks/builder:base"
         "paketobuildpacks/builder:tiny"
         "paketobuildpacks/run:full-cnb"
+        "buildpacksio/lifecycle:${BUILDPACKSIO_LIFECYCLE_VERSION:-0.11.1}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}
