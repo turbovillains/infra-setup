@@ -1,0 +1,22 @@
+[stack]
+id = "heroku-20"
+build-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/heroku/pack:20-build"
+run-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/heroku/pack:20"
+
+[lifecycle]
+version = "0.11.1"
+
+[[buildpacks]]
+  id = "heroku/jvm"
+  uri = "https://github.com/heroku/heroku-buildpack-jvm-common/releases/download/v113/heroku-jvm-common-cnb-v113.tgz"
+
+[[buildpacks]]
+  id = "heroku/spring-boot"
+  uri = "urn:cnb:registry:heroku/spring-boot@0.2.2"
+
+[[order]]
+  [[order.group]]
+    id = "heroku/jvm"
+
+  [[order.group]]
+    id = "heroku/spring-boot"

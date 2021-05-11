@@ -1,14 +1,21 @@
-ARG DOCKER_HUB
-
-FROM ${DOCKER_HUB}/heroku/buildpacks:20
-
-MAINTAINER Noroutine GmbH <info@noroutine.me>
-
-USER root
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
 RUN mkdir -p /usr/local/share/ca-certificates/noroutine
 ADD https://bo01-vm-nexus01.node.bo01.noroutine.me/repository/noroutine-ca/noroutine-root-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-root.crt
 ADD https://bo01-vm-nexus01.node.bo01.noroutine.me/repository/noroutine-ca/noroutine-trusted-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-trusted.crt
 RUN update-ca-certificates
 
+RUN ln -s /workspace /app
+
+ARG pack_uid=1000
+ARG pack_gid=1000
+
+RUN groupadd heroku --gid ${pack_gid} && \
+  useradd heroku -u ${pack_uid} -g ${pack_gid} -s /bin/bash -m
+
+ARG STACK
+LABEL io.buildpacks.stack.id="${STACK}"
+
 USER heroku
+ENV HOME /app

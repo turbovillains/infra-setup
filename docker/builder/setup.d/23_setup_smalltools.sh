@@ -42,20 +42,20 @@ rm kubecolor.tar.gz
 (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.18.1/pack-v0.18.1-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
 mkdir -p /root/.pack /home/builder/.pack
 cat <<EOF | tee /root/.pack/config.toml | tee /home/builder/.pack/config.toml
-default-builder-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/heroku-buildpacks:v0.0.50"
-lifecycle-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/buildpacksio-lifecycle:v0.0.50"
+default-builder-image = "${DOCKER_HUB}/heroku/buildpacks:${BUILDPACKS_VERSION}"
+lifecycle-image = "${DOCKER_HUB}/infra/buildpacksio-lifecycle:${BUILDPACKS_VERSION}"
 
 [[trusted-builders]]
-  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/heroku-buildpacks:v0.0.50"
+  name = "${DOCKER_HUB}/heroku/buildpacks:${BUILDPACKS_VERSION}"
 
 [[trusted-builders]]
-  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/heroku/buildpacks:20"
+  name = "${DOCKER_HUB}/heroku/spring-boot-buildpacks:${BUILDPACKS_VERSION}"
 
 [[trusted-builders]]
-  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/paketobuildpacks/builder:full"
+  name = "${DOCKER_HUB}/paketobuildpacks/builder:full"
 
 [[trusted-builders]]
-  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/paketobuildpacks/builder:tiny"
+  name = "${DOCKER_HUB}/paketobuildpacks/builder:tiny"
 EOF
 
 # ttyd

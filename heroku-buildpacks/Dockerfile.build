@@ -1,0 +1,28 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+RUN mkdir -p /usr/local/share/ca-certificates/noroutine
+ADD https://bo01-vm-nexus01.node.bo01.noroutine.me/repository/noroutine-ca/noroutine-root-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-root.crt
+ADD https://bo01-vm-nexus01.node.bo01.noroutine.me/repository/noroutine-ca/noroutine-trusted-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-trusted.crt
+RUN update-ca-certificates
+
+ARG pack_uid=1000
+ARG pack_gid=1000
+
+RUN groupadd heroku --gid ${pack_gid} && \
+  useradd heroku -u ${pack_uid} -g ${pack_gid} -s /bin/bash -m
+RUN mkdir /app && \
+  chown heroku:heroku /app
+
+ENV CNB_USER_ID=${pack_uid}
+ENV CNB_GROUP_ID=${pack_gid}
+
+ARG STACK
+ENV STACK "${STACK}"
+ENV CNB_STACK_ID "${STACK}"
+LABEL io.buildpacks.stack.id="${STACK}"
+
+ADD https://s3.amazonaws.com/heroku-fn-devex-staging/develop/latest/develop /cnb/lifecycle/develop
+RUN chmod +x /cnb/lifecycle/develop
+
+USER heroku
