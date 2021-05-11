@@ -118,6 +118,10 @@ import_images() {
         "confluentinc/ksqldb-examples:${KAFKA_KSQLDB_EXAMPLES_VERSION:-6.1.1}"
         "quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2_PROXY_VERSION:-v7.1.2-amd64}"
         "heroku/buildpacks:20"
+        "paketobuildpacks/builder:full"
+        "paketobuildpacks/builder:base"
+        "paketobuildpacks/builder:tiny"
+        "paketobuildpacks/run:full-cnb"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}

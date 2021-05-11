@@ -40,6 +40,19 @@ rm kubecolor.tar.gz
 
 # Pack
 (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.18.1/pack-v0.18.1-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
+mkdir -p /root/.pack /home/builder/.pack
+cat <<EOF | tee /root/.pack/config.toml | tee /home/builder/.pack/config.toml
+default-builder-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/heroku/buildpacks:20"
+
+[[trusted-builders]]
+  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/heroku/buildpacks:20"
+
+[[trusted-builders]]
+  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/paketobuildpacks/builder:full"
+
+[[trusted-builders]]
+  name = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/paketobuildpacks/builder:tiny"
+EOF
 
 # ttyd
 curl -sLo /usr/local/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64
