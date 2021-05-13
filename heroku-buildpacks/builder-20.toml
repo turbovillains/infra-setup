@@ -66,6 +66,10 @@ version = "0.11.1"
   id = "evergreen/fn"
   uri = "evergreen_fn"
 
+[[buildpacks]]
+  id = "noroutine/static"
+  uri = "noroutine-static"
+
 [[order]]
   [[order.group]]
     id = "heroku/ruby"
@@ -120,6 +124,11 @@ version = "0.11.1"
   [[order.group]]
     id = "evergreen/fn"
     version = "0.3.0"
+
+[[order]]
+  [[order.group]]
+    id = "noroutine/static"
+    version = "0.0.1"
 
 [[order]]
   [[order.group]]

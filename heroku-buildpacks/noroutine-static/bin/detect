@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+build_dir=$1
+
+echo "---> detect env: ${@}"
+
+env
+
+if [ ! -f "static.json" ]; then
+    echo "Could not find 'static.json'! Please ensure it exists and is checked into Git." >&2
+    exit 1
+fi
+
+# Remove config 
+rm static.json
+
+echo 'Static File Server'
+exit 0

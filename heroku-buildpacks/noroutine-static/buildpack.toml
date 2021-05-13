@@ -1,0 +1,9 @@
+api = "0.5"
+
+[buildpack]
+id = "noroutine/static"
+version = "0.0.1"
+name = "Static File Server"
+
+[[stacks]]
+id = "heroku-20"
