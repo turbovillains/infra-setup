@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+VERSION_PREFIX=$(date '+%Y%m%d-%H%M%S')
+
+while [ $# -gt 0 ]; do
+  capture-docker-stack "$1"       "$VERSION_PREFIX"
+  capture-docker-stack "$1-build" "$VERSION_PREFIX"
+  shift
+done
+
+if update-manifest; then
+  display "Publishing manifest update"
+  publish-manifests
+else
+  display "Skipping manifest update"
+fi

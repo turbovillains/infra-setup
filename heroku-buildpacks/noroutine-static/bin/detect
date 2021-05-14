@@ -11,8 +11,5 @@ if [ ! -f "static.json" ]; then
     exit 1
 fi
 
-# Remove config 
-rm static.json
-
 echo 'Static File Server'
 exit 0
