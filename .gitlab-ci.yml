@@ -5,6 +5,8 @@ variables:
   DEPLOYER_BASE: ubuntu:focal-20210325 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   BUILDER_BASE: debian:10.9-slim  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
   DEBIAN_VERSION: 10.9-slim
+  ACTIONS_RUNNER_VERSION: 2.278.0 # https://github.com/actions/runner/releases
+  GITLAB_RUNNER_VERSION: alpine-v13.12.0-rc1 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   FREERADIUS_VERSION: 3.0.21-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3.0.21
   TRAEFIK_VERSION: "v2.4.8" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
   MKDOCS_VERSION: "7.1.3" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
@@ -85,7 +87,8 @@ builder:
         --build-arg BUILDPACKS_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg SSH_PRIVATE_KEY \
-        --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
+        --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }') \
+        --build-arg ACTIONS_RUNNER_VERSION
 
 heroku-buildpacks:
   stage: buildpacks
@@ -109,6 +112,13 @@ heroku-20:
         --build-arg STACK_BASE
       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+
+gitlab-runner:
+  stage: builder
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg GITLAB_RUNNER_VERSION
 
 radius:
   stage: build

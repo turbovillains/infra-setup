@@ -40,8 +40,8 @@ rm kubecolor.tar.gz
 
 # Pack
 (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.18.1/pack-v0.18.1-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
-mkdir -p /root/.pack /home/builder/.pack
-cat <<EOF | tee /root/.pack/config.toml | tee /home/builder/.pack/config.toml
+mkdir -p /root/.pack /home/${BUILDER_USER}/.pack
+cat <<EOF | tee /root/.pack/config.toml | tee /home/${BUILDER_USER}/.pack/config.toml
 default-builder-image = "${DOCKER_HUB}/heroku/buildpacks:${BUILDPACKS_VERSION}"
 lifecycle-image = "${DOCKER_HUB}/infra/buildpacksio-lifecycle:${BUILDPACKS_VERSION}"
 
