@@ -6,7 +6,7 @@ NOMAD_SHA256=dbb8b8b1366c8ea9504cc396f2c00a254e043b1fc9f39f39d9ef3398e454e840
 NOMAD_TARGET=/usr/local/bin/nomad
 
 NOMAD_ZIP=$(mktemp --tmpdir=/tmp nomad.XXXXXXXXX.zip)
-curl -s -o ${NOMAD_ZIP} ${NOMAD_URL}
+curl -sLo ${NOMAD_ZIP} ${NOMAD_URL}
 
 sha256sum ${NOMAD_ZIP} | grep ${NOMAD_SHA256}
 

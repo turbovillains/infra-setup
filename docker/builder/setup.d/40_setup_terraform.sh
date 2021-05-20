@@ -6,7 +6,7 @@ TERRAFORM_SHA256=6b66e1faf0ad4ece28c42a1877e95bbb1355396231d161d78b8ca8a99accc2d
 TERRAFORM_TARGET=/usr/local/bin/terraform
 
 TERRAFORM_ZIP=$(mktemp --tmpdir=/tmp terraform.XXXXXXXXX.zip)
-curl -s -o ${TERRAFORM_ZIP} ${TERRAFORM_URL}
+curl -sLo ${TERRAFORM_ZIP} ${TERRAFORM_URL}
 
 sha256sum ${TERRAFORM_ZIP} | grep ${TERRAFORM_SHA256}
 

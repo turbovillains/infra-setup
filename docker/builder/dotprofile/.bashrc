@@ -123,6 +123,16 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# cdf
+cdf() {
+    local levels=2
+    cd $(find . -maxdepth ${levels} -mindepth ${levels} -type d | egrep -v  '\/[\._].+' | fzf --query "$1")
+}
+# End cdf
+
+alias jess='jq -C | less -R'
+alias james='jq "[.[] | {id,name}"]'
+
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 

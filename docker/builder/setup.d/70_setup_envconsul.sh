@@ -6,7 +6,7 @@ ENVCONSUL_SHA256=e52fe2036cacec12b24431044af2c71989c21271ef4d880d3f0e713aee203bc
 ENVCONSUL_TARGET=/usr/local/bin/envconsul
 
 ENVCONSUL_ZIP=$(mktemp --tmpdir=/tmp envconsul.XXXXXXXXX.zip)
-curl -s -o ${ENVCONSUL_ZIP} ${ENVCONSUL_URL}
+curl -sLo ${ENVCONSUL_ZIP} ${ENVCONSUL_URL}
 
 sha256sum ${ENVCONSUL_ZIP} | grep ${ENVCONSUL_SHA256}
 

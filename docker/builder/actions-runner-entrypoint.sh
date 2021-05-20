@@ -45,17 +45,36 @@ if [ ! -d /runner ]; then
   exit 1
 fi
 
-sudo chown -R ${RUNNER_USER}:docker /runner
-mv ${RUNNER_ASSETS_DIR}/* /runner/
+# sudo chown -R ${RUNNER_USER}:docker /runner
 
-cd /runner
-./config.sh --unattended --replace \
-  --name "${RUNNER_NAME}" \
-  --url "${GITHUB_URL}${ATTACH}" \
-  --token "${RUNNER_TOKEN}" \
-  --runnergroup "${RUNNER_GROUPS}" \
-  --labels "${RUNNER_LABELS}" \
-  --work "${RUNNER_WORKDIR}"
+if [ ! -f /runner/.runner ]; then
+  cp -a ${RUNNER_ASSETS_DIR}/* /runner/
+
+  cd /runner
+  ./config.sh --unattended --replace \
+    --name "${RUNNER_NAME}" \
+    --url "${GITHUB_URL}${ATTACH}" \
+    --token "${RUNNER_TOKEN}" \
+    --runnergroup "${RUNNER_GROUPS}" \
+    --labels "${RUNNER_LABELS}" \
+    --work "${RUNNER_WORKDIR}"
+
+  if [ -n "${RUNNER_REGISTRATION_ONLY}" ]; then
+    echo
+    echo "This runner is configured to be registration-only. Exiting without starting the runner service..."
+    exit 0
+  fi
+
+  mkdir -p ./externals
+  # Hack due to the DinD volumes
+  mv ./externalstmp/* ./externals/
+
+  for f in runsvc.sh RunnerService.js; do
+    diff -u {bin,patched}/${f} || :
+    cp -a bin/${f}{,.bak}
+    cp -a {patched,bin}/${f}
+  done
+fi
 
 if [ -f /runner/.runner ]; then
   echo Runner has successfully been configured with the following data.
@@ -82,26 +101,12 @@ if [ -f /runner/.runner ]; then
   #     https://api.github.com/repos/USER/REPO/actions/runners/171
 fi
 
-if [ -n "${RUNNER_REGISTRATION_ONLY}" ]; then
-  echo
-  echo "This runner is configured to be registration-only. Existing without starting the runner service..."
-  exit 0
-fi
-
-mkdir ./externals
-# Hack due to the DinD volumes
-mv ./externalstmp/* ./externals/
-
-for f in runsvc.sh RunnerService.js; do
-  diff -u {bin,patched}/${f} || :
-  cp -a bin/${f}{,.bak}
-  cp -a {patched,bin}/${f}
-done
+cd /runner
 
 args=() 
 if [ "${RUNNER_EPHEMERAL}" != "false" ]; then
   args+=(--once)
 fi
 
-unset RUNNER_NAME RUNNER_REPO RUNNER_TOKEN
-exec ./bin/runsvc.sh "${args[@]}"
+unset RUNNER_EPHEMERAL RUNNER_REGISTRATION_ONLY RUNNER_NAME RUNNER_REPO RUNNER_TOKEN
+exec /runner/bin/runsvc.sh "${args[@]}"

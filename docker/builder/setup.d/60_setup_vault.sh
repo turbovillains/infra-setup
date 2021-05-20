@@ -6,7 +6,7 @@ VAULT_SHA256=844adaf632391be41f945143de7dccfa9b39c52a72e8e22a5d6bad9c32404c46
 VAULT_TARGET=/usr/local/bin/vault
 
 VAULT_ZIP=$(mktemp --tmpdir=/tmp vault.XXXXXXXXX.zip)
-curl -s -o ${VAULT_ZIP} ${VAULT_URL}
+curl -sLo ${VAULT_ZIP} ${VAULT_URL}
 
 sha256sum ${VAULT_ZIP} | grep ${VAULT_SHA256}
 
