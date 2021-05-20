@@ -1,8 +1,8 @@
 ---
 variables:
   DOCKER_NAMESPACE: infra
-  STACK_BASE: ubuntu:focal-20210325 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  DEPLOYER_BASE: ubuntu:focal-20210325 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  STACK_BASE: ubuntu:focal-20210416 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  DEPLOYER_BASE: ubuntu:focal-20210416 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   BUILDER_BASE: debian:10.9-slim  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
   DEBIAN_VERSION: 10.9-slim
   ACTIONS_RUNNER_VERSION: 2.278.0 # https://github.com/actions/runner/releases
@@ -18,7 +18,7 @@ variables:
   GATSBY_VERSION: "3.4.0" # https://www.npmjs.com/package/gatsby
   GATSBY_BASE: alpine:3.12.7 # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.12.4
   LATEX_BASE: ubuntu:focal-20210416 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  KEYCLOAK_VERSION: "12.0.4" # https://hub.docker.com/r/jboss/keycloak/tags?page=1&ordering=last_updated&name=12.0
+  KEYCLOAK_VERSION: "13.0.0" # https://hub.docker.com/r/jboss/keycloak/tags?page=1&ordering=last_updated&name=13.0
   POSTGRES_VERSION: "13.2" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.15.1" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
   MAILSERVER_VERSION: "release-v7.1.0"
@@ -69,10 +69,10 @@ variables:
 
 stages:
   - import-images
+  - builder
   - stacks
   - buildpacks
   - build
-  - builder
 
 import-images:
   stage: import-images

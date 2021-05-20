@@ -42,6 +42,6 @@ ENV HOST_DOCKER_GID=${HOST_DOCKER_GID}
 WORKDIR /home/${RUNNER_USER}
 
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
-CMD ["/actions-runner-entrypoint.sh"]
+CMD ["bash", "-c", "/actions-runner-entrypoint.sh"]
 
 # CMD [ "/usr/local/bin/ttyd", "-p", "3000", "/bin/bash"]
