@@ -11,9 +11,13 @@ if [ -f ".path" ]; then
 fi
 
 # insert anything to setup env when running as a service
+echo '---'
+id
+echo '---'
 env
-. /home/builder/.bashrc
-env
+echo '---'
+source /home/builder/.bashrc
+echo '---'
 
 # run the host process which keep the listener alive
 ./externals/node12/bin/node ./bin/RunnerService.js $* &

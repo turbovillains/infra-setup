@@ -31,7 +31,8 @@ apt-get -y install unzip \
   vim \
   postgresql-client \
   iputils-ping dnsutils \
-  software-properties-common
+  software-properties-common \
+  supervisor
 
 # Noroutine
 export CA_CERTS_DIR=/usr/local/share/ca-certificates/noroutine

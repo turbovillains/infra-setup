@@ -29,19 +29,8 @@ ADD dotprofile/.bashrc /root/.bashrc
 RUN /setup.sh
 
 COPY actions-runner-entrypoint.sh /
-# RUN chmod +x /actions-runner-entrypoint.sh
 COPY --chown=${RUNNER_USER}:docker patched ${RUNNER_ASSETS_DIR}/patched
 
-USER ${RUNNER_USER}
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-ENV GIT_SERVER_HOST=${GIT_SERVER_HOST}
-ENV SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY}
-ENV HOST_DOCKER_GID=${HOST_DOCKER_GID}
-
-# EXPOSE 3000
-WORKDIR /home/${RUNNER_USER}
-
-ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
-CMD ["bash", "-c", "/actions-runner-entrypoint.sh"]
-
-# CMD [ "/usr/local/bin/ttyd", "-p", "3000", "/bin/bash"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

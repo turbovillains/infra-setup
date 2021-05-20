@@ -93,12 +93,12 @@ mkdir ./externals
 mv ./externalstmp/* ./externals/
 
 for f in runsvc.sh RunnerService.js; do
-  diff {bin,patched}/${f} || :
-  sudo mv bin/${f}{,.bak}
-  sudo mv {patched,bin}/${f}
+  diff -u {bin,patched}/${f} || :
+  cp -a bin/${f}{,.bak}
+  cp -a {patched,bin}/${f}
 done
 
-args=()
+args=() 
 if [ "${RUNNER_EPHEMERAL}" != "false" ]; then
   args+=(--once)
 fi
