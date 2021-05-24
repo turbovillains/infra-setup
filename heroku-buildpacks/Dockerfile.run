@@ -2,8 +2,8 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 RUN mkdir -p /usr/local/share/ca-certificates/noroutine
-ADD https://bo01-vm-nexus01.node.bo01.noroutine.me/repository/noroutine-ca/noroutine-root-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-root.crt
-ADD https://bo01-vm-nexus01.node.bo01.noroutine.me/repository/noroutine-ca/noroutine-trusted-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-trusted.crt
+ADD https://nexus.nrtn.dev/repository/noroutine-ca/noroutine-root-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-root.crt
+ADD https://nexus.nrtn.dev/repository/noroutine-ca/noroutine-trusted-ca.crt.pem /usr/local/share/ca-certificates/noroutine/noroutine-trusted.crt
 RUN update-ca-certificates
 
 RUN ln -s /workspace /app

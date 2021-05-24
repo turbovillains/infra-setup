@@ -4,8 +4,8 @@ description = "Base builder for Noroutine Heroku-20 stack, based on ubuntu:20.04
 
 [stack]
 id = "heroku-20"
-build-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/pack-build:20"
-run-image = "bo01-vm-nexus01.node.bo01.noroutine.me:5000/infra/pack:20"
+build-image = "cr.nrtn.dev/infra/pack-build:20"
+run-image = "cr.nrtn.dev/infra/pack:20"
 
 [lifecycle]
 version = "0.11.1"

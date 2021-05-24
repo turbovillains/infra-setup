@@ -25,7 +25,7 @@ git config --global user.email "info@noroutine.me"
 git config --global user.name "Git Robot"
 
 # Docker
-export DOCKER_HUB=bo01-vm-nexus01.node.bo01.noroutine.me:5000
+export DOCKER_HUB=cr.nrtn.dev
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
 if [[ ! -z ${DOCKER_CFG:-} ]]; then

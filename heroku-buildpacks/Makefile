@@ -1,7 +1,7 @@
 .EXPORT_ALL_VARIABLES:
 
 SHELL=/bin/bash -o pipefail
-DOCKER_HUB?=bo01-vm-nexus01.node.bo01.noroutine.me:5000
+DOCKER_HUB?=cr.nrtn.dev
 STACK?=heroku/heroku
 STACK_VERSION?=20
 BUILDPACKS_VERSION?=20

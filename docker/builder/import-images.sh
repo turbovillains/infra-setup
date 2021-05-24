@@ -51,7 +51,7 @@ declare -a images=(
     "golang:${GO_VERSION:-latest}-buster"
 )
 
-TARGET_REGISTRY=${1:-bo01-vm-nexus01.node.bo01.noroutine.me:5000}
+TARGET_REGISTRY=${1:-cr.nrtn.dev}
 
 for image in ${images[@]}; do
     printf "\n-:[ migrating %s/%s:%s to %s ]:-`line`\n" \

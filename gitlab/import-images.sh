@@ -127,7 +127,7 @@ import_images() {
         "gitlab/gitlab-runner:${GITLAB_RUNNER_VERSION:-alpine-v13.12.0-rc1}"
     )
 
-    local target_registry=${1:-${DOCKER_HUB:-nexus.noroutine.me:5000}}
+    local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
 
     for image in ${images[@]}; do
         printf "\nMigrating %s/%s:%s to %s\n`line`\n" \
