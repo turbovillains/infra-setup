@@ -96,9 +96,11 @@ builder:
 heroku-buildpacks:
   stage: buildpacks
   script:
-    - curl -sLo /usr/local/bin/yj https://github.com/sclevine/yj/releases/download/v5.0.0/yj-linux && chmod +x /usr/local/bin/yj
     - cd ${CI_JOB_NAME}
-    - curl -sLo- https://github.com/heroku/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zx
+    - |
+      # Fetch upstream buildpack sources
+      curl -sLo- https://github.com/heroku/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zx buildpacks-nodejs-main/{common,buildpacks}
+      curl -sLo- https://github.com/heroku/buildpacks-jvm/archive/refs/heads/main.tar.gz | tar zx buildpacks-jvm-main/{common,buildpacks}
     - |
       # Release upstream buildpacks
       for buildpack_id in heroku/nodejs-engine heroku/nodejs-function-invoker heroku/nodejs-npm heroku/nodejs-typescript heroku/nodejs-yarn; do \
