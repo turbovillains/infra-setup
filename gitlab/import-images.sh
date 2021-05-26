@@ -119,6 +119,7 @@ import_images() {
         "quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2_PROXY_VERSION:-v7.1.2-amd64}"
         "heroku/heroku:20-build"
         "heroku/heroku:20"
+        "heroku/procfile-cnb:${HEROKU_PROCFILE_CNB_VERSION:-0.6.2}"
         "paketobuildpacks/builder:full"
         "paketobuildpacks/builder:base"
         "paketobuildpacks/builder:tiny"

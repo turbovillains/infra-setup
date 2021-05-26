@@ -9,6 +9,12 @@ shasum -a 256 goreleaser_amd64.deb | grep e5963c60c883d3ed08ab06612d9f640ff34770
 dpkg -i goreleaser_amd64.deb
 rm -f goreleaser_amd64.deb
 
+# Crane
+curl -sLo- https://github.com/google/go-containerregistry/releases/download/v0.5.1/go-containerregistry_Linux_x86_64.tar.gz | tar -C /usr/local/bin -zxv crane
+
+# Ko
+curl -sLo- https://github.com/google/ko/releases/download/v0.8.3/ko_0.8.3_Linux_x86_64.tar.gz | tar -C /usr/local/bin -zxv ko
+
 # Kubeval
 curl -sLo- https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar -C /usr/local/bin -zxv kubeval
 
@@ -21,6 +27,9 @@ curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/down
 # yq
 curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.7.0/yq_linux_amd64
 shasum -a 256 /usr/local/bin/yq | grep ec857c8240fda5782c3dd75b54b93196fa496a9bcf7c76979bb192b38f76da31
+
+# yj
+curl -sLo /usr/local/bin/yj https://github.com/sclevine/yj/releases/download/v5.0.0/yj-linux
 
 # kpt
 curl -sLo /usr/local/bin/kpt https://github.com/GoogleContainerTools/kpt/releases/download/v0.39.1/kpt_linux_amd64

@@ -1,5 +1,7 @@
 # https://github.com/heroku/pack-images
 # https://github.com/heroku/stack-images
+# https://github.com/buildpacks/registry-index
+# https://github.com/heroku/buildpacks-nodejs
 description = "Base builder for Noroutine Heroku-20 stack, based on ubuntu:20.04 base image"
 
 [stack]
@@ -40,7 +42,7 @@ version = "0.11.3"
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://docker.io/heroku/procfile-cnb:0.6.2"
+  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:0.6.2"
 
 # [[buildpacks]]
 #   id = "heroku/python"
@@ -59,11 +61,11 @@ version = "0.11.3"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-buildpack@sha256:33925c80a23b9592b4217fc5e8a6deea0fd412b7d2541a11610604cad131e8b4"
+  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.3.5"
 
-# [[buildpacks]]
-#   id = "heroku/nodejs-function"
-#   uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:7a9dd3bd8b684139d32c948579332732e73341617bc3c02f74f5607dab29ddda"
+[[buildpacks]]
+  id = "heroku/nodejs-function"
+  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.5.7"
 
 # [[buildpacks]]
 #   id = "evergreen/fn"
@@ -131,7 +133,7 @@ version = "0.11.3"
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.3.3"
+    version = "0.3.5"
 
   [[order.group]]
     id = "noroutine/static"
@@ -140,7 +142,7 @@ version = "0.11.3"
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.3.3"
+    version = "0.3.5"
 
 # [[order]]
 #   [[order.group]]

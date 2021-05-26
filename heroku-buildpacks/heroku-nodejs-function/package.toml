@@ -1,0 +1,14 @@
+[buildpack]
+uri = "."
+
+[[dependencies]]
+uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-engine-buildpack:0.7.4"
+
+[[dependencies]]
+uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-npm-buildpack:0.4.4"
+
+[[dependencies]]
+uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-typescript-buildpack:0.2.3"
+
+[[dependencies]]
+uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-invoker-buildpack:0.1.6"
