@@ -8,7 +8,7 @@ build-image = "cr.nrtn.dev/infra/pack-build:20"
 run-image = "cr.nrtn.dev/infra/pack:20"
 
 [lifecycle]
-version = "0.11.1"
+version = "0.11.3"
 
 [[buildpacks]]
   id = "heroku/maven"
@@ -32,7 +32,7 @@ version = "0.11.1"
 
 [[buildpacks]]
   id = "heroku/java-function"
-  uri = "docker://public.ecr.aws/r2f9u0w4/heroku-java-function-buildpack@sha256:f8ab59af725787c3e9dd56d6b81e985fcd3c00505f75371683f917ed306af866"
+  uri = "docker://public.ecr.aws/r2f9u0w4/heroku-java-function-buildpack@sha256:0ceda7487a2c45762387e50174565ba129c551f633e3c113f18d6c2841ab091d"
 
 [[buildpacks]]
   id = "heroku/ruby"
@@ -60,7 +60,7 @@ version = "0.11.1"
 
 [[buildpacks]]
   id = "heroku/nodejs-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:2fb076f0b5f66599e8f0b3b7630767c6dd516c72482cde244b71a857535b3c5e"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-nodejs-function-buildpack@sha256:7a9dd3bd8b684139d32c948579332732e73341617bc3c02f74f5607dab29ddda"
 
 [[buildpacks]]
   id = "evergreen/fn"
