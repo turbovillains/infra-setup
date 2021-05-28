@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG PIHOLE_VERSION
+FROM ${DOCKER_HUB}/pihole/pihole:${PIHOLE_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
