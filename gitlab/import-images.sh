@@ -129,6 +129,10 @@ import_images() {
         "jupyterhub/k8s-image-cleaner:${BINDERHUB_IMAGE_CLEANDER_VERSION:-0.2.0-n496.h988aca0}"
         "jupyterhub/k8s-binderhub:${BINDERHUB_VERSION:-0.2.0-n562.h0b4462c}"
         "pihole/pihole:${PIHOLE_VERSION:-v5.8.1}"
+        "yandex/clickhouse-server:${CLICKHOUSE_VERSION:-21.5.6-alpine}"
+        "spoonest/clickhouse-tabix-web-client:${TABIX_VERSION:-stable}"
+        "plausible/analytics:${PLAUSIBLE_VERSION:-v1.1.1}"
+        "verdaccio/verdaccio:${VERDACCIO_VERSION:-5.0.1}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

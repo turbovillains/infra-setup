@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG VERDACCIO_VERSION
+FROM ${DOCKER_HUB}/verdaccio/verdaccio:${VERDACCIO_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

@@ -70,6 +70,10 @@ variables:
   BINDERHUB_VERSION: 0.2.0-n562.h0b4462c
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n496.h988aca0
   PIHOLE_VERSION: v5.8.1
+  CLICKHOUSE_VERSION: 21.5.6-alpine
+  TABIX_VERSION: stable
+  PLAUSIBLE_VERSION: v1.1.1
+  VERDACCIO_VERSION: 5.0.1
 
 stages:
   - import-images
@@ -499,6 +503,34 @@ pihole:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg PIHOLE_VERSION
+
+clickhouse-server:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg CLICKHOUSE_VERSION
+
+clickhouse-tabix-web-client:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg TABIX_VERSION
+
+plausible-analytics:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg PLAUSIBLE_VERSION
+
+verdaccio:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg VERDACCIO_VERSION
 
 # cp-zookeeper:
 #   stage: build-kafka

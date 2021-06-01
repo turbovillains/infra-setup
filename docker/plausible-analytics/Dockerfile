@@ -1,0 +1,6 @@
+ARG DOCKER_HUB
+ARG PLAUSIBLE_VERSION
+FROM ${DOCKER_HUB}/plausible/analytics:${PLAUSIBLE_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
+
