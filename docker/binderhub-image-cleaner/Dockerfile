@@ -4,3 +4,6 @@ ARG BINDERHUB_IMAGE_CLEANER_VERSION
 FROM ${DOCKER_HUB}/jupyterhub/k8s-image-cleaner:${BINDERHUB_IMAGE_CLEANER_VERSION}
 
 MAINTAINER Noroutine GmbH <info@noroutine.me>
+
+# full bundle of CA certs set from Mozilla + Noroutine CA certs
+ADD cacerts.pem /etc/ssl/certs/ca-certificates.crt
