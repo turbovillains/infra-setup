@@ -74,6 +74,8 @@ variables:
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: v1.1.1
   VERDACCIO_VERSION: 5.0.1
+  STRAPI_VERSION: 3.6.3-alpine
+  GHOST_VERSION: 4.6.4-alpine
 
 stages:
   - import-images
@@ -532,6 +534,20 @@ verdaccio:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
         --build-arg VERDACCIO_VERSION
+
+strapi:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg STRAPI_VERSION
+
+ghost:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg GHOST_VERSION
 
 cp-zookeeper:
   stage: build-kafka

@@ -133,6 +133,8 @@ import_images() {
         "spoonest/clickhouse-tabix-web-client:${TABIX_VERSION:-stable}"
         "plausible/analytics:${PLAUSIBLE_VERSION:-v1.1.1}"
         "verdaccio/verdaccio:${VERDACCIO_VERSION:-5.0.1}"
+        "strapi/strapi:${STRAPI_VERSION:-3.6.3-alpine}"
+        "ghost:${GHOST_VERSION:-4.6.4-alpine}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

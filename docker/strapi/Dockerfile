@@ -1,0 +1,6 @@
+ARG DOCKER_HUB
+ARG STRAPI_VERSION
+
+FROM ${DOCKER_HUB}/strapi/strapi:${STRAPI_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

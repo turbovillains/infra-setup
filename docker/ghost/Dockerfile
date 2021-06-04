@@ -1,0 +1,6 @@
+ARG DOCKER_HUB
+ARG GHOST_VERSION
+
+FROM ${DOCKER_HUB}/ghost:${GHOST_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>
