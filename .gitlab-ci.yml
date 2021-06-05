@@ -80,11 +80,17 @@ variables:
 
 stages:
   - import-images
+  - ca
   - builder
   - stacks
   - buildpacks
   - build
   - build-kafka
+
+before_script:
+  - |
+    export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+    echo "Infra: ${INFRA_VERSION}"
 
 import-images:
   stage: import-images
@@ -94,9 +100,9 @@ import-images:
 builder:
   stage: builder
   script:
-    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDER_BASE \
-        --build-arg BUILDPACKS_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg SSH_PRIVATE_KEY \
         --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }') \
@@ -125,497 +131,504 @@ heroku-buildpacks:
     - |
       # Release builder
       make publish \
-        BUILDPACKS_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+        BUILDPACKS_VERSION=${INFRA_VERSION} \
         STACK=infra/heroku-20 \
-        STACK_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+        STACK_VERSION=${INFRA_VERSION}
 
 buildpacksio-lifecycle:
   stage: buildpacks
   script:
-    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-      --build-arg BUILDPACKSIO_LIFECYCLE_VERSION
+    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      --build-arg BUILDPACKSIO_LIFECYCLE_VERSION \
+      --build-arg INFRA_VERSION
 
 heroku-20:
   stage: stacks
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg STACK_BASE
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
+        --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 gitlab-runner:
   stage: builder
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_RUNNER_VERSION
+
+noroutine-ca:
+  stage: ca
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 radius:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg FREERADIUS_VERSION
 
 mkdocs:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MKDOCS_VERSION
 
 traefik:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TRAEFIK_VERSION
 
 jekyll:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JEKYLL_VERSION
 
 gatsby-build:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GATSBY_BUILD_BASE --build-arg GATSBY_VERSION
 
 gatsby:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GATSBY_BASE
 
 # latex:
 #   stage: build-latex
 #   script:
 #     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
 #         --build-arg LATEX_BASE
 
 powerdns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg POWERDNS_BASE
 
 unbound:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg UNBOUND_BASE
 
 keycloak:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KEYCLOAK_VERSION
 
 postgres:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg POSTGRES_VERSION
 
 jira:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JIRA_VERSION
 
 mailserver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MAILSERVER_VERSION
 
 nextcloud:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NEXTCLOUD_VERSION
 
 speedtest:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SPEEDTEST_VERSION
 
 haproxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HAPROXY_VERSION
 
 minio:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MINIO_VERSION
 
 prometheus:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PROMETHEUS_VERSION
 
 karma:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KARMA_VERSION
 
 alertmanager:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALERTMANAGER_VERSION
 
 pushgateway:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PUSHGATEWAY_VERSION
 
 blackbox-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BLACKBOX_EXPORTER_VERSION
 
 snmp-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SNMP_EXPORTER_VERSION
 
 ipmi-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg IPMI_EXPORTER_VERSION --build-arg DEBIAN_VERSION
 
 cadvisor:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CADVISOR_VERSION
 
 node-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NODE_EXPORTER_VERSION
 
 consul-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONSUL_EXPORTER_VERSION
 
 prometheus-es-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PROMETHEUS_ES_EXPORTER_VERSION
 
 ssl-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SSL_EXPORTER_VERSION
 
 rsyslog:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DEBIAN_VERSION
 
 ioping-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 ldap-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LDAP_EXPORTER_VERSION
 
 grafana:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg GRAFANA_VERSION \
-        --build-arg HTTP_PROXY \
-        --build-arg NO_PROXY
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GRAFANA_VERSION
 
 m3dbnode:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg M3DBNODE_VERSION
 
 m3coordinator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg M3COORDINATOR_VERSION
 
 cortex:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CORTEX_VERSION
 
 elasticsearch:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ELASTICSEARCH_VERSION
 
 logstash:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LOGSTASH_VERSION
 
 kibana:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KIBANA_VERSION
 mongo:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MONGO_VERSION
 
 alerta:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALERTA_VERSION
 
 wordpress:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg WORDPRESS_VERSION
 
 pgadmin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PGADMIN_VERSION
 
 mysql:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MYSQL_VERSION
 
 mariadb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MARIADB_VERSION
 
 httpbin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HTTPBIN_VERSION
 
 oauth2-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg OAUTH2_PROXY_VERSION
 
 grav:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GRAV_VERSION
 
 binderhub:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg BINDERHUB_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BINDERHUB_VERSION \
+        --build-arg INFRA_VERSION
 
 binderhub-image-cleaner:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
-        --build-arg BINDERHUB_IMAGE_CLEANER_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BINDERHUB_IMAGE_CLEANER_VERSION \
+        --build-arg INFRA_VERSION
 
 pihole:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PIHOLE_VERSION
 
 clickhouse-server:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CLICKHOUSE_VERSION
 
 clickhouse-tabix-web-client:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TABIX_VERSION
 
 plausible-analytics:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PLAUSIBLE_VERSION
 
 verdaccio:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VERDACCIO_VERSION
 
 strapi:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg STRAPI_VERSION
 
 ghost:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GHOST_VERSION
 
 matomo:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MATOMO_VERSION
 
 cp-zookeeper:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_ZOOKEEPER_VERSION
 
 cp-server:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_SERVER_VERSION
 
 cp-schema-registry:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_SCHEMA_REGISTRY_VERSION
 
 cp-server-connect-datagen:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_SERVER_CONNECT_DATAGEN_VERSION
 
 cp-enterprise-control-center:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_ENTERPRISE_CONTROL_CENTER_VERSION
 
 cp-ksqldb-server:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_KSQLDB_SERVER_VERSION
 
 cp-ksqldb-cli:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_KSQLDB_CLI_VERSION
 
 cp-ksqldb-examples:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_KSQLDB_EXAMPLES_VERSION
 
 cp-kafka-rest:
   stage: build-kafka
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFKA_REST_VERSION
