@@ -136,6 +136,7 @@ import_images() {
         "strapi/strapi:${STRAPI_VERSION:-3.6.3-alpine}"
         "ghost:${GHOST_VERSION:-4.6.4-alpine}"
         "matomo:${MATOMO_VERSION:-4.3.1}"
+        "nocodb/nocodb:${NOCODB_VERSION:-0.9.24}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

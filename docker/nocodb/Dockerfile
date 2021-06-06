@@ -1,0 +1,5 @@
+ARG DOCKER_HUB
+ARG NOCODB_VERSION
+FROM ${DOCKER_HUB}/nocodb/nocodb:${NOCODB_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

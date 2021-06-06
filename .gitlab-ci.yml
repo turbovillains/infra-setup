@@ -77,6 +77,7 @@ variables:
   STRAPI_VERSION: 3.6.3-alpine
   GHOST_VERSION: 4.6.4-alpine
   MATOMO_VERSION: 4.3.1
+  NOCODB_VERSION: 0.9.24
 
 stages:
   - import-images
@@ -569,6 +570,13 @@ matomo:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MATOMO_VERSION
+
+nocodb:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NOCODB_VERSION
 
 cp-zookeeper:
   stage: build-kafka
