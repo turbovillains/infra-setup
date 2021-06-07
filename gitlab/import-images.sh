@@ -135,6 +135,7 @@ import_images() {
         "verdaccio/verdaccio:${VERDACCIO_VERSION:-5.0.1}"
         "strapi/strapi:${STRAPI_VERSION:-3.6.3-alpine}"
         "ghost:${GHOST_VERSION:-4.6.4-alpine}"
+        "bitnami/ghost:${BITNAMI_GHOST_VERSION:-4.5.0-debian-10-r0}"
         "matomo:${MATOMO_VERSION:-4.3.1}"
         "nocodb/nocodb:${NOCODB_VERSION:-0.9.24}"
     )

@@ -1,15 +1,15 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
-ARG GHOST_VERSION
+ARG BITNAMI_GHOST_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/ghost:${GHOST_VERSION}
+FROM ${DOCKER_HUB}/bitnami/ghost:${BITNAMI_GHOST_VERSION}
 
 MAINTAINER Noroutine GmbH <info@noroutine.me>
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
-# USER 0
-# RUN /usr/sbin/update-ca-certificates
-# USER 1001
+USER 0
+RUN /usr/sbin/update-ca-certificates
+USER 1001
