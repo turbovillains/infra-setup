@@ -13,4 +13,9 @@ MAINTAINER Noroutine GmbH <info@noroutine.me>
 USER 0
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
+
 USER $NB_UID
+
+RUN pip install nbgitpuller
+RUN jupyter serverextension enable --sys-prefix nbgitpuller
+RUN pip install --upgrade jupyterlab jupyterlab-git

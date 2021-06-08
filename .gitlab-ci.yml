@@ -88,6 +88,13 @@ variables:
   REPO2DOCKER_VERSION: 2021.03.0-15.g73ab48a
   DIND_VERSION: 20.10.7-dind
   JUPYTER_VERSION: notebook-6.4.0
+  RSHINY_VERSION: 4.1.0
+  # RSTUDIO_VERSION: 1.4.1717
+  RSTUDIO_VERSION: 1.3.959
+  CLOUDIDE_BASE: ubuntu:focal-20210416
+  CAPROVER_VERSION: 1.9.0
+  PGWEB_VERSION: 0.11.7
+  UMAMI_VERSION: postgresql-0653570
 
 stages:
   - scratch
@@ -507,6 +514,14 @@ grav:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GRAV_VERSION
 
+caprover:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CAPROVER_VERSION \
+        --build-arg INFRA_VERSION
+
 binderhub:
   stage: build
   script:
@@ -597,6 +612,47 @@ jupyter-notebook:
     - ./gitlab/build-image.sh jupyter-notebook ${DOCKER_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
         --build-arg JUPYTER_VERSION \
         --build-arg FLAVOUR \
+        --build-arg INFRA_VERSION
+
+rshiny:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg RSHINY_VERSION \
+        --build-arg INFRA_VERSION
+
+rstudio:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg RSTUDIO_VERSION \
+        --build-arg JUPYTER_VERSION \
+        --build-arg INFRA_VERSION
+
+cloudide:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CLOUDIDE_BASE \
+        --build-arg INFRA_VERSION
+
+pgweb:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PGWEB_VERSION \
+        --build-arg INFRA_VERSION
+
+umami:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg UMAMI_VERSION \
         --build-arg INFRA_VERSION
 
 pihole:

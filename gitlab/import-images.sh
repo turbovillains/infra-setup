@@ -67,6 +67,7 @@ import_images() {
         "${GATSBY_BASE:-alpine:edge}"
         "${GATSBY_BUILD_BASE:-node:14-buster}"
         "${LATEX_BASE:-ubuntu:focal}"
+        "${CLOUDIDE_BASE:-ubuntu:focal}"
         "php:7.4-apache"
         "alpine:3.12.1"
         "golang:1.15.3-alpine3.12"
@@ -154,6 +155,10 @@ import_images() {
         "jupyter/datascience-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "jupyter/pyspark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "jupyter/all-spark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "rocker/shiny:${RSHINY_VERSION:-4.1.0}"
+        "caprover/caprover:${CAPROVER_VERSION:-1.9.0}"
+        "sosedoff/pgweb:${PGWEB_VERSION:-0.11.7}"
+        "ghcr.io/mikecao/umami:${UMAMI_VERSION:-postgresql-0653570}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
