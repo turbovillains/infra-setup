@@ -1,0 +1,9 @@
+ARG DOCKER_HUB
+ARG INFRA_VERSION
+ARG JUPYTERHUB_IMAGE_AWAITER_VERSION
+
+FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
+
+FROM ${DOCKER_HUB}/jupyterhub/k8s-image-awaiter:${JUPYTERHUB_IMAGE_AWAITER_VERSION}
+
+MAINTAINER Noroutine GmbH <info@noroutine.me>

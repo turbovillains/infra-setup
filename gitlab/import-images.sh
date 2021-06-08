@@ -128,6 +128,13 @@ import_images() {
         "gitlab/gitlab-runner:${GITLAB_RUNNER_VERSION:-alpine-v13.12.0-rc1}"
         "jupyterhub/k8s-image-cleaner:${BINDERHUB_IMAGE_CLEANDER_VERSION:-0.2.0-n496.h988aca0}"
         "jupyterhub/k8s-binderhub:${BINDERHUB_VERSION:-0.2.0-n562.h0b4462c}"
+        "jupyterhub/k8s-hub:${JUPYTERHUB_VERSION:-1.0.0-beta.1.n004.h8ae542c7}"
+        "jupyterhub/k8s-secret-sync:${JUPYTERHUB_SECRET_SYNC_VERSION:-1.0.0-beta.1}"
+        "jupyterhub/k8s-network-tools:${JUPYTERHUB_NETWORK_TOOLS_VERSION:-1.0.0-beta.1}"
+        "jupyterhub/k8s-image-awaiter:${JUPYTERHUB_IMAGE_AWAITER_VERSION:-1.0.0-beta.1}"
+        "jupyterhub/k8s-singleuser-sample:${JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION:-1.0.0-beta.1}"
+        "jupyterhub/configurable-http-proxy:${JUPYTERHUB_HTTP_PROXY_VERSION:-4.4.0}"
+        "jupyter/repo2docker:${REPO2DOCKER_VERSION:-2021.03.0-15.g73ab48a}"
         "pihole/pihole:${PIHOLE_VERSION:-v5.8.1}"
         "yandex/clickhouse-server:${CLICKHOUSE_VERSION:-21.5.6-alpine}"
         "spoonest/clickhouse-tabix-web-client:${TABIX_VERSION:-stable}"
@@ -138,6 +145,7 @@ import_images() {
         "bitnami/ghost:${BITNAMI_GHOST_VERSION:-4.5.0-debian-10-r0}"
         "matomo:${MATOMO_VERSION:-4.3.1}"
         "nocodb/nocodb:${NOCODB_VERSION:-0.9.24}"
+        "docker:${DIND_VERSION:-20.10.7-dind}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
