@@ -146,6 +146,14 @@ import_images() {
         "matomo:${MATOMO_VERSION:-4.3.1}"
         "nocodb/nocodb:${NOCODB_VERSION:-0.9.24}"
         "docker:${DIND_VERSION:-20.10.7-dind}"
+        "jupyter/base-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "jupyter/minimal-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "jupyter/r-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "jupyter/scipy-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "jupyter/tensorflow-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "jupyter/datascience-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "jupyter/pyspark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        "jupyter/all-spark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

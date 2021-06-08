@@ -87,7 +87,7 @@ variables:
   JUPYTERHUB_HTTP_PROXY_VERSION: 4.4.0
   REPO2DOCKER_VERSION: 2021.03.0-15.g73ab48a
   DIND_VERSION: 20.10.7-dind
-
+  JUPYTER_VERSION: notebook-6.4.0
 
 stages:
   - scratch
@@ -585,6 +585,18 @@ jupyterhub-image-awaiter:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_IMAGE_AWAITER_VERSION \
+        --build-arg INFRA_VERSION
+
+jupyter-notebook:
+  stage: build
+  parallel:
+    matrix:
+      - FLAVOUR: [ "base", "minimal", "r", "scipy", "tensorflow", "datascience", "pyspark", "all-spark" ]
+        NOTEBOOK: [ "notebook" ]
+  script:
+    - ./gitlab/build-image.sh jupyter-notebook ${DOCKER_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
+        --build-arg JUPYTER_VERSION \
+        --build-arg FLAVOUR \
         --build-arg INFRA_VERSION
 
 pihole:
