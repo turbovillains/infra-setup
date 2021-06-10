@@ -159,6 +159,12 @@ import_images() {
         "caprover/caprover:${CAPROVER_VERSION:-1.9.0}"
         "sosedoff/pgweb:${PGWEB_VERSION:-0.11.7}"
         "ghcr.io/mikecao/umami:${UMAMI_VERSION:-postgresql-0653570}"
+        "bitnami/spark:${BITNAMI_SPARK_VERSION:-3.1.2-debian-10-r0}"
+        "bitnami/prometheus:${BITNAMI_PROMETHEUS_VERSION:-2.27.1-debian-10-r13}"
+        "bitnami/prometheus-operator:${BITNAMI_PROMETHEUS_OPERATOR_VERSION:-0.48.1-debian-10-r0}"
+        "bitnami/redis:${BITNAMI_REDIS_VERSION:-6.2.4-debian-10-r0}"
+        "bitnami/postgresql:${BITNAMI_POSTGRESQL_VERSION:-11.12.0-debian-10-r20}"
+        "kutt/kutt:${KUTT_VERSION:-2.7.2}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
