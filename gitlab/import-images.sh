@@ -163,7 +163,8 @@ import_images() {
         "bitnami/prometheus:${BITNAMI_PROMETHEUS_VERSION:-2.27.1-debian-10-r13}"
         "bitnami/prometheus-operator:${BITNAMI_PROMETHEUS_OPERATOR_VERSION:-0.48.1-debian-10-r0}"
         "bitnami/redis:${BITNAMI_REDIS_VERSION:-6.2.4-debian-10-r0}"
-        "bitnami/postgresql:${BITNAMI_POSTGRESQL_VERSION:-11.12.0-debian-10-r20}"
+        "bitnami/postgresql:${BITNAMI_POSTGRESQL11_VERSION:-11.12.0-debian-10-r20}"
+        "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
     )
 
