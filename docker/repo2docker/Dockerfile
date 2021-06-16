@@ -9,5 +9,6 @@ FROM ${DOCKER_HUB}/jupyter/repo2docker:${REPO2DOCKER_VERSION}
 MAINTAINER Noroutine GmbH <info@noroutine.me>
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
-COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
+# For alpine we should not use subfolders
+COPY --from=rootca /noroutine/ /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
