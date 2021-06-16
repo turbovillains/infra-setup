@@ -7,7 +7,7 @@ RUN go get github.com/fihuer/ioping_exporter
 
 FROM ${DOCKER_HUB}/alpine:3.11
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 COPY --from=0 /go/bin/ioping_exporter /ioping-exporter
 RUN apk --no-cache add ioping

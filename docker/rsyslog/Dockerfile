@@ -3,7 +3,7 @@ ARG DEBIAN_VERSION
 
 FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 RUN apt-get update && \
     apt-get install rsyslog rsyslog-elasticsearch --no-install-recommends -y && \

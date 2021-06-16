@@ -187,7 +187,8 @@ gitlab-runner:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_RUNNER_VERSION
+        --build-arg GITLAB_RUNNER_VERSION \
+        --build-arg INFRA_VERSION
 
 radius:
   stage: build
@@ -768,7 +769,8 @@ strapi:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg STRAPI_VERSION
+        --build-arg STRAPI_VERSION \
+        --build-arg INFRA_VERSION
 
 ghost:
   stage: build

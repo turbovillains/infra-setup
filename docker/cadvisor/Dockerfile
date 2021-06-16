@@ -2,4 +2,4 @@ ARG DOCKER_HUB
 ARG CADVISOR_VERSION
 FROM ${DOCKER_HUB}/cadvisor/cadvisor:${CADVISOR_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"

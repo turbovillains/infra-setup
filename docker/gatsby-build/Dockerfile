@@ -4,7 +4,7 @@ ARG GATSBY_VERSION
 
 FROM ${DOCKER_HUB}/${GATSBY_BUILD_BASE}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 RUN yarn global add gatsby-cli@${GATSBY_VERSION}
 RUN gatsby telemetry --disable

@@ -6,4 +6,4 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/jupyterhub/k8s-network-tools:${JUPYTERHUB_NETWORK_TOOLS_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"

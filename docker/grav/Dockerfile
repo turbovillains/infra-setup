@@ -2,7 +2,8 @@ ARG DOCKER_HUB
 ARG GRAV_VERSION
 
 FROM ${DOCKER_HUB}/php:7.4-apache
-LABEL maintainer="Andy Miller <rhuk@getgrav.org> (@rhukster)"
+
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 # Enable Apache Rewrite + Expires Module
 RUN a2enmod rewrite expires && \

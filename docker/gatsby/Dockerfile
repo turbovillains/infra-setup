@@ -3,7 +3,7 @@ ARG GATSBY_BASE
 
 FROM ${DOCKER_HUB}/${GATSBY_BASE}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 COPY nginx-boot.sh /sbin/nginx-boot
 RUN chmod +x /sbin/nginx-boot

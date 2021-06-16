@@ -3,4 +3,4 @@ ARG JIRA_VERSION
 
 FROM ${DOCKER_HUB}/atlassian/jira-software:${JIRA_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"

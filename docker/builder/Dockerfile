@@ -2,7 +2,7 @@ ARG DOCKER_HUB
 ARG BUILDER_BASE
 FROM ${DOCKER_HUB}/${BUILDER_BASE}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 ARG DOCKER_HUB
 ARG BUILDPACKS_VERSION

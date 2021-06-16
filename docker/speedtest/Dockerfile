@@ -13,7 +13,7 @@ RUN go get ./ && go build -ldflags "-w -s" -trimpath -o speedtest main.go
 
 FROM alpine:3.12.1
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 RUN apk add ca-certificates
 WORKDIR /app

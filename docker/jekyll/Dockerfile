@@ -3,4 +3,4 @@ ARG JEKYLL_VERSION
 
 FROM ${DOCKER_HUB}/jekyll/jekyll:${JEKYLL_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"

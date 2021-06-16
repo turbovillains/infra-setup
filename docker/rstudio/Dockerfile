@@ -9,6 +9,8 @@ FROM ${DOCKER_HUB}/jupyter/all-spark-notebook:${JUPYTER_VERSION}
 
 ARG RSTUDIO_VERSION
 
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+
 USER 0
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs

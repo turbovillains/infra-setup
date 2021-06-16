@@ -7,4 +7,4 @@ RUN apt-get -yyq update; \
     apt-get -yyq install --no-install-recommends smbclient; \
     rm -rf /var/lib/apt/lists/*;
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"

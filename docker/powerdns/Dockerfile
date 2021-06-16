@@ -3,7 +3,7 @@ ARG POWERDNS_BASE
 
 FROM ${DOCKER_HUB}/${POWERDNS_BASE}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 RUN apt-get update && apt-get install -y \
     gnupg2 curl \

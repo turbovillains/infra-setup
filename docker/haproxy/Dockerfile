@@ -3,4 +3,4 @@ ARG HAPROXY_VERSION
 
 FROM ${DOCKER_HUB}/haproxytech/haproxy-debian:${HAPROXY_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"

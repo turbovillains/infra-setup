@@ -4,7 +4,7 @@ ARG HTTP_PROY
 ARG NO_PROXY
 FROM ${DOCKER_HUB}/grafana/grafana:${GRAFANA_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 ENV HTTP_PROXY=${HTTP_PROXY}
 ENV http_proxy=${HTTP_PROXY}

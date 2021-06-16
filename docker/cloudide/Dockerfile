@@ -6,7 +6,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/${CLOUDIDE_BASE}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 ENV DEBIAN_FRONTEND noninteractive
 

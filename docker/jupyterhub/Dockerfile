@@ -6,7 +6,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/jupyterhub/k8s-hub:${JUPYTERHUB_VERSION}
 
-MAINTAINER Noroutine GmbH <info@noroutine.me>
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 USER 0
