@@ -8,6 +8,8 @@ FROM ${DOCKER_HUB}/strapi/strapi:${STRAPI_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
+RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 # For alpine we should not use subfolders
 COPY --from=rootca /noroutine/ /usr/local/share/ca-certificates/noroutine
