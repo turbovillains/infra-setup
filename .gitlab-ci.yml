@@ -90,7 +90,6 @@ variables:
   JUPYTER_VERSION: notebook-6.4.0
   RSHINY_VERSION: 4.1.0
   RSTUDIO_VERSION: 1.4.1717
-  # RSTUDIO_VERSION: 1.3.959
   CLOUDIDE_BASE: ubuntu:focal-20210416
   CAPROVER_VERSION: 1.9.0
   PGWEB_VERSION: 0.11.7
@@ -102,6 +101,8 @@ variables:
   BITNAMI_REDIS_VERSION: 6.2.4-debian-10-r5 # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated&name=6.2
   BITNAMI_POSTGRESQL11_VERSION: 11.12.0-debian-10-r25 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
   BITNAMI_POSTGRESQL13_VERSION: 13.3.0-debian-10-r26 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=13.
+  BITNAMI_MARIADB_VERSION: 10.5.10-debian-10-r34 # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.5
+  HASURA_VERSION: v2.0.0-beta.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: 2.7.2
   SFTPGO_VERSION: v2.1.0
 
@@ -704,6 +705,22 @@ bitnami-postgresql13:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL13_VERSION \
+        --build-arg INFRA_VERSION
+
+bitnami-mariadb:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_MARIADB_VERSION \
+        --build-arg INFRA_VERSION
+
+hasura-graphql-engine:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg HASURA_VERSION \
         --build-arg INFRA_VERSION
 
 pgweb:

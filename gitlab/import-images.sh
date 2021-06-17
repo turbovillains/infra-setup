@@ -166,8 +166,10 @@ import_images() {
         "bitnami/postgresql:${BITNAMI_POSTGRESQL11_VERSION:-11.12.0-debian-10-r20}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
         "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
+        "bitnami/mariadb:${BITNAMI_MARIADB_VERSION:-10.5.10-debian-10-r34}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
         "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
+        "hasura/graphql-engine:${HASURA_VERSION:-v2.0.0-beta.2}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
