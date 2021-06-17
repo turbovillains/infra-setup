@@ -167,6 +167,7 @@ import_images() {
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
         "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
+        "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
