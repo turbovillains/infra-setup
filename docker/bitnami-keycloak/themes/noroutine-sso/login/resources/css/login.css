@@ -1,3 +1,8 @@
+:root {
+    --pf-global--primary-color--100: #01B14F;
+    --pf-global--primary-color--200: #047857;
+}
+
 .login-pf{
     background: none !important;
 }
@@ -484,16 +489,8 @@ ul#kc-totp-supported-apps {
     #kc-header-wrapper {
         font-size: 16px;
         font-weight: bold;
-        padding: 20px 60px 0 0;
         color: #72767b;
         letter-spacing: 0;
-    }
-
-    div.kc-logo-text {
-        margin: 0;
-        width: 150px;
-        height: 32px;
-        background-size: 100%;
     }
 
     #kc-form {
