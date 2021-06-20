@@ -102,9 +102,12 @@ variables:
   BITNAMI_POSTGRESQL11_VERSION: 11.12.0-debian-10-r25 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
   BITNAMI_POSTGRESQL13_VERSION: 13.3.0-debian-10-r26 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=13.
   BITNAMI_MARIADB_VERSION: 10.5.10-debian-10-r34 # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.5
+  BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: 0.47.0-debian-10-r11 # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
+  BITNAMI_NGINX_VERSION: 1.21.0-debian-10-r13 # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.0.0-beta.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: 2.7.2
   SFTPGO_VERSION: v2.1.0
+  
 
 stages:
   - scratch
@@ -649,6 +652,22 @@ cloudide:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CLOUDIDE_BASE \
+        --build-arg INFRA_VERSION
+
+bitnami-nginx:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_NGINX_VERSION \
+        --build-arg INFRA_VERSION
+
+bitnami-nginx-ingress-controller:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION \
         --build-arg INFRA_VERSION
 
 bitnami-keycloak:
