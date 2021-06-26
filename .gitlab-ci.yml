@@ -104,10 +104,13 @@ variables:
   BITNAMI_MARIADB_VERSION: 10.5.10-debian-10-r34 # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.5
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: 0.47.0-debian-10-r11 # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: 1.21.0-debian-10-r13 # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: 2021.6.17-debian-10-r5 # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: 2021.6.13-debian-10-r12 # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_SHELL_VERSION: 10-debian-10-r117 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: v0.7.4 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.0.0-beta.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: 2.7.2
   SFTPGO_VERSION: v2.1.0
-  
 
 stages:
   - scratch
@@ -313,6 +316,14 @@ minio:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MINIO_VERSION
+
+minio-console:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg MINIO_CONSOLE_VERSION \
+        --build-arg INFRA_VERSION
 
 prometheus:
   stage: build
@@ -652,6 +663,30 @@ cloudide:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CLOUDIDE_BASE \
+        --build-arg INFRA_VERSION
+
+bitnami-minio:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_MINIO_VERSION \
+        --build-arg INFRA_VERSION
+
+bitnami-minio-client:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_MINIO_CLIENT_VERSION \
+        --build-arg INFRA_VERSION
+
+bitnami-shell:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_SHELL_VERSION \
         --build-arg INFRA_VERSION
 
 bitnami-nginx:
