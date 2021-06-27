@@ -108,7 +108,7 @@ variables:
   BITNAMI_MINIO_CLIENT_VERSION: 2021.6.13-debian-10-r12 # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r117 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   MINIO_CONSOLE_VERSION: v0.7.4 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
-  HASURA_VERSION: v2.0.0-beta.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
+  HASURA_VERSION: v2.0.1 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: 2.7.2
   SFTPGO_VERSION: v2.1.0
 
@@ -241,7 +241,7 @@ gatsby:
         --build-arg GATSBY_BASE
 
 # latex:
-#   stage: build-latex
+#   stage: build
 #   script:
 #     - |
 #       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
