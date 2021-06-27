@@ -61,11 +61,11 @@ version = "0.11.3"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.3.5"
+  uri = "heroku-nodejs"
 
 [[buildpacks]]
   id = "heroku/nodejs-function"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.5.7"
+  uri = "heroku-nodejs-function"
 
 # [[buildpacks]]
 #   id = "evergreen/fn"
