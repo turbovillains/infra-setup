@@ -37,7 +37,7 @@ while IFS="" read -r -d "" buildpack_toml_path; do
 		buildpack_build_path="${buildpack_path}"
 
 		image_name="${buildpack_docker_repository}:${buildpack_version}"
-		pack buildpack package --config "${buildpack_build_path}/package.toml" --publish "${image_name}"
+		pack buildpack package --verbose --config "${buildpack_build_path}/package.toml" --publish "${image_name}"
 
 		# We might have local changes after building and/or shimming the buildpack. To ensure scripts down the pipeline
 		# work with a clean state, we reset all local changes here.

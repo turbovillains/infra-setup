@@ -146,7 +146,7 @@ heroku-20:
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 builder:
-  stage: preflight
+  stage: build
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDER_BASE \
@@ -162,8 +162,9 @@ heroku-buildpacks:
     - cd ${CI_JOB_NAME}
     - |
       # Fetch upstream buildpack sources
-      curl -sLo- https://github.com/heroku/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zx buildpacks-nodejs-main/{common,buildpacks}
+      curl -sLo- https://github.com/noroutine/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zx buildpacks-nodejs-main/{common,buildpacks}
       curl -sLo- https://github.com/heroku/buildpacks-jvm/archive/refs/heads/main.tar.gz | tar zx buildpacks-jvm-main/{common,buildpacks}
+
     - |
       # Release upstream buildpacks
       for buildpack_id in heroku/nodejs-engine heroku/nodejs-function-invoker heroku/nodejs-npm heroku/nodejs-typescript heroku/nodejs-yarn; do \
