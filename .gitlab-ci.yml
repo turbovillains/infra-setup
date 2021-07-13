@@ -18,7 +18,7 @@ variables:
   GATSBY_VERSION: "3.7.1" # https://www.npmjs.com/package/gatsby
   GATSBY_BASE: alpine:3.12.7 # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.12.4
   LATEX_BASE: ubuntu:focal-20210416 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  KEYCLOAK_VERSION: "13.0.1" # https://hub.docker.com/r/jboss/keycloak/tags?page=1&ordering=last_updated&name=13.0
+  KEYCLOAK_VERSION: "14.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "13.3" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.15.1" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
   MAILSERVER_VERSION: "release-v7.1.0"
@@ -94,7 +94,7 @@ variables:
   CAPROVER_VERSION: 1.9.0
   PGWEB_VERSION: 0.11.7
   UMAMI_VERSION: postgresql-0653570
-  BITNAMI_KEYCLOAK_VERSION: 13.0.1-debian-10-r13 # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=13
+  BITNAMI_KEYCLOAK_VERSION: 14.0.0-debian-10-r5 # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=13
   BITNAMI_SPARK_VERSION: 3.1.2-debian-10-r5 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.27.1-debian-10-r20 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: 0.48.1-debian-10-r1 # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
