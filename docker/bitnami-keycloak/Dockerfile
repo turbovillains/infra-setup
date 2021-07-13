@@ -17,3 +17,6 @@ RUN update-ca-certificates
 COPY themes /opt/bitnami/keycloak/themes
 
 USER 1001
+
+ENV KEYCLOAK_DEFAULT_THEME=noroutine-sso.v2
+ENV KEYCLOAK_WELCOME_THEME=noroutine-sso.v2
