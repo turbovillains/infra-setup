@@ -22,6 +22,7 @@
 }
 
 .navbar-pf {
+    background-color: white;
     border-top: none !important;
     border-bottom: 2px;
     border-style: solid;
@@ -29,8 +30,63 @@
     line-height: 1rem;
 }
 
+.navbar-pf .navbar-header {
+    border-bottom: none;
+}
+
+.navbar-pf .navbar-utility>li>a, .navbar-pf .navbar-utility>li>button {
+    color: darkslategrey !important;
+    border: none;
+}
+
+.navbar-pf .navbar-utility>li.open>a, .navbar-pf .navbar-utility>li.open>button {
+    color: darkslategrey !important;
+    border: none;
+}
+
+.sidebar-pf-left {
+    background-color: white;
+    color: darkslategrey;
+
+}
+
+.sidebar-pf .nav-category h2 {
+    color: darkslategrey;
+    font-weight: bolder;
+}
+
+.realm-selector {
+    color: var(--brand-500);
+}
+
+.realm-selector h2 {
+    font-weight: bolder;
+}
+
+.realm-selector ul li a {
+    color: darkslategrey;
+}
+
+.sidebar-pf .nav-pills > li > a {
+    color: darkslategrey;
+    border-color: transparent;
+}
+
+.sidebar-pf .nav-pills > li > a:hover {
+    background-color: var(--brand-50) !important;
+    color: darkslategrey !important;
+}
+
+.sidebar-pf .nav-pills > li.active > a {
+    background-color: white !important;
+    color: darkslategrey !important;
+    border-top-color: var(--brand-500) !important;
+    border-bottom-color: var(--brand-500) !important;
+}
+
 .sidebar-pf .nav-pills > li.active > a {
     border-left-color: var(--brand-500) !important;
+    color: var(--brand-500) !important;
 }
 
 .sidebar-pf .nav-pills > li.active a i, .sidebar-pf .nav-pills > li.active a span {

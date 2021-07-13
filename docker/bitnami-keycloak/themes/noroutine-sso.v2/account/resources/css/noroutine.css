@@ -22,11 +22,26 @@
 }
 
 .navbar-pf {
+    background-color: white;
     border-top: none !important;
     border-bottom: 2px;
     border-style: solid;
     border-color: var(--brand-500);
     line-height: 1rem;
+}
+
+.navbar-pf .navbar-header {
+    border-bottom: none;
+}
+
+.navbar-pf .navbar-utility>li>a, .navbar-pf .navbar-utility>li>button {
+    color: darkslategrey !important;
+    border: none;
+}
+
+.navbar-pf .navbar-utility>li.open>a, .navbar-pf .navbar-utility>li.open>button {
+    color: darkslategrey !important;
+    border: none;
 }
 
 .sidebar-pf .nav-pills > li.active > a {
