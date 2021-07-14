@@ -5,6 +5,8 @@ variables:
   DEPLOYER_BASE: ubuntu:focal-20210416 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   BUILDER_BASE: debian:10.9-slim  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.8
   DEBIAN_VERSION: 10.9-slim
+  ALPINE_VERSION: "3.14.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
+  GOLANG_VERSION: 1.16.6-alpine3.14 # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   ACTIONS_RUNNER_VERSION: 2.278.0 # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: alpine-v13.12.0 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   FREERADIUS_VERSION: 3.0.21-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3.0.21
@@ -42,7 +44,7 @@ variables:
   SSL_EXPORTER_VERSION: v2.2.0 # https://github.com/ribbybibby/ssl_exporter/releases
   CADVISOR_VERSION: v0.39.2 # https://github.com/google/cadvisor/releases
   KARMA_VERSION: v0.86 # https://github.com/prymitive/karma/releases
-  LDAP_EXPORTER_VERSION: 0.0.3-2-dev
+  LDAP_EXPORTER_VERSION: 0.0.4-1-dev
   ELASTICSEARCH_VERSION: "7.13.1"
   LOGSTASH_VERSION: "7.13.1"
   KIBANA_VERSION: "7.13.1"
@@ -373,7 +375,9 @@ ipmi-exporter:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg IPMI_EXPORTER_VERSION --build-arg DEBIAN_VERSION
+        --build-arg IPMI_EXPORTER_VERSION \
+        --build-arg GOLANG_VERSION \
+        --build-arg DEBIAN_VERSION
 
 cadvisor:
   stage: build
@@ -421,7 +425,9 @@ ioping-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GOLANG_VERSION \
+        --build-arg ALPINE_VERSION
 
 ldap-exporter:
   stage: build
