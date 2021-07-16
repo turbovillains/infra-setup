@@ -13,10 +13,13 @@ USER 0
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
 
-# Copy themes
-COPY themes /opt/bitnami/keycloak/themes
+# Themes
+COPY scripts/ /docker-entrypoint-initdb.d
+RUN chmod +x /docker-entrypoint-initdb.d/*.sh
+RUN rm -rf /opt/bitnami/keycloak/themes/keycloak.v2
+COPY themes/ /opt/bitnami/keycloak/themes
 
 USER 1001
 
-ENV KEYCLOAK_DEFAULT_THEME=noroutine-sso.v2
-ENV KEYCLOAK_WELCOME_THEME=noroutine-sso.v2
+ENV KEYCLOAK_DEFAULT_THEME=noroutine-sso.v3
+ENV KEYCLOAK_WELCOME_THEME=noroutine-sso.v3
