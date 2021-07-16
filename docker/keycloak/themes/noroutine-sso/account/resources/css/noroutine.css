@@ -1,0 +1,95 @@
+:root {
+    --brand-50:#ecf4f1;
+    --brand-100: #9afec5; 
+    --brand-200: #67fea8; 
+    --brand-300: #34fe8b; 
+    --brand-400: #18b770;
+    --brand-500: #01B14F;
+    --brand-600: #0f8b34;
+    --brand-700: #106c2b;
+    --brand-800: #0c4a23;
+    --brand-900: #092d1d;
+}
+
+.navbar-title {
+    background: url('../img/logo_with_text_green_transparent_bg.png') no-repeat;
+    background-size: contain;
+}
+
+.navbar-pf .navbar-brand {
+    background-image: url('../img/logo_with_text_green_transparent_bg.png');
+    background-size: contain;
+}
+
+.navbar-pf {
+    background-color: white;
+    border-top: none !important;
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: var(--brand-500);
+    line-height: 1rem;
+}
+
+.navbar-pf .navbar-header {
+    border-bottom: none;
+}
+
+.navbar-pf .navbar-utility>li>a, .navbar-pf .navbar-utility>li>button {
+    color: darkslategrey !important;
+    border: none;
+}
+
+.navbar-pf .navbar-utility>li.open>a, .navbar-pf .navbar-utility>li.open>button {
+    color: darkslategrey !important;
+    border: none;
+}
+
+.sidebar-pf .nav-pills > li.active > a {
+    border-left-color: var(--brand-500) !important;
+}
+
+.sidebar-pf .nav-pills > li.active a i, .sidebar-pf .nav-pills > li.active a span {
+    color: var(--brand-500) !important;
+}
+
+.onoffswitch .onoffswitch-inner .onoffswitch-active {
+    background-image: linear-gradient(top, var(--brand-500) 0%, var(--brand-600) 100%);
+    background-image: -o-linear-gradient(top, var(--brand-500) 0%, var(--brand-600) 100%);
+    background-image: -moz-linear-gradient(top, var(--brand-500) 0%, var(--brand-600) 100%);
+    background-image: -webkit-linear-gradient(top, var(--brand-500) 0%, var(--brand-600) 100%);
+    background-image: -ms-linear-gradient(top, #01B14F 0%, #047857 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #01B14F), color-stop(1, 0, #047857));
+}
+
+.btn-primary {
+    background-color: var(--brand-500);
+    background-image: linear-gradient(top, var(--brand-500) 0%, var(--brand-600) 100%);
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-600);
+    border-color: var(--brand-600);
+}
+
+.btn-primary:focus {
+    background-color: var(--brand-600);
+    border-color: var(--brand-600);
+}
+
+.btn-primary:active {
+    background-color: var(--brand-600);
+    border-color: var(--brand-600);
+}
+
+.btn-primary:active:focus {
+    background-color: var(--brand-700);
+    border-color: var(--brand-700);
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    background-color: var(--brand-50);
+}
+
+.bs-sidebar ul li.active a {
+    background-color: var(--brand-50);
+}
