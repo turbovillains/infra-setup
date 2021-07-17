@@ -114,6 +114,7 @@ stages:
 before_script:
   - |
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
+    export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     echo "Infra: ${INFRA_VERSION}"
 
 import-images:
@@ -133,7 +134,7 @@ keycloak-themes:
     - |
       git clone https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/keycloak-themes.git
       cd keycloak-themes
-      pack build --publish ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      pack build --publish ${KEYCLOAK_THEMES_IMAGE}
 
 heroku-20:
   stage: preflight
@@ -267,7 +268,8 @@ keycloak:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KEYCLOAK_VERSION
+        --build-arg KEYCLOAK_VERSION \
+        --build-arg KEYCLOAK_THEMES_IMAGE
 
 postgres:
   stage: build
@@ -716,6 +718,7 @@ bitnami-keycloak:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KEYCLOAK_VERSION \
+        --build-arg KEYCLOAK_THEMES_IMAGE \
         --build-arg INFRA_VERSION
 
 bitnami-spark:

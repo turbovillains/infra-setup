@@ -1,6 +1,9 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
 ARG BITNAMI_KEYCLOAK_VERSION
+ARG KEYCLOAK_THEMES_IMAGE
+
+FROM ${KEYCLOAK_THEMES_IMAGE} as themes
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
@@ -17,7 +20,7 @@ RUN update-ca-certificates
 COPY scripts/ /docker-entrypoint-initdb.d
 RUN chmod +x /docker-entrypoint-initdb.d/*.sh
 RUN rm -rf /opt/bitnami/keycloak/themes/keycloak.v2
-COPY themes/ /opt/bitnami/keycloak/themes
+COPY --from=themes --chown=1001:1001 /workspace/dist/ /opt/bitnami/keycloak/themes
 
 USER 1001
 
