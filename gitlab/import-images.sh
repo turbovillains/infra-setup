@@ -172,6 +172,8 @@ import_images() {
         "bitnami/minio:${BITNAMI_MINIO_VERSION:-2021.6.17-debian-10-r5}"
         "bitnami/minio-client:${BITNAMI_MINIO_CLIENT_VERSION:-2021.6.13-debian-10-r12}"
         "bitnami/bitnami-shell:${BITNAMI_SHELL_VERSION:-10-debian-10-r117}"
+        "bitnami/metallb-controller:${BITNAMI_METALLB_CONTROLLER_VERSION:-0.10.2-debian-10-r28}"
+        "bitnami/metallb-speaker:${BITNAMI_METALLB_SPEAKER_VERSION:-0.10.2-debian-10-r31}"
         "minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
         "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
