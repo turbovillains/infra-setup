@@ -175,6 +175,7 @@ import_images() {
         "bitnami/bitnami-shell:${BITNAMI_SHELL_VERSION:-10-debian-10-r117}"
         "bitnami/metallb-controller:${BITNAMI_METALLB_CONTROLLER_VERSION:-0.10.2-debian-10-r28}"
         "bitnami/metallb-speaker:${BITNAMI_METALLB_SPEAKER_VERSION:-0.10.2-debian-10-r31}"
+        "bitnami/grafana:${BITNAMI_GRAFANA_VERSION:-8.0.6-debian-10-r3}"
         "minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
         "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
