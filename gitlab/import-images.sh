@@ -180,6 +180,8 @@ import_images() {
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
         "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
         "hasura/graphql-engine:${HASURA_VERSION:-v2.0.0-beta.2}"
+        "paulbouwer/hello-kubernetes:${HELLO_VERSION:-1.10.0}"
+        "stakater/reloader:${RELOADER_VERSION:-v0.0.97}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
