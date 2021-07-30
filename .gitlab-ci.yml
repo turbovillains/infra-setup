@@ -140,7 +140,7 @@ keycloak-themes:
     - |
       git clone https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/keycloak-themes.git
       cd keycloak-themes
-      pack build --publish ${KEYCLOAK_THEMES_IMAGE}
+      pack build --clear-cache --publish ${KEYCLOAK_THEMES_IMAGE}
 
 ingress-default-backend:
   stage: scratch
@@ -148,7 +148,7 @@ ingress-default-backend:
     - |
       git clone https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/ingress-default-backend.git
       cd ingress-default-backend
-      pack build --publish ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      pack build --clear-cache --publish ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 heroku-20:
   stage: preflight
