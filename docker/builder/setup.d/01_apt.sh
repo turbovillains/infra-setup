@@ -1,6 +1,7 @@
 #!/usr/bin/env bash -eux
 
 export HTTP_PROXY=${HTTP_PROXY:-}
+export HTTPS_PROXY=${HTTPS_PROXY:-}
 export NO_PROXY=${NO_PROXY:-}
 
 if [[ ! -z "${HTTP_PROXY}" ]]; then
@@ -27,7 +28,6 @@ apt-get -y install unzip \
   ca-certificates \
   curl \
   gnupg2 \
-  jq \
   vim \
   postgresql-client \
   iputils-ping dnsutils \

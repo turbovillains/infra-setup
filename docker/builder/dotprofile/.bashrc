@@ -5,8 +5,8 @@
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
-[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"  # This loads nvm bash_completion
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Python
 [ -s "${HOME}/.py3/bin/activate" ] && \. "${HOME}/.py3/bin/activate"  # This loads py3
@@ -32,6 +32,10 @@ if [[ ! -z ${DOCKER_CFG:-} ]]; then
     mkdir -p ~/.docker
     echo "${DOCKER_CFG:-}" | base64 --decode > ~/.docker/config.json 
 fi
+
+# Brew
+export HOMEBREW_NO_ANALYTICS=1
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # If not running interactively, end here
 case $- in

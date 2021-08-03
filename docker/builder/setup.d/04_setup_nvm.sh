@@ -1,7 +1,5 @@
 #!/usr/bin/env bash -eux
 
-curl -sLo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-
 cat << EOF | tee /root/.npmrc | tee /home/${BUILDER_USER}/.npmrc
 registry=https://npm.lab03.noroutine.me/
 strict-ssl=false
@@ -13,9 +11,10 @@ strict-ssl false
 EOF
 
 sudo -H -u ${BUILDER_USER} bash -s <<'EOF'
-curl -sLo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 nvm install stable
 npm install -g npm yarn degit
 EOF
