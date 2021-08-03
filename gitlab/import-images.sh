@@ -69,6 +69,7 @@ import_images() {
         "${LATEX_BASE:-ubuntu:focal}"
         "${CLOUDIDE_BASE:-ubuntu:focal}"
         "php:7.4-apache"
+        "golang:1.16.6-buster"
         "alpine:${ALPINE_VERSION:-3.14.0}"
         "golang:${GOLANG_VERSION:-1.16.6-alpine3.14}"
         "traefik:${TRAEFIK_VERSION:-latest}"
