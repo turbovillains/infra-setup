@@ -3,6 +3,16 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Proxy
+# export ALL_PROXY=${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
+# export all_proxy=${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
+# export http_proxy=${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
+# export HTTP_PROXY=${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
+# export HTTPS_PROXY=${HTTPS_PROXY:-http://proxy.bo01.noroutine.me:3128}
+# export https_proxy=${HTTPS_PROXY:-http://proxy.bo01.noroutine.me:3128}
+# export NO_PROXY=${NO_PROXY:-".lab03.noroutine.me,.noroutine.me,.nrtn.dev,10.0.0.0/8,localhost,127.0.0.1"}
+# export no_proxy=${NO_PROXY:-".lab03.noroutine.me,.noroutine.me,.nrtn.dev,10.0.0.0/8,localhost,127.0.0.1"}
+
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -23,6 +33,7 @@ ssh-add -q <(echo "$SSH_PRIVATE_KEY") > /dev/null
 # Git 
 git config --global user.email "info@noroutine.me"
 git config --global user.name "Git Robot"
+git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
 
 # Docker
 export DOCKER_HUB=cr.nrtn.dev
@@ -35,7 +46,13 @@ fi
 
 # Brew
 export HOMEBREW_NO_ANALYTICS=1
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
 # If not running interactively, end here
 case $- in

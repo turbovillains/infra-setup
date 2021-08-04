@@ -11,11 +11,22 @@ ARG GIT_SERVER_HOST
 ARG SSH_PRIVATE_KEY
 ARG HOST_DOCKER_GID
 
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+ARG NO_PROXY
+
 ENV GIT_SERVER_HOST=${GIT_SERVER_HOST}
 ENV SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY}
 ENV DOCKER_HUB=${DOCKER_HUB}
 ENV BUILDPACKS_VERSION=${BUILDPACKS_VERSION}
 ENV BUILDER_USER=builder
+# ENV ALL_PROXY=${HTTP_PROXY} \
+#   http_proxy=${HTTP_PROXY} \
+#   HTTP_PROXY=${HTTP_PROXY} \
+#   https_proxy=${HTTPS_PROXY}} \
+#   HTTPS_PROXY=${HTTPS_PROXY}} \
+#   NO_PROXY=${NO_PROXY}} \
+#   no_proxy=${NO_PROXY}}
 
 # For GH Action Runner
 ENV ARCH=x64
@@ -27,6 +38,11 @@ ADD setup.d /setup.d
 ADD dotprofile/.bashrc /root/.bashrc
 
 RUN /setup.sh
+
+# Bash wrapper to drop permissions
+RUN mv /bin/bash /bin/bash.real
+COPY --chown=0:0 gitlab-shell /bin/bash
+RUN chmod +x /bin/bash
 
 COPY actions-runner-entrypoint.sh /
 COPY --chown=${RUNNER_USER}:docker patched ${RUNNER_ASSETS_DIR}/patched

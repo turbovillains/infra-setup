@@ -1,13 +1,9 @@
 #!/usr/bin/env bash -eux
 
-export HTTP_PROXY=${HTTP_PROXY:-}
-export HTTPS_PROXY=${HTTPS_PROXY:-}
-export NO_PROXY=${NO_PROXY:-}
-
-if [[ ! -z "${HTTP_PROXY}" ]]; then
-    echo "Acquire::http::Proxy \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf.d/00proxy
-    echo "Acquire::https::Proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf.d/00proxy
-fi
+# if [[ ! -z "${HTTP_PROXY}" ]]; then
+#     echo "Acquire::http::Proxy \"${HTTP_PROXY}\";" >> /etc/apt/apt.conf.d/00proxy
+#     echo "Acquire::https::Proxy \"${HTTPS_PROXY}\";" >> /etc/apt/apt.conf.d/00proxy
+# fi
 
 export DEBIAN_FRONTEND=noninteractive
 
