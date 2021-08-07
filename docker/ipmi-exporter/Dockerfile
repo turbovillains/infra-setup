@@ -7,7 +7,10 @@ FROM ${DOCKER_HUB}/golang:${GOLANG_VERSION} as builder
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
-RUN apk --no-cache add git make curl gcc alpine-sdk
+RUN apt-get update && \
+    apt-get install git make curl gcc build-essential --no-install-recommends -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 ENV CGO_ENABLED 0
 ENV GOARCH amd64

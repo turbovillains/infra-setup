@@ -1,6 +1,6 @@
 ARG DOCKER_HUB
-ARG BUILDER_BASE
-FROM ${DOCKER_HUB}/${BUILDER_BASE}
+ARG DEBIAN_VERSION
+FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
