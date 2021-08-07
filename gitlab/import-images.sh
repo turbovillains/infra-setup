@@ -184,6 +184,9 @@ import_images() {
         "hasura/graphql-engine:${HASURA_VERSION:-v2.0.0-beta.2}"
         "paulbouwer/hello-kubernetes:${HELLO_VERSION:-1.10.0}"
         "stakater/reloader:${RELOADER_VERSION:-v0.0.97}"
+        "registry:${DOCKER_REGISTRY_VERSION:-2.7.1}"
+        "ghcr.io/dexidp/dex:${DEX_VERSION:-v2.30.0}"
+        "quay.io/argoproj/argocd:${ARGOCD_VERSION:-v2.1.0-rc2}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
