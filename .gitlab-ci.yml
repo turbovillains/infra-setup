@@ -168,6 +168,7 @@ builder:
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg SSH_PRIVATE_KEY \
+        --build-arg INFRA_READONLY_TOKEN \
         --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }') \
         --build-arg ACTIONS_RUNNER_VERSION
 

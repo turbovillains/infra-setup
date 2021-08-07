@@ -188,6 +188,11 @@ import_images() {
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
 
+    # For dependabot
+    for image in ${images[@]}; do
+        echo "FROM ${image}"
+    done
+
     for image in ${images[@]}; do
         printf "\nMigrating %s/%s:%s to %s\n`line`\n" \
             $(get_registry $image) $(get_name $image) $(get_tag $image) \
