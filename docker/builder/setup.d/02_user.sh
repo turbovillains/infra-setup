@@ -9,6 +9,6 @@ cp /root/.bashrc /home/${BUILDER_USER}/.bashrc
 # Git 
 git config --global user.email "info@noroutine.me"
 git config --global user.name "Git Robot"
-git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
+# git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
 
 cp /root/.gitconfig /home/${BUILDER_USER}/.gitconfig

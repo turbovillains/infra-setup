@@ -61,11 +61,8 @@ line() {
 
 import_images() {
     declare -a images=(
-        "${DEPLOYER_BASE:-ubuntu:focal}"
         "${BUILDER_BASE:-debian:10-slim}"
         "${POWERDNS_BASE:-debian:10-slim}"
-        "${GATSBY_BASE:-alpine:edge}"
-        "${GATSBY_BUILD_BASE:-node:14-buster}"
         "${LATEX_BASE:-ubuntu:focal}"
         "${CLOUDIDE_BASE:-ubuntu:focal}"
         "php:7.4-apache"
@@ -73,7 +70,6 @@ import_images() {
         "alpine:${ALPINE_VERSION:-3.14.0}"
         "golang:${GOLANG_VERSION:-1.16.6-alpine3.14}"
         "traefik:${TRAEFIK_VERSION:-latest}"
-        "jekyll/jekyll:${JEKYLL_VERSION:-latest}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"
         "freeradius/freeradius-server:${FREERADIUS_VERSION:-latest}"
         "quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-11.0.2}"

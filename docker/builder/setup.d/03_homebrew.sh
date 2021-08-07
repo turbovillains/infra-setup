@@ -6,7 +6,6 @@ export HOMEBREW_NO_ANALYTICS=1
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew install \
-  nvm \
   kubectl k9s kubectx \
   helm helmfile \
   goreleaser \
