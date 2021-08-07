@@ -187,6 +187,7 @@ import_images() {
         "registry:${DOCKER_REGISTRY_VERSION:-2.7.1}"
         "ghcr.io/dexidp/dex:${DEX_VERSION:-v2.30.0}"
         "quay.io/argoproj/argocd:${ARGOCD_VERSION:-v2.1.0-rc2}"
+        "redis:${REDIS_VERSION:-6.2.5-buster}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
