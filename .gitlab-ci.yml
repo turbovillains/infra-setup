@@ -8,7 +8,8 @@ variables:
   ALPINE_VERSION: "3.14.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   GOLANG_VERSION: 1.16.6-alpine3.14 # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   ACTIONS_RUNNER_VERSION: 2.278.0 # https://github.com/actions/runner/releases
-  GITLAB_RUNNER_VERSION: alpine-v14.0.1 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_RUNNER_VERSION: alpine-v14.1.0 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_VERSION: 14.1.2-ce.0 # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   FREERADIUS_VERSION: 3.0.23-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.4.11" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
   MKDOCS_VERSION: "7.1.10" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
@@ -212,6 +213,14 @@ gitlab-runner:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_RUNNER_VERSION \
+        --build-arg INFRA_VERSION
+
+gitlab:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GITLAB_VERSION \
         --build-arg INFRA_VERSION
 
 radius:

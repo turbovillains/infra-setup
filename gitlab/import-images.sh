@@ -128,6 +128,7 @@ import_images() {
         "paketobuildpacks/run:full-cnb"
         "buildpacksio/lifecycle:${BUILDPACKSIO_LIFECYCLE_VERSION:-0.11.1}"
         "gitlab/gitlab-runner:${GITLAB_RUNNER_VERSION:-alpine-v13.12.0-rc1}"
+        "gitlab/gitlab-ce:${GITLAB_VERSION:-14.1.2-ce.0}"
         "jupyterhub/k8s-image-cleaner:${BINDERHUB_IMAGE_CLEANDER_VERSION:-0.2.0-n496.h988aca0}"
         "jupyterhub/k8s-binderhub:${BINDERHUB_VERSION:-0.2.0-n562.h0b4462c}"
         "jupyterhub/k8s-hub:${JUPYTERHUB_VERSION:-1.0.0-beta.1.n004.h8ae542c7}"
