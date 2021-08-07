@@ -10,54 +10,11 @@ build-image = "cr.nrtn.dev/infra/pack-build:20"
 run-image = "cr.nrtn.dev/infra/pack:20"
 
 [lifecycle]
-version = "0.11.3"
-
-# [[buildpacks]]
-#   id = "heroku/maven"
-#   uri = "docker://public.ecr.aws/r2f9u0w4/heroku-maven-buildpack@sha256:d334bb25a535eb64c3ce92f0ec81a45bdaf59139667b01d79bc7b9852ad7a181"
-
-# [[buildpacks]]
-#   id = "heroku/jvm"
-#   uri = "docker://public.ecr.aws/r2f9u0w4/heroku-jvm-buildpack@sha256:b46824bb8a037c459d7544fe0ea88b313694c55f194feb0ec1c27b9144768070"
-
-# [[buildpacks]]
-#   id = "heroku/java"
-#   uri = "docker://public.ecr.aws/r2f9u0w4/heroku-java-buildpack@sha256:a8d45555e813a174003e3838fc58c36617750809d1137251a65794ce800beca8"
-
-# [[buildpacks]]
-#   id = "heroku/gradle"
-#   uri = "docker://public.ecr.aws/r2f9u0w4/heroku-gradle-buildpack@sha256:7163f393470de8255fe03e06d55d3ae7bf59bf683f4ff2651ed92b6538eed0ad"
-
-# [[buildpacks]]
-#   id = "heroku/scala"
-#   uri = "docker://public.ecr.aws/r2f9u0w4/heroku-scala-buildpack@sha256:39ad34bcc1766cdff4f2a4d5e88931a2f2678f5605bd56f1b6fc551f40fba70f"
-
-# [[buildpacks]]
-#   id = "heroku/java-function"
-#   uri = "docker://public.ecr.aws/r2f9u0w4/heroku-java-function-buildpack@sha256:0ceda7487a2c45762387e50174565ba129c551f633e3c113f18d6c2841ab091d"
-
-# [[buildpacks]]
-#   id = "heroku/ruby"
-#   uri = "https://github.com/heroku/heroku-buildpack-ruby/releases/download/v222/heroku-buildpack-ruby-v222.tgz"
+version = "0.11.4"
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:0.6.2"
-
-# [[buildpacks]]
-#   id = "heroku/python"
-#   uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.3.1&name=Python"
-
-# [[buildpacks]]
-#   id = "heroku/php"
-#   uri = "https://cnb-shim.herokuapp.com/v1/heroku/php?version=0.3.1&name=PHP"
-
-# [[buildpacks]]
-#   id = "heroku/go"
-#   uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.3.1&name=Go"
-[[buildpacks]]
-  id = "heroku/go"
-  uri = "go.gz"
+  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:0.7.1"
 
 [[buildpacks]]
   id = "heroku/nodejs"
@@ -67,68 +24,9 @@ version = "0.11.3"
   id = "heroku/nodejs-function"
   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.5.7"
 
-# [[buildpacks]]
-#   id = "evergreen/fn"
-#   uri = "evergreen_fn"
-
 [[buildpacks]]
   id = "noroutine/static"
   uri = "noroutine-static"
-
-# [[order]]
-#   [[order.group]]
-#     id = "heroku/ruby"
-#     version = "0.0.1"
-
-#   [[order.group]]
-#     id = "heroku/procfile"
-#     version = "0.6.2"
-#     optional = true
-
-# [[order]]
-#   [[order.group]]
-#     id = "heroku/python"
-#     version = "0.3.1"
-
-#   [[order.group]]
-#     id = "heroku/procfile"
-#     version = "0.6.2"
-#     optional = true
-
-# [[order]]
-#   [[order.group]]
-#     id = "heroku/scala"
-#     version = "0.0.90"
-
-#   [[order.group]]
-#     id = "heroku/procfile"
-#     version = "0.6.2"
-#     optional = true
-
-# [[order]]
-#   [[order.group]]
-#     id = "heroku/php"
-#     version = "0.3.1"
-
-#   [[order.group]]
-#     id = "heroku/procfile"
-#     version = "0.6.2"
-#     optional = true
-
-[[order]]
-  [[order.group]]
-    id = "heroku/go"
-    version = "0.3.1"
-
-  [[order.group]]
-    id = "heroku/procfile"
-    version = "0.6.2"
-    optional = true
-
-# [[order]]
-#   [[order.group]]
-#     id = "evergreen/fn"
-#     version = "0.3.0"
 
 [[order]]
   [[order.group]]
@@ -144,8 +42,3 @@ version = "0.11.3"
   [[order.group]]
     id = "heroku/nodejs"
     version = "0.3.5"
-
-# [[order]]
-#   [[order.group]]
-#     id = "heroku/java"
-#     version = "0.3.7"
