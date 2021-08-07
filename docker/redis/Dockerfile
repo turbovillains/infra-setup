@@ -10,5 +10,12 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 USER 0
+RUN apt-get update && \
+  apt-get -y install ca-certificates && \
+  apt-get clean && \
+  apt-get autoremove -y && \
+  rm -rf /var/cache/apt/* && \
+  rm -rf /var/lib/apt/lists/*
+
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
