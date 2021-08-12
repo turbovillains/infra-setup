@@ -162,6 +162,12 @@ import_images() {
         "bitnami/metallb-controller:${BITNAMI_METALLB_CONTROLLER_VERSION:-0.10.2-debian-10-r28}"
         "bitnami/metallb-speaker:${BITNAMI_METALLB_SPEAKER_VERSION:-0.10.2-debian-10-r31}"
         "bitnami/grafana:${BITNAMI_GRAFANA_VERSION:-8.0.6-debian-10-r3}"
+        "bitnami/kubeapps-dashboard:${BITNAMI_KUBEAPPS_DASHBOARD_VERSION:-2.3.3-scratch-r2}"
+        "bitnami/kubeapps-apprepository-controller:${BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION:-2.3.3-scratch-r0}"
+        "bitnami/kubeapps-asset-syncer:${BITNAMI_KUBEAPPS_ASSET_SYNCER:-2.3.3-scratch-r0}"
+        "bitnami/kubeapps-kubeops:${BITNAMI_KUBEAPPS_KUBEOPS_VERSION:-2.3.3-scratch-r0}"
+        "bitnami/kubeapps-assetsvc:${BITNAMI_KUBEAPPS_ASSETSVC_VERSION:-2.3.3-scratch-r0}"
+        "bitnami/kubeapps-pinniped-proxy:${BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION:-2.3.3-debian-10-r2}"
         "minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
         "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
@@ -172,6 +178,7 @@ import_images() {
         "ghcr.io/dexidp/dex:${DEX_VERSION:-v2.30.0}"
         "quay.io/argoproj/argocd:${ARGOCD_VERSION:-v2.1.0-rc2}"
         "redis:${REDIS_VERSION:-6.2.5-buster}"
+        "listmonk/listmonk:${LISTMONK_VERSION:-v1.1.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
