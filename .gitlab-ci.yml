@@ -17,7 +17,7 @@ variables:
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:focal-20210723 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "15.0.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
-  POSTGRES_VERSION: "13.3-buster" # https://hub.docker.com/_/postgres
+  POSTGRES_VERSION: "13.4-buster" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.18.1" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
   MAILSERVER_VERSION: "release-v7.2.0" # https://hub.docker.com/r/tvial/docker-mailserver/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "22.1.0-apache" # https://hub.docker.com/_/nextcloud
@@ -48,7 +48,7 @@ variables:
   ALERTA_VERSION: "8.5.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 4.4.6-bionic # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: 5.8.0-apache   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
-  PGADMIN_VERSION: "5.5"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  PGADMIN_VERSION: "5.6"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.26" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: 10.6.4-focal # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.2.2 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
@@ -59,7 +59,7 @@ variables:
   BINDERHUB_VERSION: 0.2.0-n609.h195837f
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n496.h988aca0
   PIHOLE_VERSION: v5.8.1 # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
-  CLICKHOUSE_VERSION: 21.7.7.47-alpine # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
+  CLICKHOUSE_VERSION: 21.8.3.44-alpine # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: v1.3.0 # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.1.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
@@ -87,8 +87,8 @@ variables:
   BITNAMI_PROMETHEUS_VERSION: 2.29.1-debian-10-r0 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: 0.48.1-debian-10-r25 # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_REDIS_VERSION: 6.2.5-debian-10-r14 # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated&name=6.2
-  BITNAMI_POSTGRESQL11_VERSION: 11.12.0-debian-10-r73 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
-  BITNAMI_POSTGRESQL13_VERSION: 13.3.0-debian-10-r76 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=13.
+  BITNAMI_POSTGRESQL11_VERSION: 11.13.0-debian-10-r0 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
+  BITNAMI_POSTGRESQL13_VERSION: 13.4.0-debian-10-r0 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=13.
   BITNAMI_MARIADB_VERSION: 10.5.12-debian-10-r3 # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.5
   BITNAMI_MONGODB_VERSION: 4.4.8-debian-10-r5 # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=4.4
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: 0.48.1-debian-10-r24 # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
@@ -99,13 +99,14 @@ variables:
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.10.2-debian-10-r46 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.10.2-debian-10-r50 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
   BITNAMI_GRAFANA_VERSION: 8.1.1-debian-10-r1 # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
+  BITNAMI_KUBE_STATE_METRICS_VERSION: 2.1.1-debian-10-r14 # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_ASSET_SYNCER: 2.3.3-scratch-r0 # https://hub.docker.com/r/bitnami/kubeapps-asset-syncer/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION: 2.3.3-scratch-r0 # https://hub.docker.com/r/bitnami/kubeapps-apprepository-controller/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_DASHBOARD_VERSION: 2.3.3-debian-10-r31 # https://hub.docker.com/r/bitnami/kubeapps-dashboard/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_KUBEOPS_VERSION: 2.3.3-scratch-r0 # 
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: 2.3.3-scratch-r0 # 
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: 2.3.3-debian-10-r32 # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
-  MINIO_CONSOLE_VERSION: v0.8.3 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: v0.9.0 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.0.6 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: 2.7.2 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.1.0 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
@@ -114,7 +115,7 @@ variables:
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: 2.7.1 # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.30.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
-  ARGOCD_VERSION: v2.1.0-rc2 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  ARGOCD_VERSION: v2.1.0-rc3 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   REDIS_VERSION: 6.2.5-buster # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v1.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
 
@@ -740,6 +741,14 @@ bitnami-grafana:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_GRAFANA_VERSION \
+        --build-arg INFRA_VERSION
+
+bitnami-kube-state-metrics:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_KUBE_STATE_METRICS_VERSION \
         --build-arg INFRA_VERSION
 
 bitnami-nginx:
