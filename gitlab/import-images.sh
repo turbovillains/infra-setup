@@ -163,6 +163,7 @@ import_images() {
         "bitnami/metallb-speaker:${BITNAMI_METALLB_SPEAKER_VERSION:-0.10.2-debian-10-r31}"
         "bitnami/grafana:${BITNAMI_GRAFANA_VERSION:-8.0.6-debian-10-r3}"
         "bitnami/kube-state-metrics:${BITNAMI_KUBE_STATE_METRICS_VERSION:-2.1.1-debian-10-r14}"
+        "bitnami/metrics-server:${BITNAMI_METRICS_SERVER_VERSION:-0.5.0-debian-10-r59}"
         "bitnami/kubeapps-dashboard:${BITNAMI_KUBEAPPS_DASHBOARD_VERSION:-2.3.3-scratch-r2}"
         "bitnami/kubeapps-apprepository-controller:${BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION:-2.3.3-scratch-r0}"
         "bitnami/kubeapps-asset-syncer:${BITNAMI_KUBEAPPS_ASSET_SYNCER:-2.3.3-scratch-r0}"
