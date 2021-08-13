@@ -181,6 +181,8 @@ import_images() {
         "quay.io/argoproj/argocd:${ARGOCD_VERSION:-v2.1.0-rc2}"
         "redis:${REDIS_VERSION:-6.2.5-buster}"
         "listmonk/listmonk:${LISTMONK_VERSION:-v1.1.0}"
+        "registry.gitlab.com/gitlab-org/cluster-integration/auto-build-image:${GITLAB_AUTO_BUILD_VERSION:-v1.0.0}"
+        "registry.gitlab.com/gitlab-org/cluster-integration/auto-deploy-image:${GITLAB_AUTO_DEPLOY_VERSION:-v2.6.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
