@@ -17,6 +17,14 @@ version = "0.11.4"
   uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:0.6.2"
 
 [[buildpacks]]
+  id = "heroku/python"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.3.1&name=Python"
+
+[[buildpacks]]
+  id = "heroku/go"
+  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.3.1&name=Go"
+
+[[buildpacks]]
   id = "heroku/nodejs"
   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.3.5"
 
@@ -27,6 +35,26 @@ version = "0.11.4"
 [[buildpacks]]
   id = "noroutine/static"
   uri = "noroutine-static"
+
+[[order]]
+  [[order.group]]
+    id = "heroku/python"
+    version = "0.3.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
+    id = "heroku/go"
+    version = "0.3.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
 
 [[order]]
   [[order.group]]
