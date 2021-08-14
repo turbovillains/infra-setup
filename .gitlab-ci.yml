@@ -223,8 +223,8 @@ heroku-buildpacks:
       # Release builder
       make publish \
         BUILDPACKS_VERSION=${INFRA_VERSION} \
-        STACK=infra/heroku-20 \
-        STACK_VERSION=${INFRA_VERSION}
+        BUILDPACKS_BASE=infra/heroku-20 \
+        BUILDPACKS_BASE_VERSION=${INFRA_VERSION}
 
 buildpacksio-lifecycle:
   stage: buildpacks

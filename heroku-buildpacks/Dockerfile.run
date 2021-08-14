@@ -1,6 +1,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+
 RUN ln -s /workspace /app
 
 ARG pack_uid=1000

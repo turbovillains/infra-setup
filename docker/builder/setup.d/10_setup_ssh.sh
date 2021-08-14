@@ -14,4 +14,4 @@ if [[ ! -z "${SSH_PRIVATE_KEY}" ]]; then
     chmod 600 /root/.ssh/id_rsa /home/${BUILDER_USER}/.ssh/id_rsa
 fi
 
-ssh-keyscan "${GIT_SERVER_HOST} git.nrtn.dev bo01-vm-git01.node.bo01.noroutine.me bo01-vm-git02.node.bo01.noroutine.me" | tee /root/.ssh/known_hosts | tee /home/${BUILDER_USER}/.ssh/known_hosts
+ssh-keyscan "${GIT_SERVER_HOST} git.nrtn.dev" | tee /root/.ssh/known_hosts | tee /home/${BUILDER_USER}/.ssh/known_hosts
