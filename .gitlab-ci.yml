@@ -119,7 +119,7 @@ variables:
   ARGOCD_VERSION: v2.1.0-rc3 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   REDIS_VERSION: 6.2.5-buster # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v1.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
-  GITLAB_AUTO_BUILD_VERSION: v1.3.0
+  GITLAB_AUTO_BUILD_VERSION: v1.3.1
   GITLAB_AUTO_DEPLOY_VERSION: v2.12.0
 
 stages:
@@ -182,6 +182,20 @@ builder:
         --build-arg INFRA_READONLY_TOKEN \
         --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }') \
         --build-arg ACTIONS_RUNNER_VERSION
+
+auto-build:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GITLAB_AUTO_BUILD_VERSION
+
+auto-deploy:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GITLAB_AUTO_DEPLOY_VERSION
 
 heroku-buildpacks:
   stage: buildpacks
