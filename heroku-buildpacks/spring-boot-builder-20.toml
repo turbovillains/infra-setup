@@ -4,11 +4,11 @@ build-image = "cr.nrtn.dev/infra/pack-build:20"
 run-image = "cr.nrtn.dev/infra/pack:20"
 
 [lifecycle]
-version = "0.11.3"
+version = "0.11.4"
 
 [[buildpacks]]
   id = "heroku/jvm"
-  uri = "https://github.com/heroku/heroku-buildpack-jvm-common/releases/download/v113/heroku-jvm-common-cnb-v113.tgz"
+  uri = "https://github.com/heroku/heroku-buildpack-jvm-common/releases/download/v121/heroku-jvm-common-cnb-v121.tgz"
 
 [[buildpacks]]
   id = "heroku/spring-boot"

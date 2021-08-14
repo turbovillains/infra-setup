@@ -13,6 +13,18 @@ run-image = "cr.nrtn.dev/infra/pack:20"
 version = "0.11.4"
 
 [[buildpacks]]
+  id = "heroku/java"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-buildpack@sha256:1483c15d79e460d8e682f9e1f765a04cca130e43e65ade4390d67fc944c4358a"
+
+[[buildpacks]]
+  id = "heroku/scala"
+  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-scala-buildpack@sha256:39ad34bcc1766cdff4f2a4d5e88931a2f2678f5605bd56f1b6fc551f40fba70f"
+
+[[buildpacks]]
+  id = "heroku/ruby"
+  uri = "https://github.com/heroku/heroku-buildpack-ruby/releases/download/v222/heroku-buildpack-ruby-v222.tgz"
+
+[[buildpacks]]
   id = "heroku/procfile"
   uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:0.6.2"
 
@@ -28,9 +40,9 @@ version = "0.11.4"
   id = "heroku/nodejs"
   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.3.5"
 
-[[buildpacks]]
-  id = "heroku/nodejs-function"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.5.7"
+# [[buildpacks]]
+#   id = "heroku/nodejs-function"
+#   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.5.7"
 
 [[buildpacks]]
   id = "noroutine/static"
@@ -38,8 +50,28 @@ version = "0.11.4"
 
 [[order]]
   [[order.group]]
+    id = "heroku/ruby"
+    version = "0.0.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
     id = "heroku/python"
     version = "0.3.1"
+
+  [[order.group]]
+    id = "heroku/procfile"
+    version = "0.6.2"
+    optional = true
+
+[[order]]
+  [[order.group]]
+    id = "heroku/scala"
+    version = "0.0.90"
 
   [[order.group]]
     id = "heroku/procfile"
@@ -66,7 +98,17 @@ version = "0.11.4"
     version = "0.0.3"
     optional = true
 
+# [[order]]
+#   [[order.group]]
+#     id = "heroku/java-function"
+#     version = "0.3.15"
+
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
     version = "0.3.5"
+
+[[order]]
+  [[order.group]]
+    id = "heroku/java"
+    version = "0.3.10"

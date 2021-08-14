@@ -1,10 +1,10 @@
 ARG DOCKER_HUB
-ARG STACK_BASE
+ARG UBUNTU_VERSION
 ARG INFRA_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/${STACK_BASE}
+FROM ${DOCKER_HUB}/ubuntu:${UBUNTU_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
