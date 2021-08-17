@@ -61,11 +61,13 @@ line() {
 
 import_images() {
     declare -a images=(
-        "${POWERDNS_BASE:-debian:10-slim}"
         "${LATEX_BASE:-ubuntu:focal}"
         "${CLOUDIDE_BASE:-ubuntu:focal}"
-        "php:${PHP_VERSION:-8.0.9-apache}"
+        "debian:10.10-slim"
+        "debian:${DEBIAN_VERSION:-11.0-slim}"
+        "ubuntu:${UBUNTU_VERSION:-focal-20210723}"
         "alpine:${ALPINE_VERSION:-3.14.0}"
+        "php:${PHP_VERSION:-8.0.9-apache}"
         "golang:${GOLANG_VERSION:-1.16.6-alpine3.14}"
         "traefik:${TRAEFIK_VERSION:-latest}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"

@@ -8,9 +8,9 @@ fi
 export DEBIAN_FRONTEND=noninteractive
 
 cat << SOURCES > /etc/apt/sources.list
-deb http://deb.debian.org/debian buster main
-deb http://security.debian.org/debian-security buster/updates main
-deb http://deb.debian.org/debian buster-updates main
+deb http://deb.debian.org/debian bullseye main
+deb http://deb.debian.org/debian bullseye-updates main
+deb http://security.debian.org/debian-security bullseye-security main
 SOURCES
 
 apt-get update -yyq
@@ -111,7 +111,6 @@ NOROUTINE_TRUSTED_CA
 update-ca-certificates
 
 cat << SOURCES >> /etc/apt/sources.list.d/noroutine.list
-deb https://twix.noroutine.me/apt/bootstrap buster main
 deb https://nexus.nrtn.dev/repository/apps-apt/ noroutine main
 SOURCES
 
