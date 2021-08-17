@@ -9,20 +9,21 @@ export HOMEBREW_CORE_GIT_REMOTE=https://readonly:${INFRA_READONLY_TOKEN}@git.nrt
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew install \
-  kubectl k9s kubectx \
-  helm helmfile \
+  go \
+  kubectl \
   goreleaser \
-  crane \
-  ko \
-  instrumenta/instrumenta/kubeval \
   skaffold \
   cfssl \
   yq yj jq \
   kustomize \
-  dty1er/tap/kubecolor \
   buildpacks/tap/pack \
-  terraform consul nomad vault envconsul consul-template \
-  govc \
-  hey
+  terraform
 
-  
+
+# consul nomad vault envconsul consul-template
+# hey
+# ko crane
+# k9s kubectx
+# helm helmfile
+# instrumenta/instrumenta/kubeval
+# dty1er/tap/kubecolor
