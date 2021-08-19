@@ -10,11 +10,11 @@ variables:
   GITLAB_RUNNER_VERSION: alpine-v14.1.0 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: 14.1.3-ce.0 # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   FREERADIUS_VERSION: 3.0.23-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v2.5" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.4
+  TRAEFIK_VERSION: "v2.5.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "7.2.4" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:focal-20210723 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  KEYCLOAK_VERSION: "15.0.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
+  KEYCLOAK_VERSION: "15.0.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "13.4-buster" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.18.1" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
   MAILSERVER_VERSION: "release-v7.2.0" # https://hub.docker.com/r/tvial/docker-mailserver/tags?page=1&ordering=last_updated
@@ -31,7 +31,7 @@ variables:
   PUSHGATEWAY_VERSION: v1.4.1
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
-  GRAFANA_VERSION: "8.1.1" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  GRAFANA_VERSION: "8.1.2" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   M3DBNODE_VERSION: v1.1.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.1.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
@@ -57,15 +57,15 @@ variables:
   BINDERHUB_VERSION: 0.2.0-n609.h195837f
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n496.h988aca0
   PIHOLE_VERSION: v5.8.1 # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
-  CLICKHOUSE_VERSION: 21.8.3.44-alpine # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
+  CLICKHOUSE_VERSION: 21.8.4.51-alpine # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: v1.3.0 # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
-  VERDACCIO_VERSION: "5.1.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
+  VERDACCIO_VERSION: "5.1.3" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.6-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: 4.12.0 # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
-  BITNAMI_GHOST_VERSION: 4.12.1-debian-10-r0 # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  GHOST_VERSION: 4.12.1 # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  BITNAMI_GHOST_VERSION: 4.12.1-debian-10-r3 # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   MATOMO_VERSION: 4.4.1-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: 0.11.21 # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: 0.11.23 # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   JUPYTERHUB_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.1.2 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTERHUB_NETWORK_TOOLS_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
@@ -80,7 +80,7 @@ variables:
   # CLOUDIDE_BASE: ubuntu:focal-20210713 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   CAPROVER_VERSION: 1.9.0 # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-6778772 # https://github.com/mikecao/umami/pkgs/container/umami
-  BITNAMI_KEYCLOAK_VERSION: 14.0.0-debian-10-r36 # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=14
+  BITNAMI_KEYCLOAK_VERSION: 15.0.2-debian-10-r0 # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=14
   BITNAMI_SPARK_VERSION: 3.1.2-debian-10-r63 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.29.1-debian-10-r5 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: 0.48.1-debian-10-r25 # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
@@ -96,7 +96,7 @@ variables:
   BITNAMI_SHELL_VERSION: 10-debian-10-r164 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.10.2-debian-10-r56 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.10.2-debian-10-r60 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
-  BITNAMI_GRAFANA_VERSION: 8.1.1-debian-10-r7 # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
+  BITNAMI_GRAFANA_VERSION: 8.1.2-debian-10-r1 # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
   BITNAMI_KUBE_STATE_METRICS_VERSION: 2.1.1-debian-10-r18 # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
   BITNAMI_METRICS_SERVER_VERSION: 0.5.0-debian-10-r75 # https://hub.docker.com/r/bitnami/metrics-server/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_ASSET_SYNCER: 2.3.3-scratch-r0 # https://hub.docker.com/r/bitnami/kubeapps-asset-syncer/tags?page=1&ordering=last_updated
@@ -105,7 +105,7 @@ variables:
   BITNAMI_KUBEAPPS_KUBEOPS_VERSION: 2.3.3-scratch-r0 # 
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: 2.3.3-scratch-r0 # 
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: 2.3.3-debian-10-r37 # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
-  MINIO_CONSOLE_VERSION: v0.9.1 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: v0.9.2 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.0.7 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: 2.7.2 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.1.0 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
