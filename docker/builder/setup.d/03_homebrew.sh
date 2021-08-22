@@ -11,6 +11,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install \
   go \
   kubectl \
+  helm helmfile \
   goreleaser \
   skaffold \
   cfssl \
@@ -24,6 +25,5 @@ brew install \
 # hey
 # ko crane
 # k9s kubectx
-# helm helmfile
 # instrumenta/instrumenta/kubeval
 # dty1er/tap/kubecolor
