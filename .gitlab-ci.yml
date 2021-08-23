@@ -7,8 +7,8 @@ variables:
   GOLANG_VERSION: 1.17.0-buster # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: 8.0.9-apache # https://hub.docker.com/_/php?tab=tags&page=1&ordering=last_updated&name=8.0
   ACTIONS_RUNNER_VERSION: 2.280.1 # https://github.com/actions/runner/releases
-  GITLAB_RUNNER_VERSION: alpine-v14.1.0 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: 14.1.3-ce.0 # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_RUNNER_VERSION: alpine-v14.2.0 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_VERSION: 14.2.0-ce.0 # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   FREERADIUS_VERSION: 3.0.23-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.5.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "7.2.4" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
@@ -65,7 +65,7 @@ variables:
   GHOST_VERSION: 4.12.1 # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   BITNAMI_GHOST_VERSION: 4.12.1-debian-10-r3 # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   MATOMO_VERSION: 4.4.1-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: 0.11.23 # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: 0.11.24 # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   JUPYTERHUB_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.1.2 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTERHUB_NETWORK_TOOLS_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
@@ -117,7 +117,7 @@ variables:
   ARGOCD_VERSION: v2.1.0-rc3 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   REDIS_VERSION: 6.2.5-buster # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v1.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
-  GITLAB_AUTO_BUILD_VERSION: v1.3.1
+  GITLAB_AUTO_BUILD_VERSION: v1.4.0
   GITLAB_AUTO_DEPLOY_VERSION: v2.12.0
 
 stages:
