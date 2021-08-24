@@ -8,15 +8,15 @@ variables:
   PHP_VERSION: 8.0.9-apache # https://hub.docker.com/_/php?tab=tags&page=1&ordering=last_updated&name=8.0
   ACTIONS_RUNNER_VERSION: 2.280.1 # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: alpine-v14.2.0 # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: 14.2.0-ce.0 # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_VERSION: 14.2.1-ce.0 # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   FREERADIUS_VERSION: 3.0.23-alpine # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.5.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "7.2.4" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "7.2.5" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:focal-20210723 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "15.0.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "13.4-buster" # https://hub.docker.com/_/postgres
-  JIRA_VERSION: "8.18.1" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
+  JIRA_VERSION: "8.18.2" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
   MAILSERVER_VERSION: "release-v7.2.0" # https://hub.docker.com/r/tvial/docker-mailserver/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "22.1.0-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: v1.1.3 # https://github.com/librespeed/speedtest-go/releases
@@ -24,7 +24,7 @@ variables:
   MINIO_VERSION: RELEASE.2021-07-12T02-44-53Z # https://github.com/minio/minio/releases
   ETCD_VERSION: v3.5.0 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
   PROMETHEUS_VERSION: v2.29.1 # https://prometheus.io/download/
-  ALERTMANAGER_VERSION: v0.22.2
+  ALERTMANAGER_VERSION: v0.23.0
   BLACKBOX_EXPORTER_VERSION: v0.19.0
   CONSUL_EXPORTER_VERSION: v0.7.1
   NODE_EXPORTER_VERSION: v1.2.2
@@ -35,7 +35,7 @@ variables:
   M3DBNODE_VERSION: v1.1.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.1.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
-  SSL_EXPORTER_VERSION: v2.2.1 # https://github.com/ribbybibby/ssl_exporter/releases
+  SSL_EXPORTER_VERSION: v2.3.1 # https://github.com/ribbybibby/ssl_exporter/releases
   CADVISOR_VERSION: v0.40.0 # https://github.com/google/cadvisor/releases
   KARMA_VERSION: v0.90 # https://github.com/prymitive/karma/releases
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
@@ -61,16 +61,16 @@ variables:
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: v1.3.0 # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.1.3" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
-  STRAPI_VERSION: 3.6.6-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
+  STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: 4.12.1 # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   BITNAMI_GHOST_VERSION: 4.12.1-debian-10-r3 # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   MATOMO_VERSION: 4.4.1-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: 0.11.24 # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
-  JUPYTERHUB_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
-  JUPYTERHUB_SECRET_SYNC_VERSION: 1.1.2 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
-  JUPYTERHUB_NETWORK_TOOLS_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
-  JUPYTERHUB_IMAGE_AWAITER_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-image-awaiter/tags?page=1&ordering=last_updated
-  JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: 1.1.2 # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: 0.11.25 # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  JUPYTERHUB_VERSION: 1.1.3 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
+  JUPYTERHUB_SECRET_SYNC_VERSION: 1.1.3 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
+  JUPYTERHUB_NETWORK_TOOLS_VERSION: 1.1.3 # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
+  JUPYTERHUB_IMAGE_AWAITER_VERSION: 1.1.3 # https://hub.docker.com/r/jupyterhub/k8s-image-awaiter/tags?page=1&ordering=last_updated
+  JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: 1.1.3 # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
   JUPYTERHUB_HTTP_PROXY_VERSION: 4.5.0 # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
   REPO2DOCKER_VERSION: 2021.03.0-70.g43891a6 # https://hub.docker.com/r/jupyter/repo2docker/tags?page=1&ordering=last_updated
   DIND_VERSION: 20.10.8-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
@@ -105,7 +105,7 @@ variables:
   BITNAMI_KUBEAPPS_KUBEOPS_VERSION: 2.3.3-scratch-r0 # 
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: 2.3.3-scratch-r0 # 
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: 2.3.3-debian-10-r37 # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
-  MINIO_CONSOLE_VERSION: v0.9.2 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: v0.9.4 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.0.7 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: 2.7.2 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.1.0 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
