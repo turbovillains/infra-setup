@@ -1,7 +1,8 @@
 ARG DOCKER_HUB
 ARG GRAV_VERSION
+ARG PHP_VERSION
 
-FROM ${DOCKER_HUB}/php:7.4-apache
+FROM ${DOCKER_HUB}/php:${PHP_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
