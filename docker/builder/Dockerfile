@@ -48,8 +48,8 @@ RUN mv /bin/bash /bin/bash.real
 COPY --chown=0:0 gitlab-shell /bin/bash
 RUN chmod +x /bin/bash
 
-COPY actions-runner-entrypoint.sh /
-COPY --chown=${RUNNER_USER}:docker patched ${RUNNER_ASSETS_DIR}/patched
+# COPY actions-runner-entrypoint.sh /
+# COPY --chown=${RUNNER_USER}:docker patched ${RUNNER_ASSETS_DIR}/patched
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
