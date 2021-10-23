@@ -16,7 +16,7 @@ variables:
   LATEX_BASE: ubuntu:focal-20211006 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "15.0.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "13.4-buster" # https://hub.docker.com/_/postgres
-  JIRA_VERSION: "8.19.1" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated&name=8.15
+  JIRA_VERSION: "8.20.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
   MAILSERVER_VERSION: "release-v7.2.0" # https://hub.docker.com/r/tvial/docker-mailserver/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "22.2.0-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: v1.1.3 # https://github.com/librespeed/speedtest-go/releases
@@ -31,7 +31,7 @@ variables:
   PUSHGATEWAY_VERSION: v1.4.2
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
-  GRAFANA_VERSION: "8.2.1" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  GRAFANA_VERSION: "8.2.2" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   M3DBNODE_VERSION: v1.1.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.1.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
@@ -46,7 +46,7 @@ variables:
   ALERTA_VERSION: "8.5.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 4.4.6-bionic # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: 5.8.1-apache   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
-  PGADMIN_VERSION: "6.0"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  PGADMIN_VERSION: "6.1"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.27" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: 10.6.4-focal # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.2.2 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
@@ -63,7 +63,7 @@ variables:
   VERDACCIO_VERSION: "5.1.6" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: 4.19.1 # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
-  BITNAMI_GHOST_VERSION: 4.19.1-debian-10-r0 # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  BITNAMI_GHOST_VERSION: 4.19.1-debian-10-r2 # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   MATOMO_VERSION: 4.5.0-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: 0.11.46 # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   JUPYTERHUB_VERSION: 1.1.3 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
@@ -105,8 +105,8 @@ variables:
   BITNAMI_KUBEAPPS_KUBEOPS_VERSION: 2.4.1-scratch-r0 # https://hub.docker.com/r/bitnami/kubeapps-kubeops/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: 2.4.1-scratch-r0 # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: 2.4.1-debian-10-r11 # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
-  MINIO_CONSOLE_VERSION: v0.10.4 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
-  HASURA_VERSION: v2.0.9 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: v0.11.0 # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  HASURA_VERSION: v2.0.10 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.3 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.1.2 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: 1.10.1 # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
@@ -118,7 +118,7 @@ variables:
   REDIS_VERSION: 6.2.6-buster # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.0.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   GITLAB_AUTO_BUILD_VERSION: v1.4.0
-  GITLAB_AUTO_DEPLOY_VERSION: v2.14.0
+  GITLAB_AUTO_DEPLOY_VERSION: v2.15.0
 
 stages:
   - scratch
