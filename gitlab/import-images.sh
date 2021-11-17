@@ -150,6 +150,7 @@ import_images() {
         "bitnami/spark:${BITNAMI_SPARK_VERSION:-3.1.2-debian-10-r0}"
         "bitnami/prometheus:${BITNAMI_PROMETHEUS_VERSION:-2.27.1-debian-10-r13}"
         "bitnami/prometheus-operator:${BITNAMI_PROMETHEUS_OPERATOR_VERSION:-0.48.1-debian-10-r0}"
+        "bitnami/node-exporter:${BITNAMI_NODE_EXPORTER_VERSION:-1.2.2-debian-10-r99}"
         "bitnami/redis:${BITNAMI_REDIS_VERSION:-6.2.4-debian-10-r0}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL11_VERSION:-11.12.0-debian-10-r20}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
