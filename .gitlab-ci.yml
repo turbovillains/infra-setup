@@ -11,7 +11,7 @@ variables:
   GITLAB_VERSION: "14.5.2-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.5.5" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "8.1.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "8.1.1" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:focal-20211006 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "15.1.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -39,9 +39,9 @@ variables:
   CADVISOR_VERSION: "v0.43.0" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.93" # https://github.com/prymitive/karma/releases
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
-  ELASTICSEARCH_VERSION: "7.16.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "7.16.0"
-  KIBANA_VERSION: "7.16.0"
+  ELASTICSEARCH_VERSION: "7.16.1" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "7.16.1"
+  KIBANA_VERSION: "7.16.1"
   CORTEX_VERSION: v1.9.0 # https://github.com/cortexproject/cortex/releases
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 4.4.6-bionic # https://hub.docker.com/_/mongo
@@ -64,7 +64,7 @@ variables:
   GHOST_VERSION: "4.27.2" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   BITNAMI_GHOST_VERSION: "4.24.0-debian-10-r9" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   MATOMO_VERSION: 4.6.2-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: "0.83.5" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: "0.83.6" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.2.0 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTERHUB_NETWORK_TOOLS_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
@@ -72,7 +72,7 @@ variables:
   JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
   JUPYTERHUB_HTTP_PROXY_VERSION: 4.5.0 # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
   REPO2DOCKER_VERSION: 2021.08.0 # https://hub.docker.com/r/jupyter/repo2docker/tags?page=1&ordering=last_updated
-  DIND_VERSION: 20.10.11-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
+  DIND_VERSION: 20.10.12-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTER_VERSION: hub-1.5.0 # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
   RSHINY_VERSION: 4.1.2 # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
