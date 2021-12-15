@@ -18,6 +18,7 @@ brew install \
   yq yj jq \
   kustomize \
   buildpacks/tap/pack \
+  trivy \
   terraform
 
 
