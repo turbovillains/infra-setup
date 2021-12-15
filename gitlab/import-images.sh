@@ -143,8 +143,8 @@ import_images() {
         "jupyter/scipy-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "jupyter/tensorflow-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "jupyter/datascience-notebook:${JUPYTER_VERSION:-016833b15ceb}"
-        "jupyter/pyspark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
-        "jupyter/all-spark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        # "jupyter/pyspark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
+        # "jupyter/all-spark-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "rocker/shiny:${RSHINY_VERSION:-4.1.0}"
         "caprover/caprover:${CAPROVER_VERSION:-1.9.0}"
         "ghcr.io/mikecao/umami:${UMAMI_VERSION:-postgresql-0653570}"
@@ -193,7 +193,10 @@ import_images() {
 
     # For dependabot
     for image in ${images[@]}; do
+        echo "# $(get_name ${image})"
         echo "FROM ${image}"
+        echo "# $(get_name ${image})"
+        echo
     done
 
     for image in ${images[@]}; do
