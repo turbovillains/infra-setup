@@ -5,13 +5,14 @@ variables:
   UBUNTU_VERSION: "focal-20211006" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   ALPINE_VERSION: "3.15.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   GOLANG_VERSION: "1.17.5-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
+  PHP_VERSION: "8.1.0-apache"
   GOLANG_ALPINE_VERSION: "1.17.5-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: "alpine-v14.5.2" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "14.5.2-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.5.5" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "8.1.1" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "8.1.2" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:focal-20211006 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "15.1.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -46,7 +47,7 @@ variables:
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 4.4.6-bionic # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: "5.8.2-apache"   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
-  PGADMIN_VERSION: "6.2"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  PGADMIN_VERSION: "6.3"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.27" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.6.5-focal" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.3.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
@@ -56,15 +57,15 @@ variables:
   BINDERHUB_VERSION: 0.2.0-n850.h8bc0157
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n768.h13978ab # https://hub.docker.com/r/jupyterhub/k8s-image-cleaner/tags
   PIHOLE_VERSION: "v5.8.1" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
-  CLICKHOUSE_VERSION: "21.11.6.7-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
+  CLICKHOUSE_VERSION: "21.12.2.17-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: "v1.4.2" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
-  VERDACCIO_VERSION: "5.3.1" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
+  VERDACCIO_VERSION: "5.3.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "4.29.0" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "4.30.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   BITNAMI_GHOST_VERSION: "4.24.0-debian-10-r9" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   MATOMO_VERSION: 4.6.2-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: "0.83.6" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: "0.83.8" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.2.0 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTERHUB_NETWORK_TOOLS_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated

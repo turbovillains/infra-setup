@@ -67,7 +67,7 @@ import_images() {
         "debian:${DEBIAN_VERSION:-11.0-slim}"
         "ubuntu:${UBUNTU_VERSION:-focal-20210723}"
         "alpine:${ALPINE_VERSION:-3.14.0}"
-        "php:${PHP_VERSION:-8.0.9-apache}"
+        "php:${PHP_VERSION:-8.1.0-apache}"
         "golang:${GOLANG_VERSION:-1.17.3-bullseye}"
         "golang:${GOLANG_ALPINE_VERSION:-1.17.3-alpine3.14}"
         "traefik:${TRAEFIK_VERSION:-latest}"

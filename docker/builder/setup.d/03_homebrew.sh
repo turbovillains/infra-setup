@@ -1,8 +1,8 @@
 
 export HOMEBREW_NO_ANALYTICS=1
 
-export HOMEBREW_BREW_GIT_REMOTE=https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/brew.git
-export HOMEBREW_CORE_GIT_REMOTE=https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/linuxbrew-core.git
+# export HOMEBREW_BREW_GIT_REMOTE=https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/brew.git
+# export HOMEBREW_CORE_GIT_REMOTE=https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/linuxbrew-core.git
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -18,7 +18,7 @@ brew install \
   yq yj jq \
   kustomize \
   buildpacks/tap/pack \
-  trivy \
+  aquasecurity/trivy/trivy \
   terraform
 
 
