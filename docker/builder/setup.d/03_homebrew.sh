@@ -19,7 +19,8 @@ brew install \
   kustomize \
   buildpacks/tap/pack \
   aquasecurity/trivy/trivy \
-  terraform
+  terraform \
+  gh
 
 
 # consul nomad vault envconsul consul-template
