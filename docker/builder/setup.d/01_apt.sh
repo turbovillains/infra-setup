@@ -25,6 +25,7 @@ apt-get -y install unzip \
   curl \
   gnupg2 \
   vim \
+  freeipmi \
   postgresql-client \
   iputils-ping dnsutils \
   software-properties-common \
