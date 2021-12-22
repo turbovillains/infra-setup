@@ -1,7 +1,7 @@
 ---
 variables:
   DOCKER_NAMESPACE: infra
-  DEBIAN_VERSION: "11.1-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
+  DEBIAN_VERSION: "11.2-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_VERSION: "focal-20211006" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   ALPINE_VERSION: "3.15.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   GOLANG_VERSION: "1.17.5-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
@@ -9,13 +9,13 @@ variables:
   GOLANG_ALPINE_VERSION: "1.17.5-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: "alpine-v14.6.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: "14.5.2-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_VERSION: "14.6.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v2.5.5" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  TRAEFIK_VERSION: "v2.5.6" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "8.1.3" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:focal-20211006 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  KEYCLOAK_VERSION: "16.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
+  KEYCLOAK_VERSION: "16.1.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "13.4-buster" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.21.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
   MAILSERVER_VERSION: "release-v7.2.0" # https://hub.docker.com/r/tvial/docker-mailserver/tags?page=1&ordering=last_updated
@@ -36,7 +36,7 @@ variables:
   M3DBNODE_VERSION: v1.3.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.3.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
-  SSL_EXPORTER_VERSION: v2.3.1 # https://github.com/ribbybibby/ssl_exporter/releases
+  SSL_EXPORTER_VERSION: "2.4.0" # https://github.com/ribbybibby/ssl_exporter/releases
   CADVISOR_VERSION: "v0.43.0" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.94" # https://github.com/prymitive/karma/releases
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
@@ -92,8 +92,8 @@ variables:
   BITNAMI_MONGODB_VERSION: 4.4.10-debian-10-r56 # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=4.4
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: 1.1.0-debian-10-r17 # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: 1.21.4-debian-10-r37 # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2021.12.10-debian-10-r1" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
-  BITNAMI_MINIO_CLIENT_VERSION: "2021.12.10-debian-10-r3" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2021.12.20-debian-10-r1" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: "2021.12.20-debian-10-r3" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r277 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.11.0-debian-10-r40 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.11.0-debian-10-r41 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
@@ -115,7 +115,7 @@ variables:
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: 2.7.1 # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.30.2 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
-  ARGOCD_VERSION: v2.2.0 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  ARGOCD_VERSION: v2.2.1 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   REDIS_VERSION: 6.2.6-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.0.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   GITLAB_AUTO_BUILD_VERSION: v1.6.0
@@ -700,7 +700,7 @@ jupyter-notebook:
   stage: build
   parallel:
     matrix:
-      - FLAVOUR: [ "base", "minimal", "r", "scipy", "tensorflow", "datascience" ]   # "pyspark", "all-spark"
+      - FLAVOUR: [ "base", "minimal", "r", "scipy", "tensorflow", "datascience", "pyspark", "all-spark" ]
         NOTEBOOK: [ "notebook" ]
   script:
     - ./gitlab/build-image.sh jupyter-notebook ${DOCKER_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
