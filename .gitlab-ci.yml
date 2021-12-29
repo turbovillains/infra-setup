@@ -57,13 +57,13 @@ variables:
   BINDERHUB_VERSION: 0.2.0-n850.h8bc0157
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n768.h13978ab # https://hub.docker.com/r/jupyterhub/k8s-image-cleaner/tags
   PIHOLE_VERSION: "v5.8.1" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
-  CLICKHOUSE_VERSION: "21.12.2.17-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
+  CLICKHOUSE_VERSION: "21.12.3.32-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: "v1.4.3" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
-  VERDACCIO_VERSION: "5.3.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
+  VERDACCIO_VERSION: "5.4.0" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: "4.32.0" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
-  BITNAMI_GHOST_VERSION: "4.24.0-debian-10-r9" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  BITNAMI_GHOST_VERSION: "4.32.0-debian-10-r11" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   MATOMO_VERSION: 4.6.2-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.83.8" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
@@ -74,7 +74,7 @@ variables:
   JUPYTERHUB_HTTP_PROXY_VERSION: 4.5.0 # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
   REPO2DOCKER_VERSION: 2021.08.0 # https://hub.docker.com/r/jupyter/repo2docker/tags?page=1&ordering=last_updated
   DIND_VERSION: 20.10.12-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
-  JUPYTER_VERSION: hub-2.0.0 # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
+  JUPYTER_VERSION: hub-2.0.1 # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
   RSHINY_VERSION: 4.1.2 # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
   # CLOUDIDE_BASE: ubuntu:focal-20211006 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
@@ -92,8 +92,8 @@ variables:
   BITNAMI_MONGODB_VERSION: 4.4.10-debian-10-r56 # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=4.4
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: 1.1.0-debian-10-r17 # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: 1.21.4-debian-10-r37 # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2021.12.20-debian-10-r1" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
-  BITNAMI_MINIO_CLIENT_VERSION: "2021.12.20-debian-10-r3" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2021.12.29-debian-10-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: "2021.12.29-debian-10-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r277 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.11.0-debian-10-r40 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.11.0-debian-10-r41 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
@@ -106,7 +106,7 @@ variables:
   BITNAMI_KUBEAPPS_KUBEOPS_VERSION: 2.4.2-scratch-r0 # https://hub.docker.com/r/bitnami/kubeapps-kubeops/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: 2.4.2-scratch-r0 # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: 2.4.2-debian-10-r7 # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
-  MINIO_CONSOLE_VERSION: "v0.12.9" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: "v0.13.1" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.1.1 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.3 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.0 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
