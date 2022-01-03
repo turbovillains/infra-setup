@@ -120,6 +120,7 @@ variables:
   LISTMONK_VERSION: v2.0.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   GITLAB_AUTO_BUILD_VERSION: v1.6.0
   GITLAB_AUTO_DEPLOY_VERSION: v2.18.0
+  VAULTWARDEN_VERSION: "1.23.1"
 
 stages:
   - scratch
@@ -279,6 +280,14 @@ gitlab:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_VERSION \
+        --build-arg INFRA_VERSION
+
+vaultwarden:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VAULTWARDEN_VERSION \
         --build-arg INFRA_VERSION
 
 radius:
