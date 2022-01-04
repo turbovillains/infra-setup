@@ -20,7 +20,8 @@ brew install \
   buildpacks/tap/pack \
   aquasecurity/trivy/trivy \
   terraform \
-  gh
+  gh \
+  awscli azure-cli
 
 
 # consul nomad vault envconsul consul-template
