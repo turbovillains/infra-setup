@@ -3,13 +3,13 @@
 brew install nvm
 
 cat << EOF | tee /root/.npmrc | tee /home/${BUILDER_USER}/.npmrc
-registry=https://npm.lab03.noroutine.me/
-strict-ssl=false
+registry=https://nexus.nrtn.dev/repository/npm/
+# strict-ssl=false
 EOF
 
 cat << EOF | tee /root/.yarnrc | tee /home/${BUILDER_USER}/.yarnrc
-registry "https://npm.lab03.noroutine.me/"
-strict-ssl false
+registry "https://nexus.nrtn.dev/repository/npm/"
+# strict-ssl false
 EOF
 
 sudo -H -u ${BUILDER_USER} bash -s <<'EOF'
