@@ -21,10 +21,8 @@ build: info
 		-t ${DOCKER_HUB}/infra/pack:20 .
 
 	@pack builder create ${DOCKER_HUB}/infra/buildpacks:${BUILDPACKS_VERSION} --config builder-20.toml --pull-policy if-not-present
-	# @pack builder create ${DOCKER_HUB}/infra/spring-boot-buildpacks:${BUILDPACKS_VERSION} --config spring-boot-builder-20.toml --pull-policy if-not-present
 
 publish: build
 	@docker push ${DOCKER_HUB}/infra/pack-build:20
 	@docker push ${DOCKER_HUB}/infra/pack:20
 	@docker push ${DOCKER_HUB}/infra/buildpacks:${BUILDPACKS_VERSION}
-	# @docker push ${DOCKER_HUB}/infra/spring-boot-buildpacks:${BUILDPACKS_VERSION}
