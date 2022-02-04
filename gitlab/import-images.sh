@@ -71,6 +71,7 @@ import_images() {
         "golang:${GOLANG_VERSION:-1.17.3-bullseye}"
         "golang:${GOLANG_ALPINE_VERSION:-1.17.3-alpine3.14}"
         "traefik:${TRAEFIK_VERSION:-latest}"
+        "sonatype/nexus3:${NEXUS_VERSION:-3.37.3}"
         "squidfunk/mkdocs-material:${MKDOCS_VERSION:-latest}"
         "freeradius/freeradius-server:${FREERADIUS_VERSION:-latest}"
         "quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-11.0.2}"
