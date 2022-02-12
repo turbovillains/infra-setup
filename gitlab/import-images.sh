@@ -197,6 +197,7 @@ import_images() {
         "mailu/clamav:${MAILU_VERSION:-1.9.7}"
         "mailu/postfix:${MAILU_VERSION:-1.9.7}"
         "mailu/roundcube:${MAILU_VERSION:-1.9.7}"
+        "boky/postfix:${BOKY_POSTFIX_VERSION:-v3.4.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

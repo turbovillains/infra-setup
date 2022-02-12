@@ -124,6 +124,7 @@ variables:
   GITLAB_AUTO_DEPLOY_VERSION: v2.21.0
   VAULTWARDEN_VERSION: "1.24.0"
   MAILU_VERSION: "1.9.12"
+  BOKY_POSTFIX_VERSION: v3.4.0
 
 stages:
   - scratch
@@ -1116,6 +1117,14 @@ argocd:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGOCD_VERSION \
+        --build-arg INFRA_VERSION
+
+boky-postfix:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BOKY_POSTFIX_VERSION \
         --build-arg INFRA_VERSION
 
 dex:
