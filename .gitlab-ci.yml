@@ -12,7 +12,7 @@ variables:
   GITLAB_VERSION: "14.7.2-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   NEXUS_VERSION: "3.37.3" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v2.6.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  TRAEFIK_VERSION: "v2.6.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "8.1.11" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:focal-20220113 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
@@ -39,7 +39,7 @@ variables:
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
   SSL_EXPORTER_VERSION: "2.4.0" # https://github.com/ribbybibby/ssl_exporter/releases
   CADVISOR_VERSION: "v0.43.0" # https://github.com/google/cadvisor/releases
-  KARMA_VERSION: "v0.97" # https://github.com/prymitive/karma/releases
+  KARMA_VERSION: "v0.98" # https://github.com/prymitive/karma/releases
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
   ELASTICSEARCH_VERSION: "8.0.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
   LOGSTASH_VERSION: "8.0.0"
