@@ -77,7 +77,6 @@ import_images() {
         "quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-11.0.2}"
         "postgres:${POSTGRES_VERSION:-13.0}"
         "atlassian/jira-software:${JIRA_VERSION:-8.13.0}"
-        "tvial/docker-mailserver:${MAILSERVER_VERSION:-release-v7.1.0}"
         "nextcloud:${NEXTCLOUD_VERSION:-20.0.0-fpm-alpine}"
         "haproxytech/haproxy-debian:${HAPROXY_VERSION:-2.3.4}"
         "minio/minio:${MINIO_VERSION:-RELEASE.2021-02-07T01-31-02Z}"
@@ -190,13 +189,6 @@ import_images() {
         "registry.gitlab.com/gitlab-org/cluster-integration/auto-build-image:${GITLAB_AUTO_BUILD_VERSION:-v1.0.0}"
         "registry.gitlab.com/gitlab-org/cluster-integration/auto-deploy-image:${GITLAB_AUTO_DEPLOY_VERSION:-v2.6.0}"
         "vaultwarden/server:${VAULTWARDEN_VERSION:-1.23.1}"
-        "mailu/dovecot:${MAILU_VERSION:-1.9.7}"
-        "mailu/rspamd:${MAILU_VERSION:-1.9.7}"
-        "mailu/admin:${MAILU_VERSION:-1.9.7}"
-        "mailu/nginx:${MAILU_VERSION:-1.9.7}"
-        "mailu/clamav:${MAILU_VERSION:-1.9.7}"
-        "mailu/postfix:${MAILU_VERSION:-1.9.7}"
-        "mailu/roundcube:${MAILU_VERSION:-1.9.7}"
         "boky/postfix:${BOKY_POSTFIX_VERSION:-v3.4.0}"
     )
 
