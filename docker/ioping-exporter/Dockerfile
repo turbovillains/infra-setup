@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN go get github.com/fihuer/ioping_exporter
+RUN go install github.com/fihuer/ioping_exporter@latest
 
 FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION}
 
