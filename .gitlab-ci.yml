@@ -11,14 +11,14 @@ variables:
   ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: "alpine-v14.9.1" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "14.9.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
-  NEXUS_VERSION: "3.37.3" # https://hub.docker.com/r/sonatype/nexus3/tags
+  NEXUS_VERSION: "3.38.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.6.2" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "8.2.7" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "17.0.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
-  POSTGRES_VERSION: "14.1-bullseye" # https://hub.docker.com/_/postgres
+  POSTGRES_VERSION: "14.2-bullseye" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.22.1" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "23.0.3-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: "v1.1.4" # https://github.com/librespeed/speedtest-go/releases
@@ -79,7 +79,7 @@ variables:
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: 1.10.1 # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
-  BITNAMI_GHOST_VERSION: "4.41.2-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  BITNAMI_GHOST_VERSION: "4.41.3-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   BITNAMI_KEYCLOAK_VERSION: 16.1.1-debian-10-r50 # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=16
   BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r43 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.33.5-debian-10-r7 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
@@ -123,6 +123,8 @@ variables:
   GITLAB_AUTO_DEPLOY_VERSION: v2.23.0
   VAULTWARDEN_VERSION: "1.24.0"
   BOKY_POSTFIX_VERSION: v3.4.0
+  MEMCACHED_VERSION: "1.6.14-alpine3.15" # https://hub.docker.com/_/memcached?tab=tags&page=1
+  CRYPTGEON_VERSION: "1.4.1" # https://hub.docker.com/r/cupcakearmy/cryptgeon/tags
 
 stages:
   - scratch
@@ -1140,6 +1142,22 @@ boky-postfix:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BOKY_POSTFIX_VERSION \
+        --build-arg INFRA_VERSION
+
+cryptgeon:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CRYPTGEON_VERSION \
+        --build-arg INFRA_VERSION
+
+memcached:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg MEMCACHED_VERSION \
         --build-arg INFRA_VERSION
 
 dex:

@@ -193,6 +193,8 @@ import_images() {
         "registry.gitlab.com/gitlab-org/cluster-integration/auto-deploy-image:${GITLAB_AUTO_DEPLOY_VERSION:-v2.6.0}"
         "vaultwarden/server:${VAULTWARDEN_VERSION:-1.23.1}"
         "boky/postfix:${BOKY_POSTFIX_VERSION:-v3.4.0}"
+        "cupcakearmy/cryptgeon:${CRYPTGEON_VERSION:-1.4.1}"
+        "memcached:${MEMCACHED_VERSION:-1.6.14-alpine3.15}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

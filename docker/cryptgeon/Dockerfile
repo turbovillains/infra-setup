@@ -1,0 +1,15 @@
+ARG DOCKER_HUB
+ARG INFRA_VERSION
+ARG CRYPTGEON_VERSION
+
+FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
+
+FROM ${DOCKER_HUB}/cupcakearmy/cryptgeon:${CRYPTGEON_VERSION}
+
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+
+# full bundle of CA certs set from Mozilla + Noroutine CA certs
+USER 0
+RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
+RUN update-ca-certificates
