@@ -177,6 +177,7 @@ import_images() {
         "bitnami/kubeapps-asset-syncer:${BITNAMI_KUBEAPPS_ASSET_SYNCER:-2.3.3-scratch-r0}"
         "bitnami/kubeapps-kubeops:${BITNAMI_KUBEAPPS_KUBEOPS_VERSION:-2.3.3-scratch-r0}"
         "bitnami/kubeapps-assetsvc:${BITNAMI_KUBEAPPS_ASSETSVC_VERSION:-2.3.3-scratch-r0}"
+        "bitnami/kubeapps-apis:${BITNAMI_KUBEAPPS_APIS_VERSION:-2.4.3-debian-10-r42}"
         "bitnami/kubeapps-pinniped-proxy:${BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION:-2.3.3-debian-10-r2}"
         "minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
