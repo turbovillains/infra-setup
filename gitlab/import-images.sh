@@ -162,6 +162,7 @@ import_images() {
         "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
         "bitnami/mariadb:${BITNAMI_MARIADB_VERSION:-10.5.10-debian-10-r34}"
         "bitnami/mongodb:${BITNAMI_MONGODB_VERSION:-4.4.7-debian-10-r3}"
+        "bitnami/memcached:${BITNAMI_MEMCACHED_VERSION:-1.6.14-debian-10-r42}"
         "bitnami/nginx-ingress-controller:${BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION:-0.47.0-debian-10-r10}"
         "bitnami/nginx:${BITNAMI_NGINX_VERSION:-1.21.0-debian-10-r13}"
         "bitnami/minio:${BITNAMI_MINIO_VERSION:-2021.6.17-debian-10-r5}"
