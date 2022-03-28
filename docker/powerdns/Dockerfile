@@ -19,14 +19,14 @@ echo "Pin-Priority: 600"                ;\
 ) > /etc/apt/preferences.d/pdns
 
 RUN (                                                                       \
-echo "deb [arch=amd64] http://repo.powerdns.com/debian buster-auth-45 main" \
+echo "deb [arch=amd64] http://repo.powerdns.com/debian bullseye-auth-47 main" \
 ) > /etc/apt/sources.list.d/pdns.list
 
 RUN curl -s https://repo.powerdns.com/FD380FBB-pub.asc | apt-key add -
 
-RUN apt-get update && apt-get install -y \
-    pdns-server pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-lua2 \
- && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -qyy && \
+    apt-get install -qyy pdns-server pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-lua2 && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
