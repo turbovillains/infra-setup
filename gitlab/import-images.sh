@@ -194,12 +194,52 @@ import_images() {
         "boky/postfix:${BOKY_POSTFIX_VERSION:-v3.4.0}"
         "cupcakearmy/cryptgeon:${CRYPTGEON_VERSION:-1.4.1}"
         "memcached:${MEMCACHED_VERSION:-1.6.14-alpine3.15}"
+        # k8s
         "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
         "k8s.gcr.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
+        # calico
+        "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
+        "calico/typha:${CALICO_VERSION:-v3.22.1}"
+        "calico/ctl:${CALICO_VERSION:-v3.22.1}"
+        "calico/node:${CALICO_VERSION:-v3.22.1}"
+        "calico/cni:${CALICO_VERSION:-v3.22.1}"
+        "calico/apiserver:${CALICO_VERSION:-v3.22.1}"
+        "calico/kube-controllers:${CALICO_VERSION:-v3.22.1}"
+        "calico/dikastes:${CALICO_VERSION:-v3.22.1}"
+        "calico/pod2daemon-flexvol:${CALICO_VERSION:-v3.22.1}"
+        # longhorn
+        "longhornio/longhorn-manager:v1.2.4"
+        "longhornio/csi-node-driver-registrar:v2.3.0"
+        "longhornio/longhorn-engine:v1.2.2"
+        "longhornio/longhorn-engine:v1.2.3"
+        "longhornio/longhorn-engine:v1.2.4"
+        "longhornio/longhorn-instance-manager:v1_20220303"
+        "longhornio/csi-snapshotter:v3.0.3"
+        "longhornio/csi-resizer:v1.2.0"
+        "longhornio/csi-provisioner:v2.1.2"
+        "longhornio/csi-attacher:v3.2.1"
+        "longhornio/longhorn-ui:v1.2.4"
+        # vsphere csi/cpi
+        "gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.6"
+        "gcr.io/cloud-provider-vsphere/csi/release/driver:v2.5.1"
+        "gcr.io/cloud-provider-vsphere/csi/release/syncer:v2.5.1"
+        "k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.0"
+        "k8s.gcr.io/sig-storage/livenessprobe:v2.6.0"
+        "k8s.gcr.io/sig-storage/csi-attacher:v3.4.0"
+        "k8s.gcr.io/sig-storage/csi-resizer:v1.4.0"
+        "k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0"
+        # consul
+        "hashicorp/consul:1.11.4"
+        "hashicorp/consul-k8s-control-plane:0.41.1"
+        "envoyproxy/envoy-alpine:v1.21.1"
+        # prometheus
+        "jimmidyson/configmap-reload:${CONFIGMAP_RELOAD_VERSION:-v0.5.0}"
+        # certmanager shit
+        "vstadtmueller/cert-manager-webhook-powerdns:main"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
