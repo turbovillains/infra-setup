@@ -61,9 +61,6 @@ line() {
 
 import_images() {
     declare -a images=(
-        "${LATEX_BASE:-ubuntu:focal}"
-        "${CLOUDIDE_BASE:-ubuntu:focal}"
-        "debian:10.10-slim"
         "debian:${DEBIAN_VERSION:-11.0-slim}"
         "ubuntu:${UBUNTU_JAMMY_VERSION:-jammy-20220315}"
         "ubuntu:${UBUNTU_FOCAL_VERSION:-focal-20210723}"
@@ -197,6 +194,12 @@ import_images() {
         "boky/postfix:${BOKY_POSTFIX_VERSION:-v3.4.0}"
         "cupcakearmy/cryptgeon:${CRYPTGEON_VERSION:-1.4.1}"
         "memcached:${MEMCACHED_VERSION:-1.6.14-alpine3.15}"
+        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
+        "k8s.gcr.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
+        "k8s.gcr.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
+        "k8s.gcr.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
+        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
+        "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

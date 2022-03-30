@@ -11,9 +11,9 @@ variables:
   ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: "alpine-v14.9.1" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "14.9.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
-  NEXUS_VERSION: "3.38.0" # https://hub.docker.com/r/sonatype/nexus3/tags
+  NEXUS_VERSION: "3.38.1" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v2.6.2" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  TRAEFIK_VERSION: "v2.7" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "8.2.8" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
@@ -118,7 +118,7 @@ variables:
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: 2.8.1 # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.31.1 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
-  ARGOCD_VERSION: v2.3.2 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  ARGOCD_VERSION: v2.3.3 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   REDIS_VERSION: 6.2.6-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   GITLAB_AUTO_BUILD_VERSION: v1.11.0
@@ -127,6 +127,9 @@ variables:
   BOKY_POSTFIX_VERSION: v3.5.0
   MEMCACHED_VERSION: "1.6.14-alpine3.15" # https://hub.docker.com/_/memcached?tab=tags&page=1
   CRYPTGEON_VERSION: "1.4.1" # https://hub.docker.com/r/cupcakearmy/cryptgeon/tags
+  K8S_PAUSE_VERSION: "3.7"
+  K8S_VERSION: "v1.23.5"
+  K8S_COREDNS_VERSION: "v1.8.6"
 
 stages:
   - scratch
@@ -356,6 +359,13 @@ traefik:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TRAEFIK_VERSION
+
+pause:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg K8S_PAUSE_VERSION
 
 # latex:
 #   stage: build
