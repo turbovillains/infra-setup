@@ -65,6 +65,7 @@ import_images() {
         "ubuntu:${UBUNTU_JAMMY_VERSION:-jammy-20220315}"
         "ubuntu:${UBUNTU_FOCAL_VERSION:-focal-20210723}"
         "alpine:${ALPINE_VERSION:-3.14.0}"
+        "busybox:${BUSYBOX_VERSION:-1.34.1}"
         "php:${PHP_VERSION:-8.1.0-apache}"
         "golang:${GOLANG_VERSION:-1.17.3-bullseye}"
         "golang:${GOLANG_ALPINE_VERSION:-1.17.3-alpine3.14}"
@@ -183,6 +184,7 @@ import_images() {
         "hasura/graphql-engine:${HASURA_VERSION:-v2.0.0-beta.2}"
         "paulbouwer/hello-kubernetes:${HELLO_VERSION:-1.10.0}"
         "stakater/reloader:${RELOADER_VERSION:-v0.0.97}"
+        "jimmidyson/configmap-reload:${CONFIGMAP_RELOAD_VERSION:-v0.5.0}"
         "registry:${DOCKER_REGISTRY_VERSION:-2.7.1}"
         "ghcr.io/dexidp/dex:${DEX_VERSION:-v2.30.0}"
         "quay.io/argoproj/argocd:${ARGOCD_VERSION:-v2.1.0-rc2}"
@@ -236,8 +238,6 @@ import_images() {
         "hashicorp/consul:1.11.4"
         "hashicorp/consul-k8s-control-plane:0.41.1"
         "envoyproxy/envoy-alpine:v1.21.1"
-        # prometheus
-        "jimmidyson/configmap-reload:${CONFIGMAP_RELOAD_VERSION:-v0.5.0}"
         # certmanager shit
         "vstadtmueller/cert-manager-webhook-powerdns:main"
     )
