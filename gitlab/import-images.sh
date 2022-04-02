@@ -204,6 +204,10 @@ import_images() {
         "envoyproxy/envoy-alpine:${ENVOY_VERSION:-v1.21.1}"
         "hashicorp/vault:${VAULT_VERSION:-1.10.0}"
 
+        # kafka
+        "quay.io/strimzi/operator:${STRIMZI_OPERATOR_VERSION:-0.28.0}"
+        "quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION:-0.28.0}-kafka-${STRIMZI_KAFKA_VERSION:-3.1.0}"
+
         # k8s
         "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
         "k8s.gcr.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
