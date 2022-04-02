@@ -170,6 +170,7 @@ import_images() {
         "bitnami/metallb-speaker:${BITNAMI_METALLB_SPEAKER_VERSION:-0.10.2-debian-10-r31}"
         "bitnami/grafana:${BITNAMI_GRAFANA_VERSION:-8.0.6-debian-10-r3}"
         "bitnami/consul:${BITNAMI_CONSUL_VERSION:-1.11.4-debian-10-r30}"
+        "bitnami/nats:${BITNAMI_NATS_VERSION:-2.7.4-debian-10-r17}"
         "bitnami/kube-state-metrics:${BITNAMI_KUBE_STATE_METRICS_VERSION:-2.1.1-debian-10-r14}"
         "bitnami/metrics-server:${BITNAMI_METRICS_SERVER_VERSION:-0.5.0-debian-10-r59}"
         "bitnami/kubeapps-dashboard:${BITNAMI_KUBEAPPS_DASHBOARD_VERSION:-2.3.3-scratch-r2}"
@@ -197,6 +198,8 @@ import_images() {
         "boky/postfix:${BOKY_POSTFIX_VERSION:-v3.4.0}"
         "cupcakearmy/cryptgeon:${CRYPTGEON_VERSION:-1.4.1}"
         "memcached:${MEMCACHED_VERSION:-1.6.14-alpine3.15}"
+        "connecteverything/nats-operator:${NATS_OPERATOR_VERSION:-0.7.4}"
+        "nats:${NATS_VERSION:-2.7.4-alpine3.15}"
 
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"
