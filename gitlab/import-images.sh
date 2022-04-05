@@ -93,7 +93,7 @@ import_images() {
         "braedon/prometheus-es-exporter:${PROMETHEUS_ES_EXPORTER_VERSION:-latest}"
         "ribbybibby/ssl-exporter:${SSL_EXPORTER_VERSION:-latest}"
         "gcr.io/cadvisor/cadvisor:${CADVISOR_VERSION:-latest}"
-        "lmierzwa/karma:${KARMA_VERSION:-latest}"
+        "ghcr.io/prymitive/karma:${KARMA_VERSION:-latest}"
         "quay.io/cortexproject/cortex:${CORTEX_VERSION:-latest}"
         "docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION:-latest}"
         "docker.elastic.co/logstash/logstash:${LOGSTASH_VERSION:-latest}"
