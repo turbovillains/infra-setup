@@ -200,6 +200,7 @@ import_images() {
         "memcached:${MEMCACHED_VERSION:-1.6.14-alpine3.15}"
         "connecteverything/nats-operator:${NATS_OPERATOR_VERSION:-0.7.4}"
         "nats:${NATS_VERSION:-2.7.4-alpine3.15}"
+        "masipcat/wireguard-go:${WIREGUARD_VERSION:-0.0.20220316}"
 
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"

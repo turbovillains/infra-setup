@@ -6,12 +6,13 @@ ARG SPEEDTEST_VERSION=v1.1.4
 
 # ENV GOARCH arm64
 ENV GOARCH amd64
-RUN apk add --no-cache git gcc ca-certificates libc-dev \
-&& mkdir -p /go/src/github.com/librespeed/ \
-&& cd /go/src/github.com/librespeed/ \
-&& git clone https://github.com/librespeed/speedtest-go.git \
-&& cd speedtest-go \
-&& git checkout ${SPEEDTEST_VERSION}
+RUN apk add --no-cache git gcc ca-certificates libc-dev && \
+  mkdir -p /go/src/github.com/librespeed/ && \
+  cd /go/src/github.com/librespeed/ && \
+  git clone https://github.com/librespeed/speedtest-go.git && \
+  cd speedtest-go && \
+  git checkout ${SPEEDTEST_VERSION}
+
 WORKDIR /go/src/github.com/librespeed/speedtest-go
 RUN go get ./ && go build -ldflags "-w -s" -trimpath -o speedtest main.go
 
