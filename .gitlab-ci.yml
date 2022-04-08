@@ -123,6 +123,8 @@ variables:
   DOCKER_REGISTRY_VERSION: "2.8.1" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.31.1 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
   ARGOCD_VERSION: v2.3.3 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  YTT_VERSION: v0.40.1 # https://github.com/vmware-tanzu/carvel-ytt/releases
+  YTT_HASH: 11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5
   REDIS_VERSION: 6.2.6-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   GITLAB_AUTO_BUILD_VERSION: v1.12.0
@@ -161,17 +163,20 @@ before_script:
     echo "Infra: ${INFRA_VERSION}"
 
 import-images:
+  interruptible: true
   stage: scratch
   script:
     - ./gitlab/${CI_JOB_NAME}.sh
 
 noroutine-ca:
+  interruptible: true
   stage: scratch
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 keycloak-themes:
+  interruptible: true
   stage: prebuild
   script:
     - |
@@ -180,6 +185,7 @@ keycloak-themes:
       pack build --clear-cache --publish ${KEYCLOAK_THEMES_IMAGE}
 
 ingress-default-backend:
+  interruptible: true
   stage: prebuild
   script:
     - |
@@ -188,6 +194,7 @@ ingress-default-backend:
       pack build --clear-cache --publish ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 debian:
+  interruptible: true
   stage: base
   script:
     - |
@@ -196,6 +203,7 @@ debian:
         --build-arg INFRA_VERSION
 
 ubuntu20:
+  interruptible: true
   stage: base
   script:
     - |
@@ -204,6 +212,7 @@ ubuntu20:
         --build-arg INFRA_VERSION
 
 ubuntu22:
+  interruptible: true
   stage: base
   script:
     - |
@@ -212,6 +221,7 @@ ubuntu22:
         --build-arg INFRA_VERSION
 
 alpine:
+  interruptible: true
   stage: base
   script:
     - |
@@ -220,6 +230,7 @@ alpine:
         --build-arg INFRA_VERSION
 
 busybox:
+  interruptible: true
   stage: base
   script:
     - |
@@ -229,6 +240,7 @@ busybox:
         --build-arg INFRA_VERSION
 
 heroku-20:
+  interruptible: true
   stage: stacks
   script:
     - |
@@ -238,6 +250,7 @@ heroku-20:
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 heroku-22:
+  interruptible: true
   stage: stacks
   script:
     - |
@@ -247,6 +260,7 @@ heroku-22:
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 builder:
+  interruptible: true
   stage: build
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
@@ -259,6 +273,7 @@ builder:
         --build-arg ACTIONS_RUNNER_VERSION
 
 ocsp-responder:
+  interruptible: true
   stage: build
   script:
     - |
@@ -267,6 +282,7 @@ ocsp-responder:
         --build-arg ALPINE_VERSION
 
 openvpn:
+  interruptible: true
   stage: build
   script:
     - |
@@ -275,6 +291,7 @@ openvpn:
         --build-arg ALPINE_VERSION
 
 wireguard:
+  interruptible: true
   stage: build
   script:
     - |
@@ -283,6 +300,7 @@ wireguard:
         --build-arg WIREGUARD_VERSION
 
 auto-build:
+  interruptible: true
   stage: build
   script:
     - |
@@ -290,6 +308,7 @@ auto-build:
         --build-arg GITLAB_AUTO_BUILD_VERSION
 
 auto-deploy:
+  interruptible: true
   stage: build
   script:
     - |
@@ -297,6 +316,7 @@ auto-deploy:
         --build-arg GITLAB_AUTO_DEPLOY_VERSION
 
 heroku-buildpacks:
+  interruptible: true
   stage: buildpacks
   script:
     - |
@@ -333,6 +353,7 @@ heroku-buildpacks:
         BUILDPACKS_BASE_VERSION=${INFRA_VERSION}
 
 buildpacksio-lifecycle:
+  interruptible: true
   stage: buildpacks
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
@@ -340,6 +361,7 @@ buildpacksio-lifecycle:
       --build-arg INFRA_VERSION
 
 gitlab-runner:
+  interruptible: true
   stage: build
   script:
     - |
@@ -348,6 +370,7 @@ gitlab-runner:
         --build-arg INFRA_VERSION
 
 gitlab:
+  interruptible: true
   stage: build
   script:
     - |
@@ -356,6 +379,7 @@ gitlab:
         --build-arg INFRA_VERSION
 
 nexus:
+  interruptible: true
   stage: build
   script:
     - |
@@ -364,6 +388,7 @@ nexus:
         --build-arg INFRA_VERSION
 
 vaultwarden:
+  interruptible: true
   stage: build
   script:
     - |
@@ -372,6 +397,7 @@ vaultwarden:
         --build-arg INFRA_VERSION
 
 radius:
+  interruptible: true
   stage: build
   script:
     - |
@@ -379,6 +405,7 @@ radius:
         --build-arg FREERADIUS_VERSION
 
 mkdocs:
+  interruptible: true
   stage: build
   script:
     - |
@@ -386,6 +413,7 @@ mkdocs:
         --build-arg MKDOCS_VERSION
 
 traefik:
+  interruptible: true
   stage: build
   script:
     - |
@@ -393,6 +421,7 @@ traefik:
         --build-arg TRAEFIK_VERSION
 
 pause:
+  interruptible: true
   stage: build
   script:
     - |
@@ -407,6 +436,7 @@ pause:
 #         --build-arg LATEX_BASE
 
 powerdns:
+  interruptible: true
   stage: build
   script:
     - |
@@ -415,6 +445,7 @@ powerdns:
         --build-arg INFRA_VERSION
 
 unbound:
+  interruptible: true
   stage: build
   script:
     - |
@@ -423,6 +454,7 @@ unbound:
         --build-arg INFRA_VERSION
 
 keycloak:
+  interruptible: true
   stage: build
   script:
     - |
@@ -431,6 +463,7 @@ keycloak:
         --build-arg KEYCLOAK_THEMES_IMAGE
 
 postgres:
+  interruptible: true
   stage: build
   script:
     - |
@@ -438,6 +471,7 @@ postgres:
         --build-arg POSTGRES_VERSION
 
 jira:
+  interruptible: true
   stage: build
   script:
     - |
@@ -445,6 +479,7 @@ jira:
         --build-arg JIRA_VERSION
 
 nextcloud:
+  interruptible: true
   stage: build
   script:
     - |
@@ -453,6 +488,7 @@ nextcloud:
         --build-arg INFRA_VERSION
 
 speedtest:
+  interruptible: true
   stage: build
   script:
     - |
@@ -462,6 +498,7 @@ speedtest:
         --build-arg ALPINE_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/alpine:${INFRA_VERSION}
 
 haproxy:
+  interruptible: true
   stage: build
   script:
     - |
@@ -469,6 +506,7 @@ haproxy:
         --build-arg HAPROXY_VERSION
 
 minio:
+  interruptible: true
   stage: build
   script:
     - |
@@ -476,6 +514,7 @@ minio:
         --build-arg MINIO_VERSION
 
 minio-console:
+  interruptible: true
   stage: build
   script:
     - |
@@ -484,6 +523,7 @@ minio-console:
         --build-arg INFRA_VERSION
 
 prometheus:
+  interruptible: true
   stage: build
   script:
     - |
@@ -491,6 +531,7 @@ prometheus:
         --build-arg PROMETHEUS_VERSION
 
 karma:
+  interruptible: true
   stage: build
   script:
     - |
@@ -498,6 +539,7 @@ karma:
         --build-arg KARMA_VERSION
 
 alertmanager:
+  interruptible: true
   stage: build
   script:
     - |
@@ -505,6 +547,7 @@ alertmanager:
         --build-arg ALERTMANAGER_VERSION
 
 pushgateway:
+  interruptible: true
   stage: build
   script:
     - |
@@ -512,6 +555,7 @@ pushgateway:
         --build-arg PUSHGATEWAY_VERSION
 
 blackbox-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -519,6 +563,7 @@ blackbox-exporter:
         --build-arg BLACKBOX_EXPORTER_VERSION
 
 snmp-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -526,6 +571,7 @@ snmp-exporter:
         --build-arg SNMP_EXPORTER_VERSION
 
 ipmi-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -535,6 +581,7 @@ ipmi-exporter:
         --build-arg DEBIAN_VERSION
 
 cadvisor:
+  interruptible: true
   stage: build
   script:
     - |
@@ -542,6 +589,7 @@ cadvisor:
         --build-arg CADVISOR_VERSION
 
 node-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -549,6 +597,7 @@ node-exporter:
         --build-arg NODE_EXPORTER_VERSION
 
 consul-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -556,6 +605,7 @@ consul-exporter:
         --build-arg CONSUL_EXPORTER_VERSION
 
 prometheus-es-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -563,6 +613,7 @@ prometheus-es-exporter:
         --build-arg PROMETHEUS_ES_EXPORTER_VERSION
 
 ssl-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -570,6 +621,7 @@ ssl-exporter:
         --build-arg SSL_EXPORTER_VERSION
 
 rsyslog:
+  interruptible: true
   stage: build
   script:
     - |
@@ -577,6 +629,7 @@ rsyslog:
         --build-arg DEBIAN_VERSION
 
 squid:
+  interruptible: true
   stage: build
   script:
     - |
@@ -586,6 +639,7 @@ squid:
         --build-arg SQUID_VERSION
 
 ioping-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -594,6 +648,7 @@ ioping-exporter:
         --build-arg DEBIAN_VERSION
 
 ldap-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -601,6 +656,7 @@ ldap-exporter:
         --build-arg LDAP_EXPORTER_VERSION
 
 grafana:
+  interruptible: true
   stage: build
   script:
     - |
@@ -608,6 +664,7 @@ grafana:
         --build-arg GRAFANA_VERSION
 
 m3dbnode:
+  interruptible: true
   stage: build
   script:
     - |
@@ -615,6 +672,7 @@ m3dbnode:
         --build-arg M3DBNODE_VERSION
 
 m3coordinator:
+  interruptible: true
   stage: build
   script:
     - |
@@ -622,6 +680,7 @@ m3coordinator:
         --build-arg M3COORDINATOR_VERSION
 
 cortex:
+  interruptible: true
   stage: build
   script:
     - |
@@ -629,6 +688,7 @@ cortex:
         --build-arg CORTEX_VERSION
 
 elasticsearch:
+  interruptible: true
   stage: build
   script:
     - |
@@ -636,6 +696,7 @@ elasticsearch:
         --build-arg ELASTICSEARCH_VERSION
 
 logstash:
+  interruptible: true
   stage: build
   script:
     - |
@@ -643,12 +704,14 @@ logstash:
         --build-arg LOGSTASH_VERSION
 
 kibana:
+  interruptible: true
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KIBANA_VERSION
 mongo:
+  interruptible: true
   stage: build
   script:
     - |
@@ -656,6 +719,7 @@ mongo:
         --build-arg MONGO_VERSION
 
 alerta:
+  interruptible: true
   stage: build
   script:
     - |
@@ -664,6 +728,7 @@ alerta:
         --build-arg INFRA_VERSION
 
 wordpress:
+  interruptible: true
   stage: build
   script:
     - |
@@ -671,6 +736,7 @@ wordpress:
         --build-arg WORDPRESS_VERSION
 
 pgadmin:
+  interruptible: true
   stage: build
   script:
     - |
@@ -678,6 +744,7 @@ pgadmin:
         --build-arg PGADMIN_VERSION
 
 mysql:
+  interruptible: true
   stage: build
   script:
     - |
@@ -685,6 +752,7 @@ mysql:
         --build-arg MYSQL_VERSION
 
 mariadb:
+  interruptible: true
   stage: build
   script:
     - |
@@ -692,6 +760,7 @@ mariadb:
         --build-arg MARIADB_VERSION
 
 httpbin:
+  interruptible: true
   stage: build
   script:
     - |
@@ -699,6 +768,7 @@ httpbin:
         --build-arg HTTPBIN_VERSION
 
 oauth2-proxy:
+  interruptible: true
   stage: build
   script:
     - |
@@ -707,6 +777,7 @@ oauth2-proxy:
         --build-arg INFRA_VERSION
 
 caprover:
+  interruptible: true
   stage: build
   script:
     - |
@@ -715,6 +786,7 @@ caprover:
         --build-arg INFRA_VERSION
 
 binderhub:
+  interruptible: true
   stage: build
   script:
     - |
@@ -723,6 +795,7 @@ binderhub:
         --build-arg INFRA_VERSION
 
 binderhub-image-cleaner:
+  interruptible: true
   stage: build
   script:
     - |
@@ -731,6 +804,7 @@ binderhub-image-cleaner:
         --build-arg INFRA_VERSION
 
 jupyterhub:
+  interruptible: true
   stage: build
   script:
     - |
@@ -739,6 +813,7 @@ jupyterhub:
         --build-arg INFRA_VERSION
 
 repo2docker:
+  interruptible: true
   stage: build
   script:
     - |
@@ -747,6 +822,7 @@ repo2docker:
         --build-arg INFRA_VERSION
 
 dind:
+  interruptible: true
   stage: build
   script:
     - |
@@ -755,6 +831,7 @@ dind:
         --build-arg INFRA_VERSION
 
 jupyterhub-http-proxy:
+  interruptible: true
   stage: build
   script:
     - |
@@ -763,6 +840,7 @@ jupyterhub-http-proxy:
         --build-arg INFRA_VERSION
 
 jupyterhub-secret-sync:
+  interruptible: true
   stage: build
   script:
     - |
@@ -771,6 +849,7 @@ jupyterhub-secret-sync:
         --build-arg INFRA_VERSION
 
 jupyterhub-network-tools:
+  interruptible: true
   stage: build
   script:
     - |
@@ -779,6 +858,7 @@ jupyterhub-network-tools:
         --build-arg INFRA_VERSION
 
 jupyterhub-singleuser-sample:
+  interruptible: true
   stage: build
   script:
     - |
@@ -787,6 +867,7 @@ jupyterhub-singleuser-sample:
         --build-arg INFRA_VERSION
 
 jupyterhub-image-awaiter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -795,6 +876,7 @@ jupyterhub-image-awaiter:
         --build-arg INFRA_VERSION
 
 jupyter-notebook:
+  interruptible: true
   stage: build
   parallel:
     matrix:
@@ -807,6 +889,7 @@ jupyter-notebook:
         --build-arg INFRA_VERSION
 
 rshiny:
+  interruptible: true
   stage: build
   script:
     - |
@@ -824,6 +907,7 @@ rshiny:
 #         --build-arg INFRA_VERSION
 
 bitnami-minio:
+  interruptible: true
   stage: build
   script:
     - |
@@ -832,6 +916,7 @@ bitnami-minio:
         --build-arg INFRA_VERSION
 
 bitnami-minio-client:
+  interruptible: true
   stage: build
   script:
     - |
@@ -840,6 +925,7 @@ bitnami-minio-client:
         --build-arg INFRA_VERSION
 
 bitnami-shell:
+  interruptible: true
   stage: build
   script:
     - |
@@ -848,6 +934,7 @@ bitnami-shell:
         --build-arg INFRA_VERSION
 
 bitnami-metallb-controller:
+  interruptible: true
   stage: build
   script:
     - |
@@ -856,6 +943,7 @@ bitnami-metallb-controller:
         --build-arg INFRA_VERSION
 
 bitnami-metallb-speaker:
+  interruptible: true
   stage: build
   script:
     - |
@@ -864,6 +952,7 @@ bitnami-metallb-speaker:
         --build-arg INFRA_VERSION
 
 bitnami-grafana:
+  interruptible: true
   stage: build
   script:
     - |
@@ -872,6 +961,7 @@ bitnami-grafana:
         --build-arg INFRA_VERSION
 
 bitnami-consul:
+  interruptible: true
   stage: build
   script:
     - |
@@ -880,6 +970,7 @@ bitnami-consul:
         --build-arg INFRA_VERSION
 
 bitnami-nats:
+  interruptible: true
   stage: build
   script:
     - |
@@ -888,6 +979,7 @@ bitnami-nats:
         --build-arg INFRA_VERSION
 
 bitnami-kube-state-metrics:
+  interruptible: true
   stage: build
   script:
     - |
@@ -896,6 +988,7 @@ bitnami-kube-state-metrics:
         --build-arg INFRA_VERSION
 
 bitnami-metrics-server:
+  interruptible: true
   stage: build
   script:
     - |
@@ -904,6 +997,7 @@ bitnami-metrics-server:
         --build-arg INFRA_VERSION
 
 bitnami-nginx:
+  interruptible: true
   stage: build
   script:
     - |
@@ -912,6 +1006,7 @@ bitnami-nginx:
         --build-arg INFRA_VERSION
 
 bitnami-nginx-ingress-controller:
+  interruptible: true
   stage: build
   script:
     - |
@@ -920,6 +1015,7 @@ bitnami-nginx-ingress-controller:
         --build-arg INFRA_VERSION
 
 bitnami-keycloak:
+  interruptible: true
   stage: build
   script:
     - |
@@ -929,6 +1025,7 @@ bitnami-keycloak:
         --build-arg INFRA_VERSION
 
 bitnami-spark:
+  interruptible: true
   stage: build
   script:
     - |
@@ -937,6 +1034,7 @@ bitnami-spark:
         --build-arg INFRA_VERSION
 
 bitnami-prometheus:
+  interruptible: true
   stage: build
   script:
     - |
@@ -945,6 +1043,7 @@ bitnami-prometheus:
         --build-arg INFRA_VERSION
 
 bitnami-prometheus-operator:
+  interruptible: true
   stage: build
   script:
     - |
@@ -953,6 +1052,7 @@ bitnami-prometheus-operator:
         --build-arg INFRA_VERSION
 
 bitnami-node-exporter:
+  interruptible: true
   stage: build
   script:
     - |
@@ -961,6 +1061,7 @@ bitnami-node-exporter:
         --build-arg INFRA_VERSION
 
 bitnami-redis:
+  interruptible: true
   stage: build
   script:
     - |
@@ -969,6 +1070,7 @@ bitnami-redis:
         --build-arg INFRA_VERSION
 
 bitnami-postgresql11:
+  interruptible: true
   stage: build
   script:
     - |
@@ -985,6 +1087,7 @@ bitnami-postgresql13:
         --build-arg INFRA_VERSION
 
 bitnami-postgresql14:
+  interruptible: true
   stage: build
   script:
     - |
@@ -993,6 +1096,7 @@ bitnami-postgresql14:
         --build-arg INFRA_VERSION
 
 bitnami-mariadb:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1001,6 +1105,7 @@ bitnami-mariadb:
         --build-arg INFRA_VERSION
 
 bitnami-mongodb:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1009,6 +1114,7 @@ bitnami-mongodb:
         --build-arg INFRA_VERSION
 
 bitnami-memcached:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1017,6 +1123,7 @@ bitnami-memcached:
         --build-arg INFRA_VERSION
 
 bitnami-kubeapps-dashboard:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1026,6 +1133,7 @@ bitnami-kubeapps-dashboard:
 
 # Special
 bitnami-kubeapps-apprepository-controller:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1035,6 +1143,7 @@ bitnami-kubeapps-apprepository-controller:
 
 # Special
 bitnami-kubeapps-asset-syncer:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1044,6 +1153,7 @@ bitnami-kubeapps-asset-syncer:
 
 # Special
 bitnami-kubeapps-kubeops:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1052,6 +1162,7 @@ bitnami-kubeapps-kubeops:
         --build-arg INFRA_VERSION
 
 bitnami-kubeapps-assetsvc:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1060,6 +1171,7 @@ bitnami-kubeapps-assetsvc:
         --build-arg INFRA_VERSION
 
 bitnami-kubeapps-apis:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1076,6 +1188,7 @@ bitnami-kubeapps-pinniped-proxy:
         --build-arg INFRA_VERSION
 
 hasura-graphql-engine:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1084,6 +1197,7 @@ hasura-graphql-engine:
         --build-arg INFRA_VERSION
 
 kutt:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1092,6 +1206,7 @@ kutt:
         --build-arg INFRA_VERSION
 
 umami:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1100,6 +1215,7 @@ umami:
         --build-arg INFRA_VERSION
 
 pihole:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1107,6 +1223,7 @@ pihole:
         --build-arg PIHOLE_VERSION
 
 clickhouse-server:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1114,6 +1231,7 @@ clickhouse-server:
         --build-arg CLICKHOUSE_VERSION
 
 clickhouse-tabix-web-client:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1121,6 +1239,7 @@ clickhouse-tabix-web-client:
         --build-arg TABIX_VERSION
 
 plausible-analytics:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1128,6 +1247,7 @@ plausible-analytics:
         --build-arg PLAUSIBLE_VERSION
 
 verdaccio:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1135,6 +1255,7 @@ verdaccio:
         --build-arg VERDACCIO_VERSION
 
 strapi:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1143,6 +1264,7 @@ strapi:
         --build-arg INFRA_VERSION
 
 ghost:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1151,6 +1273,7 @@ ghost:
         --build-arg INFRA_VERSION
 
 bitnami-ghost:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1159,6 +1282,7 @@ bitnami-ghost:
         --build-arg INFRA_VERSION
 
 matomo:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1166,6 +1290,7 @@ matomo:
         --build-arg MATOMO_VERSION
 
 nocodb:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1173,6 +1298,7 @@ nocodb:
         --build-arg NOCODB_VERSION
 
 sftpgo:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1181,6 +1307,7 @@ sftpgo:
         --build-arg INFRA_VERSION
 
 hello:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1189,6 +1316,7 @@ hello:
         --build-arg INFRA_VERSION
 
 reloader:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1197,6 +1325,7 @@ reloader:
         --build-arg INFRA_VERSION
 
 configmap-reload:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1205,6 +1334,7 @@ configmap-reload:
         --build-arg INFRA_VERSION
 
 docker-registry:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1213,14 +1343,18 @@ docker-registry:
         --build-arg INFRA_VERSION
 
 argocd:
+  interruptible: true
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGOCD_VERSION \
+        --build-arg YTT_VERSION \
+        --build-arg YTT_HASH \
         --build-arg INFRA_VERSION
 
 boky-postfix:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1229,6 +1363,7 @@ boky-postfix:
         --build-arg INFRA_VERSION
 
 cryptgeon:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1237,6 +1372,7 @@ cryptgeon:
         --build-arg INFRA_VERSION
 
 memcached:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1245,6 +1381,7 @@ memcached:
         --build-arg INFRA_VERSION
 
 dex:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1253,6 +1390,7 @@ dex:
         --build-arg INFRA_VERSION
 
 redis:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1261,6 +1399,7 @@ redis:
         --build-arg INFRA_VERSION
 
 listmonk:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1269,6 +1408,7 @@ listmonk:
         --build-arg INFRA_VERSION
 
 consul:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1277,6 +1417,7 @@ consul:
         --build-arg INFRA_VERSION
 
 consul-k8s-control-plane:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1285,6 +1426,7 @@ consul-k8s-control-plane:
         --build-arg INFRA_VERSION
 
 envoy:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1293,6 +1435,7 @@ envoy:
         --build-arg INFRA_VERSION
 
 vault:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1301,6 +1444,7 @@ vault:
         --build-arg INFRA_VERSION
 
 strimzi-operator:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1309,6 +1453,7 @@ strimzi-operator:
         --build-arg INFRA_VERSION
 
 strimzi-kafka:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1318,6 +1463,7 @@ strimzi-kafka:
         --build-arg INFRA_VERSION
 
 nats-operator:
+  interruptible: true
   stage: build
   script:
     - |
@@ -1326,6 +1472,7 @@ nats-operator:
         --build-arg INFRA_VERSION
 
 nats:
+  interruptible: true
   stage: build
   script:
     - |

@@ -8,6 +8,8 @@ export HOMEBREW_CORE_GIT_REMOTE=https://readonly:${INFRA_READONLY_TOKEN}@git.nrt
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+brew tap vmware-tanzu/carvel
+
 brew install \
   go \
   kubectl \
@@ -15,7 +17,7 @@ brew install \
   goreleaser \
   skaffold \
   cfssl \
-  yq yj jq \
+  yq yj jq ytt \
   kustomize \
   buildpacks/tap/pack \
   aquasecurity/trivy/trivy \
