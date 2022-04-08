@@ -48,13 +48,13 @@ variables:
   CORTEX_VERSION: v1.11.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 5.0.6-focal # https://hub.docker.com/_/mongo
-  WORDPRESS_VERSION: "5.9.2-apache"   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
-  PGADMIN_VERSION: "6.7"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  WORDPRESS_VERSION: "5.9.3-apache"   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
+  PGADMIN_VERSION: "6.8"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.28" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.7.3-focal" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.3.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.2.1-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
-  BUILDPACKSIO_LIFECYCLE_VERSION: "0.13.5" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
+  BUILDPACKSIO_LIFECYCLE_VERSION: "0.14.0" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
   HEROKU_PROCFILE_CNB_VERSION: "1.0.1" # https://github.com/heroku/procfile-cnb
   BINDERHUB_VERSION: 0.2.0-n850.h8bc0157
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n768.h13978ab # https://hub.docker.com/r/jupyterhub/k8s-image-cleaner/tags
@@ -96,22 +96,22 @@ variables:
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.1.2-debian-10-r18" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.21.6-debian-10-r56" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
   BITNAMI_MINIO_VERSION: "2022.4.1-debian-10-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
-  BITNAMI_MINIO_CLIENT_VERSION: "2022.4.1-debian-10-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: "2022.4.7-debian-10-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r367 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r25 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.12.1-debian-10-r26 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
   BITNAMI_GRAFANA_VERSION: "8.4.5-debian-10-r0" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
   BITNAMI_CONSUL_VERSION: "1.11.4-debian-10-r30" # https://hub.docker.com/r/bitnami/consul/tags
   BITNAMI_NATS_VERSION: "2.7.4-debian-10-r17" # https://hub.docker.com/r/bitnami/nats/tags
-  BITNAMI_KUBE_STATE_METRICS_VERSION: 2.4.2-debian-10-r7 # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
+  BITNAMI_KUBE_STATE_METRICS_VERSION: 2.4.2-debian-10-r30 # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
   BITNAMI_METRICS_SERVER_VERSION: 0.6.1-debian-10-r33 # https://hub.docker.com/r/bitnami/metrics-server/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_ASSET_SYNCER: 2.4.3-scratch-r2 # https://hub.docker.com/r/bitnami/kubeapps-asset-syncer/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION: 2.4.3-scratch-r1 # https://hub.docker.com/r/bitnami/kubeapps-apprepository-controller/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_DASHBOARD_VERSION: 2.4.3-debian-10-r26 # https://hub.docker.com/r/bitnami/kubeapps-dashboard/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_KUBEOPS_VERSION: 2.4.3-scratch-r2 # https://hub.docker.com/r/bitnami/kubeapps-kubeops/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_ASSETSVC_VERSION: 2.4.3-scratch-r2 # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_APIS_VERSION: 2.4.3-debian-10-r44 # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: 2.4.3-debian-10-r32 # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_ASSET_SYNCER: 2.4.4-scratch-r1 # https://hub.docker.com/r/bitnami/kubeapps-asset-syncer/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION: 2.4.4-scratch-r1 # https://hub.docker.com/r/bitnami/kubeapps-apprepository-controller/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_DASHBOARD_VERSION: 2.4.4-debian-10-r0 # https://hub.docker.com/r/bitnami/kubeapps-dashboard/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_KUBEOPS_VERSION: 2.4.4-scratch-r1 # https://hub.docker.com/r/bitnami/kubeapps-kubeops/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_ASSETSVC_VERSION: 2.4.4-scratch-r1 # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_APIS_VERSION: 2.4.4-debian-10-r7 # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: 2.4.4-debian-10-r7 # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
   MINIO_CONSOLE_VERSION: "v0.15.9" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.4.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
