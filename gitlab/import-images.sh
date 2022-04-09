@@ -87,7 +87,8 @@ import_images() {
         "prom/blackbox-exporter:${BLACKBOX_EXPORTER_VERSION:-latest}"
         "prom/snmp-exporter:${SNMP_EXPORTER_VERSION:-latest}"
         "prom/pushgateway:${PUSHGATEWAY_VERSION:-latest}"
-        "grafana/grafana:${GRAFANA_VERSION:-latest}"
+        "grafana/grafana:${GRAFANA_VERSION:-8.4.5}"
+        "grafana/loki:${LOKI_VERSION:-2.5.0}"
         "quay.io/m3db/m3coordinator:${M3COORDINATOR_VERSION:-latest}"
         "quay.io/m3db/m3dbnode:${M3DBNODE_VERSION:-latest}"
         "braedon/prometheus-es-exporter:${PROMETHEUS_ES_EXPORTER_VERSION:-latest}"
@@ -201,6 +202,7 @@ import_images() {
         "connecteverything/nats-operator:${NATS_OPERATOR_VERSION:-0.7.4}"
         "nats:${NATS_VERSION:-2.7.4-alpine3.15}"
         "masipcat/wireguard-go:${WIREGUARD_VERSION:-0.0.20220316}"
+        "eclipse-mosquitto:${MOSQUITTO_VERSION:-2.0.14-openssl}"
 
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"

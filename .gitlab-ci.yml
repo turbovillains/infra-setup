@@ -35,6 +35,7 @@ variables:
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
   GRAFANA_VERSION: "8.4.5" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  LOKI_VERSION: "2.5.0" # https://hub.docker.com/r/grafana/loki/tags
   M3DBNODE_VERSION: v1.5.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.3.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
@@ -147,6 +148,7 @@ variables:
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
   NATS_VERSION: "2.7.4-alpine3.15" # https://hub.docker.com/_/nats?tab=tags
   WIREGUARD_VERSION: "0.0.20220316" # https://hub.docker.com/r/masipcat/wireguard-go/tags
+  MOSQUITTO_VERSION: "2.0.14-openssl" # https://hub.docker.com/_/eclipse-mosquitto?tab=tags
 
 stages:
   - scratch
@@ -662,6 +664,15 @@ grafana:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GRAFANA_VERSION
+
+loki:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg INFRA_VERSION \
+        --build-arg LOKI_VERSION
 
 m3dbnode:
   interruptible: true
@@ -1478,4 +1489,13 @@ nats:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NATS_VERSION \
+        --build-arg INFRA_VERSION
+
+mosquitto:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg MOSQUITTO_VERSION \
         --build-arg INFRA_VERSION
