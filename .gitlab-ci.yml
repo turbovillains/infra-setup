@@ -149,6 +149,7 @@ variables:
   NATS_VERSION: "2.7.4-alpine3.15" # https://hub.docker.com/_/nats?tab=tags
   WIREGUARD_VERSION: "0.0.20220316" # https://hub.docker.com/r/masipcat/wireguard-go/tags
   MOSQUITTO_VERSION: "2.0.14-openssl" # https://hub.docker.com/_/eclipse-mosquitto?tab=tags
+  MOSQUITTO_EXPORTER_VERSION: "0.8.0" # https://hub.docker.com/r/sapcc/mosquitto-exporter/tags
 
 stages:
   - scratch
@@ -1498,4 +1499,13 @@ mosquitto:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MOSQUITTO_VERSION \
+        --build-arg INFRA_VERSION
+
+mosquitto-exporter:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg MOSQUITTO_EXPORTER_VERSION \
         --build-arg INFRA_VERSION

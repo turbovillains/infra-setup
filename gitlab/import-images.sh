@@ -203,6 +203,7 @@ import_images() {
         "nats:${NATS_VERSION:-2.7.4-alpine3.15}"
         "masipcat/wireguard-go:${WIREGUARD_VERSION:-0.0.20220316}"
         "eclipse-mosquitto:${MOSQUITTO_VERSION:-2.0.14-openssl}"
+        "sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION:-0.8.0}"
 
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"
