@@ -2,12 +2,12 @@
 # https://github.com/heroku/stack-images
 # https://github.com/buildpacks/registry-index
 # https://github.com/heroku/buildpacks-nodejs
-description = "Base builder for Noroutine Heroku-20 stack, based on ubuntu:20.04 base image"
+description = "Base builder for Noroutine Heroku-22 stack, based on ubuntu:22.04 base image"
 
 [stack]
-id = "heroku-20"
-build-image = "cr.nrtn.dev/infra/pack-build:20"
-run-image = "cr.nrtn.dev/infra/pack:20"
+id = "heroku-22"
+build-image = "cr.nrtn.dev/infra/pack-build:22"
+run-image = "cr.nrtn.dev/infra/pack:22"
 
 [lifecycle]
 version = "0.14.0"

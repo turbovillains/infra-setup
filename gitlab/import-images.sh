@@ -204,6 +204,10 @@ import_images() {
         "masipcat/wireguard-go:${WIREGUARD_VERSION:-0.0.20220316}"
         "eclipse-mosquitto:${MOSQUITTO_VERSION:-2.0.14-openssl}"
         "sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION:-0.8.0}"
+        "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_CAINJECTOR_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-webhook:${CERT_MANAGER_WEBHOOK_VERSION:-v1.8.0}"
+        "zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION:-v2.0.1}"
 
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"
