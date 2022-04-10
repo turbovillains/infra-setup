@@ -205,6 +205,13 @@ import_images() {
         "eclipse-mosquitto:${MOSQUITTO_VERSION:-2.0.14-openssl}"
         "sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION:-0.8.0}"
 
+        # cert-manager
+        "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_CAINJECTOR_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-webhook:${CERT_MANAGER_WEBHOOK_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_CTL_VERSION:-v1.8.0}"
+        "zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION:-v2.0.1}"
+
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"
         "hashicorp/consul-k8s-control-plane:${CONSUL_K8S_CP_VERSION:-0.41.1}"
@@ -222,6 +229,7 @@ import_images() {
         "k8s.gcr.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
+
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
         "calico/typha:${CALICO_VERSION:-v3.22.1}"
@@ -232,6 +240,7 @@ import_images() {
         "calico/kube-controllers:${CALICO_VERSION:-v3.22.1}"
         "calico/dikastes:${CALICO_VERSION:-v3.22.1}"
         "calico/pod2daemon-flexvol:${CALICO_VERSION:-v3.22.1}"
+
         # longhorn
         "longhornio/longhorn-manager:v1.2.4"
         "longhornio/csi-node-driver-registrar:v2.3.0"
@@ -244,6 +253,7 @@ import_images() {
         "longhornio/csi-provisioner:v2.1.2"
         "longhornio/csi-attacher:v3.2.1"
         "longhornio/longhorn-ui:v1.2.4"
+
         # vsphere csi/cpi
         "gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.6"
         "gcr.io/cloud-provider-vsphere/csi/release/driver:v2.5.1"
@@ -253,6 +263,7 @@ import_images() {
         "k8s.gcr.io/sig-storage/csi-attacher:v3.4.0"
         "k8s.gcr.io/sig-storage/csi-resizer:v1.4.0"
         "k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0"
+        
         # certmanager shit
         "vstadtmueller/cert-manager-webhook-powerdns:main"
     )
