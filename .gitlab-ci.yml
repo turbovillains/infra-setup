@@ -36,6 +36,7 @@ variables:
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
   GRAFANA_VERSION: "8.4.5" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   LOKI_VERSION: "2.5.0" # https://hub.docker.com/r/grafana/loki/tags
+  PROMTAIL_VERSION: "2.5.0"
   M3DBNODE_VERSION: v1.5.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.3.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
@@ -675,6 +676,14 @@ grafana:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GRAFANA_VERSION
+
+promtail:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PROMTAIL_VERSION
 
 loki:
   interruptible: true

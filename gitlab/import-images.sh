@@ -89,6 +89,7 @@ import_images() {
         "prom/pushgateway:${PUSHGATEWAY_VERSION:-latest}"
         "grafana/grafana:${GRAFANA_VERSION:-8.4.5}"
         "grafana/loki:${LOKI_VERSION:-2.5.0}"
+        "grafana/promtail:${PROMTAIL_VERSION:-2.5.0}"
         "quay.io/m3db/m3coordinator:${M3COORDINATOR_VERSION:-latest}"
         "quay.io/m3db/m3dbnode:${M3DBNODE_VERSION:-latest}"
         "braedon/prometheus-es-exporter:${PROMETHEUS_ES_EXPORTER_VERSION:-latest}"
