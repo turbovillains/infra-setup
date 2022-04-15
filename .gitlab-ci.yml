@@ -42,7 +42,7 @@ variables:
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.0"  # https://github.com/braedon/prometheus-es-exporter/releases
   SSL_EXPORTER_VERSION: "2.4.0" # https://github.com/ribbybibby/ssl_exporter/releases
   CADVISOR_VERSION: "v0.44.0" # https://github.com/google/cadvisor/releases
-  KARMA_VERSION: "v0.101" # https://github.com/prymitive/karma/pkgs/container/karma
+  KARMA_VERSION: "v0.103" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
   ELASTICSEARCH_VERSION: "8.1.2" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
   LOGSTASH_VERSION: "8.1.2"
@@ -114,7 +114,7 @@ variables:
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: "2.4.4-scratch-r1" # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_APIS_VERSION: "2.4.4-debian-10-r9" # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.4-debian-10-r9"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
-  MINIO_CONSOLE_VERSION: "v0.15.11" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: "v0.15.13" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_VERSION: v2.5.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.2 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
@@ -139,8 +139,8 @@ variables:
   K8S_VERSION: "v1.23.5"
   K8S_COREDNS_VERSION: "v1.8.6"
   TIGERA_OPERATOR_VERSION: "v1.25.4" # https://quay.io/repository/tigera/operator?tab=tags
-  CALICO_VERSION: "v3.22.1" # https://hub.docker.com/r/calico/node/tags
-  CONSUL_VERSION: "1.11.4"  # https://hub.docker.com/r/hashicorp/consul
+  CALICO_VERSION: "v3.22.2" # https://hub.docker.com/r/calico/node/tags
+  CONSUL_VERSION: "1.11.5"  # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "0.42.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.1 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
   VAULT_VERSION: "1.10.0" # https://hub.docker.com/r/hashicorp/vault
