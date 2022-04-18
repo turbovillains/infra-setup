@@ -22,7 +22,8 @@ RUN (                                                                       \
 echo "deb [arch=amd64] http://repo.powerdns.com/debian bullseye-auth-47 main" \
 ) > /etc/apt/sources.list.d/pdns.list
 
-RUN curl -s https://repo.powerdns.com/FD380FBB-pub.asc | apt-key add -
+COPY FD380FBB-pub.asc /tmp/FD380FBB-pub.asc
+RUN apt-key add /tmp/FD380FBB-pub.asc && rm /tmp/FD380FBB-pub.asc
 
 RUN apt-get update -qyy && \
     apt-get install -qyy pdns-server pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-lua2 && \
