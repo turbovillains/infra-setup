@@ -1,17 +1,27 @@
 ARG DOCKER_HUB
 ARG GRAFANA_VERSION
-ARG HTTP_PROXY
-ARG NO_PROXY
+ARG DEBIAN_VERSION
+
+# Dashboards
+FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION} as dashboards
+ARG GRIT_VERSION
+
+RUN apt-get update && apt-get install -yyq git gnupg2 curl python3 python3-pip && \
+  rm -rf /var/lib/apt/lists/*
+
+ADD dashboards /app/dashboards
+
+WORKDIR /app
+
+RUN python3 -V && python3 -m pip install git+https://github.com/noroutine/grit.git@${GRIT_VERSION}
+RUN python3 -m grit generate --module dashboards --out 'out/{environment}' --var 'environment=*'
+
 FROM ${DOCKER_HUB}/grafana/grafana:${GRAFANA_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
-ENV HTTP_PROXY=${HTTP_PROXY}
-ENV http_proxy=${HTTP_PROXY}
-ENV NO_PROXY=${NO_PROXY}
-ENV no_proxy=${NO_PROXY}
+ADD setup.sh /opt/grafana/setup.sh
+RUN /opt/grafana/setup.sh
 
-# RUN grafana-cli plugins install grafana-clock-panel
-RUN grafana-cli plugins install vonage-status-panel
-RUN grafana-cli plugins install flant-statusmap-panel
-RUN grafana-cli plugins install jdbranham-diagram-panel
+COPY --from=dashboards /app/out /opt/grafana/dashboards
+COPY ./provisioning/gf-dashboards-set.yml ${GF_PATHS_PROVISIONING}/dashboards/gf-dashboards-set.yml

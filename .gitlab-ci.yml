@@ -35,6 +35,7 @@ variables:
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
   GRAFANA_VERSION: "8.5.1" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  GRIT_VERSION: "0.0.4"
   LOKI_VERSION: "2.5.0" # https://hub.docker.com/r/grafana/loki/tags
   PROMTAIL_VERSION: "2.5.0"
   M3DBNODE_VERSION: v1.5.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
@@ -678,6 +679,8 @@ grafana:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg DEBIAN_VERSION \
+        --build-arg GRIT_VERSION \
         --build-arg GRAFANA_VERSION
 
 promtail:
