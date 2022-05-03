@@ -22,6 +22,7 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 USER 0
+
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
 
@@ -32,3 +33,5 @@ RUN chmod 0755 /usr/bin/ytt && \
 COPY --from=avp /argocd-vault-plugin /usr/bin/argocd-vault-plugin
 RUN chmod 0755 /usr/bin/argocd-vault-plugin && \
   shasum -a 256 /usr/bin/argocd-vault-plugin | grep -q ${ARGOCD_VAULT_PLUGIN_HASH}
+
+USER 999
