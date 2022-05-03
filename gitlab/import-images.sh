@@ -217,7 +217,11 @@ import_images() {
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"
         "hashicorp/consul-k8s-control-plane:${CONSUL_K8S_CP_VERSION:-0.41.1}"
         "envoyproxy/envoy-alpine:${ENVOY_VERSION:-v1.21.1}"
+
+        # vault
         "hashicorp/vault:${VAULT_VERSION:-1.10.0}"
+        "hashicorp/vault-k8s:${VAULT_K8S_VERSION:-0.15.0}"
+        "hashicorp/vault-csi-provider:${VAULT_CSI_PROVIDER_VERSION:-1.1.0}"
 
         # kafka
         "quay.io/strimzi/operator:${STRIMZI_OPERATOR_VERSION:-0.28.0}"
@@ -225,11 +229,15 @@ import_images() {
 
         # k8s
         "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
-        "k8s.gcr.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
-        "k8s.gcr.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
-        "k8s.gcr.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
-        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
+        "k8s.gcr.io/kube-apiserver:${K8S_VERSION_1:-v1.23.5}"
+        "k8s.gcr.io/kube-proxy:${K8S_VERSION_1:-v1.23.5}"
+        "k8s.gcr.io/kube-scheduler:${K8S_VERSION_1:-v1.23.5}"
+        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION_1:-v1.23.5}"
+        "k8s.gcr.io/kube-apiserver:${K8S_VERSION_2:-v1.23.5}"
+        "k8s.gcr.io/kube-proxy:${K8S_VERSION_2:-v1.23.5}"
+        "k8s.gcr.io/kube-scheduler:${K8S_VERSION_2:-v1.23.5}"
+        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION_2:-v1.23.5}"
 
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
