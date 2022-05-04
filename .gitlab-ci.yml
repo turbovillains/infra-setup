@@ -34,7 +34,7 @@ variables:
   PUSHGATEWAY_VERSION: v1.4.2
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
-  GRAFANA_VERSION: "8.5.1" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  GRAFANA_VERSION: "8.5.2" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   GRIT_VERSION: "0.0.4"
   LOKI_VERSION: "2.5.0" # https://hub.docker.com/r/grafana/loki/tags
   PROMTAIL_VERSION: "2.5.0"
@@ -67,9 +67,9 @@ variables:
   PLAUSIBLE_VERSION: "v1.4.4" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.10.0" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "4.46.2" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "4.47.0" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: 4.9.1-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: "0.90.8" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: "0.90.11" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.2.0 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTERHUB_NETWORK_TOOLS_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
@@ -83,7 +83,7 @@ variables:
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: 1.10.1 # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
-  BITNAMI_GHOST_VERSION: "4.46.2-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  BITNAMI_GHOST_VERSION: "4.47.0-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   BITNAMI_KEYCLOAK_VERSION: 16.1.1-debian-10-r88 # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=16
   BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r67 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.35.0-debian-10-r3 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
@@ -98,12 +98,12 @@ variables:
   BITNAMI_MEMCACHED_VERSION: 1.6.15-debian-10-r9 # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.1.3-debian-10-r6" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.21.6-debian-10-r71" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2022.5.3-debian-10-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2022.5.4-debian-10-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_CLIENT_VERSION: "2022.4.26-debian-10-r2" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r390 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r49 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.12.1-debian-10-r49 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
-  BITNAMI_GRAFANA_VERSION: "8.5.1-debian-10-r0" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
+  BITNAMI_GRAFANA_VERSION: "8.5.2-debian-10-r0" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
   BITNAMI_CONSUL_VERSION: "1.11.4-debian-10-r38" # https://hub.docker.com/r/bitnami/consul/tags
   BITNAMI_NATS_VERSION: "2.8.1-debian-10-r3" # https://hub.docker.com/r/bitnami/nats/tags
   BITNAMI_KUBE_STATE_METRICS_VERSION: "2.4.2-debian-10-r31" # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
@@ -132,8 +132,8 @@ variables:
   ARGOCD_VAULT_PLUGIN_HASH: 307c5f9de016ee62e0e1dce1f6b6e8f5617f345c20b61eae7d2be2a8a8941d98
   REDIS_VERSION: 7.0.0-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
-  GITLAB_AUTO_BUILD_VERSION: v1.13.0
-  GITLAB_AUTO_DEPLOY_VERSION: v2.24.0
+  GITLAB_AUTO_BUILD_VERSION: v1.14.0
+  GITLAB_AUTO_DEPLOY_VERSION: v2.25.0
   VAULTWARDEN_VERSION: "1.24.0"
   BOKY_POSTFIX_VERSION: v3.5.0
   MEMCACHED_VERSION: "1.6.15-alpine3.15" # https://hub.docker.com/_/memcached?tab=tags&page=1
@@ -153,7 +153,7 @@ variables:
   STRIMZI_OPERATOR_VERSION: "0.28.0"  # https://quay.io/repository/strimzi/operator?tab=tags 
   STRIMZI_KAFKA_VERSION: "3.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
-  NATS_VERSION: "2.8.1-alpine3.15" # https://hub.docker.com/_/nats?tab=tags
+  NATS_VERSION: "2.8.2-alpine3.15" # https://hub.docker.com/_/nats?tab=tags
   WIREGUARD_VERSION: "0.0.20220316" # https://hub.docker.com/r/masipcat/wireguard-go/tags
   MOSQUITTO_VERSION: "2.0.14-openssl" # https://hub.docker.com/_/eclipse-mosquitto?tab=tags
   MOSQUITTO_EXPORTER_VERSION: "0.8.0" # https://hub.docker.com/r/sapcc/mosquitto-exporter/tags
