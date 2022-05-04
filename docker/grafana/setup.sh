@@ -20,3 +20,6 @@ grafana-cli plugins install scadavis-synoptic-panel
 grafana-cli plugins install goshposh-metaqueries-datasource
 grafana-cli plugins install xginn8-pagerduty-datasource
 grafana-cli plugins install flant-statusmap-panel
+grafana-cli plugins install pixie-pixie-datasource
+
+# End of file
