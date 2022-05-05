@@ -11,7 +11,7 @@ variables:
   GOLANG_ALPINE_VERSION: "1.18.0-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: "alpine-v14.10.1" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: "14.10.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_VERSION: "14.10.2-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   NEXUS_VERSION: "3.38.1" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.7" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
@@ -21,7 +21,7 @@ variables:
   KEYCLOAK_VERSION: "18.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "14.2-bullseye" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.22.2" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
-  NEXTCLOUD_VERSION: "23.0.4-apache" # https://hub.docker.com/_/nextcloud
+  NEXTCLOUD_VERSION: "24.0.0-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: "v1.1.4" # https://github.com/librespeed/speedtest-go/releases
   HAPROXY_VERSION: "2.5.6" # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
   MINIO_VERSION: RELEASE.2022-03-14T18-25-24Z # https://github.com/minio/minio/releases
@@ -65,7 +65,7 @@ variables:
   CLICKHOUSE_VERSION: "22.1.3.7-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: "v1.4.4" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
-  VERDACCIO_VERSION: "5.10.0" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
+  VERDACCIO_VERSION: "5.10.1" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: "4.47.0" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: 4.9.1-apache # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated

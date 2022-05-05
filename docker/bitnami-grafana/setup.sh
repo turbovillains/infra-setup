@@ -1,25 +1,50 @@
 #!/bin/bash -eux
 
-grafana-cli plugins install abhisant-druid-datasource
-grafana-cli plugins install grafana-worldmap-panel
-grafana-cli plugins install grafana-piechart-panel
-grafana-cli plugins install briangann-gauge-panel
-grafana-cli plugins install savantly-heatmap-panel
-grafana-cli plugins install mtanda-histogram-panel
-grafana-cli plugins install michaeldmoore-annunciator-panel
-grafana-cli plugins install zuburqan-parity-report-panel
-grafana-cli plugins install petrslavotinek-carpetplot-panel
-grafana-cli plugins install ryantxu-ajax-panel
-grafana-cli plugins install ryantxu-annolist-panel
-grafana-cli plugins install snuids-radar-panel
-grafana-cli plugins install snuids-trafficlights-panel
-grafana-cli plugins install jdbranham-diagram-panel
-# grafana-cli plugins install devopsprodigy-kubegraf-app
-grafana-cli plugins install michaeldmoore-multistat-panel
-grafana-cli plugins install scadavis-synoptic-panel
-grafana-cli plugins install goshposh-metaqueries-datasource
-grafana-cli plugins install xginn8-pagerduty-datasource
-grafana-cli plugins install flant-statusmap-panel
-grafana-cli plugins install pixie-pixie-datasource
+# Install well-known plugins
+grafana_plugin_list=(
+    # Default bitnami plugins
+    "grafana-clock-panel"
+    "grafana-piechart-panel"
+    "michaeldmoore-annunciator-panel"
+    "briangann-gauge-panel"
+    "briangann-datatable-panel"
+    "jdbranham-diagram-panel"
+    "natel-discrete-panel"
+    "digiapulssi-organisations-panel"
+    "vonage-status-panel"
+    "neocat-cal-heatmap-panel"
+    "agenty-flowcharting-panel"
+    "larona-epict-panel"
+    "pierosavi-imageit-panel"
+    "michaeldmoore-multistat-panel"
+    "grafana-polystat-panel"
+    "scadavis-synoptic-panel"
+    "marcuscalidus-svg-panel"
+    "snuids-trafficlights-panel"
+
+    # Extra plugins
+    "abhisant-druid-datasource"
+    "grafana-worldmap-panel"
+    "savantly-heatmap-panel"
+    "mtanda-histogram-panel"
+    "zuburqan-parity-report-panel"
+    "petrslavotinek-carpetplot-panel"
+    "ryantxu-ajax-panel"
+    "ryantxu-annolist-panel"
+    "snuids-radar-panel"
+    "goshposh-metaqueries-datasource"
+    "xginn8-pagerduty-datasource"
+    "flant-statusmap-panel"
+    "pixie-pixie-datasource"
+)
+
+for plugin in "${grafana_plugin_list[@]}"; do
+    echo "Installing ${plugin} plugin"
+    grafana-cli --pluginsDir /opt/bitnami/grafana/default-plugins plugins install "$plugin"
+done
+
+
+
+
 
 # End of file

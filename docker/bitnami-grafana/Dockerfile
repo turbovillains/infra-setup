@@ -21,4 +21,6 @@ RUN /opt/bitnami/grafana/setup.sh
 COPY --from=dashboards /dashboards /opt/bitnami/grafana/dashboards
 COPY ./provisioning/gf-dashboards-set.yml ${GF_PATHS_PROVISIONING}/dashboards/gf-dashboards-set.yml
 
+RUN chown -R 1001:1001 /opt/bitnami/grafana/data /opt/bitnami/grafana/logs
+
 USER 1001
