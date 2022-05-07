@@ -139,6 +139,7 @@ import_images() {
         "bitnami/ghost:${BITNAMI_GHOST_VERSION:-4.5.0-debian-10-r0}"
         "matomo:${MATOMO_VERSION:-4.3.1}"
         "nocodb/nocodb:${NOCODB_VERSION:-0.9.24}"
+        "metabase/metabase:${METABASE_VERSION:-v0.43.0}"
         "docker:${DIND_VERSION:-20.10.7-dind}"
         "jupyter/base-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "jupyter/minimal-notebook:${JUPYTER_VERSION:-016833b15ceb}"

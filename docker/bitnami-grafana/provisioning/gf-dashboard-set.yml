@@ -8,5 +8,5 @@ providers:
     updateIntervalSeconds: 10
     allowUiUpdates: true
     options:
-      path: "/opt/grafana/dashboard-sets/${GF_DASHBOARD_SET}"
+      path: "/opt/bitnami/grafana/dashboard-sets/${GF_DASHBOARD_SET}"
       foldersFromFilesStructure: true
