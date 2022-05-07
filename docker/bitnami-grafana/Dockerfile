@@ -18,8 +18,8 @@ RUN update-ca-certificates
 ADD setup.sh /opt/bitnami/grafana/setup.sh
 RUN /opt/bitnami/grafana/setup.sh
 
-COPY --from=dashboards /dashboards /opt/bitnami/grafana/dashboards
-COPY ./provisioning/gf-dashboards-set.yml ${GF_PATHS_PROVISIONING}/dashboards/gf-dashboards-set.yml
+COPY --from=dashboards /dashboards /opt/bitnami/grafana/dashboard-sets
+COPY ./provisioning/gf-dashboard-set.yml ${GF_PATHS_PROVISIONING}/dashboards/gf-dashboard-set.yml
 
 RUN chown -R 1001:1001 /opt/bitnami/grafana/data /opt/bitnami/grafana/logs
 

@@ -1,6 +1,6 @@
 apiVersion: 1
 providers:
-  - name: ${GF_DASHBOARDS_SET}
+  - name: ${GF_DASHBOARD_SET}
     orgId: 1
     type: file
     disableDeletion: true
@@ -8,5 +8,5 @@ providers:
     updateIntervalSeconds: 10
     allowUiUpdates: true
     options:
-      path: "/opt/grafana/dashboards/${GF_DASHBOARDS_SET}"
+      path: "/opt/grafana/dashboard-sets/${GF_DASHBOARD_SET}"
       foldersFromFilesStructure: true

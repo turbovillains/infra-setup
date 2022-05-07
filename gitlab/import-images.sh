@@ -171,6 +171,7 @@ import_images() {
         "bitnami/metallb-controller:${BITNAMI_METALLB_CONTROLLER_VERSION:-0.10.2-debian-10-r28}"
         "bitnami/metallb-speaker:${BITNAMI_METALLB_SPEAKER_VERSION:-0.10.2-debian-10-r31}"
         "bitnami/grafana:${BITNAMI_GRAFANA_VERSION:-8.0.6-debian-10-r3}"
+        "bitnami/grafana-image-renderer:${BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION:-3.4.2-debian-10-r43}"
         "bitnami/consul:${BITNAMI_CONSUL_VERSION:-1.11.4-debian-10-r30}"
         "bitnami/nats:${BITNAMI_NATS_VERSION:-2.7.4-debian-10-r17}"
         "bitnami/kube-state-metrics:${BITNAMI_KUBE_STATE_METRICS_VERSION:-2.1.1-debian-10-r14}"
