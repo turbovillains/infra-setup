@@ -207,6 +207,7 @@ import_images() {
         "masipcat/wireguard-go:${WIREGUARD_VERSION:-0.0.20220316}"
         "eclipse-mosquitto:${MOSQUITTO_VERSION:-2.0.14-openssl}"
         "sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION:-0.8.0}"
+        "caddy:${CADDY_VERSION:-2.5.1}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
