@@ -208,6 +208,7 @@ import_images() {
         "eclipse-mosquitto:${MOSQUITTO_VERSION:-2.0.14-openssl}"
         "sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION:-0.8.0}"
         "caddy:${CADDY_VERSION:-2.5.1}"
+        "quay.io/outline/shadowbox:${SHADOWBOX_VERSION:-stable}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
@@ -231,7 +232,8 @@ import_images() {
         "quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION:-0.28.0}-kafka-${STRIMZI_KAFKA_VERSION:-3.1.0}"
 
         # k8s
-        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
+        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION_1:-3.6}"
+        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION_2:-3.7}"
         "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
         "k8s.gcr.io/kube-apiserver:${K8S_VERSION_1:-v1.23.5}"
         "k8s.gcr.io/kube-proxy:${K8S_VERSION_1:-v1.23.5}"
