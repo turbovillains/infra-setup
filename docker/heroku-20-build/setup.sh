@@ -14,11 +14,6 @@ apt-get install -y --no-install-recommends \
     automake \
     bison \
     build-essential \
-    clang-9 \
-    libclang-common-9-dev \
-    lib32gcc-s1 \
-    lib32stdc++6 \
-    libc6-i386 \
     bzr \
     cmake \
     gettext \
@@ -55,6 +50,7 @@ apt-get install -y --no-install-recommends \
     libkrb5-dev \
     libldap2-dev \
     liblz4-dev \
+    liblzf-dev \
     libmagic-dev \
     libmagickwand-dev \
     libmcrypt-dev \
@@ -84,8 +80,9 @@ apt-get install -y --no-install-recommends \
     libxslt-dev \
     libyaml-dev \
     libzip-dev \
+    libzstd-dev \
     mercurial \
-    postgresql-server-dev-13 \
+    postgresql-server-dev-14 \
     python3-dev \
     ruby-dev \
     zlib1g-dev \

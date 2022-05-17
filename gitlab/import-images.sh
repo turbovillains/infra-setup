@@ -258,14 +258,18 @@ import_images() {
         # longhorn
         "longhornio/longhorn-manager:v1.2.4"
         "longhornio/csi-node-driver-registrar:v2.3.0"
+        "longhornio/csi-node-driver-registrar:v2.5.0"
         "longhornio/longhorn-engine:v1.2.2"
         "longhornio/longhorn-engine:v1.2.3"
         "longhornio/longhorn-engine:v1.2.4"
         "longhornio/longhorn-instance-manager:v1_20220303"
         "longhornio/csi-snapshotter:v3.0.3"
+        "longhornio/csi-snapshotter:v4.2.1"
         "longhornio/csi-resizer:v1.2.0"
+        "longhornio/csi-resizer:v1.3.0"
         "longhornio/csi-provisioner:v2.1.2"
         "longhornio/csi-attacher:v3.2.1"
+        "longhornio/csi-attacher:v3.4.0"
         "longhornio/longhorn-ui:v1.2.4"
 
         # vsphere csi/cpi
@@ -273,7 +277,9 @@ import_images() {
         "gcr.io/cloud-provider-vsphere/csi/release/driver:${VSPHERE_CSI_DRIVER_VERSION:-v2.5.1}"
         "gcr.io/cloud-provider-vsphere/csi/release/syncer:${VSPHERE_CSI_SYNCER_VERSION:-v2.5.1}"
         "k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.0"
+        "k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1"
         "k8s.gcr.io/sig-storage/livenessprobe:v2.6.0"
+        "k8s.gcr.io/sig-storage/livenessprobe:v2.7.0"
         "k8s.gcr.io/sig-storage/csi-attacher:v3.4.0"
         "k8s.gcr.io/sig-storage/csi-resizer:v1.4.0"
         "k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0"
