@@ -86,6 +86,7 @@ variables:
   UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
   BITNAMI_GHOST_VERSION: "4.47.4-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   BITNAMI_KEYCLOAK_VERSION: "18.0.0-debian-10-r2" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
+  BITNAMI_KEYCLOAK16_VERSION: "16.1.1-debian-10-r103" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=16
   BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r67 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.35.0-debian-10-r3 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.55.1-debian-10-r12" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
@@ -1086,6 +1087,16 @@ bitnami-keycloak:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KEYCLOAK_VERSION \
+        --build-arg KEYCLOAK_THEMES_IMAGE \
+        --build-arg INFRA_VERSION
+
+bitnami-keycloak16:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_KEYCLOAK16_VERSION \
         --build-arg KEYCLOAK_THEMES_IMAGE \
         --build-arg INFRA_VERSION
 

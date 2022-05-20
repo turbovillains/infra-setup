@@ -161,6 +161,7 @@ import_images() {
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL14_VERSION:-14.1.0-debian-10-r81}"
         "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
+        "bitnami/keycloak:${BITNAMI_KEYCLOAK16_VERSION:-16.1.1-debian-10-r103}"
         "bitnami/mariadb:${BITNAMI_MARIADB_VERSION:-10.5.10-debian-10-r34}"
         "bitnami/mongodb:${BITNAMI_MONGODB_VERSION:-4.4.7-debian-10-r3}"
         "bitnami/memcached:${BITNAMI_MEMCACHED_VERSION:-1.6.14-debian-10-r42}"
