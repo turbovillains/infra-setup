@@ -284,6 +284,7 @@ import_images() {
         "k8s.gcr.io/sig-storage/csi-attacher:v3.4.0"
         "k8s.gcr.io/sig-storage/csi-resizer:v1.4.0"
         "k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0"
+        "k8s.gcr.io/sig-storage/csi-snapshotter:v5.0.1"
         
         # certmanager shit
         "vstadtmueller/cert-manager-webhook-powerdns:main"
