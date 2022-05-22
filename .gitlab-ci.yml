@@ -21,7 +21,7 @@ variables:
   KEYCLOAK_VERSION: "18.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "14.3-bullseye" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "8.22.2" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
-  NEXTCLOUD_VERSION: "24.0.0-apache" # https://hub.docker.com/_/nextcloud
+  NEXTCLOUD_VERSION: "24.0.1-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: "v1.1.4" # https://github.com/librespeed/speedtest-go/releases
   HAPROXY_VERSION: "2.5.7" # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
   MINIO_VERSION: RELEASE.2022-03-14T18-25-24Z # https://github.com/minio/minio/releases
@@ -84,7 +84,7 @@ variables:
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: 1.10.1 # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
-  BITNAMI_GHOST_VERSION: "4.47.4-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  BITNAMI_GHOST_VERSION: "4.48.0-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   BITNAMI_KEYCLOAK_VERSION: "18.0.0-debian-10-r2" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
   BITNAMI_KEYCLOAK16_VERSION: "16.1.1-debian-10-r103" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=16
   BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r67 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
@@ -105,7 +105,7 @@ variables:
   BITNAMI_SHELL_VERSION: 10-debian-10-r390 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r49 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.12.1-debian-10-r49 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
-  BITNAMI_GRAFANA_VERSION: "8.5.2-debian-10-r0" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
+  BITNAMI_GRAFANA_VERSION: "8.5.3-debian-10-r0" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
   BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.4.2-debian-10-r43" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
   BITNAMI_CONSUL_VERSION: "1.11.4-debian-10-r38" # https://hub.docker.com/r/bitnami/consul/tags
   BITNAMI_NATS_VERSION: "2.8.2-debian-10-r3" # https://hub.docker.com/r/bitnami/nats/tags
@@ -118,9 +118,9 @@ variables:
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: "2.4.5-scratch-r0" # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_APIS_VERSION: "2.4.5-debian-10-r1" # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.5-debian-10-r1"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
-  BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.2 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
+  BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   EXTERNAL_SECRETS_VERSION: v0.5.3 # https://github.com/external-secrets/external-secrets/releases
-  MINIO_CONSOLE_VERSION: "v0.17.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: "v0.17.1" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.6.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.3 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
