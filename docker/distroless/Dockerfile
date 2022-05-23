@@ -1,0 +1,13 @@
+ARG DOCKER_HUB
+ARG INFRA_VERSION
+ARG DISTROLESS_VERSION
+ARG FLAVOUR
+
+FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
+
+FROM ${DOCKER_HUB}/distroless/${FLAVOUR}-${DISTROLESS_VERSION}
+
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+
+COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
+# TODO: RUN [ "update-ca-certificates" ]

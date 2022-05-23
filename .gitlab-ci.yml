@@ -6,10 +6,12 @@ variables:
   UBUNTU_JAMMY_VERSION: "jammy-20220428" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   ALPINE_VERSION: "3.15.4" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.34.1" # https://hub.docker.com/_/busybox
+  DISTROLESS_VERSION: debian11 # gcr.io/distroless/
   GOLANG_VERSION: "1.18.2-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: "8.1.6-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
   GOLANG_ALPINE_VERSION: "1.18.0-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
+  ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.23.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   GITLAB_RUNNER_VERSION: "alpine-v15.0.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "15.0.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
@@ -69,7 +71,7 @@ variables:
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: "4.47.4" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.0-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: "0.90.11" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: "0.91.0" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.1" # https://hub.docker.com/r/metabase/metabase/tags
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.2.0 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
@@ -138,7 +140,7 @@ variables:
   REDIS_VERSION: 7.0.0-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   GITLAB_AUTO_BUILD_VERSION: v1.14.0
-  GITLAB_AUTO_DEPLOY_VERSION: v2.26.0
+  GITLAB_AUTO_DEPLOY_VERSION: v2.27.0
   VAULTWARDEN_VERSION: "1.24.0"
   BOKY_POSTFIX_VERSION: v3.5.0
   MEMCACHED_VERSION: "1.6.15-alpine3.15" # https://hub.docker.com/_/memcached?tab=tags&page=1
@@ -272,6 +274,19 @@ busybox:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALPINE_VERSION \
         --build-arg BUSYBOX_VERSION \
+        --build-arg INFRA_VERSION
+
+distroless:
+  interruptible: true
+  stage: base
+  parallel:
+    matrix:
+      - FLAVOUR: [ "static", "base", "java11", "java17", "cc", "nodejs"]
+        DUMMY: [ "dummy" ]
+  script:
+    - ./gitlab/build-image.sh distroless ${DOCKER_NAMESPACE}/distroless-${FLAVOUR}-${DISTROLESS_VERSION}:${INFRA_VERSION} \
+        --build-arg DISTROLESS_VERSION \
+        --build-arg FLAVOUR \
         --build-arg INFRA_VERSION
 
 heroku-20:
@@ -425,6 +440,15 @@ gitlab:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_VERSION \
+        --build-arg INFRA_VERSION
+
+actions-runner-controller:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ACTIONS_RUNNER_CONTROLLER_VERSION \
         --build-arg INFRA_VERSION
 
 nexus:
