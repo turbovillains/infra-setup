@@ -11,7 +11,7 @@ variables:
   GOLANG_ALPINE_VERSION: "1.18.0-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
   GITLAB_RUNNER_VERSION: "alpine-v15.0.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: "14.10.3-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_VERSION: "15.0.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.7" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
