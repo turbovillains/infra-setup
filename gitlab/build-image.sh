@@ -11,12 +11,14 @@ build_image() {
     test ! -z ${target}
 
     test ! -z ${DOCKER_HUB:-}
+    test ! -z ${INFRA_VERSION:-}
 
     local implicit_args="--no-cache \
         --build-arg HTTP_PROXY \
         --build-arg HTTPS_PROXY \
         --build-arg NO_PROXY \
         --build-arg DOCKER_HUB \
+        --build-arg INFRA_VERSION \
         --build-arg DOCKER_NAMESPACE"
 
     echo "Building ${component} as ${target}"

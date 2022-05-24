@@ -4,16 +4,24 @@ variables:
   DEBIAN_VERSION: "bullseye-20220509-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_FOCAL_VERSION: "focal-20220316" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   UBUNTU_JAMMY_VERSION: "jammy-20220428" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  ALPINE_VERSION: "3.15.4" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
+  ALPINE_VERSION: "3.16.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.34.1" # https://hub.docker.com/_/busybox
   DISTROLESS_VERSION: debian11 # gcr.io/distroless/
   GOLANG_VERSION: "1.18.2-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: "8.1.6-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
   GOLANG_ALPINE_VERSION: "1.18.0-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
-  ACTIONS_RUNNER_VERSION: "2.283.3" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.23.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
+  ACTIONS_RUNNER_VERSION: "v2.292.0" # https://github.com/actions/runner/releases
+  ACTIONS_RUNNER_IMAGE_VERSION: "v2.291.1-ubuntu-20.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   GITLAB_RUNNER_VERSION: "alpine-v15.0.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "15.0.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  DIND_VERSION: 20.10.16-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
+  ARGOCD_VERSION: v2.3.4 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  YTT_VERSION: "0.40.1" # https://github.com/vmware-tanzu/carvel-ytt/releases
+  YTT_HASH: 11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5
+  ARGOCD_VAULT_PLUGIN_VERSION: "1.11.0" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
+  ARGOCD_VAULT_PLUGIN_HASH: 307c5f9de016ee62e0e1dce1f6b6e8f5617f345c20b61eae7d2be2a8a8941d98
+  KANIKO_VERSION: v1.8.1 # https://console.cloud.google.com/gcr/images/kaniko-project/GLOBAL/executor
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.0.25-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.7" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
@@ -26,7 +34,7 @@ variables:
   NEXTCLOUD_VERSION: "24.0.1-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: "v1.1.4" # https://github.com/librespeed/speedtest-go/releases
   HAPROXY_VERSION: "2.5.7" # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
-  MINIO_VERSION: RELEASE.2022-03-14T18-25-24Z # https://github.com/minio/minio/releases
+  MINIO_VERSION: RELEASE.2022-05-23T18-45-11Z # https://github.com/minio/minio/releases
   ETCD_VERSION: v3.5.4 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
   PROMETHEUS_VERSION: v2.35.0 # https://prometheus.io/download/
   ALERTMANAGER_VERSION: v0.24.0
@@ -56,7 +64,7 @@ variables:
   WORDPRESS_VERSION: "5.9.3-apache"   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "6.9"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.29" # https://registry.hub.docker.com/_/mysql/
-  MARIADB_VERSION: "10.7.3-focal" # https://hub.docker.com/_/mariadb
+  MARIADB_VERSION: "10.8.2-focal" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.4.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.2.1-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   BUILDPACKSIO_LIFECYCLE_VERSION: "0.14.0" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
@@ -69,7 +77,7 @@ variables:
   PLAUSIBLE_VERSION: "v1.4.4" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.10.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "4.47.4" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "5.0.0" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.0-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.91.0" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.1" # https://hub.docker.com/r/metabase/metabase/tags
@@ -80,7 +88,6 @@ variables:
   JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
   JUPYTERHUB_HTTP_PROXY_VERSION: 4.5.1 # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
   REPO2DOCKER_VERSION: "2022.02.0" # https://hub.docker.com/r/jupyter/repo2docker/tags?page=1&ordering=last_updated
-  DIND_VERSION: 20.10.16-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTER_VERSION: hub-2.3.0 # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
   RSHINY_VERSION: 4.2.0 # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
@@ -91,7 +98,7 @@ variables:
   BITNAMI_KEYCLOAK16_VERSION: "16.1.1-debian-10-r103" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=16
   BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r67 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.35.0-debian-10-r3 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
-  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.55.1-debian-10-r12" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
+  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.56.2-debian-10-r12" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_NODE_EXPORTER_VERSION: 1.3.1-debian-10-r119 # https://hub.docker.com/r/bitnami/node-exporter/tags
   BITNAMI_REDIS_VERSION: 6.2.6-debian-10-r181 # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated&name=6.2
   BITNAMI_POSTGRESQL11_VERSION: 11.15.0-debian-10-r58 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
@@ -102,7 +109,7 @@ variables:
   BITNAMI_MEMCACHED_VERSION: 1.6.15-debian-10-r9 # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.2.0-debian-10-r6" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.21.6-debian-10-r71" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2022.5.8-debian-10-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2022.5.23-debian-10-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_CLIENT_VERSION: "2022.5.9-debian-10-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r390 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r49 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
@@ -122,7 +129,7 @@ variables:
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.5-debian-10-r1"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   EXTERNAL_SECRETS_VERSION: v0.5.3 # https://github.com/external-secrets/external-secrets/releases
-  MINIO_CONSOLE_VERSION: "v0.17.1" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: "v0.17.2" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.6.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.3 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
@@ -132,16 +139,11 @@ variables:
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.1" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.31.1 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
-  ARGOCD_VERSION: v2.3.4 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
-  YTT_VERSION: "0.40.1" # https://github.com/vmware-tanzu/carvel-ytt/releases
-  YTT_HASH: 11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5
-  ARGOCD_VAULT_PLUGIN_VERSION: "1.11.0" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
-  ARGOCD_VAULT_PLUGIN_HASH: 307c5f9de016ee62e0e1dce1f6b6e8f5617f345c20b61eae7d2be2a8a8941d98
   REDIS_VERSION: 7.0.0-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   GITLAB_AUTO_BUILD_VERSION: v1.14.0
   GITLAB_AUTO_DEPLOY_VERSION: v2.27.0
-  VAULTWARDEN_VERSION: "1.24.0"
+  VAULTWARDEN_VERSION: "1.25.0"
   BOKY_POSTFIX_VERSION: v3.5.0
   MEMCACHED_VERSION: "1.6.15-alpine3.15" # https://hub.docker.com/_/memcached?tab=tags&page=1
   CRYPTGEON_VERSION: "1.5.1" # https://hub.docker.com/r/cupcakearmy/cryptgeon/tags
@@ -161,7 +163,7 @@ variables:
   STRIMZI_OPERATOR_VERSION: "0.28.0"  # https://quay.io/repository/strimzi/operator?tab=tags 
   STRIMZI_KAFKA_VERSION: "3.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
-  NATS_VERSION: "2.8.2-alpine3.15" # https://hub.docker.com/_/nats?tab=tags
+  NATS_VERSION: "2.8.3-alpine3.15" # https://hub.docker.com/_/nats?tab=tags
   WIREGUARD_VERSION: "0.0.20220316" # https://hub.docker.com/r/masipcat/wireguard-go/tags
   MOSQUITTO_VERSION: "2.0.14-openssl" # https://hub.docker.com/_/eclipse-mosquitto?tab=tags
   MOSQUITTO_EXPORTER_VERSION: "0.8.0" # https://hub.docker.com/r/sapcc/mosquitto-exporter/tags
@@ -421,8 +423,7 @@ buildpacksio-lifecycle:
   stage: buildpacks
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-      --build-arg BUILDPACKSIO_LIFECYCLE_VERSION \
-      --build-arg INFRA_VERSION
+      --build-arg BUILDPACKSIO_LIFECYCLE_VERSION
 
 gitlab-runner:
   interruptible: true
@@ -430,8 +431,7 @@ gitlab-runner:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_RUNNER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg GITLAB_RUNNER_VERSION
 
 gitlab:
   interruptible: true
@@ -439,8 +439,7 @@ gitlab:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg GITLAB_VERSION
 
 actions-runner-controller:
   interruptible: true
@@ -448,8 +447,23 @@ actions-runner-controller:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ACTIONS_RUNNER_CONTROLLER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg ACTIONS_RUNNER_CONTROLLER_VERSION
+
+actions-runner:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ACTIONS_RUNNER_IMAGE_VERSION
+
+kaniko-executor:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg KANIKO_VERSION
 
 nexus:
   interruptible: true
@@ -457,8 +471,7 @@ nexus:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NEXUS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg NEXUS_VERSION
 
 vaultwarden:
   interruptible: true
@@ -466,8 +479,7 @@ vaultwarden:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VAULTWARDEN_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg VAULTWARDEN_VERSION
 
 radius:
   interruptible: true
@@ -506,8 +518,7 @@ powerdns:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg DEBIAN_VERSION
 
 unbound:
   interruptible: true
@@ -515,8 +526,7 @@ unbound:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg DEBIAN_VERSION
 
 keycloak:
   interruptible: true
@@ -549,8 +559,7 @@ nextcloud:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NEXTCLOUD_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg NEXTCLOUD_VERSION
 
 speedtest:
   interruptible: true
@@ -584,8 +593,7 @@ minio-console:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MINIO_CONSOLE_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg MINIO_CONSOLE_VERSION
 
 prometheus:
   interruptible: true
@@ -700,7 +708,6 @@ squid:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DEBIAN_VERSION \
-        --build-arg INFRA_VERSION \
         --build-arg SQUID_VERSION
 
 ioping-exporter:
@@ -726,7 +733,6 @@ grafana:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION \
         --build-arg GRAFANA_VERSION
 
 promtail:
@@ -735,7 +741,6 @@ promtail:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION \
         --build-arg PROMTAIL_VERSION
 
 loki:
@@ -744,7 +749,6 @@ loki:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION \
         --build-arg LOKI_VERSION
 
 m3dbnode:
@@ -808,8 +812,7 @@ alerta:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ALERTA_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg ALERTA_VERSION
 
 wordpress:
   interruptible: true
@@ -857,8 +860,7 @@ oauth2-proxy:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg OAUTH2_PROXY_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg OAUTH2_PROXY_VERSION
 
 caprover:
   interruptible: true
@@ -866,8 +868,7 @@ caprover:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CAPROVER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CAPROVER_VERSION
 
 binderhub:
   interruptible: true
@@ -875,8 +876,7 @@ binderhub:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BINDERHUB_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BINDERHUB_VERSION
 
 binderhub-image-cleaner:
   interruptible: true
@@ -884,8 +884,7 @@ binderhub-image-cleaner:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BINDERHUB_IMAGE_CLEANER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BINDERHUB_IMAGE_CLEANER_VERSION
 
 jupyterhub:
   interruptible: true
@@ -893,8 +892,7 @@ jupyterhub:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg JUPYTERHUB_VERSION
 
 repo2docker:
   interruptible: true
@@ -902,8 +900,7 @@ repo2docker:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg REPO2DOCKER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg REPO2DOCKER_VERSION
 
 dind:
   interruptible: true
@@ -911,8 +908,7 @@ dind:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DIND_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg DIND_VERSION
 
 jupyterhub-http-proxy:
   interruptible: true
@@ -920,8 +916,7 @@ jupyterhub-http-proxy:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_HTTP_PROXY_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg JUPYTERHUB_HTTP_PROXY_VERSION
 
 jupyterhub-secret-sync:
   interruptible: true
@@ -929,8 +924,7 @@ jupyterhub-secret-sync:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_SECRET_SYNC_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg JUPYTERHUB_SECRET_SYNC_VERSION
 
 jupyterhub-network-tools:
   interruptible: true
@@ -938,8 +932,7 @@ jupyterhub-network-tools:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_NETWORK_TOOLS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg JUPYTERHUB_NETWORK_TOOLS_VERSION
 
 jupyterhub-singleuser-sample:
   interruptible: true
@@ -947,8 +940,7 @@ jupyterhub-singleuser-sample:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION
 
 jupyterhub-image-awaiter:
   interruptible: true
@@ -956,8 +948,7 @@ jupyterhub-image-awaiter:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_IMAGE_AWAITER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg JUPYTERHUB_IMAGE_AWAITER_VERSION
 
 jupyter-notebook:
   interruptible: true
@@ -969,8 +960,7 @@ jupyter-notebook:
   script:
     - ./gitlab/build-image.sh jupyter-notebook ${DOCKER_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
         --build-arg JUPYTER_VERSION \
-        --build-arg FLAVOUR \
-        --build-arg INFRA_VERSION
+        --build-arg FLAVOUR
 
 rshiny:
   interruptible: true
@@ -978,8 +968,7 @@ rshiny:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg RSHINY_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg RSHINY_VERSION
 
 # rstudio:
 #   stage: build
@@ -987,8 +976,7 @@ rshiny:
 #     - |
 #       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
 #         --build-arg RSTUDIO_VERSION \
-#         --build-arg JUPYTER_VERSION \
-#         --build-arg INFRA_VERSION
+#         --build-arg JUPYTER_VERSION
 
 bitnami-minio:
   interruptible: true
@@ -996,8 +984,7 @@ bitnami-minio:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MINIO_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_MINIO_VERSION
 
 bitnami-minio-client:
   interruptible: true
@@ -1005,8 +992,7 @@ bitnami-minio-client:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MINIO_CLIENT_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_MINIO_CLIENT_VERSION
 
 bitnami-shell:
   interruptible: true
@@ -1014,8 +1000,7 @@ bitnami-shell:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_SHELL_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_SHELL_VERSION
 
 bitnami-metallb-controller:
   interruptible: true
@@ -1023,8 +1008,7 @@ bitnami-metallb-controller:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_METALLB_CONTROLLER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_METALLB_CONTROLLER_VERSION
 
 bitnami-metallb-speaker:
   interruptible: true
@@ -1032,8 +1016,7 @@ bitnami-metallb-speaker:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_METALLB_SPEAKER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_METALLB_SPEAKER_VERSION
 
 bitnami-grafana:
   interruptible: true
@@ -1041,8 +1024,7 @@ bitnami-grafana:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_GRAFANA_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_GRAFANA_VERSION
 
 bitnami-grafana-image-renderer:
   interruptible: true
@@ -1058,8 +1040,7 @@ bitnami-consul:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_CONSUL_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_CONSUL_VERSION
 
 bitnami-nats:
   interruptible: true
@@ -1067,8 +1048,7 @@ bitnami-nats:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NATS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_NATS_VERSION
 
 bitnami-kube-state-metrics:
   interruptible: true
@@ -1076,8 +1056,7 @@ bitnami-kube-state-metrics:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBE_STATE_METRICS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBE_STATE_METRICS_VERSION
 
 bitnami-metrics-server:
   interruptible: true
@@ -1085,8 +1064,7 @@ bitnami-metrics-server:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_METRICS_SERVER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_METRICS_SERVER_VERSION
 
 bitnami-nginx:
   interruptible: true
@@ -1094,8 +1072,7 @@ bitnami-nginx:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NGINX_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_NGINX_VERSION
 
 bitnami-nginx-ingress-controller:
   interruptible: true
@@ -1103,8 +1080,7 @@ bitnami-nginx-ingress-controller:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION
 
 bitnami-keycloak:
   interruptible: true
@@ -1113,8 +1089,7 @@ bitnami-keycloak:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KEYCLOAK_VERSION \
-        --build-arg KEYCLOAK_THEMES_IMAGE \
-        --build-arg INFRA_VERSION
+        --build-arg KEYCLOAK_THEMES_IMAGE
 
 bitnami-keycloak16:
   interruptible: true
@@ -1123,8 +1098,7 @@ bitnami-keycloak16:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KEYCLOAK16_VERSION \
-        --build-arg KEYCLOAK_THEMES_IMAGE \
-        --build-arg INFRA_VERSION
+        --build-arg KEYCLOAK_THEMES_IMAGE
 
 bitnami-spark:
   interruptible: true
@@ -1132,8 +1106,7 @@ bitnami-spark:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_SPARK_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_SPARK_VERSION
 
 bitnami-prometheus:
   interruptible: true
@@ -1141,8 +1114,7 @@ bitnami-prometheus:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_PROMETHEUS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_PROMETHEUS_VERSION
 
 bitnami-prometheus-operator:
   interruptible: true
@@ -1150,8 +1122,7 @@ bitnami-prometheus-operator:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_PROMETHEUS_OPERATOR_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_PROMETHEUS_OPERATOR_VERSION
 
 bitnami-node-exporter:
   interruptible: true
@@ -1159,8 +1130,7 @@ bitnami-node-exporter:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NODE_EXPORTER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_NODE_EXPORTER_VERSION
 
 bitnami-redis:
   interruptible: true
@@ -1168,8 +1138,7 @@ bitnami-redis:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_REDIS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_REDIS_VERSION
 
 bitnami-postgresql11:
   interruptible: true
@@ -1177,16 +1146,14 @@ bitnami-postgresql11:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL11_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_POSTGRESQL11_VERSION
 
 bitnami-postgresql13:
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL13_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_POSTGRESQL13_VERSION
 
 bitnami-postgresql14:
   interruptible: true
@@ -1194,8 +1161,7 @@ bitnami-postgresql14:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL14_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_POSTGRESQL14_VERSION
 
 bitnami-mariadb:
   interruptible: true
@@ -1203,8 +1169,7 @@ bitnami-mariadb:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MARIADB_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_MARIADB_VERSION
 
 bitnami-mongodb:
   interruptible: true
@@ -1212,8 +1177,7 @@ bitnami-mongodb:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MONGODB_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_MONGODB_VERSION
 
 bitnami-memcached:
   interruptible: true
@@ -1221,8 +1185,7 @@ bitnami-memcached:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MEMCACHED_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_MEMCACHED_VERSION
 
 bitnami-kubeapps-dashboard:
   interruptible: true
@@ -1230,8 +1193,7 @@ bitnami-kubeapps-dashboard:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_DASHBOARD_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBEAPPS_DASHBOARD_VERSION
 
 # Special
 bitnami-kubeapps-apprepository-controller:
@@ -1240,8 +1202,7 @@ bitnami-kubeapps-apprepository-controller:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION
 
 # Special
 bitnami-kubeapps-asset-syncer:
@@ -1250,8 +1211,7 @@ bitnami-kubeapps-asset-syncer:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_ASSET_SYNCER \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBEAPPS_ASSET_SYNCER
 
 # Special
 bitnami-kubeapps-kubeops:
@@ -1260,8 +1220,7 @@ bitnami-kubeapps-kubeops:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_KUBEOPS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBEAPPS_KUBEOPS_VERSION
 
 bitnami-kubeapps-assetsvc:
   interruptible: true
@@ -1269,8 +1228,7 @@ bitnami-kubeapps-assetsvc:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_ASSETSVC_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBEAPPS_ASSETSVC_VERSION
 
 bitnami-kubeapps-apis:
   interruptible: true
@@ -1278,32 +1236,28 @@ bitnami-kubeapps-apis:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_APIS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBEAPPS_APIS_VERSION
 
 bitnami-kubeapps-pinniped-proxy:
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION
 
 bitnami-sealed-secrets-controller:
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
 
 external-secrets:
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg EXTERNAL_SECRETS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg EXTERNAL_SECRETS_VERSION
 
 hasura-graphql-engine:
   interruptible: true
@@ -1311,8 +1265,7 @@ hasura-graphql-engine:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HASURA_GRAPHQL_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg HASURA_GRAPHQL_VERSION
 
 kutt:
   interruptible: true
@@ -1320,8 +1273,7 @@ kutt:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KUTT_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg KUTT_VERSION
 
 umami:
   interruptible: true
@@ -1329,8 +1281,7 @@ umami:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg UMAMI_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg UMAMI_VERSION
 
 pihole:
   interruptible: true
@@ -1378,8 +1329,7 @@ strapi:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg STRAPI_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg STRAPI_VERSION
 
 ghost:
   interruptible: true
@@ -1387,8 +1337,7 @@ ghost:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GHOST_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg GHOST_VERSION
 
 bitnami-ghost:
   interruptible: true
@@ -1396,8 +1345,7 @@ bitnami-ghost:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_GHOST_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BITNAMI_GHOST_VERSION
 
 matomo:
   interruptible: true
@@ -1429,8 +1377,7 @@ sftpgo:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SFTPGO_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg SFTPGO_VERSION
 
 hello:
   interruptible: true
@@ -1438,8 +1385,7 @@ hello:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HELLO_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg HELLO_VERSION
 
 reloader:
   interruptible: true
@@ -1447,8 +1393,7 @@ reloader:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg RELOADER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg RELOADER_VERSION
 
 configmap-reload:
   interruptible: true
@@ -1456,8 +1401,7 @@ configmap-reload:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CONFIGMAP_RELOAD_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CONFIGMAP_RELOAD_VERSION
 
 docker-registry:
   interruptible: true
@@ -1465,8 +1409,7 @@ docker-registry:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DOCKER_REGISTRY_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg DOCKER_REGISTRY_VERSION
 
 argocd:
   interruptible: true
@@ -1476,8 +1419,7 @@ argocd:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGOCD_VERSION \
         --build-arg YTT_VERSION \
-        --build-arg YTT_HASH \
-        --build-arg INFRA_VERSION
+        --build-arg YTT_HASH
 
 boky-postfix:
   interruptible: true
@@ -1485,8 +1427,7 @@ boky-postfix:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BOKY_POSTFIX_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BOKY_POSTFIX_VERSION
 
 cryptgeon:
   interruptible: true
@@ -1494,8 +1435,7 @@ cryptgeon:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CRYPTGEON_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CRYPTGEON_VERSION
 
 memcached:
   interruptible: true
@@ -1503,8 +1443,7 @@ memcached:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MEMCACHED_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg MEMCACHED_VERSION
 
 dex:
   interruptible: true
@@ -1512,8 +1451,7 @@ dex:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEX_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg DEX_VERSION
 
 redis:
   interruptible: true
@@ -1521,8 +1459,7 @@ redis:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg REDIS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg REDIS_VERSION
 
 listmonk:
   interruptible: true
@@ -1530,8 +1467,7 @@ listmonk:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LISTMONK_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg LISTMONK_VERSION
 
 consul:
   interruptible: true
@@ -1539,8 +1475,7 @@ consul:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CONSUL_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CONSUL_VERSION
 
 consul-k8s-control-plane:
   interruptible: true
@@ -1548,8 +1483,7 @@ consul-k8s-control-plane:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CONSUL_K8S_CP_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CONSUL_K8S_CP_VERSION
 
 envoy:
   interruptible: true
@@ -1557,8 +1491,7 @@ envoy:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ENVOY_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg ENVOY_VERSION
 
 vault:
   interruptible: true
@@ -1566,8 +1499,7 @@ vault:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VAULT_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg VAULT_VERSION
 
 vault-k8s:
   interruptible: true
@@ -1575,8 +1507,7 @@ vault-k8s:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VAULT_K8S_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg VAULT_K8S_VERSION
 
 vault-csi-provider:
   interruptible: true
@@ -1584,8 +1515,7 @@ vault-csi-provider:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VAULT_CSI_PROVIDER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg VAULT_CSI_PROVIDER_VERSION
 
 strimzi-operator:
   interruptible: true
@@ -1593,8 +1523,7 @@ strimzi-operator:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg STRIMZI_OPERATOR_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg STRIMZI_OPERATOR_VERSION
 
 strimzi-kafka:
   interruptible: true
@@ -1603,8 +1532,7 @@ strimzi-kafka:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg STRIMZI_OPERATOR_VERSION \
-        --build-arg STRIMZI_KAFKA_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg STRIMZI_KAFKA_VERSION
 
 nats-operator:
   interruptible: true
@@ -1612,8 +1540,7 @@ nats-operator:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NATS_OPERATOR_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg NATS_OPERATOR_VERSION
 
 nats:
   interruptible: true
@@ -1621,8 +1548,7 @@ nats:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NATS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg NATS_VERSION
 
 mosquitto:
   interruptible: true
@@ -1630,8 +1556,7 @@ mosquitto:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MOSQUITTO_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg MOSQUITTO_VERSION
 
 mosquitto-exporter:
   interruptible: true
@@ -1639,8 +1564,7 @@ mosquitto-exporter:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MOSQUITTO_EXPORTER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg MOSQUITTO_EXPORTER_VERSION
 
 cert-manager-controller:
   interruptible: true
@@ -1648,8 +1572,7 @@ cert-manager-controller:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_CONTROLLER_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CERT_MANAGER_CONTROLLER_VERSION
 
 cert-manager-webhook:
   interruptible: true
@@ -1657,8 +1580,7 @@ cert-manager-webhook:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_WEBHOOK_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CERT_MANAGER_WEBHOOK_VERSION
 
 cert-manager-cainjector:
   interruptible: true
@@ -1666,8 +1588,7 @@ cert-manager-cainjector:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_CAINJECTOR_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CERT_MANAGER_CAINJECTOR_VERSION
 
 cert-manager-ctl:
   interruptible: true
@@ -1675,8 +1596,7 @@ cert-manager-ctl:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_CTL_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CERT_MANAGER_CTL_VERSION
 
 cert-manager-webhook-pdns:
   interruptible: true
@@ -1684,8 +1604,7 @@ cert-manager-webhook-pdns:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_WEBHOOK_PDNS_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg CERT_MANAGER_WEBHOOK_PDNS_VERSION
 
 caddy:
   interruptible: true

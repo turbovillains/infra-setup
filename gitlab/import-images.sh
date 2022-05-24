@@ -127,6 +127,7 @@ import_images() {
         "gitlab/gitlab-runner:${GITLAB_RUNNER_VERSION:-alpine-v13.12.0-rc1}"
         "gitlab/gitlab-ce:${GITLAB_VERSION:-14.1.2-ce.0}"
         "summerwind/actions-runner-controller:${ACTIONS_RUNNER_CONTROLLER_VERSION:-v0.23.0}"
+        "summerwind/actions-runner:${ACTIONS_RUNNER_IMAGE_VERSION:-v2.291.1-ubuntu20.04}"
         "jupyterhub/k8s-image-cleaner:${BINDERHUB_IMAGE_CLEANER_VERSION:-0.2.0-n496.h988aca0}"
         "noroutine/k8s-binderhub:${BINDERHUB_VERSION:-0.2.0-n562.h0b4462c}"
         "jupyterhub/k8s-hub:${JUPYTERHUB_VERSION:-1.0.0-beta.1.n004.h8ae542c7}"
@@ -219,6 +220,7 @@ import_images() {
         "sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION:-0.8.0}"
         "caddy:${CADDY_VERSION:-2.5.1}"
         "quay.io/outline/shadowbox:${SHADOWBOX_VERSION:-stable}"
+        "gcr.io/kaniko-project/executor:${KANIKO_VERSION:-v1.8.1}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
