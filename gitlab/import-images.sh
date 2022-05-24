@@ -266,15 +266,13 @@ import_images() {
         "longhornio/longhorn-manager:${LONGHORN_VERSION:-v1.2.4}"
         "longhornio/longhorn-ui:${LONGHORN_VERSION:-v1.2.4}"
         "longhornio/longhorn-engine:${LONGHORN_VERSION:-v1.2.4}"
-        "longhornio/longhorn-instance-manager:v1_20220303"
-        "longhornio/csi-node-driver-registrar:v2.3.0"
+        "longhornio/longhorn-instance-manager:v1_20220516"
+        "longhornio/longhorn-share-manager:v1_20220523"
+        "longhornio/backing-image-manager:v2_20210820"
         "longhornio/csi-node-driver-registrar:v2.5.0"
-        "longhornio/csi-snapshotter:v3.0.3"
         "longhornio/csi-snapshotter:v4.2.1"
-        "longhornio/csi-resizer:v1.2.0"
         "longhornio/csi-resizer:v1.3.0"
         "longhornio/csi-provisioner:v2.1.2"
-        "longhornio/csi-attacher:v3.2.1"
         "longhornio/csi-attacher:v3.4.0"
 
         # vsphere csi/cpi
