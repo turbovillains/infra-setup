@@ -30,7 +30,7 @@ variables:
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "18.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "14.3-bullseye" # https://hub.docker.com/_/postgres
-  JIRA_VERSION: "8.22.2" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
+  JIRA_VERSION: "8.22.3" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "24.0.1-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: "v1.1.4" # https://github.com/librespeed/speedtest-go/releases
   HAPROXY_VERSION: "2.5.7" # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
@@ -55,9 +55,9 @@ variables:
   CADVISOR_VERSION: "v0.44.0" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.103" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
-  ELASTICSEARCH_VERSION: "8.2.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "8.2.0"
-  KIBANA_VERSION: "8.2.0"
+  ELASTICSEARCH_VERSION: "8.2.1" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "8.2.1"
+  KIBANA_VERSION: "8.2.1"
   CORTEX_VERSION: v1.11.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 5.0.8-focal # https://hub.docker.com/_/mongo
