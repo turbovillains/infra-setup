@@ -244,17 +244,12 @@ import_images() {
         "quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION:-0.28.0}-kafka-${STRIMZI_KAFKA_VERSION:-3.1.0}"
 
         # k8s
-        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION_1:-3.6}"
-        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION_2:-3.7}"
+        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
         "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
-        "k8s.gcr.io/kube-apiserver:${K8S_VERSION_1:-v1.23.5}"
-        "k8s.gcr.io/kube-proxy:${K8S_VERSION_1:-v1.23.5}"
-        "k8s.gcr.io/kube-scheduler:${K8S_VERSION_1:-v1.23.5}"
-        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION_1:-v1.23.5}"
-        "k8s.gcr.io/kube-apiserver:${K8S_VERSION_2:-v1.23.5}"
-        "k8s.gcr.io/kube-proxy:${K8S_VERSION_2:-v1.23.5}"
-        "k8s.gcr.io/kube-scheduler:${K8S_VERSION_2:-v1.23.5}"
-        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION_2:-v1.23.5}"
+        "k8s.gcr.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
+        "k8s.gcr.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
+        "k8s.gcr.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
+        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
 
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
@@ -268,13 +263,12 @@ import_images() {
         "calico/pod2daemon-flexvol:${CALICO_VERSION:-v3.22.1}"
 
         # longhorn
-        "longhornio/longhorn-manager:v1.2.4"
+        "longhornio/longhorn-manager:${LONGHORN_VERSION:-v1.2.4}"
+        "longhornio/longhorn-ui:${LONGHORN_VERSION:-v1.2.4}"
+        "longhornio/longhorn-engine:${LONGHORN_VERSION:-v1.2.4}"
+        "longhornio/longhorn-instance-manager:v1_20220303"
         "longhornio/csi-node-driver-registrar:v2.3.0"
         "longhornio/csi-node-driver-registrar:v2.5.0"
-        "longhornio/longhorn-engine:v1.2.2"
-        "longhornio/longhorn-engine:v1.2.3"
-        "longhornio/longhorn-engine:v1.2.4"
-        "longhornio/longhorn-instance-manager:v1_20220303"
         "longhornio/csi-snapshotter:v3.0.3"
         "longhornio/csi-snapshotter:v4.2.1"
         "longhornio/csi-resizer:v1.2.0"
@@ -282,7 +276,6 @@ import_images() {
         "longhornio/csi-provisioner:v2.1.2"
         "longhornio/csi-attacher:v3.2.1"
         "longhornio/csi-attacher:v3.4.0"
-        "longhornio/longhorn-ui:v1.2.4"
 
         # vsphere csi/cpi
         "gcr.io/cloud-provider-vsphere/cpi/release/manager:${VSPHERE_CPI_MANAGER_VERSION:-v1.23.0}"
@@ -303,13 +296,32 @@ import_images() {
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
 
-    # For dependabot
-    for image in ${images[@]}; do
-        echo "# $(get_name ${image})"
-        echo "FROM ${image}"
-        echo "# $(get_name ${image})"
-        echo
-    done
+    # Sync to upstream repo for dependabot and renovate
+    ssh-keyscan github.com | tee -a ~/.ssh/known_hosts
+    git clone git@github.com:noroutine/upstream.git
+    (
+
+        cd upstream
+
+        for image in ${images[@]}; do
+            echo "# $(get_name ${image})"
+            echo "FROM ${image}"
+            echo "# $(get_name ${image})"
+            echo
+        done | tee Dockerfile
+
+        jq -r -n --arg INFRA_VERSION ${INFRA_VERSION} '{ version: $INFRA_VERSION }' | tee infra.json
+
+        git add Dockerfile infra.json
+        git commit -a -m "Infra ${INFRA_VERSION}"
+        git push origin master
+
+        # Tag if we are doing this for tag
+        if [[ ! -z ${CI_COMMIT_TAG:-} ]]; then
+            git tag ${CI_COMMIT_TAG}
+            git push origin ${CI_COMMIT_TAG}
+        fi
+    )
 
     for image in ${images[@]}; do
         printf "\nMigrating %s/%s:%s to %s\n`line`\n" \
