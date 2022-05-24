@@ -14,20 +14,20 @@ deb http://security.debian.org/debian-security bullseye-security main
 SOURCES
 
 apt-get update -yyq
-apt-get -y install unzip \
+apt-get -yyq install zip zstd unzip upx \
 	python3 python3-pip virtualenv \
-	socat netcat curl \
+	socat netcat telnet curl ftp git \
   protobuf-compiler \
   rsync \
-  make build-essential \
+  make build-essential libunwind8 \
   apt-transport-https apt-utils \
   ca-certificates \
-  curl \
+  parallel shellcheck \
   gnupg2 \
   vim \
   freeipmi \
-  postgresql-client \
-  iputils-ping dnsutils \
+  postgresql-client openssh-client \
+  iproute2 iputils-ping dnsutils \
   software-properties-common \
   supervisor
 
@@ -237,9 +237,9 @@ YT90qFF93M3v01BbxP+EIY2/9tiIPbrd
 EOK
 
 add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable"
+  "deb [arch=amd64] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) \
+  stable"
 
 apt-get update -yyq
 apt-get install -yyq docker-ce docker-ce-cli containerd.io

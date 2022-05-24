@@ -4,6 +4,7 @@
 brew cleanup -s
 
 chown -R ${BUILDER_USER}.users /home/${BUILDER_USER}
+chmod +x /usr/local/bin/*
 
 rm -rf /root/.cache /home/${BUILDER_USER}/.cache
 

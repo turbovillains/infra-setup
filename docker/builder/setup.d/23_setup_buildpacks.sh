@@ -17,8 +17,3 @@ lifecycle-image = "${DOCKER_HUB}/infra/buildpacksio-lifecycle:${BUILDPACKS_VERSI
 [[trusted-builders]]
   name = "${DOCKER_HUB}/paketobuildpacks/builder:tiny"
 EOF
-
-# ttyd
-curl -sLo /usr/local/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64
-
-chmod +x /usr/local/bin/*

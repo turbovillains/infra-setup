@@ -33,9 +33,12 @@ ENV BUILDER_USER=builder
 #   no_proxy=${NO_PROXY}}
 
 # For GH Action Runner
+ENV ACTIONS_RUNNER_VERSION=${ACTIONS_RUNNER_VERSION}
 ENV ARCH=x64
 ENV RUNNER_ASSETS_DIR=/runnertmp
+ENV RUNNER_TOOL_CACHE=/opt/hostedtoolcache
 ENV RUNNER_USER=builder
+ENV ImageOS=debian11
 
 ADD setup.sh /setup.sh
 ADD setup.d /setup.d
@@ -48,8 +51,7 @@ RUN mv /bin/bash /bin/bash.real
 COPY --chown=0:0 gitlab-shell /bin/bash
 RUN chmod +x /bin/bash
 
-# COPY actions-runner-entrypoint.sh /
-# COPY --chown=${RUNNER_USER}:docker patched ${RUNNER_ASSETS_DIR}/patched
+COPY actions-runner-entrypoint.sh logger.bash /usr/local/bin/
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
