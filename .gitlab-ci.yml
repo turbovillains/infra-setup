@@ -13,6 +13,7 @@ variables:
   ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.23.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   ACTIONS_RUNNER_VERSION: "v2.292.0" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.291.1-ubuntu-20.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
+  KUBE_RBAC_PROXY_VERSION: v0.12.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine-v15.0.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "15.0.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   DIND_VERSION: 20.10.16-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
@@ -127,6 +128,7 @@ variables:
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: "2.4.5-scratch-r0" # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_APIS_VERSION: "2.4.5-debian-10-r1" # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.5-debian-10-r1"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
+  BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.12.0-scratch-r2" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   EXTERNAL_SECRETS_VERSION: v0.5.3 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.17.2" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
@@ -455,6 +457,14 @@ actions-runner:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ACTIONS_RUNNER_IMAGE_VERSION
+
+kube-rbac-proxy:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg KUBE_RBAC_PROXY_VERSION
 
 kaniko-executor:
   interruptible: true
@@ -1243,6 +1253,13 @@ bitnami-kubeapps-pinniped-proxy:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION
+
+bitnami-kube-rbac-proxy:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_KUBE_RBAC_PROXY_VERSION
 
 bitnami-sealed-secrets-controller:
   stage: build
