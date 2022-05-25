@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -eux
+#!/usr/bin/env bash -eu
 
 [[ ! -z ${DOCKER_CFG:-} ]]
 

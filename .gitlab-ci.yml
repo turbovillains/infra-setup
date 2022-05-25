@@ -78,7 +78,7 @@ variables:
   PLAUSIBLE_VERSION: "v1.4.4" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.10.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "5.0.0" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "5.0.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.0-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.91.0" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.1" # https://hub.docker.com/r/metabase/metabase/tags
@@ -132,7 +132,7 @@ variables:
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   EXTERNAL_SECRETS_VERSION: v0.5.3 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.17.2" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
-  HASURA_GRAPHQL_VERSION: v2.6.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
+  HASURA_GRAPHQL_VERSION: v2.7.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.3 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
@@ -158,7 +158,7 @@ variables:
   CONSUL_K8S_CP_VERSION: "0.44.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.2 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
   VAULT_VERSION: "1.10.3" # https://hub.docker.com/r/hashicorp/vault
-  VAULT_K8S_VERSION: "0.16.0" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
+  VAULT_K8S_VERSION: "0.16.1" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
   VAULT_CSI_PROVIDER_VERSION: "1.1.0"  # https://hub.docker.com/r/hashicorp/vault-csi-provider/tags
   STRIMZI_OPERATOR_VERSION: "0.29.0"  # https://quay.io/repository/strimzi/operator?tab=tags 
   STRIMZI_KAFKA_VERSION: "3.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
@@ -198,6 +198,12 @@ import-images:
   stage: scratch
   script:
     - ./gitlab/${CI_JOB_NAME}.sh
+
+# mirror-homebrew:
+#   interruptible: true
+#   stage: scratch
+#   script:
+#     - ./gitlab/${CI_JOB_NAME}.sh
 
 noroutine-ca:
   interruptible: true

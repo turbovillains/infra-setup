@@ -12,7 +12,7 @@ brew tap vmware-tanzu/carvel
 
 brew install \
   go \
-  kubectl \
+  kubectl k9s \
   helm helmfile \
   goreleaser \
   skaffold \
@@ -21,7 +21,7 @@ brew install \
   kustomize \
   buildpacks/tap/pack \
   aquasecurity/trivy/trivy \
-  terraform \
+  terraform consul vault \
   gh \
   awscli azure-cli \
   cosign

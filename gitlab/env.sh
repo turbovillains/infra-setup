@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 
 include_env() {
     local source_dir=${1:-}

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -eux
+#!/usr/bin/env bash -eu
 
 SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY:-}
 
@@ -14,4 +14,4 @@ if [[ ! -z "${SSH_PRIVATE_KEY}" ]]; then
     chmod 600 /root/.ssh/id_rsa /home/${BUILDER_USER}/.ssh/id_rsa
 fi
 
-ssh-keyscan "${GIT_SERVER_HOST} git.nrtn.dev github.com bitbucket.org" | tee /root/.ssh/known_hosts | tee /home/${BUILDER_USER}/.ssh/known_hosts
+ssh-keyscan ${GIT_SERVER_HOST} git.nrtn.dev github.com bitbucket.org | tee /root/.ssh/known_hosts | tee /home/${BUILDER_USER}/.ssh/known_hosts

@@ -314,7 +314,7 @@ import_images() {
 
         git add Dockerfile infra.json
         git commit -a -m "Infra ${INFRA_VERSION}"
-        git push origin master
+        git push origin master || true
 
         # Tag if we are doing this for tag
         if [[ ! -z ${CI_COMMIT_TAG:-} ]]; then
