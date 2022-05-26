@@ -46,7 +46,7 @@ variables:
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
   GRAFANA_VERSION: "8.5.3" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
-  GRIT_VERSION: "0.0.4"
+  GRIT_VERSION: "v0.0.5" # Put the tag! https://github.com/noroutine/grit/releases
   LOKI_VERSION: "2.5.0" # https://hub.docker.com/r/grafana/loki/tags
   PROMTAIL_VERSION: "2.5.0"
   M3DBNODE_VERSION: v1.5.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
@@ -62,7 +62,7 @@ variables:
   CORTEX_VERSION: v1.11.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 5.0.8-focal # https://hub.docker.com/_/mongo
-  WORDPRESS_VERSION: "5.9.3-apache"   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
+  WORDPRESS_VERSION: "6.0.0-apache"   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "6.9"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.29" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.8.2-focal" # https://hub.docker.com/_/mariadb
@@ -79,7 +79,7 @@ variables:
   VERDACCIO_VERSION: "5.10.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: "5.0.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
-  MATOMO_VERSION: "4.10.0-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
+  MATOMO_VERSION: "4.10.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.91.0" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.1" # https://hub.docker.com/r/metabase/metabase/tags
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
@@ -94,40 +94,41 @@ variables:
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: 1.10.1 # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
-  BITNAMI_GHOST_VERSION: "4.48.0-debian-10-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
-  BITNAMI_KEYCLOAK_VERSION: "18.0.0-debian-10-r2" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
+  BITNAMI_GHOST_VERSION: "4.48.0-debian-10-r5" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  BITNAMI_KEYCLOAK_VERSION: "18.0.0-debian-10-r6" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
   BITNAMI_KEYCLOAK16_VERSION: "16.1.1-debian-10-r103" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=16
-  BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r67 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
-  BITNAMI_PROMETHEUS_VERSION: 2.35.0-debian-10-r3 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
-  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.56.2-debian-10-r12" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
-  BITNAMI_NODE_EXPORTER_VERSION: 1.3.1-debian-10-r119 # https://hub.docker.com/r/bitnami/node-exporter/tags
-  BITNAMI_REDIS_VERSION: 6.2.6-debian-10-r181 # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated&name=6.2
-  BITNAMI_POSTGRESQL11_VERSION: 11.15.0-debian-10-r58 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
-  BITNAMI_POSTGRESQL13_VERSION: 13.6.0-debian-10-r57 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=13.
-  BITNAMI_POSTGRESQL14_VERSION: 14.2.0-debian-10-r59 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=14.
-  BITNAMI_MARIADB_VERSION: 10.7.3-debian-10-r51 # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.6
-  BITNAMI_MONGODB_VERSION: 5.0.6-debian-10-r62 # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=5.
-  BITNAMI_MEMCACHED_VERSION: 1.6.15-debian-10-r9 # https://hub.docker.com/r/bitnami/memcached/tags
-  BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.2.0-debian-10-r6" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
-  BITNAMI_NGINX_VERSION: "1.21.6-debian-10-r71" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2022.5.23-debian-10-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
-  BITNAMI_MINIO_CLIENT_VERSION: "2022.5.9-debian-10-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
-  BITNAMI_SHELL_VERSION: 10-debian-10-r390 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
-  BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r49 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
-  BITNAMI_METALLB_SPEAKER_VERSION: 0.12.1-debian-10-r49 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
-  BITNAMI_GRAFANA_VERSION: "8.5.3-debian-10-r0" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
-  BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.4.2-debian-10-r43" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
-  BITNAMI_CONSUL_VERSION: "1.11.4-debian-10-r38" # https://hub.docker.com/r/bitnami/consul/tags
-  BITNAMI_NATS_VERSION: "2.8.2-debian-10-r3" # https://hub.docker.com/r/bitnami/nats/tags
-  BITNAMI_KUBE_STATE_METRICS_VERSION: "2.4.2-debian-10-r31" # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
-  BITNAMI_METRICS_SERVER_VERSION: "0.6.1-debian-10-r57" # https://hub.docker.com/r/bitnami/metrics-server/tags?page=1&ordering=last_updated
+  BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r111 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
+  BITNAMI_PROMETHEUS_VERSION: 2.35.0-debian-10-r32 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
+  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.56.3-debian-10-r1" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
+  BITNAMI_NODE_EXPORTER_VERSION: 1.3.1-debian-10-r164 # https://hub.docker.com/r/bitnami/node-exporter/tags
+  BITNAMI_REDIS_VERSION: 6.2.7-debian-10-r26 # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated&name=6.2
+  BITNAMI_POSTGRESQL11_VERSION: 11.16.0-debian-10-r12 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
+  BITNAMI_POSTGRESQL12_VERSION: 12.11.0-debian-10-r12 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=12.
+  BITNAMI_POSTGRESQL13_VERSION: 13.7.0-debian-10-r12 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=13.
+  BITNAMI_POSTGRESQL14_VERSION: 14.3.0-debian-10-r13 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=14.
+  BITNAMI_MARIADB_VERSION: 10.7.4-debian-10-r4 # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.6
+  BITNAMI_MONGODB_VERSION: 5.0.9-debian-10-r0 # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=5.
+  BITNAMI_MEMCACHED_VERSION: 1.6.15-debian-10-r54 # https://hub.docker.com/r/bitnami/memcached/tags
+  BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.2.0-debian-10-r8" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
+  BITNAMI_NGINX_VERSION: "1.21.6-debian-10-r118" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
+  BITNAMI_MINIO_VERSION: "2022.5.23-debian-10-r2" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: "2022.5.9-debian-10-r15" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_SHELL_VERSION: 10-debian-10-r436 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
+  BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r93 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
+  BITNAMI_METALLB_SPEAKER_VERSION: 0.12.1-debian-10-r95 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
+  BITNAMI_GRAFANA_VERSION: "8.5.3-debian-10-r4" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
+  BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.4.2-debian-10-r59" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
+  BITNAMI_CONSUL_VERSION: "1.12.1-debian-10-r0" # https://hub.docker.com/r/bitnami/consul/tags
+  BITNAMI_NATS_VERSION: "2.8.3-debian-10-r2" # https://hub.docker.com/r/bitnami/nats/tags
+  BITNAMI_KUBE_STATE_METRICS_VERSION: "2.4.2-debian-10-r76" # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
+  BITNAMI_METRICS_SERVER_VERSION: "0.6.1-debian-10-r102" # https://hub.docker.com/r/bitnami/metrics-server/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_ASSET_SYNCER: "2.4.5-scratch-r0" # https://hub.docker.com/r/bitnami/kubeapps-asset-syncer/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION: "2.4.5-scratch-r0" # https://hub.docker.com/r/bitnami/kubeapps-apprepository-controller/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_DASHBOARD_VERSION: "2.4.5-debian-10-r1" # https://hub.docker.com/r/bitnami/kubeapps-dashboard/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_DASHBOARD_VERSION: "2.4.5-debian-10-r27" # https://hub.docker.com/r/bitnami/kubeapps-dashboard/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_KUBEOPS_VERSION: "2.4.5-scratch-r0" # https://hub.docker.com/r/bitnami/kubeapps-kubeops/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_ASSETSVC_VERSION: "2.4.5-scratch-r0" # https://hub.docker.com/r/bitnami/kubeapps-assetsvc/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_APIS_VERSION: "2.4.5-debian-10-r1" # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
-  BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.5-debian-10-r1"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_APIS_VERSION: "2.4.5-debian-10-r26" # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
+  BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.5-debian-10-r26"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.12.0-scratch-r2" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   EXTERNAL_SECRETS_VERSION: v0.5.3 # https://github.com/external-secrets/external-secrets/releases
@@ -150,11 +151,11 @@ variables:
   MEMCACHED_VERSION: "1.6.15-alpine3.15" # https://hub.docker.com/_/memcached?tab=tags&page=1
   CRYPTGEON_VERSION: "1.5.1" # https://hub.docker.com/r/cupcakearmy/cryptgeon/tags
   K8S_PAUSE_VERSION: "3.7"
-  K8S_VERSION: "v1.24.0"
+  K8S_VERSION: "v1.24.1"
   K8S_COREDNS_VERSION: "v1.8.6"
-  TIGERA_OPERATOR_VERSION: "v1.27.1" # https://quay.io/repository/tigera/operator?tab=tags
+  TIGERA_OPERATOR_VERSION: "v1.27.2" # https://quay.io/repository/tigera/operator?tab=tags
   CALICO_VERSION: "v3.23.1" # https://hub.docker.com/r/calico/node/tags
-  CONSUL_VERSION: "1.12.0"  # https://hub.docker.com/r/hashicorp/consul
+  CONSUL_VERSION: "1.12.1"  # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "0.44.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.2 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
   VAULT_VERSION: "1.10.3" # https://hub.docker.com/r/hashicorp/vault
@@ -1162,6 +1163,14 @@ bitnami-postgresql11:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL11_VERSION
+
+bitnami-postgresql12:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_POSTGRESQL12_VERSION
 
 bitnami-postgresql13:
   stage: build

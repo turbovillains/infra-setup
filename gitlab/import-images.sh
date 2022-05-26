@@ -167,6 +167,7 @@ import_images() {
         "bitnami/node-exporter:${BITNAMI_NODE_EXPORTER_VERSION:-1.2.2-debian-10-r99}"
         "bitnami/redis:${BITNAMI_REDIS_VERSION:-6.2.4-debian-10-r0}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL11_VERSION:-11.12.0-debian-10-r20}"
+        "bitnami/postgresql:${BITNAMI_POSTGRESQL12_VERSION:-12.11.0-debian-10-r12}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL14_VERSION:-14.1.0-debian-10-r81}"
         "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
