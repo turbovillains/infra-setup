@@ -16,6 +16,10 @@ variables:
   KUBE_RBAC_PROXY_VERSION: v0.12.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine-v15.0.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "15.0.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_AGENTK_VERSION: v15.0.0 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
+  GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.6.0 # registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications
+  GITLAB_AUTO_BUILD_VERSION: v1.14.0
+  GITLAB_AUTO_DEPLOY_VERSION: v2.27.0
   DIND_VERSION: 20.10.16-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   ARGOCD_VERSION: v2.3.4 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.40.1" # https://github.com/vmware-tanzu/carvel-ytt/releases
@@ -56,9 +60,9 @@ variables:
   CADVISOR_VERSION: "v0.44.0" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.103" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
-  ELASTICSEARCH_VERSION: "8.2.1" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "8.2.1"
-  KIBANA_VERSION: "8.2.1"
+  ELASTICSEARCH_VERSION: "8.2.2" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "8.2.2"
+  KIBANA_VERSION: "8.2.2"
   CORTEX_VERSION: v1.11.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 5.0.8-focal # https://hub.docker.com/_/mongo
@@ -137,15 +141,13 @@ variables:
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.3 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v0.0.110" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
+  RELOADER_VERSION: "v0.0.112" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
   CONFIGMAP_RELOAD_VERSION: v0.7.1
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.1" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.31.1 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
   REDIS_VERSION: 7.0.0-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
-  GITLAB_AUTO_BUILD_VERSION: v1.14.0
-  GITLAB_AUTO_DEPLOY_VERSION: v2.27.0
   VAULTWARDEN_VERSION: "1.25.0"
   BOKY_POSTFIX_VERSION: v3.5.0
   MEMCACHED_VERSION: "1.6.15-alpine3.15" # https://hub.docker.com/_/memcached?tab=tags&page=1
@@ -162,7 +164,7 @@ variables:
   VAULT_K8S_VERSION: "0.16.1" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
   VAULT_CSI_PROVIDER_VERSION: "1.1.0"  # https://hub.docker.com/r/hashicorp/vault-csi-provider/tags
   STRIMZI_OPERATOR_VERSION: "0.29.0"  # https://quay.io/repository/strimzi/operator?tab=tags 
-  STRIMZI_KAFKA_VERSION: "3.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
+  STRIMZI_KAFKA_VERSION: "3.2.0" # https://quay.io/repository/strimzi/kafka?tab=tags
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
   NATS_VERSION: "2.8.3-alpine3.15" # https://hub.docker.com/_/nats?tab=tags
   WIREGUARD_VERSION: "0.0.20220316" # https://hub.docker.com/r/masipcat/wireguard-go/tags
@@ -368,7 +370,7 @@ shadowbox:
         --build-arg INFRA_VERSION \
         --build-arg SHADOWBOX_VERSION
 
-auto-build:
+gitlab-auto-build:
   interruptible: true
   stage: build
   script:
@@ -376,13 +378,29 @@ auto-build:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_AUTO_BUILD_VERSION
 
-auto-deploy:
+gitlab-auto-deploy:
   interruptible: true
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_AUTO_DEPLOY_VERSION
+
+gitlab-agentk:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GITLAB_AGENTK_VERSION
+
+gitlab-cluster-applications:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GITLAB_CLUSTER_APPLICATIONS_VERSION
 
 heroku-buildpacks:
   interruptible: true
