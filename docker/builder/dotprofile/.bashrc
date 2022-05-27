@@ -32,8 +32,8 @@ ssh-add -q <(echo "$SSH_PRIVATE_KEY") > /dev/null
 
 # Git 
 git config --global user.email "info@noroutine.me"
-git config --global user.name "Git Robot"
-git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
+git config --global user.name "Builder 3000"
+# git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
 
 # Docker
 export DOCKER_HUB=cr.nrtn.dev
@@ -42,6 +42,11 @@ export DOCKER_CLI_EXPERIMENTAL=enabled
 if [[ ! -z ${DOCKER_CFG:-} ]]; then
     mkdir -p ~/.docker
     echo "${DOCKER_CFG:-}" | base64 --decode > ~/.docker/config.json 
+fi
+
+if [[ ! -z ${ANSIBLE_VAULT_PASSWORD:-} ]]; then
+    mkdir -p ~/.ansible
+    echo "${ANSIBLE_VAULT_PASSWORD:-}" > ~/.ansible/vault-password
 fi
 
 # Brew

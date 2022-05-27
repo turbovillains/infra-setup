@@ -8,8 +8,6 @@ ARG DOCKER_HUB
 ARG BUILDPACKS_VERSION
 ARG ACTIONS_RUNNER_VERSION=2.278.0
 ARG GIT_SERVER_HOST
-ARG SSH_PRIVATE_KEY
-ARG INFRA_READONLY_TOKEN
 
 ARG HOST_DOCKER_GID
 
@@ -18,12 +16,11 @@ ARG HTTPS_PROXY
 ARG NO_PROXY
 
 ENV GIT_SERVER_HOST=${GIT_SERVER_HOST}
-ENV SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY}
-ENV INFRA_READONLY_TOKEN=${INFRA_READONLY_TOKEN}
 
 ENV DOCKER_HUB=${DOCKER_HUB}
 ENV BUILDPACKS_VERSION=${BUILDPACKS_VERSION}
 ENV BUILDER_USER=builder
+
 # ENV ALL_PROXY=${HTTP_PROXY} \
 #   http_proxy=${HTTP_PROXY} \
 #   HTTP_PROXY=${HTTP_PROXY} \
@@ -44,7 +41,7 @@ ADD setup.sh /setup.sh
 ADD setup.d /setup.d
 ADD dotprofile/.bashrc /root/.bashrc
 
-RUN /setup.sh
+RUN --mount=type=secret,id=ssh_private_key --mount=type=secret,id=infra_readonly_token /setup.sh
 
 # Bash wrapper to drop permissions
 RUN mv /bin/bash /bin/bash.real

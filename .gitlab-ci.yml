@@ -141,7 +141,7 @@ variables:
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.3 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v0.0.112" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
+  RELOADER_VERSION: "v0.0.113" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
   CONFIGMAP_RELOAD_VERSION: v0.7.1
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.1" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
@@ -329,8 +329,6 @@ builder:
         --build-arg DEBIAN_VERSION \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg SSH_PRIVATE_KEY \
-        --build-arg INFRA_READONLY_TOKEN \
         --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }') \
         --build-arg ACTIONS_RUNNER_VERSION
 

@@ -2,12 +2,12 @@
 
 brew install nvm
 
-cat << EOF | tee /root/.npmrc | tee /home/${BUILDER_USER}/.npmrc
+cat << EOF | tee /home/${BUILDER_USER}/.npmrc
 registry=https://nexus.nrtn.dev/repository/npm/
 # strict-ssl=false
 EOF
 
-cat << EOF | tee /root/.yarnrc | tee /home/${BUILDER_USER}/.yarnrc
+cat << EOF | tee /home/${BUILDER_USER}/.yarnrc
 registry "https://nexus.nrtn.dev/repository/npm/"
 # strict-ssl false
 EOF
