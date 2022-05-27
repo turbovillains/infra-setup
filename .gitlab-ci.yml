@@ -196,6 +196,7 @@ before_script:
     export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
     echo "Infra: ${INFRA_VERSION}"
+    source gitlab/env.sh
 
 import-images:
   interruptible: true
