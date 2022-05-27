@@ -84,7 +84,7 @@ variables:
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: "5.0.2" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: "0.91.0" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: "0.91.1" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.1" # https://hub.docker.com/r/metabase/metabase/tags
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.2.0 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
@@ -194,6 +194,7 @@ before_script:
   - |
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
     export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
+    export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
     echo "Infra: ${INFRA_VERSION}"
 
 import-images:
@@ -329,7 +330,7 @@ builder:
         --build-arg DEBIAN_VERSION \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }') \
+        --build-arg HOST_DOCKER_GID \
         --build-arg ACTIONS_RUNNER_VERSION
 
 ocsp-responder:
@@ -479,6 +480,16 @@ actions-runner:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg HOST_DOCKER_GID \
+        --build-arg ACTIONS_RUNNER_IMAGE_VERSION
+
+actions-runner-dind:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg HOST_DOCKER_GID \
         --build-arg ACTIONS_RUNNER_IMAGE_VERSION
 
 kube-rbac-proxy:

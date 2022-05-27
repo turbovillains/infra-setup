@@ -28,6 +28,7 @@ build_image() {
 
     docker build ${implicit_args} ${docker_build_args} -t ${DOCKER_HUB}/${target} docker/${component}
     docker push ${DOCKER_HUB}/${target}
+    docker rmi ${DOCKER_HUB}/${target}
 }
 
 _main() {

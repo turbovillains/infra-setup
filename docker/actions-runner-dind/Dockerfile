@@ -4,7 +4,7 @@ ARG ACTIONS_RUNNER_IMAGE_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/summerwind/actions-runner:${ACTIONS_RUNNER_IMAGE_VERSION}
+FROM ${DOCKER_HUB}/summerwind/actions-runner-dind:${ACTIONS_RUNNER_IMAGE_VERSION}
 
 ARG HOST_DOCKER_GID
 

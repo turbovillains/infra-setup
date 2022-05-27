@@ -46,6 +46,7 @@ migrate_image() {
         docker pull ${source_registry}/${image_name}:${image_tag}
         docker tag ${source_registry}/${image_name}:${image_tag} ${target_registry}/${image_name}:${image_tag}
         docker push ${target_registry}/${image_name}:${image_tag}
+        docker rmi ${source_registry}/${image_name}:${image_tag} ${target_registry}/${image_name}:${image_tag}
     fi
 
 }
@@ -132,6 +133,7 @@ import_images() {
         "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:${GITLAB_CLUSTER_APPLICATIONS_VERSION:-v1.1.0}"
         "summerwind/actions-runner-controller:${ACTIONS_RUNNER_CONTROLLER_VERSION:-v0.23.0}"
         "summerwind/actions-runner:${ACTIONS_RUNNER_IMAGE_VERSION:-v2.291.1-ubuntu20.04}"
+        "summerwind/actions-runner-dind:${ACTIONS_RUNNER_IMAGE_VERSION:-v2.291.1-ubuntu20.04}"
         "quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION:-v0.12.0}"
         "jupyterhub/k8s-image-cleaner:${BINDERHUB_IMAGE_CLEANER_VERSION:-0.2.0-n496.h988aca0}"
         "noroutine/k8s-binderhub:${BINDERHUB_VERSION:-0.2.0-n562.h0b4462c}"
