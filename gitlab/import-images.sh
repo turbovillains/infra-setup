@@ -214,6 +214,7 @@ import_images() {
         "registry:${DOCKER_REGISTRY_VERSION:-2.7.1}"
         "ghcr.io/dexidp/dex:${DEX_VERSION:-v2.30.0}"
         "quay.io/argoproj/argocd:${ARGOCD_VERSION:-v2.1.0-rc2}"
+        "quay.io/argoproj/argocd-applicationset:${ARGOCD_APPLICATIONSET_VERSION:-v0.4.1}"
         "redis:${REDIS_VERSION:-6.2.5-buster}"
         "listmonk/listmonk:${LISTMONK_VERSION:-v1.1.0}"
         "vaultwarden/server:${VAULTWARDEN_VERSION:-1.23.1}"

@@ -26,6 +26,7 @@ variables:
   YTT_HASH: 11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5
   ARGOCD_VAULT_PLUGIN_VERSION: "1.11.0" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   ARGOCD_VAULT_PLUGIN_HASH: 307c5f9de016ee62e0e1dce1f6b6e8f5617f345c20b61eae7d2be2a8a8941d98
+  ARGOCD_APPLICATIONSET_VERSION: v0.4.1 # https://quay.io/repository/argoproj/argocd-applicationset?tab=tags&tag=latest
   KANIKO_VERSION: v1.8.1 # https://console.cloud.google.com/gcr/images/kaniko-project/GLOBAL/executor
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.0-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
@@ -1455,8 +1456,18 @@ argocd:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGOCD_VERSION \
+        --build-arg ARGOCD_VAULT_PLUGIN_VERSION \
+        --build-arg ARGOCD_VAULT_PLUGIN_HASH \
         --build-arg YTT_VERSION \
         --build-arg YTT_HASH
+
+argocd-applicationset:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ARGOCD_APPLICATIONSET_VERSION
 
 boky-postfix:
   interruptible: true
