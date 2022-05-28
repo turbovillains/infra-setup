@@ -1,8 +1,8 @@
 ARG DOCKER_HUB
-ARG DEBIAN_VERSION
+ARG INFRA_VERSION
 
 # Dashboards
-FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION} as dashboards_build
+FROM ${DOCKER_HUB}/infra/debian:${INFRA_VERSION} as dashboards_build
 ARG GRIT_VERSION
 
 RUN apt-get update && apt-get install -yyq git gnupg2 curl python3 python3-pip && \

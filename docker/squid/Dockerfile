@@ -1,11 +1,10 @@
 ARG DOCKER_HUB
-ARG DEBIAN_VERSION
 ARG INFRA_VERSION
 ARG SQUID_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION}
+FROM ${DOCKER_HUB}/infra/debian:${INFRA_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
@@ -15,8 +14,8 @@ ENV SQUID_VERSION=${SQUID_VERSION} \
     SQUID_USER=proxy
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates squid=${SQUID_VERSION}* \
- && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates squid=${SQUID_VERSION}* \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh

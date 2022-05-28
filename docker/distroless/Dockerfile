@@ -10,4 +10,6 @@ FROM ${DOCKER_HUB}/distroless/${FLAVOUR}-${DISTROLESS_VERSION}
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
+COPY --from=rootca /ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+
 # TODO: RUN [ "update-ca-certificates" ]

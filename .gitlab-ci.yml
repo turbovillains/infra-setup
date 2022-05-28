@@ -1,7 +1,7 @@
 ---
 variables:
   DOCKER_NAMESPACE: infra
-  DEBIAN_VERSION: "bullseye-20220509-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
+  DEBIAN_VERSION: "bullseye-20220527-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_FOCAL_VERSION: "focal-20220316" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   UBUNTU_JAMMY_VERSION: "jammy-20220428" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   ALPINE_VERSION: "3.16.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
@@ -30,7 +30,7 @@ variables:
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.0-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.7" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "8.2.15" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "8.2.16" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "18.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -232,7 +232,6 @@ grafana-dashboards:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION \
         --build-arg GRIT_VERSION
 
 ingress-default-backend:
@@ -250,8 +249,7 @@ debian:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg DEBIAN_VERSION
 
 ubuntu20:
   interruptible: true
@@ -259,8 +257,7 @@ ubuntu20:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg UBUNTU_FOCAL_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg UBUNTU_FOCAL_VERSION
 
 ubuntu22:
   interruptible: true
@@ -268,8 +265,7 @@ ubuntu22:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg UBUNTU_JAMMY_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg UBUNTU_JAMMY_VERSION
 
 alpine:
   interruptible: true
@@ -277,8 +273,7 @@ alpine:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ALPINE_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg ALPINE_VERSION
 
 busybox:
   interruptible: true
@@ -287,8 +282,7 @@ busybox:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALPINE_VERSION \
-        --build-arg BUSYBOX_VERSION \
-        --build-arg INFRA_VERSION
+        --build-arg BUSYBOX_VERSION
 
 distroless:
   interruptible: true
@@ -300,16 +294,14 @@ distroless:
   script:
     - ./gitlab/build-image.sh distroless ${DOCKER_NAMESPACE}/distroless-${FLAVOUR}-${DISTROLESS_VERSION}:${INFRA_VERSION} \
         --build-arg DISTROLESS_VERSION \
-        --build-arg FLAVOUR \
-        --build-arg INFRA_VERSION
+        --build-arg FLAVOUR
 
 heroku-20:
   interruptible: true
   stage: stacks
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
@@ -318,8 +310,7 @@ heroku-22:
   stage: stacks
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
@@ -328,7 +319,6 @@ builder:
   stage: build
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg HOST_DOCKER_GID \
@@ -339,18 +329,14 @@ ocsp-responder:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION \
-        --build-arg ALPINE_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 openvpn:
   interruptible: true
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION \
-        --build-arg ALPINE_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 wireguard:
   interruptible: true
@@ -358,7 +344,6 @@ wireguard:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION \
         --build-arg WIREGUARD_VERSION
 
 shadowbox:
@@ -367,7 +352,6 @@ shadowbox:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg INFRA_VERSION \
         --build-arg SHADOWBOX_VERSION
 
 gitlab-auto-build:
@@ -561,16 +545,14 @@ powerdns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 unbound:
   interruptible: true
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 keycloak:
   interruptible: true
@@ -694,8 +676,7 @@ ipmi-exporter:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg IPMI_EXPORTER_VERSION \
-        --build-arg GOLANG_VERSION \
-        --build-arg DEBIAN_VERSION
+        --build-arg GOLANG_VERSION
 
 cadvisor:
   interruptible: true
@@ -742,8 +723,7 @@ rsyslog:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 squid:
   interruptible: true
@@ -751,7 +731,6 @@ squid:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEBIAN_VERSION \
         --build-arg SQUID_VERSION
 
 ioping-exporter:
@@ -760,8 +739,7 @@ ioping-exporter:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GOLANG_VERSION \
-        --build-arg DEBIAN_VERSION
+        --build-arg GOLANG_VERSION
 
 ldap-exporter:
   interruptible: true

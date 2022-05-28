@@ -1,6 +1,6 @@
 ARG DOCKER_HUB
 ARG GOLANG_VERSION
-ARG DEBIAN_VERSION
+ARG INFRA_VERSION
 
 FROM ${DOCKER_HUB}/golang:${GOLANG_VERSION}
 
@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 RUN go install github.com/fihuer/ioping_exporter@latest
 
-FROM ${DOCKER_HUB}/debian:${DEBIAN_VERSION}
+FROM ${DOCKER_HUB}/infra/debian:${INFRA_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
