@@ -72,7 +72,7 @@ variables:
   MYSQL_VERSION: "8.0.29" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.8.2-focal" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.4.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
-  OAUTH2_PROXY_VERSION: v7.2.1-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
+  OAUTH2_PROXY_VERSION: v7.3.0-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   BUILDPACKSIO_LIFECYCLE_VERSION: "0.14.0" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
   HEROKU_PROCFILE_CNB_VERSION: "1.0.1" # https://github.com/heroku/procfile-cnb
   BINDERHUB_VERSION: 0.2.0-n850.h8bc0157
@@ -116,7 +116,7 @@ variables:
   BITNAMI_MEMCACHED_VERSION: 1.6.15-debian-10-r54 # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.2.0-debian-10-r8" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.21.6-debian-10-r118" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2022.5.23-debian-10-r2" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2022.5.26-debian-10-r2" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_CLIENT_VERSION: "2022.5.9-debian-10-r15" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r436 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r93 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
