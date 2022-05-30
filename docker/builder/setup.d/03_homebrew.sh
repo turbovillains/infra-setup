@@ -11,19 +11,15 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew tap vmware-tanzu/carvel
 
 brew install \
-  go \
-  kubectl k9s \
-  helm helmfile \
-  goreleaser \
+  kubectl \
+  helmfile \
   skaffold \
   cfssl \
   yq yj jq ytt \
   kustomize \
   buildpacks/tap/pack \
   aquasecurity/trivy/trivy \
-  terraform consul vault \
-  gh \
-  awscli azure-cli \
+  terraform \
   cosign
 
 

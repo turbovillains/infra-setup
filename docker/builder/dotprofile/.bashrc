@@ -38,6 +38,7 @@ git config --global user.name "Builder 3000"
 # Docker
 export DOCKER_HUB=cr.nrtn.dev
 export DOCKER_CLI_EXPERIMENTAL=enabled
+export DOCKER_BUILDKIT=1
 
 if [[ ! -z ${DOCKER_CFG:-} ]]; then
     mkdir -p ~/.docker
