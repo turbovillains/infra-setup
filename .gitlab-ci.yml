@@ -7,15 +7,15 @@ variables:
   ALPINE_VERSION: "3.16.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.35.0" # https://hub.docker.com/_/busybox
   DISTROLESS_VERSION: debian11 # gcr.io/distroless/
-  GOLANG_VERSION: "1.18.2-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
-  GOLANG_ALPINE_VERSION: "1.18.2-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
+  GOLANG_VERSION: "1.18.3-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
+  GOLANG_ALPINE_VERSION: "1.18.3-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: "8.1.6-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
   ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.23.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   ACTIONS_RUNNER_VERSION: "2.292.0" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.292.0-ubuntu-20.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   KUBE_RBAC_PROXY_VERSION: v0.12.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine-v15.0.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: "15.0.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_VERSION: "15.0.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   GITLAB_AGENTK_VERSION: v15.0.0 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.6.0 # registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications
   GITLAB_AUTO_BUILD_VERSION: v1.15.0
@@ -85,7 +85,7 @@ variables:
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: "5.1.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: "0.91.6" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  NOCODB_VERSION: "0.91.7" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.2" # https://hub.docker.com/r/metabase/metabase/tags
   JUPYTERHUB_VERSION: 1.2.0 # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: 1.2.0 # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
@@ -136,7 +136,7 @@ variables:
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.5-debian-10-r26"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.12.0-scratch-r2" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
-  EXTERNAL_SECRETS_VERSION: v0.5.6 # https://github.com/external-secrets/external-secrets/releases
+  EXTERNAL_SECRETS_VERSION: v0.5.4 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.17.3" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.7.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
@@ -156,7 +156,7 @@ variables:
   K8S_PAUSE_VERSION: "3.7"
   K8S_VERSION: "v1.24.1"
   K8S_COREDNS_VERSION: "v1.8.6"
-  TIGERA_OPERATOR_VERSION: "v1.27.3" # https://quay.io/repository/tigera/operator?tab=tags
+  TIGERA_OPERATOR_VERSION: "v1.27.4" # https://quay.io/repository/tigera/operator?tab=tags
   CALICO_VERSION: "v3.23.1" # https://hub.docker.com/r/calico/node/tags
   CONSUL_VERSION: "1.12.1"  # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "0.44.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
