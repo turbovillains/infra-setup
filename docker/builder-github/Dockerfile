@@ -43,13 +43,9 @@ ADD dotprofile/.bashrc /root/.bashrc
 
 RUN --mount=type=secret,id=ssh_private_key --mount=type=secret,id=infra_readonly_token /setup.sh
 
-# Bash wrapper to drop permissions
-RUN mv /bin/bash /bin/bash.real
-COPY --chown=0:0 gitlab-shell /bin/bash
-RUN chmod +x /bin/bash
-
 COPY actions-runner-entrypoint.sh logger.bash /usr/local/bin/
 
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+USER ${RUNNER_USER}
+WORKDIR /home/builer
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["/usr/local/bin/actions-runner-entrypoint.sh"]

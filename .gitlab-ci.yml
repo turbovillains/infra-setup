@@ -10,7 +10,7 @@ variables:
   GOLANG_VERSION: "1.18.3-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.18.3-alpine3.15" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: "8.1.6-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
-  ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.23.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
+  ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.24.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   ACTIONS_RUNNER_VERSION: "2.292.0" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.292.0-ubuntu-20.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   KUBE_RBAC_PROXY_VERSION: v0.12.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
@@ -19,7 +19,7 @@ variables:
   GITLAB_AGENTK_VERSION: v15.0.0 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.6.0 # registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications
   GITLAB_AUTO_BUILD_VERSION: v1.15.0
-  GITLAB_AUTO_DEPLOY_VERSION: v2.28.1
+  GITLAB_AUTO_DEPLOY_VERSION: v2.28.2
   DIND_VERSION: 20.10.16-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   ARGOCD_VERSION: v2.3.4 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.40.1" # https://github.com/vmware-tanzu/carvel-ytt/releases
@@ -31,7 +31,7 @@ variables:
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.0-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.7.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "8.2.16" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "8.3.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "18.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -66,14 +66,14 @@ variables:
   KIBANA_VERSION: "8.2.2"
   CORTEX_VERSION: v1.11.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
-  MONGO_VERSION: 5.0.8-focal # https://hub.docker.com/_/mongo
+  MONGO_VERSION: 5.0.9-focal # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: "6.0.0-apache"   # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "6.10"   # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.29" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.8.2-focal" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.4.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.3.0-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
-  BUILDPACKSIO_LIFECYCLE_VERSION: "0.14.0" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
+  BUILDPACKSIO_LIFECYCLE_VERSION: "0.14.1" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
   HEROKU_PROCFILE_CNB_VERSION: "1.0.1" # https://github.com/heroku/procfile-cnb
   BINDERHUB_VERSION: 0.2.0-n850.h8bc0157
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n768.h13978ab # https://hub.docker.com/r/jupyterhub/k8s-image-cleaner/tags
@@ -81,9 +81,9 @@ variables:
   CLICKHOUSE_VERSION: "22.1.3.7-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: "v1.4.4" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
-  VERDACCIO_VERSION: "5.10.3" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
+  VERDACCIO_VERSION: "5.11.0" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "5.1.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "5.2.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.91.7" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.2" # https://hub.docker.com/r/metabase/metabase/tags
@@ -135,9 +135,9 @@ variables:
   BITNAMI_KUBEAPPS_APIS_VERSION: "2.4.5-debian-10-r26" # https://hub.docker.com/r/bitnami/kubeapps-apis/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.4.5-debian-10-r26"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.12.0-scratch-r2" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
-  BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.17.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
+  BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.18.0 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   EXTERNAL_SECRETS_VERSION: v0.5.4 # https://github.com/external-secrets/external-secrets/releases
-  MINIO_CONSOLE_VERSION: "v0.17.3" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: "v0.18.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.7.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.2.3 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
@@ -175,12 +175,12 @@ variables:
   CERT_MANAGER_CAINJECTOR_VERSION: v1.8.0 # https://quay.io/repository/jetstack/cert-manager-cainjector?tab=tags
   CERT_MANAGER_WEBHOOK_VERSION: v1.8.0 # https://quay.io/repository/jetstack/cert-manager-webhook?tab=tags
   CERT_MANAGER_CTL_VERSION: v1.8.0 # https://quay.io/repository/jetstack/cert-manager-ctl?tab=tags
-  CERT_MANAGER_WEBHOOK_PDNS_VERSION: v2.0.1 # https://hub.docker.com/r/zachomedia/cert-manager-webhook-pdns/tags
+  CERT_MANAGER_WEBHOOK_PDNS_VERSION: v2.1.0 # https://hub.docker.com/r/zachomedia/cert-manager-webhook-pdns/tags
   VSPHERE_CPI_MANAGER_VERSION: v1.23.0
   VSPHERE_CSI_DRIVER_VERSION: v2.5.1
   VSPHERE_CSI_SYNCER_VERSION: v2.5.1
   LONGHORN_VERSION: v1.2.4 # https://hub.docker.com/r/longhornio/longhorn-manager/tags
-  LONGHORN_INSTANCE_MANAGER_VERSION: v1_20220530
+  LONGHORN_INSTANCE_MANAGER_VERSION: v1_20220602
   LONGHORN_SHARE_MANAGER_VERSION: v1_20220531
   CADDY_VERSION: 2.5.1-alpine # https://hub.docker.com/_/caddy?tab=description
   SHADOWBOX_VERSION: server-v1.6.1 # https://quay.io/repository/outline/shadowbox?tab=tags&tag=latest
@@ -317,7 +317,7 @@ heroku-22:
       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
-builder:
+builder-github:
   interruptible: true
   stage: build
   script:
@@ -326,6 +326,24 @@ builder:
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg HOST_DOCKER_GID \
         --build-arg ACTIONS_RUNNER_VERSION
+
+builder-gitlab:
+  interruptible: true
+  stage: build
+  script:
+    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
+        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+        --build-arg HOST_DOCKER_GID
+
+shell:
+  interruptible: true
+  stage: build
+  script:
+    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
+        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+        --build-arg HOST_DOCKER_GID
 
 ocsp-responder:
   interruptible: true

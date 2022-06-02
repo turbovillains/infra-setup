@@ -1,4 +1,3 @@
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -15,22 +14,22 @@
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # Python
-[ -s "${HOME}/.py3/bin/activate" ] && \. "${HOME}/.py3/bin/activate"  # This loads py3
+[ -s "${HOME}/.py3/bin/activate" ] && \. "${HOME}/.py3/bin/activate" # This loads py3
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 # SSH agent
-eval $(ssh-agent -s) > /dev/null
+eval $(ssh-agent -s) >/dev/null
 if [[ ! -z ${SSH_PRIVATE_KEY:-} ]]; then
-    echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+    echo "${SSH_PRIVATE_KEY}" >~/.ssh/id_rsa
     chmod 600 ~/.ssh/id_rsa
 fi
-ssh-add -q <(echo "$SSH_PRIVATE_KEY") > /dev/null
+ssh-add -q <(echo "$SSH_PRIVATE_KEY") >/dev/null
 
-# Git 
+# Git
 git config --global user.email "info@noroutine.me"
 git config --global user.name "Builder 3000"
 # git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
@@ -42,28 +41,28 @@ export DOCKER_BUILDKIT=1
 
 if [[ ! -z ${DOCKER_CFG:-} ]]; then
     mkdir -p ~/.docker
-    echo "${DOCKER_CFG:-}" | base64 --decode > ~/.docker/config.json 
+    echo "${DOCKER_CFG:-}" | base64 --decode >~/.docker/config.json
 fi
 
 if [[ ! -z ${ANSIBLE_VAULT_PASSWORD:-} ]]; then
     mkdir -p ~/.ansible
-    echo "${ANSIBLE_VAULT_PASSWORD:-}" > ~/.ansible/vault-password
+    echo "${ANSIBLE_VAULT_PASSWORD:-}" >~/.ansible/vault-password
 fi
 
 # Brew
 export HOMEBREW_NO_ANALYTICS=1
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
 
 # If not running interactively, end here
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -95,7 +94,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -123,11 +122,11 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm* | rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
-    ;;
+*) ;;
+
 esac
 
 # enable color support of ls and also add handy aliases
@@ -153,7 +152,7 @@ alias ....='cd ../../..'
 # cdf
 cdf() {
     local levels=2
-    cd $(find . -maxdepth ${levels} -mindepth ${levels} -type d | egrep -v  '\/[\._].+' | fzf --query "$1")
+    cd $(find . -maxdepth ${levels} -mindepth ${levels} -type d | egrep -v '\/[\._].+' | fzf --query "$1")
 }
 # End cdf
 
@@ -176,11 +175,11 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # Starship

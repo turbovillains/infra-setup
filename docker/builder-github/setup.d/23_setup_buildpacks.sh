@@ -7,13 +7,4 @@ lifecycle-image = "${DOCKER_HUB}/infra/buildpacksio-lifecycle:${BUILDPACKS_VERSI
 
 [[trusted-builders]]
   name = "${DOCKER_HUB}/infra/buildpacks:${BUILDPACKS_VERSION}"
-
-# [[trusted-builders]]
-#   name = "${DOCKER_HUB}/infra/spring-boot-buildpacks:${BUILDPACKS_VERSION}"
-
-# [[trusted-builders]]
-#   name = "${DOCKER_HUB}/paketobuildpacks/builder:full"
-
-# [[trusted-builders]]
-#   name = "${DOCKER_HUB}/paketobuildpacks/builder:tiny"
 EOF
