@@ -16,7 +16,7 @@ brew install \
   skaffold \
   cfssl \
   yq yj jq ytt \
-  kustomize \
+  kustomize argocd \
   buildpacks/tap/pack \
   aquasecurity/trivy/trivy \
   terraform \
