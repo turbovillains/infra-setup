@@ -327,14 +327,15 @@ builder-github:
         --build-arg HOST_DOCKER_GID \
         --build-arg ACTIONS_RUNNER_VERSION
 
-builder-gitlab:
+builder:
   interruptible: true
   stage: build
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID
+        --build-arg HOST_DOCKER_GID \
+        --build-arg ACTIONS_RUNNER_VERSION
 
 shell:
   interruptible: true
