@@ -4,7 +4,8 @@ useradd --create-home --shell /bin/bash --uid 1000 --gid users --groups sudo,doc
 echo "${BUILDER_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 visudo -c
 
-cp /root/.bashrc /home/${BUILDER_USER}/.bashrc
+cp /setup/dotprofile/.bashrc /home/${BUILDER_USER}/.bashrc
+cp /setup/dotprofile/.bashrc /root/.bashrc
 
 # Git 
 git config --global user.email "info@noroutine.me"
@@ -12,3 +13,5 @@ git config --global user.name "Builder 3000"
 # git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
 
 cp /root/.gitconfig /home/${BUILDER_USER}/.gitconfig
+
+echo "PATH=${PATH}" >> /etc/environment

@@ -186,6 +186,7 @@ variables:
   SHADOWBOX_VERSION: server-v1.6.1 # https://quay.io/repository/outline/shadowbox?tab=tags&tag=latest
 
 stages:
+  - test
   - scratch
   - base
   - stacks
@@ -198,8 +199,17 @@ before_script:
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
     export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
+    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
     echo "Infra: ${INFRA_VERSION}"
     source gitlab/env.sh
+
+# test:
+#   stage: test
+#   script:
+#     - env
+#     - jq
+#     - argocd
+#     - exit 1
 
 import-images:
   interruptible: true

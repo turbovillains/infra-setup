@@ -1,4 +1,5 @@
 #!/bin/bash
+
 source logger.bash
 
 RUNNER_ASSETS_DIR=${RUNNER_ASSETS_DIR:-/runnertmp}
