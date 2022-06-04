@@ -10,8 +10,6 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 # Themes
 
-RUN rm -rf /opt/jboss/keycloak/themes/keycloak.v2
-COPY --from=themes --chown=0:0 /workspace/dist/ /opt/jboss/keycloak/themes
+COPY --from=themes --chown=0:0 /workspace/dist/ /opt/keycloak/themes
 
-ENV KEYCLOAK_DEFAULT_THEME=noroutine-sso
-ENV KEYCLOAK_WELCOME_THEME=noroutine-sso
+ENV KC_SPI_THEME_DEFAULT=noroutine-sso

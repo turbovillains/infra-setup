@@ -31,7 +31,7 @@ variables:
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.0-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.7.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "8.3.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "8.3.2" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "18.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -99,7 +99,7 @@ variables:
   RSTUDIO_VERSION: 1.4.1717 # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: 1.10.1 # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
-  BITNAMI_GHOST_VERSION: "4.48.0-debian-10-r5" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  BITNAMI_GHOST_VERSION: "5.2.2-debian-10-r1" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   BITNAMI_KEYCLOAK_VERSION: "18.0.0-debian-10-r6" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
   BITNAMI_KEYCLOAK16_VERSION: "16.1.1-debian-10-r103" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=16
   BITNAMI_SPARK_VERSION: 3.2.1-debian-10-r111 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
@@ -111,6 +111,7 @@ variables:
   BITNAMI_POSTGRESQL12_VERSION: 12.11.0-debian-10-r12 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=12.
   BITNAMI_POSTGRESQL13_VERSION: 13.7.0-debian-10-r12 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=13.
   BITNAMI_POSTGRESQL14_VERSION: 14.3.0-debian-10-r13 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=14.
+  BITNAMI_POSTGRES_EXPORTER_VERSION: 0.10.1-debian-10-r131 # https://hub.docker.com/r/bitnami/postgres-exporter/tags
   BITNAMI_MARIADB_VERSION: 10.7.4-debian-10-r4 # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.6
   BITNAMI_MONGODB_VERSION: 5.0.9-debian-10-r0 # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=5.
   BITNAMI_MEMCACHED_VERSION: 1.6.15-debian-10-r54 # https://hub.docker.com/r/bitnami/memcached/tags
@@ -121,9 +122,9 @@ variables:
   BITNAMI_SHELL_VERSION: 10-debian-10-r436 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r93 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: 0.12.1-debian-10-r95 # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
-  BITNAMI_GRAFANA_VERSION: "8.5.3-debian-10-r4" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
+  BITNAMI_GRAFANA_VERSION: "8.5.4-debian-10-r4" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=8
   BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.4.2-debian-10-r59" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
-  BITNAMI_CONSUL_VERSION: "1.12.1-debian-10-r0" # https://hub.docker.com/r/bitnami/consul/tags
+  BITNAMI_CONSUL_VERSION: "1.12.2-debian-10-r0" # https://hub.docker.com/r/bitnami/consul/tags
   BITNAMI_NATS_VERSION: "2.8.4-debian-10-r0" # https://hub.docker.com/r/bitnami/nats/tags
   BITNAMI_KUBE_STATE_METRICS_VERSION: "2.4.2-debian-10-r76" # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
   BITNAMI_METRICS_SERVER_VERSION: "0.6.1-debian-10-r102" # https://hub.docker.com/r/bitnami/metrics-server/tags?page=1&ordering=last_updated
@@ -137,10 +138,10 @@ variables:
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.12.0-scratch-r2" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.18.0 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   EXTERNAL_SECRETS_VERSION: v0.5.4 # https://github.com/external-secrets/external-secrets/releases
-  MINIO_CONSOLE_VERSION: "v0.18.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: "v0.18.1" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.7.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
-  SFTPGO_VERSION: v2.2.3 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
+  SFTPGO_VERSION: v2.3.0 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
   RELOADER_VERSION: "v0.0.113" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
   CONFIGMAP_RELOAD_VERSION: v0.7.1
@@ -158,7 +159,7 @@ variables:
   K8S_COREDNS_VERSION: "v1.8.6"
   TIGERA_OPERATOR_VERSION: "v1.27.4" # https://quay.io/repository/tigera/operator?tab=tags
   CALICO_VERSION: "v3.23.1" # https://hub.docker.com/r/calico/node/tags
-  CONSUL_VERSION: "1.12.1"  # https://hub.docker.com/r/hashicorp/consul
+  CONSUL_VERSION: "1.12.2"  # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "0.44.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.2 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
   VAULT_VERSION: "1.10.3" # https://hub.docker.com/r/hashicorp/vault
@@ -326,16 +327,6 @@ heroku-22:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-builder-github:
-  interruptible: true
-  stage: build
-  script:
-    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
-        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID \
-        --build-arg ACTIONS_RUNNER_VERSION
 
 builder:
   interruptible: true
@@ -1185,6 +1176,14 @@ bitnami-node-exporter:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_NODE_EXPORTER_VERSION
+
+bitnami-postgres-exporter:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_POSTGRES_EXPORTER_VERSION
 
 bitnami-redis:
   interruptible: true
