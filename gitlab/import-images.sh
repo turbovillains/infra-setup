@@ -230,6 +230,7 @@ import_images() {
         "caddy:${CADDY_VERSION:-2.5.1}"
         "quay.io/outline/shadowbox:${SHADOWBOX_VERSION:-stable}"
         "gcr.io/kaniko-project/executor:${KANIKO_VERSION:-v1.8.1}"
+        "quay.io/iovisor/bpftrace:${BPFTRACE_VERSION:-v0.15.0}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"

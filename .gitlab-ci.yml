@@ -2,8 +2,8 @@
 variables:
   DOCKER_NAMESPACE: infra
   DEBIAN_VERSION: "bullseye-20220527-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
-  UBUNTU_FOCAL_VERSION: "focal-20220316" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  UBUNTU_JAMMY_VERSION: "jammy-20220428" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  UBUNTU_FOCAL_VERSION: "focal-20220531" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  UBUNTU_JAMMY_VERSION: "jammy-20220531" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   ALPINE_VERSION: "3.16.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.35.0" # https://hub.docker.com/_/busybox
   DISTROLESS_VERSION: debian11 # gcr.io/distroless/
@@ -15,12 +15,12 @@ variables:
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.292.0-ubuntu-20.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   KUBE_RBAC_PROXY_VERSION: v0.12.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine-v15.0.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: "15.0.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_VERSION: "15.0.2-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   GITLAB_AGENTK_VERSION: v15.0.0 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.6.0 # registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications
   GITLAB_AUTO_BUILD_VERSION: v1.15.0
   GITLAB_AUTO_DEPLOY_VERSION: v2.28.2
-  DIND_VERSION: 20.10.16-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
+  DIND_VERSION: 20.10.17-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   ARGOCD_VERSION: v2.3.4 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.40.1" # https://github.com/vmware-tanzu/carvel-ytt/releases
   YTT_HASH: 11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5
@@ -31,7 +31,7 @@ variables:
   NEXUS_VERSION: "3.39.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.0-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.7.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "8.3.2" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "8.3.3" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "18.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -50,7 +50,7 @@ variables:
   PUSHGATEWAY_VERSION: v1.4.3
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
-  GRAFANA_VERSION: "8.5.4" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  GRAFANA_VERSION: "8.5.5" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   GRIT_VERSION: "v0.0.5" # Put the tag! https://github.com/noroutine/grit/releases
   LOKI_VERSION: "2.5.0" # https://hub.docker.com/r/grafana/loki/tags
   PROMTAIL_VERSION: "2.5.0"
@@ -83,7 +83,7 @@ variables:
   PLAUSIBLE_VERSION: "v1.4.4" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.11.0" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "5.2.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "5.2.2" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.91.7" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.43.2" # https://hub.docker.com/r/metabase/metabase/tags
@@ -117,7 +117,7 @@ variables:
   BITNAMI_MEMCACHED_VERSION: 1.6.15-debian-10-r54 # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.2.0-debian-10-r8" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.21.6-debian-10-r118" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2022.5.26-debian-10-r2" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2022.6.3-debian-10-r2" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_CLIENT_VERSION: "2022.5.9-debian-10-r15" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: 10-debian-10-r436 # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: 0.12.1-debian-10-r93 # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
@@ -147,7 +147,7 @@ variables:
   CONFIGMAP_RELOAD_VERSION: v0.7.1
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.1" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
-  DEX_VERSION: v2.31.2 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
+  DEX_VERSION: v2.32.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
   REDIS_VERSION: 7.0.0-bullseye # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v2.1.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
   VAULTWARDEN_VERSION: "1.25.0"
@@ -181,10 +181,11 @@ variables:
   VSPHERE_CSI_DRIVER_VERSION: v2.5.1
   VSPHERE_CSI_SYNCER_VERSION: v2.5.1
   LONGHORN_VERSION: v1.2.4 # https://hub.docker.com/r/longhornio/longhorn-manager/tags
-  LONGHORN_INSTANCE_MANAGER_VERSION: v1_20220602
+  LONGHORN_INSTANCE_MANAGER_VERSION: v1_20220607
   LONGHORN_SHARE_MANAGER_VERSION: v1_20220531
   CADDY_VERSION: 2.5.1-alpine # https://hub.docker.com/_/caddy?tab=description
   SHADOWBOX_VERSION: server-v1.6.1 # https://quay.io/repository/outline/shadowbox?tab=tags&tag=latest
+  BPFTRACE_VERSION: v0.15.0 # https://quay.io/repository/iovisor/bpftrace?tab=tags&tag=latest
 
 stages:
   - test
@@ -1691,3 +1692,11 @@ caddy:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CADDY_VERSION
+
+bpftrace:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BPFTRACE_VERSION
