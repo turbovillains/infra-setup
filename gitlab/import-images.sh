@@ -237,6 +237,7 @@ import_images() {
         "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_CAINJECTOR_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-webhook:${CERT_MANAGER_WEBHOOK_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_CTL_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-csi-driver:${CERT_MANAGER_CSI_DRIVER_VERSION:-v0.3.0}"
         "zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION:-v2.0.1}"
 
         # consul
@@ -289,14 +290,12 @@ import_images() {
         "gcr.io/cloud-provider-vsphere/cpi/release/manager:${VSPHERE_CPI_MANAGER_VERSION:-v1.23.0}"
         "gcr.io/cloud-provider-vsphere/csi/release/driver:${VSPHERE_CSI_DRIVER_VERSION:-v2.5.1}"
         "gcr.io/cloud-provider-vsphere/csi/release/syncer:${VSPHERE_CSI_SYNCER_VERSION:-v2.5.1}"
-        "k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.0"
-        "k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.5.1"
-        "k8s.gcr.io/sig-storage/livenessprobe:v2.6.0"
-        "k8s.gcr.io/sig-storage/livenessprobe:v2.7.0"
-        "k8s.gcr.io/sig-storage/csi-attacher:v3.4.0"
-        "k8s.gcr.io/sig-storage/csi-resizer:v1.4.0"
-        "k8s.gcr.io/sig-storage/csi-provisioner:v3.1.0"
-        "k8s.gcr.io/sig-storage/csi-snapshotter:v5.0.1"
+        "k8s.gcr.io/sig-storage/livenessprobe:${LIVENESSPROBE_VERSION:-v2.7.0}"
+        "k8s.gcr.io/sig-storage/csi-node-driver-registrar:${CSI_NODE_DRIVER_REGISTRAR_VERSION:-v2.5.1}"
+        "k8s.gcr.io/sig-storage/csi-attacher:${CSI_ATTACHER_VERSION:-v3.4.0}"
+        "k8s.gcr.io/sig-storage/csi-resizer:${CSI_RESIZER_VERSION:-v1.4.0}"
+        "k8s.gcr.io/sig-storage/csi-provisioner:${CSI_PROVISIONER_VERSION:-v3.1.0}"
+        "k8s.gcr.io/sig-storage/csi-snapshotter:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
         
         # certmanager shit
         "vstadtmueller/cert-manager-webhook-powerdns:main"

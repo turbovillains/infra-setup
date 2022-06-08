@@ -157,6 +157,12 @@ variables:
   K8S_PAUSE_VERSION: "3.7"
   K8S_VERSION: "v1.24.1"
   K8S_COREDNS_VERSION: "v1.8.6"
+  LIVENESSPROBE_VERSION: v2.7.0
+  CSI_NODE_DRIVER_REGISTRAR_VERSION: v2.5.1
+  CSI_ATTACHER_VERSION: v3.4.0
+  CSI_RESIZER_VERSION: v1.4.0
+  CSI_SNAPSHOTTER_VERSION: v5.0.1
+  CSI_PROVISIONER_VERSION: v3.1.0
   TIGERA_OPERATOR_VERSION: "v1.27.4" # https://quay.io/repository/tigera/operator?tab=tags
   CALICO_VERSION: "v3.23.1" # https://hub.docker.com/r/calico/node/tags
   CONSUL_VERSION: "1.12.2"  # https://hub.docker.com/r/hashicorp/consul
@@ -176,6 +182,7 @@ variables:
   CERT_MANAGER_CAINJECTOR_VERSION: v1.8.0 # https://quay.io/repository/jetstack/cert-manager-cainjector?tab=tags
   CERT_MANAGER_WEBHOOK_VERSION: v1.8.0 # https://quay.io/repository/jetstack/cert-manager-webhook?tab=tags
   CERT_MANAGER_CTL_VERSION: v1.8.0 # https://quay.io/repository/jetstack/cert-manager-ctl?tab=tags
+  CERT_MANAGER_CSI_DRIVER_VERSION: v0.3.0 # https://quay.io/repository/jetstack/cert-manager-csi-driver?tab=tags&tag=latest
   CERT_MANAGER_WEBHOOK_PDNS_VERSION: v2.1.0 # https://hub.docker.com/r/zachomedia/cert-manager-webhook-pdns/tags
   VSPHERE_CPI_MANAGER_VERSION: v1.23.0
   VSPHERE_CSI_DRIVER_VERSION: v2.5.1
@@ -1677,6 +1684,14 @@ cert-manager-ctl:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_CTL_VERSION
 
+cert-manager-csi-driver:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CERT_MANAGER_CSI_DRIVER_VERSION
+
 cert-manager-webhook-pdns:
   interruptible: true
   stage: build
@@ -1700,3 +1715,67 @@ bpftrace:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BPFTRACE_VERSION
+
+k8s-coredns:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg K8S_COREDNS_VERSION
+
+k8s-pause:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg K8S_PAUSE_VERSION
+
+storage-livenessprobe:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg LIVENESSPROBE_VERSION
+
+storage-csi-node-driver-registrar:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CSI_NODE_DRIVER_REGISTRAR_VERSION
+
+storage-csi-attacher:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CSI_ATTACHER_VERSION
+
+storage-csi-resizer:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CSI_RESIZER_VERSION
+
+storage-csi-snapshotter:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CSI_SNAPSHOTTER_VERSION
+
+storage-csi-provisioner:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CSI_PROVISIONER_VERSION
