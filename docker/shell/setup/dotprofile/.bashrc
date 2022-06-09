@@ -35,7 +35,6 @@ git config --global user.name "Builder 3000"
 # git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
 
 # Docker
-export DOCKER_HUB=cr.nrtn.dev
 export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILDKIT=1
 

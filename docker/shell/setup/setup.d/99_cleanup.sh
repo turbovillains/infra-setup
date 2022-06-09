@@ -13,3 +13,4 @@ rm -rf /home/linuxbrew/.cache \
   /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/portable-ruby
 
 apt-get clean && rm -rf /var/lib/apt/lists/*
+rm /etc/apt/apt.conf.d/00proxy

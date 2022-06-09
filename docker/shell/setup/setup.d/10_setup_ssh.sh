@@ -15,7 +15,6 @@ if [[ ! -z "${SSH_PRIVATE_KEY}" ]]; then
     # chmod 600 /root/.ssh/id_rsa /home/${BUILDER_USER}/.ssh/id_rsa
 fi
 
-# ssh-keyscan ${GIT_SERVER_HOST} git.nrtn.dev github.com bitbucket.org | tee /root/.ssh/known_hosts | tee /home/${BUILDER_USER}/.ssh/known_hosts
 cat <<EOF | tee /root/.ssh/known_hosts | tee /home/${BUILDER_USER}/.ssh/known_hosts
 git.nrtn.dev ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDkQYJILFc3nfi9N6qamSAZ3d6RzLJko5zK2BvFQeZ/33JA7BQqmMP/ZvcUwXhCGE4KLR6QLIEdpCBgaJw8X0PoB6F+/uNpu0MDZQseux6AqsqcWPUcUkTpTSFo+DL3W0gH1lyqkQ57iBaAVQJNfUFtn2tYZMBIzBsx+KY/L6Ed+MKflgBJxNBUiO7g6eGSmPxvfemjv+6vB45jOCWH6NP6PI/2v8g0P53Tig24Rdvt4uFRN76djkxdOQz0sBQNurDiBKdjMlAkUhS2ARUDuTBbixWTvOu6wengsvhHRM3L6+nAvlJ6CLt7cA00uvpaxoedXehgWF+TdsF7LZ8vzJwh
 git.nrtn.dev ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKyL5B1mva3/bIbMP6FuAaNo6idKEjWudZGlp3SubbXDlXfKwoh2aY8qFXoB+2Z+ntTLI2YShbFtkbvXe1H5t2U=

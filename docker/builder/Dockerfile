@@ -15,25 +15,16 @@ ARG HTTP_PROXY
 ARG HTTPS_PROXY
 ARG NO_PROXY
 
-ENV GIT_SERVER_HOST=${GIT_SERVER_HOST} \
-  DOCKER_HUB=${DOCKER_HUB} \
+ENV DOCKER_HUB=${DOCKER_HUB} \
   DOCKER_CLI_EXPERIMENTAL=enabled \
   DOCKER_BUILDKIT=1 \
   BUILDPACKS_VERSION=${BUILDPACKS_VERSION} \
-  BUILDER_USER=builder \
   ACTIONS_RUNNER_VERSION=${ACTIONS_RUNNER_VERSION} \
   ARCH=x64 \
   RUNNER_ASSETS_DIR=/runnertmp \
   RUNNER_TOOL_CACHE=/opt/hostedtoolcache \
   RUNNER_USER=builder \
   ImageOS=debian11 \
-  ALL_PROXY=${HTTP_PROXY} \
-  http_proxy=${HTTP_PROXY} \
-  HTTP_PROXY=${HTTP_PROXY} \
-  https_proxy=${HTTPS_PROXY} \
-  HTTPS_PROXY=${HTTPS_PROXY} \
-  NO_PROXY=${NO_PROXY} \
-  no_proxy=${NO_PROXY} \
   PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 ADD setup /setup
