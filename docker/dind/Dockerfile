@@ -9,5 +9,5 @@ FROM ${DOCKER_HUB}/docker:${DIND_VERSION}
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
-COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
+COPY --from=rootca /noroutine /usr/local/share/ca-certificates
 RUN update-ca-certificates

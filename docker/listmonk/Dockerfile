@@ -11,5 +11,5 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
 RUN apk update && apk add --no-cache ca-certificates && rm -rf /var/cache/apk/*
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 # For alpine we should not use subfolders
-COPY --from=rootca /noroutine/ /usr/local/share/ca-certificates/noroutine
+COPY --from=rootca /noroutine/ /usr/local/share/ca-certificates
 RUN update-ca-certificates
