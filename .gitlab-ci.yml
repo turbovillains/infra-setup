@@ -193,6 +193,7 @@ variables:
   CADDY_VERSION: 2.5.1-alpine # https://hub.docker.com/_/caddy?tab=description
   SHADOWBOX_VERSION: server-v1.6.1 # https://quay.io/repository/outline/shadowbox?tab=tags&tag=latest
   BPFTRACE_VERSION: v0.15.0 # https://quay.io/repository/iovisor/bpftrace?tab=tags&tag=latest
+  VMWARE_EXPORTER_VERSION: v0.18.3 # https://hub.docker.com/r/pryorda/vmware_exporter/tags
 
 stages:
   - test
@@ -1779,3 +1780,11 @@ storage-csi-provisioner:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_PROVISIONER_VERSION
+
+vmware-exporter:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VMWARE_EXPORTER_VERSION

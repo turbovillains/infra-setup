@@ -231,6 +231,7 @@ import_images() {
         "quay.io/outline/shadowbox:${SHADOWBOX_VERSION:-stable}"
         "gcr.io/kaniko-project/executor:${KANIKO_VERSION:-v1.8.1}"
         "quay.io/iovisor/bpftrace:${BPFTRACE_VERSION:-v0.15.0}"
+        "pryorda/vmware_exporter:${VMWARE_EXPORTER_VERSION:-v0.18.3}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
