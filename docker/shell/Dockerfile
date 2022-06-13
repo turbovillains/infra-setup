@@ -10,6 +10,8 @@ ARG HTTP_PROXY
 ARG HTTPS_PROXY
 ARG NO_PROXY
 
+ENV BUILDER_USER=builder
+
 ADD setup /setup
 
 RUN --mount=type=secret,id=ssh_private_key --mount=type=secret,id=infra_readonly_token /setup/setup.sh

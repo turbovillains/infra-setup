@@ -24,10 +24,14 @@ export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 # SSH agent
 eval $(ssh-agent -s) >/dev/null
 if [[ ! -z ${SSH_PRIVATE_KEY:-} ]]; then
-    echo "${SSH_PRIVATE_KEY}" >~/.ssh/id_rsa
+    ssh-add -q <(echo "${SSH_PRIVATE_KEY}") >/dev/null
+    echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
     chmod 600 ~/.ssh/id_rsa
 fi
-ssh-add -q <(echo "$SSH_PRIVATE_KEY") >/dev/null
+
+if [[ ! -z ${SSH_PRIVATE_KEY_PATH:-} ]]; then
+    ssh-add -q ${SSH_PRIVATE_KEY_PATH} >/dev/null
+fi
 
 # Git
 git config --global user.email "info@noroutine.me"

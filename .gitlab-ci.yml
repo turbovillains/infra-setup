@@ -1,5 +1,6 @@
 ---
 variables:
+  BUILDER_USER: builder
   DOCKER_NAMESPACE: infra
   DEBIAN_VERSION: "bullseye-20220527-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_FOCAL_VERSION: "focal-20220531" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
@@ -196,7 +197,6 @@ variables:
   VMWARE_EXPORTER_VERSION: v0.18.3 # https://hub.docker.com/r/pryorda/vmware_exporter/tags
 
 stages:
-  - test
   - scratch
   - base
   - stacks
@@ -209,17 +209,8 @@ before_script:
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
     export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
-    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
     echo "Infra: ${INFRA_VERSION}"
     source gitlab/env.sh
-
-# test:
-#   stage: test
-#   script:
-#     - env
-#     - jq
-#     - argocd
-#     - exit 1
 
 import-images:
   interruptible: true

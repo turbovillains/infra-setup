@@ -1,6 +1,6 @@
 #!/usr/bin/env bash -eux
 
-export BUILDER_USER=builder
+export BUILDER_USER=${BUILDER_USER:-builder}
 
 export ALL_PROXY=${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
 export all_proxy=${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
