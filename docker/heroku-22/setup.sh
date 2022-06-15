@@ -44,7 +44,6 @@ EOF
 # From https://www.postgresql.org/media/keys/ACCC4CF8.asc
 apt-key add - <<'PGDG_ACCC4CF8'
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-
 mQINBE6XR8IBEACVdDKT2HEH1IyHzXkb4nIWAY7echjRxo7MTcj4vbXAyBKOfjja
 UrBEJWHN6fjKJXOYWXHLIYg0hOGeW9qcSiaa1/rYIbOzjfGfhE4x0Y+NJHS1db0V
 G6GUj3qXaeyqIJGS2z7m0Thy4Lgr/LpZlZ78Nf1fliSzBlMo1sV7PpP/7zUO+aA4
@@ -193,6 +192,7 @@ apt-get install -y --no-install-recommends \
     libxcb-shm0 \
     libxrender1 \
     libxslt1.1 \
+    libyaml-0-2 \
     libzip4 \
     libzstd1 \
     locales \
