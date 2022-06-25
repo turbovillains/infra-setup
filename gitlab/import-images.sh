@@ -233,6 +233,7 @@ import_images() {
         "gcr.io/kaniko-project/executor:${KANIKO_VERSION:-v1.8.1}"
         "quay.io/iovisor/bpftrace:${BPFTRACE_VERSION:-v0.15.0}"
         "pryorda/vmware_exporter:${VMWARE_EXPORTER_VERSION:-v0.18.3}"
+        "azul/zulu-openjdk:${JDK_ZULU_VERSION:-18.0.1-18.30.11}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
@@ -301,9 +302,30 @@ import_images() {
         
         # certmanager shit
         "vstadtmueller/cert-manager-webhook-powerdns:main"
+
+        # confluent shit, https://docs.confluent.io/operator/current/co-custom-registry.html
+        "confluentinc/confluent-init-container:${CONFLUENTINC_INIT_CONTAINER_VERSION:-2.3.1}"
+        "confluentinc/confluent-operator:${CONFLUENTINC_OPERATOR_VERSION:-0.435.23}"
+        "confluentinc/cp-enterprise-control-center:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-enterprise-replicator:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-kafka-rest:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-ksqldb-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-schema-registry:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-server-connect:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-zookeeper:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "obsidiandynamics/kafdrop:${KAFDROP_VERSION:-3.30.0}"
+        "tchiotludo/akhq:${AKHQ_VERSION:-0.21.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
+
+    for image in ${images[@]}; do
+        printf "\nMigrating %s/%s:%s to %s\n`line`\n" \
+            $(get_registry $image) $(get_name $image) $(get_tag $image) \
+            ${target_registry}
+        migrate_image ${image} ${target_registry}
+    done
 
     # Sync to upstream repo for dependabot and renovate
     ssh-keyscan github.com | tee -a ~/.ssh/known_hosts
@@ -331,13 +353,6 @@ import_images() {
             git push origin ${CI_COMMIT_TAG}
         fi
     )
-
-    for image in ${images[@]}; do
-        printf "\nMigrating %s/%s:%s to %s\n`line`\n" \
-            $(get_registry $image) $(get_name $image) $(get_tag $image) \
-            ${target_registry}
-        migrate_image ${image} ${target_registry}
-    done
 }
 
 _main() {

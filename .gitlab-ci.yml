@@ -114,6 +114,14 @@ distroless:
         --build-arg DISTROLESS_VERSION \
         --build-arg FLAVOUR
 
+jdk-zulu:
+  interruptible: true
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg JDK_ZULU_VERSION
+
 heroku-20:
   interruptible: true
   stage: stacks
@@ -1615,3 +1623,19 @@ vsphere-cpi-manager:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VSPHERE_CPI_MANAGER_VERSION
+
+kafdrop:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg KAFDROP_VERSION
+
+akhq:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg AKHQ_VERSION
