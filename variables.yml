@@ -2,6 +2,8 @@
 variables:
   BUILDER_USER: builder
   DOCKER_NAMESPACE: infra
+  CONNECT_LANDING_VERSION: "0.0.4"
+  WEBSITE_VERSION: v0.2.5
   DEBIAN_VERSION: "bullseye-20220622-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_FOCAL_VERSION: "focal-20220531" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   UBUNTU_JAMMY_VERSION: "jammy-20220531" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
@@ -16,7 +18,7 @@ variables:
   ACTIONS_RUNNER_VERSION: "2.294.0" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.294.0-ubuntu-20.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   KUBE_RBAC_PROXY_VERSION: v0.12.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
-  GITLAB_RUNNER_VERSION: "alpine-v15.1.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_RUNNER_VERSION: "alpine-v15.1.1" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "15.1.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   GITLAB_AGENTK_VERSION: v15.1.0 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.6.0 # registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications
@@ -52,7 +54,7 @@ variables:
   PUSHGATEWAY_VERSION: v1.4.3
   SNMP_EXPORTER_VERSION: v0.20.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
-  GRAFANA_VERSION: "9.0.1" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  GRAFANA_VERSION: "9.0.2" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   GRIT_VERSION: "v0.0.5" # Put the tag! https://github.com/noroutine/grit/releases
   LOKI_VERSION: "2.5.0" # https://hub.docker.com/r/grafana/loki/tags
   PROMTAIL_VERSION: "2.5.0"
@@ -63,9 +65,9 @@ variables:
   CADVISOR_VERSION: "v0.44.0" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.104" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
-  ELASTICSEARCH_VERSION: "8.2.3" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "8.2.3"
-  KIBANA_VERSION: "8.2.3"
+  ELASTICSEARCH_VERSION: "8.3.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "8.3.0"
+  KIBANA_VERSION: "8.3.0"
   CORTEX_VERSION: v1.11.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 5.0.9-focal # https://hub.docker.com/_/mongo
@@ -88,7 +90,7 @@ variables:
   GHOST_VERSION: "5.2.3" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.10.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.92.0" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
-  METABASE_VERSION: "v0.43.3" # https://hub.docker.com/r/metabase/metabase/tags
+  METABASE_VERSION: "v0.43.4" # https://hub.docker.com/r/metabase/metabase/tags
   JUPYTERHUB_VERSION: "1.2.0" # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: "1.2.0" # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   JUPYTERHUB_NETWORK_TOOLS_VERSION: "1.2.0" # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
