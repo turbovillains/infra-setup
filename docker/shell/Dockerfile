@@ -2,7 +2,7 @@ ARG DOCKER_HUB
 ARG INFRA_VERSION
 FROM ${DOCKER_HUB}/infra/debian:${INFRA_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 ARG HOST_DOCKER_GID
 

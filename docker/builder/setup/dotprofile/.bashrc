@@ -34,7 +34,7 @@ if [[ ! -z ${SSH_PRIVATE_KEY_PATH:-} ]]; then
 fi
 
 # Git
-git config --global user.email "info@noroutine.me"
+git config --global user.email "info@noroutine.com"
 git config --global user.name "Builder 3000"
 # git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}
 

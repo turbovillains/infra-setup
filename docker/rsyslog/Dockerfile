@@ -3,7 +3,7 @@ ARG INFRA_VERSION
 
 FROM ${DOCKER_HUB}/infra/debian:${INFRA_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 RUN apt-get update && \
     apt-get install rsyslog rsyslog-elasticsearch --no-install-recommends -y && \

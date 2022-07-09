@@ -13,7 +13,7 @@ RUN go install github.com/fihuer/ioping_exporter@latest
 
 FROM ${DOCKER_HUB}/infra/debian:${INFRA_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 COPY --from=0 /go/bin/ioping_exporter /ioping-exporter
 

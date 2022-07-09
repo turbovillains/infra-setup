@@ -1,7 +1,7 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 ARG pack_uid=1000
 ARG pack_gid=1000

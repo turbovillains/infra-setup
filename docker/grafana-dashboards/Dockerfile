@@ -17,6 +17,6 @@ RUN python3 -m grit generate --module dashboards --out 'out/{environment}' --var
 
 FROM scratch
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 COPY --from=dashboards_build /app/out /dashboards

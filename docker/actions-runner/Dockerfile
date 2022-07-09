@@ -8,7 +8,7 @@ FROM ${DOCKER_HUB}/summerwind/actions-runner:${ACTIONS_RUNNER_IMAGE_VERSION}
 
 ARG HOST_DOCKER_GID
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 USER 0
 RUN apt-get update && apt-get install -y \

@@ -6,7 +6,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/gitlab/gitlab-runner:${GITLAB_RUNNER_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 # Noroutine CA certs
 # For alpine we should not use subfolders

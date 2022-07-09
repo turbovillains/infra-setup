@@ -18,7 +18,7 @@ FROM ${DOCKER_HUB}/argoproj/argocd:${ARGOCD_VERSION}
 ARG YTT_HASH=11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5
 ARG ARGOCD_VAULT_PLUGIN_HASH=307c5f9de016ee62e0e1dce1f6b6e8f5617f345c20b61eae7d2be2a8a8941d98
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 USER 0

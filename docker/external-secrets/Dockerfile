@@ -6,7 +6,7 @@ FROM ${DOCKER_HUB}/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION}
 
 FROM ${DOCKER_HUB}/infra/alpine:${INFRA_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 COPY --from=binary /bin/external-secrets /bin/external-secrets
 

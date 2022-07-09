@@ -6,7 +6,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/pryorda/vmware_exporter:${VMWARE_EXPORTER_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 # Install needed packages
 RUN apk update && \

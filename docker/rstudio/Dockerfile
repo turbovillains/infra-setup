@@ -9,7 +9,7 @@ FROM ${DOCKER_HUB}/jupyter/all-spark-notebook:${JUPYTER_VERSION}
 
 ARG RSTUDIO_VERSION
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 USER 0
 

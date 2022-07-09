@@ -6,7 +6,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/oauth2-proxy/oauth2-proxy:${OAUTH2_PROXY_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 USER 0
 RUN apk update && apk add --no-cache ca-certificates && rm -rf /var/cache/apk/*

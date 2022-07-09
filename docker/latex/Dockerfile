@@ -3,7 +3,7 @@ ARG LATEX_BASE
 
 FROM ${DOCKER_HUB}/${LATEX_BASE}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 

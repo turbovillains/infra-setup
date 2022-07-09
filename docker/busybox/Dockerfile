@@ -15,5 +15,5 @@ RUN update-ca-certificates
 
 FROM ${DOCKER_HUB}/busybox:${BUSYBOX_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 COPY --from=alpine /etc/ssl/certs /etc/ssl/certs

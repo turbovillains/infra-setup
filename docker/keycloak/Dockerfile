@@ -6,7 +6,7 @@ FROM ${KEYCLOAK_THEMES_IMAGE} as themes
 
 FROM ${DOCKER_HUB}/keycloak/keycloak:${KEYCLOAK_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 # Themes
 

@@ -5,7 +5,7 @@ ARG GOLANG_VERSION
 
 FROM ${DOCKER_HUB}/golang:${GOLANG_VERSION} as builder
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 RUN apt-get update && \
     apt-get install git make curl gcc build-essential --no-install-recommends -y && \

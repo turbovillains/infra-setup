@@ -5,7 +5,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/infra/alpine:${INFRA_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 USER 0
 RUN apk update && apk add --no-cache bash curl openssl ca-certificates && rm -rf /var/cache/apk/*

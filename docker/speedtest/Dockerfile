@@ -18,7 +18,7 @@ RUN go get ./ && go build -ldflags "-w -s" -trimpath -o speedtest main.go
 
 FROM ${ALPINE_IMAGE}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 RUN apk add ca-certificates
 WORKDIR /app

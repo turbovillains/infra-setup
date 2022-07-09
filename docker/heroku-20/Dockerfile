@@ -5,7 +5,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/infra/ubuntu20:${INFRA_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs, setup will run the update
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine

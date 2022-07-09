@@ -4,7 +4,7 @@ ARG PHP_VERSION
 
 FROM ${DOCKER_HUB}/php:${PHP_VERSION}
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.me>"
+LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 # Enable Apache Rewrite + Expires Module
 RUN a2enmod rewrite expires && \
