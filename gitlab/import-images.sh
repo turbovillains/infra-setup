@@ -235,6 +235,7 @@ import_images() {
         "pryorda/vmware_exporter:${VMWARE_EXPORTER_VERSION:-v0.18.3}"
         "azul/zulu-openjdk:${JDK_ZULU_VERSION:-18.0.1-18.30.11}"
         "elastic/eck-operator:${ECK_OPERATOR_VERSION:-2.3.0}"
+        "louislam/uptime-kuma:${UPTIME_KUMA_VERSION:-1.17.1-alpine}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"

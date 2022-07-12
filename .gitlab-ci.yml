@@ -1701,3 +1701,11 @@ confluent-platform:
     - ./gitlab/build-image.sh confluent-platform ${DOCKER_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
         --build-arg CONFLUENTINC_CP_VERSION \
         --build-arg CONFLUENTINC_CP_COMPONENT
+
+uptime-kuma:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg UPTIME_KUMA_VERSION
