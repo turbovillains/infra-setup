@@ -61,7 +61,7 @@ variables:
   M3DBNODE_VERSION: v1.5.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.5.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.1"  # https://github.com/braedon/prometheus-es-exporter/releases
-  SSL_EXPORTER_VERSION: "2.4.1" # https://github.com/ribbybibby/ssl_exporter/releases
+  SSL_EXPORTER_VERSION: "2.4.2" # https://github.com/ribbybibby/ssl_exporter/releases
   CADVISOR_VERSION: "v0.44.0" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.105" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.4-1-dev
@@ -110,7 +110,7 @@ variables:
   BITNAMI_PROMETHEUS_VERSION: 2.37.0-debian-11-r0 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.57.0-debian-11-r6" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_NODE_EXPORTER_VERSION: "1.3.1-debian-11-r6" # https://hub.docker.com/r/bitnami/node-exporter/tags
-  BITNAMI_BLACKBOX_EXPORTER_VERSION: "0.21.0-debian-11-r7" # https://hub.docker.com/r/bitnami/blackbox-exporter/tags
+  BITNAMI_BLACKBOX_EXPORTER_VERSION: "0.21.1-debian-11-r7" # https://hub.docker.com/r/bitnami/blackbox-exporter/tags
   BITNAMI_REDIS_VERSION: "7.0.2-debian-11-r2" # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
   BITNAMI_POSTGRESQL11_VERSION: 11.16.0-debian-11-r7 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
   BITNAMI_POSTGRESQL12_VERSION: 12.11.0-debian-11-r7 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=12.
