@@ -174,6 +174,7 @@ import_images() {
         "bitnami/blackbox-exporter:${BITNAMI_BLACKBOX_EXPORTER_VERSION:-0.21.0-debian-11-r7}"
         "bitnami/postgres-exporter:${BITNAMI_POSTGRES_EXPORTER_VERSION:-0.10.1-debian-10-r131}"
         "bitnami/redis:${BITNAMI_REDIS_VERSION:-6.2.4-debian-10-r0}"
+        "bitnami/redis-exporter:${BITNAMI_REDIS_EXPORTER_VERSION:-1.43.1-debian-11-r0}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL11_VERSION:-11.12.0-debian-10-r20}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL12_VERSION:-12.11.0-debian-10-r12}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
@@ -236,6 +237,10 @@ import_images() {
         "azul/zulu-openjdk:${JDK_ZULU_VERSION:-18.0.1-18.30.11}"
         "elastic/eck-operator:${ECK_OPERATOR_VERSION:-2.3.0}"
         "louislam/uptime-kuma:${UPTIME_KUMA_VERSION:-1.17.1-alpine}"
+
+        # Airflow
+        "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
+        "k8s.gcr.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
