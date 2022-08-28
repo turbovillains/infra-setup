@@ -17,7 +17,8 @@ brew install \
   cfssl \
   yq yj jq ytt \
   kustomize argocd \
-  hey
+  hey \
+  skopeo
 
 # consul nomad vault envconsul consul-template
 # hey

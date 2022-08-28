@@ -20,8 +20,9 @@ brew install \
   buildpacks/tap/pack \
   aquasecurity/trivy/trivy \
   terraform \
-  cosign
-
+  cosign \
+  skopeo \
+  nvm
 
 # consul nomad vault envconsul consul-template
 # hey
