@@ -18,14 +18,14 @@ echo "Pin-Priority: 600"                ;\
 ) > /etc/apt/preferences.d/pdns
 
 RUN (                                                                       \
-echo "deb [arch=amd64] http://repo.powerdns.com/debian bullseye-auth-47 main" \
+echo "deb [arch=amd64] http://repo.powerdns.com/debian bullseye-rec-47 main" \
 ) > /etc/apt/sources.list.d/pdns.list
 
 COPY FD380FBB-pub.asc /tmp/FD380FBB-pub.asc
 RUN apt-key add /tmp/FD380FBB-pub.asc && rm /tmp/FD380FBB-pub.asc
 
 RUN apt-get update -qyy && \
-    apt-get install -qyy pdns-server pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-lua2 && \
+    apt-get install -qyy pdns-recursor && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
@@ -33,4 +33,4 @@ RUN update-ca-certificates
 
 EXPOSE 53/tcp 53/udp
 
-CMD ["/usr/sbin/pdns_server"]
+CMD ["/usr/sbin/pdns_recursor"]
