@@ -10,7 +10,7 @@ build-image = "cr.nrtn.dev/infra/pack-build:22"
 run-image = "cr.nrtn.dev/infra/pack:22"
 
 [lifecycle]
-version = "0.14.1"
+version = "0.14.2"
 
 [[buildpacks]]
   id = "heroku/java"
@@ -30,7 +30,7 @@ version = "0.14.1"
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:1.0.1"
+  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:1.0.2"
 
 [[buildpacks]]
   id = "heroku/python"
