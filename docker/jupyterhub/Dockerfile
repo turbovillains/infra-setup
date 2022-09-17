@@ -12,4 +12,6 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 USER 0
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
+
+RUN pip install kubernetes
 USER $NB_UID

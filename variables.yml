@@ -3,7 +3,7 @@ variables:
   BUILDER_USER: builder
   DOCKER_NAMESPACE: infra
   CONNECT_LANDING_VERSION: "0.0.4"
-  WEBSITE_VERSION: v0.2.6
+  WEBSITE_VERSION: v0.2.7
   DEBIAN_VERSION: "bullseye-20220912-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_FOCAL_VERSION: "focal-20220826" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   UBUNTU_JAMMY_VERSION: "jammy-20220815" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
@@ -147,7 +147,7 @@ variables:
   MINIO_CONSOLE_VERSION: "v0.20.2" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.11.2 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
-  SFTPGO_VERSION: v2.3.4 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
+  SFTPGO_VERSION: v2.3.5 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
   RELOADER_VERSION: "v0.0.118" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
   CONFIGMAP_RELOAD_VERSION: v0.7.1
