@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 
 get_registry() {
     local image=$1
@@ -297,7 +297,7 @@ import_images() {
         "longhornio/longhorn-share-manager:${LONGHORN_SHARE_MANAGER_VERSION:-v1_20220531}"
         "longhornio/backing-image-manager:${LONGHORN_BACKING_IMAGE_MANAGER_VERSION:-v2_20210820}"
         "longhornio/csi-node-driver-registrar:v2.5.0"
-        "longhornio/csi-snapshotter:v4.2.1"
+        "longhornio/csi-snapshotter:v5.0.1"
         "longhornio/csi-resizer:v1.3.0"
         "longhornio/csi-provisioner:v2.1.2"
         "longhornio/csi-attacher:v3.4.0"
