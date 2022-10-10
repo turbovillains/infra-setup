@@ -263,9 +263,9 @@ heroku-buildpacks:
     - cd ${CI_JOB_NAME}
     - |
       # Fetch upstream buildpack sources
-      # curl -sLo- https://github.com/noroutine/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zx buildpacks-nodejs-main/{common,buildpacks}
-      curl -sLo- https://github.com/heroku/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zx buildpacks-nodejs-main/{Cargo.lock,Cargo.toml,common,buildpacks}
-      # curl -sLo- https://github.com/heroku/buildpacks-jvm/archive/refs/heads/main.tar.gz | tar zx buildpacks-jvm-main/{common,buildpacks}
+      # curl -sLo- https://github.com/noroutine/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zxv buildpacks-nodejs-main/{common,buildpacks}
+      curl -sLo- https://github.com/heroku/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zxv buildpacks-nodejs-main/{Cargo.lock,Cargo.toml,common,buildpacks,test_support}
+      # curl -sLo- https://github.com/heroku/buildpacks-jvm/archive/refs/heads/main.tar.gz | tar zxv buildpacks-jvm-main/{common,buildpacks}
 
     - |
       # Release upstream buildpacks
