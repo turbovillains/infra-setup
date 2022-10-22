@@ -13,4 +13,4 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 COPY --from=build /docs/site /data
 
-ENTRYPOINT [ "caddy", "file-server", "-browse", "-access-log", "-root", "/data", "-listen", "0.0.0.0:2019" ]
+ENTRYPOINT [ "caddy", "file-server", "--browse", "--access-log", "--root", "/data", "--listen", "0.0.0.0:2019" ]

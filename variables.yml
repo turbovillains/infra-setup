@@ -20,7 +20,7 @@ variables:
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.298.2-ubuntu-20.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   KUBE_RBAC_PROXY_VERSION: v0.13.1 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine-v15.5.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: "15.4.3-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
+  GITLAB_VERSION: "15.5.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
   GITLAB_AGENTK_VERSION: v15.5.1 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.7.0 # registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications
   GITLAB_AUTO_BUILD_VERSION: v1.19.0
@@ -36,7 +36,7 @@ variables:
   NEXUS_VERSION: "3.42.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.1-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.9.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "8.5.6" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "8.5.7" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "19.0.3" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -123,7 +123,7 @@ variables:
   BITNAMI_MEMCACHED_VERSION: 1.6.17-debian-11-r6 # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.4.0-debian-11-r7" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.23.1-debian-11-r6" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2022.10.20-debian-11-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2022.10.21-debian-11-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_CLIENT_VERSION: "2022.10.20-debian-11-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: "11-debian-11-r6" # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: "0.13.7-debian-11-r0" # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
@@ -148,7 +148,7 @@ variables:
   MINIO_CONSOLE_VERSION: "v0.21.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.13.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
-  SFTPGO_VERSION: v2.3.6 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
+  SFTPGO_VERSION: v2.4.0 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
   RELOADER_VERSION: "v0.0.124" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
   CONFIGMAP_RELOAD_VERSION: v0.8.0
@@ -170,8 +170,8 @@ variables:
   CSI_RESIZER_VERSION: v1.6.0
   CSI_SNAPSHOTTER_VERSION: v6.1.0
   CSI_PROVISIONER_VERSION: v3.3.0
-  TIGERA_OPERATOR_VERSION: "v1.28.2" # https://quay.io/repository/tigera/operator?tab=tags
-  CALICO_VERSION: "v3.24.2" # https://hub.docker.com/r/calico/node/tags
+  TIGERA_OPERATOR_VERSION: "v1.28.3" # https://quay.io/repository/tigera/operator?tab=tags
+  CALICO_VERSION: "v3.24.3" # https://hub.docker.com/r/calico/node/tags
   CONSUL_VERSION: "1.13.3"  # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "0.49.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.5 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
