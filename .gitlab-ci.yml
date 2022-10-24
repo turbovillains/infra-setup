@@ -1078,6 +1078,14 @@ bitnami-postgresql14:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL14_VERSION
 
+bitnami-postgresql15:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_POSTGRESQL15_VERSION
+
 bitnami-mariadb:
   interruptible: true
   stage: build
@@ -1181,6 +1189,20 @@ bitnami-sealed-secrets-controller:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
+
+bitnami-trivy:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_TRIVY_VERSION
+
+trivy:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg TRIVY_VERSION
 
 external-secrets:
   stage: build
