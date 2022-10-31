@@ -240,6 +240,8 @@ import_images() {
         "azul/zulu-openjdk:${JDK_ZULU_VERSION:-18.0.1-18.30.11}"
         "elastic/eck-operator:${ECK_OPERATOR_VERSION:-2.3.0}"
         "louislam/uptime-kuma:${UPTIME_KUMA_VERSION:-1.17.1-alpine}"
+        "hadolint/hadolint:${HADOLINT_VERSION:-v2.10.0-beta}"
+        "outlinewiki/outline:${OUTLINE_VERSION:-0.66.2}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
