@@ -16,4 +16,3 @@ RUN apt-get update && \
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN /usr/sbin/update-ca-certificates
-

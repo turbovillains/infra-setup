@@ -3,7 +3,7 @@
 _main() {
     local source_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
     source ${source_dir}/env.sh
-    
+
     # git clone --mirror git@github.com:Homebrew/homebrew-core.git homebrew-core
     # cd homebrew-core
     # git show-ref

@@ -17,7 +17,7 @@ while IFS="" read -r -d "" buildpack_toml_path; do
 	if [[ $buildpack_id == "${REQUESTED_BUILDPACK_ID}" ]]; then
 
 		echo "Found buildpack ${buildpack_id} at ${buildpack_path}"
-		
+
 		# Some buildpacks require a build step before packaging. If we detect a build.sh script, we execute it and
 		# modify some variables to point to the directory with the built buildpack instead.
 		if [[ -f "${buildpack_path}/build.sh" ]]; then
@@ -55,4 +55,3 @@ while IFS="" read -r -d "" buildpack_toml_path; do
 		exit 0
 	fi
 done < <(find . -name buildpack.toml -print0)
-

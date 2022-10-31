@@ -3,7 +3,7 @@
 BUILDER_UID=1000
 BUILDER_HOME=$(getent passwd 1000 | cut -d: -f 6)
 
-# If running non-interactively by root as top process, drop into subshell with less permissions 
+# If running non-interactively by root as top process, drop into subshell with less permissions
 if [[ $$ -eq 1 && $- != *i* && $EUID -eq 0 ]]; then
   chown -R ${BUILDER_UID}.100 /builds
   [[ -f ${BUILDER_HOME}/.bashrc ]] && source ${BUILDER_HOME}/.bashrc

@@ -1,7 +1,9 @@
 from grit import Variation
 
+
 class Environment(Variation):
-  pass
+    pass
+
 
 Environment(name="bo01")
 Environment(name="lab01")
