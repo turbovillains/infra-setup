@@ -1,16 +1,15 @@
 ARG DOCKER_HUB
-ARG PROMTAIL_VERSION
 ARG INFRA_VERSION
+ARG BITNAMI_REDIS_EXPORTER_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/grafana/promtail:${PROMTAIL_VERSION}
+FROM ${DOCKER_HUB}/bitnami/redis-exporter:${BITNAMI_REDIS_EXPORTER_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
-RUN apt-get update && apt-get install -y \
-    curl ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
-
+# full bundle of CA certs set from Mozilla + Noroutine CA certs
+USER 0
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
+USER 1001
