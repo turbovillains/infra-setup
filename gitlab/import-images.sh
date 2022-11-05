@@ -284,7 +284,7 @@ import_images() {
         "longhornio/longhorn-engine:${LONGHORN_VERSION:-v1.2.4}"
         "longhornio/longhorn-instance-manager:${LONGHORN_INSTANCE_MANAGER_VERSION:-v1_20220530}"
         "longhornio/longhorn-share-manager:${LONGHORN_SHARE_MANAGER_VERSION:-v1_20220531}"
-        "longhornio/backing-image-manager:v2_20210820"
+        "longhornio/backing-image-manager:${LONGHORN_BACKING_IMAGE_MANAGER_VERSION:-v2_20210820}"
         "longhornio/csi-node-driver-registrar:v2.5.0"
         "longhornio/csi-snapshotter:v4.2.1"
         "longhornio/csi-resizer:v1.3.0"
