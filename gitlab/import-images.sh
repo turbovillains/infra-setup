@@ -204,6 +204,7 @@ import_images() {
         "bitnami/kubeapps-apis:${BITNAMI_KUBEAPPS_APIS_VERSION:-2.4.3-debian-10-r42}"
         "bitnami/kubeapps-pinniped-proxy:${BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION:-2.3.3-debian-10-r2}"
         "bitnami/kube-rbac-proxy:${BITNAMI_KUBE_RBAC_PROXY_VERSION:-0.12.0-scratch-r2}"
+        "bitnami/openldap:${BITNAMI_OPENLDAP_VERSION:-2.5.13-debian-11-r0}"
         "bitnami/sealed-secrets-controller:${BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION:-v0.17.2}"
         "ghcr.io/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION:-v0.5.3}"
         "minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"

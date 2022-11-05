@@ -1151,6 +1151,14 @@ bitnami-kube-rbac-proxy:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBE_RBAC_PROXY_VERSION
 
+bitnami-openldap:
+  interruptible: true
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_OPENLDAP_VERSION
+
 bitnami-sealed-secrets-controller:
   stage: build
   script:
