@@ -77,7 +77,7 @@ variables:
   MYSQL_VERSION: "8.0.31" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.9.3-jammy" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.4.2 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
-  OAUTH2_PROXY_VERSION: v7.3.0-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
+  OAUTH2_PROXY_VERSION: v7.4.0-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   BUILDPACKSIO_LIFECYCLE_VERSION: "0.14.3" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
   HEROKU_PROCFILE_CNB_VERSION: "2.0.0" # https://github.com/heroku/procfile-cnb
   BINDERHUB_VERSION: 0.2.0-n930.ha8b371d # https://hub.docker.com/repository/docker/noroutine/k8s-binderhub
@@ -108,7 +108,7 @@ variables:
   BITNAMI_KEYCLOAK_VERSION: "19.0.3-debian-11-r0" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
   BITNAMI_SPARK_VERSION: 3.3.0-debian-11-r6 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.39.1-debian-11-r0 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
-  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.59.2-debian-11-r6" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
+  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.60.1-debian-11-r6" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_NODE_EXPORTER_VERSION: "1.4.0-debian-11-r6" # https://hub.docker.com/r/bitnami/node-exporter/tags
   BITNAMI_BLACKBOX_EXPORTER_VERSION: "0.22.0-debian-11-r7" # https://hub.docker.com/r/bitnami/blackbox-exporter/tags
   BITNAMI_REDIS_VERSION: "7.0.5-debian-11-r2" # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
@@ -124,8 +124,8 @@ variables:
   BITNAMI_MEMCACHED_VERSION: 1.6.17-debian-11-r6 # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.4.0-debian-11-r7" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.23.1-debian-11-r6" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2022.10.24-debian-11-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
-  BITNAMI_MINIO_CLIENT_VERSION: "2022.10.22-debian-11-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_VERSION: "2022.10.29-debian-11-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: "2022.10.29-debian-11-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: "11-debian-11-r6" # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: "0.13.7-debian-11-r0" # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: "0.13.7-debian-11-r0" # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
