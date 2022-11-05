@@ -2,7 +2,7 @@
 uri = "."
 
 [[dependencies]]
-uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-engine-buildpack:0.8.4"
+uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-engine-buildpack:0.8.9"
 
 [[dependencies]]
 uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-npm-buildpack:0.5.3"
@@ -11,4 +11,4 @@ uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-npm-buildpack:0.5.3"
 uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-yarn-buildpack:0.2.4"
 
 [[dependencies]]
-uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:1.0.1"
+uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:1.0.2"

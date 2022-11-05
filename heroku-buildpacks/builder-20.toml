@@ -10,7 +10,7 @@ build-image = "cr.nrtn.dev/infra/pack-build:20"
 run-image = "cr.nrtn.dev/infra/pack:20"
 
 [lifecycle]
-version = "0.14.1"
+version = "0.14.2"
 
 [[buildpacks]]
   id = "heroku/java"
@@ -30,7 +30,7 @@ version = "0.14.1"
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:1.0.1"
+  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:1.0.2"
 
 [[buildpacks]]
   id = "heroku/python"
@@ -42,7 +42,7 @@ version = "0.14.1"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.5.4"
+  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.5.9"
 
 # [[buildpacks]]
 #   id = "heroku/nodejs-function"
@@ -59,7 +59,7 @@ version = "0.14.1"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
 [[order]]
@@ -69,7 +69,7 @@ version = "0.14.1"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
 [[order]]
@@ -79,7 +79,7 @@ version = "0.14.1"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
 [[order]]
@@ -89,13 +89,13 @@ version = "0.14.1"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "1.0.1"
+    version = "1.0.2"
     optional = true
 
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.5.4"
+    version = "0.5.9"
 
   [[order.group]]
     id = "noroutine/static"
@@ -110,7 +110,7 @@ version = "0.14.1"
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.5.4"
+    version = "0.5.9"
 
 [[order]]
   [[order.group]]
