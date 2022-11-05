@@ -29,10 +29,10 @@ get_name() {
 }
 
 migrate_image() {
-    local image=$1
+    local image=${1:-}
     [[ -z ${image} ]] && return
-    local source_registry=$(get_registry ${image})
-    local target_registry=${2}
+    local source_registry="$(get_registry ${image})"
+    local target_registry=${2:-}
     [[ -z ${target_registry} ]] && return
     local image_name=$(get_name ${image})
     local image_tag=$(get_tag ${image})
@@ -338,7 +338,7 @@ import_images() {
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
 
-    for image in ${images[@]}; do
+    for image in "${images[@]}"; do
         printf "\nMigrating %s/%s:%s to %s\n`line`\n" \
             $(get_registry $image) $(get_name $image) $(get_tag $image) \
             ${target_registry}
@@ -347,12 +347,12 @@ import_images() {
 
     # Sync to upstream repo for dependabot and renovate
     ssh-keyscan github.com | tee -a ~/.ssh/known_hosts
-    git clone git@github.com:noroutine/upstream.git
+    git clone git@github.com:turbovillains/infra-upstream.git upstream
     (
 
         cd upstream
 
-        for image in ${images[@]}; do
+        for image in "${images[@]}"; do
             echo "# $(get_name ${image})"
             echo "FROM ${image}"
             echo "# $(get_name ${image})"

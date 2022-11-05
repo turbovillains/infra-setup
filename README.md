@@ -86,7 +86,7 @@ graph LR
   end
 
   subgraph Deployment Pipeline
-    H(infra-cluster-prometheus)
+    H(infra-cluster-XYZ)
   end
 
   A1 --> B
