@@ -1,7 +1,5 @@
 #!/usr/bin/env bash -eux
 
-brew install nvm
-
 cat << EOF | tee /home/${BUILDER_USER}/.npmrc
 registry=https://nexus.nrtn.dev/repository/npm/
 # strict-ssl=false

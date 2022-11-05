@@ -286,6 +286,8 @@ import_images() {
         "calico/kube-controllers:${CALICO_VERSION:-v3.22.1}"
         "calico/dikastes:${CALICO_VERSION:-v3.22.1}"
         "calico/pod2daemon-flexvol:${CALICO_VERSION:-v3.22.1}"
+        "calico/node-driver-registrar:${CALICO_VERSION:-v3.22.1}"
+        "calico/csi:${CALICO_VERSION:-v3.22.1}"
 
         # longhorn
         "longhornio/longhorn-manager:${LONGHORN_VERSION:-v1.2.4}"
