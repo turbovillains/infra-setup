@@ -278,7 +278,7 @@ heroku-buildpacks:
       for buildpack_id in heroku/nodejs heroku/nodejs-function; do \
         REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh; \
       done
-    
+
     - |
       # Release builder
       make publish20 \
@@ -1810,7 +1810,7 @@ infra-docs:
   script:
     - |
       git clone https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/infra-docs.git
-      
+
       ( cd infra-docs && git archive --format=tar HEAD ) | ( cd docker/infra-docs/docs && tar xf - )
 
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
@@ -1820,6 +1820,10 @@ run-hadolint:
   stage: build2
   script:
     - |
-      for dockerfile in docker/*/Dockerfile; do
-        docker run --rm -i cr.nrtn.dev/infra/hadolint:${INFRA_VERSION} < ${dockerfile};
-      done
+      (
+        shopt -u -o errexit
+        for dockerfile in docker/*/Dockerfile; do
+          echo ${dockerfile}
+          docker run --rm cr.nrtn.dev/infra/hadolint:${INFRA_VERSION} < ${dockerfile};
+        done
+      )

@@ -42,7 +42,7 @@ migrate_image() {
     local inspect_code=$?
     set -e
 
-    if [[ "${inspect_code}" != 0 ]]; then    
+    if [[ "${inspect_code}" != 0 ]]; then
         docker pull ${source_registry}/${image_name}:${image_tag}
         docker tag ${source_registry}/${image_name}:${image_tag} ${target_registry}/${image_name}:${image_tag}
         docker push ${target_registry}/${image_name}:${image_tag}
@@ -317,7 +317,7 @@ import_images() {
         "k8s.gcr.io/sig-storage/csi-resizer:${CSI_RESIZER_VERSION:-v1.4.0}"
         "k8s.gcr.io/sig-storage/csi-provisioner:${CSI_PROVISIONER_VERSION:-v3.1.0}"
         "k8s.gcr.io/sig-storage/csi-snapshotter:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
-        
+
         # certmanager shit
         "vstadtmueller/cert-manager-webhook-powerdns:main"
 
@@ -376,7 +376,7 @@ import_images() {
 _main() {
     local source_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
     source ${source_dir}/env.sh
-    
+
     import_images
 }
 

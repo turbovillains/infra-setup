@@ -7,7 +7,7 @@ visudo -c
 cp /setup/dotprofile/.bashrc /home/${BUILDER_USER}/.bashrc
 cp /setup/dotprofile/.bashrc /root/.bashrc
 
-# Git 
+# Git
 git config --global user.email "info@noroutine.com"
 git config --global user.name "Builder 3000"
 # git config --global http.proxy ${HTTP_PROXY:-http://proxy.bo01.noroutine.me:3128}

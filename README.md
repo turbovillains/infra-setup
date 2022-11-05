@@ -88,7 +88,7 @@ graph LR
   subgraph Deployment Pipeline
     H(infra-cluster-prometheus)
   end
-  
+
   A1 --> B
   A2 --> B
   AN --> B
@@ -143,4 +143,3 @@ Variables that shall be setup for this repo are:
 * ```HTTP_PROXY``` (optional)
 * ```HTTPS_PROXY``` (optional)
 * ```NO_PROXY``` (optional)
-
