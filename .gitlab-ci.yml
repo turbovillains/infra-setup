@@ -966,15 +966,6 @@ bitnami-keycloak:
         --build-arg BITNAMI_KEYCLOAK_VERSION \
         --build-arg KEYCLOAK_THEMES_IMAGE
 
-bitnami-keycloak16:
-  interruptible: true
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KEYCLOAK16_VERSION \
-        --build-arg KEYCLOAK_THEMES_IMAGE
-
 bitnami-spark:
   interruptible: true
   stage: build
