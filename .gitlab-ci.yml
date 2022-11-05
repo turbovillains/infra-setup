@@ -7,6 +7,7 @@ stages:
   - buildpacks
   - prebuild
   - build
+  - build2
 
 before_script:
   - |
@@ -160,7 +161,7 @@ heroku-20:
 
 builder:
   interruptible: true
-  stage: build
+  stage: build2
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
@@ -170,7 +171,7 @@ builder:
 
 shell:
   interruptible: true
-  stage: build
+  stage: build2
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
@@ -1755,3 +1756,14 @@ keda-metrics-apiserver:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KEDA_VERSION
+
+infra-docs:
+  interruptible: true
+  stage: build2
+  script:
+    - |
+      git clone https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/infra-docs.git
+      
+      ( cd infra-docs && git archive --format=tar HEAD ) | ( cd docker/infra-docs/docs && tar xf - )
+
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
