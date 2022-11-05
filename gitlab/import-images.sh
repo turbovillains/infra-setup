@@ -242,6 +242,10 @@ import_images() {
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
         "k8s.gcr.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
 
+        # KEDA
+        "ghcr.io/kedacore/keda:${KEDA_VERSION:-2.8.0}"
+        "ghcr.io/kedacore/keda-metrics-apiserver:${KEDA_VERSION:-2.8.0}"
+
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_CAINJECTOR_VERSION:-v1.8.0}"
