@@ -175,6 +175,7 @@ import_images() {
         "bitnami/postgres-exporter:${BITNAMI_POSTGRES_EXPORTER_VERSION:-0.10.1-debian-10-r131}"
         "bitnami/redis:${BITNAMI_REDIS_VERSION:-6.2.4-debian-10-r0}"
         "bitnami/redis-exporter:${BITNAMI_REDIS_EXPORTER_VERSION:-1.43.1-debian-11-r0}"
+        "bitnami/postgresql:${BITNAMI_POSTGRESQL10_VERSION:-10.23.0-debian-11-r0}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL11_VERSION:-11.12.0-debian-10-r20}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL12_VERSION:-12.11.0-debian-10-r12}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
@@ -242,6 +243,7 @@ import_images() {
         "louislam/uptime-kuma:${UPTIME_KUMA_VERSION:-1.17.1-alpine}"
         "hadolint/hadolint:${HADOLINT_VERSION:-v2.10.0-beta}"
         "outlinewiki/outline:${OUTLINE_VERSION:-0.66.2}"
+        "syncthing/syncthing:${SYNCTHING_VERSION:-1.22.1}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
@@ -347,7 +349,7 @@ import_images() {
 
     # Sync to upstream repo for dependabot and renovate
     ssh-keyscan github.com | tee -a ~/.ssh/known_hosts
-    git clone git@github.com:turbovillains/infra-upstream.git upstream
+    git clone git@github.com:noroutine/upstream.git upstream
     (
 
         cd upstream
@@ -362,8 +364,8 @@ import_images() {
         jq -r -n --arg INFRA_VERSION ${INFRA_VERSION} '{ version: $INFRA_VERSION }' | tee infra.json
 
         git add Dockerfile infra.json
-        git commit -a -m "Infra ${INFRA_VERSION}"
-        git push origin master || true
+        git commit -a -m "Infra ${INFRA_VERSION}" || true
+        git push origin master
 
         # Tag if we are doing this for tag
         if [[ ! -z ${CI_COMMIT_TAG:-} ]]; then

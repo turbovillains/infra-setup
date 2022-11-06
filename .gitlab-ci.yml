@@ -19,12 +19,14 @@ before_script:
 
 import-images:
   interruptible: true
+  retry: 2
   stage: scratch
   script:
     - ./gitlab/${CI_JOB_NAME}.sh
 
 turbovillains-mirror:
   interruptible: true
+  retry: 2
   stage: scratch
   script:
     - |
@@ -38,12 +40,14 @@ turbovillains-mirror:
 
 # mirror-homebrew:
 #   interruptible: true
+#   retry: 2
 #   stage: scratch
 #   script:
 #     - ./gitlab/${CI_JOB_NAME}.sh
 
 noroutine-ca:
   interruptible: true
+  retry: 2
   stage: scratch
   script:
     - |
@@ -51,6 +55,7 @@ noroutine-ca:
 
 keycloak-themes:
   interruptible: true
+  retry: 2
   stage: prebuild
   script:
     - |
@@ -60,6 +65,7 @@ keycloak-themes:
 
 grafana-dashboards:
   interruptible: true
+  retry: 2
   stage: prebuild
   script:
     - |
@@ -68,6 +74,7 @@ grafana-dashboards:
 
 ingress-default-backend:
   interruptible: true
+  retry: 2
   stage: prebuild
   script:
     - |
@@ -77,6 +84,7 @@ ingress-default-backend:
 
 website:
   interruptible: true
+  retry: 2
   stage: prebuild
   script:
     - |
@@ -86,6 +94,7 @@ website:
 
 connect-landing:
   interruptible: true
+  retry: 2
   stage: prebuild
   script:
     - |
@@ -95,6 +104,7 @@ connect-landing:
 
 tripwire-kafka-mqtt-bridge:
   interruptible: true
+  retry: 2
   stage: prebuild
   script:
     - |
@@ -104,6 +114,7 @@ tripwire-kafka-mqtt-bridge:
 
 debian:
   interruptible: true
+  retry: 2
   stage: base
   script:
     - |
@@ -112,6 +123,7 @@ debian:
 
 ubuntu20:
   interruptible: true
+  retry: 2
   stage: base
   script:
     - |
@@ -120,6 +132,7 @@ ubuntu20:
 
 ubuntu22:
   interruptible: true
+  retry: 2
   stage: base
   script:
     - |
@@ -128,6 +141,7 @@ ubuntu22:
 
 alpine:
   interruptible: true
+  retry: 2
   stage: base
   script:
     - |
@@ -136,6 +150,7 @@ alpine:
 
 busybox:
   interruptible: true
+  retry: 2
   stage: base
   script:
     - |
@@ -145,6 +160,7 @@ busybox:
 
 distroless:
   interruptible: true
+  retry: 2
   stage: base
   parallel:
     matrix:
@@ -157,6 +173,7 @@ distroless:
 
 jdk-zulu:
   interruptible: true
+  retry: 2
   stage: base
   script:
     - |
@@ -165,6 +182,7 @@ jdk-zulu:
 
 heroku-20:
   interruptible: true
+  retry: 2
   stage: stacks
   script:
     - |
@@ -174,6 +192,7 @@ heroku-20:
 
 # heroku-22:
 #   interruptible: true
+#   retry: 2
 #   stage: stacks
 #   script:
 #     - |
@@ -183,6 +202,7 @@ heroku-20:
 
 builder:
   interruptible: true
+  # retry: 2
   stage: build2
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
@@ -193,6 +213,7 @@ builder:
 
 shell:
   interruptible: true
+  # retry: 2
   stage: build2
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
@@ -202,6 +223,7 @@ shell:
 
 ocsp-responder:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -209,6 +231,7 @@ ocsp-responder:
 
 openvpn:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -216,6 +239,7 @@ openvpn:
 
 wireguard:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -224,6 +248,7 @@ wireguard:
 
 shadowbox:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -232,6 +257,7 @@ shadowbox:
 
 gitlab-auto-build:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -240,6 +266,7 @@ gitlab-auto-build:
 
 gitlab-auto-deploy:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -248,6 +275,7 @@ gitlab-auto-deploy:
 
 gitlab-agentk:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -256,6 +284,7 @@ gitlab-agentk:
 
 gitlab-cluster-applications:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -264,6 +293,7 @@ gitlab-cluster-applications:
 
 heroku-buildpacks:
   interruptible: true
+  retry: 2
   stage: buildpacks
   script:
     - |
@@ -306,6 +336,7 @@ heroku-buildpacks:
 
 buildpacksio-lifecycle:
   interruptible: true
+  retry: 2
   stage: buildpacks
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
@@ -313,6 +344,7 @@ buildpacksio-lifecycle:
 
 gitlab-runner:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -321,6 +353,7 @@ gitlab-runner:
 
 gitlab:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -329,6 +362,7 @@ gitlab:
 
 actions-runner-controller:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -337,6 +371,7 @@ actions-runner-controller:
 
 actions-runner:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -346,6 +381,7 @@ actions-runner:
 
 actions-runner-dind:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -355,6 +391,7 @@ actions-runner-dind:
 
 kube-rbac-proxy:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -363,6 +400,7 @@ kube-rbac-proxy:
 
 kaniko-executor:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -371,6 +409,7 @@ kaniko-executor:
 
 nexus:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -379,6 +418,7 @@ nexus:
 
 vaultwarden:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -387,6 +427,7 @@ vaultwarden:
 
 radius:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -395,6 +436,7 @@ radius:
 
 mkdocs:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -403,6 +445,7 @@ mkdocs:
 
 traefik:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -418,6 +461,7 @@ traefik:
 
 powerdns:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -425,6 +469,7 @@ powerdns:
 
 powerdns-recursor:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -432,6 +477,7 @@ powerdns-recursor:
 
 unbound:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -439,6 +485,7 @@ unbound:
 
 keycloak:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -448,6 +495,7 @@ keycloak:
 
 postgres:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -456,6 +504,7 @@ postgres:
 
 jira:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -464,6 +513,7 @@ jira:
 
 nextcloud:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -472,6 +522,7 @@ nextcloud:
 
 speedtest:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -482,6 +533,7 @@ speedtest:
 
 haproxy:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -490,6 +542,7 @@ haproxy:
 
 minio:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -498,6 +551,7 @@ minio:
 
 minio-console:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -506,6 +560,7 @@ minio-console:
 
 prometheus:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -514,6 +569,7 @@ prometheus:
 
 karma:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -522,6 +578,7 @@ karma:
 
 alertmanager:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -530,6 +587,7 @@ alertmanager:
 
 pushgateway:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -538,6 +596,7 @@ pushgateway:
 
 blackbox-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -546,6 +605,7 @@ blackbox-exporter:
 
 snmp-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -554,6 +614,7 @@ snmp-exporter:
 
 ipmi-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -563,6 +624,7 @@ ipmi-exporter:
 
 cadvisor:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -571,6 +633,7 @@ cadvisor:
 
 node-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -579,6 +642,7 @@ node-exporter:
 
 consul-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -587,6 +651,7 @@ consul-exporter:
 
 prometheus-es-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -595,6 +660,7 @@ prometheus-es-exporter:
 
 ssl-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -603,6 +669,7 @@ ssl-exporter:
 
 rsyslog:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -610,6 +677,7 @@ rsyslog:
 
 squid:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -618,6 +686,7 @@ squid:
 
 ioping-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -626,6 +695,7 @@ ioping-exporter:
 
 ldap-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -634,6 +704,7 @@ ldap-exporter:
 
 grafana:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -642,6 +713,7 @@ grafana:
 
 promtail:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -650,6 +722,7 @@ promtail:
 
 loki:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -658,6 +731,7 @@ loki:
 
 m3dbnode:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -666,6 +740,7 @@ m3dbnode:
 
 m3coordinator:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -674,6 +749,7 @@ m3coordinator:
 
 cortex:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -682,6 +758,7 @@ cortex:
 
 elasticsearch:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -690,6 +767,7 @@ elasticsearch:
 
 logstash:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -698,6 +776,7 @@ logstash:
 
 kibana:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -705,6 +784,7 @@ kibana:
         --build-arg KIBANA_VERSION
 mongo:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -713,6 +793,7 @@ mongo:
 
 alerta:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -721,6 +802,7 @@ alerta:
 
 wordpress:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -729,6 +811,7 @@ wordpress:
 
 pgadmin:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -737,6 +820,7 @@ pgadmin:
 
 mysql:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -745,6 +829,7 @@ mysql:
 
 mariadb:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -753,6 +838,7 @@ mariadb:
 
 httpbin:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -761,6 +847,7 @@ httpbin:
 
 oauth2-proxy:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -769,6 +856,7 @@ oauth2-proxy:
 
 caprover:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -777,6 +865,7 @@ caprover:
 
 binderhub:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -785,6 +874,7 @@ binderhub:
 
 binderhub-image-cleaner:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -793,6 +883,7 @@ binderhub-image-cleaner:
 
 jupyterhub:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -801,6 +892,7 @@ jupyterhub:
 
 repo2docker:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -809,6 +901,7 @@ repo2docker:
 
 dind:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -817,6 +910,7 @@ dind:
 
 jupyterhub-http-proxy:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -825,6 +919,7 @@ jupyterhub-http-proxy:
 
 jupyterhub-secret-sync:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -833,6 +928,7 @@ jupyterhub-secret-sync:
 
 jupyterhub-network-tools:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -841,6 +937,7 @@ jupyterhub-network-tools:
 
 jupyterhub-singleuser-sample:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -849,6 +946,7 @@ jupyterhub-singleuser-sample:
 
 jupyterhub-image-awaiter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -857,6 +955,7 @@ jupyterhub-image-awaiter:
 
 jupyter-notebook:
   interruptible: true
+  retry: 2
   stage: build
   parallel:
     matrix:
@@ -869,6 +968,7 @@ jupyter-notebook:
 
 rshiny:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -885,6 +985,7 @@ rshiny:
 
 bitnami-minio:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -893,6 +994,7 @@ bitnami-minio:
 
 bitnami-minio-client:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -901,6 +1003,7 @@ bitnami-minio-client:
 
 bitnami-shell:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -909,6 +1012,7 @@ bitnami-shell:
 
 bitnami-metallb-controller:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -917,6 +1021,7 @@ bitnami-metallb-controller:
 
 bitnami-metallb-speaker:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -925,6 +1030,7 @@ bitnami-metallb-speaker:
 
 bitnami-grafana:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -933,6 +1039,7 @@ bitnami-grafana:
 
 bitnami-grafana-image-renderer:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -941,6 +1048,7 @@ bitnami-grafana-image-renderer:
 
 bitnami-consul:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -949,6 +1057,7 @@ bitnami-consul:
 
 bitnami-nats:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -957,6 +1066,7 @@ bitnami-nats:
 
 bitnami-kube-state-metrics:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -965,6 +1075,7 @@ bitnami-kube-state-metrics:
 
 bitnami-metrics-server:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -973,6 +1084,7 @@ bitnami-metrics-server:
 
 bitnami-nginx:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -981,6 +1093,7 @@ bitnami-nginx:
 
 bitnami-nginx-ingress-controller:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -989,6 +1102,7 @@ bitnami-nginx-ingress-controller:
 
 bitnami-keycloak:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -998,6 +1112,7 @@ bitnami-keycloak:
 
 bitnami-spark:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1006,6 +1121,7 @@ bitnami-spark:
 
 bitnami-prometheus:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1014,6 +1130,7 @@ bitnami-prometheus:
 
 bitnami-prometheus-operator:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1022,6 +1139,7 @@ bitnami-prometheus-operator:
 
 bitnami-node-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1030,6 +1148,7 @@ bitnami-node-exporter:
 
 bitnami-blackbox-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1038,6 +1157,7 @@ bitnami-blackbox-exporter:
 
 bitnami-postgres-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1046,6 +1166,7 @@ bitnami-postgres-exporter:
 
 bitnami-redis:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1054,14 +1175,25 @@ bitnami-redis:
 
 bitnami-redis-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_REDIS_EXPORTER_VERSION
 
+bitnami-postgresql10:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_POSTGRESQL10_VERSION
+
 bitnami-postgresql11:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1070,6 +1202,7 @@ bitnami-postgresql11:
 
 bitnami-postgresql12:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1085,6 +1218,7 @@ bitnami-postgresql13:
 
 bitnami-postgresql14:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1093,6 +1227,7 @@ bitnami-postgresql14:
 
 bitnami-postgresql15:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1101,6 +1236,7 @@ bitnami-postgresql15:
 
 bitnami-mariadb:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1109,6 +1245,7 @@ bitnami-mariadb:
 
 bitnami-mongodb:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1117,6 +1254,7 @@ bitnami-mongodb:
 
 bitnami-memcached:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1125,6 +1263,7 @@ bitnami-memcached:
 
 bitnami-kubeapps-dashboard:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1134,6 +1273,7 @@ bitnami-kubeapps-dashboard:
 # Special
 bitnami-kubeapps-apprepository-controller:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1143,6 +1283,7 @@ bitnami-kubeapps-apprepository-controller:
 # Special
 bitnami-kubeapps-asset-syncer:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1152,6 +1293,7 @@ bitnami-kubeapps-asset-syncer:
 # Special
 bitnami-kubeapps-kubeops:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1160,6 +1302,7 @@ bitnami-kubeapps-kubeops:
 
 bitnami-kubeapps-assetsvc:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1168,6 +1311,7 @@ bitnami-kubeapps-assetsvc:
 
 bitnami-kubeapps-apis:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1190,6 +1334,7 @@ bitnami-kube-rbac-proxy:
 
 bitnami-openldap:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1226,6 +1371,7 @@ external-secrets:
 
 hasura-graphql-engine:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1234,6 +1380,7 @@ hasura-graphql-engine:
 
 kutt:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1242,6 +1389,7 @@ kutt:
 
 umami:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1250,6 +1398,7 @@ umami:
 
 pihole:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1258,6 +1407,7 @@ pihole:
 
 clickhouse-server:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1266,6 +1416,7 @@ clickhouse-server:
 
 clickhouse-tabix-web-client:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1274,6 +1425,7 @@ clickhouse-tabix-web-client:
 
 plausible-analytics:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1282,6 +1434,7 @@ plausible-analytics:
 
 verdaccio:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1290,6 +1443,7 @@ verdaccio:
 
 strapi:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1298,6 +1452,7 @@ strapi:
 
 ghost:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1306,6 +1461,7 @@ ghost:
 
 bitnami-ghost:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1314,6 +1470,7 @@ bitnami-ghost:
 
 matomo:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1322,6 +1479,7 @@ matomo:
 
 nocodb:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1330,6 +1488,7 @@ nocodb:
 
 metabase:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1338,6 +1497,7 @@ metabase:
 
 sftpgo:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1346,6 +1506,7 @@ sftpgo:
 
 hello:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1354,6 +1515,7 @@ hello:
 
 reloader:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1362,6 +1524,7 @@ reloader:
 
 configmap-reload:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1370,6 +1533,7 @@ configmap-reload:
 
 docker-registry:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1378,6 +1542,7 @@ docker-registry:
 
 argocd:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1390,6 +1555,7 @@ argocd:
 
 argocd-applicationset:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1398,6 +1564,7 @@ argocd-applicationset:
 
 boky-postfix:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1406,6 +1573,7 @@ boky-postfix:
 
 cryptgeon:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1414,6 +1582,7 @@ cryptgeon:
 
 memcached:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1422,6 +1591,7 @@ memcached:
 
 dex:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1430,6 +1600,7 @@ dex:
 
 redis:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1438,6 +1609,7 @@ redis:
 
 listmonk:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1446,6 +1618,7 @@ listmonk:
 
 consul:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1454,6 +1627,7 @@ consul:
 
 consul-k8s-control-plane:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1462,6 +1636,7 @@ consul-k8s-control-plane:
 
 envoy:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1470,6 +1645,7 @@ envoy:
 
 vault:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1478,6 +1654,7 @@ vault:
 
 vault-k8s:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1486,6 +1663,7 @@ vault-k8s:
 
 vault-csi-provider:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1494,6 +1672,7 @@ vault-csi-provider:
 
 strimzi-operator:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1502,6 +1681,7 @@ strimzi-operator:
 
 strimzi-kafka:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1511,6 +1691,7 @@ strimzi-kafka:
 
 nats-operator:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1519,6 +1700,7 @@ nats-operator:
 
 nats:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1527,6 +1709,7 @@ nats:
 
 mosquitto:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1535,6 +1718,7 @@ mosquitto:
 
 mosquitto-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1543,6 +1727,7 @@ mosquitto-exporter:
 
 cert-manager-controller:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1551,6 +1736,7 @@ cert-manager-controller:
 
 cert-manager-webhook:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1559,6 +1745,7 @@ cert-manager-webhook:
 
 cert-manager-cainjector:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1567,6 +1754,7 @@ cert-manager-cainjector:
 
 cert-manager-ctl:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1575,6 +1763,7 @@ cert-manager-ctl:
 
 cert-manager-csi-driver:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1583,6 +1772,7 @@ cert-manager-csi-driver:
 
 cert-manager-webhook-pdns:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1591,6 +1781,7 @@ cert-manager-webhook-pdns:
 
 caddy:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1599,6 +1790,7 @@ caddy:
 
 bpftrace:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1607,6 +1799,7 @@ bpftrace:
 
 k8s-coredns:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1615,6 +1808,7 @@ k8s-coredns:
 
 k8s-pause:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1623,6 +1817,7 @@ k8s-pause:
 
 storage-livenessprobe:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1631,6 +1826,7 @@ storage-livenessprobe:
 
 storage-csi-node-driver-registrar:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1639,6 +1835,7 @@ storage-csi-node-driver-registrar:
 
 storage-csi-attacher:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1647,6 +1844,7 @@ storage-csi-attacher:
 
 storage-csi-resizer:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1655,6 +1853,7 @@ storage-csi-resizer:
 
 storage-csi-snapshotter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1663,6 +1862,7 @@ storage-csi-snapshotter:
 
 storage-csi-provisioner:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1671,6 +1871,7 @@ storage-csi-provisioner:
 
 vmware-exporter:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1679,6 +1880,7 @@ vmware-exporter:
 
 vsphere-csi-driver:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1687,6 +1889,7 @@ vsphere-csi-driver:
 
 vsphere-csi-syncer:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1695,6 +1898,7 @@ vsphere-csi-syncer:
 
 vsphere-cpi-manager:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1703,6 +1907,7 @@ vsphere-cpi-manager:
 
 kafdrop:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1711,6 +1916,7 @@ kafdrop:
 
 akhq:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1719,6 +1925,7 @@ akhq:
 
 tigera-operator:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1727,6 +1934,7 @@ tigera-operator:
 
 eck-operator:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1735,6 +1943,7 @@ eck-operator:
 
 confluent-operator:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1743,6 +1952,7 @@ confluent-operator:
 
 confluent-init-container:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1751,6 +1961,7 @@ confluent-init-container:
 
 confluent-platform:
   interruptible: true
+  retry: 2
   stage: build
   parallel:
     matrix:
@@ -1763,6 +1974,7 @@ confluent-platform:
 
 uptime-kuma:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1771,6 +1983,7 @@ uptime-kuma:
 
 airflow:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1779,6 +1992,7 @@ airflow:
 
 git-sync:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1787,6 +2001,7 @@ git-sync:
 
 keda:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1795,6 +2010,7 @@ keda:
 
 keda-metrics-apiserver:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1803,6 +2019,7 @@ keda-metrics-apiserver:
 
 hadolint:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
@@ -1811,14 +2028,25 @@ hadolint:
 
 outline:
   interruptible: true
+  retry: 2
   stage: build
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg OUTLINE_VERSION
 
+syncthing:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg SYNCTHING_VERSION
+
 infra-docs:
   interruptible: true
+  retry: 2
   stage: build2
   script:
     - |
@@ -1830,6 +2058,7 @@ infra-docs:
 
 run-hadolint:
   interruptible: true
+  retry: 2
   stage: build2
   script:
     - |

@@ -10,19 +10,24 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 brew tap vmware-tanzu/carvel
 
-brew install \
-  kubectl \
-  helmfile \
-  skaffold \
-  cfssl \
-  yq yj jq ytt \
-  kustomize argocd \
-  buildpacks/tap/pack \
-  aquasecurity/trivy/trivy \
-  terraform \
-  cosign \
-  skopeo \
-  nvm
+# Avoid error with gcc
+brew install gcc || true
+brew postinstall gcc || true
+brew doctor || true
+brew reinstall gcc || true
+
+brew install kubectl
+brew install helmfile
+brew install skaffold
+brew install cfssl
+brew install yq yj jq ytt
+brew install kustomize argocd
+brew install buildpacks/tap/pack
+brew install aquasecurity/trivy/trivy
+brew install terraform
+brew install cosign
+brew install skopeo
+brew install nvm
 
 # consul nomad vault envconsul consul-template
 # hey

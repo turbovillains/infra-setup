@@ -19,7 +19,7 @@ apt-get -yyq install zip zstd unzip upx \
 	socat netcat telnet curl ftp git \
   protobuf-compiler \
   rsync \
-  make build-essential libunwind8 \
+  build-essential procps file libunwind8 \
   apt-transport-https apt-utils \
   ca-certificates \
   parallel shellcheck \
@@ -30,6 +30,18 @@ apt-get -yyq install zip zstd unzip upx \
   iproute2 iputils-ping dnsutils \
   software-properties-common \
   supervisor
+
+# Locale
+apt-get install -yyq locales
+localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+
+export LANG=en_US.UTF8
+export LC_ALL=en_US.UTF8
+
+cat <<LOCALE >> /etc/environment
+export LANG=en_US.UTF8
+export LC_ALL=en_US.UTF8
+LOCALE
 
 # Noroutine
 export CA_CERTS_DIR=/usr/local/share/ca-certificates/noroutine
