@@ -10,6 +10,9 @@ variables:
   UBUNTU_JAMMY_VERSION: "jammy-20221101" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   ALPINE_VERSION: "3.16.3" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.35.0" # https://hub.docker.com/_/busybox
+  BUILDPACK_DEPS_BIONIC_VERSION: bionic@sha256:1ae2e168c8cc4408fdf7cb40244643b99d10757f36391eee844834347de3c15c # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=bionic
+  BUILDPACK_DEPS_FOCAL_VERSION: focal@sha256:eecbd661c4983df91059018d67c0d7203c68c1eeac036e6a479c3df94483ffba # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=focal
+  BUILDPACK_DEPS_JAMMY_VERSION: jammy@sha256:e93e88c6e97ffb6a315182db7d606dcb161714db7b2961a4efe727d39c165e1a # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=jammy
   DISTROLESS_VERSION: debian11 # gcr.io/distroless/
   JDK_ZULU_VERSION: 18.0.1-18.30.11 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   GOLANG_VERSION: "1.19.3-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
@@ -21,7 +24,7 @@ variables:
   KUBE_RBAC_PROXY_VERSION: v0.13.1 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine-v15.5.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "15.5.3-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=14.1
-  GITLAB_AGENTK_VERSION: v15.5.1 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
+  GITLAB_AGENTK_VERSION: v15.6.0 # registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:v15.0.0
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.7.0 # registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications
   GITLAB_AUTO_BUILD_VERSION: v1.22.0
   GITLAB_AUTO_DEPLOY_VERSION: v2.42.1
@@ -98,7 +101,7 @@ variables:
   JUPYTERHUB_IMAGE_AWAITER_VERSION: "2.0.0" # https://hub.docker.com/r/jupyterhub/k8s-image-awaiter/tags?page=1&ordering=last_updated
   JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: "2.0.0" # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
   JUPYTERHUB_HTTP_PROXY_VERSION: "4.5.3" # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
-  REPO2DOCKER_VERSION: "2022.02.0-131.g380f817" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
+  REPO2DOCKER_VERSION: "2022.10.0-67.g30059d6" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
   JUPYTER_VERSION: hub-3.0.0 # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
   RSHINY_VERSION: "4.2.2" # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: "1.4.1717" # https://www.rstudio.com/products/rstudio/download-server/
@@ -106,7 +109,7 @@ variables:
   UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
   BITNAMI_GHOST_VERSION: "5.22.9-debian-11-r1" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   BITNAMI_KEYCLOAK_VERSION: "20.0.1-debian-11-r0" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
-  BITNAMI_SPARK_VERSION: 3.3.0-debian-11-r6 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
+  BITNAMI_SPARK_VERSION: 3.3.1-debian-11-r6 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.40.1-debian-11-r0 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.60.1-debian-11-r6" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_NODE_EXPORTER_VERSION: "1.4.0-debian-11-r6" # https://hub.docker.com/r/bitnami/node-exporter/tags
@@ -152,7 +155,7 @@ variables:
   MINIO_CONSOLE_VERSION: "v0.21.2" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.15.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
-  SFTPGO_VERSION: v2.4.0 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
+  SFTPGO_VERSION: v2.4.1 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
   RELOADER_VERSION: "v0.0.124" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v0.
   CONFIGMAP_RELOAD_VERSION: v0.8.0
@@ -219,3 +222,4 @@ variables:
   HADOLINT_VERSION: v2.10.0-beta # https://hub.docker.com/r/hadolint/hadolint/tags
   OUTLINE_VERSION: 0.66.3 # https://hub.docker.com/r/outlinewiki/outline/tags
   SYNCTHING_VERSION: 1.22.1 # https://hub.docker.com/r/syncthing/syncthing/tags
+  JELLYFIN_VERSION: 10.8.7 # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8

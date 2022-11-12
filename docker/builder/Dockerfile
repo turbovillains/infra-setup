@@ -25,8 +25,7 @@ ENV DOCKER_HUB=${DOCKER_HUB} \
   RUNNER_ASSETS_DIR=/runnertmp \
   RUNNER_TOOL_CACHE=/opt/hostedtoolcache \
   RUNNER_USER=builder \
-  ImageOS=debian11 \
-  PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin
+  ImageOS=debian11
 
 ADD setup /setup
 RUN --mount=type=secret,id=ssh_private_key --mount=type=secret,id=infra_readonly_token /setup/setup.sh

@@ -121,6 +121,33 @@ debian:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DEBIAN_VERSION
 
+buildpack-deps-bionic:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BUILDPACK_DEPS_BIONIC_VERSION
+
+buildpack-deps-focal:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BUILDPACK_DEPS_FOCAL_VERSION
+
+buildpack-deps-jammy:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BUILDPACK_DEPS_JAMMY_VERSION
+
 ubuntu20:
   interruptible: true
   retry: 2
@@ -293,10 +320,11 @@ gitlab-cluster-applications:
 
 heroku-buildpacks:
   interruptible: true
-  retry: 2
+  # retry: 2
   stage: buildpacks
   script:
     - |
+      set -x
       sudo apt update -yyq
       sudo apt install -yyq musl-tools
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -t x86_64-unknown-linux-musl
@@ -306,20 +334,21 @@ heroku-buildpacks:
     - cd ${CI_JOB_NAME}
     - |
       # Fetch upstream buildpack sources
-      # curl -sLo- https://github.com/noroutine/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zxv buildpacks-nodejs-main/{common,buildpacks}
       curl -sLo- https://github.com/heroku/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zxv buildpacks-nodejs-main/{Cargo.lock,Cargo.toml,common,buildpacks,test_support}
       # curl -sLo- https://github.com/heroku/buildpacks-jvm/archive/refs/heads/main.tar.gz | tar zxv buildpacks-jvm-main/{common,buildpacks}
 
     - |
+      # Available buildpacks
+      find . -name buildpack.toml
       # Release upstream buildpacks
-      for buildpack_id in heroku/nodejs-npm heroku/nodejs-typescript heroku/nodejs-yarn heroku/nodejs-engine heroku/nodejs-function-invoker; do \
-        REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh; \
+      for buildpack_id in heroku/nodejs-npm heroku/nodejs-yarn heroku/nodejs-engine heroku/nodejs-function-invoker; do
+        REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh
       done
 
     - |
       # Release meta-buildpacks
-      for buildpack_id in heroku/nodejs heroku/nodejs-function; do \
-        REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh; \
+      for buildpack_id in heroku/nodejs heroku/nodejs-function; do
+        REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh
       done
 
     - |
@@ -2043,6 +2072,15 @@ syncthing:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SYNCTHING_VERSION
+
+jellyfin:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg JELLYFIN_VERSION
 
 infra-docs:
   interruptible: true

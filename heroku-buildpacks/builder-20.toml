@@ -42,11 +42,11 @@ version = "0.14.2"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.5.9"
+  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.5.12"
 
 [[buildpacks]]
   id = "heroku/nodejs-function"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.9.10"
+  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.9.15"
 
 [[buildpacks]]
   id = "noroutine/static"
@@ -95,12 +95,12 @@ version = "0.14.2"
 [[order]]
   [[order.group]]
     id = "heroku/nodejs-function"
-    version = "0.9.10"
+    version = "0.9.15"
 
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.5.9"
+    version = "0.5.12"
 
   [[order.group]]
     id = "noroutine/static"
@@ -115,7 +115,7 @@ version = "0.14.2"
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.5.9"
+    version = "0.5.12"
 
 [[order]]
   [[order.group]]

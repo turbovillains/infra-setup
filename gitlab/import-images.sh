@@ -10,10 +10,36 @@ get_registry() {
     fi
 }
 
+get_ref() {
+    local image=$1
+    [[ -z ${image} ]] && echo -n "latest" && return
+
+    # tag with sha
+    if [[ ${image} =~ :([^\/]+)@sha256:([A-Fa-f0-9]{64}) ]]; then
+        echo -n ${BASH_REMATCH[1]}@sha256:${BASH_REMATCH[2]}
+    # just sha
+    elif [[ ${image} =~ @sha256:([A-Fa-f0-9]{64}) ]]; then
+        echo -n @sha256:${BASH_REMATCH[1]}
+    # just tag
+    elif [[ ${image} =~ :([^\/]+) ]]; then
+        echo -n ${BASH_REMATCH[1]}
+    else
+        echo -n "latest"
+    fi
+}
+
 get_tag() {
     local image=$1
     [[ -z ${image} ]] && echo -n "latest" && return
-    if [[ ${image} =~ :([^\/]+) ]]; then
+
+    # tag with sha
+    if [[ ${image} =~ :([^\/]+)@sha256:([A-Fa-f0-9]{64}) ]]; then
+        echo -n ${BASH_REMATCH[1]}
+    # just sha
+    elif [[ ${image} =~ @sha256:([A-Fa-f0-9]{64}) ]]; then
+        echo -n "latest"
+    # just tag
+    elif [[ ${image} =~ :([^\/]+) ]]; then
         echo -n ${BASH_REMATCH[1]}
     else
         echo -n "latest"
@@ -35,10 +61,12 @@ migrate_image() {
     local target_registry=${2:-}
     [[ -z ${target_registry} ]] && return
     local image_name=$(get_name ${image})
+    local image_ref=$(get_ref ${image})
     local image_tag=$(get_tag ${image})
 
+    # We are checking for ref, but pushing only tag
     set +e
-    docker manifest inspect ${target_registry}/${image_name}:${image_tag} 2>&1> /dev/null
+    docker manifest inspect ${target_registry}/${image_name}:${image_ref} 2>&1> /dev/null
     local inspect_code=$?
     set -e
 
@@ -73,6 +101,9 @@ import_images() {
         "gcr.io/distroless/java17-${DISTROLESS_VERSION:-debian11}"
         "gcr.io/distroless/cc-${DISTROLESS_VERSION:-debian11}"
         "gcr.io/distroless/nodejs-${DISTROLESS_VERSION:-debian11}"
+        "buildpack-deps:${BUILDPACK_DEPS_BIONIC_VERSION:-bionic@sha256:1ae2e168c8cc4408fdf7cb40244643b99d10757f36391eee844834347de3c15c}"
+        "buildpack-deps:${BUILDPACK_DEPS_FOCAL_VERSION:-focal@sha256:eecbd661c4983df91059018d67c0d7203c68c1eeac036e6a479c3df94483ffba}"
+        "buildpack-deps:${BUILDPACK_DEPS_JAMMY_VERSION:-jammy@sha256:e93e88c6e97ffb6a315182db7d606dcb161714db7b2961a4efe727d39c165e1a}"
         "php:${PHP_VERSION:-8.1.0-apache}"
         "golang:${GOLANG_VERSION:-1.17.3-bullseye}"
         "golang:${GOLANG_ALPINE_VERSION:-1.17.3-alpine3.14}"
@@ -143,7 +174,7 @@ import_images() {
         "jupyterhub/k8s-image-awaiter:${JUPYTERHUB_IMAGE_AWAITER_VERSION:-1.0.0-beta.1}"
         "jupyterhub/k8s-singleuser-sample:${JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION:-1.0.0-beta.1}"
         "jupyterhub/configurable-http-proxy:${JUPYTERHUB_HTTP_PROXY_VERSION:-4.4.0}"
-        "quay.io/jupyterhub/repo2docker:${REPO2DOCKER_VERSION:-2021.03.0-15.g73ab48a}"
+        "quay.io/noroutine/repo2docker:${REPO2DOCKER_VERSION:-2021.03.0-15.g73ab48a}"
         "pihole/pihole:${PIHOLE_VERSION:-v5.8.1}"
         "yandex/clickhouse-server:${CLICKHOUSE_VERSION:-21.5.6-alpine}"
         "spoonest/clickhouse-tabix-web-client:${TABIX_VERSION:-stable}"
@@ -244,6 +275,7 @@ import_images() {
         "hadolint/hadolint:${HADOLINT_VERSION:-v2.10.0-beta}"
         "outlinewiki/outline:${OUTLINE_VERSION:-0.66.2}"
         "syncthing/syncthing:${SYNCTHING_VERSION:-1.22.1}"
+        "jellyfin/jellyfin:${JELLYFIN_VERSION:-10.8.7}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"

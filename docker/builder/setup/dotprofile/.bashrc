@@ -14,8 +14,8 @@
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"                                       # This loads nvm
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+[ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
 
 # Python
 [ -s "${HOME}/.py3/bin/activate" ] && \. "${HOME}/.py3/bin/activate" # This loads py3
@@ -53,14 +53,14 @@ if [[ ! -z ${ANSIBLE_VAULT_PASSWORD:-} ]]; then
 fi
 
 # Brew
-export HOMEBREW_NO_ANALYTICS=1
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
-export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
-export PATH="${PATH}:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
-export MANPATH="${MANPATH}:/home/linuxbrew/.linuxbrew/share/man"
-export INFOPATH="${INFOPATH}:/home/linuxbrew/.linuxbrew/share/info"
+# export HOMEBREW_NO_ANALYTICS=1
+# # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+# export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+# export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+# export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
+# export MANPATH="${MANPATH}:/home/linuxbrew/.linuxbrew/share/man"
+# export INFOPATH="${INFOPATH}:/home/linuxbrew/.linuxbrew/share/info"
 
 # If not running interactively, end here
 case $- in
