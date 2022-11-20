@@ -9,6 +9,9 @@ curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/inst
 # pack
 (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.27.0/pack-v0.27.0-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
 
+# helm
+(curl -sSL "https://get.helm.sh/helm-v3.10.2-linux-amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner --strip-components=1 -xzv linux-amd64/helm)
+
 # skaffold
 sudo curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v2.0.0/skaffold-linux-amd64 && sudo chmod +x /usr/local/bin/skaffold
 
