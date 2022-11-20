@@ -279,6 +279,11 @@ import_images() {
         "gravitl/netmaker:${NETMAKER_VERSION:-v0.16.3}"
         "gravitl/netmaker-ui:${NETMAKER_VERSION:-v0.16.3}"
         "kmb32123/youtube-dl-server:${YOUTUBE_DL_SERVER_VERSION:-2.0}"
+        "puppet/puppetserver:${PUPPETSERVER_VERSION:-7.9.2}"
+        "puppet/puppetdb:${PUPPETDB_VERSION:-7.10.0}"
+        "ghcr.io/voxpupuli/puppetboard:${PUPPETBOARD_VERSION:-4.2.0}"
+        "puppet/r10k:${R10K_VERSION:-3.15.2}"
+        "restic/restic:${RESTIC_VERSION:-0.14.0}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
