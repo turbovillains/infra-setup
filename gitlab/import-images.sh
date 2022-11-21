@@ -71,10 +71,11 @@ migrate_image() {
     set -e
 
     if [[ "${inspect_code}" != 0 ]]; then
-        docker pull ${source_registry}/${image_name}:${image_tag}
-        docker tag ${source_registry}/${image_name}:${image_tag} ${target_registry}/${image_name}:${image_tag}
+        # we pull the ref, but push the tag
+        docker pull ${source_registry}/${image_name}:${image_ref}
+        docker tag ${source_registry}/${image_name}:${image_ref} ${target_registry}/${image_name}:${image_tag}
         docker push ${target_registry}/${image_name}:${image_tag}
-        docker rmi ${source_registry}/${image_name}:${image_tag} ${target_registry}/${image_name}:${image_tag}
+        docker rmi ${source_registry}/${image_name}:${image_ref} ${target_registry}/${image_name}:${image_tag}
     fi
 
 }
@@ -300,6 +301,7 @@ import_images() {
         "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_CTL_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-csi-driver:${CERT_MANAGER_CSI_DRIVER_VERSION:-v0.3.0}"
         "zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION:-v2.0.1}"
+        "vstadtmueller/cert-manager-webhook-powerdns:${CERT_MANAGER_WEBHOOK_POWERDNS_VERSION:-main}"
 
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"
@@ -344,7 +346,7 @@ import_images() {
         "longhornio/longhorn-share-manager:${LONGHORN_SHARE_MANAGER_VERSION:-v1_20220531}"
         "longhornio/backing-image-manager:${LONGHORN_BACKING_IMAGE_MANAGER_VERSION:-v2_20210820}"
         "longhornio/csi-node-driver-registrar:v2.5.0"
-        "longhornio/csi-snapshotter:v5.0.1"
+        "longhornio/csi-snapshotter:v6.0.1"
         "longhornio/csi-resizer:v1.3.0"
         "longhornio/csi-provisioner:v2.1.2"
         "longhornio/csi-attacher:v3.4.0"
@@ -359,9 +361,6 @@ import_images() {
         "k8s.gcr.io/sig-storage/csi-resizer:${CSI_RESIZER_VERSION:-v1.4.0}"
         "k8s.gcr.io/sig-storage/csi-provisioner:${CSI_PROVISIONER_VERSION:-v3.1.0}"
         "k8s.gcr.io/sig-storage/csi-snapshotter:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
-
-        # certmanager shit
-        "vstadtmueller/cert-manager-webhook-powerdns:main"
 
         # confluent shit, https://docs.confluent.io/operator/current/co-custom-registry.html
         "confluentinc/confluent-init-container:${CONFLUENTINC_INIT_CONTAINER_VERSION:-2.3.1}"

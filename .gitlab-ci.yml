@@ -1808,6 +1808,15 @@ cert-manager-webhook-pdns:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_WEBHOOK_PDNS_VERSION
 
+cert-manager-webhook-powerdns:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CERT_MANAGER_WEBHOOK_POWERDNS_VERSION
+
 caddy:
   interruptible: true
   retry: 2

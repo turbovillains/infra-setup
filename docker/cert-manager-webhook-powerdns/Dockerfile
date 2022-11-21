@@ -1,10 +1,10 @@
 ARG DOCKER_HUB
-ARG CERT_MANAGER_WEBHOOK_PDNS_VERSION
+ARG CERT_MANAGER_WEBHOOK_POWERDNS_VERSION
 ARG INFRA_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION}
+FROM ${DOCKER_HUB}/vstadtmueller/cert-manager-webhook-powerdns:${CERT_MANAGER_WEBHOOK_POWERDNS_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
