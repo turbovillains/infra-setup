@@ -285,6 +285,7 @@ import_images() {
         "ghcr.io/voxpupuli/puppetboard:${PUPPETBOARD_VERSION:-4.2.0}"
         "puppet/r10k:${R10K_VERSION:-3.15.2}"
         "restic/restic:${RESTIC_VERSION:-0.14.0}"
+        "k8s.gcr.io/coredns/coredns:${COREDNS_VERSION:-v1.8.6}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
@@ -320,10 +321,23 @@ import_images() {
         # k8s
         "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
         "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
+
         "k8s.gcr.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
         "k8s.gcr.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
+
+        # k8s 1.25.x
+        "k8s.gcr.io/kube-apiserver:${K8S_125_VERSION:-v1.25.5}"
+        "k8s.gcr.io/kube-proxy:${K8S_125_VERSION:-v1.25.5}"
+        "k8s.gcr.io/kube-scheduler:${K8S_125_VERSION:-v1.25.5}"
+        "k8s.gcr.io/kube-controller-manager:${K8S_125_VERSION:-v1.25.5}"
+
+        # k8s 1.24.x
+        "k8s.gcr.io/kube-apiserver:${K8S_124_VERSION:-v1.24.7}"
+        "k8s.gcr.io/kube-proxy:${K8S_124_VERSION:-v1.24.7}"
+        "k8s.gcr.io/kube-scheduler:${K8S_124_VERSION:-v1.24.7}"
+        "k8s.gcr.io/kube-controller-manager:${K8S_124_VERSION:-v1.24.7}"
 
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
