@@ -286,6 +286,7 @@ import_images() {
         "puppet/r10k:${R10K_VERSION:-3.15.2}"
         "restic/restic:${RESTIC_VERSION:-0.14.0}"
         "k8s.gcr.io/coredns/coredns:${COREDNS_VERSION:-v1.8.6}"
+        "yugabytedb/yugabyte:${YUGABYTE_VERSION:-2.17.0.0-b24}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
