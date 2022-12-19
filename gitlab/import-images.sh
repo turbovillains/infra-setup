@@ -175,6 +175,8 @@ import_images() {
         "jupyterhub/k8s-image-awaiter:${JUPYTERHUB_IMAGE_AWAITER_VERSION:-1.0.0-beta.1}"
         "jupyterhub/k8s-singleuser-sample:${JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION:-1.0.0-beta.1}"
         "jupyterhub/configurable-http-proxy:${JUPYTERHUB_HTTP_PROXY_VERSION:-4.4.0}"
+        "registry.k8s.io/kube-scheduler:${JUPYTERHUB_SCHEDULER_VERSION:-v1.25.5}"
+        "registry.k8s.io/pause:${JUPYTERHUB_PAUSE_VERSION:-3.7}"
         "quay.io/noroutine/repo2docker:${REPO2DOCKER_VERSION:-2021.03.0-15.g73ab48a}"
         "pihole/pihole:${PIHOLE_VERSION:-v5.8.1}"
         "yandex/clickhouse-server:${CLICKHOUSE_VERSION:-21.5.6-alpine}"
@@ -288,6 +290,7 @@ import_images() {
         "restic/restic:${RESTIC_VERSION:-0.14.0}"
         "k8s.gcr.io/coredns/coredns:${COREDNS_VERSION:-v1.8.6}"
         "yugabytedb/yugabyte:${YUGABYTE_VERSION:-2.17.0.0-b24}"
+        "antelle/keeweb:${KEEWEB_VERSION:-1.18.7}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
@@ -321,25 +324,31 @@ import_images() {
         "quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION:-0.28.0}-kafka-${STRIMZI_KAFKA_VERSION:-3.1.0}"
 
         # k8s
-        "k8s.gcr.io/pause:${K8S_PAUSE_VERSION:-3.7}"
-        "k8s.gcr.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
+        "registry.k8s.io/pause:${K8S_PAUSE_VERSION:-3.7}"
+        "registry.k8s.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
 
-        "k8s.gcr.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
-        "k8s.gcr.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
-        "k8s.gcr.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
-        "k8s.gcr.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
 
         # k8s 1.25.x
-        "k8s.gcr.io/kube-apiserver:${K8S_125_VERSION:-v1.25.5}"
-        "k8s.gcr.io/kube-proxy:${K8S_125_VERSION:-v1.25.5}"
-        "k8s.gcr.io/kube-scheduler:${K8S_125_VERSION:-v1.25.5}"
-        "k8s.gcr.io/kube-controller-manager:${K8S_125_VERSION:-v1.25.5}"
+        "registry.k8s.io/kube-apiserver:${K8S_125_VERSION:-v1.25.5}"
+        "registry.k8s.io/kube-proxy:${K8S_125_VERSION:-v1.25.5}"
+        "registry.k8s.io/kube-scheduler:${K8S_125_VERSION:-v1.25.5}"
+        "registry.k8s.io/kube-controller-manager:${K8S_125_VERSION:-v1.25.5}"
 
         # k8s 1.24.x
-        "k8s.gcr.io/kube-apiserver:${K8S_124_VERSION:-v1.24.7}"
-        "k8s.gcr.io/kube-proxy:${K8S_124_VERSION:-v1.24.7}"
-        "k8s.gcr.io/kube-scheduler:${K8S_124_VERSION:-v1.24.7}"
-        "k8s.gcr.io/kube-controller-manager:${K8S_124_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-apiserver:${K8S_124_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-proxy:${K8S_124_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-scheduler:${K8S_124_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-controller-manager:${K8S_124_VERSION:-v1.24.7}"
+
+        # k8s 1.23.x
+        "registry.k8s.io/kube-apiserver:${K8S_123_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-proxy:${K8S_123_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-scheduler:${K8S_123_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-controller-manager:${K8S_123_VERSION:-v1.24.7}"
 
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
