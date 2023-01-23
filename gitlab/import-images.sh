@@ -128,6 +128,7 @@ import_images() {
         "prom/pushgateway:${PUSHGATEWAY_VERSION:-latest}"
         "grafana/grafana:${GRAFANA_VERSION:-8.4.5}"
         "grafana/loki:${LOKI_VERSION:-2.5.0}"
+        "grafana/loki-canary:${LOKI_VERSION:-2.5.0}"
         "grafana/promtail:${PROMTAIL_VERSION:-2.5.0}"
         "quay.io/m3db/m3coordinator:${M3COORDINATOR_VERSION:-latest}"
         "quay.io/m3db/m3dbnode:${M3DBNODE_VERSION:-latest}"
@@ -291,6 +292,11 @@ import_images() {
         "k8s.gcr.io/coredns/coredns:${COREDNS_VERSION:-v1.8.6}"
         "yugabytedb/yugabyte:${YUGABYTE_VERSION:-2.17.0.0-b24}"
         "antelle/keeweb:${KEEWEB_VERSION:-1.18.7}"
+        "wiretrustee/dashboard:${NETBIRD_DASHBOARD_VERSION:-v1.6.0}"
+        "netbirdio/signal:${NETBIRD_SIGNAL_VERSION:-0.12.0}"
+        "netbirdio/management:${NETBIRD_MANAGEMENT_VERSION:-0.12.0}"
+        "coturn/coturn:${COTURN_VERSION:-4.6.1}"
+        "firezone/firezone:${FIREZONE_VERSION:-0.7.6}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
