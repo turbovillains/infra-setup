@@ -2,7 +2,7 @@ api = "0.6"
 
 [buildpack]
 id = "heroku/nodejs"
-version = "0.5.12"
+version = "0.5.14"
 name = "Node.js"
 homepage = "https://github.com/heroku/buildpacks-nodejs"
 
@@ -13,11 +13,11 @@ type = "MIT"
 
 [[order.group]]
 id = "heroku/nodejs-engine"
-version = "0.8.13"
+version = "0.8.15"
 
 [[order.group]]
 id = "heroku/nodejs-yarn"
-version = "0.2.4"
+version = "0.3.2"
 
 [[order.group]]
 id = "heroku/procfile"
@@ -28,7 +28,7 @@ optional = true
 
 [[order.group]]
 id = "heroku/nodejs-engine"
-version = "0.8.13"
+version = "0.8.15"
 
 [[order.group]]
 id = "heroku/nodejs-npm"

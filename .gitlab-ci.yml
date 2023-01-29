@@ -185,18 +185,18 @@ busybox:
         --build-arg ALPINE_VERSION \
         --build-arg BUSYBOX_VERSION
 
-distroless:
-  interruptible: true
-  retry: 2
-  stage: base
-  parallel:
-    matrix:
-      - FLAVOUR: [ "static", "base", "java11", "java17", "cc", "nodejs"]
-        DUMMY: [ "dummy" ]
-  script:
-    - ./gitlab/build-image.sh distroless ${DOCKER_NAMESPACE}/distroless-${FLAVOUR}-${DISTROLESS_VERSION}:${INFRA_VERSION} \
-        --build-arg DISTROLESS_VERSION \
-        --build-arg FLAVOUR
+# distroless:
+#   interruptible: true
+#   retry: 2
+#   stage: base
+#   parallel:
+#     matrix:
+#       - FLAVOUR: [ "static", "base", "java11", "java17", "cc", "nodejs"]
+#         DUMMY: [ "dummy" ]
+#   script:
+#     - ./gitlab/build-image.sh distroless ${DOCKER_NAMESPACE}/distroless-${FLAVOUR}-${DISTROLESS_VERSION}:${INFRA_VERSION} \
+#         --build-arg DISTROLESS_VERSION \
+#         --build-arg FLAVOUR
 
 jdk-zulu:
   interruptible: true
@@ -325,6 +325,7 @@ heroku-buildpacks:
   script:
     - |
       set -x
+      sudo rm /etc/apt/sources.list.d/noroutine.list
       sudo apt update -yyq
       sudo apt install -yyq musl-tools
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -t x86_64-unknown-linux-musl
