@@ -6,17 +6,17 @@ variables:
   WEBSITE_VERSION: v0.2.8
   TRIPWIRE_KAFKA_MQTT_BRIDGE_VERSION: master
   DEBIAN_VERSION: "bullseye-20230109-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
-  UBUNTU_FOCAL_VERSION: "focal-20221130" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  UBUNTU_FOCAL_VERSION: "focal-20230126" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   UBUNTU_JAMMY_VERSION: "jammy-20230126" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=jammy
   ALPINE_VERSION: "3.17.1" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.36.0" # https://hub.docker.com/_/busybox
   BUILDPACK_DEPS_BIONIC_VERSION: bionic@sha256:112ea54e20cdb539d74c1aea7d6ea6a943707a9ac2040c39de69943b7a436ee1 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=bionic
-  BUILDPACK_DEPS_FOCAL_VERSION: focal@sha256:3fb43db6b3de9d6d5c675f93abf2bfc0e7b0b7de9969f1d12511e80ec22cbd67 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=focal
+  BUILDPACK_DEPS_FOCAL_VERSION: focal@sha256:b6044fe0ea91b2cd36ee16c377c20c075edb706ba5be48540aa2fccf4169ff31 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=focal
   BUILDPACK_DEPS_JAMMY_VERSION: jammy@sha256:e902a5ede3335b40edf720db97f0f318f2f014bf34395671c61dd7c554c38967 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=jammy
   DISTROLESS_VERSION: debian11 # https://gcr.io/distroless/
   JDK_ZULU_VERSION: 19.0.2-19.32.15 # https://hub.docker.com/r/azul/zulu-openjdk/tags
-  GOLANG_VERSION: "1.19.5-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
-  GOLANG_ALPINE_VERSION: "1.19.5-alpine3.17" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
+  GOLANG_VERSION: "1.20.0-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
+  GOLANG_ALPINE_VERSION: "1.20.0-alpine3.17" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: "8.2.1-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
   ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.27.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   ACTIONS_RUNNER_VERSION: "2.301.1" # https://github.com/actions/runner/releases
@@ -91,7 +91,7 @@ variables:
   PLAUSIBLE_VERSION: "v1.5.1" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.20.1" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "5.33.2" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "5.33.3" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.13.3-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.104.2" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.45.2.1" # https://hub.docker.com/r/metabase/metabase/tags
@@ -217,7 +217,7 @@ variables:
   SHADOWBOX_VERSION: server-v1.6.1 # https://quay.io/repository/outline/shadowbox?tab=tags&tag=latest
   BPFTRACE_VERSION: v0.17.0 # https://quay.io/repository/iovisor/bpftrace?tab=tags&tag=latest
   VMWARE_EXPORTER_VERSION: v0.18.4 # https://hub.docker.com/r/pryorda/vmware_exporter/tags
-  CONFLUENTINC_OPERATOR_VERSION: "2.5.0" # https://hub.docker.com/r/confluentinc/confluent-operator/tags
+  CONFLUENTINC_OPERATOR_VERSION: "0.517.56" # https://hub.docker.com/r/confluentinc/confluent-operator/tags
   CONFLUENTINC_INIT_CONTAINER_VERSION: "2.5.1" # https://registry.hub.docker.com/r/confluentinc/confluent-init-container/tags
   CONFLUENTINC_CP_VERSION: "7.3.1"
   KAFDROP_VERSION: "3.30.0" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
@@ -244,4 +244,4 @@ variables:
   NETBIRD_SIGNAL_VERSION: 0.12.0 # https://hub.docker.com/r/netbirdio/netbird/tags
   NETBIRD_MANAGEMENT_VERSION: 0.12.0 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.1 # https://hub.docker.com/r/coturn/coturn/tags
-  FIREZONE_VERSION: 0.7.9 # https://hub.docker.com/r/firezone/firezone/tags
+  FIREZONE_VERSION: 0.7.10 # https://hub.docker.com/r/firezone/firezone/tags

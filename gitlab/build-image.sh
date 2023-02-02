@@ -17,12 +17,13 @@ build_image() {
     local implicit_args="--no-cache \
         --secret id=ssh_private_key,src=/home/${BUILDER_USER}/.ssh/id_rsa \
         --secret id=infra_readonly_token,src=/home/${BUILDER_USER}/.infra_readonly_token \
-        --build-arg HTTP_PROXY \
-        --build-arg HTTPS_PROXY \
-        --build-arg NO_PROXY \
         --build-arg DOCKER_HUB \
         --build-arg INFRA_VERSION \
         --build-arg DOCKER_NAMESPACE"
+
+        # --build-arg HTTP_PROXY \
+        # --build-arg HTTPS_PROXY \
+        # --build-arg NO_PROXY \
 
     echo "Building ${component} as ${target}"
 

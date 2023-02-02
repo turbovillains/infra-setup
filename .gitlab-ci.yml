@@ -325,11 +325,30 @@ heroku-buildpacks:
   script:
     - |
       set -x
+
+      export ALL_PROXY=
+      export all_proxy=
+      export HTTP_PROXY=
+      export http_proxy=
+      export HTTPS_PROXY=
+      export https_proxy=
+      export FTP_PROXY=
+      export ftp_proxy=
+
+      git config --global --unset http.proxy || true
+      git config --unset http.proxy || true
+
       sudo rm /etc/apt/sources.list.d/noroutine.list
       sudo apt update -yyq
       sudo apt install -yyq musl-tools
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -t x86_64-unknown-linux-musl
+
       source $HOME/.cargo/env
+
+      cat $HOME/.cargo/env
+
+      env | grep -i proxy
+
       cargo install libcnb-cargo
 
     - cd ${CI_JOB_NAME}
@@ -723,14 +742,14 @@ ioping-exporter:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GOLANG_VERSION
 
-ldap-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LDAP_EXPORTER_VERSION
+# ldap-exporter:
+#   interruptible: true
+#   retry: 2
+#   stage: build
+#   script:
+#     - |
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#         --build-arg LDAP_EXPORTER_VERSION
 
 grafana:
   interruptible: true
