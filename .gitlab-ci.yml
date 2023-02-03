@@ -338,7 +338,6 @@ heroku-buildpacks:
       git config --global --unset http.proxy || true
       git config --unset http.proxy || true
 
-      sudo rm /etc/apt/sources.list.d/noroutine.list
       sudo apt update -yyq
       sudo apt install -yyq musl-tools
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -t x86_64-unknown-linux-musl

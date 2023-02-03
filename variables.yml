@@ -5,7 +5,7 @@ variables:
   CONNECT_LANDING_VERSION: "0.0.4"
   WEBSITE_VERSION: v0.2.8
   TRIPWIRE_KAFKA_MQTT_BRIDGE_VERSION: master
-  DEBIAN_VERSION: "bullseye-20230109-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
+  DEBIAN_VERSION: "bullseye-20230202-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_FOCAL_VERSION: "focal-20230126" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   UBUNTU_JAMMY_VERSION: "jammy-20230126" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=jammy
   ALPINE_VERSION: "3.17.1" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
@@ -29,7 +29,7 @@ variables:
   GITLAB_AUTO_BUILD_VERSION: v1.28.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
   GITLAB_AUTO_DEPLOY_VERSION: v2.46.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-deploy-image/-/tags
   DIND_VERSION: 23.0.0-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
-  ARGOCD_VERSION: v2.6.0-rc6 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  ARGOCD_VERSION: v2.6.0-rc7 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.44.3" # https://github.com/vmware-tanzu/carvel-ytt/releases
   YTT_HASH: c047bd7084beea2b4a585b13148d7c1084ee6c4aee8a68592fc8ed7d75ecebc5
   ARGOCD_VAULT_PLUGIN_VERSION: "1.13.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
@@ -39,7 +39,7 @@ variables:
   NEXUS_VERSION: "3.46.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.1-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.9.6" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "9.0.10" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "9.0.11" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20220315 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "20.0.3" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -91,7 +91,7 @@ variables:
   PLAUSIBLE_VERSION: "v1.5.1" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.20.1" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "5.33.5" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "5.33.6" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "4.13.3-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.104.3" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.45.2.1" # https://hub.docker.com/r/metabase/metabase/tags
@@ -108,8 +108,8 @@ variables:
   RSHINY_VERSION: "4.2.2" # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: "1.4.1717" # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: "1.10.1" # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
-  UMAMI_VERSION: postgresql-2575cbf # https://github.com/mikecao/umami/pkgs/container/umami
-  BITNAMI_GHOST_VERSION: "5.33.5-debian-11-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
+  UMAMI_VERSION: postgresql-v1.33.2 # https://github.com/mikecao/umami/pkgs/container/umami
+  BITNAMI_GHOST_VERSION: "5.33.6-debian-11-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
   BITNAMI_KEYCLOAK_VERSION: "20.0.3-debian-11-r0" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=18
   BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION: "5.5.0-debian-11-r20" # https://hub.docker.com/r/bitnami/keycloak-config-cli/tags
   BITNAMI_SPARK_VERSION: 3.3.1-debian-11-r6 # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
@@ -180,7 +180,7 @@ variables:
   K8S_COREDNS_VERSION: "v1.9.3"
   LIVENESSPROBE_VERSION: v2.9.0
   CSI_NODE_DRIVER_REGISTRAR_VERSION: v2.7.0
-  CSI_ATTACHER_VERSION: v4.1.0
+  CSI_ATTACHER_VERSION: v4.2.0
   CSI_RESIZER_VERSION: v1.7.0
   CSI_SNAPSHOTTER_VERSION: v6.2.1
   CSI_PROVISIONER_VERSION: v3.4.0
@@ -244,4 +244,4 @@ variables:
   NETBIRD_SIGNAL_VERSION: 0.12.0 # https://hub.docker.com/r/netbirdio/netbird/tags
   NETBIRD_MANAGEMENT_VERSION: 0.12.0 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.1 # https://hub.docker.com/r/coturn/coturn/tags
-  FIREZONE_VERSION: 0.7.10 # https://hub.docker.com/r/firezone/firezone/tags
+  FIREZONE_VERSION: 0.7.11 # https://hub.docker.com/r/firezone/firezone/tags
