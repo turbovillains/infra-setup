@@ -297,6 +297,8 @@ import_images() {
         "netbirdio/management:${NETBIRD_MANAGEMENT_VERSION:-0.12.0}"
         "coturn/coturn:${COTURN_VERSION:-4.6.1}"
         "firezone/firezone:${FIREZONE_VERSION:-0.7.6}"
+        "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
+        "jenkins/agent:${JENKINS_AGENT_VERSION:-3085.vc4c6977c075a-5-jdk17}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
