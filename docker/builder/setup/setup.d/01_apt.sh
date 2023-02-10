@@ -16,7 +16,7 @@ SOURCES
 apt-get update -yyq
 apt-get -yyq install zip zstd unzip upx \
 	python3 python3-pip virtualenv \
-	socat netcat telnet curl ftp git \
+	socat netcat telnet curl wget ftp git \
   protobuf-compiler \
   rsync \
   build-essential procps file libunwind8 \
