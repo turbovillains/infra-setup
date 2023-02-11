@@ -1,94 +1,5 @@
 #!/bin/bash -eu
 
-get_registry() {
-    local image=$1
-    [[ -z ${image} ]] && return
-    if [[ ${image} =~ ^([^\/]+\.[^\/]+)\/ ]]; then
-        echo -n ${BASH_REMATCH[1]}
-    else
-        echo -n docker.io
-    fi
-}
-
-get_ref() {
-    local image=$1
-    [[ -z ${image} ]] && echo -n "latest" && return
-
-    # tag with sha
-    if [[ ${image} =~ :([^\/]+)@sha256:([A-Fa-f0-9]{64}) ]]; then
-        echo -n ${BASH_REMATCH[1]}@sha256:${BASH_REMATCH[2]}
-    # just sha
-    elif [[ ${image} =~ @sha256:([A-Fa-f0-9]{64}) ]]; then
-        echo -n @sha256:${BASH_REMATCH[1]}
-    # just tag
-    elif [[ ${image} =~ :([^\/]+) ]]; then
-        echo -n ${BASH_REMATCH[1]}
-    else
-        echo -n "latest"
-    fi
-}
-
-get_tag() {
-    local image=$1
-    [[ -z ${image} ]] && echo -n "latest" && return
-
-    # tag with sha
-    if [[ ${image} =~ :([^\/]+)@sha256:([A-Fa-f0-9]{64}) ]]; then
-        echo -n ${BASH_REMATCH[1]}
-    # just sha
-    elif [[ ${image} =~ @sha256:([A-Fa-f0-9]{64}) ]]; then
-        echo -n "latest"
-    # just tag
-    elif [[ ${image} =~ :([^\/]+) ]]; then
-        echo -n ${BASH_REMATCH[1]}
-    else
-        echo -n "latest"
-    fi
-}
-
-get_name() {
-    local image=$1
-    [[ -z ${image} ]] && return
-    if [[ ${image} =~ ([^\/]+\.[^\/]+\/)?([^:]+)(:.+)?$ ]]; then
-        echo -n ${BASH_REMATCH[2]}
-    fi
-}
-
-migrate_image() {
-    local image=${1:-}
-    [[ -z ${image} ]] && return
-    local source_registry="$(get_registry ${image})"
-    local target_registry=${2:-}
-    [[ -z ${target_registry} ]] && return
-    local image_name=$(get_name ${image})
-    local image_ref=$(get_ref ${image})
-    local image_tag=$(get_tag ${image})
-
-    # We are checking for ref, but pushing only tag
-    set +e
-    docker manifest inspect ${target_registry}/${image_name}:${image_ref} 2>&1> /dev/null
-    local inspect_code=$?
-    set -e
-
-    if [[ "${inspect_code}" != 0 ]]; then
-        # we pull the ref, but push the tag
-        docker pull ${source_registry}/${image_name}:${image_ref}
-        docker tag ${source_registry}/${image_name}:${image_ref} ${target_registry}/${image_name}:${image_tag}
-        docker push ${target_registry}/${image_name}:${image_tag}
-        docker rmi ${source_registry}/${image_name}:${image_ref} ${target_registry}/${image_name}:${image_tag}
-    fi
-
-}
-
-line() {
-    local width=40
-    # if [[ ! -z $TERM ]]; then
-    #     width=$(tput cols)
-    # fi
-
-    eval printf '%.0s-' {1..${width}}
-}
-
 import_images() {
     declare -a images=(
         "debian:${DEBIAN_VERSION:-11.0-slim}"
@@ -419,13 +330,14 @@ import_images() {
         migrate_image ${image} ${target_registry}
     done
 
+    local infra_json="infra.json"
     # Sync to upstream repo for dependabot and renovate
     ssh-keyscan github.com | tee -a ~/.ssh/known_hosts
     git clone git@github.com:noroutine/upstream.git upstream
     (
-
         cd upstream
 
+        # dockerfile
         for image in "${images[@]}"; do
             echo "# $(get_name ${image})"
             echo "FROM ${image}"
@@ -433,7 +345,47 @@ import_images() {
             echo
         done | tee Dockerfile
 
-        jq -r -n --arg INFRA_VERSION ${INFRA_VERSION} '{ version: $INFRA_VERSION }' | tee infra.json
+        jq -r -n --arg INFRA_VERSION ${INFRA_VERSION} '{ version: $INFRA_VERSION }' | tee ${infra_json}
+
+        # components, variables, upstream images inside json
+        for image in "${images[@]}"; do
+            local component_base=$(get_name ${image})
+            local component_base_version=$(get_tag ${image})
+            local component_name=$(get_name ${image} | tr '/' '-')
+            local component_var_key=$(get_name ${image} | tr '/-' '_' | tr '[:lower:]' '[:upper:]')
+
+            echo "Adding upstream image: ${image}"
+            cat ${infra_json} | jq -r --arg IMAGE ${image} '.upstream.images += [$IMAGE]' > ${infra_json}.tmp
+            mv ${infra_json}.tmp ${infra_json}
+
+            # for infra_component_dockerfile in $(grep -rl }/${component_base}: ../docker | grep Dockerfile | xargs echo); do
+            #     echo "Inspecting ${infra_component_dockerfile}"
+            #     # find component name from docker/ as we named it
+            #     local infra_component_name=$(dirname ${infra_component_dockerfile} | sed 's,^../docker/,,' | tr '/' '-')
+            #     # find proper variable name for version from dockerfile
+            #     local infra_component_version_variable=$(grep FROM ${infra_component_dockerfile} | grep ${component_base} ${infra_component_dockerfile} | cut -d ':' -f2 | sed 's,${,,;s,},,')
+            #     # find proper version variable value from variables.yml
+            #     local infra_component_version_value=$(yj < ../variables.yml | jq -r --arg VAR ${infra_component_version_variable} '.variables[$VAR]')
+
+            #     echo "FROM ${infra_component_name}:\${${infra_component_version_variable}:-${infra_component_version_value}}"
+
+            #     # remember version variable and value
+            #     cat ${infra_json} | jq -r \
+            #         --arg COMPONENT_VERSION_VAR "${infra_component_version_variable}" \
+            #         --arg COMPONENT_VERSION_VALUE ${infra_component_version_value} \
+            #         '.variables[$COMPONENT_VERSION_VAR] = $COMPONENT_VERSION_VALUE' > ${infra_json}.tmp
+            #     mv ${infra_json}.tmp ${infra_json}
+
+            #     cat ${infra_json} | jq -r \
+            #         --arg COMPONENT_BASE "${component_base}" \
+            #         --arg INFRA_COMPONENT_NAME "${infra_component_name}" \
+            #         --arg INFRA_COMPONENT_VERSION_VARIABLE "${infra_component_version_variable}" \
+            #         '.components[$INFRA_COMPONENT_NAME] = { name: $INFRA_COMPONENT_NAME, base: $COMPONENT_BASE, "version-variable": $INFRA_COMPONENT_VERSION_VARIABLE }' > ${infra_json}.tmp
+            #     mv ${infra_json}.tmp ${infra_json}
+            # done
+        done
+
+        cat ${infra_json}
 
         git add Dockerfile infra.json
         git commit -a -m "Infra ${INFRA_VERSION}" || true

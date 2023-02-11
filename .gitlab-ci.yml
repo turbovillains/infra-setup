@@ -2,6 +2,11 @@ include: variables.yml
 
 stages:
   - scratch
+  - archive1
+  - archive2
+  - archive3
+  - archive4
+  - archive5
   - base
   - stacks
   - buildpacks
@@ -23,6 +28,971 @@ import-images:
   stage: scratch
   script:
     - ./gitlab/${CI_JOB_NAME}.sh
+
+.archive-images:
+  interruptible: true
+  script:
+    - |
+      echo "Archiving ${DOCKER_HUB}/${BASE}:${!VERSION}"
+      docker pull ${DOCKER_HUB}/${BASE}:${!VERSION}
+      archive_image ${DOCKER_HUB}/${BASE}:${!VERSION}
+
+archive-images1:
+  extends: .archive-images
+  stage: archive1
+  parallel:
+    matrix:
+      - BASE:
+          - debian
+        VERSION:
+          - DEBIAN_VERSION
+      - BASE:
+          - ubuntu
+        VERSION:
+          - UBUNTU_JAMMY_VERSION
+          - UBUNTU_FOCAL_VERSION
+      - BASE:
+          - busybox
+        VERSION:
+          - BUSYBOX_VERSION
+      - BASE:
+          - alpine
+        VERSION:
+          - ALPINE_VERSION
+      - BASE:
+          - buildpack-deps
+        VERSION:
+          - BUILDPACK_DEPS_FOCAL_VERSION
+          - BUILDPACK_DEPS_JAMMY_VERSION
+          - BUILDPACK_DEPS_BIONIC_VERSION
+      - BASE:
+          - golang
+        VERSION:
+          - GOLANG_VERSION
+      - BASE:
+          - traefik
+        VERSION:
+          - TRAEFIK_VERSION
+      - BASE:
+          - sonatype/nexus3
+        VERSION:
+          - NEXUS_VERSION
+      - BASE:
+          - squidfunk/mkdocs-material
+        VERSION:
+          - MKDOCS_VERSION
+      - BASE:
+          - freeradius/freeradius-server
+        VERSION:
+          - FREERADIUS_VERSION
+      - BASE:
+          - keycloak/keycloak
+        VERSION:
+          - KEYCLOAK_VERSION
+      - BASE:
+          - postgres
+        VERSION:
+          - POSTGRES_VERSION
+      - BASE:
+          - atlassian/jira-software
+        VERSION:
+          - JIRA_VERSION
+      - BASE:
+          - nextcloud
+        VERSION:
+          - NEXTCLOUD_VERSION
+      - BASE:
+          - haproxytech/haproxy-debian
+        VERSION:
+          - HAPROXY_VERSION
+      - BASE:
+          - minio/minio
+        VERSION:
+          - MINIO_VERSION
+      - BASE:
+          - prom/prometheus
+        VERSION:
+          - PROMETHEUS_VERSION
+      - BASE:
+          - prom/alertmanager
+        VERSION:
+          - ALERTMANAGER_VERSION
+      - BASE:
+          - prom/node-exporter
+        VERSION:
+          - NODE_EXPORTER_VERSION
+      - BASE:
+          - prom/consul-exporter
+        VERSION:
+          - CONSUL_EXPORTER_VERSION
+      - BASE:
+          - prom/blackbox-exporter
+        VERSION:
+          - BLACKBOX_EXPORTER_VERSION
+      - BASE:
+          - prom/snmp-exporter
+        VERSION:
+          - SNMP_EXPORTER_VERSION
+      - BASE:
+          - prom/pushgateway
+        VERSION:
+          - PUSHGATEWAY_VERSION
+      - BASE:
+          - grafana/grafana
+        VERSION:
+          - GRAFANA_VERSION
+      - BASE:
+          - grafana/loki
+        VERSION:
+          - LOKI_VERSION
+      - BASE:
+          - grafana/loki-canary
+        VERSION:
+          - LOKI_VERSION
+      - BASE:
+          - grafana/promtail
+        VERSION:
+          - PROMTAIL_VERSION
+      - BASE:
+          - m3db/m3coordinator
+        VERSION:
+          - M3COORDINATOR_VERSION
+      - BASE:
+          - m3db/m3dbnode
+        VERSION:
+          - M3DBNODE_VERSION
+      - BASE:
+          - braedon/prometheus-es-exporter
+        VERSION:
+          - PROMETHEUS_ES_EXPORTER_VERSION
+      - BASE:
+          - ribbybibby/ssl-exporter
+        VERSION:
+          - SSL_EXPORTER_VERSION
+      - BASE:
+          - cadvisor/cadvisor
+        VERSION:
+          - CADVISOR_VERSION
+      - BASE:
+          - prymitive/karma
+        VERSION:
+          - KARMA_VERSION
+      - BASE:
+          - cortexproject/cortex
+        VERSION:
+          - CORTEX_VERSION
+      - BASE:
+          - elasticsearch/elasticsearch
+        VERSION:
+          - ELASTICSEARCH_VERSION
+      - BASE:
+          - logstash/logstash
+        VERSION:
+          - LOGSTASH_VERSION
+      - BASE:
+          - kibana/kibana
+        VERSION:
+          - KIBANA_VERSION
+      - BASE:
+          - alerta/alerta-web
+        VERSION:
+          - ALERTA_VERSION
+      - BASE:
+          - mongo
+        VERSION:
+          - MONGO_VERSION
+      - BASE:
+          - wordpress
+        VERSION:
+          - WORDPRESS_VERSION
+      - BASE:
+          - dpage/pgadmin4
+        VERSION:
+          - PGADMIN_VERSION
+      - BASE:
+          - mysql
+        VERSION:
+          - MYSQL_VERSION
+      - BASE:
+          - mariadb
+        VERSION:
+          - MARIADB_VERSION
+      - BASE:
+          - mccutchen/go-httpbin
+        VERSION:
+          - HTTPBIN_VERSION
+      - BASE:
+          - oauth2-proxy/oauth2-proxy
+        VERSION:
+          - OAUTH2_PROXY_VERSION
+      - BASE:
+          - buildpacksio/lifecycle
+        VERSION:
+          - BUILDPACKSIO_LIFECYCLE_VERSION
+      - BASE:
+          - gitlab/gitlab-runner
+        VERSION:
+          - GITLAB_RUNNER_VERSION
+      - BASE:
+          - gitlab/gitlab-ce
+        VERSION:
+          - GITLAB_VERSION
+      - BASE:
+          - gitlab-org/cluster-integration/auto-build-image
+        VERSION:
+          - GITLAB_AUTO_BUILD_VERSION
+      - BASE:
+          - gitlab-org/cluster-integration/auto-deploy-image
+        VERSION:
+          - GITLAB_AUTO_DEPLOY_VERSION
+      - BASE:
+          - gitlab-org/cluster-integration/gitlab-agent/agentk
+        VERSION:
+          - GITLAB_AGENTK_VERSION
+      - BASE:
+          - gitlab-org/cluster-integration/cluster-applications
+        VERSION:
+          - GITLAB_CLUSTER_APPLICATIONS_VERSION
+      - BASE:
+          - summerwind/actions-runner-controller
+        VERSION:
+          - ACTIONS_RUNNER_CONTROLLER_VERSION
+      - BASE:
+          - summerwind/actions-runner
+        VERSION:
+          - ACTIONS_RUNNER_IMAGE_VERSION
+      - BASE:
+          - summerwind/actions-runner-dind
+        VERSION:
+          - ACTIONS_RUNNER_IMAGE_VERSION
+      - BASE:
+          - brancz/kube-rbac-proxy
+        VERSION:
+          - KUBE_RBAC_PROXY_VERSION
+      - BASE:
+          - jupyterhub/k8s-image-cleaner
+        VERSION:
+          - BINDERHUB_IMAGE_CLEANER_VERSION
+      - BASE:
+          - noroutine/k8s-binderhub
+        VERSION:
+          - BINDERHUB_VERSION
+      - BASE:
+          - jupyterhub/k8s-hub
+        VERSION:
+          - JUPYTERHUB_VERSION
+      - BASE:
+          - jupyterhub/k8s-secret-sync
+        VERSION:
+          - JUPYTERHUB_SECRET_SYNC_VERSION
+      - BASE:
+          - jupyterhub/k8s-network-tools
+        VERSION:
+          - JUPYTERHUB_NETWORK_TOOLS_VERSION
+      - BASE:
+          - jupyterhub/k8s-image-awaiter
+        VERSION:
+          - JUPYTERHUB_IMAGE_AWAITER_VERSION
+      - BASE:
+          - jupyterhub/k8s-singleuser-sample
+        VERSION:
+          - JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION
+      - BASE:
+          - jupyterhub/configurable-http-proxy
+        VERSION:
+          - JUPYTERHUB_HTTP_PROXY_VERSION
+      - BASE:
+          - kube-scheduler
+        VERSION:
+          - JUPYTERHUB_SCHEDULER_VERSION
+      - BASE:
+          - pause
+        VERSION:
+          - K8S_PAUSE_VERSION
+      - BASE:
+          - pause
+        VERSION:
+          - JUPYTERHUB_PAUSE_VERSION
+      - BASE:
+          - noroutine/repo2docker
+        VERSION:
+          - REPO2DOCKER_VERSION
+      - BASE:
+          - pihole/pihole
+        VERSION:
+          - PIHOLE_VERSION
+      - BASE:
+          - yandex/clickhouse-server
+        VERSION:
+          - CLICKHOUSE_VERSION
+      - BASE:
+          - spoonest/clickhouse-tabix-web-client
+        VERSION:
+          - TABIX_VERSION
+      - BASE:
+          - plausible/analytics
+        VERSION:
+          - PLAUSIBLE_VERSION
+      - BASE:
+          - verdaccio/verdaccio
+        VERSION:
+          - VERDACCIO_VERSION
+      - BASE:
+          - strapi/strapi
+        VERSION:
+          - STRAPI_VERSION
+      - BASE:
+          - ghost
+        VERSION:
+          - GHOST_VERSION
+      - BASE:
+          - bitnami/ghost
+        VERSION:
+          - BITNAMI_GHOST_VERSION
+      - BASE:
+          - matomo
+        VERSION:
+          - MATOMO_VERSION
+      - BASE:
+          - nocodb/nocodb
+        VERSION:
+          - NOCODB_VERSION
+      - BASE:
+          - metabase/metabase
+        VERSION:
+          - METABASE_VERSION
+      - BASE:
+          - docker
+        VERSION:
+          - DIND_VERSION
+      - BASE:
+          - jupyter/all-spark-notebook
+        VERSION:
+          - JUPYTER_VERSION
+      - BASE:
+          - rocker/shiny
+        VERSION:
+          - RSHINY_VERSION
+      - BASE:
+          - caprover/caprover
+        VERSION:
+          - CAPROVER_VERSION
+      - BASE:
+          - mikecao/umami
+        VERSION:
+          - UMAMI_VERSION
+
+archive-images2:
+  extends: .archive-images
+  stage: archive2
+  parallel:
+    matrix:
+      - BASE:
+          - bitnami/spark
+        VERSION:
+          - BITNAMI_SPARK_VERSION
+      - BASE:
+          - bitnami/prometheus
+        VERSION:
+          - BITNAMI_PROMETHEUS_VERSION
+      - BASE:
+          - bitnami/prometheus-operator
+        VERSION:
+          - BITNAMI_PROMETHEUS_OPERATOR_VERSION
+      - BASE:
+          - bitnami/node-exporter
+        VERSION:
+          - BITNAMI_NODE_EXPORTER_VERSION
+      - BASE:
+          - bitnami/blackbox-exporter
+        VERSION:
+          - BITNAMI_BLACKBOX_EXPORTER_VERSION
+      - BASE:
+          - bitnami/postgres-exporter
+        VERSION:
+          - BITNAMI_POSTGRES_EXPORTER_VERSION
+      - BASE:
+          - bitnami/redis
+        VERSION:
+          - BITNAMI_REDIS_VERSION
+      - BASE:
+          - bitnami/redis-exporter
+        VERSION:
+          - BITNAMI_REDIS_EXPORTER_VERSION
+      - BASE:
+          - bitnami/postgresql
+        VERSION:
+          - BITNAMI_POSTGRESQL14_VERSION
+      - BASE:
+          - bitnami/postgresql
+        VERSION:
+          - BITNAMI_POSTGRESQL15_VERSION
+      - BASE:
+          - bitnami/postgresql
+        VERSION:
+          - BITNAMI_POSTGRESQL12_VERSION
+      - BASE:
+          - bitnami/postgresql
+        VERSION:
+          - BITNAMI_POSTGRESQL11_VERSION
+      - BASE:
+          - bitnami/postgresql
+        VERSION:
+          - BITNAMI_POSTGRESQL13_VERSION
+      - BASE:
+          - bitnami/postgresql
+        VERSION:
+          - BITNAMI_POSTGRESQL10_VERSION
+      - BASE:
+          - bitnami/keycloak
+        VERSION:
+          - BITNAMI_KEYCLOAK_VERSION
+      - BASE:
+          - bitnami/keycloak-config-cli
+        VERSION:
+          - BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION
+      - BASE:
+          - bitnami/mariadb
+        VERSION:
+          - BITNAMI_MARIADB_VERSION
+      - BASE:
+          - bitnami/mongodb
+        VERSION:
+          - BITNAMI_MONGODB_VERSION
+      - BASE:
+          - bitnami/memcached
+        VERSION:
+          - BITNAMI_MEMCACHED_VERSION
+      - BASE:
+          - bitnami/nginx-ingress-controller
+        VERSION:
+          - BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION
+      - BASE:
+          - bitnami/nginx
+        VERSION:
+          - BITNAMI_NGINX_VERSION
+      - BASE:
+          - bitnami/minio
+        VERSION:
+          - BITNAMI_MINIO_VERSION
+      - BASE:
+          - bitnami/minio-client
+        VERSION:
+          - BITNAMI_MINIO_CLIENT_VERSION
+      - BASE:
+          - bitnami/bitnami-shell
+        VERSION:
+          - BITNAMI_SHELL_VERSION
+      - BASE:
+          - bitnami/metallb-controller
+        VERSION:
+          - BITNAMI_METALLB_CONTROLLER_VERSION
+      - BASE:
+          - bitnami/metallb-speaker
+        VERSION:
+          - BITNAMI_METALLB_SPEAKER_VERSION
+      - BASE:
+          - bitnami/grafana
+        VERSION:
+          - BITNAMI_GRAFANA_VERSION
+      - BASE:
+          - bitnami/grafana-image-renderer
+        VERSION:
+          - BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION
+      - BASE:
+          - bitnami/consul
+        VERSION:
+          - BITNAMI_CONSUL_VERSION
+      - BASE:
+          - bitnami/nats
+        VERSION:
+          - BITNAMI_NATS_VERSION
+      - BASE:
+          - bitnami/kube-state-metrics
+        VERSION:
+          - BITNAMI_KUBE_STATE_METRICS_VERSION
+      - BASE:
+          - bitnami/metrics-server
+        VERSION:
+          - BITNAMI_METRICS_SERVER_VERSION
+      - BASE:
+          - bitnami/kubeapps-dashboard
+        VERSION:
+          - BITNAMI_KUBEAPPS_DASHBOARD_VERSION
+      - BASE:
+          - bitnami/kubeapps-apprepository-controller
+        VERSION:
+          - BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION
+      - BASE:
+          - bitnami/kubeapps-asset-syncer
+        VERSION:
+          - BITNAMI_KUBEAPPS_ASSET_SYNCER
+      - BASE:
+          - bitnami/kubeapps-kubeops
+        VERSION:
+          - BITNAMI_KUBEAPPS_KUBEOPS_VERSION
+      - BASE:
+          - bitnami/kubeapps-assetsvc
+        VERSION:
+          - BITNAMI_KUBEAPPS_ASSETSVC_VERSION
+      - BASE:
+          - bitnami/kubeapps-apis
+        VERSION:
+          - BITNAMI_KUBEAPPS_APIS_VERSION
+      - BASE:
+          - bitnami/kubeapps-pinniped-proxy
+        VERSION:
+          - BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION
+      - BASE:
+          - bitnami/kube-rbac-proxy
+        VERSION:
+          - BITNAMI_KUBE_RBAC_PROXY_VERSION
+      - BASE:
+          - bitnami/openldap
+        VERSION:
+          - BITNAMI_OPENLDAP_VERSION
+      - BASE:
+          - bitnami/sealed-secrets-controller
+        VERSION:
+          - BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
+      - BASE:
+          - bitnami/trivy
+        VERSION:
+          - BITNAMI_TRIVY_VERSION
+
+archive-images3:
+  extends: .archive-images
+  stage: archive3
+  parallel:
+    matrix:
+      - BASE:
+          - aquasec/trivy
+        VERSION:
+          - TRIVY_VERSION
+      - BASE:
+          - external-secrets/external-secrets
+        VERSION:
+          - EXTERNAL_SECRETS_VERSION
+      - BASE:
+          - minio/console
+        VERSION:
+          - MINIO_CONSOLE_VERSION
+      - BASE:
+          - kutt/kutt
+        VERSION:
+          - KUTT_VERSION
+      - BASE:
+          - drakkan/sftpgo
+        VERSION:
+          - SFTPGO_VERSION
+      - BASE:
+          - hasura/graphql-engine
+        VERSION:
+          - HASURA_GRAPHQL_VERSION
+      - BASE:
+          - paulbouwer/hello-kubernetes
+        VERSION:
+          - HELLO_VERSION
+      - BASE:
+          - stakater/reloader
+        VERSION:
+          - RELOADER_VERSION
+      - BASE:
+          - jimmidyson/configmap-reload
+        VERSION:
+          - CONFIGMAP_RELOAD_VERSION
+      - BASE:
+          - registry
+        VERSION:
+          - DOCKER_REGISTRY_VERSION
+      - BASE:
+          - dexidp/dex
+        VERSION:
+          - DEX_VERSION
+      - BASE:
+          - argoproj/argocd
+        VERSION:
+          - ARGOCD_VERSION
+      - BASE:
+          - argoproj/argocd-applicationset
+        VERSION:
+          - ARGOCD_APPLICATIONSET_VERSION
+      - BASE:
+          - redis
+        VERSION:
+          - REDIS_VERSION
+      - BASE:
+          - listmonk/listmonk
+        VERSION:
+          - LISTMONK_VERSION
+      - BASE:
+          - vaultwarden/server
+        VERSION:
+          - VAULTWARDEN_VERSION
+      - BASE:
+          - boky/postfix
+        VERSION:
+          - BOKY_POSTFIX_VERSION
+      - BASE:
+          - cupcakearmy/cryptgeon
+        VERSION:
+          - CRYPTGEON_VERSION
+      - BASE:
+          - memcached
+        VERSION:
+          - MEMCACHED_VERSION
+      - BASE:
+          - connecteverything/nats-operator
+        VERSION:
+          - NATS_OPERATOR_VERSION
+      - BASE:
+          - nats
+        VERSION:
+          - NATS_VERSION
+      - BASE:
+          - masipcat/wireguard-go
+        VERSION:
+          - WIREGUARD_VERSION
+      - BASE:
+          - eclipse-mosquitto
+        VERSION:
+          - MOSQUITTO_VERSION
+      - BASE:
+          - sapcc/mosquitto-exporter
+        VERSION:
+          - MOSQUITTO_EXPORTER_VERSION
+      - BASE:
+          - caddy
+        VERSION:
+          - CADDY_VERSION
+      - BASE:
+          - outline/shadowbox
+        VERSION:
+          - SHADOWBOX_VERSION
+      - BASE:
+          - kaniko-project/executor
+        VERSION:
+          - KANIKO_VERSION
+      - BASE:
+          - iovisor/bpftrace
+        VERSION:
+          - BPFTRACE_VERSION
+      - BASE:
+          - pryorda/vmware_exporter
+        VERSION:
+          - VMWARE_EXPORTER_VERSION
+      - BASE:
+          - azul/zulu-openjdk
+        VERSION:
+          - JDK_ZULU_VERSION
+      - BASE:
+          - elastic/eck-operator
+        VERSION:
+          - ECK_OPERATOR_VERSION
+      - BASE:
+          - louislam/uptime-kuma
+        VERSION:
+          - UPTIME_KUMA_VERSION
+      - BASE:
+          - hadolint/hadolint
+        VERSION:
+          - HADOLINT_VERSION
+      - BASE:
+          - outlinewiki/outline
+        VERSION:
+          - OUTLINE_VERSION
+      - BASE:
+          - syncthing/syncthing
+        VERSION:
+          - SYNCTHING_VERSION
+      - BASE:
+          - jellyfin/jellyfin
+        VERSION:
+          - JELLYFIN_VERSION
+      - BASE:
+          - gravitl/netmaker
+        VERSION:
+          - NETMAKER_VERSION
+      - BASE:
+          - gravitl/netmaker-ui
+        VERSION:
+          - NETMAKER_VERSION
+      - BASE:
+          - kmb32123/youtube-dl-server
+        VERSION:
+          - YOUTUBE_DL_SERVER_VERSION
+      - BASE:
+          - puppet/puppetserver
+        VERSION:
+          - PUPPETSERVER_VERSION
+      - BASE:
+          - puppet/puppetdb
+        VERSION:
+          - PUPPETDB_VERSION
+      - BASE:
+          - voxpupuli/puppetboard
+        VERSION:
+          - PUPPETBOARD_VERSION
+      - BASE:
+          - puppet/r10k
+        VERSION:
+          - R10K_VERSION
+      - BASE:
+          - restic/restic
+        VERSION:
+          - RESTIC_VERSION
+      - BASE:
+          - coredns/coredns
+        VERSION:
+          - COREDNS_VERSION
+      - BASE:
+          - coredns/coredns
+        VERSION:
+          - K8S_COREDNS_VERSION
+      - BASE:
+          - yugabytedb/yugabyte
+        VERSION:
+          - YUGABYTE_VERSION
+      - BASE:
+          - antelle/keeweb
+        VERSION:
+          - KEEWEB_VERSION
+      - BASE:
+          - wiretrustee/dashboard
+        VERSION:
+          - NETBIRD_DASHBOARD_VERSION
+      - BASE:
+          - netbirdio/signal
+        VERSION:
+          - NETBIRD_SIGNAL_VERSION
+      - BASE:
+          - netbirdio/management
+        VERSION:
+          - NETBIRD_MANAGEMENT_VERSION
+      - BASE:
+          - coturn/coturn
+        VERSION:
+          - COTURN_VERSION
+
+archive-images4:
+  extends: .archive-images
+  stage: archive4
+  parallel:
+    matrix:
+      - BASE:
+          - firezone/firezone
+        VERSION:
+          - FIREZONE_VERSION
+      - BASE:
+          - jenkins/jenkins
+        VERSION:
+          - JENKINS_VERSION
+      - BASE:
+          - jenkins/agent
+        VERSION:
+          - JENKINS_AGENT_VERSION
+      - BASE:
+          - apache/airflow
+        VERSION:
+          - AIRFLOW_VERSION
+      - BASE:
+          - git-sync/git-sync
+        VERSION:
+          - GIT_SYNC_VERSION
+      - BASE:
+          - kedacore/keda
+        VERSION:
+          - KEDA_VERSION
+      - BASE:
+          - kedacore/keda-metrics-apiserver
+        VERSION:
+          - KEDA_VERSION
+      - BASE:
+          - jetstack/cert-manager-controller
+        VERSION:
+          - CERT_MANAGER_CONTROLLER_VERSION
+      - BASE:
+          - jetstack/cert-manager-cainjector
+        VERSION:
+          - CERT_MANAGER_CAINJECTOR_VERSION
+      - BASE:
+          - jetstack/cert-manager-webhook
+        VERSION:
+          - CERT_MANAGER_WEBHOOK_VERSION
+      - BASE:
+          - jetstack/cert-manager-ctl
+        VERSION:
+          - CERT_MANAGER_CTL_VERSION
+      - BASE:
+          - jetstack/cert-manager-csi-driver
+        VERSION:
+          - CERT_MANAGER_CSI_DRIVER_VERSION
+      - BASE:
+          - zachomedia/cert-manager-webhook-pdns
+        VERSION:
+          - CERT_MANAGER_WEBHOOK_PDNS_VERSION
+      - BASE:
+          - vstadtmueller/cert-manager-webhook-powerdns
+        VERSION:
+          - CERT_MANAGER_WEBHOOK_POWERDNS_VERSION
+      - BASE:
+          - hashicorp/consul
+        VERSION:
+          - CONSUL_VERSION
+      - BASE:
+          - hashicorp/consul-k8s-control-plane
+        VERSION:
+          - CONSUL_K8S_CP_VERSION
+      - BASE:
+          - envoyproxy/envoy-alpine
+        VERSION:
+          - ENVOY_VERSION
+      - BASE:
+          - hashicorp/vault
+        VERSION:
+          - VAULT_VERSION
+      - BASE:
+          - hashicorp/vault-k8s
+        VERSION:
+          - VAULT_K8S_VERSION
+      - BASE:
+          - hashicorp/vault-csi-provider
+        VERSION:
+          - VAULT_CSI_PROVIDER_VERSION
+      - BASE:
+          - strimzi/operator
+        VERSION:
+          - STRIMZI_OPERATOR_VERSION
+      - BASE:
+          - tigera/operator
+        VERSION:
+          - TIGERA_OPERATOR_VERSION
+      - BASE:
+          - cloud-provider-vsphere/cpi/release/manager
+        VERSION:
+          - VSPHERE_CPI_MANAGER_VERSION
+      - BASE:
+          - cloud-provider-vsphere/csi/release/driver
+        VERSION:
+          - VSPHERE_CSI_DRIVER_VERSION
+      - BASE:
+          - cloud-provider-vsphere/csi/release/syncer
+        VERSION:
+          - VSPHERE_CSI_SYNCER_VERSION
+      - BASE:
+          - sig-storage/livenessprobe
+        VERSION:
+          - LIVENESSPROBE_VERSION
+      - BASE:
+          - sig-storage/csi-node-driver-registrar
+        VERSION:
+          - CSI_NODE_DRIVER_REGISTRAR_VERSION
+      - BASE:
+          - sig-storage/csi-attacher
+        VERSION:
+          - CSI_ATTACHER_VERSION
+      - BASE:
+          - sig-storage/csi-resizer
+        VERSION:
+          - CSI_RESIZER_VERSION
+      - BASE:
+          - sig-storage/csi-provisioner
+        VERSION:
+          - CSI_PROVISIONER_VERSION
+      - BASE:
+          - sig-storage/csi-snapshotter
+        VERSION:
+          - CSI_SNAPSHOTTER_VERSION
+      - BASE:
+          - obsidiandynamics/kafdrop
+        VERSION:
+          - KAFDROP_VERSION
+      - BASE:
+          - tchiotludo/akhq
+        VERSION:
+          - AKHQ_VERSION
+
+archive-special:
+  extends: .archive-images
+  stage: archive5
+  script:
+    - |
+      declare -a special_images=(
+        "${DOCKER_HUB}/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}"
+        "${DOCKER_HUB}/longhornio/longhorn-manager:${LONGHORN_VERSION:-v1.2.4}"
+        "${DOCKER_HUB}/longhornio/longhorn-ui:${LONGHORN_VERSION:-v1.2.4}"
+        "${DOCKER_HUB}/longhornio/longhorn-engine:${LONGHORN_VERSION:-v1.2.4}"
+        "${DOCKER_HUB}/longhornio/longhorn-instance-manager:${LONGHORN_INSTANCE_MANAGER_VERSION:-v1_20220530}"
+        "${DOCKER_HUB}/longhornio/longhorn-share-manager:${LONGHORN_SHARE_MANAGER_VERSION:-v1_20220531}"
+        "${DOCKER_HUB}/longhornio/backing-image-manager:${LONGHORN_BACKING_IMAGE_MANAGER_VERSION:-v2_20210820}"
+        "${DOCKER_HUB}/longhornio/csi-node-driver-registrar:v2.5.0"
+        "${DOCKER_HUB}/longhornio/csi-snapshotter:v6.0.1"
+        "${DOCKER_HUB}/longhornio/csi-resizer:v1.3.0"
+        "${DOCKER_HUB}/longhornio/csi-provisioner:v2.1.2"
+        "${DOCKER_HUB}/longhornio/csi-attacher:v3.4.0"
+      )
+
+      for image in "${special_images[@]}"; do
+        echo "Archiving ${image}"
+        docker pull ${image}
+        archive_image ${image}
+      done
+
+archive-extra:
+  extends: .archive-images
+  stage: archive5
+  parallel:
+    matrix:
+      - BASE:
+          - kube-apiserver
+          - kube-proxy
+          - kube-scheduler
+          - kube-controller-manager
+        VERSION:
+          - K8S_VERSION
+          - K8S_125_VERSION
+          - K8S_124_VERSION
+          - K8S_123_VERSION
+      - BASE:
+          - coredns/coredns
+        VERSION:
+          - K8S_COREDNS_VERSION
+      - BASE:
+          - pause
+        VERSION:
+          - K8S_PAUSE_VERSION
+      - BASE:
+          - calico/typha
+          - calico/ctl
+          - calico/node
+          - calico/cni
+          - calico/apiserver
+          - calico/kube-controllers
+          - calico/dikastes
+          - calico/pod2daemon-flexvol
+          - calico/node-driver-registrar
+          - calico/csi
+        VERSION:
+          - CALICO_VERSION
+      - BASE:
+          - confluentinc/cp-enterprise-control-center
+          - confluentinc/cp-enterprise-replicator
+          - confluentinc/cp-kafka-rest
+          - confluentinc/cp-ksqldb-server
+          - confluentinc/cp-schema-registry
+          - confluentinc/cp-server
+          - confluentinc/cp-server-connect
+          - confluentinc/cp-zookeeper
+        VERSION:
+          - CONFLUENTINC_CP_VERSION
+      - BASE:
+          - confluentinc/confluent-init-container
+        VERSION:
+          - CONFLUENTINC_INIT_CONTAINER_VERSION
+      - BASE:
+          - confluentinc/confluent-operator
+        VERSION:
+          - CONFLUENTINC_OPERATOR_VERSION
 
 turbovillains-mirror:
   interruptible: true
@@ -233,10 +1203,10 @@ builder:
   stage: build2
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
-        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID \
-        --build-arg ACTIONS_RUNNER_VERSION
+      --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
+      --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+      --build-arg HOST_DOCKER_GID \
+      --build-arg ACTIONS_RUNNER_VERSION
 
 shell:
   interruptible: true
@@ -244,9 +1214,9 @@ shell:
   stage: build2
   script:
     - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
-        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID
+      --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
+      --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+      --build-arg HOST_DOCKER_GID
 
 ocsp-responder:
   interruptible: true
@@ -1034,12 +2004,22 @@ jupyter-notebook:
   stage: build
   parallel:
     matrix:
-      - FLAVOUR: [ "base", "minimal", "r", "scipy", "tensorflow", "datascience", "pyspark", "all-spark" ]
-        NOTEBOOK: [ "notebook" ]
+      - FLAVOUR:
+          [
+            "base",
+            "minimal",
+            "r",
+            "scipy",
+            "tensorflow",
+            "datascience",
+            "pyspark",
+            "all-spark",
+          ]
+        NOTEBOOK: ["notebook"]
   script:
     - ./gitlab/build-image.sh jupyter-notebook ${DOCKER_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
-        --build-arg JUPYTER_VERSION \
-        --build-arg FLAVOUR
+      --build-arg JUPYTER_VERSION \
+      --build-arg FLAVOUR
 
 rshiny:
   interruptible: true
@@ -2067,12 +3047,22 @@ confluent-platform:
   stage: build
   parallel:
     matrix:
-      - CONFLUENTINC_CP_COMPONENT: [ "enterprise-control-center", "enterprise-replicator", "kafka-rest", "ksqldb-server", "schema-registry", "server", "server-connect", "zookeeper" ]
-        DUMMY: [ "dummy" ]
+      - CONFLUENTINC_CP_COMPONENT:
+          [
+            "enterprise-control-center",
+            "enterprise-replicator",
+            "kafka-rest",
+            "ksqldb-server",
+            "schema-registry",
+            "server",
+            "server-connect",
+            "zookeeper",
+          ]
+        DUMMY: ["dummy"]
   script:
     - ./gitlab/build-image.sh confluent-platform ${DOCKER_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
-        --build-arg CONFLUENTINC_CP_VERSION \
-        --build-arg CONFLUENTINC_CP_COMPONENT
+      --build-arg CONFLUENTINC_CP_VERSION \
+      --build-arg CONFLUENTINC_CP_COMPONENT
 
 uptime-kuma:
   interruptible: true
