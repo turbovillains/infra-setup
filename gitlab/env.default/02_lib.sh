@@ -16,9 +16,9 @@ archive_image() {
     ls -sh1 ${image_archive}
 
     rsync -e "ssh -o StrictHostKeyChecking=no" \
-        --rsync-path="sudo mkdir -p /ifs/bo01/infra/${infra_bucket} && sudo rsync" \
+        --rsync-path="sudo mkdir -p /ifs/attic/infra/${infra_bucket} && sudo rsync" \
         ${image_archive} \
-        oleksii@tank.noroutine.me:/ifs/bo01/infra/${infra_bucket}/${image_archive}
+        oleksii@tank.noroutine.me:/ifs/attic/infra/${infra_bucket}/${image_archive}
 
     rm ${image_archive}
 }
@@ -52,7 +52,9 @@ build_image() {
     docker build ${implicit_args} ${docker_build_args} -t ${DOCKER_HUB}/${target} docker/${component}
     docker push ${DOCKER_HUB}/${target}
 
-    archive_image ${DOCKER_HUB}/${target} ${INFRA_VERSION}
+    if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
+        archive_image ${DOCKER_HUB}/${target} ${INFRA_VERSION}
+    fi
 
     docker rmi ${DOCKER_HUB}/${target}
 }

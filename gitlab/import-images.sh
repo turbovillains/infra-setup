@@ -200,7 +200,7 @@ import_images() {
         "ghcr.io/voxpupuli/puppetboard:${PUPPETBOARD_VERSION:-4.2.0}"
         "puppet/r10k:${R10K_VERSION:-3.15.2}"
         "restic/restic:${RESTIC_VERSION:-0.14.0}"
-        "k8s.gcr.io/coredns/coredns:${COREDNS_VERSION:-v1.8.6}"
+        "registry.k8s.io/coredns/coredns:${COREDNS_VERSION:-v1.8.6}"
         "yugabytedb/yugabyte:${YUGABYTE_VERSION:-2.17.0.0-b24}"
         "antelle/keeweb:${KEEWEB_VERSION:-1.18.7}"
         "wiretrustee/dashboard:${NETBIRD_DASHBOARD_VERSION:-v1.6.0}"
@@ -213,7 +213,7 @@ import_images() {
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
-        "k8s.gcr.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
+        "registry.k8s.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
 
         # KEDA
         "ghcr.io/kedacore/keda:${KEDA_VERSION:-2.8.0}"
@@ -299,12 +299,12 @@ import_images() {
         "gcr.io/cloud-provider-vsphere/cpi/release/manager:${VSPHERE_CPI_MANAGER_VERSION:-v1.23.0}"
         "gcr.io/cloud-provider-vsphere/csi/release/driver:${VSPHERE_CSI_DRIVER_VERSION:-v2.5.1}"
         "gcr.io/cloud-provider-vsphere/csi/release/syncer:${VSPHERE_CSI_SYNCER_VERSION:-v2.5.1}"
-        "k8s.gcr.io/sig-storage/livenessprobe:${LIVENESSPROBE_VERSION:-v2.7.0}"
-        "k8s.gcr.io/sig-storage/csi-node-driver-registrar:${CSI_NODE_DRIVER_REGISTRAR_VERSION:-v2.5.1}"
-        "k8s.gcr.io/sig-storage/csi-attacher:${CSI_ATTACHER_VERSION:-v3.4.0}"
-        "k8s.gcr.io/sig-storage/csi-resizer:${CSI_RESIZER_VERSION:-v1.4.0}"
-        "k8s.gcr.io/sig-storage/csi-provisioner:${CSI_PROVISIONER_VERSION:-v3.1.0}"
-        "k8s.gcr.io/sig-storage/csi-snapshotter:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
+        "registry.k8s.io/sig-storage/livenessprobe:${LIVENESSPROBE_VERSION:-v2.7.0}"
+        "registry.k8s.io/sig-storage/csi-node-driver-registrar:${CSI_NODE_DRIVER_REGISTRAR_VERSION:-v2.5.1}"
+        "registry.k8s.io/sig-storage/csi-attacher:${CSI_ATTACHER_VERSION:-v3.4.0}"
+        "registry.k8s.io/sig-storage/csi-resizer:${CSI_RESIZER_VERSION:-v1.4.0}"
+        "registry.k8s.io/sig-storage/csi-provisioner:${CSI_PROVISIONER_VERSION:-v3.1.0}"
+        "registry.k8s.io/sig-storage/csi-snapshotter:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
 
         # confluent shit, https://docs.confluent.io/operator/current/co-custom-registry.html
         "confluentinc/confluent-init-container:${CONFLUENTINC_INIT_CONTAINER_VERSION:-2.3.1}"

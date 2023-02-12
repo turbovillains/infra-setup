@@ -47,6 +47,11 @@ while IFS="" read -r -d "" buildpack_toml_path; do
 		# git reset --hard
 		# git clean -fdx
 
+		if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
+			docker pull ${image_name}
+			archive_image ${image_name} ${INFRA_VERSION}
+		fi
+
 		echo "::set-output name=id::${buildpack_id}"
 		echo "::set-output name=version::${buildpack_version}"
 		echo "::set-output name=path::${buildpack_path}"
