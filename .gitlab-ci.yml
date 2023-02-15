@@ -601,6 +601,44 @@ archive-images2:
           - bitnami/trivy
         VERSION:
           - BITNAMI_TRIVY_VERSION
+      - BASE:
+          - bitnami/kubectl
+        VERSION:
+          - BITNAMI_KUBECTL_VERSION
+      - BASE:
+          - velero/velero
+        VERSION:
+          - VELERO_VERSION
+      - BASE:
+          - velero/velero-plugin-for-csi
+        VERSION:
+          - VELERO_PLUGIN_CSI_VERSION
+      - BASE:
+          - velero/velero-plugin-for-aws
+        VERSION:
+          - VELERO_PLUGIN_AWS_VERSION
+      - BASE:
+          - velero/velero-plugin-for-gcp
+        VERSION:
+          - VELERO_PLUGIN_GCP_VERSION
+      - BASE:
+          - velero/velero-plugin-for-microsoft-azure
+        VERSION:
+          - VELERO_PLUGIN_AZURE_VERSION
+      - BASE:
+          - vsphereveleroplugin/velero-plugin-for-vsphere
+          - vsphereveleroplugin/backup-driver
+          - vsphereveleroplugin/data-manager-for-plugin
+        VERSION:
+          - VELERO_PLUGIN_VSPHERE_VERSION
+      - BASE:
+          - velero/velero-restic-restore-helper
+        VERSION:
+          - VELERO_RESTIC_RESTORE_HELPER_VERSION
+      - BASE:
+          - bitnami/kubectl
+        VERSION:
+          - VELERO_KUBECTL_VERSION
 
 archive-images3:
   extends: .archive-images
@@ -4039,6 +4077,126 @@ jenkins-agent:
   variables:
     BASE: jenkins/agent
     VERSION: JENKINS_AGENT_VERSION
+
+velero:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_VERSION
+  variables:
+    BASE: velero/velero
+    VERSION: VELERO_VERSION
+
+velero-plugin-for-csi:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_PLUGIN_CSI_VERSION
+  variables:
+    BASE: velero/velero-plugin-for-csi
+    VERSION: VELERO_PLUGIN_CSI_VERSION
+
+velero-plugin-for-aws:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_PLUGIN_AWS_VERSION
+  variables:
+    BASE: velero/velero-plugin-for-aws
+    VERSION: VELERO_PLUGIN_AWS_VERSION
+
+velero-plugin-for-gcp:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_PLUGIN_GCP_VERSION
+  variables:
+    BASE: velero/velero-plugin-for-gcp
+    VERSION: VELERO_PLUGIN_GCP_VERSION
+
+velero-plugin-for-azure:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_PLUGIN_AZURE_VERSION
+  variables:
+    BASE: velero/velero-plugin-for-microsoft-azure
+    VERSION: VELERO_PLUGIN_AZURE_VERSION
+
+velero-plugin-for-vsphere:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_PLUGIN_VSPHERE_VERSION
+  variables:
+    BASE: vsphereveleroplugin/velero-plugin-for-vsphere
+    VERSION: VELERO_PLUGIN_VSPHERE_VERSION
+
+backup-driver:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_PLUGIN_VSPHERE_VERSION
+  variables:
+    BASE: vsphereveleroplugin/backup-driver
+    VERSION: VELERO_PLUGIN_VSPHERE_VERSION
+
+data-manager-for-plugin:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_PLUGIN_VSPHERE_VERSION
+  variables:
+    BASE: vsphereveleroplugin/data-manager-for-plugin
+    VERSION: VELERO_PLUGIN_VSPHERE_VERSION
+
+velero-restic-restore-helper:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_RESTIC_RESTORE_HELPER_VERSION
+  variables:
+    BASE: velero/velero-plugin-for-csi
+    VERSION: VELERO_RESTIC_RESTORE_HELPER_VERSION
+
+velero-kubectl:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg VELERO_KUBECTL_VERSION
+  variables:
+    BASE: bitnami/kubectl
+    VERSION: VELERO_KUBECTL_VERSION
 
 infra-docs:
   interruptible: true

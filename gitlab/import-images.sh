@@ -156,6 +156,7 @@ import_images() {
         "bitnami/openldap:${BITNAMI_OPENLDAP_VERSION:-2.5.13-debian-11-r0}"
         "bitnami/sealed-secrets-controller:${BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION:-v0.17.2}"
         "bitnami/trivy:${BITNAMI_TRIVY_VERSION:-0.33.0-debian-11-r0}"
+        "bitnami/kubectl:${BITNAMI_KUBECTL_VERSION:-1.26.1-debian-11-r9}"
         "aquasec/trivy:${TRIVY_VERSION:-0.33.0}"
         "ghcr.io/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION:-v0.5.3}"
         "minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
@@ -210,6 +211,18 @@ import_images() {
         "firezone/firezone:${FIREZONE_VERSION:-0.7.6}"
         "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
         "jenkins/agent:${JENKINS_AGENT_VERSION:-3085.vc4c6977c075a-5-jdk17}"
+
+        # Velero
+        "velero/velero:${VELERO_VERSION:-v1.10.1}"
+        "velero/velero-plugin-for-csi:${VELERO_PLUGIN_CSI_VERSION:-v0.4.1}"
+        "velero/velero-plugin-for-aws:${VELERO_PLUGIN_AWS_VERSION:-v1.6.1}"
+        "velero/velero-plugin-for-gcp:${VELERO_PLUGIN_GCP_VERSION:-v1.6.1}"
+        "velero/velero-plugin-for-microsoft-azure:${VELERO_PLUGIN_AZURE_VERSION:-v1.6.1}"
+        "vsphereveleroplugin/velero-plugin-for-vsphere:${VELERO_PLUGIN_VSPHERE_VERSION:-v1.4.2}"
+        "vsphereveleroplugin/backup-driver:${VELERO_PLUGIN_VSPHERE_VERSION:-v1.4.2}"
+        "vsphereveleroplugin/data-manager-for-plugin:${VELERO_PLUGIN_VSPHERE_VERSION:-v1.4.2}"
+        "velero/velero-restic-restore-helper:${VELERO_RESTIC_RESTORE_HELPER_VERSION:-v1.9.5}"
+        "bitnami/kubectl:${VELERO_KUBECTL_VERSION:-1.26.1-debian-11-r9}"
 
         # Airflow
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
