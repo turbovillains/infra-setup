@@ -194,7 +194,7 @@ import_images() {
         "syncthing/syncthing:${SYNCTHING_VERSION:-1.22.1}"
         "jellyfin/jellyfin:${JELLYFIN_VERSION:-10.8.7}"
         "gravitl/netmaker:${NETMAKER_VERSION:-v0.16.3}"
-        "gravitl/netmaker-ui:${NETMAKER_VERSION:-v0.16.3}"
+        "gravitl/netmaker-ui:${NETMAKER_UI_VERSION:-v0.16.3}"
         "kmb32123/youtube-dl-server:${YOUTUBE_DL_SERVER_VERSION:-2.0}"
         "puppet/puppetserver:${PUPPETSERVER_VERSION:-7.9.2}"
         "puppet/puppetdb:${PUPPETDB_VERSION:-7.10.0}"

@@ -810,7 +810,7 @@ archive-images3:
       - BASE:
           - gravitl/netmaker-ui
         VERSION:
-          - NETMAKER_VERSION
+          - NETMAKER_UI_VERSION
       - BASE:
           - kmb32123/youtube-dl-server
         VERSION:
@@ -3893,10 +3893,10 @@ netmaker-ui:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NETMAKER_VERSION
+        --build-arg NETMAKER_UI_VERSION
   variables:
     BASE: gravitl/netmaker-ui
-    VERSION: NETMAKER_VERSION
+    VERSION: NETMAKER_UI_VERSION
 
 youtube-dl-server:
   interruptible: true

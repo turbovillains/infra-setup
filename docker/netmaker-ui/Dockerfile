@@ -1,10 +1,10 @@
 ARG DOCKER_HUB
-ARG NETMAKER_VERSION
+ARG NETMAKER_UI_VERSION
 ARG INFRA_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/gravitl/netmaker-ui:${NETMAKER_VERSION}
+FROM ${DOCKER_HUB}/gravitl/netmaker-ui:${NETMAKER_UI_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
