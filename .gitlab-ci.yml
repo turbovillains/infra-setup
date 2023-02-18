@@ -159,6 +159,15 @@ archive-images1:
           - grafana/promtail
         VERSION:
           - PROMTAIL_VERSION
+      - BASE:
+          - nginxinc/nginx-unprivileged
+        VERSION:
+          - NGINX_VERSION
+          - LOKI_GATEWAY_NGINX_VERSION
+      - BASE:
+          - httpd
+        VERSION:
+          - HTTPD_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -1028,6 +1037,8 @@ archive-images4:
           - registry.k8s.io
         BASE:
           - sig-storage/csi-snapshotter
+          - sig-storage/snapshot-controller
+          - sig-storage/snapshot-validation-webhook
         VERSION:
           - CSI_SNAPSHOTTER_VERSION
       - BASE:
@@ -2040,6 +2051,42 @@ loki-canary:
   variables:
     BASE: grafana/loki-canary
     VERSION: LOKI_VERSION
+
+loki-gateway:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg LOKI_GATEWAY_NGINX_VERSION
+  variables:
+    BASE: nginxinc/nginx-unprivileged
+    VERSION: LOKI_GATEWAY_NGINX_VERSION
+
+nginx-unprivileged:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NGINX_VERSION
+  variables:
+    BASE: nginxinc/nginx-unprivileged
+    VERSION: NGINX_VERSION
+
+httpd:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg HTTPD_VERSION
+  variables:
+    BASE: httpd
+    VERSION: HTTPD_VERSION
 
 m3dbnode:
   interruptible: true
@@ -3609,6 +3656,30 @@ storage-csi-snapshotter:
         --build-arg CSI_SNAPSHOTTER_VERSION
   variables:
     BASE: sig-storage/csi-snapshotter
+    VERSION: CSI_SNAPSHOTTER_VERSION
+
+storage-snapshot-controller:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CSI_SNAPSHOTTER_VERSION
+  variables:
+    BASE: sig-storage/snapshot-controller
+    VERSION: CSI_SNAPSHOTTER_VERSION
+
+storage-snapshot-validation-webhook:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CSI_SNAPSHOTTER_VERSION
+  variables:
+    BASE: sig-storage/snapshot-validation-webhook
     VERSION: CSI_SNAPSHOTTER_VERSION
 
 storage-csi-provisioner:
