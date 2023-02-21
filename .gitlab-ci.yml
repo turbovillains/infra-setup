@@ -1210,6 +1210,7 @@ website:
   stage: prebuild
   script:
     - |
+      rm -rf ~/.npmrc ~/.yarnrc
       git clone --depth 1 --branch ${WEBSITE_VERSION} https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/noroutine-website.git
       cd noroutine-website
       pack build --clear-cache --publish ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
