@@ -137,8 +137,8 @@ variables:
   BITNAMI_MINIO_VERSION: "2023.2.22-debian-11-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_CLIENT_VERSION: "2023.2.16-debian-11-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: "11-debian-11-r6" # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
-  BITNAMI_METALLB_CONTROLLER_VERSION: "0.13.9-debian-11-r0" # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
-  BITNAMI_METALLB_SPEAKER_VERSION: "0.13.9-debian-11-r0" # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
+  BITNAMI_METALLB_CONTROLLER_VERSION: "0.13.7-debian-11-r42" # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
+  BITNAMI_METALLB_SPEAKER_VERSION: "0.13.7-debian-11-r42" # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
   BITNAMI_GRAFANA_VERSION: "9.3.6-debian-11-r0" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=9
   BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.6.4-debian-11-r2" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
   BITNAMI_CONSUL_VERSION: "1.15.0-debian-11-r0" # https://hub.docker.com/r/bitnami/consul/tags
@@ -164,7 +164,7 @@ variables:
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.4.4 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v1.0.8" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
+  RELOADER_VERSION: "v1.0.10" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.8.0
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.1" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
