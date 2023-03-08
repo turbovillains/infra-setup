@@ -18,6 +18,7 @@ variables:
   GOLANG_VERSION: "1.20.2-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.20.2-alpine3.17" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: "8.2.3-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
+  PYTHON_VERSION: 3.11.2 # https://hub.docker.com/_/python/tags?page=1&name=3.11
   ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.27.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   ACTIONS_RUNNER_VERSION: "2.302.1" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.302.1-ubuntu-22.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
@@ -70,7 +71,7 @@ variables:
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.1"  # https://github.com/braedon/prometheus-es-exporter/releases
   SSL_EXPORTER_VERSION: "2.4.2" # https://github.com/ribbybibby/ssl_exporter/releases
   CADVISOR_VERSION: "v0.47.1" # https://github.com/google/cadvisor/releases
-  KARMA_VERSION: "v0.112" # https://github.com/prymitive/karma/pkgs/container/karma
+  KARMA_VERSION: "v0.113" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.5-1-release
   ELASTICSEARCH_VERSION: "8.6.2" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
   LOGSTASH_VERSION: "8.6.2"
@@ -131,7 +132,7 @@ variables:
   BITNAMI_POSTGRES_EXPORTER_VERSION: 0.11.1-debian-11-r7 # https://hub.docker.com/r/bitnami/postgres-exporter/tags
   BITNAMI_MARIADB_VERSION: "10.11.2-debian-11-r0" # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated&name=10.9
   BITNAMI_MONGODB_VERSION: 6.0.4-debian-11-r1 # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=6.
-  BITNAMI_MEMCACHED_VERSION: 1.6.18-debian-11-r0 # https://hub.docker.com/r/bitnami/memcached/tags
+  BITNAMI_MEMCACHED_VERSION: 1.6.19-debian-11-r0 # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.6.4-debian-11-r6" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.23.3-debian-11-r31" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
   BITNAMI_MINIO_VERSION: "2023.2.27-debian-11-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
@@ -155,11 +156,11 @@ variables:
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.14.0-scratch-r0" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_OPENLDAP_VERSION: 2.6.4-debian-11-r3 # https://hub.docker.com/r/bitnami/openldap/tags?page=1&name=2.6
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.19.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
-  BITNAMI_TRIVY_VERSION: 0.38.1-debian-11-r0 # https://hub.docker.com/r/bitnami/trivy/tags
+  BITNAMI_TRIVY_VERSION: 0.38.2-debian-11-r0 # https://hub.docker.com/r/bitnami/trivy/tags
   BITNAMI_KUBECTL_VERSION: 1.26.2-debian-11-r0 # https://hub.docker.com/r/bitnami/kubectl/tags
-  TRIVY_VERSION: 0.38.1 # https://hub.docker.com/r/aquasec/trivy/tags
+  TRIVY_VERSION: 0.38.2 # https://hub.docker.com/r/aquasec/trivy/tags
   EXTERNAL_SECRETS_VERSION: v0.7.2 # https://github.com/external-secrets/external-secrets/releases
-  MINIO_CONSOLE_VERSION: "v0.24.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
+  MINIO_CONSOLE_VERSION: "v0.25.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.20.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.4.4 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
@@ -250,7 +251,7 @@ variables:
   NETBIRD_MANAGEMENT_VERSION: 0.14.2 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.1 # https://hub.docker.com/r/coturn/coturn/tags
   FIREZONE_VERSION: 0.7.20 # https://hub.docker.com/r/firezone/firezone/tags
-  JENKINS_VERSION: 2.393-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
+  JENKINS_VERSION: 2.394-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
   JENKINS_AGENT_VERSION: 3107.v665000b_51092-5-jdk17 # https://hub.docker.com/r/jenkins/agent/tags
   VELERO_VERSION: v1.10.1 # https://hub.docker.com/r/velero/velero/tags
   VELERO_PLUGIN_CSI_VERSION: v0.4.1 # https://hub.docker.com/r/velero/velero-plugin-for-csi/tags

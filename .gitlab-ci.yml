@@ -64,6 +64,14 @@ archive-images1:
           - BUILDPACK_DEPS_JAMMY_VERSION
           - BUILDPACK_DEPS_BIONIC_VERSION
       - BASE:
+          - python
+        VERSION:
+          - PYTHON_VERSION
+      - BASE:
+          - php
+        VERSION:
+          - PHP_VERSION
+      - BASE:
           - golang
         VERSION:
           - GOLANG_VERSION
@@ -1335,6 +1343,7 @@ busybox:
   variables:
     BASE: busybox
     VERSION: BUSYBOX_VERSION
+
 jdk-zulu:
   interruptible: true
   retry: 2
@@ -1346,6 +1355,42 @@ jdk-zulu:
   variables:
     BASE: azul/zulu-openjdk
     VERSION: JDK_ZULU_VERSION
+
+golang:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GOLANG_VERSION
+  variables:
+    BASE: golang
+    VERSION: GOLANG_VERSION
+
+python:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PYTHON_VERSION
+  variables:
+    BASE: python
+    VERSION: PYTHON_VERSION
+
+php:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PHP_VERSION
+  variables:
+    BASE: php
+    VERSION: PHP_VERSION
 
 heroku-20:
   interruptible: true
