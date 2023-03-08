@@ -887,6 +887,10 @@ archive-images4:
         VERSION:
           - FIREZONE_VERSION
       - BASE:
+          - netboxcommunity/netbox
+        VERSION:
+          - NETBOX_VERSION
+      - BASE:
           - jenkins/jenkins
         VERSION:
           - JENKINS_VERSION
@@ -4149,6 +4153,18 @@ jenkins-agent:
   variables:
     BASE: jenkins/agent
     VERSION: JENKINS_AGENT_VERSION
+
+netbox:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NETBOX_VERSION
+  variables:
+    BASE: netboxcommunity/netbox
+    VERSION: NETBOX_VERSION
 
 velero:
   interruptible: true

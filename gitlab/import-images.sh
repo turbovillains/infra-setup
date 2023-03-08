@@ -214,6 +214,7 @@ import_images() {
         "firezone/firezone:${FIREZONE_VERSION:-0.7.6}"
         "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
         "jenkins/agent:${JENKINS_AGENT_VERSION:-3085.vc4c6977c075a-5-jdk17}"
+        "netboxcommunity/netbox:${NETBOX_VERSION:-v3.4.5}"
 
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"
