@@ -176,3 +176,9 @@ helm:
     url: https://argoproj.github.io/argo-helm
     charts:
       - name: argo-cd
+      - name: argo-events
+      - name: argo-workflows
+  - name: dexidp
+    url: https://charts.dexidp.io
+    charts:
+      - name: dex

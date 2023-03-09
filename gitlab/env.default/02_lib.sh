@@ -30,7 +30,7 @@ archive_folder() {
 
     rsync -av -e "ssh -o StrictHostKeyChecking=no" \
         --rsync-path="sudo mkdir -p /ifs/attic/infra/${infra_bucket}/${target} && sudo rsync" \
-        ${path} \
+        ${path}/ \
         oleksii@tank.noroutine.me:/ifs/attic/infra/${infra_bucket}/${target}
 }
 

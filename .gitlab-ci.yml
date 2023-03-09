@@ -722,6 +722,20 @@ archive-images3:
           - argoproj/argocd-applicationset
         VERSION:
           - ARGOCD_APPLICATIONSET_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - argoproj/argo-events
+        VERSION:
+          - ARGO_EVENTS_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - argoproj/argocli
+          - argoproj/workflow-controller
+          - argoproj/argoexec
+        VERSION:
+          - ARGO_WORKFLOWS_VERSION
       - BASE:
           - redis
         VERSION:
@@ -3287,6 +3301,54 @@ argocd-applicationset:
   variables:
     BASE: argoproj/argocd-applicationset
     VERSION: ARGOCD_APPLICATIONSET_VERSION
+
+argo-events:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ARGO_EVENTS_VERSION \
+  variables:
+    BASE: argoproj/argo-events
+    VERSION: ARGO_EVENTS_VERSION
+
+argo-workflows-server:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ARGO_WORKFLOWS_VERSION \
+  variables:
+    BASE: argoproj/argocli
+    VERSION: ARGO_WORKFLOWS_VERSION
+
+argo-workflows-controller:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ARGO_WORKFLOWS_VERSION \
+  variables:
+    BASE: argoproj/workflow-controller
+    VERSION: ARGO_WORKFLOWS_VERSION
+
+argo-workflows-executor:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ARGO_WORKFLOWS_VERSION \
+  variables:
+    BASE: argoproj/workflow-controller
+    VERSION: ARGO_WORKFLOWS_VERSION
 
 boky-postfix:
   interruptible: true
