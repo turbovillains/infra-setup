@@ -80,7 +80,7 @@ variables:
   ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 6.0.4-focal # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: "6.1.1-apache" # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
-  PGADMIN_VERSION: "6.20" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  PGADMIN_VERSION: "6.21" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.32" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.11.2-jammy" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.5.6 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
@@ -247,8 +247,8 @@ variables:
   YUGABYTE_VERSION: 2.15.3.2-b1 # https://github.com/yugabyte/yugabyte-db/releases and https://hub.docker.com/r/yugabytedb/yugabyte/tags
   KEEWEB_VERSION: 1.18.7 # https://hub.docker.com/r/antelle/keeweb/tags
   NETBIRD_DASHBOARD_VERSION: v1.8.0 # https://hub.docker.com/r/wiretrustee/dashboard/tags
-  NETBIRD_SIGNAL_VERSION: 0.14.2 # https://hub.docker.com/r/netbirdio/netbird/tags
-  NETBIRD_MANAGEMENT_VERSION: 0.14.2 # https://hub.docker.com/r/netbirdio/management/tags
+  NETBIRD_SIGNAL_VERSION: 0.14.3 # https://hub.docker.com/r/netbirdio/netbird/tags
+  NETBIRD_MANAGEMENT_VERSION: 0.14.3 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.1 # https://hub.docker.com/r/coturn/coturn/tags
   FIREZONE_VERSION: 0.7.20 # https://hub.docker.com/r/firezone/firezone/tags
   JENKINS_VERSION: 2.394-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
