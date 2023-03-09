@@ -28,7 +28,7 @@ archive_folder() {
     local target=${2:-}
     local infra_bucket=${3:-${INFRA_VERSION}}
 
-    rsync -e "ssh -o StrictHostKeyChecking=no" \
+    rsync -av -e "ssh -o StrictHostKeyChecking=no" \
         --rsync-path="sudo mkdir -p /ifs/attic/infra/${infra_bucket}/${target} && sudo rsync" \
         ${path} \
         oleksii@tank.noroutine.me:/ifs/attic/infra/${infra_bucket}/${target}
