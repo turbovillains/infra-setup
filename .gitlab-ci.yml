@@ -4343,6 +4343,26 @@ infra-docs:
 
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
+infra-charts:
+  interruptible: true
+  retry: 2
+  stage: build2
+  script:
+    - |
+      ./import-charts.sh import-charts.yml docker/infra-charts/charts
+      for repo_dir in docker/infra-charts/charts/*; do
+        (
+          cd ${repo_dir}
+          helm repo index ./
+        )
+      done
+
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+
+      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
+          archive_folder docker/infra-charts/charts charts ${INFRA_VERSION}
+      fi
+
 run-hadolint:
   interruptible: true
   retry: 2

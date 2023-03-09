@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
 
 include_env() {
     local source_dir=${1:-}
@@ -47,6 +47,8 @@ include_env() {
 }
 
 _main() {
+    set -eu
+
     local source_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
     local deploy_environment=${DEPLOY_ENVIRONMENT:-default}
     include_env ${source_dir} ${deploy_environment}

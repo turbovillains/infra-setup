@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
 
 import_images() {
     declare -a images=(
@@ -420,6 +420,7 @@ import_images() {
 }
 
 _main() {
+    set -eu
     local source_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
     source ${source_dir}/env.sh
 

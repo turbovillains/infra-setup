@@ -16,11 +16,22 @@ archive_image() {
     ls -sh1 ${image_archive}
 
     rsync -e "ssh -o StrictHostKeyChecking=no" \
-        --rsync-path="sudo mkdir -p /ifs/attic/infra/${infra_bucket} && sudo rsync" \
+        --rsync-path="sudo mkdir -p /ifs/attic/infra/${infra_bucket}/images && sudo rsync" \
         ${image_archive} \
-        oleksii@tank.noroutine.me:/ifs/attic/infra/${infra_bucket}/${image_archive}
+        oleksii@tank.noroutine.me:/ifs/attic/infra/${infra_bucket}/images/${image_archive}
 
     rm ${image_archive}
+}
+
+archive_folder() {
+    local path=${1:-}
+    local target=${2:-}
+    local infra_bucket=${3:-${INFRA_VERSION}}
+
+    rsync -e "ssh -o StrictHostKeyChecking=no" \
+        --rsync-path="sudo mkdir -p /ifs/attic/infra/${infra_bucket}/${target} && sudo rsync" \
+        ${path} \
+        oleksii@tank.noroutine.me:/ifs/attic/infra/${infra_bucket}/${target}
 }
 
 build_image() {
