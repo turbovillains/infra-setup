@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
+# Usage ./import-charts.sh <descriptor> <target-folder>
 set -eu
 
 import_charts() {
     local descriptor=${1:-import-charts.yml}
-    local target=${2:-./charts}
+    local target=${2:-./docker/infra-charts/charts}
     for repo in $(yj -y < ${descriptor} | jq -r '.helm[] | .name'); do
         local url=$(yj -y < ${descriptor} \
             | jq -r --arg repo ${repo} '.helm[] | select(.name==$repo) | .url')
@@ -16,9 +16,19 @@ import_charts() {
                 local versions=$(jq -r .version <<< ${chart})
                 mkdir -p ${target}/${repo}
                 if [[ "${versions}" == "null" ]]; then
-                    # Find last two versions from repo
+                    # Find last ten non-beta non-alpha or non-dev versions from repo
                     versions=$(curl -sL ${url}/index.yaml \
-                        | yj | jq -r --arg name ${name} '.entries[$name] | sort_by(.created) | reverse | .[0:2] | .[].version')
+                        | yj \
+                        | jq -r --arg name ${name} \
+                        '[
+                            .entries[$name]
+                            | sort_by(.created)
+                            | reverse
+                            | .[]
+                            | select(.version | test("beta|alpha|dev|test") | not)
+                            | .version
+                        ] | .[0:10] | join(" ")'
+                    )
                 fi
                 for version in ${versions}; do
                     echo "Pulling ${name}@${version} from ${repo}"
@@ -29,6 +39,13 @@ import_charts() {
     done
 
     wait
+
+    for repo_dir in ${target}/*; do
+        (
+            cd ${repo_dir}
+            helm repo index ./
+        )
+    done
 }
 
 _main() {

@@ -1,0 +1,30 @@
+apiVersion: v1
+entries:
+  binderhub:
+  - apiVersion: v2
+    created: "2023-03-11T18:00:12.404163+01:00"
+    dependencies:
+    - name: jupyterhub
+      repository: https://jupyterhub.github.io/helm-chart
+      version: 2.0.0
+    description: BinderHub is like a JupyterHub that automatically builds environments
+      for the users based on repo2docker. A BinderHub is by default not configured
+      to authenticate users or provide storage for them.
+    digest: b246ab42c929d925f05417b18e7ab9be57cb474dd69d549dfe6286a7fea41b79
+    home: https://binderhub.readthedocs.io/en/latest/
+    icon: https://jupyterhub.github.io/helm-chart/images/hublogo.svg
+    keywords:
+    - jupyter
+    - jupyterhub
+    - binderhub
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - email: erik@sundellopensource.se
+      name: Erik Sundell
+    name: binderhub
+    sources:
+    - https://github.com/jupyterhub/binderhub
+    urls:
+    - binderhub-1.0.0-0.dev.git.2891.hcb98255.tgz
+    version: 1.0.0-0.dev.git.2891.hcb98255
+generated: "2023-03-11T18:00:12.397119+01:00"

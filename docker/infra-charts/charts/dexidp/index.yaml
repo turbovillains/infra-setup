@@ -1,0 +1,334 @@
+apiVersion: v1
+entries:
+  dex:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: "Common labels to all resources created by the chart"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.35.3
+    apiVersion: v2
+    appVersion: 2.35.3
+    created: "2023-03-11T18:00:11.545079+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 0fca995ccc9aee9a209312cd77d210be77dd12fc35d2fdd10103099f536cdffd
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.13.0.tgz
+    version: 0.13.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update Dex to 2.35.3"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.35.3
+    apiVersion: v2
+    appVersion: 2.35.3
+    created: "2023-03-11T18:00:11.543373+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 8b5815c6dfbc5c2d7297c9a2039f44f924421ed849ff24ad511799a0ae84eead
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.12.1.tgz
+    version: 0.12.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update Dex to 2.35.1"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.35.1
+    apiVersion: v2
+    appVersion: 2.35.1
+    created: "2023-03-11T18:00:11.542327+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: e41e009e59296ef9d23900fabc27e21fd0276da9b85149d6fe0b1384025c29b9
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.12.0.tgz
+    version: 0.12.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: "`networkPolicy` value to enable network policy and define optional custom Egress rules"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.34.0
+    apiVersion: v2
+    appVersion: 2.34.0
+    created: "2023-03-11T18:00:11.54126+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 19bdaae4d0be9e5ea6c51754501964d9b7a7b4d51c8e6cac97c82b656ec4f0df
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.11.1.tgz
+    version: 0.11.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update Dex to 2.34.0"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.34.0
+    apiVersion: v2
+    appVersion: 2.34.0
+    created: "2023-03-11T18:00:11.540076+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 612a4d097d5ef6912eb82458953b0adcf12575e1ac84b4186afff50141157e8e
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.11.0.tgz
+    version: 0.11.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update Dex to 2.33.0"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.33.0
+    apiVersion: v2
+    appVersion: 2.33.0
+    created: "2023-03-11T18:00:11.53815+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 981967f7aa0bbf11ed311534297488043bf6a986513399834fc279a8c9eb6e55
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.10.0.tgz
+    version: 0.10.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Update Dex to 2.32.0"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.32.0
+    apiVersion: v2
+    appVersion: 2.32.0
+    created: "2023-03-11T18:00:11.54959+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 3d281937ce45b6a82e659751d5bc4d37bfb77a0474738c410f6fb455378df8a5
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.9.0.tgz
+    version: 0.9.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Correct indentation for `ServiceMonitor` when using `serviceMonitor.labels`"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.31.1
+    apiVersion: v2
+    appVersion: 2.31.1
+    created: "2023-03-11T18:00:11.54844+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: baee6d52dd7caff65158fc92c226d8b07347e08a41a1269e107ae7623733a03b
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.8.3.tgz
+    version: 0.8.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "Restore `ClusterRoleBinding` when using cluster scoped permissions"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.31.1
+    apiVersion: v2
+    appVersion: 2.31.1
+    created: "2023-03-11T18:00:11.547269+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 0beb8cf4fc3dde6208e4c35c5015488f053bdbee9de54440d2e404ec91785e0b
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.8.2.tgz
+    version: 0.8.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "`ClusterRole` and `ClusterRoleBilding` to `Role` and `RoleBinding` to allow Deployments without ClusterPermissions"
+      artifacthub.io/images: |
+        - name: dex
+          image: ghcr.io/dexidp/dex:v2.31.1
+    apiVersion: v2
+    appVersion: 2.31.1
+    created: "2023-03-11T18:00:11.54611+01:00"
+    description: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable
+      connectors.
+    digest: 4a00ae9777c33d46f14356e476a56e467e5aac7c35db3976a1403e20e67fe224
+    home: https://dexidp.io/
+    icon: https://dexidp.io/favicon.png
+    keywords:
+    - oidc
+    - oauth
+    - identity-provider
+    - saml
+    kubeVersion: '>=1.14.0-0'
+    maintainers:
+    - email: mark.sagikazar@gmail.com
+      name: sagikazarmark
+      url: https://sagikazarmark.hu
+    name: dex
+    sources:
+    - https://github.com/dexidp/dex
+    - https://github.com/dexidp/helm-charts/tree/master/charts/dex
+    type: application
+    urls:
+    - dex-0.8.1.tgz
+    version: 0.8.1
+generated: "2023-03-11T18:00:11.536828+01:00"

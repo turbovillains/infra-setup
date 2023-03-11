@@ -24,6 +24,7 @@ helm:
       - name: postgresql
       - name: minio
       - name: grafana
+      - name: nats
   - name: elastic
     url: https://helm.elastic.co
     charts:
