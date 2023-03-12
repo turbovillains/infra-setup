@@ -186,6 +186,8 @@ import_images() {
         "memcached:${MEMCACHED_VERSION:-1.6.14-alpine3.15}"
         "connecteverything/nats-operator:${NATS_OPERATOR_VERSION:-0.7.4}"
         "nats:${NATS_VERSION:-2.7.4-alpine3.15}"
+        "natsio/prometheus-nats-exporter:${NATS_EXPORTER_VERSION:-0.10.1}"
+        "natsio/nats-server-config-reloader:${NATS_SERVER_CONFIG_RELOADER:-0.10.1}"
         "masipcat/wireguard-go:${WIREGUARD_VERSION:-0.0.20220316}"
         "eclipse-mosquitto:${MOSQUITTO_VERSION:-2.0.14-openssl}"
         "sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION:-0.8.0}"

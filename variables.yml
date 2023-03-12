@@ -203,6 +203,8 @@ variables:
   STRIMZI_KAFKA_VERSION: "3.3.1" # https://quay.io/repository/strimzi/kafka?tab=tags
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
   NATS_VERSION: "2.9.15-alpine3.17" # https://hub.docker.com/_/nats?tab=tags
+  NATS_EXPORTER_VERSION: 0.10.1 # https://hub.docker.com/r/natsio/prometheus-nats-exporter/tags
+  NATS_SERVER_CONFIG_RELOADER: 0.10.1 # https://hub.docker.com/r/natsio/nats-server-config-reloader/tags
   WIREGUARD_VERSION: "0.0.20220316" # https://hub.docker.com/r/masipcat/wireguard-go/tags
   MOSQUITTO_VERSION: "2.0.15-openssl" # https://hub.docker.com/_/eclipse-mosquitto?tab=tags
   MOSQUITTO_EXPORTER_VERSION: "0.8.0" # https://hub.docker.com/r/sapcc/mosquitto-exporter/tags

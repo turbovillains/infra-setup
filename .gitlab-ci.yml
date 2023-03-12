@@ -769,6 +769,14 @@ archive-images3:
         VERSION:
           - NATS_VERSION
       - BASE:
+          - natsio/prometheus-nats-exporter
+        VERSION:
+          - NATS_EXPORTER_VERSION
+      - BASE:
+          - natsio/nats-server-config-reloader
+        VERSION:
+          - NATS_SERVER_CONFIG_RELOADER
+      - BASE:
           - masipcat/wireguard-go
         VERSION:
           - WIREGUARD_VERSION
@@ -3541,6 +3549,30 @@ nats:
   variables:
     BASE: nats
     VERSION: NATS_VERSION
+
+nats-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NATS_EXPORTER_VERSION
+  variables:
+    BASE: natsio/prometheus-nats-exporter
+    VERSION: NATS_EXPORTER_VERSION
+
+nats-server-config-reloader:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NATS_SERVER_CONFIG_RELOADER
+  variables:
+    BASE: natsio/nats-server-config-reloader
+    VERSION: NATS_SERVER_CONFIG_RELOADER
 
 mosquitto:
   interruptible: true
