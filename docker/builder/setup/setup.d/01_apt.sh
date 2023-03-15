@@ -29,7 +29,8 @@ apt-get -yyq install zip zstd unzip upx \
   postgresql-client openssh-client \
   iproute2 iputils-ping dnsutils \
   software-properties-common \
-  supervisor
+  supervisor \
+  qemu binfmt-support qemu-user-static
 
 # Locale
 apt-get install -yyq locales

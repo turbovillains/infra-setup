@@ -11,6 +11,7 @@ archive_image() {
     local fq_image_name=${1:-}
     local infra_bucket=${2:-${INFRA_VERSION}}
 
+    docker pull ${fq_image_name}
     image_archive="$(echo ${fq_image_name} | tr '/:' '-').bz2"
     docker save ${fq_image_name} | bzip2 >${image_archive}
     ls -sh1 ${image_archive}

@@ -4,15 +4,16 @@ variables:
   DOCKER_NAMESPACE: infra
   CONNECT_LANDING_VERSION: "0.0.4"
   WEBSITE_VERSION: v0.2.9
+  TRIPWIRE_VERSION: master
   TRIPWIRE_KAFKA_MQTT_BRIDGE_VERSION: master
   DEBIAN_VERSION: "bullseye-20230227-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
-  UBUNTU_FOCAL_VERSION: "focal-20230301" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  UBUNTU_JAMMY_VERSION: "jammy-20230301" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=jammy
+  UBUNTU_FOCAL_VERSION: "focal-20230308" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  UBUNTU_JAMMY_VERSION: "jammy-20230308" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=jammy
   ALPINE_VERSION: "3.17.2" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.36.0" # https://hub.docker.com/_/busybox
-  BUILDPACK_DEPS_BIONIC_VERSION: bionic@sha256:bc6401af10396327da867114d7fa9e07ecc1fb018a0615961855e71cabd808f2 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=bionic
-  BUILDPACK_DEPS_FOCAL_VERSION: focal@sha256:595b2e444543064db2180320b4a521621630b3086acc881d4e1a7a5c6bfede96 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=focal
-  BUILDPACK_DEPS_JAMMY_VERSION: jammy@sha256:c6097317ab952d1afb8c1199bdf70c7d1bcacdc64a3319ca0228eef74c9532c1 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=jammy
+  BUILDPACK_DEPS_BIONIC_VERSION: bionic@sha256:b1da6a5f500b67fa28bbae2b90a8e9da4def283d1fb918b1d4db0c9cd86ec183 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=bionic
+  BUILDPACK_DEPS_FOCAL_VERSION: focal@sha256:a499d7cf331a38e4daf02148cf1f4b908048eab65947d337c4954bf635d37592 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=focal
+  BUILDPACK_DEPS_JAMMY_VERSION: jammy@sha256:c7af89fe20e8b370fa3d84c23f5dbb048e01cfd38fbc12c1e02232c1a84af80f # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=jammy
   DISTROLESS_VERSION: debian11 # https://gcr.io/distroless/
   JDK_ZULU_VERSION: 19.0.2-19.32.15 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   GOLANG_VERSION: "1.20.2-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
@@ -25,7 +26,7 @@ variables:
   KUBE_RBAC_PROXY_VERSION: v0.14.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine-v15.9.1" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_VERSION: "15.9.3-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=15.
-  GITLAB_AGENTK_VERSION: v15.9.0 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
+  GITLAB_AGENTK_VERSION: v15.10.0 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.9.0 # https://gitlab.com/gitlab-org/cluster-integration/cluster-applications/-/tags
   GITLAB_AUTO_BUILD_VERSION: v1.30.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
   GITLAB_AUTO_DEPLOY_VERSION: v2.47.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-deploy-image/-/tags
@@ -111,7 +112,7 @@ variables:
   JUPYTERHUB_PAUSE_VERSION: "3.9" # https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/main/jupyterhub/values.yaml#L540
   REPO2DOCKER_VERSION: "2022.10.0-92.g4cd300b" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
   JUPYTER_VERSION: hub-3.1.1 # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
-  RSHINY_VERSION: "4.2.2" # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
+  RSHINY_VERSION: "4.2.3" # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: "1.4.1717" # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: "1.10.1" # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-v1.33.2 # https://github.com/mikecao/umami/pkgs/container/umami
@@ -157,13 +158,13 @@ variables:
   BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION: "2.6.4-debian-11-r0"  # https://hub.docker.com/r/bitnami/kubeapps-pinniped-proxy/tags?page=1&ordering=last_updated
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.14.0-scratch-r0" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_OPENLDAP_VERSION: 2.6.4-debian-11-r3 # https://hub.docker.com/r/bitnami/openldap/tags?page=1&name=2.6
-  BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.19.5 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
+  BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: v0.20.1 # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   BITNAMI_TRIVY_VERSION: 0.38.3-debian-11-r0 # https://hub.docker.com/r/bitnami/trivy/tags
   BITNAMI_KUBECTL_VERSION: 1.26.2-debian-11-r0 # https://hub.docker.com/r/bitnami/kubectl/tags
   TRIVY_VERSION: 0.38.3 # https://hub.docker.com/r/aquasec/trivy/tags
   EXTERNAL_SECRETS_VERSION: v0.7.2 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.25.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
-  HASURA_GRAPHQL_VERSION: v2.20.1 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
+  HASURA_GRAPHQL_VERSION: v2.21.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.4.4 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
@@ -266,3 +267,4 @@ variables:
   VELERO_RESTIC_RESTORE_HELPER_VERSION: v1.9.6 # https://hub.docker.com/r/velero/velero-restic-restore-helper/tags
   VELERO_KUBECTL_VERSION: 1.26.1-debian-11-r9 # https://hub.docker.com/r/bitnami/kubectl/tags
   NETBOX_VERSION: v3.4.6 # https://hub.docker.com/r/netboxcommunity/netbox/tags
+  K8S_DASHBOARD_VERSION: v2.7.0 # https://hub.docker.com/r/kubernetesui/dashboard/tags

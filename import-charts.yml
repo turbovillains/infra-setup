@@ -6,6 +6,10 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - nane: kubernetes-dashboard
+    url: https://kubernetes.github.io/dashboard
+    charts:
+      - name: kubernetes-dashboard
   - name: m3
     url: https://m3-helm-charts.storage.googleapis.com/stable
   - name: bitnami
