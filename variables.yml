@@ -18,7 +18,7 @@ variables:
   JDK_ZULU_VERSION: 19.0.2-19.32.15 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   GOLANG_VERSION: "1.20.2-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.20.2-alpine3.17" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
-  PHP_VERSION: "8.2.3-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
+  PHP_VERSION: "8.2.4-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
   PYTHON_VERSION: 3.11.2 # https://hub.docker.com/_/python/tags?page=1&name=3.11
   ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.27.0" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   ACTIONS_RUNNER_VERSION: "2.303.0" # https://github.com/actions/runner/releases
@@ -31,7 +31,7 @@ variables:
   GITLAB_AUTO_BUILD_VERSION: v1.30.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
   GITLAB_AUTO_DEPLOY_VERSION: v2.47.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-deploy-image/-/tags
   DIND_VERSION: 23.0.1-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
-  ARGOCD_VERSION: v2.6.5 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  ARGOCD_VERSION: v2.6.6 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.44.3" # https://github.com/vmware-tanzu/carvel-ytt/releases
   YTT_HASH: c047bd7084beea2b4a585b13148d7c1084ee6c4aee8a68592fc8ed7d75ecebc5
   ARGOCD_VAULT_PLUGIN_VERSION: "1.13.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
@@ -162,7 +162,7 @@ variables:
   BITNAMI_TRIVY_VERSION: 0.38.3-debian-11-r0 # https://hub.docker.com/r/bitnami/trivy/tags
   BITNAMI_KUBECTL_VERSION: 1.26.2-debian-11-r0 # https://hub.docker.com/r/bitnami/kubectl/tags
   TRIVY_VERSION: 0.38.3 # https://hub.docker.com/r/aquasec/trivy/tags
-  EXTERNAL_SECRETS_VERSION: v0.7.2 # https://github.com/external-secrets/external-secrets/releases
+  EXTERNAL_SECRETS_VERSION: v0.8.0 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.25.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.21.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
