@@ -18,6 +18,7 @@ import_images() {
         "buildpack-deps:${BUILDPACK_DEPS_JAMMY_VERSION:-jammy@sha256:e93e88c6e97ffb6a315182db7d606dcb161714db7b2961a4efe727d39c165e1a}"
         "php:${PHP_VERSION:-8.1.0-apache}"
         "python:${PYTHON_VERSION:-3.11.2}"
+        "python:${PYTHON_SLIM_VERSION:-3.11.2-slim}"
         "golang:${GOLANG_VERSION:-1.17.3-bullseye}"
         "golang:${GOLANG_ALPINE_VERSION:-1.17.3-alpine3.14}"
         "traefik:${TRAEFIK_VERSION:-latest}"
@@ -223,6 +224,7 @@ import_images() {
         "jenkins/agent:${JENKINS_AGENT_VERSION:-3085.vc4c6977c075a-5-jdk17}"
         "netboxcommunity/netbox:${NETBOX_VERSION:-v3.4.5}"
         "kubernetesui/dashboard:${K8S_DASHBOARD_VERSION:-v2.7.0}"
+        "locustio/locust:${LOCUST_VERSION:-2.15.1}"
 
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"

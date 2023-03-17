@@ -67,6 +67,11 @@ archive-images1:
           - python
         VERSION:
           - PYTHON_VERSION
+          - PYTHON_SLIM_VERSION
+      - BASE:
+          - locustio/locust
+        VERSION:
+          - LOCUST_VERSION
       - BASE:
           - php
         VERSION:
@@ -1434,6 +1439,30 @@ python:
   variables:
     BASE: python
     VERSION: PYTHON_VERSION
+
+python-slim:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PYTHON_SLIM_VERSION
+  variables:
+    BASE: python
+    VERSION: PYTHON_SLIM_VERSION
+
+locust:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg LOCUST_VERSION
+  variables:
+    BASE: locustio/locust
+    VERSION: LOCUST_VERSION
 
 php:
   interruptible: true
