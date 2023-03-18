@@ -82,7 +82,7 @@ variables:
   LOGSTASH_VERSION: "8.6.2"
   KIBANA_VERSION: "8.6.2"
   CORTEX_VERSION: v1.14.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
-  ALERTA_VERSION: "8.7.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
+  ALERTA_VERSION: "9.0.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 6.0.4-focal # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: "6.1.1-apache" # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "6.21" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
@@ -164,7 +164,7 @@ variables:
   BITNAMI_TRIVY_VERSION: 0.38.3-debian-11-r0 # https://hub.docker.com/r/bitnami/trivy/tags
   BITNAMI_KUBECTL_VERSION: 1.26.2-debian-11-r0 # https://hub.docker.com/r/bitnami/kubectl/tags
   TRIVY_VERSION: 0.38.3 # https://hub.docker.com/r/aquasec/trivy/tags
-  EXTERNAL_SECRETS_VERSION: v0.8.0 # https://github.com/external-secrets/external-secrets/releases
+  EXTERNAL_SECRETS_VERSION: v0.8.1 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.25.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.21.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
@@ -219,8 +219,8 @@ variables:
   CERT_MANAGER_WEBHOOK_PDNS_VERSION: v2.3.0 # https://hub.docker.com/r/zachomedia/cert-manager-webhook-pdns/tags
   CERT_MANAGER_WEBHOOK_POWERDNS_VERSION: main # https://hub.docker.com/r/vstadtmueller/cert-manager-webhook-powerdns/tags
   VSPHERE_CPI_MANAGER_VERSION: v1.26.0
-  VSPHERE_CSI_DRIVER_VERSION: v2.7.1
-  VSPHERE_CSI_SYNCER_VERSION: v2.7.1
+  VSPHERE_CSI_DRIVER_VERSION: v3.0.0
+  VSPHERE_CSI_SYNCER_VERSION: v3.0.0
   LONGHORN_VERSION: v1.4.1 # https://hub.docker.com/r/longhornio/longhorn-manager/tags
   LONGHORN_INSTANCE_MANAGER_VERSION: v3_20221117
   LONGHORN_SHARE_MANAGER_VERSION: v1.4.1
@@ -237,7 +237,7 @@ variables:
   ECK_OPERATOR_VERSION: 2.6.1 # https://hub.docker.com/r/elastic/eck-operator/tags
   UPTIME_KUMA_VERSION: 1.20.2-alpine # https://hub.docker.com/r/louislam/uptime-kuma/tags
   AIRFLOW_VERSION: 2.5.2-python3.10 # https://hub.docker.com/r/apache/airflow/tags
-  GIT_SYNC_VERSION: v3.6.4 # k8s.gcr.io/git-sync/git-sync
+  GIT_SYNC_VERSION: v3.6.5 # k8s.gcr.io/git-sync/git-sync
   KEDA_VERSION: "2.10.0" # ghcr.io/kedacore/keda
   HADOLINT_VERSION: v2.12.1-beta # https://hub.docker.com/r/hadolint/hadolint/tags
   OUTLINE_VERSION: 0.68.1 # https://hub.docker.com/r/outlinewiki/outline/tags
