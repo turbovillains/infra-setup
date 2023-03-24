@@ -129,31 +129,36 @@ archive-images1:
         VERSION:
           - ETCD_VERSION
       - BASE:
-          - prom/prometheus
+          - prometheus/prometheus-operator
+          - prometheus/prometheus-config-reloader
+        VERSION:
+          - PROMETHEUS_OPERATOR_VERSION
+      - BASE:
+          - prometheus/prometheus
         VERSION:
           - PROMETHEUS_VERSION
       - BASE:
-          - prom/alertmanager
+          - prometheus/alertmanager
         VERSION:
           - ALERTMANAGER_VERSION
       - BASE:
-          - prom/node-exporter
+          - prometheus/node-exporter
         VERSION:
           - NODE_EXPORTER_VERSION
       - BASE:
-          - prom/consul-exporter
+          - prometheus/consul-exporter
         VERSION:
           - CONSUL_EXPORTER_VERSION
       - BASE:
-          - prom/blackbox-exporter
+          - prometheus/blackbox-exporter
         VERSION:
           - BLACKBOX_EXPORTER_VERSION
       - BASE:
-          - prom/snmp-exporter
+          - prometheus/snmp-exporter
         VERSION:
           - SNMP_EXPORTER_VERSION
       - BASE:
-          - prom/pushgateway
+          - prometheus/pushgateway
         VERSION:
           - PUSHGATEWAY_VERSION
       - BASE:
@@ -1964,8 +1969,32 @@ prometheus:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PROMETHEUS_VERSION
   variables:
-    BASE: prom/prometheus
+    BASE: prometheus/prometheus
     VERSION: PROMETHEUS_VERSION
+
+prometheus-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PROMETHEUS_OPERATOR_VERSION
+  variables:
+    BASE: prometheus-operator/prometheus-operator
+    VERSION: PROMETHEUS_OPERATOR_VERSION
+
+prometheus-config-reloader:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PROMETHEUS_OPERATOR_VERSION
+  variables:
+    BASE: prometheus-operator/prometheus-config-reloader
+    VERSION: PROMETHEUS_OPERATOR_VERSION
 
 karma:
   interruptible: true
@@ -1988,7 +2017,7 @@ alertmanager:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALERTMANAGER_VERSION
   variables:
-    BASE: prom/alertmanager
+    BASE: prometheus/alertmanager
     VERSION: ALERTMANAGER_VERSION
 
 pushgateway:
@@ -2000,7 +2029,7 @@ pushgateway:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PUSHGATEWAY_VERSION
   variables:
-    BASE: prom/pushgateway
+    BASE: prometheus/pushgateway
     VERSION: PUSHGATEWAY_VERSION
 
 blackbox-exporter:
@@ -2012,7 +2041,7 @@ blackbox-exporter:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BLACKBOX_EXPORTER_VERSION
   variables:
-    BASE: prom/blackbox-exporter
+    BASE: prometheus/blackbox-exporter
     VERSION: BLACKBOX_EXPORTER_VERSION
 
 snmp-exporter:
@@ -2024,7 +2053,7 @@ snmp-exporter:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SNMP_EXPORTER_VERSION
   variables:
-    BASE: prom/snmp-exporter
+    BASE: prometheus/snmp-exporter
     VERSION: SNMP_EXPORTER_VERSION
 
 ipmi-exporter:
@@ -2061,7 +2090,7 @@ node-exporter:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NODE_EXPORTER_VERSION
   variables:
-    BASE: prom/node-exporter
+    BASE: prometheus/node-exporter
     VERSION: NODE_EXPORTER_VERSION
 
 consul-exporter:
@@ -2073,7 +2102,7 @@ consul-exporter:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONSUL_EXPORTER_VERSION
   variables:
-    BASE: prom/consul-exporter
+    BASE: prometheus/consul-exporter
     VERSION: CONSUL_EXPORTER_VERSION
 
 prometheus-es-exporter:
