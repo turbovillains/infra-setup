@@ -129,8 +129,8 @@ archive-images1:
         VERSION:
           - ETCD_VERSION
       - BASE:
-          - prometheus/prometheus-operator
-          - prometheus/prometheus-config-reloader
+          - prometheus-operator/prometheus-operator
+          - prometheus-operator/prometheus-config-reloader
         VERSION:
           - PROMETHEUS_OPERATOR_VERSION
       - BASE:
