@@ -1097,6 +1097,10 @@ archive-images4:
           - kubernetesui/dashboard
         VERSION:
           - K8S_DASHBOARD_VERSION
+      - BASE:
+          - postgrest/postgrest
+        VERSION:
+          - POSTGREST_VERSION
 
 archive-special:
   extends: .archive-images
@@ -4527,6 +4531,18 @@ kubernetes-dashboard:
   variables:
     BASE: kubernetesui/dashboard
     VERSION: K8S_DASHBOARD_VERSION
+
+postgrest:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg POSTGREST_VERSION
+  variables:
+    BASE: postgrest/postgrest
+    VERSION: POSTGREST_VERSION
 
 infra-docs:
   interruptible: true

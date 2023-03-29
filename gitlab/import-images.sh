@@ -227,6 +227,7 @@ import_images() {
         "netboxcommunity/netbox:${NETBOX_VERSION:-v3.4.5}"
         "kubernetesui/dashboard:${K8S_DASHBOARD_VERSION:-v2.7.0}"
         "locustio/locust:${LOCUST_VERSION:-2.15.1}"
+        "postgrest/postgrest:${POSTGREST_VERSION:-v10.2.0.20230209}"
 
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"
