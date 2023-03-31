@@ -26,8 +26,8 @@ variables:
   ACTIONS_RUNNER_VERSION: "2.303.0" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.303.0-ubuntu-22.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   KUBE_RBAC_PROXY_VERSION: v0.14.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
-  GITLAB_RUNNER_VERSION: "alpine-v15.10.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_VERSION: "15.10.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=15.
+  GITLAB_RUNNER_VERSION: "alpine-v15.10.1" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_VERSION: "15.10.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=15.
   GITLAB_AGENTK_VERSION: v15.10.0 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.9.0 # https://gitlab.com/gitlab-org/cluster-integration/cluster-applications/-/tags
   GITLAB_AUTO_BUILD_VERSION: v1.31.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
@@ -48,7 +48,7 @@ variables:
   MKDOCS_VERSION: "9.1.4" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20230301 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  KEYCLOAK_VERSION: "21.0.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
+  KEYCLOAK_VERSION: "21.0.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "15.2-bullseye" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "9.7.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "26.0.0-apache" # https://hub.docker.com/_/nextcloud
@@ -79,13 +79,13 @@ variables:
   CADVISOR_VERSION: "v0.47.1" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.114" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.5-1-release
-  ELASTICSEARCH_VERSION: "8.6.2" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "8.6.2"
-  KIBANA_VERSION: "8.6.2"
+  ELASTICSEARCH_VERSION: "8.7.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "8.7.0"
+  KIBANA_VERSION: "8.7.0"
   CORTEX_VERSION: v1.14.1 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "9.0.0" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 6.0.5-jammy # https://hub.docker.com/_/mongo
-  WORDPRESS_VERSION: "6.1.1-apache" # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
+  WORDPRESS_VERSION: "6.2.0-apache" # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "6.21" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.32" # https://registry.hub.docker.com/_/mysql/
   MARIADB_VERSION: "10.11.2-jammy" # https://hub.docker.com/_/mariadb
@@ -93,7 +93,7 @@ variables:
   OAUTH2_PROXY_VERSION: v7.4.0-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   BUILDPACKSIO_LIFECYCLE_VERSION: "0.16.1" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
   HEROKU_PROCFILE_CNB_VERSION: "2.0.0" # https://github.com/heroku/procfile-cnb
-  BINDERHUB_VERSION: 0.2.0-n930.ha8b371d # https://hub.docker.com/repository/docker/noroutine/k8s-binderhub
+  BINDERHUB_VERSION: 1.0.0-0.dev.git.3041.h6af741b # https://hub.docker.com/repository/docker/noroutine/k8s-binderhub
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n768.h13978ab # https://hub.docker.com/r/jupyterhub/k8s-image-cleaner/tags
   PIHOLE_VERSION: "2023.03.1" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
   CLICKHOUSE_VERSION: "22.1.3.7-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
@@ -171,7 +171,7 @@ variables:
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.4.4 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v1.0.16" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
+  RELOADER_VERSION: "v1.0.18" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.8.0
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.1" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
@@ -196,8 +196,8 @@ variables:
   CSI_SNAPSHOTTER_VERSION: v6.2.1
   CSI_PROVISIONER_VERSION: v3.4.0
   TIGERA_OPERATOR_VERSION: "v1.29.2" # https://quay.io/repository/tigera/operator?tab=tags
-  CALICO_VERSION: "v3.25.0" # https://hub.docker.com/r/calico/node/tags
-  CONSUL_VERSION: "1.15.1"  # https://hub.docker.com/r/hashicorp/consul
+  CALICO_VERSION: "v3.25.1" # https://hub.docker.com/r/calico/node/tags
+  CONSUL_VERSION: "1.15.2"  # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "1.1.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.6 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
   VAULT_VERSION: "1.13.1" # https://hub.docker.com/r/hashicorp/vault
@@ -235,7 +235,7 @@ variables:
   CONFLUENTINC_CP_VERSION: "7.3.2"
   KAFDROP_VERSION: "3.31.0" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
   AKHQ_VERSION: "0.23.0" # https://hub.docker.com/r/tchiotludo/akhq/tags
-  ECK_OPERATOR_VERSION: 2.6.1 # https://hub.docker.com/r/elastic/eck-operator/tags
+  ECK_OPERATOR_VERSION: 2.7.0 # https://hub.docker.com/r/elastic/eck-operator/tags
   UPTIME_KUMA_VERSION: 1.21.1-alpine # https://hub.docker.com/r/louislam/uptime-kuma/tags
   AIRFLOW_VERSION: 2.5.2-python3.10 # https://hub.docker.com/r/apache/airflow/tags
   GIT_SYNC_VERSION: v3.6.5 # k8s.gcr.io/git-sync/git-sync
@@ -244,8 +244,8 @@ variables:
   OUTLINE_VERSION: 0.68.1 # https://hub.docker.com/r/outlinewiki/outline/tags
   SYNCTHING_VERSION: 1.23.2 # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: 10.8.9 # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
-  NETMAKER_VERSION: v0.18.4 # https://hub.docker.com/r/gravitl/netmaker/tags
-  NETMAKER_UI_VERSION: v0.18.4 # https://hub.docker.com/r/gravitl/netmaker/tags
+  NETMAKER_VERSION: v0.18.5 # https://hub.docker.com/r/gravitl/netmaker/tags
+  NETMAKER_UI_VERSION: v0.18.5 # https://hub.docker.com/r/gravitl/netmaker/tags
   YOUTUBE_DL_SERVER_VERSION: "2.0" # https://hub.docker.com/r/kmb32123/youtube-dl-server/tags
   PUPPETSERVER_VERSION: 7.9.2 # https://hub.docker.com/r/puppet/puppetserver/tags
   PUPPETDB_VERSION: 7.10.0 # https://hub.docker.com/r/puppet/puppetdb/tags
