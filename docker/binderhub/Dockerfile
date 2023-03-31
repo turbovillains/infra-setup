@@ -14,9 +14,9 @@ USER 0
 RUN update-ca-certificates
 
 # Certifi CA certs
-RUN cp /etc/ssl/certs/ca-certificates.crt /usr/local/lib/python3.8/site-packages/certifi/cacert.pem && \
-  cp /etc/ssl/certs/ca-certificates.crt /usr/local/lib/python3.8/site-packages/pip/_vendor/certifi/cacert.pem && \
-  cp /etc/ssl/certs/ca-certificates.crt /usr/local/lib/python3.8/site-packages/websocket/cacert.pem
+RUN cp /etc/ssl/certs/ca-certificates.crt /usr/local/lib/python3.11/site-packages/certifi/cacert.pem && \
+  cp /etc/ssl/certs/ca-certificates.crt /usr/local/lib/python3.11/site-packages/pip/_vendor/certifi/cacert.pem && \
+  cp /etc/ssl/certs/ca-certificates.crt /usr/local/lib/python3.11/site-packages/websocket/cacert.pem
 
 # Python SSL env vars
 ENV SSL_CERT_DIR=/etc/ssl/certs
