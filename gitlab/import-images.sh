@@ -109,6 +109,7 @@ import_images() {
         "nocodb/nocodb:${NOCODB_VERSION:-0.9.24}"
         "metabase/metabase:${METABASE_VERSION:-v0.43.0}"
         "docker:${DIND_VERSION:-20.10.7-dind}"
+        "quay.io/podman/stable:${PINK_VERSION:-v4.4.2}"
         "jupyter/base-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "jupyter/minimal-notebook:${JUPYTER_VERSION:-016833b15ceb}"
         "jupyter/r-notebook:${JUPYTER_VERSION:-016833b15ceb}"

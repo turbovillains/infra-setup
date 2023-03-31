@@ -433,6 +433,10 @@ archive-images1:
         VERSION:
           - DIND_VERSION
       - BASE:
+          - podman/stable
+        VERSION:
+          - PINK_VERSION
+      - BASE:
           - jupyter/all-spark-notebook
         VERSION:
           - JUPYTER_VERSION
@@ -2495,6 +2499,18 @@ dind:
   variables:
     BASE: docker
     VERSION: DIND_VERSION
+
+pink:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg PINK_VERSION
+  variables:
+    BASE: podman/stable
+    VERSION: PINK_VERSION
 
 jupyterhub-http-proxy:
   interruptible: true
