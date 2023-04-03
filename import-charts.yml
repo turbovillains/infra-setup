@@ -45,7 +45,7 @@ helm:
     charts:
       - name: jupyterhub
       - name: binderhub
-        version: 1.0.0-0.dev.git.3025.h276be90
+        version: 1.0.0-0.dev.git.3035.h32213a4
   - name: sonatype
     url: https://sonatype.github.io/helm3-charts
   - name: prometheus-community
@@ -176,7 +176,7 @@ helm:
     url: https://noroutine.github.io/binderhub-helm-chart/
     charts:
       - name: binderhub
-        version: 1.0.0-0.dev.git.2891.hcb98255
+        version: 1.0.0-0.dev.git.3041.h6af741b
   - name: argo
     url: https://argoproj.github.io/argo-helm
     charts:
