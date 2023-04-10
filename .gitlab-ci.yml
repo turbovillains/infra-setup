@@ -963,26 +963,11 @@ archive-images4:
           - quay.io
         BASE:
           - jetstack/cert-manager-controller
-        VERSION:
-          - CERT_MANAGER_CONTROLLER_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
           - jetstack/cert-manager-cainjector
-        VERSION:
-          - CERT_MANAGER_CAINJECTOR_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
           - jetstack/cert-manager-webhook
-        VERSION:
-          - CERT_MANAGER_WEBHOOK_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
           - jetstack/cert-manager-ctl
         VERSION:
-          - CERT_MANAGER_CTL_VERSION
+          - CERT_MANAGER_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -3717,10 +3702,10 @@ cert-manager-controller:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_CONTROLLER_VERSION
+        --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-controller
-    VERSION: CERT_MANAGER_CONTROLLER_VERSION
+    VERSION: CERT_MANAGER_VERSION
 
 cert-manager-webhook:
   interruptible: true
@@ -3729,10 +3714,10 @@ cert-manager-webhook:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_WEBHOOK_VERSION
+        --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-webhook
-    VERSION: CERT_MANAGER_WEBHOOK_VERSION
+    VERSION: CERT_MANAGER_VERSION
 
 cert-manager-cainjector:
   interruptible: true
@@ -3741,10 +3726,10 @@ cert-manager-cainjector:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_CAINJECTOR_VERSION
+        --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-cainjector
-    VERSION: CERT_MANAGER_CAINJECTOR_VERSION
+    VERSION: CERT_MANAGER_VERSION
 
 cert-manager-ctl:
   interruptible: true
@@ -3753,10 +3738,10 @@ cert-manager-ctl:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_CTL_VERSION
+        --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-ctl
-    VERSION: CERT_MANAGER_CTL_VERSION
+    VERSION: CERT_MANAGER_VERSION
 
 cert-manager-csi-driver:
   interruptible: true

@@ -251,10 +251,10 @@ import_images() {
         "ghcr.io/kedacore/keda-metrics-apiserver:${KEDA_VERSION:-2.8.0}"
 
         # cert-manager
-        "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_CONTROLLER_VERSION:-v1.8.0}"
-        "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_CAINJECTOR_VERSION:-v1.8.0}"
-        "quay.io/jetstack/cert-manager-webhook:${CERT_MANAGER_WEBHOOK_VERSION:-v1.8.0}"
-        "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_CTL_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-webhook:${CERT_MANAGER_VERSION:-v1.8.0}"
+        "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-csi-driver:${CERT_MANAGER_CSI_DRIVER_VERSION:-v0.3.0}"
         "zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION:-v2.0.1}"
         "vstadtmueller/cert-manager-webhook-powerdns:${CERT_MANAGER_WEBHOOK_POWERDNS_VERSION:-main}"
@@ -281,6 +281,12 @@ import_images() {
         "registry.k8s.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
         "registry.k8s.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
         "registry.k8s.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
+
+        # k8s 1.26.x
+        "registry.k8s.io/kube-apiserver:${K8S_126_VERSION:-v1.26.3}"
+        "registry.k8s.io/kube-proxy:${K8S_126_VERSION:-v1.26.3}"
+        "registry.k8s.io/kube-scheduler:${K8S_126_VERSION:-v1.26.3}"
+        "registry.k8s.io/kube-controller-manager:${K8S_126_VERSION:-v1.26.3}"
 
         # k8s 1.25.x
         "registry.k8s.io/kube-apiserver:${K8S_125_VERSION:-v1.25.5}"
@@ -320,11 +326,11 @@ import_images() {
         "longhornio/longhorn-instance-manager:${LONGHORN_INSTANCE_MANAGER_VERSION:-v1_20220530}"
         "longhornio/longhorn-share-manager:${LONGHORN_SHARE_MANAGER_VERSION:-v1_20220531}"
         "longhornio/backing-image-manager:${LONGHORN_BACKING_IMAGE_MANAGER_VERSION:-v2_20210820}"
-        "longhornio/csi-node-driver-registrar:v2.5.0"
-        "longhornio/csi-snapshotter:v6.0.1"
-        "longhornio/csi-resizer:v1.3.0"
-        "longhornio/csi-provisioner:v2.1.2"
-        "longhornio/csi-attacher:v3.4.0"
+        "longhornio/csi-node-driver-registrar:v2.7.0"
+        "longhornio/csi-snapshotter:v6.2.1"
+        "longhornio/csi-resizer:v1.7.0"
+        "longhornio/csi-provisioner:v3.4.1"
+        "longhornio/csi-attacher:v4.2.0"
 
         # vsphere csi/cpi
         "gcr.io/cloud-provider-vsphere/cpi/release/manager:${VSPHERE_CPI_MANAGER_VERSION:-v1.23.0}"
