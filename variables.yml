@@ -16,6 +16,7 @@ variables:
   BUILDPACK_DEPS_JAMMY_VERSION: jammy@sha256:c7af89fe20e8b370fa3d84c23f5dbb048e01cfd38fbc12c1e02232c1a84af80f # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=jammy
   DISTROLESS_VERSION: debian11 # https://gcr.io/distroless/
   JDK_ZULU_VERSION: 20.0.0-20.28.85 # https://hub.docker.com/r/azul/zulu-openjdk/tags
+  JDK_TEMURIN_VERSION: 20_36-jdk-jammy # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
   GOLANG_VERSION: "1.20.3-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.20.3-alpine3.17" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   PHP_VERSION: "8.2.4-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap

@@ -203,6 +203,7 @@ import_images() {
         "quay.io/iovisor/bpftrace:${BPFTRACE_VERSION:-v0.15.0}"
         "pryorda/vmware_exporter:${VMWARE_EXPORTER_VERSION:-v0.18.3}"
         "azul/zulu-openjdk:${JDK_ZULU_VERSION:-18.0.1-18.30.11}"
+        "eclipse-temurin:${JDK_TEMURIN_VERSION:-20_36-jdk-jammy}"
         "elastic/eck-operator:${ECK_OPERATOR_VERSION:-2.3.0}"
         "louislam/uptime-kuma:${UPTIME_KUMA_VERSION:-1.17.1-alpine}"
         "hadolint/hadolint:${HADOLINT_VERSION:-v2.10.0-beta}"
