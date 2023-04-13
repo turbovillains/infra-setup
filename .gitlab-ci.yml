@@ -186,6 +186,10 @@ archive-images1:
           - httpd
         VERSION:
           - HTTPD_VERSION
+      - BASE:
+          - tomcat
+        VERSION:
+          - TOMCAT_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -516,6 +520,10 @@ archive-images2:
           - bitnami/postgresql
         VERSION:
           - BITNAMI_POSTGRESQL10_VERSION
+      - BASE:
+          - bitnami/tomcat
+        VERSION:
+          - BITNAMI_TOMCAT_VERSION
       - BASE:
           - bitnami/keycloak
         VERSION:
@@ -2245,6 +2253,18 @@ httpd:
     BASE: httpd
     VERSION: HTTPD_VERSION
 
+tomcat:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg TOMCAT_VERSION
+  variables:
+    BASE: tomcat
+    VERSION: TOMCAT_VERSION
+
 m3dbnode:
   interruptible: true
   retry: 2
@@ -2970,6 +2990,18 @@ bitnami-postgresql15:
   variables:
     BASE: bitnami/postgresql
     VERSION: BITNAMI_POSTGRESQL15_VERSION
+
+bitnami-tomcat:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_TOMCAT_VERSION
+  variables:
+    BASE: bitnami/tomcat
+    VERSION: BITNAMI_TOMCAT_VERSION
 
 bitnami-mariadb:
   interruptible: true

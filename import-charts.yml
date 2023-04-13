@@ -29,6 +29,7 @@ helm:
       - name: minio
       - name: grafana
       - name: nats
+      - name: tomcat
   - name: elastic
     url: https://helm.elastic.co
     charts:
