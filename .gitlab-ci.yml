@@ -525,6 +525,10 @@ archive-images2:
         VERSION:
           - BITNAMI_TOMCAT_VERSION
       - BASE:
+          - bitnami/jmx-exporter
+        VERSION:
+          - BITNAMI_JMX_EXPORTER_VERSION
+      - BASE:
           - bitnami/keycloak
         VERSION:
           - BITNAMI_KEYCLOAK_VERSION
@@ -3018,6 +3022,18 @@ bitnami-tomcat:
   variables:
     BASE: bitnami/tomcat
     VERSION: BITNAMI_TOMCAT_VERSION
+
+bitnami-jmx-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_JMX_EXPORTER_VERSION
+  variables:
+    BASE: bitnami/jmx-exporter
+    VERSION: BITNAMI_JMX_EXPORTER_VERSION
 
 bitnami-mariadb:
   interruptible: true
