@@ -1128,11 +1128,11 @@ archive-special:
         "${DOCKER_HUB}/longhornio/longhorn-instance-manager:${LONGHORN_INSTANCE_MANAGER_VERSION:-v1_20220530}"
         "${DOCKER_HUB}/longhornio/longhorn-share-manager:${LONGHORN_SHARE_MANAGER_VERSION:-v1_20220531}"
         "${DOCKER_HUB}/longhornio/backing-image-manager:${LONGHORN_BACKING_IMAGE_MANAGER_VERSION:-v2_20210820}"
-        "${DOCKER_HUB}/longhornio/csi-node-driver-registrar:v2.5.0"
-        "${DOCKER_HUB}/longhornio/csi-snapshotter:v6.0.1"
-        "${DOCKER_HUB}/longhornio/csi-resizer:v1.3.0"
-        "${DOCKER_HUB}/longhornio/csi-provisioner:v2.1.2"
-        "${DOCKER_HUB}/longhornio/csi-attacher:v3.4.0"
+        "${DOCKER_HUB}/longhornio/csi-node-driver-registrar:v2.7.0"
+        "${DOCKER_HUB}/longhornio/csi-snapshotter:v6.2.1"
+        "${DOCKER_HUB}/longhornio/csi-resizer:v1.7.0"
+        "${DOCKER_HUB}/longhornio/csi-provisioner:v3.4.1"
+        "${DOCKER_HUB}/longhornio/csi-attacher:v4.2.0"
       )
 
       for image in "${special_images[@]}"; do
