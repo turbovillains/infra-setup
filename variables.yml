@@ -19,7 +19,7 @@ variables:
   JDK_TEMURIN_VERSION: 20.0.1_9-jdk-jammy # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
   GOLANG_VERSION: "1.20.4-bullseye" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.20.4-alpine3.17" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
-  PHP_VERSION: "8.2.5-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
+  PHP_VERSION: "8.2.6-apache-bullseye" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
   PYTHON_VERSION: 3.11.3-bullseye # https://hub.docker.com/_/python/tags?page=1&name=3.11
   PYTHON_SLIM_VERSION: 3.11.3-slim-bullseye # https://hub.docker.com/_/python/tags?page=1&name=3.11
   LOCUST_VERSION: 2.15.1 # https://hub.docker.com/r/locustio/locust/tags
@@ -32,7 +32,7 @@ variables:
   GITLAB_AGENTK_VERSION: v16.0.1 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v1.9.0 # https://gitlab.com/gitlab-org/cluster-integration/cluster-applications/-/tags
   GITLAB_AUTO_BUILD_VERSION: v1.32.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
-  GITLAB_AUTO_DEPLOY_VERSION: v2.48.3 # https://gitlab.com/gitlab-org/cluster-integration/auto-deploy-image/-/tags
+  GITLAB_AUTO_DEPLOY_VERSION: v2.49.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-deploy-image/-/tags
   DIND_VERSION: 23.0.6-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   PINK_VERSION: v4.5.0 # https://quay.io/repository/podman/stable?tab=tags&tag=latest
   ARGOCD_VERSION: v2.7.1 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
@@ -51,7 +51,7 @@ variables:
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20230301 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "21.1.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
-  POSTGRES_VERSION: "15.2-bullseye" # https://hub.docker.com/_/postgres
+  POSTGRES_VERSION: "15.3-bullseye" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "9.8.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "26.0.1-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: "v1.1.4" # https://github.com/librespeed/speedtest-go/releases
@@ -91,7 +91,7 @@ variables:
   WORDPRESS_VERSION: "6.2.0-apache" # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "7.1" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.0.33" # https://registry.hub.docker.com/_/mysql/
-  MARIADB_VERSION: "10.11.2-jammy" # https://hub.docker.com/_/mariadb
+  MARIADB_VERSION: "10.11.3-jammy" # https://hub.docker.com/_/mariadb
   HTTPBIN_VERSION: v2.8.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.4.0-amd64 # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   BUILDPACKSIO_LIFECYCLE_VERSION: "0.16.3" # https://hub.docker.com/r/buildpacksio/lifecycle/tags?page=1&ordering=last_updated&name=0.
@@ -225,9 +225,9 @@ variables:
   VSPHERE_CPI_MANAGER_VERSION: v1.26.1
   VSPHERE_CSI_DRIVER_VERSION: v3.0.1
   VSPHERE_CSI_SYNCER_VERSION: v3.0.1
-  LONGHORN_VERSION: v1.4.1 # https://hub.docker.com/r/longhornio/longhorn-manager/tags
+  LONGHORN_VERSION: v1.4.2 # https://hub.docker.com/r/longhornio/longhorn-manager/tags
   LONGHORN_INSTANCE_MANAGER_VERSION: v3_20221117
-  LONGHORN_SHARE_MANAGER_VERSION: v1.4.1
+  LONGHORN_SHARE_MANAGER_VERSION: v1.4.2
   LONGHORN_BACKING_IMAGE_MANAGER_VERSION: v3_20230320
   CADDY_VERSION: 2.6.4-alpine # https://hub.docker.com/_/caddy?tab=description
   SHADOWBOX_VERSION: server-v1.6.1 # https://quay.io/repository/outline/shadowbox?tab=tags&tag=latest
