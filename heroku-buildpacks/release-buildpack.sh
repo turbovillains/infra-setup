@@ -30,7 +30,7 @@ while IFS="" read -r -d "" buildpack_toml_path; do
 		fi
 
 		# We update docker repo to use our docker hub
-		jq_filter=".metadata.release.docker.repository |= sub(\"public.ecr.aws\"; \"${DOCKER_HUB}\")"
+		jq_filter=".metadata.release.docker.repository |= sub(\"docker.io\"; \"${DOCKER_HUB}\")"
 		updated_buildpack_toml=$(yj -t <"${buildpack_toml_path}" | jq "${jq_filter}" | yj -jt)
 		echo "${updated_buildpack_toml}" >"${buildpack_toml_path}"
 

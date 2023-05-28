@@ -2,10 +2,10 @@
 uri = "."
 
 [[dependencies]]
-uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-engine-buildpack:0.8.16"
+uri = "docker://cr.nrtn.dev/heroku/buildpack-nodejs-engine:0.8.23"
 
 [[dependencies]]
-uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-npm-buildpack:0.5.3"
+uri = "docker://cr.nrtn.dev/heroku/buildpack-nodejs-npm:0.5.4"
 
 [[dependencies]]
-uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-invoker-buildpack:0.3.11"
+uri = "docker://cr.nrtn.dev/heroku/buildpack-nodejs-function-invoker:0.3.12"
