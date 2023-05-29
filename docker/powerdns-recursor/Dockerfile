@@ -18,11 +18,14 @@ echo "Pin-Priority: 600"                ;\
 ) > /etc/apt/preferences.d/pdns
 
 RUN (                                                                       \
-echo "deb [arch=amd64] http://repo.powerdns.com/debian bullseye-rec-47 main" \
+echo "deb [arch=amd64] http://repo.powerdns.com/debian bullseye-rec-48 main" \
 ) > /etc/apt/sources.list.d/pdns.list
 
-COPY FD380FBB-pub.asc /tmp/FD380FBB-pub.asc
-RUN apt-key add /tmp/FD380FBB-pub.asc && rm /tmp/FD380FBB-pub.asc
+COPY CBC8B383-pub.asc /tmp/pdns-gpg-key-pub.asc
+RUN apt-key add /tmp/pdns-gpg-key-pub.asc && rm /tmp/pdns-gpg-key-pub.asc
+
+COPY FD380FBB-pub.asc /tmp/pdns-gpg-key-pub.asc
+RUN apt-key add /tmp/pdns-gpg-key-pub.asc && rm /tmp/pdns-gpg-key-pub.asc
 
 RUN apt-get update -qyy && \
     apt-get install -qyy pdns-recursor && \
