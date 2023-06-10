@@ -10,7 +10,7 @@ build-image = "cr.nrtn.dev/infra/pack-build:20"
 run-image = "cr.nrtn.dev/infra/pack:20"
 
 [lifecycle]
-version = "0.16.0"
+version = "0.16.4"
 
 [[buildpacks]]
   id = "heroku/java"
@@ -122,7 +122,7 @@ version = "0.16.0"
 
   [[order.group]]
     id = "noroutine/static"
-    version = "0.0.3"
+    version = "0.0.4"
     optional = true
 
 [[order]]

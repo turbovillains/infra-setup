@@ -92,6 +92,8 @@ helm:
       - name: sftpgo
   - name: aad-pod-identity
     url: https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
+  - name: azure-workload-identity
+    url: https://azure.github.io/azure-workload-identity/charts
   - name: longhorn
     url: https://charts.longhorn.io
     charts:
