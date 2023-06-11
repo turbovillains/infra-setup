@@ -233,6 +233,7 @@ import_images() {
         "kubernetesui/dashboard:${K8S_DASHBOARD_VERSION:-v2.7.0}"
         "locustio/locust:${LOCUST_VERSION:-2.15.1}"
         "postgrest/postgrest:${POSTGREST_VERSION:-v10.2.0.20230209}"
+        "mcr.microsoft.com/oss/azure/workload-identity/webhook:${AZURE_WORKLOAD_IDENTITY_VERSION:-v1.1.0}"
 
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"

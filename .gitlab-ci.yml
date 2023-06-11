@@ -1106,6 +1106,10 @@ archive-images4:
           - postgrest/postgrest
         VERSION:
           - POSTGREST_VERSION
+      - BASE:
+          - oss/azure/workload-identity/webhook
+        VERSION:
+          - AZURE_WORKLOAD_IDENTITY_VERSION
 
 archive-special:
   extends: .archive-images
@@ -4610,6 +4614,18 @@ postgrest:
   variables:
     BASE: postgrest/postgrest
     VERSION: POSTGREST_VERSION
+
+azure-workload-identity-webhook:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg AZURE_WORKLOAD_IDENTITY_VERSION
+  variables:
+    BASE: oss/azure/workload-identity/webhook
+    VERSION: AZURE_WORKLOAD_IDENTITY_VERSION
 
 infra-docs:
   interruptible: true
