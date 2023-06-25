@@ -10,39 +10,47 @@ build-image = "cr.nrtn.dev/infra/pack-build:22"
 run-image = "cr.nrtn.dev/infra/pack:22"
 
 [lifecycle]
-version = "0.16.0"
-
-[[buildpacks]]
-  id = "heroku/java"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-buildpack@sha256:82e235e8c4e5d6d9e0e1e3ba59d8114871565fb2b7df63bcef48d67ecacc09e6"
-
-[[buildpacks]]
-  id = "heroku/scala"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-scala-buildpack@sha256:02a26d364465a567782806effa2afbf4b992a1e15453bb8e62c5da27118dc7e6"
-
-[[buildpacks]]
-  id = "heroku/java-function"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-java-function-buildpack@sha256:a27030592f648d5ef32fe9bcbfe326d435698a748b8fa17b1d43a23fea27ec51"
-
-[[buildpacks]]
-  id = "heroku/ruby"
-  uri = "docker://public.ecr.aws/heroku-buildpacks/heroku-ruby-buildpack@sha256:3eeb3773cdbd29d4fb0d578f7781fe8c525de73593480e2740b7143262e5bef5"
-
-[[buildpacks]]
-  id = "heroku/procfile"
-  uri = "docker://cr.nrtn.dev/heroku/procfile-cnb:2.0.0"
+version = "0.16.4"
 
 [[buildpacks]]
   id = "heroku/python"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/python?version=0.3.1&name=Python"
+  uri = "docker://docker.io/heroku/buildpack-python@sha256:8d48c06778522af428da5511d00763ceea792ca0fc4700c8628e6072c5f43f3f"
+
+[[buildpacks]]
+  id = "heroku/nodejs-function"
+  uri = "docker://docker.io/heroku/buildpack-nodejs-function@sha256:13939fc704c515082bdf80fe3fabfb7ca007fedec9b319813e34de1ec40a48d1"
+
+[[buildpacks]]
+  id = "heroku/java"
+  uri = "docker://docker.io/heroku/buildpack-java@sha256:3c888077056f93d3ceb7c8a5b3dede3e2b06bfa169a8e3fc7383374b6773265a"
+
+[[buildpacks]]
+  id = "heroku/java-function"
+  uri = "docker://docker.io/heroku/buildpack-java-function@sha256:c5f7250e04db362ebbdbc850fbfc5353eae56b8ad1b1e5d47101960c7bc7cdac"
+
+[[buildpacks]]
+  id = "heroku/scala"
+  uri = "docker://docker.io/heroku/buildpack-scala@sha256:1fc6beaf291dcf1972c621afe3a1b3a80d1bffe8fccb6b0a68bc7f24bf99456a"
 
 [[buildpacks]]
   id = "heroku/go"
-  uri = "https://cnb-shim.herokuapp.com/v1/heroku/go?version=0.3.1&name=Go"
+  uri = "docker://docker.io/heroku/buildpack-go@sha256:d392aaca640858cde1776a907b75f477415f406e78a16634fe337c0638744bc9"
+
+[[buildpacks]]
+  id = "heroku/ruby"
+  uri = "docker://docker.io/heroku/buildpack-ruby@sha256:7f48a442c056cd19ea48462e05faa2837ac3a13732c47616d20f11f8c847a8c4"
+
+[[buildpacks]]
+  id = "heroku/php"
+  uri = "docker://docker.io/heroku/buildpack-php@sha256:19e44139b850b3b9040f21d436ec693f0dff82e931bbff500e9876f4febacd0e"
+
+[[buildpacks]]
+  id = "heroku/procfile"
+  uri = "docker://docker.io/heroku/procfile-cnb:2.0.0"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.3.5"
+  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.6.6"
 
 # [[buildpacks]]
 #   id = "heroku/nodejs-function"
@@ -65,7 +73,7 @@ version = "0.16.0"
 [[order]]
   [[order.group]]
     id = "heroku/python"
-    version = "0.3.1"
+    version = "0.4.0"
 
   [[order.group]]
     id = "heroku/procfile"

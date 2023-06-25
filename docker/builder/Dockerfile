@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 ARG DOCKER_HUB=docker.io
 ARG BUILDPACKS_VERSION
-ARG ACTIONS_RUNNER_VERSION=2.305.0
+ARG ACTIONS_RUNNER_VERSION
 ARG GIT_SERVER_HOST
 
 ARG HOST_DOCKER_GID
@@ -25,7 +25,7 @@ ENV DOCKER_HUB=${DOCKER_HUB} \
   RUNNER_ASSETS_DIR=/runnertmp \
   RUNNER_TOOL_CACHE=/opt/hostedtoolcache \
   RUNNER_USER=builder \
-  ImageOS=debian11
+  ImageOS=debian12
 
 ADD setup /setup
 RUN --mount=type=secret,id=ssh_private_key --mount=type=secret,id=infra_readonly_token /setup/setup.sh

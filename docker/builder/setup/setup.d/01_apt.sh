@@ -8,18 +8,18 @@
 export DEBIAN_FRONTEND=noninteractive
 
 cat << SOURCES > /etc/apt/sources.list
-deb http://deb.debian.org/debian bullseye main
-deb http://deb.debian.org/debian bullseye-updates main
-deb http://security.debian.org/debian-security bullseye-security main
+deb http://deb.debian.org/debian bookworm main
+deb http://deb.debian.org/debian bookworm-updates main
+deb http://security.debian.org/debian-security bookworm-security main
 SOURCES
 
 apt-get update -yyq
-apt-get -yyq install zip zstd unzip upx \
+apt-get -yyq install zip zstd unzip \
 	python3 python3-pip virtualenv \
-	socat netcat telnet curl wget ftp git \
+	socat netcat-openbsd telnet curl wget ftp git \
   protobuf-compiler \
   rsync \
-  build-essential procps file libunwind8 \
+  make build-essential procps file libunwind8 \
   apt-transport-https apt-utils \
   ca-certificates \
   parallel shellcheck \
@@ -30,7 +30,7 @@ apt-get -yyq install zip zstd unzip upx \
   iproute2 iputils-ping dnsutils \
   software-properties-common \
   supervisor \
-  qemu binfmt-support qemu-user-static
+  qemu-kvm binfmt-support qemu-user-static
 
 # Locale
 apt-get install -yyq locales
@@ -257,8 +257,11 @@ add-apt-repository \
 apt-get update -yyq
 apt-get install -yyq docker-ce docker-ce-cli containerd.io
 
+# Bookworm fix
+apt-get remove -yqq --purge systemd-timesyncd
+userdel systemd-timesync
+
 # Should match runner GID
 groupmod --gid ${HOST_DOCKER_GID} docker
-
 
 apt-get install -yyq sudo

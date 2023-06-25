@@ -12,7 +12,7 @@ ADD dashboards /app/dashboards
 
 WORKDIR /app
 
-RUN python3 -V && python3 -m pip install noroutine-grit==${GRIT_VERSION}
+RUN python3 -V && python3 -m pip install --break-system-packages noroutine-grit==${GRIT_VERSION}
 RUN python3 -m grit generate --module dashboards --out 'out/{environment}' --var 'environment=*'
 
 FROM scratch
