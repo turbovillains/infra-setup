@@ -613,14 +613,6 @@ archive-images2:
         VERSION:
           - BITNAMI_KUBEAPPS_ASSET_SYNCER
       - BASE:
-          - bitnami/kubeapps-kubeops
-        VERSION:
-          - BITNAMI_KUBEAPPS_KUBEOPS_VERSION
-      - BASE:
-          - bitnami/kubeapps-assetsvc
-        VERSION:
-          - BITNAMI_KUBEAPPS_ASSETSVC_VERSION
-      - BASE:
           - bitnami/kubeapps-apis
         VERSION:
           - BITNAMI_KUBEAPPS_APIS_VERSION
@@ -3110,30 +3102,6 @@ bitnami-kubeapps-asset-syncer:
   variables:
     BASE: bitnami/kubeapps-asset-syncer
     VERSION: BITNAMI_KUBEAPPS_ASSET_SYNCER
-
-bitnami-kubeapps-kubeops:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_KUBEOPS_VERSION
-  variables:
-    BASE: bitnami/kubeapps-kubeops
-    VERSION: BITNAMI_KUBEAPPS_KUBEOPS_VERSION
-
-bitnami-kubeapps-assetsvc:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_ASSETSVC_VERSION
-  variables:
-    BASE: bitnami/kubeapps-assetsvc
-    VERSION: BITNAMI_KUBEAPPS_ASSETSVC_VERSION
 
 bitnami-kubeapps-apis:
   interruptible: true

@@ -159,8 +159,6 @@ import_images() {
         "bitnami/kubeapps-dashboard:${BITNAMI_KUBEAPPS_DASHBOARD_VERSION:-2.3.3-scratch-r2}"
         "bitnami/kubeapps-apprepository-controller:${BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION:-2.3.3-scratch-r0}"
         "bitnami/kubeapps-asset-syncer:${BITNAMI_KUBEAPPS_ASSET_SYNCER:-2.3.3-scratch-r0}"
-        "bitnami/kubeapps-kubeops:${BITNAMI_KUBEAPPS_KUBEOPS_VERSION:-2.3.3-scratch-r0}"
-        "bitnami/kubeapps-assetsvc:${BITNAMI_KUBEAPPS_ASSETSVC_VERSION:-2.3.3-scratch-r0}"
         "bitnami/kubeapps-apis:${BITNAMI_KUBEAPPS_APIS_VERSION:-2.4.3-debian-10-r42}"
         "bitnami/kubeapps-pinniped-proxy:${BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION:-2.3.3-debian-10-r2}"
         "bitnami/kube-rbac-proxy:${BITNAMI_KUBE_RBAC_PROXY_VERSION:-0.12.0-scratch-r2}"
