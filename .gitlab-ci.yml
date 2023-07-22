@@ -1095,6 +1095,18 @@ archive-images4:
         VERSION:
           - K8S_DASHBOARD_VERSION
       - BASE:
+          - kubernetesui/dashboard-api
+        VERSION:
+          - K8S_DASHBOARD_API_VERSION
+      - BASE:
+          - kubernetesui/dashboard-web
+        VERSION:
+          - K8S_DASHBOARD_WEB_VERSION
+      - BASE:
+          - kubernetesui/metrics-scraper
+        VERSION:
+          - K8S_DASHBOARD_METRICS_SCRAPER_VERSION
+      - BASE:
           - postgrest/postgrest
         VERSION:
           - POSTGREST_VERSION
@@ -1672,7 +1684,7 @@ heroku-buildpacks:
       # Available buildpacks
       find . -name buildpack.toml
       # Release upstream buildpacks
-      for buildpack_id in heroku/nodejs-npm heroku/nodejs-yarn heroku/nodejs-engine heroku/nodejs-function-invoker; do
+      for buildpack_id in heroku/nodejs-npm heroku/nodejs-corepack heroku/nodejs-pnpm-install heroku/nodejs-yarn heroku/nodejs-engine heroku/nodejs-function-invoker; do
         REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh
       done
     - |
@@ -4572,6 +4584,42 @@ kubernetes-dashboard:
   variables:
     BASE: kubernetesui/dashboard
     VERSION: K8S_DASHBOARD_VERSION
+
+kubernetes-dashboard-api:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg K8S_DASHBOARD_API_VERSION
+  variables:
+    BASE: kubernetesui/dashboard-api
+    VERSION: K8S_DASHBOARD_API_VERSION
+
+kubernetes-dashboard-web:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg K8S_DASHBOARD_WEB_VERSION
+  variables:
+    BASE: kubernetesui/dashboard
+    VERSION: K8S_DASHBOARD_WEB_VERSION
+
+kubernetes-dashboard-metrics-scraper:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg K8S_DASHBOARD_METRICS_SCRAPER_VERSION
+  variables:
+    BASE: kubernetesui/metrics-scraper
+    VERSION: K8S_DASHBOARD_METRICS_SCRAPER_VERSION
 
 postgrest:
   interruptible: true

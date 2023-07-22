@@ -46,11 +46,11 @@ version = "0.16.4"
 
 [[buildpacks]]
   id = "heroku/nodejs"
-  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:0.6.6"
+  uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:1.1.2"
 
 # [[buildpacks]]
 #   id = "heroku/nodejs-function"
-#   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:0.10.6"
+#   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:1.1.2"
 
 [[buildpacks]]
   id = "noroutine/static"
@@ -109,7 +109,7 @@ version = "0.16.4"
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.6.6"
+    version = "1.1.2"
 
   [[order.group]]
     id = "noroutine/static"
@@ -119,7 +119,7 @@ version = "0.16.4"
 [[order]]
   [[order.group]]
     id = "heroku/nodejs"
-    version = "0.6.6"
+    version = "1.1.2"
 
 [[order]]
   [[order.group]]

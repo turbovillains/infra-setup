@@ -2,7 +2,7 @@ api = "0.9"
 
 [buildpack]
 id = "heroku/nodejs"
-version = "0.6.6"
+version = "1.1.2"
 name = "Node.js"
 homepage = "https://github.com/heroku/buildpacks-nodejs"
 
@@ -13,11 +13,15 @@ type = "MIT"
 
 [[order.group]]
 id = "heroku/nodejs-engine"
-version = "0.8.23"
+version = "1.1.2"
 
 [[order.group]]
-id = "heroku/nodejs-yarn"
-version = "0.4.4"
+id = "heroku/nodejs-corepack"
+version = "1.1.2"
+
+[[order.group]]
+id = "heroku/nodejs-pnpm-install"
+version = "1.1.2"
 
 [[order.group]]
 id = "heroku/procfile"
@@ -28,11 +32,31 @@ optional = true
 
 [[order.group]]
 id = "heroku/nodejs-engine"
-version = "0.8.23"
+version = "1.1.2"
+
+[[order.group]]
+id = "heroku/nodejs-corepack"
+version = "1.1.2"
+optional = true
+
+[[order.group]]
+id = "heroku/nodejs-yarn"
+version = "1.1.2"
+
+[[order.group]]
+id = "heroku/procfile"
+version = "2.0.0"
+optional = true
+
+[[order]]
+
+[[order.group]]
+id = "heroku/nodejs-engine"
+version = "1.1.2"
 
 [[order.group]]
 id = "heroku/nodejs-npm"
-version = "0.5.4"
+version = "1.1.2"
 
 [[order.group]]
 id = "heroku/procfile"
