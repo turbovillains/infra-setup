@@ -207,8 +207,8 @@ variables:
   VAULT_VERSION: "1.14.0" # https://hub.docker.com/r/hashicorp/vault
   VAULT_K8S_VERSION: "1.2.1" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
   VAULT_CSI_PROVIDER_VERSION: "1.4.0"  # https://hub.docker.com/r/hashicorp/vault-csi-provider/tags
-  STRIMZI_OPERATOR_VERSION: "0.35.1-1"  # https://quay.io/repository/strimzi/operator?tab=tags
-  STRIMZI_KAFKA_VERSION: "3.3.1" # https://quay.io/repository/strimzi/kafka?tab=tags
+  STRIMZI_OPERATOR_VERSION: "0.36.0-0"  # https://quay.io/repository/strimzi/operator?tab=tags
+  STRIMZI_KAFKA_VERSION: "3.4.1" # https://quay.io/repository/strimzi/kafka?tab=tags
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
   NATS_VERSION: "2.9.20-alpine3.18" # https://hub.docker.com/_/nats?tab=tags
   NATS_EXPORTER_VERSION: 0.12.0 # https://hub.docker.com/r/natsio/prometheus-nats-exporter/tags
