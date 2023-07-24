@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+layer_dir=$1
+
+echo "---> noroutine/static: ${@}"
+
+echo "---> configuration"
+generated_site_path=$(jq -r '.path // "."' static.json)
+
+echo "---> bust workspace except static site"
+(
+    cd /workspace
+    mv ${generated_site_path} __caddy_site
+    find . ! -name __caddy_site -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+    mv __caddy_site site
+)
+
+echo "---> bust other layers"
+rm -rf ${layer_dir}/../heroku_*
+
+echo "---> get caddy"
+caddy_version=2.6.4
+caddy_layer_dir=${layer_dir}/caddy
+mkdir -p ${caddy_layer_dir}/{bin,etc}
+caddy_release=https://github.com/caddyserver/caddy/releases/download/v${caddy_version}/caddy_${caddy_version}_linux_amd64.tar.gz
+curl -sLo- ${caddy_release} | tar -C ${caddy_layer_dir}/bin -zx caddy
+
+cat > "${caddy_layer_dir}.toml" << EOF
+[types]
+launch = true
+build = true
+cache = false
+
+[metadata]
+version = "${caddy_version}"
+url = "${caddy_release}"
+EOF
+
+echo "---> launch config"
+# Make caddy available
+export PATH=${caddy_layer_dir}/bin:$PATH
+
+cat > "$layer_dir/launch.toml" <<EOL
+[[processes]]
+type = "web"
+command = [ "caddy", "file-server", "--root", "site", "--browse", "--listen", ":8080" ]
+default = true
+EOL
+
+echo "---> done"
