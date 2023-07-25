@@ -327,6 +327,9 @@ import_images() {
         "calico/node-driver-registrar:${CALICO_VERSION:-v3.22.1}"
         "calico/csi:${CALICO_VERSION:-v3.22.1}"
 
+        # NFD
+        "registry.k8s.io/nfd/node-feature-discovery:${K8S_NFD_VERSION:-v0.13.3}"
+
         # longhorn
         "longhornio/longhorn-manager:${LONGHORN_VERSION:-v1.5.1}"
         "longhornio/longhorn-ui:${LONGHORN_VERSION:-v1.5.1}"

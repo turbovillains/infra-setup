@@ -194,3 +194,11 @@ helm:
     url: https://dandydeveloper.github.io/charts/
     charts:
       - name: redis-ha
+  - name: nvidia
+    url: https://helm.ngc.nvidia.com/nvidia
+    charts:
+      - name: gpu-operator
+  - name: nfd
+    url: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+    charts:
+      - name: node-feature-discovery

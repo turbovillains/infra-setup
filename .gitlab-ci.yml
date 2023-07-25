@@ -1027,6 +1027,12 @@ archive-images4:
         VERSION:
           - TIGERA_OPERATOR_VERSION
       - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - nfd/node-feature-discovery
+        VERSION:
+          - K8S_NFD_VERSION
+      - REGISTRY:
           - gcr.io
         BASE:
           - cloud-provider-vsphere/cpi/release/manager
@@ -4138,6 +4144,18 @@ tigera-operator:
   variables:
     BASE: tigera/operator
     VERSION: TIGERA_OPERATOR_VERSION
+
+node-feature-discovery:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg K8S_NFD_VERSION
+  variables:
+    BASE: nfd/node-feature-discovery
+    VERSION: K8S_NFD_VERSION
 
 eck-operator:
   interruptible: true
