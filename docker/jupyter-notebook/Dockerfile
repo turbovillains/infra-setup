@@ -16,6 +16,5 @@ RUN update-ca-certificates
 
 USER $NB_UID
 
-RUN pip install nbgitpuller
-RUN jupyter serverextension enable --sys-prefix nbgitpuller
-RUN pip install --upgrade jupyterlab jupyterlab-git
+RUN pip install --upgrade jupyterlab jupyterlab-git nbgitpuller && \
+  jupyter lab extension enable --sys-prefix nbgitpuller

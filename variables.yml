@@ -108,16 +108,16 @@ variables:
   MATOMO_VERSION: "4.15.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.109.6" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.46.7" # https://hub.docker.com/r/metabase/metabase/tags
-  JUPYTERHUB_VERSION: "2.0.0" # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
-  JUPYTERHUB_SECRET_SYNC_VERSION: "2.0.0" # https://hub.docker.com/r/jupyterhub/k8s-secret-sync/tags
-  JUPYTERHUB_NETWORK_TOOLS_VERSION: "2.0.0" # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
-  JUPYTERHUB_IMAGE_AWAITER_VERSION: "2.0.0" # https://hub.docker.com/r/jupyterhub/k8s-image-awaiter/tags?page=1&ordering=last_updated
-  JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: "2.0.0" # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
+  JUPYTERHUB_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
+  JUPYTERHUB_SECRET_SYNC_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-secret-sync/tags
+  JUPYTERHUB_NETWORK_TOOLS_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
+  JUPYTERHUB_IMAGE_AWAITER_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-image-awaiter/tags?page=1&ordering=last_updated
+  JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
   JUPYTERHUB_HTTP_PROXY_VERSION: "4.5.6" # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
   JUPYTERHUB_SCHEDULER_VERSION: v1.23.10 # https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/main/jupyterhub/values.yaml#L508
   JUPYTERHUB_PAUSE_VERSION: "3.9" # https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/main/jupyterhub/values.yaml#L540
   REPO2DOCKER_VERSION: "2022.10.0-92.g4cd300b" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
-  JUPYTER_VERSION: hub-4.0.1 # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
+  JUPYTER_VERSION: "2023-08-07" # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
   RSHINY_VERSION: "4.3.1" # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: "1.4.1717" # https://www.rstudio.com/products/rstudio/download-server/
   CAPROVER_VERSION: "1.10.1" # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
@@ -261,8 +261,8 @@ variables:
   YUGABYTE_VERSION: 2.16.6.1-b1 # https://github.com/yugabyte/yugabyte-db/releases and https://hub.docker.com/r/yugabytedb/yugabyte/tags
   KEEWEB_VERSION: 1.18.7 # https://hub.docker.com/r/antelle/keeweb/tags
   NETBIRD_DASHBOARD_VERSION: v1.15.11 # https://hub.docker.com/r/wiretrustee/dashboard/tags
-  NETBIRD_SIGNAL_VERSION: 0.22.3 # https://hub.docker.com/r/netbirdio/netbird/tags
-  NETBIRD_MANAGEMENT_VERSION: 0.22.3 # https://hub.docker.com/r/netbirdio/management/tags
+  NETBIRD_SIGNAL_VERSION: 0.22.4 # https://hub.docker.com/r/netbirdio/netbird/tags
+  NETBIRD_MANAGEMENT_VERSION: 0.22.4 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
   FIREZONE_VERSION: 0.7.32 # https://hub.docker.com/r/firezone/firezone/tags
   JENKINS_VERSION: 2.418-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags

@@ -60,6 +60,7 @@ build_image() {
         # --build-arg NO_PROXY \
 
     echo "Building ${component} as ${target}"
+    echo "docker build ${implicit_args} ${docker_build_args} -t ${DOCKER_HUB}/${target} docker/${component}"
 
     docker build ${implicit_args} ${docker_build_args} -t ${DOCKER_HUB}/${target} docker/${component}
     docker push ${DOCKER_HUB}/${target}
