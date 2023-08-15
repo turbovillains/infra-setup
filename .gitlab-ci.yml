@@ -950,6 +950,12 @@ archive-images4:
           - jenkins/agent
         VERSION:
           - JENKINS_AGENT_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - jenkins-kubernetes-operator/operator
+        VERSION:
+          - JENKINS_OPERATOR_VERSION
       - BASE:
           - apache/airflow
         VERSION:
@@ -4528,6 +4534,18 @@ jenkins-agent:
   variables:
     BASE: jenkins/agent
     VERSION: JENKINS_AGENT_VERSION
+
+jenkins-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg JENKINS_OPERATOR_VERSION
+  variables:
+    BASE: jenkins-kubernetes-operator/operator
+    VERSION: JENKINS_OPERATOR_VERSION
 
 netbox:
   interruptible: true

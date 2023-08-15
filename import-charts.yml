@@ -6,6 +6,14 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: jenkinsci
+    url: https://charts.jenkins.io
+    charts:
+      - name: jenkins
+  - name: jenkinsci-operator
+    url: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
+    charts:
+      - name: jenkins-operator
   - name: kubernetes-dashboard
     url: https://kubernetes.github.io/dashboard
     charts:
