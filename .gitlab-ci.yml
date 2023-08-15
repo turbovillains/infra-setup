@@ -2736,6 +2736,18 @@ jupyter-notebook:
         --build-arg JUPYTER_VERSION \
         --build-arg FLAVOUR
 
+# jupyter-all-spark-cuda-notebook:
+#   interruptible: true
+#   retry: 2
+#   stage: build
+#   script:
+#     - |
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#         --build-arg JUPYTER_VERSION \
+#         --build-arg FLAVOUR=all-spark
+#   variables:
+#     VERSION: JUPYTER_VERSION
+
 rshiny:
   interruptible: true
   retry: 2

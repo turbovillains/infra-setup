@@ -16,3 +16,7 @@ RUN apt-get update && \
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN /usr/sbin/update-ca-certificates
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility

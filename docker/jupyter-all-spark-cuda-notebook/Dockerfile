@@ -1,7 +1,7 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
 ARG JUPYTER_VERSION
-ARG FLAVOUR
+ARG FLAVOUR=all-spark
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
@@ -19,7 +19,7 @@ RUN update-ca-certificates
 
 # CUDA
 # https://gitlab.com/nvidia/container-images/cuda
-ENV CUDA_MIRROR=${CUDA_MIRROR}
+ENV CUDA_MIRROR ${CUDA_MIRROR}
 
 # Base part
 # https://gitlab.com/nvidia/container-images/cuda/-/blob/master/dist/12.2.0/ubuntu2204/base/Dockerfile?ref_type=heads
