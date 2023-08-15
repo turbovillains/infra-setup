@@ -99,7 +99,7 @@ import_images() {
         "jupyterhub/configurable-http-proxy:${JUPYTERHUB_HTTP_PROXY_VERSION:-4.4.0}"
         "registry.k8s.io/kube-scheduler:${JUPYTERHUB_SCHEDULER_VERSION:-v1.25.5}"
         "registry.k8s.io/pause:${JUPYTERHUB_PAUSE_VERSION:-3.7}"
-        "quay.io/noroutine/repo2docker:${REPO2DOCKER_VERSION:-2021.03.0-15.g73ab48a}"
+        "quay.io/jupyterhub/repo2docker:${REPO2DOCKER_VERSION:-2021.03.0-15.g73ab48a}"
         "pihole/pihole:${PIHOLE_VERSION:-v5.8.1}"
         "yandex/clickhouse-server:${CLICKHOUSE_VERSION:-21.5.6-alpine}"
         "spoonest/clickhouse-tabix-web-client:${TABIX_VERSION:-stable}"
@@ -290,6 +290,12 @@ import_images() {
         "registry.k8s.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
         "registry.k8s.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
         "registry.k8s.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
+
+        # k8s 1.27.x
+        "registry.k8s.io/kube-apiserver:${K8S_127_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-proxy:${K8S_127_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-scheduler:${K8S_127_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-controller-manager:${K8S_127_VERSION:-v1.23.5}"
 
         # k8s 1.26.x
         "registry.k8s.io/kube-apiserver:${K8S_126_VERSION:-v1.26.3}"

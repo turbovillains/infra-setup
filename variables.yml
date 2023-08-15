@@ -108,15 +108,15 @@ variables:
   MATOMO_VERSION: "4.15.1-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.109.7" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.46.7" # https://hub.docker.com/r/metabase/metabase/tags
-  JUPYTERHUB_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
-  JUPYTERHUB_SECRET_SYNC_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-secret-sync/tags
-  JUPYTERHUB_NETWORK_TOOLS_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
-  JUPYTERHUB_IMAGE_AWAITER_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-image-awaiter/tags?page=1&ordering=last_updated
-  JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: "3.0.0" # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
+  JUPYTERHUB_VERSION: "3.0.1" # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
+  JUPYTERHUB_SECRET_SYNC_VERSION: "3.0.1" # https://hub.docker.com/r/jupyterhub/k8s-secret-sync/tags
+  JUPYTERHUB_NETWORK_TOOLS_VERSION: "3.0.1" # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
+  JUPYTERHUB_IMAGE_AWAITER_VERSION: "3.0.1" # https://hub.docker.com/r/jupyterhub/k8s-image-awaiter/tags?page=1&ordering=last_updated
+  JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION: "3.0.1" # https://hub.docker.com/r/jupyterhub/k8s-singleuser-sample/tags?page=1&ordering=last_updated
   JUPYTERHUB_HTTP_PROXY_VERSION: "4.5.6" # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
   JUPYTERHUB_SCHEDULER_VERSION: v1.23.10 # https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/main/jupyterhub/values.yaml#L508
   JUPYTERHUB_PAUSE_VERSION: "3.9" # https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/main/jupyterhub/values.yaml#L540
-  REPO2DOCKER_VERSION: "2022.10.0-92.g4cd300b" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
+  REPO2DOCKER_VERSION: "2023.06.0-8.gd414e99" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
   JUPYTER_VERSION: "2023-08-14" # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
   RSHINY_VERSION: "4.3.1" # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: "1.4.1717" # https://www.rstudio.com/products/rstudio/download-server/
@@ -132,7 +132,7 @@ variables:
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.67.1-debian-11-r0" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_NODE_EXPORTER_VERSION: "1.6.1-debian-11-r0" # https://hub.docker.com/r/bitnami/node-exporter/tags
   BITNAMI_BLACKBOX_EXPORTER_VERSION: "0.24.0-debian-11-r3" # https://hub.docker.com/r/bitnami/blackbox-exporter/tags
-  BITNAMI_REDIS_VERSION: "7.0.12-debian-11-r0" # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
+  BITNAMI_REDIS_VERSION: "7.2.0-debian-11-r0" # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
   BITNAMI_REDIS_EXPORTER_VERSION: "1.52.0-debian-11-r0" # https://hub.docker.com/r/bitnami/redis-exporter/tags
   BITNAMI_POSTGRESQL10_VERSION: 10.23.0-debian-11-r3 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=10.
   BITNAMI_POSTGRESQL11_VERSION: 11.21.0-debian-11-r0 # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=11.
@@ -184,9 +184,10 @@ variables:
   VAULTWARDEN_VERSION: "1.29.1"
   BOKY_POSTFIX_VERSION: v3.6.1 # https://hub.docker.com/r/boky/postfix/tags
   MEMCACHED_VERSION: "1.6.21-alpine3.18" # https://hub.docker.com/_/memcached?tab=tags&page=1
-  CRYPTGEON_VERSION: "2.3.2" # https://hub.docker.com/r/cupcakearmy/cryptgeon/tags
+  CRYPTGEON_VERSION: "2.3.3" # https://hub.docker.com/r/cupcakearmy/cryptgeon/tags
   K8S_PAUSE_VERSION: "3.9"
-  K8S_VERSION: "v1.27.4" # https://github.com/kubernetes/kubernetes/releases
+  K8S_VERSION: "v1.28.0" # https://github.com/kubernetes/kubernetes/releases
+  K8S_127_VERSION: "v1.27.4"
   K8S_126_VERSION: "v1.26.7"
   K8S_125_VERSION: "v1.25.12"
   K8S_124_VERSION: "v1.24.16"
@@ -265,7 +266,7 @@ variables:
   NETBIRD_MANAGEMENT_VERSION: 0.22.4 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
   FIREZONE_VERSION: 0.7.32 # https://hub.docker.com/r/firezone/firezone/tags
-  JENKINS_VERSION: 2.418-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
+  JENKINS_VERSION: 2.419-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
   JENKINS_AGENT_VERSION: 3107.v665000b_51092-16-jdk17 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.0-beta2 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
   VELERO_VERSION: v1.11.1 # https://hub.docker.com/r/velero/velero/tags

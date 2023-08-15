@@ -385,7 +385,7 @@ archive-images1:
       - REGISTRY:
           - quay.io
         BASE:
-          - noroutine/repo2docker
+          - jupyterhub/repo2docker
         VERSION:
           - REPO2DOCKER_VERSION
       - BASE:
@@ -2602,7 +2602,7 @@ repo2docker:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg REPO2DOCKER_VERSION
   variables:
-    BASE: noroutine/repo2docker
+    BASE: jupyterhub/repo2docker
     VERSION: REPO2DOCKER_VERSION
 
 dind:
