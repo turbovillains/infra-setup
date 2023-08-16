@@ -6,14 +6,14 @@ variables:
   WEBSITE_VERSION: v0.2.10
   TRIPWIRE_VERSION: master
   TRIPWIRE_KAFKA_MQTT_BRIDGE_VERSION: master
-  DEBIAN_VERSION: "bookworm-20230725-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
+  DEBIAN_VERSION: "bookworm-20230814-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_FOCAL_VERSION: "focal-20230801" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  UBUNTU_JAMMY_VERSION: "jammy-20230624" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=jammy
+  UBUNTU_JAMMY_VERSION: "jammy-20230804" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=jammy
   ALPINE_VERSION: "3.18.3" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.36.1" # https://hub.docker.com/_/busybox
   BUILDPACK_DEPS_BIONIC_VERSION: bionic@sha256:816cb0d4a26fd8584b27d190bdd57ba7048be4fc20c259e60a985bec812887dc # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=bionic
   BUILDPACK_DEPS_FOCAL_VERSION: focal@sha256:acd56f331b33212692b155f660b552b4c88f58d5ff8872826cf7776d8254e736 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=focal
-  BUILDPACK_DEPS_JAMMY_VERSION: jammy@sha256:8f28bd087741849791b564aea220968c88f2cace4063336681cd238858e05a79 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=jammy
+  BUILDPACK_DEPS_JAMMY_VERSION: jammy@sha256:9af1133fb54c5bfacb532e8402e592546f4e88452f8acb2f5842f13c10ad3d36 # https://hub.docker.com/_/buildpack-deps/tags?page=1&name=jammy
   DISTROLESS_VERSION: debian11 # https://gcr.io/distroless/
   JDK_ZULU_VERSION: 20.0.2-20.32.11 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   JDK_TEMURIN_VERSION: 20.0.2_9-jdk-jammy # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
@@ -43,7 +43,7 @@ variables:
   ARGOCD_APPLICATIONSET_VERSION: v0.4.1 # https://quay.io/repository/argoproj/argocd-applicationset?tab=tags&tag=latest
   ARGO_EVENTS_VERSION: v1.8.0 # https://quay.io/repository/argoproj/argo-events?tag=latest&tab=tags
   ARGO_WORKFLOWS_VERSION: v3.4.10 # https://github.com/argoproj/argo-workflows/releases?q=v3&expanded=true
-  KANIKO_VERSION: v1.13.0 # https://console.cloud.google.com/gcr/images/kaniko-project/GLOBAL/executor
+  KANIKO_VERSION: v1.14.0 # https://console.cloud.google.com/gcr/images/kaniko-project/GLOBAL/executor
   NEXUS_VERSION: "3.59.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.3-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.10.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
@@ -74,7 +74,7 @@ variables:
   PROMTAIL_VERSION: "2.8.4"
   NGINX_VERSION: 1.25.1-alpine-slim # https://hub.docker.com/r/nginxinc/nginx-unprivileged/tags
   HTTPD_VERSION: 2.4.57-alpine # https://hub.docker.com/_/httpd/tags
-  TOMCAT_VERSION: 10.1.11-jdk17-temurin-jammy # https://hub.docker.com/_/tomcat
+  TOMCAT_VERSION: 10.1.12-jdk17-temurin-jammy # https://hub.docker.com/_/tomcat
   M3DBNODE_VERSION: v1.5.0 # https://quay.io/repository/m3db/m3dbnode?tag=latest&tab=tags
   M3COORDINATOR_VERSION: v1.5.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.1"  # https://github.com/braedon/prometheus-es-exporter/releases
@@ -87,7 +87,7 @@ variables:
   KIBANA_VERSION: "8.9.0"
   CORTEX_VERSION: v1.15.3 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "9.0.1" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
-  MONGO_VERSION: 6.0.8-jammy # https://hub.docker.com/_/mongo
+  MONGO_VERSION: 6.0.9-jammy # https://hub.docker.com/_/mongo
   WORDPRESS_VERSION: "6.3.0-apache" # https://hub.docker.com/_/wordpress?tab=description&page=1&ordering=last_updated
   PGADMIN_VERSION: "7.5" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   MYSQL_VERSION: "8.1.0" # https://registry.hub.docker.com/_/mysql/
@@ -261,7 +261,7 @@ variables:
   RESTIC_VERSION: 0.16.0 # https://hub.docker.com/r/restic/restic/tags
   YUGABYTE_VERSION: 2.16.6.1-b1 # https://github.com/yugabyte/yugabyte-db/releases and https://hub.docker.com/r/yugabytedb/yugabyte/tags
   KEEWEB_VERSION: 1.18.7 # https://hub.docker.com/r/antelle/keeweb/tags
-  NETBIRD_DASHBOARD_VERSION: v1.15.11 # https://hub.docker.com/r/wiretrustee/dashboard/tags
+  NETBIRD_DASHBOARD_VERSION: v1.15.13 # https://hub.docker.com/r/wiretrustee/dashboard/tags
   NETBIRD_SIGNAL_VERSION: 0.22.4 # https://hub.docker.com/r/netbirdio/netbird/tags
   NETBIRD_MANAGEMENT_VERSION: 0.22.4 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
@@ -277,7 +277,7 @@ variables:
   VELERO_PLUGIN_VSPHERE_VERSION: v1.5.1 # https://hub.docker.com/r/vsphereveleroplugin/velero-plugin-for-vsphere/tags
   VELERO_RESTIC_RESTORE_HELPER_VERSION: v1.9.7 # https://hub.docker.com/r/velero/velero-restic-restore-helper/tags
   VELERO_KUBECTL_VERSION: 1.27.4-debian-11-r0 # https://hub.docker.com/r/bitnami/kubectl/tags
-  NETBOX_VERSION: v3.5.7 # https://hub.docker.com/r/netboxcommunity/netbox/tags
+  NETBOX_VERSION: v3.5.8 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   K8S_DASHBOARD_VERSION: v2.7.0 # https://hub.docker.com/r/kubernetesui/dashboard/tags
   K8S_DASHBOARD_API_VERSION: v1.0.0 # https://hub.docker.com/r/kubernetesui/dashboard-api/tags
   K8S_DASHBOARD_WEB_VERSION: v1.0.0 # https://hub.docker.com/r/kubernetesui/dashboard-web/tags
