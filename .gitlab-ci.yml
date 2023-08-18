@@ -441,6 +441,13 @@ archive-images1:
         VERSION:
           - PINK_VERSION
       - BASE:
+          - jupyter/base-notebook
+          - jupyter/minimal-notebook
+          - jupyter/r-notebook
+          - jupyter/scipy-notebook
+          - jupyter/tensorflow-notebook
+          - jupyter/datascience-notebook
+          - jupyter/pyspark-notebook
           - jupyter/all-spark-notebook
         VERSION:
           - JUPYTER_VERSION
