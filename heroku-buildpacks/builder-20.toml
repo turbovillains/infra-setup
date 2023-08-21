@@ -30,7 +30,7 @@ version = "0.16.4"
 
 [[buildpacks]]
   id = "heroku/procfile"
-  uri = "docker://docker.io/heroku/procfile-cnb:2.0.0"
+  uri = "docker://docker.io/heroku/procfile-cnb:2.0.1"
 
 [[buildpacks]]
   id = "heroku/python"
@@ -63,7 +63,7 @@ version = "0.16.4"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.0"
+    version = "2.0.1"
     optional = true
 
 [[order]]
@@ -73,7 +73,7 @@ version = "0.16.4"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.0"
+    version = "2.0.1"
     optional = true
 
 [[order]]
@@ -83,7 +83,7 @@ version = "0.16.4"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.0"
+    version = "2.0.1"
     optional = true
 
 [[order]]
@@ -93,7 +93,7 @@ version = "0.16.4"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.0"
+    version = "2.0.1"
     optional = true
 
 [[order]]
@@ -103,7 +103,7 @@ version = "0.16.4"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.0"
+    version = "2.0.1"
     optional = true
 
 [[order]]
@@ -141,5 +141,5 @@ version = "0.16.4"
 
   [[order.group]]
     id = "heroku/procfile"
-    version = "2.0.0"
+    version = "2.0.1"
     optional = true
