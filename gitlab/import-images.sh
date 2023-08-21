@@ -211,6 +211,8 @@ import_images() {
         "outlinewiki/outline:${OUTLINE_VERSION:-0.66.2}"
         "syncthing/syncthing:${SYNCTHING_VERSION:-1.22.1}"
         "jellyfin/jellyfin:${JELLYFIN_VERSION:-10.8.7}"
+        "haveagitgat/tdarr:${TDARR_VERSION:-2.200.25}"
+        "haveagitgat/tdarr_node:${TDARR_VERSION:-2.200.25}"
         "gravitl/netmaker:${NETMAKER_VERSION:-v0.16.3}"
         "gravitl/netmaker-ui:${NETMAKER_UI_VERSION:-v0.16.3}"
         "kmb32123/youtube-dl-server:${YOUTUBE_DL_SERVER_VERSION:-2.0}"

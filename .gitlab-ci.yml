@@ -872,6 +872,11 @@ archive-images3:
         VERSION:
           - JELLYFIN_VERSION
       - BASE:
+          - haveagitgat/tdarr
+          - haveagitgat/tdarr_node
+        VERSION:
+          - TDARR_VERSION
+      - BASE:
           - gravitl/netmaker
         VERSION:
           - NETMAKER_VERSION
@@ -4349,6 +4354,30 @@ jellyfin:
   variables:
     BASE: jellyfin/jellyfin
     VERSION: JELLYFIN_VERSION
+
+tdarr:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg TDARR_VERSION
+  variables:
+    BASE: haveagitgat/tdarr
+    VERSION: TDARR_VERSION
+
+tdarr-node:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg TDARR_VERSION
+  variables:
+    BASE: haveagitgat/tdarr_node
+    VERSION: TDARR_VERSION
 
 netmaker:
   interruptible: true
