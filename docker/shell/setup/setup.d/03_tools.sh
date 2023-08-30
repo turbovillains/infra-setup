@@ -5,7 +5,7 @@ sudo curl -Lo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s htt
 
 # trivy
 # https://github.com/aquasecurity/trivy/releases
-curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.43.1
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.45.0
 
 # pack
 # https://github.com/buildpacks/pack/releases
