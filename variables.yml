@@ -47,7 +47,7 @@ variables:
   NEXUS_VERSION: "3.59.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.3-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.10.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "9.2.6" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "9.2.7" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20230301 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "22.0.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -201,7 +201,7 @@ variables:
   CSI_SNAPSHOTTER_VERSION: v6.2.2
   CSI_PROVISIONER_VERSION: v3.5.0
   K8S_NFD_VERSION: v0.13.4 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
-  TIGERA_OPERATOR_VERSION: "v1.30.5" # https://quay.io/repository/tigera/operator?tab=tags
+  TIGERA_OPERATOR_VERSION: "v1.31.1" # https://quay.io/repository/tigera/operator?tab=tags
   CALICO_VERSION: "v3.26.1" # https://hub.docker.com/r/calico/node/tags
   CONSUL_VERSION: "1.16.1" # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "1.2.1" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
