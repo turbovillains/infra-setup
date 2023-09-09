@@ -263,6 +263,10 @@ archive-images1:
         VERSION:
           - PGADMIN_VERSION
       - BASE:
+          - adminer
+        VERSION:
+          - ADMINER_VERSION
+      - BASE:
           - mysql
         VERSION:
           - MYSQL_VERSION
@@ -2508,6 +2512,18 @@ pgadmin:
   variables:
     BASE: dpage/pgadmin4
     VERSION: PGADMIN_VERSION
+
+adminer:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ADMINER_VERSION
+  variables:
+    BASE: adminer
+    VERSION: ADMINER_VERSION
 
 mysql:
   interruptible: true

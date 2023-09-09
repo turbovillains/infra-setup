@@ -20,6 +20,13 @@ helm:
       - name: kubernetes-dashboard
   - name: m3
     url: https://m3-helm-charts.storage.googleapis.com/stable
+  - name: cetic
+    url: https://cetic.github.io/helm-charts
+    charts:
+      - name: adminer
+      - name: pgadmin
+      - name: postgresql
+      - name: phpldapadmin
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
     charts:
