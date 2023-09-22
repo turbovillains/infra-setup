@@ -1142,6 +1142,11 @@ archive-images4:
           - oss/azure/workload-identity/webhook
         VERSION:
           - AZURE_WORKLOAD_IDENTITY_VERSION
+      - BASE:
+          - guacamole/guacamole
+          - guacamole/guacd
+        VERSION:
+          - GUACAMOLE_VERSION
 
 archive-special:
   extends: .archive-images
@@ -4814,6 +4819,30 @@ azure-workload-identity-webhook:
   variables:
     BASE: oss/azure/workload-identity/webhook
     VERSION: AZURE_WORKLOAD_IDENTITY_VERSION
+
+guacamole:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GUACAMOLE_VERSION
+  variables:
+    BASE: guacamole/guacamole
+    VERSION: GUACAMOLE_VERSION
+
+guacd:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg GUACAMOLE_VERSION
+  variables:
+    BASE: guacamole/guacd
+    VERSION: GUACAMOLE_VERSION
 
 infra-docs:
   interruptible: true
