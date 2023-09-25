@@ -510,26 +510,12 @@ archive-images2:
       - BASE:
           - bitnami/postgresql
         VERSION:
-          - BITNAMI_POSTGRESQL14_VERSION
-      - BASE:
-          - bitnami/postgresql
-        VERSION:
+          - BITNAMI_POSTGRESQL16_VERSION
           - BITNAMI_POSTGRESQL15_VERSION
-      - BASE:
-          - bitnami/postgresql
-        VERSION:
-          - BITNAMI_POSTGRESQL12_VERSION
-      - BASE:
-          - bitnami/postgresql
-        VERSION:
-          - BITNAMI_POSTGRESQL11_VERSION
-      - BASE:
-          - bitnami/postgresql
-        VERSION:
+          - BITNAMI_POSTGRESQL14_VERSION
           - BITNAMI_POSTGRESQL13_VERSION
-      - BASE:
-          - bitnami/postgresql
-        VERSION:
+          - BITNAMI_POSTGRESQL12_VERSION
+          - BITNAMI_POSTGRESQL11_VERSION
           - BITNAMI_POSTGRESQL10_VERSION
       - BASE:
           - bitnami/tomcat
@@ -3147,6 +3133,18 @@ bitnami-postgresql15:
   variables:
     BASE: bitnami/postgresql
     VERSION: BITNAMI_POSTGRESQL15_VERSION
+
+bitnami-postgresql16:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BITNAMI_POSTGRESQL16_VERSION
+  variables:
+    BASE: bitnami/postgresql
+    VERSION: BITNAMI_POSTGRESQL16_VERSION
 
 bitnami-tomcat:
   interruptible: true

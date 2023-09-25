@@ -139,6 +139,7 @@ import_images() {
         "bitnami/postgresql:${BITNAMI_POSTGRESQL13_VERSION:-13.3.0-debian-10-r26}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL14_VERSION:-14.1.0-debian-10-r81}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL15_VERSION:-15.0.0-debian-11-r0}"
+        "bitnami/postgresql:${BITNAMI_POSTGRESQL16_VERSION:-16.0.0-debian-11-r0}"
         "bitnami/tomcat:${BITNAMI_TOMCAT_VERSION:-10.1.7-debian-11-r8}"
         "bitnami/jmx-exporter:${BITNAMI_JMX_EXPORTER_VERSION:-0.18.0-debian-11-r10}"
         "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
