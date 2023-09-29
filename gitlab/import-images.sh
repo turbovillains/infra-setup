@@ -242,6 +242,7 @@ import_images() {
         "locustio/locust:${LOCUST_VERSION:-2.15.1}"
         "postgrest/postgrest:${POSTGREST_VERSION:-v10.2.0.20230209}"
         "mcr.microsoft.com/oss/azure/workload-identity/webhook:${AZURE_WORKLOAD_IDENTITY_VERSION:-v1.1.0}"
+        "mcr.microsoft.com/k8s/azureserviceoperator:${AZURE_SERVICE_OPERATOR_VERSION:-v2.2.0}"
         "guacamole/guacamole:${GUACAMOLE_VERSION:-1.5.3}"
         "guacamole/guacd:${GUACAMOLE_VERSION:-1.5.3}"
 

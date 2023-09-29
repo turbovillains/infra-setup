@@ -1129,6 +1129,10 @@ archive-images4:
         VERSION:
           - AZURE_WORKLOAD_IDENTITY_VERSION
       - BASE:
+          - k8s/azureserviceoperator
+        VERSION:
+          - AZURE_SERVICE_OPERATOR_VERSION
+      - BASE:
           - guacamole/guacamole
           - guacamole/guacd
         VERSION:
@@ -4817,6 +4821,18 @@ azure-workload-identity-webhook:
   variables:
     BASE: oss/azure/workload-identity/webhook
     VERSION: AZURE_WORKLOAD_IDENTITY_VERSION
+
+azure-service-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg AZURE_SERVICE_OPERATOR_VERSION
+  variables:
+    BASE: k8s/azureserviceoperator
+    VERSION: AZURE_SERVICE_OPERATOR_VERSION
 
 guacamole:
   interruptible: true
