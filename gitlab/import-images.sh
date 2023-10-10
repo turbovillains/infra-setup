@@ -369,8 +369,8 @@ import_images() {
         "registry.k8s.io/sig-storage/csi-resizer:${CSI_RESIZER_VERSION:-v1.4.0}"
         "registry.k8s.io/sig-storage/csi-provisioner:${CSI_PROVISIONER_VERSION:-v3.1.0}"
         "registry.k8s.io/sig-storage/csi-snapshotter:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
-        "registry.k8s.io/sig-storage/snapshot-controller:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
-        "registry.k8s.io/sig-storage/snapshot-validation-webhook:${CSI_SNAPSHOTTER_VERSION:-v5.0.1}"
+        "registry.k8s.io/sig-storage/snapshot-controller:${CSI_SNAPSHOT_CONTROLLER_VERSION:-v5.0.1}"
+        "registry.k8s.io/sig-storage/snapshot-validation-webhook:${CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION:-v5.0.1}"
 
         # confluent shit, https://docs.confluent.io/operator/current/co-custom-registry.html
         "confluentinc/confluent-init-container:${CONFLUENTINC_INIT_CONTAINER_VERSION:-2.3.1}"

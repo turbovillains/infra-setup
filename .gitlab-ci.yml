@@ -1092,10 +1092,20 @@ archive-images4:
           - registry.k8s.io
         BASE:
           - sig-storage/csi-snapshotter
-          - sig-storage/snapshot-controller
-          - sig-storage/snapshot-validation-webhook
         VERSION:
           - CSI_SNAPSHOTTER_VERSION
+      - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - sig-storage/snapshot-controller
+        VERSION:
+          - CSI_SNAPSHOT_CONTROLLER_VERSION
+      - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - sig-storage/snapshot-validation-webhook
+        VERSION:
+          - CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
       - BASE:
           - obsidiandynamics/kafdrop
         VERSION:
@@ -4085,10 +4095,10 @@ storage-snapshot-controller:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_SNAPSHOTTER_VERSION
+        --build-arg CSI_SNAPSHOT_CONTROLLER_VERSION
   variables:
     BASE: sig-storage/snapshot-controller
-    VERSION: CSI_SNAPSHOTTER_VERSION
+    VERSION: CSI_SNAPSHOT_CONTROLLER_VERSION
 
 storage-snapshot-validation-webhook:
   interruptible: true
@@ -4097,10 +4107,10 @@ storage-snapshot-validation-webhook:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_SNAPSHOTTER_VERSION
+        --build-arg CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
   variables:
     BASE: sig-storage/snapshot-validation-webhook
-    VERSION: CSI_SNAPSHOTTER_VERSION
+    VERSION: CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
 
 storage-csi-provisioner:
   interruptible: true
