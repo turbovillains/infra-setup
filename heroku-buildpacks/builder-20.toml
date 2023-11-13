@@ -10,7 +10,7 @@ build-image = "cr.nrtn.dev/infra/pack-build:20"
 run-image = "cr.nrtn.dev/infra/pack:20"
 
 [lifecycle]
-version = "0.18.1"
+version = "0.18.2"
 
 [[buildpacks]]
   id = "heroku/java"
