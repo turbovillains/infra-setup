@@ -298,6 +298,12 @@ import_images() {
         "registry.k8s.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
         "registry.k8s.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
 
+        # k8s 1.28.x
+        "registry.k8s.io/kube-apiserver:${K8S_128_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-proxy:${K8S_128_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-scheduler:${K8S_128_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-controller-manager:${K8S_128_VERSION:-v1.23.5}"
+
         # k8s 1.27.x
         "registry.k8s.io/kube-apiserver:${K8S_127_VERSION:-v1.23.5}"
         "registry.k8s.io/kube-proxy:${K8S_127_VERSION:-v1.23.5}"
