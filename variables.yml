@@ -205,7 +205,7 @@ variables:
   CSI_SNAPSHOT_CONTROLLER_VERSION: v6.3.2
   CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION: v6.3.2
   CSI_PROVISIONER_VERSION: v3.6.2
-  K8S_NFD_VERSION: v0.14.3 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
+  K8S_NFD_VERSION: v0.15.0 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
   TIGERA_OPERATOR_VERSION: "v1.32.3" # https://quay.io/repository/tigera/operator?tab=tags
   CALICO_VERSION: "v3.27.0" # https://hub.docker.com/r/calico/node/tags
   CONSUL_VERSION: "1.17.1" # https://hub.docker.com/r/hashicorp/consul
@@ -267,7 +267,7 @@ variables:
   RESTIC_VERSION: 0.16.2 # https://hub.docker.com/r/restic/restic/tags
   YUGABYTE_VERSION: 2.20.0.2-b1 # https://github.com/yugabyte/yugabyte-db/releases and https://hub.docker.com/r/yugabytedb/yugabyte/tags
   KEEWEB_VERSION: 1.18.7 # https://hub.docker.com/r/antelle/keeweb/tags
-  NETBIRD_DASHBOARD_VERSION: v1.17.12 # https://hub.docker.com/r/wiretrustee/dashboard/tags
+  NETBIRD_DASHBOARD_VERSION: v1.17.13 # https://hub.docker.com/r/wiretrustee/dashboard/tags
   NETBIRD_SIGNAL_VERSION: 0.25.2 # https://hub.docker.com/r/netbirdio/netbird/tags
   NETBIRD_MANAGEMENT_VERSION: 0.25.2 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
