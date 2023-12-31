@@ -22,7 +22,7 @@ variables:
   PHP_VERSION: "8.3.1-apache-bookworm" # https://hub.docker.com/_/php?tab=tags&page=1&name=8.1.4-ap
   PYTHON_VERSION: 3.12.1-bookworm # https://hub.docker.com/_/python/tags?page=1&name=3.11
   PYTHON_SLIM_VERSION: 3.12.1-slim-bookworm # https://hub.docker.com/_/python/tags?page=1&name=3.11
-  LOCUST_VERSION: 2.20.0 # https://hub.docker.com/r/locustio/locust/tags
+  LOCUST_VERSION: 2.20.1 # https://hub.docker.com/r/locustio/locust/tags
   ACTIONS_RUNNER_CONTROLLER_VERSION: "v0.27.6" # https://hub.docker.com/r/summerwind/actions-runner-controller/tags
   ACTIONS_RUNNER_VERSION: "2.311.0" # https://github.com/actions/runner/releases
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.311.0-ubuntu-22.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
@@ -34,7 +34,7 @@ variables:
   GITLAB_AUTO_BUILD_VERSION: v1.51.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
   GITLAB_AUTO_DEPLOY_VERSION: v2.76.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-deploy-image/-/tags
   DIND_VERSION: 24.0.7-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
-  PINK_VERSION: v4.8.1 # https://quay.io/repository/podman/stable?tab=tags&tag=latest
+  PINK_VERSION: v4.8.2 # https://quay.io/repository/podman/stable?tab=tags&tag=latest
   ARGOCD_VERSION: v2.9.3 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.46.3" # https://github.com/vmware-tanzu/carvel-ytt/releases
   YTT_HASH: 2b4ca5365c343bb1e903e8e845d9750b5d2776b3a99483912f27da6e95c480c0
@@ -149,7 +149,7 @@ variables:
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.9.4-debian-11-r3" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.25.3-debian-11-r1" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
   BITNAMI_MINIO_VERSION: "2023.12.23-debian-11-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
-  BITNAMI_MINIO_CLIENT_VERSION: "2023.12.23-debian-11-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: "2023.12.29-debian-11-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: "11-debian-11-r136" # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: "0.13.12-debian-11-r2" # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: "0.13.12-debian-11-r2" # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
@@ -176,7 +176,7 @@ variables:
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.5.6 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v1.0.58" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
+  RELOADER_VERSION: "v1.0.60" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.3" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
@@ -248,13 +248,13 @@ variables:
   KAFDROP_VERSION: "4.0.1" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
   AKHQ_VERSION: "0.24.0" # https://hub.docker.com/r/tchiotludo/akhq/tags
   ECK_OPERATOR_VERSION: 2.10.0 # https://hub.docker.com/r/elastic/eck-operator/tags
-  UPTIME_KUMA_VERSION: 1.23.10-alpine # https://hub.docker.com/r/louislam/uptime-kuma/tags
+  UPTIME_KUMA_VERSION: 1.23.11-alpine # https://hub.docker.com/r/louislam/uptime-kuma/tags
   AIRFLOW_VERSION: 2.8.0-python3.11 # https://hub.docker.com/r/apache/airflow/tags
   GIT_SYNC_VERSION: v4.1.0 # registry.k8s.io/git-sync/git-sync
   KEDA_VERSION: "2.12.1" # ghcr.io/kedacore/keda
   HADOLINT_VERSION: v2.12.1-beta # https://hub.docker.com/r/hadolint/hadolint/tags
   OUTLINE_VERSION: 0.74.0 # https://hub.docker.com/r/outlinewiki/outline/tags
-  SYNCTHING_VERSION: 1.27.1 # https://hub.docker.com/r/syncthing/syncthing/tags
+  SYNCTHING_VERSION: 1.27.2 # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: 10.8.13-1 # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
   TDARR_VERSION: 2.17.01 # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
   NETMAKER_VERSION: v0.21.2 # https://hub.docker.com/r/gravitl/netmaker/tags
@@ -272,7 +272,7 @@ variables:
   NETBIRD_MANAGEMENT_VERSION: 0.25.2 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
   FIREZONE_VERSION: 0.7.36 # https://hub.docker.com/r/firezone/firezone/tags
-  JENKINS_VERSION: 2.438-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
+  JENKINS_VERSION: 2.439-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
   JENKINS_AGENT_VERSION: 3198.v03a_401881f3e-1-jdk17 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.0 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
   VELERO_VERSION: v1.12.2 # https://hub.docker.com/r/velero/velero/tags
