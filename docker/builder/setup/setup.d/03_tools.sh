@@ -5,7 +5,7 @@ sudo curl -Lo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s htt
 
 # trivy
 # https://github.com/aquasecurity/trivy/releases
-curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.48.3
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin latest
 
 # pack
 # https://github.com/buildpacks/pack/releases
@@ -41,7 +41,7 @@ sudo curl -sLo /usr/local/bin/ytt https://github.com/vmware-tanzu/carvel-ytt/rel
 
 # argocd
 # https://github.com/argoproj/argo-cd/releases
-sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.9.4/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
+sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.0/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
 
 # argo workflows
 # https://github.com/argoproj/argo-workflows/releases
