@@ -3,6 +3,7 @@
 import_images() {
     declare -a images=(
         "debian:${DEBIAN_VERSION:-11.0-slim}"
+        "ubuntu:${UBUNTU_NOBLE_VERSION:-focal-20240212}"
         "ubuntu:${UBUNTU_JAMMY_VERSION:-jammy-20220315}"
         "ubuntu:${UBUNTU_FOCAL_VERSION:-focal-20210723}"
         "alpine:${ALPINE_VERSION:-3.14.0}"
