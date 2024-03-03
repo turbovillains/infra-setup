@@ -562,7 +562,7 @@ archive-images2:
         VERSION:
           - BITNAMI_MINIO_CLIENT_VERSION
       - BASE:
-          - bitnami/bitnami-shell
+          - bitnami/os-shell
         VERSION:
           - BITNAMI_SHELL_VERSION
       - BASE:

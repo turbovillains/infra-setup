@@ -4,7 +4,7 @@ ARG BITNAMI_SHELL_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/bitnami/bitnami-shell:${BITNAMI_SHELL_VERSION}
+FROM ${DOCKER_HUB}/bitnami/os-shell:${BITNAMI_SHELL_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 

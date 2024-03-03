@@ -37,8 +37,8 @@ variables:
   DIND_VERSION: 25.0.3-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   PINK_VERSION: v4.9.3 # https://quay.io/repository/podman/stable?tab=tags&tag=latest
   ARGOCD_VERSION: v2.10.2 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
-  YTT_VERSION: "0.47.0" # https://github.com/vmware-tanzu/carvel-ytt/releases
-  YTT_HASH: de2dd0a659fd12b2d80e00fa2a4a9316db67e0372e79c3bf48586ea53201180e
+  YTT_VERSION: "0.48.0" # https://github.com/vmware-tanzu/carvel-ytt/releases
+  YTT_HASH: 090dc914c87e5ba5861e37f885f12bac3b15559c183c30d4af2e63ccab03d5f9
   ARGOCD_VAULT_PLUGIN_VERSION: "1.17.0" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   ARGOCD_VAULT_PLUGIN_HASH: aca0af4dfdc5623d1776679def2d9e6123db26d9f8b2f428c4324042295278dd
   ARGOCD_APPLICATIONSET_VERSION: v0.4.1 # https://quay.io/repository/argoproj/argocd-applicationset?tab=tags&tag=latest
@@ -51,13 +51,13 @@ variables:
   MKDOCS_VERSION: "9.5.12" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   # LATEX_BASE: ubuntu:jammy-20230301 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
-  KEYCLOAK_VERSION: "23.0.7" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
+  KEYCLOAK_VERSION: "24.0.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "16.2-bookworm" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "9.14.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
   NEXTCLOUD_VERSION: "28.0.2-apache" # https://hub.docker.com/_/nextcloud
   SPEEDTEST_VERSION: "v1.1.4" # https://github.com/librespeed/speedtest-go/releases
   HAPROXY_VERSION: "3.0" # https://hub.docker.com/_/haproxy?tab=tags&page=1&ordering=last_updated
-  MINIO_VERSION: RELEASE.2024-02-26T09-33-48Z # https://github.com/minio/minio/releases
+  MINIO_VERSION: RELEASE.2024-03-03T17-50-39Z # https://github.com/minio/minio/releases
   ETCD_VERSION: v3.5.12 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
   PROMETHEUS_VERSION: v2.50.1 # https://prometheus.io/download/
   PROMETHEUS_OPERATOR_VERSION: v0.71.2 # https://quay.io/repository/prometheus-operator/prometheus-operator?tag=latest&tab=tags
@@ -80,7 +80,7 @@ variables:
   M3COORDINATOR_VERSION: v1.5.0
   PROMETHEUS_ES_EXPORTER_VERSION: "0.14.1"  # https://github.com/braedon/prometheus-es-exporter/releases
   SSL_EXPORTER_VERSION: "2.4.2" # https://github.com/ribbybibby/ssl_exporter/releases
-  CADVISOR_VERSION: "v0.47.2" # https://github.com/google/cadvisor/releases
+  CADVISOR_VERSION: "v0.49.1" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.118" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.5-1-release
   ELASTICSEARCH_VERSION: "8.12.2" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
@@ -125,11 +125,11 @@ variables:
   CAPROVER_VERSION: "1.11.1" # https://hub.docker.com/r/caprover/caprover/tags?page=1&ordering=last_updated
   UMAMI_VERSION: postgresql-v1.33.2 # https://github.com/mikecao/umami/pkgs/container/umami
   BITNAMI_GHOST_VERSION: "5.80.0-debian-12-r0" # https://hub.docker.com/r/bitnami/ghost/tags?page=1&ordering=last_updated
-  BITNAMI_TOMCAT_VERSION: "10.1.19-debian-12-r0" # https://hub.docker.com/r/bitnami/tomcat/tags?page=1&name=10
+  BITNAMI_TOMCAT_VERSION: "10.1.19-debian-12-r1" # https://hub.docker.com/r/bitnami/tomcat/tags?page=1&name=10
   BITNAMI_JMX_EXPORTER_VERSION: "0.20.0-debian-12-r11" # https://hub.docker.com/r/bitnami/jmx-exporter/tags
-  BITNAMI_KEYCLOAK_VERSION: "23.0.7-debian-12-r0" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=23
+  BITNAMI_KEYCLOAK_VERSION: "23.0.7-debian-12-r1" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=23
   BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION: "5.10.0-debian-12-r9" # https://hub.docker.com/r/bitnami/keycloak-config-cli/tags
-  BITNAMI_SPARK_VERSION: "3.5.0-debian-12-r18" # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
+  BITNAMI_SPARK_VERSION: "3.5.1-debian-12-r0" # https://hub.docker.com/r/bitnami/spark/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_VERSION: 2.50.1-debian-12-r0 # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
   BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.71.2-debian-12-r7" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_NODE_EXPORTER_VERSION: "1.7.0-debian-12-r12" # https://hub.docker.com/r/bitnami/node-exporter/tags
@@ -148,14 +148,14 @@ variables:
   BITNAMI_MONGODB_VERSION: "7.0.6-debian-12-r0" # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=7.
   BITNAMI_MEMCACHED_VERSION: "1.6.24-debian-12-r0" # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.9.6-debian-12-r8" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
-  BITNAMI_NGINX_VERSION: "1.25.4-debian-12-r2" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
-  BITNAMI_MINIO_VERSION: "2024.2.26-debian-12-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
-  BITNAMI_MINIO_CLIENT_VERSION: "2024.2.24-debian-12-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
-  BITNAMI_SHELL_VERSION: "11-debian-11-r135" # https://hub.docker.com/r/bitnami/bitnami-shell/tags?page=1&ordering=last_updated
+  BITNAMI_NGINX_VERSION: "1.25.4-debian-12-r3" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
+  BITNAMI_MINIO_VERSION: "2024.3.3-debian-12-r0" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
+  BITNAMI_MINIO_CLIENT_VERSION: "2024.3.3-debian-12-r0" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
+  BITNAMI_SHELL_VERSION: "12-debian-12-r16" # https://hub.docker.com/r/bitnami/os-shell/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_CONTROLLER_VERSION: "0.14.3-debian-12-r5" # https://hub.docker.com/r/bitnami/metallb-controller/tags?page=1&ordering=last_updated
   BITNAMI_METALLB_SPEAKER_VERSION: "0.14.3-debian-12-r5" # https://hub.docker.com/r/bitnami/metallb-speaker/tags?page=1&ordering=last_updated
-  BITNAMI_GRAFANA_VERSION: "10.3.3-debian-12-r3" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=10.
-  BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.9.1-debian-12-r7" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
+  BITNAMI_GRAFANA_VERSION: "10.3.3-debian-12-r4" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=10.
+  BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.10.0-debian-12-r0" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
   BITNAMI_CONSUL_VERSION: "1.17.3-debian-12-r4" # https://hub.docker.com/r/bitnami/consul/tags
   BITNAMI_NATS_VERSION: "2.10.11-debian-12-r4" # https://hub.docker.com/r/bitnami/nats/tags
   BITNAMI_KUBE_STATE_METRICS_VERSION: "2.10.1-debian-12-r15" # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
@@ -184,7 +184,7 @@ variables:
   DEX_VERSION: v2.38.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
   REDIS_VERSION: 7.2.4-bookworm # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   LISTMONK_VERSION: v3.0.0 # https://hub.docker.com/r/listmonk/listmonk/tags?page=1&ordering=last_updated
-  VAULTWARDEN_VERSION: "1.30.3"
+  VAULTWARDEN_VERSION: "1.30.5"
   BOKY_POSTFIX_VERSION: v4.1.0-alpine # https://hub.docker.com/r/boky/postfix/tags
   MEMCACHED_VERSION: "1.6.24-alpine3.19" # https://hub.docker.com/_/memcached?tab=tags&page=1
   CRYPTGEON_VERSION: "2.4.0" # https://hub.docker.com/r/cupcakearmy/cryptgeon/tags
@@ -255,7 +255,7 @@ variables:
   KEDA_VERSION: "2.13.1" # ghcr.io/kedacore/keda
   HADOLINT_VERSION: v2.12.1-beta # https://hub.docker.com/r/hadolint/hadolint/tags
   OUTLINE_VERSION: 0.75.2 # https://hub.docker.com/r/outlinewiki/outline/tags
-  SYNCTHING_VERSION: 1.27.3 # https://hub.docker.com/r/syncthing/syncthing/tags
+  SYNCTHING_VERSION: 1.27.4 # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: 10.8.13-1 # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
   TDARR_VERSION: 2.17.01 # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
   NETMAKER_VERSION: v0.23.0 # https://hub.docker.com/r/gravitl/netmaker/tags
