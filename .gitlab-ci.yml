@@ -1475,6 +1475,18 @@ ubuntu22:
     BASE: ubuntu
     VERSION: UBUNTU_JAMMY_VERSION
 
+ubuntu24:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg UBUNTU_NOBLE_VERSION
+  variables:
+    BASE: ubuntu
+    VERSION: UBUNTU_NOBLE_VERSION
+
 alpine:
   interruptible: true
   retry: 2
