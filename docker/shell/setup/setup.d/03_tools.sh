@@ -13,7 +13,7 @@ curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/inst
 
 # helm
 # https://github.com/helm/helm/releases
-(curl -sSL "https://get.helm.sh/helm-v3.14.2-linux-amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner --strip-components=1 -xzv linux-amd64/helm)
+(curl -sSL "https://get.helm.sh/helm-v3.14.3-linux-amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner --strip-components=1 -xzv linux-amd64/helm)
 
 # skaffold
 # https://github.com/GoogleContainerTools/skaffold/releases
@@ -21,7 +21,7 @@ sudo curl -sLo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/r
 
 # yq
 # https://github.com/mikefarah/yq/releases
-sudo curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.42.1/yq_linux_amd64 && sudo chmod +x /usr/local/bin/yq
+sudo curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.43.1/yq_linux_amd64 && sudo chmod +x /usr/local/bin/yq
 
 # yj
 # https://github.com/sclevine/yj/releases
@@ -41,7 +41,7 @@ sudo curl -sLo /usr/local/bin/ytt https://github.com/vmware-tanzu/carvel-ytt/rel
 
 # argocd
 # https://github.com/argoproj/argo-cd/releases
-sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.3/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
+sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.4/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
 
 # argo workflows
 # https://github.com/argoproj/argo-workflows/releases
@@ -55,7 +55,7 @@ curl -sLo- https://github.com/goreleaser/goreleaser/releases/download/v1.24.0/go
 
 # terraform
 # https://releases.hashicorp.com/terraform
-curl -sLo terraform.zip https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_linux_amd64.zip
+curl -sLo terraform.zip https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
 unzip terraform.zip
 chmod +x terraform
 sudo mv terraform /usr/local/bin/terraform
