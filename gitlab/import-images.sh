@@ -77,7 +77,7 @@ import_images() {
         "heroku/heroku:22-cnb"
         "heroku/heroku:24-build"
         "heroku/heroku:24"
-        "heroku/procfile-cnb:${HEROKU_PROCFILE_CNB_VERSION:-0.6.2}"
+        "heroku/buildpack-procfile:${HEROKU_PROCFILE_CNB_VERSION:-0.6.2}"
         "paketobuildpacks/builder:full"
         "paketobuildpacks/builder:base"
         "paketobuildpacks/builder:tiny"

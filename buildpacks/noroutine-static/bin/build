@@ -21,7 +21,7 @@ echo "---> bust other layers"
 rm -rf ${layer_dir}/../heroku_*
 
 echo "---> get caddy"
-caddy_version=2.6.4
+caddy_version=2.7.6
 caddy_layer_dir=${layer_dir}/caddy
 mkdir -p ${caddy_layer_dir}/{bin,etc}
 caddy_release=https://github.com/caddyserver/caddy/releases/download/v${caddy_version}/caddy_${caddy_version}_linux_amd64.tar.gz
