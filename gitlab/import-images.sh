@@ -248,6 +248,7 @@ import_images() {
         "mcr.microsoft.com/k8s/azureserviceoperator:${AZURE_SERVICE_OPERATOR_VERSION:-v2.2.0}"
         "guacamole/guacamole:${GUACAMOLE_VERSION:-1.5.3}"
         "guacamole/guacd:${GUACAMOLE_VERSION:-1.5.3}"
+        "quay.io/cephcsi/cephcsi:${CEPHCSI_VERSION:-v3.10.2}"
 
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"

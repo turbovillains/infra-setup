@@ -14,6 +14,11 @@ helm:
     url: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
     charts:
       - name: jenkins-operator
+  - name: ceph-csi
+    url: https://ceph.github.io/csi-charts
+    charts:
+      - name: ceph-csi-rbd
+      - name: ceph-csi-cephfs
   - name: aso2
     url: https://raw.githubusercontent.com/Azure/azure-service-operator/main/v2/charts
     charts:

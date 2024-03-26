@@ -17,6 +17,7 @@ apt-get update -yyq
 apt-get -yyq install zip zstd unzip \
 	python3 python3-pip virtualenv \
 	socat netcat-openbsd telnet curl wget ftp git \
+  openjdk-17-jdk \
   protobuf-compiler \
   rsync \
   make build-essential procps file libunwind8 \

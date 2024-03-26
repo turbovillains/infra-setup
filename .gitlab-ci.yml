@@ -1147,6 +1147,12 @@ archive-images4:
           - guacamole/guacd
         VERSION:
           - GUACAMOLE_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cephcsi/cephcsi
+        VERSION:
+          - CEPHCSI_VERSION
 
 archive-special:
   extends: .archive-images
@@ -4879,6 +4885,18 @@ guacd:
   variables:
     BASE: guacamole/guacd
     VERSION: GUACAMOLE_VERSION
+
+cephcsi:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CEPHCSI_VERSION
+  variables:
+    BASE: cephcsi/cephcsi
+    VERSION: CEPHCSI_VERSION
 
 infra-docs:
   interruptible: true

@@ -61,6 +61,9 @@ chmod +x terraform
 sudo mv terraform /usr/local/bin/terraform
 rm terraform.zip
 
+# cfssl
+curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v1.6.5/cfssl_1.6.5_linux_amd64 && sudo chmod +x /usr/local/bin/cfssl
+
 # starship
 curl -fsSL https://starship.rs/install.sh | sudo sh -s -- '--yes'
 
