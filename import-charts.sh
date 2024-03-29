@@ -14,21 +14,45 @@ import_charts() {
             for chart in "${charts[@]}"; do
                 local name=$(jq -r .name <<< ${chart})
                 local versions=$(jq -r .version <<< ${chart})
+                local by_field=$(jq -r '.by // "version"' <<< ${chart})
+                echo "Fetching ${name} by ${by_field}"
                 mkdir -p ${target}/${repo}
                 if [[ "${versions}" == "null" ]]; then
                     # Find last ten non-beta non-alpha or non-dev versions from repo
-                    versions=$(curl -sL ${url}/index.yaml \
-                        | yj \
-                        | jq -r --arg name ${name} \
-                        '[
-                            .entries[$name]
-                            | sort_by(.created)
+                    # for date conversion trick see https://github.com/jqlang/jq/issues/2224
+                    #
+                    if [[ "${by_field}" == "version" ]]; then
+                        versions=$(curl -sL ${url}/index.yaml \
+                            | yj \
+                            | jq -r --arg name ${name} \
+                            '[
+                                .entries[$name]
+                                | .[]
+                                | select(.version | test("beta|alpha|dev|test|canary|rc|preview") | not)
+                            ]
+                            | sort_by(.version | split(".") | map(tonumber? // 0))
                             | reverse
-                            | .[]
-                            | select(.version | test("beta|alpha|dev|test") | not)
-                            | .version
-                        ] | .[0:10] | join(" ")'
-                    )
+                            | .[0:10]
+                            | [ .[].version ]
+                            | join(" ")'
+                        )
+                    elif [[ "${by_field}" == "created" ]]; then
+                        versions=$(curl -sL ${url}/index.yaml \
+                            | yj \
+                            | jq -r --arg name ${name} \
+                            '[
+                                .entries[$name]
+                                | .[]
+                                | select(.version | test("beta|alpha|dev|test|canary|rc|preview") | not)
+                            ]
+                            | sort_by(.created | .[0:19] +"Z" | fromdateiso8601)
+                            | reverse
+                            | .[0:10]
+                            | [ .[].version ]
+                            | join(" ")'
+                        )
+                    fi
+                    echo "${name}: ${versions}"
                 fi
                 for version in ${versions}; do
                     echo "Pulling ${name}@${version} from ${repo}"

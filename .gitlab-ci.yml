@@ -12,6 +12,8 @@ stages:
 
 before_script:
   - |
+    # fix permissions for kubeconfig
+    chmod go-rwx $KUBECONFIG
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
     export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
@@ -4897,6 +4899,126 @@ cephcsi:
   variables:
     BASE: cephcsi/cephcsi
     VERSION: CEPHCSI_VERSION
+
+nvidia-cuda:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_CUDA_VERSION
+  variables:
+    BASE: nvidia/cuda
+    VERSION: NVIDIA_CUDA_VERSION
+
+nvidia-dcgm:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_DCGM_VERSION
+  variables:
+    BASE: nvidia/cloud-native/dcgm
+    VERSION: NVIDIA_DCGM_VERSION
+
+nvidia-dcgm-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_DCGM_EXPORTER_VERSION
+  variables:
+    BASE: nvidia/k8s/dcgm-exporter
+    VERSION: NVIDIA_DCGM_EXPORTER_VERSION
+
+nvidia-gpu-feature-discovery:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_GPU_FEATURE_DISCOVERY_VERSION
+  variables:
+    BASE: nvidia/gpu-feature-discovery
+    VERSION: NVIDIA_GPU_FEATURE_DISCOVERY_VERSION
+
+nvidia-gpu-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_GPU_OPERATOR_VERSION
+  variables:
+    BASE: nvidia/gpu-operator
+    VERSION: NVIDIA_GPU_OPERATOR_VERSION
+
+nvidia-gpu-operator-validator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION
+  variables:
+    BASE: nvidia/cloud-native/gpu-operator-validator
+    VERSION: NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION
+
+nvidia-k8s-container-toolkit:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION
+  variables:
+    BASE: nvidia/k8s/container-toolkit
+    VERSION: NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION
+
+nvidia-k8s-device-plugin:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_K8S_DEVICE_PLUGIN_VERSION
+  variables:
+    BASE: nvidia/k8s-device-plugin
+    VERSION: NVIDIA_K8S_DEVICE_PLUGIN_VERSION
+
+nvidia-k8s-driver-manager:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_K8S_DRIVER_MANAGER_VERSION
+  variables:
+    BASE: nvidia/cloud-native/k8s-driver-manager
+    VERSION: NVIDIA_K8S_DRIVER_MANAGER_VERSION
+
+nvidia-k8s-mig-manager:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg NVIDIA_K8S_MIG_MANAGER_VERSION
+  variables:
+    BASE: nvidia/cloud-native/k8s-mig-manager
+    VERSION: NVIDIA_K8S_MIG_MANAGER_VERSION
 
 infra-docs:
   interruptible: true

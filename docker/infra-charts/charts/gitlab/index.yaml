@@ -2,11 +2,11 @@ apiVersion: v1
 entries:
   gitlab-agent:
   - apiVersion: v2
-    appVersion: v15.9.0
-    created: "2023-03-11T18:00:11.732969+01:00"
+    appVersion: v16.10.1
+    created: "2024-03-31T15:26:34.906998+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: 86be3490eaeec693b79fe53b32871256c4a8534440c548063890aa5e41cc2065
+    digest: 2f55b9689d2739683102eaefe5271584eb4990d5049700e4dc887336981611ee
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
     icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
@@ -15,14 +15,14 @@ entries:
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.11.0.tgz
-    version: 1.11.0
+    - gitlab-agent-1.25.0.tgz
+    version: 1.25.0
   - apiVersion: v2
-    appVersion: v15.8.0
-    created: "2023-03-11T18:00:11.732367+01:00"
+    appVersion: v16.9.3
+    created: "2024-03-31T15:26:34.905489+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: 0f65e2d104bc4e43999440877cd9c6263ccc11cf2bd9a2765fefd619957385ff
+    digest: 034b480a0d8b4f0de451fbbc10b86f64762d2b2cf1f13a277e89137608d77f52
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
     icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
@@ -31,134 +31,142 @@ entries:
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.10.0.tgz
-    version: 1.10.0
+    - gitlab-agent-1.24.0.tgz
+    version: 1.24.0
   - apiVersion: v2
-    appVersion: v15.7.0
-    created: "2023-03-11T18:00:11.739204+01:00"
+    appVersion: v16.8.0
+    created: "2024-03-31T15:26:34.904716+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: 740984ea815c3cc498708f6610889e5685a1b49df36aa8e6fb0029ec49f0c295
+    digest: 754beddce02d5fe36583d7c3be8afe32f72267fac41634ff1e64362b262a6a9f
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.9.2.tgz
-    version: 1.9.2
+    - gitlab-agent-1.23.0.tgz
+    version: 1.23.0
   - apiVersion: v2
-    appVersion: v15.7.0
-    created: "2023-03-11T18:00:11.737888+01:00"
+    appVersion: v16.7.0
+    created: "2024-03-31T15:26:34.903991+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: d07019d6653433c17c025657c2ef38700f82fd98269846c3ed0720a116accfc0
+    digest: 49554ca7e62bd353cdd726b8a80ace508cc332d44f57f6c8e96ba2feac7805ba
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.9.1.tgz
-    version: 1.9.1
+    - gitlab-agent-1.22.0.tgz
+    version: 1.22.0
   - apiVersion: v2
-    appVersion: v15.7.0
-    created: "2023-03-11T18:00:11.737264+01:00"
+    appVersion: v16.6.0
+    created: "2024-03-31T15:26:34.903361+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: 14757d871379a99366480598310d1dbc9f8ccda1a80058d6c1d90e4a7c26d893
+    digest: ca277e80081626d8ec00e33e62ca1a96b37a1f8113ea4d5ba15f09ebaa03de0c
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.9.0.tgz
-    version: 1.9.0
+    - gitlab-agent-1.21.0.tgz
+    version: 1.21.0
   - apiVersion: v2
-    appVersion: v15.6.0
-    created: "2023-03-11T18:00:11.736643+01:00"
+    appVersion: v16.5.0
+    created: "2024-03-31T15:26:34.902712+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: 07f6ca446dad07ad204e5f7151a856d3646728050183a28c25d974a36d5ce530
+    digest: a06793adf8331167c2430141a4deb089454696a83ed98722427210adcd0ecb3f
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.8.0.tgz
-    version: 1.8.0
+    - gitlab-agent-1.20.0.tgz
+    version: 1.20.0
   - apiVersion: v2
-    appVersion: v15.5.1
-    created: "2023-03-11T18:00:11.736013+01:00"
+    appVersion: v16.4.0
+    created: "2024-03-31T15:26:34.902057+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: ea194ea5856e10e3e016a177b4d6b1290abe3f96b913986690d4b77cafa413ea
+    digest: 1c73a342f7ec12903da2646036df114afc769bc63993fc65f808ecce37cf77f7
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.7.0.tgz
-    version: 1.7.0
+    - gitlab-agent-1.19.0.tgz
+    version: 1.19.0
   - apiVersion: v2
-    appVersion: v15.5.1
-    created: "2023-03-11T18:00:11.734686+01:00"
+    appVersion: v16.3.0
+    created: "2024-03-31T15:26:34.901408+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: e8c9e013843c65b48002a30780751dfeb8aa00fafcc0e5d4beed4266c6156f23
+    digest: 292605bffbccd5068eaebb2949e2b5fe2d447bab5deea1fe743a38269785f8c6
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.6.0.tgz
-    version: 1.6.0
+    - gitlab-agent-1.18.1.tgz
+    version: 1.18.1
   - apiVersion: v2
-    appVersion: v15.4.0
-    created: "2023-03-11T18:00:11.734+01:00"
+    appVersion: v16.3.0
+    created: "2024-03-31T15:26:34.900737+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: 428ba7c952935315fe5ea072693d9c68c5085342e2240b25121948449a6b0bc3
+    digest: 69a6f8ae5bfc20b1de1cf25f8ab8ccd864411cea679c042cb07edb55c200833f
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.5.0.tgz
-    version: 1.5.0
+    - gitlab-agent-1.18.0.tgz
+    version: 1.18.0
   - apiVersion: v2
-    appVersion: v15.3.0
-    created: "2023-03-11T18:00:11.733485+01:00"
+    appVersion: v16.2.0
+    created: "2024-03-31T15:26:34.900034+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
-    digest: 36575b0a5613dc163bd8b4c4901916fe27aba7fd237bba5efb6dc06f092db920
+    digest: 344c664ca4d0065edbfc2a5ced53abc3d9197781c4079ff68db605aa3c2b3e3f
     home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
     name: gitlab-agent
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab-agent
     - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
     type: application
     urls:
-    - gitlab-agent-1.4.0.tgz
-    version: 1.4.0
+    - gitlab-agent-1.17.2.tgz
+    version: 1.17.2
   gitlab-runner:
   - apiVersion: v1
-    appVersion: 15.9.1
-    created: "2023-03-11T18:00:11.754043+01:00"
+    appVersion: 16.10.0
+    created: "2024-03-31T15:26:34.919769+02:00"
     description: GitLab Runner
-    digest: 17aa2ebf2277caa4f6384af348b9f39793b4cfed2f5507e5b64967da30656d4c
+    digest: 55d26d2768d8b10dd485d68c8d479fb8e29bfc8fe0b0fd16eeb91424e1bedfb5
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -173,13 +181,13 @@ entries:
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.50.1.tgz
-    version: 0.50.1
+    - gitlab-runner-0.63.0.tgz
+    version: 0.63.0
   - apiVersion: v1
-    appVersion: 15.9.0
-    created: "2023-03-11T18:00:11.752686+01:00"
+    appVersion: 16.9.1
+    created: "2024-03-31T15:26:34.918605+02:00"
     description: GitLab Runner
-    digest: 17204e2688b29ece2c903e3e6961306bef6d5033a91e9920aa5888ae7d8bff09
+    digest: 767c7a8f6e7851dd3e194392fbfc1f6068b788e588d5621d893530c4b145ff56
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -194,13 +202,13 @@ entries:
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.50.0.tgz
-    version: 0.50.0
+    - gitlab-runner-0.62.1.tgz
+    version: 0.62.1
   - apiVersion: v1
-    appVersion: 15.8.3
-    created: "2023-03-11T18:00:11.751267+01:00"
+    appVersion: 16.9.0
+    created: "2024-03-31T15:26:34.917411+02:00"
     description: GitLab Runner
-    digest: ba883dc93ca72a676f3797a1fe662f5568634c1a996aea8d8092102184f891c3
+    digest: 489d832ac699a950f4f1659c1cb6cc0127ca36eb506e04ded5cd2170a5a6d840
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -211,16 +219,17 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.49.3.tgz
-    version: 0.49.3
+    - gitlab-runner-0.62.0.tgz
+    version: 0.62.0
   - apiVersion: v1
-    appVersion: 15.8.2
-    created: "2023-03-11T18:00:11.749223+01:00"
+    appVersion: 16.8.1
+    created: "2024-03-31T15:26:34.915422+02:00"
     description: GitLab Runner
-    digest: 9c46bfe2cb928cddf04a0c812e2ad75bd184d118a538521331772bb60edab70b
+    digest: ef306ac38418df91f5fd3eae95c2f71c323a311acf5f0b8c4e42fe0a1f59d832
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -231,16 +240,17 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.49.2.tgz
-    version: 0.49.2
+    - gitlab-runner-0.61.3.tgz
+    version: 0.61.3
   - apiVersion: v1
-    appVersion: 15.8.1
-    created: "2023-03-11T18:00:11.747719+01:00"
+    appVersion: 16.8.0
+    created: "2024-03-31T15:26:34.914039+02:00"
     description: GitLab Runner
-    digest: b63eb71d3083da07cd764dd65c554b524abbb0203a9bea03691b80cdb269116a
+    digest: 321e7d563ca4dab8fa5ac228ec5a5c98f4c64d198559eb215c604218b79b9133
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -251,16 +261,17 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.49.1.tgz
-    version: 0.49.1
+    - gitlab-runner-0.61.2.tgz
+    version: 0.61.2
   - apiVersion: v1
-    appVersion: 15.8.0
-    created: "2023-03-11T18:00:11.746169+01:00"
+    appVersion: 16.8.0
+    created: "2024-03-31T15:26:34.912946+02:00"
     description: GitLab Runner
-    digest: e610b682d671209bda7d353fc2c228c5a07877411d62c45f72d3e8fdb1d8e8fe
+    digest: 041e83185990ec50b61b2a9530b5a1385d34b875170bd7a4a978e949fa4e2660
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -271,16 +282,17 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.49.0.tgz
-    version: 0.49.0
+    - gitlab-runner-0.61.1.tgz
+    version: 0.61.1
   - apiVersion: v1
-    appVersion: 15.7.4
-    created: "2023-03-11T18:00:11.744646+01:00"
+    appVersion: 16.8.0
+    created: "2024-03-31T15:26:34.911842+02:00"
     description: GitLab Runner
-    digest: c60181cf2cf1be45a665b13a38d0d1d4b816782ba74993bbdefeec25fe52b630
+    digest: 26acbb7c924c421b737ab982e526c9516413230b37c36a078a13dc13130ce9ed
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -291,16 +303,17 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.48.3.tgz
-    version: 0.48.3
+    - gitlab-runner-0.61.0.tgz
+    version: 0.61.0
   - apiVersion: v1
-    appVersion: 15.7.3
-    created: "2023-03-11T18:00:11.74327+01:00"
+    appVersion: 16.7.1
+    created: "2024-03-31T15:26:34.910709+02:00"
     description: GitLab Runner
-    digest: 2e95b42bdb344632ed02a03a12058baf8fe4b310a6023f9633bb118b993efcb9
+    digest: 6fac090276b9378c02ae2a63d0abdb00aa377466aac8e10e7a8066a06a8141fb
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -311,16 +324,17 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.48.2.tgz
-    version: 0.48.2
+    - gitlab-runner-0.60.1.tgz
+    version: 0.60.1
   - apiVersion: v1
-    appVersion: 15.7.2
-    created: "2023-03-11T18:00:11.741912+01:00"
+    appVersion: 16.7.0
+    created: "2024-03-31T15:26:34.909464+02:00"
     description: GitLab Runner
-    digest: 490b3f16c798b396063ac1cd3101dae7f030dc29c0df206e5af4cedf3b3f4721
+    digest: 20c5ae728363c7b61836031e4f9db7db8d92d9c66ed5910cb591e50b54604633
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -331,16 +345,17 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.48.1.tgz
-    version: 0.48.1
+    - gitlab-runner-0.60.0.tgz
+    version: 0.60.0
   - apiVersion: v1
-    appVersion: 15.6.3
-    created: "2023-03-11T18:00:11.740557+01:00"
+    appVersion: 16.6.2
+    created: "2024-03-31T15:26:34.908246+02:00"
     description: GitLab Runner
-    digest: bb7a96f521806a251a69398e35907ff2123b0ea67fdb9d889a9ae31b46104379
+    digest: e4c12fb99ac3756a3f3afa0d0769fcdf5ed1ebc7b91fa4c004c0b4348532b8af
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
     keywords:
     - git
@@ -351,9 +366,10 @@ entries:
       name: GitLab Inc.
     name: gitlab-runner
     sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
     - https://gitlab.com/gitlab-org/gitlab-runner
     - https://docs.gitlab.com/runner/
     urls:
-    - gitlab-runner-0.47.3.tgz
-    version: 0.47.3
-generated: "2023-03-11T18:00:11.731608+01:00"
+    - gitlab-runner-0.59.3.tgz
+    version: 0.59.3
+generated: "2024-03-31T15:26:34.899199+02:00"

@@ -396,6 +396,27 @@ import_images() {
         "confluentinc/cp-zookeeper:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "obsidiandynamics/kafdrop:${KAFDROP_VERSION:-3.30.0}"
         "tchiotludo/akhq:${AKHQ_VERSION:-0.21.0}"
+
+        # nvidia gpu operator shit, https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/install-gpu-operator-air-gapped.html
+        "nvcr.io/nvidia/gpu-operator:${NVIDIA_GPU_OPERATOR_VERSION:-v23.9.2}"
+        "nvcr.io/nvidia/cloud-native/gpu-operator-validator:${NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION:-v23.9.2}"
+        "nvcr.io/nvidia/cuda:${NVIDIA_CUDA_VERSION:-12.3.2-base}"
+        "nvcr.io/nvidia/cloud-native/k8s-driver-manager:${NVIDIA_K8S_DRIVER_MANAGER_VERSION:-v0.6.7}"
+        # "nvcr.io/nvidia/cloud-native/k8s-driver-manager:v0.6.4"
+        # "nvcr.io/nvidia/cloud-native/k8s-driver-manager:v0.6.2"
+        "nvcr.io/nvidia/k8s/container-toolkit:${NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION:-v1.14.6-ubi8}"
+        "nvcr.io/nvidia/k8s-device-plugin:${NVIDIA_K8S_DEVICE_PLUGIN_VERSION:-v0.14.5-ubi8}"
+        "nvcr.io/nvidia/cloud-native/dcgm:${NVIDIA_DCGM_VERSION:-3.3.3-1-ubi9}"
+        "nvcr.io/nvidia/k8s/dcgm-exporter:${NVIDIA_DCGM_EXPORTER_VERSION:-3.3.5-3.4.0-ubi9}"
+        "nvcr.io/nvidia/gpu-feature-discovery:${NVIDIA_GPU_FEATURE_DISCOVERY_VERSION:-v0.8.2-ubi8}"
+        "nvcr.io/nvidia/cloud-native/k8s-mig-manager:${NVIDIA_K8S_MIG_MANAGER_VERSION:-v0.6.0-ubi8}"
+        # "nvcr.io/nvidia/cloud-native/nvidia-fs:2.17.5"
+        # "nvcr.io/nvidia/cloud-native/vgpu-device-manager:v0.2.4"
+        # "nvcr.io/nvidia/cloud-native/kata-gpu-artifacts:ubuntu22.04-535.54.03"
+        # "nvcr.io/nvidia/cloud-native/kata-gpu-artifacts:ubuntu22.04-535.86.10-snp"
+        # "nvcr.io/nvidia/cloud-native/k8s-kata-manager:v0.1.2"
+        # "nvcr.io/nvidia/kubevirt-gpu-device-plugin:v1.2.4"
+        # "nvcr.io/nvidia/cloud-native/k8s-cc-manager:v0.1.1"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

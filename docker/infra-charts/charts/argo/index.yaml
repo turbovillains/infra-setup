@@ -3,26 +3,29 @@ entries:
   argo-cd:
   - annotations:
       artifacthub.io/changes: |
-        - kind: added
-          description: Add parameter env to redis exporter
+        - kind: fixed
+          description: added missing crd change for 2.10.5
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v2.6.4
-    created: "2023-03-11T18:00:10.518815+01:00"
+    appVersion: v2.10.5
+    created: "2024-03-31T15:26:33.148128+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
       repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
+      version: 4.26.1
     description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: 5e1d2959694527af3969658058d4ea092e1fabfcd913fa49d1a722a99f1fe7d9
+    digest: d02e30f3148bc4690d251f893fe0534dccc2184aab62bae3bd29915723e4171d
     home: https://github.com/argoproj/argo-helm
     icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
     keywords:
     - argoproj
     - argocd
     - gitops
-    kubeVersion: '>=1.22.0-0'
+    kubeVersion: '>=1.23.0-0'
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -31,30 +34,33 @@ entries:
     - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
     - https://github.com/argoproj/argo-cd
     urls:
-    - argo-cd-5.25.0.tgz
-    version: 5.25.0
+    - argo-cd-6.7.6.tgz
+    version: 6.7.6
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
-          description: Updated argocd-cm to skip empty values
+          description: Fixed the ClusterRole of argocd-server and notification when using "application in any namespace"
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v2.6.4
-    created: "2023-03-11T18:00:10.5089+01:00"
+    appVersion: v2.10.5
+    created: "2024-03-31T15:26:33.139474+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
       repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
+      version: 4.26.1
     description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: b9b13708f86b4351e118568aa680e9bf383e8eefde3422820e18acbac5c00f4f
+    digest: adc79c6d1871d6aebbfb95e7a735b65fca74245516a3935ea47e7b4e30824a50
     home: https://github.com/argoproj/argo-helm
     icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
     keywords:
     - argoproj
     - argocd
     - gitops
-    kubeVersion: '>=1.22.0-0'
+    kubeVersion: '>=1.23.0-0'
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -63,62 +69,33 @@ entries:
     - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
     - https://github.com/argoproj/argo-cd
     urls:
-    - argo-cd-5.24.4.tgz
-    version: 5.24.4
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: fixed
-          description: Clarify syntax in values.yaml
-    apiVersion: v2
-    appVersion: v2.6.4
-    created: "2023-03-11T18:00:10.501444+01:00"
-    dependencies:
-    - condition: redis-ha.enabled
-      name: redis-ha
-      repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
-    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
-      tool for Kubernetes.
-    digest: df2435590f3d99dde22bee703e5718d3b05b74c9bca760c96c8090442306edb6
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
-    keywords:
-    - argoproj
-    - argocd
-    - gitops
-    kubeVersion: '>=1.22.0-0'
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-cd
-    sources:
-    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
-    - https://github.com/argoproj/argo-cd
-    urls:
-    - argo-cd-5.24.3.tgz
-    version: 5.24.3
+    - argo-cd-6.7.5.tgz
+    version: 6.7.5
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
-          description: Upgrade Argo CD v2.6.4
+          description: Bump argo-cd to v2.10.5
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v2.6.4
-    created: "2023-03-11T18:00:10.493362+01:00"
+    appVersion: v2.10.5
+    created: "2024-03-31T15:26:33.130774+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
       repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
+      version: 4.26.1
     description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: 62bb5a5286ec275b89f5073bc5e212503a59af28f72f929cf1b4d285c8dec7d1
+    digest: 5c3257823abcdd0642dbc4db1f45e71cfc6baec0799635db89956bbb48b9c4b4
     home: https://github.com/argoproj/argo-helm
     icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
     keywords:
     - argoproj
     - argocd
     - gitops
-    kubeVersion: '>=1.22.0-0'
+    kubeVersion: '>=1.23.0-0'
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -127,168 +104,33 @@ entries:
     - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
     - https://github.com/argoproj/argo-cd
     urls:
-    - argo-cd-5.24.2.tgz
-    version: 5.24.2
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: fixed
-          description: ApplicationSet utilizes global tolerations
-    apiVersion: v2
-    appVersion: v2.6.3
-    created: "2023-03-11T18:00:10.484779+01:00"
-    dependencies:
-    - condition: redis-ha.enabled
-      name: redis-ha
-      repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
-    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
-      tool for Kubernetes.
-    digest: 536f3f5642bae6d61b0335447d9f7b17634ce309663b717c3fd49ba924cb4991
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
-    keywords:
-    - argoproj
-    - argocd
-    - gitops
-    kubeVersion: '>=1.22.0-0'
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-cd
-    sources:
-    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
-    - https://github.com/argoproj/argo-cd
-    urls:
-    - argo-cd-5.24.1.tgz
-    version: 5.24.1
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: added
-          description: Global nodeSelector configuration
-        - kind: added
-          description: Global tolerations configuration
-        - kind: added
-          description: Global topologySpreadConstraints configuration
-        - kind: added
-          description: Missing component level topologySpreadConstraints configuration
-        - kind: added
-          description: Missing component level priorityClassName configuration
-        - kind: changed
-          description: Global affinity preset can be disabled
-    apiVersion: v2
-    appVersion: v2.6.3
-    created: "2023-03-11T18:00:10.476424+01:00"
-    dependencies:
-    - condition: redis-ha.enabled
-      name: redis-ha
-      repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
-    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
-      tool for Kubernetes.
-    digest: ebfbd8b8ced3886b2a2b3c694cef355d8108be0e34f6fc8bc67184d3713eb409
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
-    keywords:
-    - argoproj
-    - argocd
-    - gitops
-    kubeVersion: '>=1.22.0-0'
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-cd
-    sources:
-    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
-    - https://github.com/argoproj/argo-cd
-    urls:
-    - argo-cd-5.24.0.tgz
-    version: 5.24.0
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: fixed
-          description: Indentation for argo-server role when exec.enabled is True.
-    apiVersion: v2
-    appVersion: v2.6.3
-    created: "2023-03-11T18:00:10.466975+01:00"
-    dependencies:
-    - condition: redis-ha.enabled
-      name: redis-ha
-      repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
-    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
-      tool for Kubernetes.
-    digest: 451eb64d1c472168f720bf77d4d8d2aa47a717b827d391a467740fa1b92bc021
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
-    keywords:
-    - argoproj
-    - argocd
-    - gitops
-    kubeVersion: '>=1.22.0-0'
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-cd
-    sources:
-    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
-    - https://github.com/argoproj/argo-cd
-    urls:
-    - argo-cd-5.23.5.tgz
-    version: 5.23.5
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: added
-          description: Added pod exec permission to argo-server Role when exec.enabled is True.
-    apiVersion: v2
-    appVersion: v2.6.3
-    created: "2023-03-11T18:00:10.456856+01:00"
-    dependencies:
-    - condition: redis-ha.enabled
-      name: redis-ha
-      repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
-    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
-      tool for Kubernetes.
-    digest: a07ed23fb13a7f47c8678a497ab659f56fcfe8c1c227e430ba9c99b5adce56f3
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
-    keywords:
-    - argoproj
-    - argocd
-    - gitops
-    kubeVersion: '>=1.22.0-0'
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-cd
-    sources:
-    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
-    - https://github.com/argoproj/argo-cd
-    urls:
-    - argo-cd-5.23.4.tgz
-    version: 5.23.4
+    - argo-cd-6.7.4.tgz
+    version: 6.7.4
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
-          description: Upgrade Argo CD to v.2.6.3
+          description: Bump argo-cd to v2.10.4
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v2.6.3
-    created: "2023-03-11T18:00:10.447214+01:00"
+    appVersion: v2.10.4
+    created: "2024-03-31T15:26:33.12195+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
       repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
+      version: 4.26.1
     description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: 2860437be5d6b0ed27a3f8ca1dd65ec9e9019c0f5ef53884e7120ccbb56c0d25
+    digest: f535106a891145a3907301feedc8e0054c3096733d93df273d70582614a115b0
     home: https://github.com/argoproj/argo-helm
     icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
     keywords:
     - argoproj
     - argocd
     - gitops
-    kubeVersion: '>=1.22.0-0'
+    kubeVersion: '>=1.23.0-0'
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -297,30 +139,33 @@ entries:
     - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
     - https://github.com/argoproj/argo-cd
     urls:
-    - argo-cd-5.23.3.tgz
-    version: 5.23.3
+    - argo-cd-6.7.3.tgz
+    version: 6.7.3
   - annotations:
       artifacthub.io/changes: |
-        - kind: fixed
-          description: Fixed typos in values.yaml and README.md
+        - kind: changed
+          description: Bump argo-cd to v2.10.3
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v2.6.2
-    created: "2023-03-11T18:00:10.436253+01:00"
+    appVersion: v2.10.3
+    created: "2024-03-31T15:26:33.112445+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
       repository: https://dandydeveloper.github.io/charts/
-      version: 4.22.4
+      version: 4.26.1
     description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: 48d4bd996f4035750667d4d214f97fa5e386469ba1e336621f2a06f43e0dc9d5
+    digest: 69e3de51640bcc8e7bc417544a237ce3b63dc1bcaea81d8a7a85fa22c8d0fddc
     home: https://github.com/argoproj/argo-helm
     icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
     keywords:
     - argoproj
     - argocd
     - gitops
-    kubeVersion: '>=1.22.0-0'
+    kubeVersion: '>=1.23.0-0'
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -329,21 +174,199 @@ entries:
     - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
     - https://github.com/argoproj/argo-cd
     urls:
-    - argo-cd-5.23.2.tgz
-    version: 5.23.2
+    - argo-cd-6.7.2.tgz
+    version: 6.7.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Fixed a bug for TLS host value in GRPC ingress endpoint
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.10.2
+    created: "2024-03-31T15:26:33.102369+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: c9d9a0be31ec7309fbed95220717cbe14329cc587f3989c40e565c88c1863ef4
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-6.7.1.tgz
+    version: 6.7.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: Added
+          description: Support for existing Secret for ArgoCD Notifications, and ability to set its name.
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.10.2
+    created: "2024-03-31T15:26:33.091698+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 4d3c37f6f8caea4484a71644653b6b566b63fdc79fd83cf6009c0deb48ea1526
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-6.7.0.tgz
+    version: 6.7.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Support ApplicationSet in any namespace.
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.10.2
+    created: "2024-03-31T15:26:33.081401+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 14b8751fd4cc379cf354fbfbdd31ff3559e4642c6babd2951810abcdeafca0f4
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-6.6.0.tgz
+    version: 6.6.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v2.10.2
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.10.2
+    created: "2024-03-31T15:26:33.071576+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: c2c76e8e5e55f39766c9c5fcf2b9e18ed6858e44665786ad929ada36b51956d1
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-6.5.1.tgz
+    version: 6.5.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Support for templating ingress extraPaths and extraRules
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.10.1
+    created: "2024-03-31T15:26:33.062283+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 64e4836b5ef61dad51e9f46df910c9b1e05a5803d7a9e94c95d5b7b436e6efac
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-6.5.0.tgz
+    version: 6.5.0
   argo-events:
   - annotations:
       artifacthub.io/changes: |
-        - kind: changed
-          description: Upgrade Argo Events to v1.7.6
+        - kind: added
+          description: Support ability to set .Values.namespaceOverride
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v1.7.6
-    created: "2023-03-11T18:00:10.52983+01:00"
+    appVersion: v1.9.1
+    created: "2024-03-31T15:26:33.158979+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
-    digest: 5f0aa6d429df2a4125440de3c24802782de785b2d936a359829066f79bed646d
+    digest: 57bed7f1a6d61be4942c395e683fc6987425bd732aa45913eb4a1c2e4d33ca2a
     home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
     keywords:
     - argoproj
     - argo-events
@@ -354,20 +377,157 @@ entries:
     sources:
     - https://github.com/argoproj/argo-events
     urls:
-    - argo-events-2.1.3.tgz
-    version: 2.1.3
+    - argo-events-2.4.4.tgz
+    version: 2.4.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-events to v1.9.1
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v1.9.1
+    created: "2024-03-31T15:26:33.157991+02:00"
+    description: A Helm chart for Argo Events, the event-driven workflow automation
+      framework
+    digest: 10a18c47a63a1d10cee5bf62deda75e98f40964bab8df9d8e466cc0d146ed6a7
+    home: https://github.com/argoproj/argo-helm
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
+    keywords:
+    - argoproj
+    - argo-events
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-events
+    sources:
+    - https://github.com/argoproj/argo-events
+    urls:
+    - argo-events-2.4.3.tgz
+    version: 2.4.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-events to v1.9.0
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v1.9.0
+    created: "2024-03-31T15:26:33.156277+02:00"
+    description: A Helm chart for Argo Events, the event-driven workflow automation
+      framework
+    digest: 94c9803e62a64b4eabd0095c03ef3cface2c39a761b4b85f1f5c39b964b7e30e
+    home: https://github.com/argoproj/argo-helm
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
+    keywords:
+    - argoproj
+    - argo-events
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-events
+    sources:
+    - https://github.com/argoproj/argo-events
+    urls:
+    - argo-events-2.4.2.tgz
+    version: 2.4.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Upgrade Argo Events to v1.8.1
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v1.8.1
+    created: "2024-03-31T15:26:33.155304+02:00"
+    description: A Helm chart for Argo Events, the event-driven workflow automation
+      framework
+    digest: 543542ffc386f799b09bec1138b63628a4cd5ac7ceedfd32ac4942a3f2b3869d
+    home: https://github.com/argoproj/argo-helm
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
+    keywords:
+    - argoproj
+    - argo-events
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-events
+    sources:
+    - https://github.com/argoproj/argo-events
+    urls:
+    - argo-events-2.4.1.tgz
+    version: 2.4.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Upgrade Argo Events to v1.8.0
+        - kind: added
+          description: Add managed namespace configuration
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v1.8.0
+    created: "2024-03-31T15:26:33.154329+02:00"
+    description: A Helm chart for Argo Events, the event-driven workflow automation
+      framework
+    digest: b14cd1ce6ab188aab2ffea328510bc228b865bc627a84cba98cffce78b88a54a
+    home: https://github.com/argoproj/argo-helm
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
+    keywords:
+    - argoproj
+    - argo-events
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-events
+    sources:
+    - https://github.com/argoproj/argo-events
+    urls:
+    - argo-events-2.4.0.tgz
+    version: 2.4.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Introduce chart signing
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v1.7.6
+    created: "2024-03-31T15:26:33.153338+02:00"
+    description: A Helm chart for Argo Events, the event-driven workflow automation
+      framework
+    digest: f2745b65269846d960d81f39a0c5a8f39ff6be6517cec7352acff11a348ed214
+    home: https://github.com/argoproj/argo-helm
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
+    keywords:
+    - argoproj
+    - argo-events
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-events
+    sources:
+    - https://github.com/argoproj/argo-events
+    urls:
+    - argo-events-2.3.3.tgz
+    version: 2.3.3
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
-          description: Align changelog structure to show changelogs on Artifact Hub
+          description: Use correct artifacthub kind and get latest chart version to artifacthub
     apiVersion: v2
-    appVersion: v1.7.5
-    created: "2023-03-11T18:00:10.528821+01:00"
+    appVersion: v1.7.6
+    created: "2024-03-31T15:26:33.152284+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
-    digest: 1b4fbfc7646091c818e2d98e065ff7db0842e5f6d9c6f642c11c1fbda5e9f923
+    digest: a3324a813e53693bd11d72558e98a50f118ec86f96ffe521910353349b2cfd0d
     home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
     keywords:
     - argoproj
     - argo-events
@@ -378,19 +538,20 @@ entries:
     sources:
     - https://github.com/argoproj/argo-events
     urls:
-    - argo-events-2.1.2.tgz
-    version: 2.1.2
+    - argo-events-2.3.2.tgz
+    version: 2.3.2
   - annotations:
       artifacthub.io/changes: |
-        - "[Changed]: Update Argo Events to v1.7.5"
+        - kind: chore
+          description: Update chart icon
     apiVersion: v2
-    appVersion: v1.7.5
-    created: "2023-03-11T18:00:10.527075+01:00"
+    appVersion: v1.7.6
+    created: "2024-03-31T15:26:33.151272+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
-    digest: db34aebb29578887fa50483d21c38d983eb85772d95074654c5185711fb11956
+    digest: a8d8a975ed49fa9e51c11ff068c3f19e1dcbca6381defcf0aeaed8756edf2ebc
     home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
+    icon: https://avatars.githubusercontent.com/u/30269780?s=200&v=4
     keywords:
     - argoproj
     - argo-events
@@ -401,17 +562,18 @@ entries:
     sources:
     - https://github.com/argoproj/argo-events
     urls:
-    - argo-events-2.1.1.tgz
-    version: 2.1.1
+    - argo-events-2.3.1.tgz
+    version: 2.3.1
   - annotations:
       artifacthub.io/changes: |
-        - "[Added]: Additional manifests to deploy within the chart"
+        - kind: added
+          description: Allow extraObjects to contain string templates
     apiVersion: v2
-    appVersion: v1.7.4
-    created: "2023-03-11T18:00:10.525995+01:00"
+    appVersion: v1.7.6
+    created: "2024-03-31T15:26:33.150254+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
-    digest: 7165a881b9b23a6c1731eb3515a6b4da3dc9e167871e9557a74e98045bbe7368
+    digest: ce4a1b5d41ce6ce3e353fa9cd877d4e848c491bb151713639d77532614c9d509
     home: https://github.com/argoproj/argo-helm
     icon: https://argoproj.github.io/argo-events/assets/logo.png
     keywords:
@@ -424,17 +586,18 @@ entries:
     sources:
     - https://github.com/argoproj/argo-events
     urls:
-    - argo-events-2.1.0.tgz
-    version: 2.1.0
+    - argo-events-2.3.0.tgz
+    version: 2.3.0
   - annotations:
       artifacthub.io/changes: |
-        - "[Fixed]: Added missing NATS version in values.yaml"
+        - kind: fixed
+          description: add namespace field for namespace scoped resources
     apiVersion: v2
-    appVersion: v1.7.4
-    created: "2023-03-11T18:00:10.520896+01:00"
+    appVersion: v1.7.6
+    created: "2024-03-31T15:26:33.149117+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
-    digest: 26c42ecce04c19a5d61e1b50bd4ded1869463242894faa509fc2d208a6f4384b
+    digest: edcab9ce871682b2a7cb45cc9460160fc2ceda5c2493d15dc5941aae2e07708a
     home: https://github.com/argoproj/argo-helm
     icon: https://argoproj.github.io/argo-events/assets/logo.png
     keywords:
@@ -447,143 +610,23 @@ entries:
     sources:
     - https://github.com/argoproj/argo-events
     urls:
-    - argo-events-2.0.11.tgz
-    version: 2.0.11
-  - annotations:
-      artifacthub.io/changes: |
-        - "[Changed]: Upgrade Argo events controller to v1.7.4"
-    apiVersion: v2
-    appVersion: v1.7.4
-    created: "2023-03-11T18:00:10.519911+01:00"
-    description: A Helm chart for Argo Events, the event-driven workflow automation
-      framework
-    digest: 41d776fd5df60807d01894239f8106a5203a4b794a31d92d91fa230fddd4d814
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
-    keywords:
-    - argoproj
-    - argo-events
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-events
-    sources:
-    - https://github.com/argoproj/argo-events
-    urls:
-    - argo-events-2.0.10.tgz
-    version: 2.0.10
-  - annotations:
-      artifacthub.io/changes: |
-        - "[Added]: Ability to specify port for webhook deployment"
-    apiVersion: v2
-    appVersion: v1.7.3
-    created: "2023-03-11T18:00:10.524941+01:00"
-    description: A Helm chart for Argo Events, the event-driven workflow automation
-      framework
-    digest: 2225ba1d38ae9bda35a08698c8e735b0982c3d2939e91f213cd0bb5b50d78144
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
-    keywords:
-    - argoproj
-    - argo-events
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-events
-    sources:
-    - https://github.com/argoproj/argo-events
-    urls:
-    - argo-events-2.0.9.tgz
-    version: 2.0.9
-  - annotations:
-      artifacthub.io/changes: |
-        - "[Fixed]: use policy/v1 for poddisruptionbudgets, when available
-    apiVersion: v2
-    appVersion: v1.7.3
-    created: "2023-03-11T18:00:10.523901+01:00"
-    description: A Helm chart for Argo Events, the event-driven workflow automation
-      framework
-    digest: 62cf97999cd67b0802e17df52946ca072ac188cf2ac9d6a88b86b98e7d9b9a80
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
-    keywords:
-    - argoproj
-    - argo-events
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-events
-    sources:
-    - https://github.com/argoproj/argo-events
-    urls:
-    - argo-events-2.0.8.tgz
-    version: 2.0.8
-  - annotations:
-      artifacthub.io/changes: |
-        - "[Fixed]: avoid app.kubernetes.io/version kubernetes label from exceeding maximum length (63)
-        - "[Fixed]: generated value for app.kubernetes.io/version label is now valid even when defining a controller/webhook .image.tag with a SHA digest"
-        - "[Fixed]: webhook.image.tag value now overrides the tag in the webhook deployment"
-    apiVersion: v2
-    appVersion: v1.7.3
-    created: "2023-03-11T18:00:10.522858+01:00"
-    description: A Helm chart for Argo Events, the event-driven workflow automation
-      framework
-    digest: 200e967793540fd7e8a9ec2f250fd277921b59b95072f25b052555c64dbbdd3b
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
-    keywords:
-    - argoproj
-    - argo-events
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-events
-    sources:
-    - https://github.com/argoproj/argo-events
-    urls:
-    - argo-events-2.0.7.tgz
-    version: 2.0.7
-  - annotations:
-      artifacthub.io/changes: |
-        - "[Changed]: Upgrade Argo events controller to v1.7.3"
-    apiVersion: v2
-    appVersion: v1.7.3
-    created: "2023-03-11T18:00:10.521846+01:00"
-    description: A Helm chart for Argo Events, the event-driven workflow automation
-      framework
-    digest: 870f6b3f4861624fc09179a8375f8d7f51150bb6d28bb4722e8495184ef08599
-    home: https://github.com/argoproj/argo-helm
-    icon: https://argoproj.github.io/argo-events/assets/logo.png
-    keywords:
-    - argoproj
-    - argo-events
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-events
-    sources:
-    - https://github.com/argoproj/argo-events
-    urls:
-    - argo-events-2.0.6.tgz
-    version: 2.0.6
+    - argo-events-2.2.0.tgz
+    version: 2.2.0
   argo-workflows:
   - annotations:
       artifacthub.io/changes: |
         - kind: added
-          description: Added workflow startup option --log-format (defaults to 'text').
-        - kind: added
-          description: Added server startup option --log-format (defaults to 'text').
-        - kind: added
-          description: Added server startup option --loglevel (defaults to 'info').
-        - kind: added
-          description: Added server startup option --gloglevel (defaults to '0').
+          description: Check Prometheus CRDs are available before creating Service Monitor resource(s)
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.5
-    created: "2023-03-11T18:00:10.536504+01:00"
+    appVersion: v3.5.5
+    created: "2024-03-31T15:26:33.178702+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 63145f85cb47303829e5d437dc96af1f6e8a768abe386a4805a05570d632d82e
+    digest: 352b602fb00fb4bdaa5d2e04d9fc62b0f54cdade565a5b5da9d8b9ef077ad972
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -592,19 +635,70 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.13.tgz
-    version: 0.22.13
+    - argo-workflows-0.41.0.tgz
+    version: 0.41.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Support namespaceOverride
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.5.5
+    created: "2024-03-31T15:26:33.169004+02:00"
+    description: A Helm chart for Argo Workflows
+    digest: 3b2eb00984b08dc6ef9a1c750234fd60939d3aa0f822672afc2d4c93f3960707
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-workflows
+    sources:
+    - https://github.com/argoproj/argo-workflows
+    type: application
+    urls:
+    - argo-workflows-0.40.14.tgz
+    version: 0.40.14
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Disable leader election if only 1 repl of the Workflow Controller
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.5.5
+    created: "2024-03-31T15:26:33.1672+02:00"
+    description: A Helm chart for Argo Workflows
+    digest: a37f41bd2bbef3318b5188007de4f803b1337c7d4e2658bbf794d13b90ac9c20
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-workflows
+    sources:
+    - https://github.com/argoproj/argo-workflows
+    type: application
+    urls:
+    - argo-workflows-0.40.13.tgz
+    version: 0.40.13
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
-          description: Update documentation to explain why CRDs are in templates folder
+          description: Bump argo-workflows to v3.5.5
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.5
-    created: "2023-03-11T18:00:10.534788+01:00"
+    appVersion: v3.5.5
+    created: "2024-03-31T15:26:33.164737+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 95701b5c51ca5b036b70d00d56a6b512a2594d3f69b20ceb5d7a9924f565d92a
+    digest: 2fab74b43b9f687f5cb8ea0b2569eb0795ed3e1756467a08cd699d0f4a390e55
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -613,61 +707,22 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.12.tgz
-    version: 0.22.12
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: changed
-          description: Cleaned RBAC permissions for subresources (pods/log, pods/exec).
-    apiVersion: v2
-    appVersion: v3.4.5
-    created: "2023-03-11T18:00:10.532963+01:00"
-    description: A Helm chart for Argo Workflows
-    digest: 8adbc51ec98c4a17322305722e5b01955b11e4e8da15ec99cf7d1b21d693b70a
-    home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-workflows
-    sources:
-    - https://github.com/argoproj/argo-workflows
-    type: application
-    urls:
-    - argo-workflows-0.22.11.tgz
-    version: 0.22.11
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: changed
-          description: Upgrade Argo Workflows to v3.4.5
-    apiVersion: v2
-    appVersion: v3.4.5
-    created: "2023-03-11T18:00:10.531458+01:00"
-    description: A Helm chart for Argo Workflows
-    digest: 978afd4c97398f172e07876d0b547f7104e72a3891b5fce675dd55b568041fc7
-    home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
-    maintainers:
-    - name: argoproj
-      url: https://argoproj.github.io/
-    name: argo-workflows
-    sources:
-    - https://github.com/argoproj/argo-workflows
-    type: application
-    urls:
-    - argo-workflows-0.22.10.tgz
-    version: 0.22.10
+    - argo-workflows-0.40.12.tgz
+    version: 0.40.12
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
-          description: Align changelog structure to show changelogs on Artifact Hub
+          description: Add caSecret in the artifactory.s3 configuration values.
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.4
-    created: "2023-03-11T18:00:10.54685+01:00"
+    appVersion: v3.5.4
+    created: "2024-03-31T15:26:33.162795+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 0d3d1e3be6205218bf8f5381480f567a8c7e6dfe72c8107ce87747c1a26166df
+    digest: 1d4b9277e7ff07e2678d968848a5f83d47305cecdaa1b77f6ff586b9ad6bcb3c
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -676,18 +731,22 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.9.tgz
-    version: 0.22.9
+    - argo-workflows-0.40.11.tgz
+    version: 0.40.11
   - annotations:
       artifacthub.io/changes: |
-        - "[Added]: Helm helper function to allow image registry to be absent"
+        - kind: fixed
+          description: Update argo-workflows documentation links to readthedocs
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.4
-    created: "2023-03-11T18:00:10.545235+01:00"
+    appVersion: v3.5.4
+    created: "2024-03-31T15:26:33.160836+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 391a82ba8f6f92e771343a7c21b97e28e3be5b9d133f1dfc57bad0de7b543814
+    digest: b8a9ac8b067362b54c3c1af99e6de969a69ec1ace6c4ee472c1fa6382310b58b
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -696,18 +755,22 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.8.tgz
-    version: 0.22.8
+    - argo-workflows-0.40.10.tgz
+    version: 0.40.10
   - annotations:
       artifacthub.io/changes: |
-        - "[Added]: Support podGCDeleteDelayDuration and podGCGracePeriodSeconds"
+        - kind: added
+          description: Add MySQL persistence support explicitly on README
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.4
-    created: "2023-03-11T18:00:10.543545+01:00"
+    appVersion: v3.5.4
+    created: "2024-03-31T15:26:33.176881+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 7571ce88474f3f90651df661c877f9007713216008728321803d6c7aa6675e48
+    digest: de92deb412f1e1e38d39293a5e77bd14dee415c8912448f9729b7b1c66b961f1
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argoproj.github.io/argo-workflows/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -716,18 +779,22 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.7.tgz
-    version: 0.22.7
+    - argo-workflows-0.40.9.tgz
+    version: 0.40.9
   - annotations:
       artifacthub.io/changes: |
-        - "[Added]: Suuport envFrom for main container"
+        - kind: fixed
+          description: Remove trailing whitespace from `.resourceRateLimit` when value is set and `.sso.redirectUrl` when value is an empty string.
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.4
-    created: "2023-03-11T18:00:10.541838+01:00"
+    appVersion: v3.5.4
+    created: "2024-03-31T15:26:33.174463+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 9c1eb12b8b058bfe35ef9dedf41fd80317de6ce97064eeb07f1a80aa79f35131
+    digest: 0a9ff150f208dc7f197d7765e40c320476bdadbf47cae214e5708404d579e387
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argoproj.github.io/argo-workflows/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -736,18 +803,22 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.6.tgz
-    version: 0.22.6
+    - argo-workflows-0.40.8.tgz
+    version: 0.40.8
   - annotations:
       artifacthub.io/changes: |
-        - "[Removed]: legacy API versions for PDBs"
+        - kind: fixed
+          description: Wrong identation in artifactRepository block
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.4
-    created: "2023-03-11T18:00:10.540226+01:00"
+    appVersion: v3.5.4
+    created: "2024-03-31T15:26:33.17269+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 00eb8132e683d6bc8a82bfdb9f899cc67e62868d35ab25131de141210412d000
+    digest: 923b0d0ae3ed22aa4ac7b938b40ef6fb8dbcf45716a327565d93e8bcc3880aa6
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argoproj.github.io/argo-workflows/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -756,18 +827,22 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.5.tgz
-    version: 0.22.5
+    - argo-workflows-0.40.7.tgz
+    version: 0.40.7
   - annotations:
       artifacthub.io/changes: |
-        - "[Added]: Changelog link on README"
+        - kind: changed
+          description: Bump argo-workflows to v3.5.4
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
-    appVersion: v3.4.4
-    created: "2023-03-11T18:00:10.538193+01:00"
+    appVersion: v3.5.4
+    created: "2024-03-31T15:26:33.170854+02:00"
     description: A Helm chart for Argo Workflows
-    digest: 3ca37f3486876a7f4885053e264b86224133417afd460d917663644d60e8113c
+    digest: e8b38ffaf43e5de3181007d6308efb7f5acde9c80a7f527c2c1763ada50595e0
     home: https://github.com/argoproj/argo-helm
-    icon: https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/assets/argo.png
+    icon: https://argoproj.github.io/argo-workflows/assets/logo.png
     maintainers:
     - name: argoproj
       url: https://argoproj.github.io/
@@ -776,6 +851,6 @@ entries:
     - https://github.com/argoproj/argo-workflows
     type: application
     urls:
-    - argo-workflows-0.22.4.tgz
-    version: 0.22.4
-generated: "2023-03-11T18:00:10.423991+01:00"
+    - argo-workflows-0.40.6.tgz
+    version: 0.40.6
+generated: "2024-03-31T15:26:33.052272+02:00"

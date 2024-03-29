@@ -70,7 +70,7 @@ helm:
     charts:
       - name: jupyterhub
       - name: binderhub
-        version: 1.0.0-0.dev.git.3035.h32213a4
+        by: created
   - name: sonatype
     url: https://sonatype.github.io/helm3-charts
   - name: prometheus-community

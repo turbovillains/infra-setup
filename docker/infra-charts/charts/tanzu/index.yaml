@@ -2,233 +2,233 @@ apiVersion: v1
 entries:
   velero:
   - apiVersion: v2
-    appVersion: 1.10.0
-    created: "2023-03-11T18:00:12.954244+01:00"
+    appVersion: 1.13.0
+    created: "2024-03-31T15:26:37.028079+02:00"
     description: A Helm chart for velero
-    digest: ddbf5f96a0fdb319e9835f988bc9c152b7b7808e197aa8cf25cfa1df9698d11e
+    digest: 52446304b0085eb29d7c2a2d9b5b0b070d0388340d33856d32b2d5c773b8045a
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-3.1.2.tgz
-    version: 3.1.2
+    - velero-6.0.0.tgz
+    version: 6.0.0
   - apiVersion: v2
-    appVersion: 1.10.0
-    created: "2023-03-11T18:00:12.952377+01:00"
+    appVersion: 1.13.0
+    created: "2024-03-31T15:26:37.0257+02:00"
     description: A Helm chart for velero
-    digest: 3148a468fa9e0b76b18a0f0dd506d10a2a698943ecc5014cb684acee5de3c2ab
+    digest: a2438d524634b91ad5bd24c6cbd01d34ddfa465543cb68b9d520bb569f1db004
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-3.1.1.tgz
-    version: 3.1.1
+    - velero-5.4.1.tgz
+    version: 5.4.1
   - apiVersion: v2
-    appVersion: 1.10.0
-    created: "2023-03-11T18:00:12.950039+01:00"
+    appVersion: 1.13.0
+    created: "2024-03-31T15:26:37.023025+02:00"
     description: A Helm chart for velero
-    digest: d26afc0a76f08b7d99cbca2022d78ab9b87888bc2cdda576f6095193921eda59
+    digest: a727ac69f45fe786ea8702569841c4f093c1dbec58be4e7681a8c73f10c5584c
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-3.1.0.tgz
-    version: 3.1.0
+    - velero-5.4.0.tgz
+    version: 5.4.0
   - apiVersion: v2
-    appVersion: 1.10.0
-    created: "2023-03-11T18:00:12.948327+01:00"
+    appVersion: 1.13.0
+    created: "2024-03-31T15:26:37.021155+02:00"
     description: A Helm chart for velero
-    digest: 9813ed41a25367539ae85379189d10ea90fd6ac16557f4042cdb1794bc8c61a7
+    digest: e2c0f3a9388c00ef93bbbfdd7ceba9cb8bad130de5f8c6fcf8505714c2e5dc11
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-3.0.0.tgz
-    version: 3.0.0
+    - velero-5.3.0.tgz
+    version: 5.3.0
   - apiVersion: v2
-    appVersion: 1.9.4
-    created: "2023-03-11T18:00:12.946572+01:00"
+    appVersion: 1.12.3
+    created: "2024-03-31T15:26:37.01922+02:00"
     description: A Helm chart for velero
-    digest: 684c049815edf100a4222c72ff962d4fe17682985a6db9c06b6c19e29dd970bb
+    digest: 25a9487441d65901acace20bf43176db42ae1831d898e55b340a3061acc89688
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-2.32.6.tgz
-    version: 2.32.6
+    - velero-5.2.2.tgz
+    version: 5.2.2
   - apiVersion: v2
-    appVersion: 1.9.4
-    created: "2023-03-11T18:00:12.944531+01:00"
+    appVersion: 1.12.3
+    created: "2024-03-31T15:26:37.016937+02:00"
     description: A Helm chart for velero
-    digest: d323702bbf180a3bae7d7e1ea89c9dd537738f81a07ff8606ddb8933c6aa48ad
+    digest: a0a97134cc1cf689204e8cb7e83f2be9e1070b6077bfd44f70031412669666a5
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-2.32.5.tgz
-    version: 2.32.5
+    - velero-5.2.1.tgz
+    version: 5.2.1
   - apiVersion: v2
-    appVersion: 1.9.4
-    created: "2023-03-11T18:00:12.941739+01:00"
+    appVersion: 1.12.2
+    created: "2024-03-31T15:26:37.013768+02:00"
     description: A Helm chart for velero
-    digest: 55426517a5d6accbbfea1df176677c4220e45d28cfcacd21f9877a7982a269fb
+    digest: ba68e34dd7481500c4bf9819098a93dd637e53bd80d712f4bd7e7a6ff6bd378c
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-2.32.4.tgz
-    version: 2.32.4
+    - velero-5.2.0.tgz
+    version: 5.2.0
   - apiVersion: v2
-    appVersion: 1.9.3
-    created: "2023-03-11T18:00:12.939236+01:00"
+    appVersion: 1.12.2
+    created: "2024-03-31T15:26:37.011381+02:00"
     description: A Helm chart for velero
-    digest: 80977c17c307539d8a11970bf7ff8010185e10add954fd79247e597bbb191f77
+    digest: df51c0bc87c16b4c0178daa4c8c277ff2f91013c9fd6b15f8bb3f3685ee508e3
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-2.32.3.tgz
-    version: 2.32.3
+    - velero-5.1.7.tgz
+    version: 5.1.7
   - apiVersion: v2
-    appVersion: 1.9.3
-    created: "2023-03-11T18:00:12.936882+01:00"
+    appVersion: 1.12.2
+    created: "2024-03-31T15:26:37.009441+02:00"
     description: A Helm chart for velero
-    digest: 66eac5ab28de120dd0419f8d012573b4ee09c4474e75507cc2041c4ee9c042dc
+    digest: 3d23b647f4fd9959ae416a7a78e56ef647b566513fb998fb424496703629d15a
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-2.32.2.tgz
-    version: 2.32.2
+    - velero-5.1.6.tgz
+    version: 5.1.6
   - apiVersion: v2
-    appVersion: 1.9.2
-    created: "2023-03-11T18:00:12.934497+01:00"
+    appVersion: 1.12.2
+    created: "2024-03-31T15:26:37.00754+02:00"
     description: A Helm chart for velero
-    digest: 9ce7474ffb43d8a643b2fd8190ade90bbe54facc94a2d442ce82502ff4f59fae
+    digest: a67853162a847c132a8778545f9336cc0e37bbac39e7b8eab734cbd9fc715b21
     home: https://github.com/vmware-tanzu/velero
     icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
     kubeVersion: '>=1.16.0-0'
     maintainers:
     - email: hsiaoairplane@gmail.com
       name: jenting
-    - email: sseago@redhat.com
-      name: sseago
     - email: jiangd@vmware.com
       name: reasonerjt
+    - email: mqiu@vmware.com
+      name: qiuming-best
     - email: yinw@vmware.com
       name: ywk253100
     name: velero
     sources:
     - https://github.com/vmware-tanzu/velero
     urls:
-    - velero-2.32.1.tgz
-    version: 2.32.1
-generated: "2023-03-11T18:00:12.931235+01:00"
+    - velero-5.1.5.tgz
+    version: 5.1.5
+generated: "2024-03-31T15:26:37.005268+02:00"

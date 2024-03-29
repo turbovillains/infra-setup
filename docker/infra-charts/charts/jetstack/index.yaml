@@ -2,15 +2,16 @@ apiVersion: v1
 entries:
   cert-manager:
   - annotations:
+      artifacthub.io/license: Apache-2.0
       artifacthub.io/prerelease: "false"
       artifacthub.io/signKey: |
         fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
-    appVersion: v1.11.0
-    created: "2023-03-11T18:00:12.033728+01:00"
+    appVersion: v1.14.4
+    created: "2024-03-31T15:26:35.487294+02:00"
     description: A Helm chart for cert-manager
-    digest: 39ebaad81cf7368643fc5616275b2f9e19d9837ccf10ae7f9531785ef4e03646
+    digest: 5775fdbc1881d6e510df76d38753af54b86bd14caa8edb28fdbb79527042dede
     home: https://github.com/cert-manager/cert-manager
     icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
     keywords:
@@ -18,7 +19,7 @@ entries:
     - kube-lego
     - letsencrypt
     - tls
-    kubeVersion: '>= 1.21.0-0'
+    kubeVersion: '>= 1.22.0-0'
     maintainers:
     - email: cert-manager-maintainers@googlegroups.com
       name: cert-manager-maintainers
@@ -27,18 +28,19 @@ entries:
     sources:
     - https://github.com/cert-manager/cert-manager
     urls:
-    - cert-manager-v1.11.0.tgz
-    version: v1.11.0
+    - cert-manager-v1.14.4.tgz
+    version: v1.14.4
   - annotations:
+      artifacthub.io/license: Apache-2.0
       artifacthub.io/prerelease: "false"
       artifacthub.io/signKey: |
         fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
-    appVersion: v1.10.2
-    created: "2023-03-11T18:00:12.029612+01:00"
+    appVersion: v1.14.3
+    created: "2024-03-31T15:26:35.482543+02:00"
     description: A Helm chart for cert-manager
-    digest: 426ff4927bafbbd21f30e64fcf94c630fc2d8de18362c3e690fe0896f87fd689
+    digest: 3126d0253ec8b0456e0db924cc3e71b24e51f1e66914218ca39ebb606aff0438
     home: https://github.com/cert-manager/cert-manager
     icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
     keywords:
@@ -46,7 +48,7 @@ entries:
     - kube-lego
     - letsencrypt
     - tls
-    kubeVersion: '>= 1.20.0-0'
+    kubeVersion: '>= 1.22.0-0'
     maintainers:
     - email: cert-manager-maintainers@googlegroups.com
       name: cert-manager-maintainers
@@ -55,18 +57,19 @@ entries:
     sources:
     - https://github.com/cert-manager/cert-manager
     urls:
-    - cert-manager-v1.10.2.tgz
-    version: v1.10.2
+    - cert-manager-v1.14.3.tgz
+    version: v1.14.3
   - annotations:
+      artifacthub.io/license: Apache-2.0
       artifacthub.io/prerelease: "false"
       artifacthub.io/signKey: |
         fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
         url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
     apiVersion: v1
-    appVersion: v1.10.1
-    created: "2023-03-11T18:00:12.025692+01:00"
+    appVersion: v1.14.2
+    created: "2024-03-31T15:26:35.47873+02:00"
     description: A Helm chart for cert-manager
-    digest: 50f07e3ad729b8d060017f5f43cf19f883ec5c296c6e66fd9110ccf860744ff9
+    digest: 45c13a8a3b0cceea09301bb6f847a8b0ffdc975ed56975e895ac85c651bcde5c
     home: https://github.com/cert-manager/cert-manager
     icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
     keywords:
@@ -74,7 +77,7 @@ entries:
     - kube-lego
     - letsencrypt
     - tls
-    kubeVersion: '>= 1.20.0-0'
+    kubeVersion: '>= 1.22.0-0'
     maintainers:
     - email: cert-manager-maintainers@googlegroups.com
       name: cert-manager-maintainers
@@ -83,179 +86,13 @@ entries:
     sources:
     - https://github.com/cert-manager/cert-manager
     urls:
-    - cert-manager-v1.10.1.tgz
-    version: v1.10.1
-  - annotations:
-      artifacthub.io/prerelease: "false"
-      artifacthub.io/signKey: |
-        fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
-        url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
-    apiVersion: v1
-    appVersion: v1.10.0
-    created: "2023-03-11T18:00:12.020941+01:00"
+    - cert-manager-v1.14.2.tgz
+    version: v1.14.2
+  - apiVersion: v1
+    appVersion: v0.16.1
+    created: "2024-03-31T15:26:35.474668+02:00"
     description: A Helm chart for cert-manager
-    digest: a8a634b1d18ec73ea12fb1a2544f2f04edcb1e52bd6bd502a96b215b895f685e
-    home: https://github.com/cert-manager/cert-manager
-    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
-    keywords:
-    - cert-manager
-    - kube-lego
-    - letsencrypt
-    - tls
-    kubeVersion: '>= 1.20.0-0'
-    maintainers:
-    - email: cert-manager-maintainers@googlegroups.com
-      name: cert-manager-maintainers
-      url: https://cert-manager.io
-    name: cert-manager
-    sources:
-    - https://github.com/cert-manager/cert-manager
-    urls:
-    - cert-manager-v1.10.0.tgz
-    version: v1.10.0
-  - annotations:
-      artifacthub.io/prerelease: "false"
-      artifacthub.io/signKey: |
-        fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
-        url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
-    apiVersion: v1
-    appVersion: v1.9.2
-    created: "2023-03-11T18:00:12.051206+01:00"
-    description: A Helm chart for cert-manager
-    digest: ba41cfdd41171b763434343e34db0fb50c054b0216e083804ce18a324d5df749
-    home: https://github.com/cert-manager/cert-manager
-    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
-    keywords:
-    - cert-manager
-    - kube-lego
-    - letsencrypt
-    - tls
-    kubeVersion: '>= 1.19.0-0'
-    maintainers:
-    - email: cert-manager-maintainers@googlegroups.com
-      name: cert-manager-maintainers
-      url: https://cert-manager.io
-    name: cert-manager
-    sources:
-    - https://github.com/cert-manager/cert-manager
-    urls:
-    - cert-manager-v1.9.2.tgz
-    version: v1.9.2
-  - annotations:
-      artifacthub.io/prerelease: "false"
-      artifacthub.io/signKey: |
-        fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
-        url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
-    apiVersion: v1
-    appVersion: v1.9.1
-    created: "2023-03-11T18:00:12.04816+01:00"
-    description: A Helm chart for cert-manager
-    digest: 46273177b5ca6930af8047cd52bf0b784c8482ac042e7812d08643c2898692d5
-    home: https://github.com/cert-manager/cert-manager
-    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
-    keywords:
-    - cert-manager
-    - kube-lego
-    - letsencrypt
-    - tls
-    kubeVersion: '>= 1.19.0-0'
-    maintainers:
-    - email: cert-manager-maintainers@googlegroups.com
-      name: cert-manager-maintainers
-      url: https://cert-manager.io
-    name: cert-manager
-    sources:
-    - https://github.com/cert-manager/cert-manager
-    urls:
-    - cert-manager-v1.9.1.tgz
-    version: v1.9.1
-  - annotations:
-      artifacthub.io/prerelease: "false"
-      artifacthub.io/signKey: |
-        fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
-        url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
-    apiVersion: v1
-    appVersion: v1.9.0
-    created: "2023-03-11T18:00:12.04555+01:00"
-    description: A Helm chart for cert-manager
-    digest: fab4457eea49344917167f02732fbe56bedbe6ae1935dace8db3fac34d672e85
-    home: https://github.com/cert-manager/cert-manager
-    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/d53c0b9270f8cd90d908460d69502694e1838f5f/logo/logo-small.png
-    keywords:
-    - cert-manager
-    - kube-lego
-    - letsencrypt
-    - tls
-    kubeVersion: '>= 1.19.0-0'
-    maintainers:
-    - email: cert-manager-maintainers@googlegroups.com
-      name: cert-manager-maintainers
-      url: https://cert-manager.io
-    name: cert-manager
-    sources:
-    - https://github.com/cert-manager/cert-manager
-    urls:
-    - cert-manager-v1.9.0.tgz
-    version: v1.9.0
-  - annotations:
-      artifacthub.io/prerelease: "false"
-      artifacthub.io/signKey: |
-        fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
-        url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
-    apiVersion: v1
-    appVersion: v1.8.2
-    created: "2023-03-11T18:00:12.043215+01:00"
-    description: A Helm chart for cert-manager
-    digest: 3e3262f08455d02f025e803b8227dea3ff3f88c170bfb0655b513fa274de5592
-    home: https://github.com/cert-manager/cert-manager
-    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/master/logo/logo.png
-    keywords:
-    - cert-manager
-    - kube-lego
-    - letsencrypt
-    - tls
-    maintainers:
-    - email: cert-manager-maintainers@googlegroups.com
-      name: cert-manager-maintainers
-    name: cert-manager
-    sources:
-    - https://github.com/cert-manager/cert-manager
-    urls:
-    - cert-manager-v1.8.2.tgz
-    version: v1.8.2
-  - annotations:
-      artifacthub.io/prerelease: "false"
-      artifacthub.io/signKey: |
-        fingerprint: 1020CF3C033D4F35BAE1C19E1226061C665DF13E
-        url: https://cert-manager.io/public-keys/cert-manager-keyring-2021-09-20-1020CF3C033D4F35BAE1C19E1226061C665DF13E.gpg
-    apiVersion: v1
-    appVersion: v1.8.1
-    created: "2023-03-11T18:00:12.039907+01:00"
-    description: A Helm chart for cert-manager
-    digest: b8d0dd5c95398db9308b649f7ef70ca3a0db1bb8859b43f9672c7f66871d0ef9
-    home: https://github.com/cert-manager/cert-manager
-    icon: https://raw.githubusercontent.com/cert-manager/cert-manager/master/logo/logo.png
-    keywords:
-    - cert-manager
-    - kube-lego
-    - letsencrypt
-    - tls
-    maintainers:
-    - email: cert-manager-maintainers@googlegroups.com
-      name: cert-manager-maintainers
-    name: cert-manager
-    sources:
-    - https://github.com/cert-manager/cert-manager
-    urls:
-    - cert-manager-v1.8.1.tgz
-    version: v1.8.1
-  - annotations:
-      artifacthub.io/prerelease: "false"
-    apiVersion: v1
-    appVersion: v1.7.3
-    created: "2023-03-11T18:00:12.037215+01:00"
-    description: A Helm chart for cert-manager
-    digest: b21dc98ddc24641498f2191e51c93acb69205ccfcbade6f929fa7af0c493778c
+    digest: 690a2c066fd823e39115b46568ac1c24c5fd46d290fead4c2572636b45d260f3
     home: https://github.com/jetstack/cert-manager
     icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
     keywords:
@@ -264,18 +101,246 @@ entries:
     - letsencrypt
     - tls
     maintainers:
-    - email: cert-manager-maintainers@googlegroups.com
-      name: cert-manager-maintainers
+    - email: james@jetstack.io
+      name: munnerz
     name: cert-manager
     sources:
     - https://github.com/jetstack/cert-manager
     urls:
-    - cert-manager-v1.7.3.tgz
-    version: v1.7.3
+    - cert-manager-v0.16.1.tgz
+    version: v0.16.1
+  - apiVersion: v1
+    appVersion: v0.16.0
+    created: "2024-03-31T15:26:35.468824+02:00"
+    description: A Helm chart for cert-manager
+    digest: fb0f13bed040e565e5cacbef41a25c551b0b2dc0383f0cb87cf30d27408b198e
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    maintainers:
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - cert-manager-v0.16.0.tgz
+    version: v0.16.0
+  - apiVersion: v1
+    appVersion: v0.15.2
+    created: "2024-03-31T15:26:35.461657+02:00"
+    description: A Helm chart for cert-manager
+    digest: ee1b94d9e2c679a6284669749f7186f5ded227a4675488aebfdd491efbdbfcec
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    maintainers:
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - cert-manager-v0.15.2.tgz
+    version: v0.15.2
+  - apiVersion: v1
+    appVersion: v0.15.1
+    created: "2024-03-31T15:26:35.458418+02:00"
+    description: A Helm chart for cert-manager
+    digest: f446f7a24ea0be194dced2842d9aef2419ba68eca8d43f3060bc88f72844fe94
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    maintainers:
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - cert-manager-v0.15.1.tgz
+    version: v0.15.1
+  - apiVersion: v1
+    appVersion: v0.15.0
+    created: "2024-03-31T15:26:35.454101+02:00"
+    description: A Helm chart for cert-manager
+    digest: 9ac0ac003cb5ddf6bbf8836fc52f300b974e5c1d5870cbe30553f5ea330fd1a4
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    maintainers:
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - cert-manager-v0.15.0.tgz
+    version: v0.15.0
+  - apiVersion: v1
+    appVersion: v0.14.3
+    created: "2024-03-31T15:26:35.449899+02:00"
+    description: A Helm chart for cert-manager
+    digest: 3563c03a7c2433167b5f5a3f10df7a21ebc9cc31cc9f99153a06edc3fde242b6
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    maintainers:
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - cert-manager-v0.14.3.tgz
+    version: v0.14.3
+  - apiVersion: v1
+    appVersion: v0.14.2
+    created: "2024-03-31T15:26:35.448954+02:00"
+    description: A Helm chart for cert-manager
+    digest: 160e1bd4906855b91c8ba42afe10af2d0443b184916e4534175890b1a7278f4e
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    maintainers:
+    - email: james@jetstack.io
+      name: munnerz
+    name: cert-manager
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - cert-manager-v0.14.2.tgz
+    version: v0.14.2
   cert-manager-csi-driver:
+  - annotations:
+      artifacthub.io/alternativeName: csi-driver
+      artifacthub.io/category: security
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/prerelease: "false"
+      artifacthub.io/recommendations: |
+        - url: https://artifacthub.io/packages/helm/cert-manager/cert-manager-csi-driver-spiffe
+        - url: https://artifacthub.io/packages/helm/cert-manager/cert-manager
+        - url: https://artifacthub.io/packages/helm/cert-manager/trust-manager
+    apiVersion: v2
+    appVersion: v0.8.0
+    created: "2024-03-31T15:26:35.448034+02:00"
+    description: cert-manager csi-driver enables issuing secretless X.509 certificates
+      for pods using cert-manager
+    digest: feced68fbde57c5b54384c77155547a13f39a33c612b9e49a49dcb91b0617b15
+    home: https://cert-manager.io/docs/usage/csi-driver
+    icon: https://raw.githubusercontent.com/cert-manager/community/4d35a69437d21b76322157e6284be4cd64e6d2b7/logo/logo-small.png
+    keywords:
+    - cert-manager
+    - csi
+    - tls
+    maintainers:
+    - email: cert-manager-maintainers@googlegroups.com
+      name: cert-manager-maintainers
+      url: https://cert-manager.io
+    name: cert-manager-csi-driver
+    sources:
+    - https://github.com/cert-manager/csi-driver
+    type: application
+    urls:
+    - cert-manager-csi-driver-v0.8.0.tgz
+    version: v0.8.0
+  - annotations:
+      artifacthub.io/alternativeName: csi-driver
+      artifacthub.io/category: security
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/prerelease: "false"
+      artifacthub.io/recommendations: |
+        - url: https://artifacthub.io/packages/helm/cert-manager/csi-driver-spiffe
+        - url: https://artifacthub.io/packages/helm/cert-manager/cert-manager
+        - url: https://artifacthub.io/packages/helm/cert-manager/trust-manager
+    apiVersion: v2
+    appVersion: v0.7.1
+    created: "2024-03-31T15:26:35.447375+02:00"
+    description: cert-manager csi-driver enables issuing secretless X.509 certificates
+      for pods using cert-manager
+    digest: 0a74ad7fd439f1f3e6801ff270f1e0776b2afa62be889f34aa752b600a8f4bea
+    home: https://cert-manager.io/docs/usage/csi-driver
+    icon: https://raw.githubusercontent.com/cert-manager/community/4d35a69437d21b76322157e6284be4cd64e6d2b7/logo/logo-small.png
+    keywords:
+    - cert-manager
+    - csi
+    - tls
+    maintainers:
+    - email: cert-manager-maintainers@googlegroups.com
+      name: cert-manager-maintainers
+      url: https://cert-manager.io
+    name: cert-manager-csi-driver
+    sources:
+    - https://github.com/cert-manager/csi-driver
+    type: application
+    urls:
+    - cert-manager-csi-driver-v0.7.1.tgz
+    version: v0.7.1
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: v0.7.0
+    created: "2024-03-31T15:26:35.44675+02:00"
+    description: cert-manager-csi-driver enables issuing secretless X.509 certificates
+      for pods using cert-manager
+    digest: ad29c0f7277495978b9b407f2a47dec843b4f418dfdd16e6e990cd44f4672c42
+    home: https://github.com/cert-manager/csi-driver
+    maintainers:
+    - email: cert-manager-maintainers@googlegroups.com
+      name: cert-manager-maintainers
+      url: https://cert-manager.io
+    name: cert-manager-csi-driver
+    sources:
+    - https://github.com/cert-manager/csi-driver
+    type: application
+    urls:
+    - cert-manager-csi-driver-v0.7.0.tgz
+    version: v0.7.0
+  - apiVersion: v2
+    appVersion: v0.6.0
+    created: "2024-03-31T15:26:35.446243+02:00"
+    description: cert-manager-csi-driver enables issuing secretless X.509 certificates
+      for pods using cert-manager
+    digest: 10e938d3cc27919970d19871c1f2da2e591a6a85630979e2166600c88d3f4946
+    home: https://github.com/cert-manager/csi-driver
+    maintainers:
+    - email: cert-manager-maintainers@googlegroups.com
+      name: cert-manager-maintainers
+      url: https://cert-manager.io
+    name: cert-manager-csi-driver
+    sources:
+    - https://github.com/cert-manager/csi-driver
+    type: application
+    urls:
+    - cert-manager-csi-driver-v0.6.0.tgz
+    version: v0.6.0
   - apiVersion: v1
     appVersion: v0.5.0
-    created: "2023-03-11T18:00:12.017464+01:00"
+    created: "2024-03-31T15:26:35.445763+02:00"
     description: A Helm chart for cert-manager-csi-driver
     digest: 704eb568b7e24f576143a29e6749e9a8ea4e9ed2afd47bd99e11d0bd0a372701
     home: https://github.com/cert-manager/csi-driver
@@ -292,7 +357,7 @@ entries:
     version: v0.5.0
   - apiVersion: v1
     appVersion: v0.4.0
-    created: "2023-03-11T18:00:12.01701+01:00"
+    created: "2024-03-31T15:26:35.445317+02:00"
     description: A Helm chart for cert-manager-csi-driver
     digest: 322eda26e207123a799064830c3e1150b986cf118ec488316ccf6ced70a29742
     home: https://github.com/cert-manager/csi-driver
@@ -309,7 +374,7 @@ entries:
     version: v0.4.2
   - apiVersion: v1
     appVersion: v0.4.0
-    created: "2023-03-11T18:00:12.01656+01:00"
+    created: "2024-03-31T15:26:35.444858+02:00"
     description: A Helm chart for cert-manager-csi-driver
     digest: 763f5d451e9c2abc0ddbadca6d6bd94265ad486642c50c0c580c78d6bf92b846
     home: https://github.com/cert-manager/csi-driver
@@ -326,7 +391,7 @@ entries:
     version: v0.4.1
   - apiVersion: v1
     appVersion: v0.4.0
-    created: "2023-03-11T18:00:12.016086+01:00"
+    created: "2024-03-31T15:26:35.444411+02:00"
     description: A Helm chart for cert-manager-csi-driver
     digest: 2969b917f5f0d2934676a228f8cc35a53a50103c9fcc237316770af090af9036
     home: https://github.com/cert-manager/csi-driver
@@ -343,7 +408,7 @@ entries:
     version: v0.4.0
   - apiVersion: v1
     appVersion: v0.3.0
-    created: "2023-03-11T18:00:12.015634+01:00"
+    created: "2024-03-31T15:26:35.443944+02:00"
     description: A Helm chart for cert-manager-csi-driver
     digest: c1cf33f18b29b1de8a9ff1f234db450f87f1e562ea52ca7880cd2ec2953907fc
     home: https://github.com/cert-manager/csi-driver
@@ -360,7 +425,7 @@ entries:
     version: v0.3.2
   - apiVersion: v1
     appVersion: v0.3.0
-    created: "2023-03-11T18:00:12.015138+01:00"
+    created: "2024-03-31T15:26:35.443478+02:00"
     description: A Helm chart for cert-manager-csi-driver
     digest: 21d36e52e02ec49d13ef14bed45fd51afdcd897b1edda2ab8eaa10e431be7e73
     home: https://github.com/cert-manager/csi-driver
@@ -375,72 +440,4 @@ entries:
     urls:
     - cert-manager-csi-driver-v0.3.1.tgz
     version: v0.3.1
-  - apiVersion: v1
-    appVersion: v0.3.0
-    created: "2023-03-11T18:00:12.014672+01:00"
-    description: A Helm chart for cert-manager-csi-driver
-    digest: e46654ea740c0e361807ec0237d6f3a802fab179d1a63538547d1dcda4a25fdc
-    home: https://github.com/cert-manager/csi-driver
-    maintainers:
-    - email: joshua.vanleeuwen@jetstack.io
-      name: joshvanl
-      url: https://cert-manager.io
-    name: cert-manager-csi-driver
-    sources:
-    - https://github.com/cert-manager/csi-driver
-    type: application
-    urls:
-    - cert-manager-csi-driver-v0.3.0.tgz
-    version: v0.3.0
-  - apiVersion: v1
-    appVersion: v0.2.0
-    created: "2023-03-11T18:00:12.013741+01:00"
-    description: A Helm chart for cert-manager-csi-driver
-    digest: 5ffd78e7d889a90b1e1661cb36b4eae50227e177df543de7610832f5eae48494
-    home: https://github.com/cert-manager/csi-driver
-    maintainers:
-    - email: joshua.vanleeuwen@jetstack.io
-      name: joshvanl
-      url: https://cert-manager.io
-    name: cert-manager-csi-driver
-    sources:
-    - https://github.com/cert-manager/csi-driver
-    type: application
-    urls:
-    - cert-manager-csi-driver-v0.2.1.tgz
-    version: v0.2.1
-  - apiVersion: v1
-    appVersion: v0.2.0
-    created: "2023-03-11T18:00:12.013022+01:00"
-    description: A Helm chart for cert-manager-csi-driver
-    digest: a5d507ca27a6fb068dc75367d475af0c69c6ce02fa178f0302a3b8c8fe353c9f
-    home: https://github.com/cert-manager/csi-driver
-    maintainers:
-    - email: joshua.vanleeuwen@jetstack.io
-      name: joshvanl
-      url: https://cert-manager.io
-    name: cert-manager-csi-driver
-    sources:
-    - https://github.com/cert-manager/csi-driver
-    type: application
-    urls:
-    - cert-manager-csi-driver-v0.2.0.tgz
-    version: v0.2.0
-  - apiVersion: v1
-    appVersion: v0.1.1
-    created: "2023-03-11T18:00:12.012542+01:00"
-    description: A Helm chart for cert-manager-csi-driver
-    digest: 18f96db29627bfcb782f10b68ae84d961a8622c22bce71b0205f57d9076a4705
-    home: https://github.com/cert-manager/csi-driver
-    maintainers:
-    - email: joshua.vanleeuwen@jetstack.io
-      name: joshvanl
-      url: https://cert-manager.io
-    name: cert-manager-csi-driver
-    sources:
-    - https://github.com/cert-manager/csi-driver
-    type: application
-    urls:
-    - cert-manager-csi-driver-v0.1.2.tgz
-    version: v0.1.2
-generated: "2023-03-11T18:00:12.011888+01:00"
+generated: "2024-03-31T15:26:35.442784+02:00"
