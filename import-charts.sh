@@ -20,7 +20,6 @@ import_charts() {
                 if [[ "${versions}" == "null" ]]; then
                     # Find last ten non-beta non-alpha or non-dev versions from repo
                     # for date conversion trick see https://github.com/jqlang/jq/issues/2224
-                    #
                     if [[ "${by_field}" == "version" ]]; then
                         versions=$(curl -sL ${url}/index.yaml \
                             | yj \
@@ -30,7 +29,7 @@ import_charts() {
                                 | .[]
                                 | select(.version | test("beta|alpha|dev|test|canary|rc|preview") | not)
                             ]
-                            | sort_by(.version | split(".") | map(tonumber? // 0))
+                            | sort_by(.version | sub("^v"; "") | split(".") | map(tonumber? // 0))
                             | reverse
                             | .[0:10]
                             | [ .[].version ]
@@ -55,8 +54,12 @@ import_charts() {
                     echo "${name}: ${versions}"
                 fi
                 for version in ${versions}; do
-                    echo "Pulling ${name}@${version} from ${repo}"
-                    helm pull --repo ${url} --destination ${target}/${repo} --version ${version} ${name}
+                    if [[ ! -f ${target}/${repo}/${name}-${version}.tgz ]]; then
+                        echo "Pulling ${name}@${version} from ${repo}"
+                        helm pull --repo ${url} --destination ${target}/${repo} --version ${version} ${name}
+                    else
+                        echo "Found ${name}@${version} from ${repo}"
+                    fi
                 done
             done
         ) &
