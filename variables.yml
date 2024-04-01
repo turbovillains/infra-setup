@@ -100,7 +100,7 @@ variables:
   HEROKU_PROCFILE_CNB_VERSION: "3.0.1" # https://github.com/heroku/procfile-cnb
   BINDERHUB_VERSION: 1.0.0-0.dev.git.3041.h6af741b # https://hub.docker.com/repository/docker/noroutine/k8s-binderhub
   BINDERHUB_IMAGE_CLEANER_VERSION: 0.2.0-n768.h13978ab # https://hub.docker.com/r/jupyterhub/k8s-image-cleaner/tags
-  PIHOLE_VERSION: "2024.03.1" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
+  PIHOLE_VERSION: "2024.03.2" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
   CLICKHOUSE_VERSION: "22.1.3.7-alpine" # https://hub.docker.com/r/yandex/clickhouse-server/tags?page=1&ordering=last_updated
   TABIX_VERSION: stable
   PLAUSIBLE_VERSION: "v2.0.0" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
@@ -118,7 +118,7 @@ variables:
   JUPYTERHUB_HTTP_PROXY_VERSION: "4.6.1" # https://hub.docker.com/r/jupyterhub/configurable-http-proxy/tags?page=1&ordering=last_updated
   JUPYTERHUB_SCHEDULER_VERSION: v1.28.8 # https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/main/jupyterhub/values.yaml#L508
   JUPYTERHUB_PAUSE_VERSION: "3.9" # https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/main/jupyterhub/values.yaml#L540
-  REPO2DOCKER_VERSION: "2023.06.0-88.gf667caf" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
+  REPO2DOCKER_VERSION: "2024.03.0" # https://quay.io/repository/jupyterhub/repo2docker?tab=tags&tag=latest
   JUPYTER_VERSION: "2023-10-20" # https://hub.docker.com/r/jupyter/all-spark-notebook/tags?page=1&ordering=last_updated
   RSHINY_VERSION: "4.3.3" # https://hub.docker.com/r/rocker/shiny/tags?page=1&ordering=last_updated
   RSTUDIO_VERSION: "1.4.1717" # https://www.rstudio.com/products/rstudio/download-server/
@@ -269,8 +269,8 @@ variables:
   YUGABYTE_VERSION: 2.20.1.2-b1 # https://github.com/yugabyte/yugabyte-db/releases and https://hub.docker.com/r/yugabytedb/yugabyte/tags
   KEEWEB_VERSION: 1.18.7 # https://hub.docker.com/r/antelle/keeweb/tags
   NETBIRD_DASHBOARD_VERSION: v1.17.16 # https://hub.docker.com/r/wiretrustee/dashboard/tags
-  NETBIRD_SIGNAL_VERSION: 0.26.6 # https://hub.docker.com/r/netbirdio/netbird/tags
-  NETBIRD_MANAGEMENT_VERSION: 0.26.6 # https://hub.docker.com/r/netbirdio/management/tags
+  NETBIRD_SIGNAL_VERSION: 0.26.7 # https://hub.docker.com/r/netbirdio/netbird/tags
+  NETBIRD_MANAGEMENT_VERSION: 0.26.7 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
   FIREZONE_VERSION: 0.7.36 # https://hub.docker.com/r/firezone/firezone/tags
   JENKINS_VERSION: 2.451-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
