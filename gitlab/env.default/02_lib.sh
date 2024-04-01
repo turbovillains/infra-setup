@@ -12,8 +12,8 @@ archive_image() {
     local infra_bucket=${2:-${INFRA_VERSION}}
 
     docker pull ${fq_image_name}
-    image_archive="$(echo ${fq_image_name} | tr '/:' '-').bz2"
-    docker save ${fq_image_name} | bzip2 >${image_archive}
+    image_archive="$(echo ${fq_image_name} | tr '/:' '-').zst"
+    docker save ${fq_image_name} | zstd -T0 >${image_archive}
     ls -sh1 ${image_archive}
 
     rsync -e "ssh -o StrictHostKeyChecking=no" \

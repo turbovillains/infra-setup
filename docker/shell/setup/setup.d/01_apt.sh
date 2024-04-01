@@ -14,7 +14,7 @@ deb http://security.debian.org/debian-security bookworm-security main
 SOURCES
 
 apt-get update -yyq
-apt-get -yyq install zip zstd unzip \
+apt-get -yyq install zip zstd xz-utils unzip \
 	python3 python3-pip virtualenv \
 	socat netcat-openbsd telnet curl wget ftp git \
   openjdk-17-jdk \
