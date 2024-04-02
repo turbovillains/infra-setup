@@ -11,9 +11,19 @@ archive_image() {
     local fq_image_name=${1:-}
     local infra_bucket=${2:-${INFRA_VERSION}}
 
+    local source_registry="$(get_registry ${fq_image_name})"
+    local image_name=$(get_name ${fq_image_name})
+    local image_ref=$(get_ref ${fq_image_name})
+    local image_tag=$(get_tag ${fq_image_name})
+
+    local archived_fq_image_name=${source_registry}/${image_name}:${image_tag}
+
+    # Pull as specified, possibly with sha pointer, but save as given tag
+    # retag as archived image to make sure sha version pointers produce real tags
     docker pull ${fq_image_name}
-    image_archive="$(echo ${fq_image_name} | tr '/:' '-').zst"
-    docker save ${fq_image_name} | zstd -T0 >${image_archive}
+    docker tag ${fq_image_name} ${archived_fq_image_name}
+    image_archive="$(echo ${archived_fq_image_name} | tr '/:' '-').zst"
+    docker save ${archived_fq_image_name} | zstd -T0 >${image_archive}
     ls -sh1 ${image_archive}
 
     rsync -e "ssh -o StrictHostKeyChecking=no" \

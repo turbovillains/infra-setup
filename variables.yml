@@ -29,6 +29,7 @@ variables:
   ACTIONS_RUNNER_IMAGE_VERSION: "v2.314.1-ubuntu-22.04" # https://hub.docker.com/r/summerwind/actions-runner/tags
   KUBE_RBAC_PROXY_VERSION: v0.16.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_RUNNER_VERSION: "alpine3.19-v16.10.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_RUNNER_HELPER_VERSION: x86_64-v16.10.0
   GITLAB_VERSION: "16.10.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
   GITLAB_AGENTK_VERSION: v16.10.1 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v2.3.0 # https://gitlab.com/gitlab-org/cluster-integration/cluster-applications/-/tags
@@ -45,10 +46,10 @@ variables:
   ARGO_EVENTS_VERSION: v1.9.1 # https://quay.io/repository/argoproj/argo-events?tag=latest&tab=tags
   ARGO_WORKFLOWS_VERSION: v3.5.5 # https://github.com/argoproj/argo-workflows/releases?q=v3&expanded=true
   KANIKO_VERSION: v1.22.0 # https://console.cloud.google.com/gcr/images/kaniko-project/GLOBAL/executor
-  NEXUS_VERSION: "3.66.0" # https://hub.docker.com/r/sonatype/nexus3/tags
+  NEXUS_VERSION: "3.67.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.3-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v2.11.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "9.5.16" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "9.5.17" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   LATEX_BASE: ubuntu:jammy-20240227 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "24.0.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -83,9 +84,9 @@ variables:
   CADVISOR_VERSION: "v0.49.1" # https://github.com/google/cadvisor/releases
   KARMA_VERSION: "v0.119" # https://github.com/prymitive/karma/pkgs/container/karma
   LDAP_EXPORTER_VERSION: 0.0.5-1-release
-  ELASTICSEARCH_VERSION: "8.13.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "8.13.0"
-  KIBANA_VERSION: "8.13.0"
+  ELASTICSEARCH_VERSION: "8.13.1" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "8.13.1"
+  KIBANA_VERSION: "8.13.1"
   CORTEX_VERSION: v1.16.0 # https://quay.io/repository/cortexproject/cortex?tab=tags&tag=latest
   ALERTA_VERSION: "9.0.1" # https://hub.docker.com/r/alerta/alerta-web/tags?page=1&ordering=last_updated
   MONGO_VERSION: 7.0.7-jammy # https://hub.docker.com/_/mongo
@@ -108,8 +109,8 @@ variables:
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
   GHOST_VERSION: "5.81.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "5.0.3-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
-  NOCODB_VERSION: "0.204.9" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
-  METABASE_VERSION: "v0.49.2" # https://hub.docker.com/r/metabase/metabase/tags
+  NOCODB_VERSION: "0.205.0" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
+  METABASE_VERSION: "v0.49.3" # https://hub.docker.com/r/metabase/metabase/tags
   JUPYTERHUB_VERSION: "3.3.6" # https://hub.docker.com/r/jupyterhub/k8s-hub/tags?page=1&ordering=last_updated
   JUPYTERHUB_SECRET_SYNC_VERSION: "3.3.6" # https://hub.docker.com/r/jupyterhub/k8s-secret-sync/tags
   JUPYTERHUB_NETWORK_TOOLS_VERSION: "3.3.6" # https://hub.docker.com/r/jupyterhub/k8s-network-tools/tags?page=1&ordering=last_updated
@@ -158,7 +159,7 @@ variables:
   BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION: "3.10.1-debian-12-r0" # https://hub.docker.com/r/bitnami/grafana-image-renderer/tags
   BITNAMI_CONSUL_VERSION: "1.18.1-debian-12-r0" # https://hub.docker.com/r/bitnami/consul/tags
   BITNAMI_NATS_VERSION: "2.10.12-debian-12-r0" # https://hub.docker.com/r/bitnami/nats/tags
-  BITNAMI_KUBE_STATE_METRICS_VERSION: "2.11.0-debian-12-r0" # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
+  BITNAMI_KUBE_STATE_METRICS_VERSION: "2.12.0-debian-12-r0" # https://hub.docker.com/r/bitnami/kube-state-metrics/tags?page=1&ordering=last_updated
   BITNAMI_METRICS_SERVER_VERSION: "0.7.1-debian-12-r0" # https://hub.docker.com/r/bitnami/metrics-server/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_ASSET_SYNCER: "2.9.0-debian-12-r19" # https://hub.docker.com/r/bitnami/kubeapps-asset-syncer/tags?page=1&ordering=last_updated
   BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION: "2.9.0-debian-12-r18" # https://hub.docker.com/r/bitnami/kubeapps-apprepository-controller/tags?page=1&ordering=last_updated
@@ -173,11 +174,11 @@ variables:
   TRIVY_VERSION: 0.50.1 # https://hub.docker.com/r/aquasec/trivy/tags
   EXTERNAL_SECRETS_VERSION: v0.9.14 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.30.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
-  HASURA_GRAPHQL_VERSION: v2.38.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
+  HASURA_GRAPHQL_VERSION: v2.38.1 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.5.6 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v1.0.72" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
+  RELOADER_VERSION: "v1.0.73" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.3" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
@@ -255,7 +256,7 @@ variables:
   KEDA_VERSION: "2.13.1" # ghcr.io/kedacore/keda
   HADOLINT_VERSION: v2.12.1-beta # https://hub.docker.com/r/hadolint/hadolint/tags
   OUTLINE_VERSION: 0.75.2 # https://hub.docker.com/r/outlinewiki/outline/tags
-  SYNCTHING_VERSION: 1.27.4 # https://hub.docker.com/r/syncthing/syncthing/tags
+  SYNCTHING_VERSION: 1.27.5 # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: 10.8.13-1 # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
   TDARR_VERSION: 2.17.01 # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
   NETMAKER_VERSION: v0.23.0 # https://hub.docker.com/r/gravitl/netmaker/tags
@@ -273,7 +274,7 @@ variables:
   NETBIRD_MANAGEMENT_VERSION: 0.26.7 # https://hub.docker.com/r/netbirdio/management/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
   FIREZONE_VERSION: 0.7.36 # https://hub.docker.com/r/firezone/firezone/tags
-  JENKINS_VERSION: 2.451-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
+  JENKINS_VERSION: 2.452-jdk17 # https://hub.docker.com/r/jenkins/jenkins/tags
   JENKINS_AGENT_VERSION: 3206.vb_15dcf73f6a_9-4-jdk17 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.0 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
   VELERO_VERSION: v1.13.1 # https://hub.docker.com/r/velero/velero/tags
@@ -293,7 +294,7 @@ variables:
   AZURE_WORKLOAD_IDENTITY_VERSION: v1.2.1
   AZURE_SERVICE_OPERATOR_VERSION: v2.6.0
   GUACAMOLE_VERSION: "1.5.4" # https://hub.docker.com/r/guacamole/guacamole/tags
-  CEPHCSI_VERSION: v3.10.2-amd64 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
+  CEPHCSI_VERSION: v3.11.0-amd64 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v23.9.2 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
   NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION: v23.9.2 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/gpu-operator-validator/tags
   NVIDIA_K8S_DRIVER_MANAGER_VERSION: v0.6.7 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-driver-manager/tags

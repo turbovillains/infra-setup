@@ -12,11 +12,13 @@ stages:
 
 before_script:
   - |
-    # fix permissions for kubeconfig
-    chmod go-rwx $KUBECONFIG
+    docker info
+    # try fix permissions for kubeconfig
+    chmod go-rwx $KUBECONFIG || true
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
     export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
+
     echo "Infra: ${INFRA_VERSION}"
     [[ -f gitlab/env.sh ]] && source gitlab/env.sh
 
@@ -294,6 +296,10 @@ archive-images1:
           - gitlab/gitlab-runner
         VERSION:
           - GITLAB_RUNNER_VERSION
+      - BASE:
+          - gitlab-org/gitlab-runner/gitlab-runner-helper
+        VERSION:
+          - GITLAB_RUNNER_HELPER_VERSION
       - BASE:
           - gitlab/gitlab-ce
         VERSION:
@@ -1155,6 +1161,67 @@ archive-images4:
           - cephcsi/cephcsi
         VERSION:
           - CEPHCSI_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/cuda
+        VERSION:
+          - NVIDIA_CUDA_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/cloud-native/dcgm
+        VERSION:
+          - NVIDIA_DCGM_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/k8s/dcgm-exporter
+        VERSION:
+          - NVIDIA_DCGM_EXPORTER_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/gpu-feature-discovery
+        VERSION:
+          - NVIDIA_GPU_FEATURE_DISCOVERY_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/gpu-operator
+        VERSION:
+          - NVIDIA_GPU_OPERATOR_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/cloud-native/gpu-operator-validator
+        VERSION:
+          - NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/k8s/container-toolkit
+        VERSION:
+          - NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/k8s-device-plugin
+        VERSION:
+          - NVIDIA_K8S_DEVICE_PLUGIN_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/cloud-native/k8s-driver-manager
+        VERSION:
+          - NVIDIA_K8S_DRIVER_MANAGER_VERSION
+      - REGISTRY:
+          - nvcr.io
+        BASE:
+          - nvidia/cloud-native/k8s-mig-manager
+        VERSION:
+          - NVIDIA_K8S_MIG_MANAGER_VERSION
+
 
 archive-special:
   extends: .archive-images

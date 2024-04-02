@@ -85,6 +85,7 @@ import_images() {
         "buildpacksio/lifecycle:${BUILDPACKSIO_LIFECYCLE_VERSION:-0.11.1}"
         "gitlab/gitlab-runner:${GITLAB_RUNNER_VERSION:-alpine-v13.12.0-rc1}"
         "gitlab/gitlab-ce:${GITLAB_VERSION:-14.1.2-ce.0}"
+        "registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:${GITLAB_RUNNER_HELPER_VERSION:-x86_64-v16.10.0}"
         "registry.gitlab.com/gitlab-org/cluster-integration/auto-build-image:${GITLAB_AUTO_BUILD_VERSION:-v1.0.0}"
         "registry.gitlab.com/gitlab-org/cluster-integration/auto-deploy-image:${GITLAB_AUTO_DEPLOY_VERSION:-v2.6.0}"
         "registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:${GITLAB_AGENTK_VERSION:-v15.0.0}"
