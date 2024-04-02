@@ -1988,12 +1988,11 @@ traefik:
     BASE: traefik
     VERSION: TRAEFIK_VERSION
 
-# latex:
-#   stage: build
-#   script:
-#     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-#         --build-arg LATEX_BASE
+latex:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 powerdns:
   interruptible: true

@@ -50,7 +50,7 @@ variables:
   TRAEFIK_VERSION: "v2.11.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "9.5.16" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
-  # LATEX_BASE: ubuntu:jammy-20230301 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
+  LATEX_BASE: ubuntu:jammy-20240227 # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=focal
   KEYCLOAK_VERSION: "24.0.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "16.2-bookworm" # https://hub.docker.com/_/postgres
   JIRA_VERSION: "9.15.0" # https://hub.docker.com/r/atlassian/jira-software/tags?page=1&ordering=last_updated
