@@ -106,7 +106,7 @@ variables:
   PLAUSIBLE_VERSION: "v2.0.0" # https://hub.docker.com/r/plausible/analytics/tags?page=1&ordering=last_updated
   VERDACCIO_VERSION: "5.30.2" # https://hub.docker.com/r/verdaccio/verdaccio/tags?page=1&ordering=last_updated
   STRAPI_VERSION: 3.6.8-alpine # https://hub.docker.com/r/strapi/strapi/tags?page=1&ordering=last_updated
-  GHOST_VERSION: "5.81.0" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
+  GHOST_VERSION: "5.81.1" # https://hub.docker.com/_/ghost?tab=tags&page=1&ordering=last_updated
   MATOMO_VERSION: "5.0.3-apache" # https://hub.docker.com/_/matomo?tab=tags&page=1&ordering=last_updated
   NOCODB_VERSION: "0.204.9" # https://hub.docker.com/r/nocodb/nocodb/tags?page=1&ordering=last_updated
   METABASE_VERSION: "v0.49.2" # https://hub.docker.com/r/metabase/metabase/tags
@@ -171,7 +171,7 @@ variables:
   BITNAMI_TRIVY_VERSION: 0.50.1-debian-12-r0 # https://hub.docker.com/r/bitnami/trivy/tags
   BITNAMI_KUBECTL_VERSION: 1.29.3-debian-12-r0 # https://hub.docker.com/r/bitnami/kubectl/tags
   TRIVY_VERSION: 0.50.1 # https://hub.docker.com/r/aquasec/trivy/tags
-  EXTERNAL_SECRETS_VERSION: v0.9.13 # https://github.com/external-secrets/external-secrets/releases
+  EXTERNAL_SECRETS_VERSION: v0.9.14 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.30.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   HASURA_GRAPHQL_VERSION: v2.38.0 # https://hub.docker.com/r/hasura/graphql-engine/tags?page=1&ordering=last_updated
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
@@ -207,10 +207,10 @@ variables:
   CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION: v7.0.2
   CSI_PROVISIONER_VERSION: v4.0.1
   K8S_NFD_VERSION: v0.15.3 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
-  TIGERA_OPERATOR_VERSION: "v1.32.6" # https://quay.io/repository/tigera/operator?tab=tags
-  CALICO_VERSION: "v3.27.2" # https://hub.docker.com/r/calico/node/tags
+  TIGERA_OPERATOR_VERSION: "v1.32.7" # https://quay.io/repository/tigera/operator?tab=tags
+  CALICO_VERSION: "v3.27.3" # https://hub.docker.com/r/calico/node/tags
   CONSUL_VERSION: "1.18.1" # https://hub.docker.com/r/hashicorp/consul
-  CONSUL_K8S_CP_VERSION: "1.4.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
+  CONSUL_K8S_CP_VERSION: "1.4.1" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.6 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
   VAULT_VERSION: "1.16.0" # https://hub.docker.com/r/hashicorp/vault
   VAULT_K8S_VERSION: "1.4.0" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
@@ -266,7 +266,7 @@ variables:
   PUPPETBOARD_VERSION: 5.4.0 # https://github.com/voxpupuli/puppetboard/releases
   R10K_VERSION: 3.15.2 # https://hub.docker.com/r/puppet/r10k/tags
   RESTIC_VERSION: 0.16.4 # https://hub.docker.com/r/restic/restic/tags
-  YUGABYTE_VERSION: 2.20.1.2-b1 # https://github.com/yugabyte/yugabyte-db/releases and https://hub.docker.com/r/yugabytedb/yugabyte/tags
+  YUGABYTE_VERSION: 2.20.2.2-b1 # https://github.com/yugabyte/yugabyte-db/releases and https://hub.docker.com/r/yugabytedb/yugabyte/tags
   KEEWEB_VERSION: 1.18.7 # https://hub.docker.com/r/antelle/keeweb/tags
   NETBIRD_DASHBOARD_VERSION: v1.17.16 # https://hub.docker.com/r/wiretrustee/dashboard/tags
   NETBIRD_SIGNAL_VERSION: 0.26.7 # https://hub.docker.com/r/netbirdio/netbird/tags
