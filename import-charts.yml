@@ -6,6 +6,10 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: harbor
+    url: https://helm.goharbor.io
+    charts:
+      - name: harbor
   - name: jenkinsci
     url: https://charts.jenkins.io
     charts:
@@ -54,6 +58,7 @@ helm:
       - name: grafana
       - name: nats
       - name: tomcat
+      - name: harbor
   - name: elastic
     url: https://helm.elastic.co
     charts:

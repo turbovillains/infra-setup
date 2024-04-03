@@ -1223,7 +1223,29 @@ archive-images4:
           - nvidia/cloud-native/k8s-mig-manager
         VERSION:
           - NVIDIA_K8S_MIG_MANAGER_VERSION
-
+      - BASE:
+          - bitnami/harbor-adapter-trivy
+          - bitnami/harbor-core
+          - bitnami/harbor-exporter
+          - bitnami/harbor-jobservice
+          - bitnami/harbor-portal
+          - bitnami/harbor-registry
+          - bitnami/harbor-registryctl
+        VERSION:
+          - BITNAMI_HARBOR_VERSION
+      - BASE:
+          - goharbor/harbor-portal
+          - goharbor/harbor-core
+          - goharbor/harbor-jobservice
+          - goharbor/registry-photon
+          - goharbor/harbor-registryctl
+          - goharbor/harbor-db
+          - goharbor/harbor-exporter
+          - goharbor/trivy-adapter-photon
+          - goharbor/nginx-photon
+          - goharbor/redis-photon
+        VERSION:
+          - HARBOR_VERSION
 
 archive-special:
   extends: .archive-images
@@ -5111,6 +5133,70 @@ nvidia-k8s-mig-manager:
   variables:
     BASE: nvidia/cloud-native/k8s-mig-manager
     VERSION: NVIDIA_K8S_MIG_MANAGER_VERSION
+
+bitnami-harbor:
+  interruptible: true
+  retry: 2
+  stage: build
+  parallel:
+    matrix:
+      - BITNAMI_HARBOR_COMPONENT:
+          - adapter-trivy
+          - core
+          - exporter
+          - jobservice
+          - portal
+          - registry
+          - registryctl
+        DUMMY:
+          - dummy
+  script:
+    - |
+      ./gitlab/build-image.sh bitnami-harbor ${DOCKER_NAMESPACE}/bitnami-harbor-${BITNAMI_HARBOR_COMPONENT}:${INFRA_VERSION} \
+        --build-arg BITNAMI_HARBOR_VERSION \
+        --build-arg BITNAMI_HARBOR_COMPONENT
+
+# harbor-*
+harbor-parts:
+  interruptible: true
+  retry: 2
+  stage: build
+  parallel:
+    matrix:
+      - HARBOR_COMPONENT:
+          - portal
+          - core
+          - jobservice
+          - registryctl
+          - db
+          - exporter
+        DUMMY:
+          - dummy
+  script:
+    - |
+      ./gitlab/build-image.sh harbor ${DOCKER_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
+        --build-arg HARBOR_VERSION \
+        --build-arg HARBOR_COMPONENT=harbor-${HARBOR_COMPONENT}
+
+# *-photon
+harbor-parts2:
+  interruptible: true
+  retry: 2
+  stage: build
+  parallel:
+    matrix:
+      - HARBOR_COMPONENT:
+          - registry
+          - trivy-adapter
+          - nginx
+          - redis
+        DUMMY:
+          - dummy
+  script:
+    - |
+      ./gitlab/build-image.sh harbor ${DOCKER_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
+        --build-arg HARBOR_VERSION \
+        --build-arg HARBOR_COMPONENT=${HARBOR_COMPONENT}-photon
 
 infra-docs:
   interruptible: true

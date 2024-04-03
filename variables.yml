@@ -171,6 +171,8 @@ variables:
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: "0.26.1-debian-12-r0" # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   BITNAMI_TRIVY_VERSION: 0.50.1-debian-12-r0 # https://hub.docker.com/r/bitnami/trivy/tags
   BITNAMI_KUBECTL_VERSION: 1.29.3-debian-12-r0 # https://hub.docker.com/r/bitnami/kubectl/tags
+  BITNAMI_HARBOR_VERSION: 2.10.1-debian-12-r1 # https://hub.docker.com/r/bitnami/harbor-core/tags
+  HARBOR_VERSION: v2.10.1 # https://hub.docker.com/r/goharbor/harbor-registryctl/tags
   TRIVY_VERSION: 0.50.1 # https://hub.docker.com/r/aquasec/trivy/tags
   EXTERNAL_SECRETS_VERSION: v0.9.14 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.30.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
