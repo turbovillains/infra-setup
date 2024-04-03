@@ -216,6 +216,8 @@ import_images() {
         "hadolint/hadolint:${HADOLINT_VERSION:-v2.10.0-beta}"
         "outlinewiki/outline:${OUTLINE_VERSION:-0.66.2}"
         "syncthing/syncthing:${SYNCTHING_VERSION:-1.22.1}"
+        "syncthing/discosrv:${SYNCTHING_VERSION:-1.22.1}"
+        "syncthing/relaysrv:${SYNCTHING_VERSION:-1.22.1}"
         "jellyfin/jellyfin:${JELLYFIN_VERSION:-10.8.7}"
         "haveagitgat/tdarr:${TDARR_VERSION:-2.200.25}"
         "haveagitgat/tdarr_node:${TDARR_VERSION:-2.200.25}"
