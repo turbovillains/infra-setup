@@ -3,6 +3,13 @@
 # kubectl
 sudo curl -Lo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo chmod +x /usr/local/bin/kubectl
 
+# jq
+# https://github.com/stedolan/jq/releases
+sudo curl -sLo /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64 && sudo chmod +x /usr/local/bin/jq
+
+# crane
+curl -sLo- "https://github.com/google/go-containerregistry/releases/download/$(curl -s "https://api.github.com/repos/google/go-containerregistry/releases/latest" | jq -r '.tag_name')/go-containerregistry_linux_x86_64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv crane krane gcrane
+
 # trivy
 # https://github.com/aquasecurity/trivy/releases
 curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin latest
@@ -27,9 +34,6 @@ sudo curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/downlo
 # https://github.com/sclevine/yj/releases
 sudo curl -sLo /usr/local/bin/yj https://github.com/sclevine/yj/releases/download/v5.1.0/yj-linux-amd64 && sudo chmod +x /usr/local/bin/yj
 
-# jq
-# https://github.com/stedolan/jq/releases
-sudo curl -sLo /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-linux64 && sudo chmod +x /usr/local/bin/jq
 
 # ytt
 # https://github.com/vmware-tanzu/carvel-ytt/releases
@@ -41,7 +45,7 @@ sudo curl -sLo /usr/local/bin/ytt https://github.com/vmware-tanzu/carvel-ytt/rel
 
 # argocd
 # https://github.com/argoproj/argo-cd/releases
-sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.5/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
+sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.6/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
 
 # argo workflows
 # https://github.com/argoproj/argo-workflows/releases
