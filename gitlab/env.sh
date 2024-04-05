@@ -35,10 +35,19 @@ include_env() {
       export DEPLOY_ENVIRONMENT=${deploy_environment}
       export DEPLOY_ENVIRONMENT_DIR=${source_dir}/env.${deploy_environment}
 
-      echo "Export variables for ${DEPLOY_ENVIRONMENT}"
+      echo "Export common variables"
+      for inc in ${source_dir}/env.common/*.sh; do
+        if [[ -r ${inc} ]]; then
+          echo ${inc}
+          source ${inc}
+        fi
+      done
+      unset inc
 
+      echo "Export variables for ${DEPLOY_ENVIRONMENT}"
       for inc in ${source_dir}/env.${deploy_environment}/*.sh; do
         if [[ -r ${inc} ]]; then
+          echo ${inc}
           source ${inc}
         fi
       done

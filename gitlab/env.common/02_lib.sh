@@ -91,25 +91,58 @@ migrate_image() {
     local image_name=$(get_name ${image})
     local image_ref=$(get_ref ${image})
     local image_tag=$(get_tag ${image})
+    local migration_options=${3:-}
 
-    # We are checking for ref, but pushing only tag
-    set +e
-    docker manifest inspect ${target_registry}/${image_name}:${image_ref} 2>&1> /dev/null
-    local inspect_code=$?
-    set -e
+    # declare supported options here
+    local prepend_name=
 
-    if [[ "${inspect_code}" != 0 ]]; then
-        # we pull the ref, but push the tag
-        docker pull ${source_registry}/${image_name}:${image_ref}
-        docker tag ${source_registry}/${image_name}:${image_ref} ${target_registry}/${image_name}:${image_tag}
-        docker push ${target_registry}/${image_name}:${image_tag}
-        docker rmi ${source_registry}/${image_name}:${image_ref} ${target_registry}/${image_name}:${image_tag}
+    # declare supplied options
+    local supplied_options=$(echo ${migration_options} | sed 's,:::, ,g' )
+    [[ -z ${supplied_options} ]] || declare ${supplied_options}
+
+    local source_image=${source_registry}/${image_name}:${image_ref}
+    local target_image=${target_registry}/${prepend_name}${image_name}:${image_tag}
+
+    if which crane 2>&1> /dev/null; then
+        crane copy ${source_image} ${target_image}
+    else
+        echo "Falling back to shell"
+        # We are checking for ref, but pushing only tag
+        set +e
+        docker manifest inspect ${target_registry}/${prepend_name}${image_name}:${image_ref} 2>&1> /dev/null
+        local inspect_code=$?
+        set -e
+
+        if [[ "${inspect_code}" != 0 ]]; then
+            # we pull the ref, but push the tag
+            docker pull ${source_image}
+            docker tag ${source_image} ${target_image}
+            docker push ${target_image}
+            docker rmi ${source_image} ${target_image}
+        fi
     fi
-
 }
 
+strip_options() {
+    local image_entry=$1
+    local options_regex='(.*):::(.*)'
+    if [[ $image_entry =~ $options_regex ]]; then
+        echo -n ${BASH_REMATCH[1]}
+    else
+        echo -n $image_entry
+    fi
+}
+
+get_options() {
+    local options_regex='(.*):::(.*)'
+    if [[ $1 =~ $options_regex ]]; then
+        echo -n ${BASH_REMATCH[2]}
+    fi
+}
+
+
 get_registry() {
-    local image=$1
+    local image=$(strip_options $1)
     [[ -z ${image} ]] && return
     if [[ ${image} =~ ^([^\/]+\.[^\/]+)\/ ]]; then
         echo -n ${BASH_REMATCH[1]}
@@ -119,7 +152,7 @@ get_registry() {
 }
 
 get_ref() {
-    local image=$1
+    local image=$(strip_options $1)
     [[ -z ${image} ]] && echo -n "latest" && return
 
     # tag with sha
@@ -137,7 +170,7 @@ get_ref() {
 }
 
 get_tag() {
-    local image=$1
+    local image=$(strip_options $1)
     [[ -z ${image} ]] && echo -n "latest" && return
 
     # tag with sha
@@ -155,7 +188,7 @@ get_tag() {
 }
 
 get_name() {
-    local image=$1
+    local image=$(strip_options $1)
     [[ -z ${image} ]] && return
     if [[ ${image} =~ ([^\/]+\.[^\/]+\/)?([^:]+)(:.+)?$ ]]; then
         echo -n ${BASH_REMATCH[2]}

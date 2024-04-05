@@ -3,6 +3,7 @@
 import_images() {
     declare -a images=(
         "debian:${DEBIAN_VERSION:-11.0-slim}"
+        "debian:${DEBIAN_VERSION:-11.0-slim}:::prepend_name=library/"
         "ubuntu:${UBUNTU_NOBLE_VERSION:-focal-20240212}"
         "ubuntu:${UBUNTU_JAMMY_VERSION:-jammy-20220315}"
         "ubuntu:${UBUNTU_FOCAL_VERSION:-focal-20210723}"
@@ -102,8 +103,8 @@ import_images() {
         "jupyterhub/k8s-image-awaiter:${JUPYTERHUB_IMAGE_AWAITER_VERSION:-1.0.0-beta.1}"
         "jupyterhub/k8s-singleuser-sample:${JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION:-1.0.0-beta.1}"
         "jupyterhub/configurable-http-proxy:${JUPYTERHUB_HTTP_PROXY_VERSION:-4.4.0}"
-        "registry.k8s.io/kube-scheduler:${JUPYTERHUB_SCHEDULER_VERSION:-v1.25.5}"
-        "registry.k8s.io/pause:${JUPYTERHUB_PAUSE_VERSION:-3.7}"
+        "registry.k8s.io/kube-scheduler:${JUPYTERHUB_SCHEDULER_VERSION:-v1.25.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/pause:${JUPYTERHUB_PAUSE_VERSION:-3.7}:::prepend_name=kubernetes/"
         "quay.io/jupyterhub/repo2docker:${REPO2DOCKER_VERSION:-2021.03.0-15.g73ab48a}"
         "pihole/pihole:${PIHOLE_VERSION:-v5.8.1}"
         "yandex/clickhouse-server:${CLICKHOUSE_VERSION:-21.5.6-alpine}"
@@ -314,49 +315,49 @@ import_images() {
         "quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION:-0.28.0}-kafka-${STRIMZI_KAFKA_VERSION:-3.1.0}"
 
         # k8s
-        "registry.k8s.io/pause:${K8S_PAUSE_VERSION:-3.7}"
+        "registry.k8s.io/pause:${K8S_PAUSE_VERSION:-3.7}:::prepend_name=kubernetes/"
         "registry.k8s.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
 
-        "registry.k8s.io/kube-apiserver:${K8S_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-proxy:${K8S_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-scheduler:${K8S_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-apiserver:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
 
         # k8s 1.28.x
-        "registry.k8s.io/kube-apiserver:${K8S_128_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-proxy:${K8S_128_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-scheduler:${K8S_128_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-controller-manager:${K8S_128_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-apiserver:${K8S_128_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_128_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_128_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_128_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
 
         # k8s 1.27.x
-        "registry.k8s.io/kube-apiserver:${K8S_127_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-proxy:${K8S_127_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-scheduler:${K8S_127_VERSION:-v1.23.5}"
-        "registry.k8s.io/kube-controller-manager:${K8S_127_VERSION:-v1.23.5}"
+        "registry.k8s.io/kube-apiserver:${K8S_127_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_127_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_127_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_127_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
 
         # k8s 1.26.x
-        "registry.k8s.io/kube-apiserver:${K8S_126_VERSION:-v1.26.3}"
-        "registry.k8s.io/kube-proxy:${K8S_126_VERSION:-v1.26.3}"
-        "registry.k8s.io/kube-scheduler:${K8S_126_VERSION:-v1.26.3}"
-        "registry.k8s.io/kube-controller-manager:${K8S_126_VERSION:-v1.26.3}"
+        "registry.k8s.io/kube-apiserver:${K8S_126_VERSION:-v1.26.3}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_126_VERSION:-v1.26.3}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_126_VERSION:-v1.26.3}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_126_VERSION:-v1.26.3}:::prepend_name=kubernetes/"
 
         # k8s 1.25.x
-        "registry.k8s.io/kube-apiserver:${K8S_125_VERSION:-v1.25.5}"
-        "registry.k8s.io/kube-proxy:${K8S_125_VERSION:-v1.25.5}"
-        "registry.k8s.io/kube-scheduler:${K8S_125_VERSION:-v1.25.5}"
-        "registry.k8s.io/kube-controller-manager:${K8S_125_VERSION:-v1.25.5}"
+        "registry.k8s.io/kube-apiserver:${K8S_125_VERSION:-v1.25.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_125_VERSION:-v1.25.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_125_VERSION:-v1.25.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_125_VERSION:-v1.25.5}:::prepend_name=kubernetes/"
 
         # k8s 1.24.x
-        "registry.k8s.io/kube-apiserver:${K8S_124_VERSION:-v1.24.7}"
-        "registry.k8s.io/kube-proxy:${K8S_124_VERSION:-v1.24.7}"
-        "registry.k8s.io/kube-scheduler:${K8S_124_VERSION:-v1.24.7}"
-        "registry.k8s.io/kube-controller-manager:${K8S_124_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-apiserver:${K8S_124_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_124_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_124_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_124_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
 
         # k8s 1.23.x
-        "registry.k8s.io/kube-apiserver:${K8S_123_VERSION:-v1.24.7}"
-        "registry.k8s.io/kube-proxy:${K8S_123_VERSION:-v1.24.7}"
-        "registry.k8s.io/kube-scheduler:${K8S_123_VERSION:-v1.24.7}"
-        "registry.k8s.io/kube-controller-manager:${K8S_123_VERSION:-v1.24.7}"
+        "registry.k8s.io/kube-apiserver:${K8S_123_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_123_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_123_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_123_VERSION:-v1.24.7}:::prepend_name=kubernetes/"
 
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
@@ -441,11 +442,13 @@ import_images() {
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
 
-    for image in "${images[@]}"; do
-        printf "\nMigrating %s/%s:%s to %s\n`line`\n" \
+    for image_entry in "${images[@]}"; do
+        image=$(strip_options ${image_entry})
+        image_options=$(get_options ${image_entry})
+        printf "\nMigrating %s/%s:%s to %s\n$(line)\n" \
             $(get_registry $image) $(get_name $image) $(get_tag $image) \
             ${target_registry}
-        migrate_image ${image} ${target_registry}
+        migrate_image "${image}" "${target_registry}" "${image_options}"
     done
 
     local infra_json="infra.json"
@@ -456,7 +459,8 @@ import_images() {
         cd upstream
 
         # dockerfile
-        for image in "${images[@]}"; do
+        for image_entry in "${images[@]}"; do
+            image=$(strip_options ${image_entry})
             echo "# $(get_name ${image})"
             echo "FROM ${image}"
             echo "# $(get_name ${image})"
@@ -466,14 +470,15 @@ import_images() {
         jq -r -n --arg INFRA_VERSION ${INFRA_VERSION} '{ version: $INFRA_VERSION }' | tee ${infra_json}
 
         # components, variables, upstream images inside json
-        for image in "${images[@]}"; do
+        for image_entry in "${images[@]}"; do
+            image=$(strip_options ${image_entry})
             local component_base=$(get_name ${image})
             local component_base_version=$(get_tag ${image})
             local component_name=$(get_name ${image} | tr '/' '-')
             local component_var_key=$(get_name ${image} | tr '/-' '_' | tr '[:lower:]' '[:upper:]')
 
             echo "Adding upstream image: ${image}"
-            cat ${infra_json} | jq -r --arg IMAGE ${image} '.upstream.images += [$IMAGE]' > ${infra_json}.tmp
+            cat ${infra_json} | jq -r --arg IMAGE ${image} '.upstream.images += [$IMAGE]' >${infra_json}.tmp
             mv ${infra_json}.tmp ${infra_json}
 
             # for infra_component_dockerfile in $(grep -rl }/${component_base}: ../docker | grep Dockerfile | xargs echo); do
@@ -519,7 +524,7 @@ import_images() {
 
 _main() {
     set -eu
-    local source_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+    local source_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
     source ${source_dir}/env.sh
 
     import_images
