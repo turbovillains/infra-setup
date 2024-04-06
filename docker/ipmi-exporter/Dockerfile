@@ -3,7 +3,7 @@ ARG INFRA_VERSION
 ARG IPMI_EXPORTER_VERSION
 ARG GOLANG_VERSION
 
-FROM ${DOCKER_HUB}/golang:${GOLANG_VERSION} as builder
+FROM ${DOCKER_HUB}/library/golang:${GOLANG_VERSION} as builder
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 

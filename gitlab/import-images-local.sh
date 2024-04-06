@@ -5,7 +5,7 @@ import_images() {
 
   declare -a images=(
     # "reg.com/namespace/image:tag@sha256:abcd:::k1=v1,k2=v2"
-    "debian:${DEBIAN_VERSION:-11.0-slim}:::prepend_name=library/"
+    "debian:${DEBIAN_VERSION:-11.0-slim}"
     "registry.k8s.io/kube-apiserver:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
     # "ubuntu:${UBUNTU_NOBLE_VERSION:-focal-20240212}"
     # "ubuntu:${UBUNTU_JAMMY_VERSION:-jammy-20220315}"

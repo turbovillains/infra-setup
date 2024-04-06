@@ -4,7 +4,7 @@ ARG INFRA_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/eclipse-mosquitto:${MOSQUITTO_VERSION}
+FROM ${DOCKER_HUB}/library/eclipse-mosquitto:${MOSQUITTO_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 

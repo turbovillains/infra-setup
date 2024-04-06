@@ -4,7 +4,7 @@ ARG INFRA_VERSION
 
 FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 
-FROM ${DOCKER_HUB}/nextcloud:${NEXTCLOUD_VERSION}
+FROM ${DOCKER_HUB}/library/nextcloud:${NEXTCLOUD_VERSION}
 
 ADD ACCC4CF8.asc /etc/apt/keyrings/pgdg-archive-keyring.asc
 

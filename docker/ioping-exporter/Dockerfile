@@ -2,7 +2,7 @@ ARG DOCKER_HUB
 ARG GOLANG_VERSION
 ARG INFRA_VERSION
 
-FROM ${DOCKER_HUB}/golang:${GOLANG_VERSION}
+FROM ${DOCKER_HUB}/library/golang:${GOLANG_VERSION}
 
 RUN apt-get update && \
     apt-get install git --no-install-recommends -y && \

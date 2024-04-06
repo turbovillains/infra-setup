@@ -45,30 +45,30 @@ archive-images1:
   parallel:
     matrix:
       - BASE:
-          - debian
+          - library/debian
         VERSION:
           - DEBIAN_VERSION
       - BASE:
-          - ubuntu
+          - library/ubuntu
         VERSION:
           - UBUNTU_JAMMY_VERSION
           - UBUNTU_FOCAL_VERSION
       - BASE:
-          - busybox
+          - library/busybox
         VERSION:
           - BUSYBOX_VERSION
       - BASE:
-          - alpine
+          - library/alpine
         VERSION:
           - ALPINE_VERSION
       - BASE:
-          - buildpack-deps
+          - library/buildpack-deps
         VERSION:
           - BUILDPACK_DEPS_FOCAL_VERSION
           - BUILDPACK_DEPS_JAMMY_VERSION
           - BUILDPACK_DEPS_BIONIC_VERSION
       - BASE:
-          - python
+          - library/python
         VERSION:
           - PYTHON_VERSION
           - PYTHON_SLIM_VERSION
@@ -77,15 +77,15 @@ archive-images1:
         VERSION:
           - LOCUST_VERSION
       - BASE:
-          - php
+          - library/php
         VERSION:
           - PHP_VERSION
       - BASE:
-          - golang
+          - library/golang
         VERSION:
           - GOLANG_VERSION
       - BASE:
-          - traefik
+          - library/traefik
         VERSION:
           - TRAEFIK_VERSION
       - BASE:
@@ -107,7 +107,7 @@ archive-images1:
         VERSION:
           - KEYCLOAK_VERSION
       - BASE:
-          - postgres
+          - library/postgres
         VERSION:
           - POSTGRES_VERSION
       - BASE:
@@ -115,7 +115,7 @@ archive-images1:
         VERSION:
           - JIRA_VERSION
       - BASE:
-          - nextcloud
+          - library/nextcloud
         VERSION:
           - NEXTCLOUD_VERSION
       - BASE:
@@ -187,11 +187,11 @@ archive-images1:
           - NGINX_VERSION
           - LOKI_GATEWAY_NGINX_VERSION
       - BASE:
-          - httpd
+          - library/httpd
         VERSION:
           - HTTPD_VERSION
       - BASE:
-          - tomcat
+          - library/tomcat
         VERSION:
           - TOMCAT_VERSION
       - REGISTRY:
@@ -235,19 +235,19 @@ archive-images1:
       - REGISTRY:
           - docker.elastic.co
         BASE:
-          - elasticsearch/elasticsearch
+          - elastic/elasticsearch/elasticsearch
         VERSION:
           - ELASTICSEARCH_VERSION
       - REGISTRY:
           - docker.elastic.co
         BASE:
-          - logstash/logstash
+          - elastic/logstash/logstash
         VERSION:
           - LOGSTASH_VERSION
       - REGISTRY:
           - docker.elastic.co
         BASE:
-          - kibana/kibana
+          - elastic/kibana/kibana
         VERSION:
           - KIBANA_VERSION
       - BASE:
@@ -255,11 +255,11 @@ archive-images1:
         VERSION:
           - ALERTA_VERSION
       - BASE:
-          - mongo
+          - library/mongo
         VERSION:
           - MONGO_VERSION
       - BASE:
-          - wordpress
+          - library/wordpress
         VERSION:
           - WORDPRESS_VERSION
       - BASE:
@@ -267,15 +267,15 @@ archive-images1:
         VERSION:
           - PGADMIN_VERSION
       - BASE:
-          - adminer
+          - library/adminer
         VERSION:
           - ADMINER_VERSION
       - BASE:
-          - mysql
+          - library/mysql
         VERSION:
           - MYSQL_VERSION
       - BASE:
-          - mariadb
+          - library/mariadb
         VERSION:
           - MARIADB_VERSION
       - BASE:
@@ -381,17 +381,17 @@ archive-images1:
       - REGISTRY:
           - registry.k8s.io
         BASE:
-          - kube-scheduler
+          - kubernetes/kube-scheduler
         VERSION:
           - JUPYTERHUB_SCHEDULER_VERSION
       - REGISTRY:
           - registry.k8s.io
         BASE:
-          - pause
+          - kubernetes/pause
         VERSION:
           - K8S_PAUSE_VERSION
       - BASE:
-          - pause
+          - kubernetes/pause
         VERSION:
           - JUPYTERHUB_PAUSE_VERSION
       - REGISTRY:
@@ -425,7 +425,7 @@ archive-images1:
         VERSION:
           - STRAPI_VERSION
       - BASE:
-          - ghost
+          - library/ghost
         VERSION:
           - GHOST_VERSION
       - BASE:
@@ -433,7 +433,7 @@ archive-images1:
         VERSION:
           - BITNAMI_GHOST_VERSION
       - BASE:
-          - matomo
+          - library/matomo
         VERSION:
           - MATOMO_VERSION
       - BASE:
@@ -445,7 +445,7 @@ archive-images1:
         VERSION:
           - METABASE_VERSION
       - BASE:
-          - docker
+          - library/docker
         VERSION:
           - DIND_VERSION
       - BASE:
@@ -724,7 +724,7 @@ archive-images3:
         VERSION:
           - CONFIGMAP_RELOAD_VERSION
       - BASE:
-          - registry
+          - library/registry
         VERSION:
           - DOCKER_REGISTRY_VERSION
       - REGISTRY:
@@ -760,7 +760,7 @@ archive-images3:
         VERSION:
           - ARGO_WORKFLOWS_VERSION
       - BASE:
-          - redis
+          - library/redis
         VERSION:
           - REDIS_VERSION
       - BASE:
@@ -780,7 +780,7 @@ archive-images3:
         VERSION:
           - CRYPTGEON_VERSION
       - BASE:
-          - memcached
+          - library/memcached
         VERSION:
           - MEMCACHED_VERSION
       - BASE:
@@ -788,7 +788,7 @@ archive-images3:
         VERSION:
           - NATS_OPERATOR_VERSION
       - BASE:
-          - nats
+          - library/nats
         VERSION:
           - NATS_VERSION
       - BASE:
@@ -804,7 +804,7 @@ archive-images3:
         VERSION:
           - WIREGUARD_VERSION
       - BASE:
-          - eclipse-mosquitto
+          - library/eclipse-mosquitto
         VERSION:
           - MOSQUITTO_VERSION
       - BASE:
@@ -812,7 +812,7 @@ archive-images3:
         VERSION:
           - MOSQUITTO_EXPORTER_VERSION
       - BASE:
-          - caddy
+          - library/caddy
         VERSION:
           - CADDY_VERSION
       - REGISTRY:
@@ -842,7 +842,7 @@ archive-images3:
         VERSION:
           - JDK_ZULU_VERSION
       - BASE:
-          - eclipse-temurin
+          - library/eclipse-temurin
         VERSION:
           - JDK_TEMURIN_VERSION
       - BASE:
@@ -1145,11 +1145,11 @@ archive-images4:
         VERSION:
           - POSTGREST_VERSION
       - BASE:
-          - oss/azure/workload-identity/webhook
+          - microsoft/oss/azure/workload-identity/webhook
         VERSION:
           - AZURE_WORKLOAD_IDENTITY_VERSION
       - BASE:
-          - k8s/azureserviceoperator
+          - microsoft/k8s/azureserviceoperator
         VERSION:
           - AZURE_SERVICE_OPERATOR_VERSION
       - BASE:
@@ -1294,12 +1294,15 @@ archive-extra:
       - REGISTRY:
           - registry.k8s.io
         BASE:
-          - kube-apiserver
-          - kube-proxy
-          - kube-scheduler
-          - kube-controller-manager
+          - kubernetes/kube-apiserver
+          - kubernetes/kube-proxy
+          - kubernetes/kube-scheduler
+          - kubernetes/kube-controller-manager
         VERSION:
           - K8S_VERSION
+          - K8S_128_VERSION
+          - K8S_127_VERSION
+          - K8S_126_VERSION
           - K8S_125_VERSION
           - K8S_124_VERSION
           - K8S_123_VERSION
@@ -1312,7 +1315,7 @@ archive-extra:
       - REGISTRY:
           - registry.k8s.io
         BASE:
-          - pause
+          - kubernetes/pause
         VERSION:
           - K8S_PAUSE_VERSION
       - BASE:
@@ -2166,7 +2169,7 @@ speedtest:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SPEEDTEST_VERSION \
-        --build-arg GOLANG_ALPINE_IMAGE=${DOCKER_HUB}/golang:${GOLANG_ALPINE_VERSION} \
+        --build-arg GOLANG_ALPINE_IMAGE=${DOCKER_HUB}/library/golang:${GOLANG_ALPINE_VERSION} \
         --build-arg ALPINE_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/alpine:${INFRA_VERSION}
 
 haproxy:

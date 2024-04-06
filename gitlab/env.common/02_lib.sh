@@ -103,6 +103,13 @@ migrate_image() {
     local source_image=${source_registry}/${image_name}:${image_ref}
     local target_image=${target_registry}/${prepend_name}${image_name}:${image_tag}
 
+    # validate target_name to not be top-level image, there should be at least 2 slashes in target_image
+    local slash_count=$(grep -o '/' <<< "${target_image}" | grep -c .)
+    if [[ ${slash_count} -lt 2 ]]; then
+        echo "Rejeting to import top-level image ${target_image} with no target namespace"
+        exit 1
+    fi
+
     if which crane 2>&1> /dev/null; then
         crane copy ${source_image} ${target_image}
     else
