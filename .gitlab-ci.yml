@@ -171,16 +171,10 @@ archive-images1:
           - GRAFANA_VERSION
       - BASE:
           - grafana/loki
-        VERSION:
-          - LOKI_VERSION
-      - BASE:
           - grafana/loki-canary
-        VERSION:
-          - LOKI_VERSION
-      - BASE:
           - grafana/promtail
         VERSION:
-          - PROMTAIL_VERSION
+          - LOKI_VERSION
       - BASE:
           - nginxinc/nginx-unprivileged
         VERSION:
@@ -1246,6 +1240,12 @@ archive-images4:
           - goharbor/redis-photon
         VERSION:
           - HARBOR_VERSION
+      - REGISTRY:
+          - ghcr.io
+        BASE:
+          - zitadel/zitadel
+        VERSION:
+          - ZITADEL_VERSION
 
 archive-special:
   extends: .archive-images
@@ -1728,27 +1728,6 @@ heroku-22:
       ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-cnb-build:${INFRA_VERSION} \
         --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION}
 
-builder:
-  interruptible: true
-  stage: build2
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
-        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID \
-        --build-arg ACTIONS_RUNNER_VERSION
-
-shell:
-  interruptible: true
-  stage: build2
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
-        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID
-
 ocsp-responder:
   interruptible: true
   retry: 2
@@ -2081,12 +2060,6 @@ traefik:
   variables:
     BASE: traefik
     VERSION: TRAEFIK_VERSION
-
-latex:
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 powerdns:
   interruptible: true
@@ -2434,10 +2407,10 @@ promtail:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PROMTAIL_VERSION
+        --build-arg LOKI_VERSION
   variables:
     BASE: grafana/promtail
-    VERSION: PROMTAIL_VERSION
+    VERSION: LOKI_VERSION
 
 loki:
   interruptible: true
@@ -5201,6 +5174,18 @@ harbor-parts2:
         --build-arg HARBOR_VERSION \
         --build-arg HARBOR_COMPONENT=${HARBOR_COMPONENT}-photon
 
+zitadel:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg ZITADEL_VERSION
+  variables:
+    BASE: zitadel/zitadel
+    VERSION: ZITADEL_VERSION
+
 infra-docs:
   interruptible: true
   retry: 2
@@ -5240,3 +5225,30 @@ run-hadolint:
           docker run --rm cr.nrtn.dev/infra/hadolint:${INFRA_VERSION} < ${dockerfile};
         done
       )
+
+latex:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+
+builder:
+  interruptible: true
+  stage: build2
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
+        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+        --build-arg HOST_DOCKER_GID \
+        --build-arg ACTIONS_RUNNER_VERSION
+
+shell:
+  interruptible: true
+  stage: build2
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
+        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+        --build-arg HOST_DOCKER_GID

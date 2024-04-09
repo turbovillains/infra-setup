@@ -45,7 +45,7 @@ import_images() {
         "grafana/grafana:${GRAFANA_VERSION:-8.4.5}"
         "grafana/loki:${LOKI_VERSION:-2.5.0}"
         "grafana/loki-canary:${LOKI_VERSION:-2.5.0}"
-        "grafana/promtail:${PROMTAIL_VERSION:-2.5.0}"
+        "grafana/promtail:${LOKI_VERSION:-2.5.0}"
         "nginxinc/nginx-unprivileged:${LOKI_GATEWAY_NGINX_VERSION:-1.23.3-alpine-slim}"
         "nginxinc/nginx-unprivileged:${NGINX_VERSION:-1.23.3-alpine-slim}"
         "httpd:${HTTPD_VERSION:-2.4.55-alpine}:::prepend_name=library/"
@@ -269,6 +269,7 @@ import_images() {
         "guacamole/guacamole:${GUACAMOLE_VERSION:-1.5.3}"
         "guacamole/guacd:${GUACAMOLE_VERSION:-1.5.3}"
         "quay.io/cephcsi/cephcsi:${CEPHCSI_VERSION:-v3.10.2}"
+        "ghcr.io/zitadel/zitadel:${ZITADEL_VERSION:-v2.49.3}"
 
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"

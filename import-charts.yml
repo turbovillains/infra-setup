@@ -6,6 +6,16 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: zitadel
+    url: https://charts.zitadel.com
+    charts:
+      - name: zitadel
+  - name: jaconi
+    url: https://charts.jaconi.io
+    charts:
+      - name: netbird
+      - name: netbird-dashboard
+      - name: coturn
   - name: harbor
     url: https://helm.goharbor.io
     charts:
