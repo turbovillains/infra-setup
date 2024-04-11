@@ -162,6 +162,10 @@ archive-images1:
         VERSION:
           - SNMP_EXPORTER_VERSION
       - BASE:
+          - prometheus/memcached-exporter
+        VERSION:
+          - MEMCACHED_EXPORTER_VERSION
+      - BASE:
           - prometheus/pushgateway
         VERSION:
           - PUSHGATEWAY_VERSION
@@ -2276,6 +2280,18 @@ snmp-exporter:
   variables:
     BASE: prometheus/snmp-exporter
     VERSION: SNMP_EXPORTER_VERSION
+
+memcached-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg MEMCACHED_EXPORTER_VERSION
+  variables:
+    BASE: prometheus/snmp-exporter
+    VERSION: MEMCACHED_EXPORTER_VERSION
 
 ipmi-exporter:
   interruptible: true
@@ -5227,7 +5243,8 @@ run-hadolint:
       )
 
 latex:
-  stage: build
+  interruptible: true
+  stage: build2
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}

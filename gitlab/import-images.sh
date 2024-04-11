@@ -39,6 +39,7 @@ import_images() {
         "quay.io/prometheus/consul-exporter:${CONSUL_EXPORTER_VERSION:-latest}"
         "quay.io/prometheus/blackbox-exporter:${BLACKBOX_EXPORTER_VERSION:-latest}"
         "quay.io/prometheus/snmp-exporter:${SNMP_EXPORTER_VERSION:-latest}"
+        "quay.io/prometheus/memcached-exporter:${MEMCACHED_EXPORTER_VERSION:-latest}"
         "quay.io/prometheus/pushgateway:${PUSHGATEWAY_VERSION:-latest}"
         "quay.io/prometheus-operator/prometheus-operator:${PROMETHEUS_OPERATOR_VERSION:-latest}"
         "quay.io/prometheus-operator/prometheus-config-reloader:${PROMETHEUS_OPERATOR_VERSION:-latest}"

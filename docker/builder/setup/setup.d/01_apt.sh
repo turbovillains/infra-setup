@@ -8,8 +8,8 @@
 export DEBIAN_FRONTEND=noninteractive
 
 cat << SOURCES > /etc/apt/sources.list
-deb http://deb.debian.org/debian bookworm main
-deb http://deb.debian.org/debian bookworm-updates main
+deb https://fs.noroutine.me/attic/debian bookworm main
+deb https://fs.noroutine.me/attic/debian bookworm-updates main
 deb http://security.debian.org/debian-security bookworm-security main
 SOURCES
 
