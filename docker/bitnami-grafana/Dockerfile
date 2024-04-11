@@ -1,8 +1,9 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
+ARG INFRA_NAMESPACE
 ARG BITNAMI_GRAFANA_VERSION
 
-FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} as rootca
 
 # FROM node:18-alpine3.15 as mqtt_datasource_build
 
@@ -24,7 +25,7 @@ FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
 #   && yarn install \
 #   && yarn build
 
-FROM ${DOCKER_HUB}/infra/grafana-dashboards:${INFRA_VERSION} as dashboards
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/grafana-dashboards:${INFRA_VERSION} as dashboards
 
 FROM ${DOCKER_HUB}/bitnami/grafana:${BITNAMI_GRAFANA_VERSION}
 

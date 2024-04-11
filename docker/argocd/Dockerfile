@@ -1,5 +1,6 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
+ARG INFRA_NAMESPACE
 ARG ARGOCD_VERSION
 
 FROM scratch as ytt
@@ -12,7 +13,7 @@ ARG ARGOCD_VAULT_PLUGIN_VERSION=1.11.0
 
 ADD https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v${ARGOCD_VAULT_PLUGIN_VERSION}/argocd-vault-plugin_${ARGOCD_VAULT_PLUGIN_VERSION}_linux_amd64 /argocd-vault-plugin
 
-FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/argoproj/argocd:${ARGOCD_VERSION}
 ARG YTT_HASH=11222665c627b8f0a1443534a3dde3c9b3aac08b322d28e91f0e011e3aeb7df5

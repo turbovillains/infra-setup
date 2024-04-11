@@ -1,8 +1,9 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
+ARG INFRA_NAMESPACE
 ARG JUPYTER_VERSION
 
-FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} as rootca
 
 # This should be our notebook image
 FROM ${DOCKER_HUB}/jupyter/all-spark-notebook:${JUPYTER_VERSION}

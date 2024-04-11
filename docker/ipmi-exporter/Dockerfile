@@ -1,5 +1,6 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
+ARG INFRA_NAMESPACE
 ARG IPMI_EXPORTER_VERSION
 ARG GOLANG_VERSION
 
@@ -22,7 +23,7 @@ RUN cd / \
     && git checkout ${IPMI_EXPORTER_VERSION} \
     && make
 
-FROM ${DOCKER_HUB}/infra/debian:${INFRA_VERSION}
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/debian:${INFRA_VERSION}
 
 COPY --from=builder /ipmi_exporter/ipmi_exporter /ipmi-exporter
 

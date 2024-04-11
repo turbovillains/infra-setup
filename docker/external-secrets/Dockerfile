@@ -1,10 +1,11 @@
 ARG DOCKER_HUB
 ARG INFRA_VERSION
+ARG INFRA_NAMESPACE
 ARG EXTERNAL_SECRETS_VERSION
 
 FROM ${DOCKER_HUB}/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION} as binary
 
-FROM ${DOCKER_HUB}/infra/alpine:${INFRA_VERSION}
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/alpine:${INFRA_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 

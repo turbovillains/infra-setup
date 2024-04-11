@@ -1,8 +1,9 @@
 ARG DOCKER_HUB
 ARG GRAFANA_VERSION
 ARG INFRA_VERSION
+ARG INFRA_NAMESPACE
 
-FROM ${DOCKER_HUB}/infra/grafana-dashboards:${INFRA_VERSION} as dashboards
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/grafana-dashboards:${INFRA_VERSION} as dashboards
 
 FROM ${DOCKER_HUB}/grafana/grafana:${GRAFANA_VERSION}
 

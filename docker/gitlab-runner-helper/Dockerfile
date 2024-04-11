@@ -1,8 +1,9 @@
 ARG DOCKER_HUB
 ARG GITLAB_RUNNER_HELPER_VERSION
 ARG INFRA_VERSION
+ARG INFRA_NAMESPACE
 
-# FROM ${DOCKER_HUB}/infra/noroutine-ca:${INFRA_VERSION} as rootca
+# FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} as rootca
 
 FROM ${DOCKER_HUB}/gitlab-org/gitlab-runner/gitlab-runner-helper:${GITLAB_RUNNER_HELPER_VERSION}
 

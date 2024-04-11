@@ -16,7 +16,14 @@ before_script:
     # try fix permissions for kubeconfig
     chmod go-rwx $KUBECONFIG || true
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
-    export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
+
+    if [[ -z ${CI_COMMIT_TAG} ]]; then
+      export INFRA_NAMESPACE=${DOCKER_NAMESPACE}-dev
+    else
+      export INFRA_NAMESPACE=${DOCKER_NAMESPACE}
+    fi
+
+    export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${INFRA_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
 
     echo "Infra: ${INFRA_VERSION}"
@@ -1383,7 +1390,7 @@ noroutine-ca:
   stage: scratch
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 keycloak-themes:
   interruptible: true
@@ -1398,7 +1405,7 @@ keycloak-themes:
         --clear-cache \
         --publish \
         --trust-builder \
-        --builder ${DOCKER_HUB}/${DOCKER_NAMESPACE}/buildpacks:${INFRA_VERSION} \
+        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
         ${KEYCLOAK_THEMES_IMAGE}
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
@@ -1411,7 +1418,7 @@ grafana-dashboards:
   stage: prebuild
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GRIT_VERSION
 
 ingress-default-backend:
@@ -1427,11 +1434,11 @@ ingress-default-backend:
         --clear-cache \
         --publish \
         --trust-builder \
-        --builder ${DOCKER_HUB}/${DOCKER_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
+        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
 website:
@@ -1448,11 +1455,11 @@ website:
         --clear-cache \
         --publish \
         --trust-builder \
-        --builder ${DOCKER_HUB}/${DOCKER_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
+        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
 connect-landing:
@@ -1468,11 +1475,11 @@ connect-landing:
         --clear-cache \
         --publish \
         --trust-builder \
-        --builder ${DOCKER_HUB}/${DOCKER_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
+        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
 tripwire:
@@ -1483,10 +1490,10 @@ tripwire:
     - |
       git clone --depth 1 --branch ${TRIPWIRE_VERSION} https://readonly:${SANDBOX_READONLY_TOKEN}@git.nrtn.dev/sandbox/tripwire.git
       cd tripwire
-      docker build --build-arg FROM=${DOCKER_HUB}/infra/debian:${INFRA_VERSION} -t ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} .
-      docker push ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      docker build --build-arg FROM=${DOCKER_HUB}/${INFRA_NAMESPACE}/debian:${INFRA_VERSION} -t ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} .
+      docker push ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
 tripwire-kafka-mqtt-bridge:
@@ -1502,11 +1509,11 @@ tripwire-kafka-mqtt-bridge:
         --clear-cache \
         --publish \
         --trust-builder \
-        --builder ${DOCKER_HUB}/${DOCKER_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
+        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
 debian:
@@ -1515,7 +1522,7 @@ debian:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DEBIAN_VERSION
   variables:
     BASE: debian
@@ -1527,7 +1534,7 @@ buildpack-deps-bionic:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACK_DEPS_BIONIC_VERSION
   variables:
     BASE: buildpack-deps
@@ -1539,7 +1546,7 @@ buildpack-deps-focal:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACK_DEPS_FOCAL_VERSION
   variables:
     BASE: buildpack-deps
@@ -1551,7 +1558,7 @@ buildpack-deps-jammy:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACK_DEPS_JAMMY_VERSION
   variables:
     BASE: buildpack-deps
@@ -1563,7 +1570,7 @@ ubuntu20:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg UBUNTU_FOCAL_VERSION
   variables:
     BASE: ubuntu
@@ -1575,7 +1582,7 @@ ubuntu22:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg UBUNTU_JAMMY_VERSION
   variables:
     BASE: ubuntu
@@ -1587,7 +1594,7 @@ ubuntu24:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg UBUNTU_NOBLE_VERSION
   variables:
     BASE: ubuntu
@@ -1599,7 +1606,7 @@ alpine:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALPINE_VERSION
   variables:
     BASE: alpine
@@ -1611,7 +1618,7 @@ busybox:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALPINE_VERSION \
         --build-arg BUSYBOX_VERSION
   variables:
@@ -1624,7 +1631,7 @@ jdk-zulu:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JDK_ZULU_VERSION
   variables:
     BASE: azul/zulu-openjdk
@@ -1636,7 +1643,7 @@ jdk-temurin:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JDK_TEMURIN_VERSION
   variables:
     BASE: eclipse-temurin
@@ -1648,7 +1655,7 @@ golang:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GOLANG_VERSION
   variables:
     BASE: golang
@@ -1660,7 +1667,7 @@ python:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PYTHON_VERSION
   variables:
     BASE: python
@@ -1672,7 +1679,7 @@ python-slim:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PYTHON_SLIM_VERSION
   variables:
     BASE: python
@@ -1684,7 +1691,7 @@ locust:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LOCUST_VERSION
   variables:
     BASE: locustio/locust
@@ -1696,7 +1703,7 @@ php:
   stage: base
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PHP_VERSION
   variables:
     BASE: php
@@ -1708,9 +1715,9 @@ heroku-20:
   stage: stacks
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
+        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 heroku-22:
   interruptible: true
@@ -1718,19 +1725,19 @@ heroku-22:
   stage: stacks
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       # -build is based on stack
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
+        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       # -cnb is based on stack
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-cnb:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb:${INFRA_VERSION} \
+        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       # -cnb-build is based on -build
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb-build ${DOCKER_NAMESPACE}/${CI_JOB_NAME}-cnb-build:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${DOCKER_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb-build:${INFRA_VERSION} \
+        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION}
 
 ocsp-responder:
   interruptible: true
@@ -1738,7 +1745,7 @@ ocsp-responder:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 openvpn:
   interruptible: true
@@ -1746,7 +1753,7 @@ openvpn:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 wireguard:
   interruptible: true
@@ -1754,7 +1761,7 @@ wireguard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg WIREGUARD_VERSION
   variables:
     BASE: masipcat/wireguard-go
@@ -1766,7 +1773,7 @@ shadowbox:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SHADOWBOX_VERSION
   variables:
     BASE: outline/shadowbox
@@ -1778,7 +1785,7 @@ gitlab-auto-build:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_AUTO_BUILD_VERSION
   variables:
     BASE: gitlab-org/cluster-integration/auto-build-image
@@ -1790,7 +1797,7 @@ gitlab-auto-deploy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_AUTO_DEPLOY_VERSION
   variables:
     BASE: gitlab-org/cluster-integration/auto-deploy-image
@@ -1802,7 +1809,7 @@ gitlab-agentk:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_AGENTK_VERSION
   variables:
     BASE: gitlab-org/cluster-integration/gitlab-agent/agentk
@@ -1814,7 +1821,7 @@ gitlab-cluster-applications:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_CLUSTER_APPLICATIONS_VERSION
   variables:
     BASE: gitlab-org/cluster-integration/cluster-applications
@@ -1830,15 +1837,15 @@ buildpacks:
 
       builder_toml_path=builder-22.toml
       # Update build image
-      jq_build_image_filter=".stack[\"build-image\"] |= sub(\"heroku/heroku:22-cnb-build\"; \"${DOCKER_HUB}/${DOCKER_NAMESPACE}/heroku-22-cnb-build:${INFRA_VERSION}\")"
-      jq_run_image_filter=".stack[\"run-image\"] |= sub(\"heroku/heroku:22-cnb\"; \"${DOCKER_HUB}/${DOCKER_NAMESPACE}/heroku-22-cnb:${INFRA_VERSION}\")"
+      jq_build_image_filter=".stack[\"build-image\"] |= sub(\"heroku/heroku:22-cnb-build\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb-build:${INFRA_VERSION}\")"
+      jq_run_image_filter=".stack[\"run-image\"] |= sub(\"heroku/heroku:22-cnb\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb:${INFRA_VERSION}\")"
       updated_toml=$(yj -t < "${builder_toml_path}" | jq "${jq_build_image_filter}" | jq "${jq_run_image_filter}" | yj -jt)
       echo "${updated_toml}" > "infra-${builder_toml_path}"
 
-      pack builder create ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} --config infra-builder-22.toml --pull-policy if-not-present
-      docker push ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      pack builder create ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} --config infra-builder-22.toml --pull-policy if-not-present
+      docker push ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
 # heroku-buildpacks:
@@ -1914,7 +1921,7 @@ buildpacksio-lifecycle:
   retry: 2
   stage: buildpacks
   script:
-    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \ --build-arg BUILDPACKSIO_LIFECYCLE_VERSION
+    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \ --build-arg BUILDPACKSIO_LIFECYCLE_VERSION
   variables:
     BASE: buildpacksio/lifecycle
     VERSION: BUILDPACKSIO_LIFECYCLE_VERSION
@@ -1925,7 +1932,7 @@ gitlab-runner:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_RUNNER_VERSION
   variables:
     BASE: gitlab/gitlab-runner
@@ -1937,7 +1944,7 @@ gitlab:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GITLAB_VERSION
   variables:
     BASE: gitlab/gitlab-ce
@@ -1949,7 +1956,7 @@ actions-runner-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ACTIONS_RUNNER_CONTROLLER_VERSION
   variables:
     BASE: summerwind/actions-runner-controller
@@ -1961,7 +1968,7 @@ actions-runner:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HOST_DOCKER_GID \
         --build-arg ACTIONS_RUNNER_IMAGE_VERSION
   variables:
@@ -1974,7 +1981,7 @@ actions-runner-dind:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HOST_DOCKER_GID \
         --build-arg ACTIONS_RUNNER_IMAGE_VERSION
   variables:
@@ -1987,7 +1994,7 @@ kube-rbac-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KUBE_RBAC_PROXY_VERSION
   variables:
     BASE: brancz/kube-rbac-proxy
@@ -1999,7 +2006,7 @@ kaniko-executor:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KANIKO_VERSION
   variables:
     BASE: kaniko-project/executor
@@ -2011,7 +2018,7 @@ nexus:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NEXUS_VERSION
   variables:
     BASE: sonatype/nexus3
@@ -2023,7 +2030,7 @@ vaultwarden:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VAULTWARDEN_VERSION
   variables:
     BASE: vaultwarden/server
@@ -2035,7 +2042,7 @@ radius:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg FREERADIUS_VERSION
   variables:
     BASE: freeradius/freeradius-server
@@ -2047,7 +2054,7 @@ mkdocs:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MKDOCS_VERSION
   variables:
     BASE: squidfunk/mkdocs-material
@@ -2059,7 +2066,7 @@ traefik:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TRAEFIK_VERSION
   variables:
     BASE: traefik
@@ -2071,7 +2078,7 @@ powerdns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 powerdns-recursor:
   interruptible: true
@@ -2079,7 +2086,7 @@ powerdns-recursor:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 unbound:
   interruptible: true
@@ -2087,7 +2094,7 @@ unbound:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 keycloak:
   interruptible: true
@@ -2095,7 +2102,7 @@ keycloak:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KEYCLOAK_VERSION \
         --build-arg KEYCLOAK_THEMES_IMAGE
   variables:
@@ -2108,7 +2115,7 @@ postgres:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg POSTGRES_VERSION
   variables:
     BASE: postgres
@@ -2120,7 +2127,7 @@ jira:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JIRA_VERSION
   variables:
     BASE: atlassian/jira-software
@@ -2132,7 +2139,7 @@ nextcloud:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NEXTCLOUD_VERSION
   variables:
     BASE: nextcloud
@@ -2144,10 +2151,10 @@ speedtest:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SPEEDTEST_VERSION \
         --build-arg GOLANG_ALPINE_IMAGE=${DOCKER_HUB}/library/golang:${GOLANG_ALPINE_VERSION} \
-        --build-arg ALPINE_IMAGE=${DOCKER_HUB}/${DOCKER_NAMESPACE}/alpine:${INFRA_VERSION}
+        --build-arg ALPINE_IMAGE=${DOCKER_HUB}/${INFRA_NAMESPACE}/alpine:${INFRA_VERSION}
 
 haproxy:
   interruptible: true
@@ -2155,7 +2162,7 @@ haproxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HAPROXY_VERSION
   variables:
     BASE: haproxytech/haproxy-debian
@@ -2167,7 +2174,7 @@ minio:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MINIO_VERSION
   variables:
     BASE: minio/minio
@@ -2179,7 +2186,7 @@ minio-console:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MINIO_CONSOLE_VERSION
   variables:
     BASE: minio/console
@@ -2191,7 +2198,7 @@ prometheus:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PROMETHEUS_VERSION
   variables:
     BASE: prometheus/prometheus
@@ -2203,7 +2210,7 @@ prometheus-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PROMETHEUS_OPERATOR_VERSION
   variables:
     BASE: prometheus-operator/prometheus-operator
@@ -2215,7 +2222,7 @@ prometheus-config-reloader:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PROMETHEUS_OPERATOR_VERSION
   variables:
     BASE: prometheus-operator/prometheus-config-reloader
@@ -2227,7 +2234,7 @@ karma:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KARMA_VERSION
   variables:
     BASE: prymitive/karma
@@ -2239,7 +2246,7 @@ alertmanager:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALERTMANAGER_VERSION
   variables:
     BASE: prometheus/alertmanager
@@ -2251,7 +2258,7 @@ pushgateway:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PUSHGATEWAY_VERSION
   variables:
     BASE: prometheus/pushgateway
@@ -2263,7 +2270,7 @@ blackbox-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BLACKBOX_EXPORTER_VERSION
   variables:
     BASE: prometheus/blackbox-exporter
@@ -2275,7 +2282,7 @@ snmp-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SNMP_EXPORTER_VERSION
   variables:
     BASE: prometheus/snmp-exporter
@@ -2287,7 +2294,7 @@ memcached-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MEMCACHED_EXPORTER_VERSION
   variables:
     BASE: prometheus/snmp-exporter
@@ -2299,7 +2306,7 @@ ipmi-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg IPMI_EXPORTER_VERSION \
         --build-arg GOLANG_VERSION
   variables:
@@ -2312,7 +2319,7 @@ cadvisor:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CADVISOR_VERSION
   variables:
     BASE: cadvisor/cadvisor
@@ -2324,7 +2331,7 @@ node-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NODE_EXPORTER_VERSION
   variables:
     BASE: prometheus/node-exporter
@@ -2336,7 +2343,7 @@ consul-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONSUL_EXPORTER_VERSION
   variables:
     BASE: prometheus/consul-exporter
@@ -2348,7 +2355,7 @@ prometheus-es-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PROMETHEUS_ES_EXPORTER_VERSION
   variables:
     BASE: braedon/prometheus-es-exporter
@@ -2360,7 +2367,7 @@ ssl-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SSL_EXPORTER_VERSION
   variables:
     BASE: ribbybibby/ssl-exporter
@@ -2372,7 +2379,7 @@ rsyslog:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 squid:
   interruptible: true
@@ -2380,7 +2387,7 @@ squid:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SQUID_VERSION
 
 ioping-exporter:
@@ -2389,7 +2396,7 @@ ioping-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GOLANG_VERSION
   variables:
     BASE: golang
@@ -2401,7 +2408,7 @@ ldap-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LDAP_EXPORTER_VERSION
 
 grafana:
@@ -2410,7 +2417,7 @@ grafana:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GRAFANA_VERSION
   variables:
     BASE: grafana/grafana
@@ -2422,7 +2429,7 @@ promtail:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LOKI_VERSION
   variables:
     BASE: grafana/promtail
@@ -2434,7 +2441,7 @@ loki:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LOKI_VERSION
   variables:
     BASE: grafana/loki
@@ -2446,7 +2453,7 @@ loki-canary:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LOKI_VERSION
   variables:
     BASE: grafana/loki-canary
@@ -2458,7 +2465,7 @@ loki-gateway:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LOKI_GATEWAY_NGINX_VERSION
   variables:
     BASE: nginxinc/nginx-unprivileged
@@ -2470,7 +2477,7 @@ nginx-unprivileged:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NGINX_VERSION
   variables:
     BASE: nginxinc/nginx-unprivileged
@@ -2482,7 +2489,7 @@ httpd:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HTTPD_VERSION
   variables:
     BASE: httpd
@@ -2494,7 +2501,7 @@ tomcat:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TOMCAT_VERSION
   variables:
     BASE: tomcat
@@ -2506,7 +2513,7 @@ m3dbnode:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg M3DBNODE_VERSION
   variables:
     BASE: m3db/m3dbnode
@@ -2518,7 +2525,7 @@ m3coordinator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg M3COORDINATOR_VERSION
   variables:
     BASE: m3db/m3coordinator
@@ -2530,7 +2537,7 @@ cortex:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CORTEX_VERSION
   variables:
     BASE: cortexproject/cortex
@@ -2542,7 +2549,7 @@ elasticsearch:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ELASTICSEARCH_VERSION
   variables:
     BASE: elasticsearch/elasticsearch
@@ -2554,7 +2561,7 @@ logstash:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LOGSTASH_VERSION
   variables:
     BASE: logstash/logstash
@@ -2566,7 +2573,7 @@ kibana:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KIBANA_VERSION
   variables:
     BASE: kibana/kibana
@@ -2578,7 +2585,7 @@ mongo:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MONGO_VERSION
   variables:
     BASE: mongo
@@ -2590,7 +2597,7 @@ alerta:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ALERTA_VERSION
   variables:
     BASE: alerta/alerta-web
@@ -2602,7 +2609,7 @@ wordpress:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg WORDPRESS_VERSION
   variables:
     BASE: wordpress
@@ -2614,7 +2621,7 @@ pgadmin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PGADMIN_VERSION
   variables:
     BASE: dpage/pgadmin4
@@ -2626,7 +2633,7 @@ adminer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ADMINER_VERSION
   variables:
     BASE: adminer
@@ -2638,7 +2645,7 @@ mysql:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MYSQL_VERSION
   variables:
     BASE: mysql
@@ -2650,7 +2657,7 @@ mariadb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MARIADB_VERSION
   variables:
     BASE: mariadb
@@ -2662,7 +2669,7 @@ httpbin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HTTPBIN_VERSION
   variables:
     BASE: mccutchen/go-httpbin
@@ -2674,7 +2681,7 @@ oauth2-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg OAUTH2_PROXY_VERSION
   variables:
     BASE: oauth2-proxy/oauth2-proxy
@@ -2686,7 +2693,7 @@ caprover:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CAPROVER_VERSION
   variables:
     BASE: caprover/caprover
@@ -2698,7 +2705,7 @@ binderhub:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BINDERHUB_VERSION
   variables:
     BASE: noroutine/k8s-binderhub
@@ -2710,7 +2717,7 @@ binderhub-image-cleaner:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BINDERHUB_IMAGE_CLEANER_VERSION
   variables:
     BASE: jupyterhub/k8s-image-cleaner
@@ -2722,7 +2729,7 @@ jupyterhub:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_VERSION
   variables:
     BASE: jupyterhub/k8s-hub
@@ -2734,7 +2741,7 @@ repo2docker:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg REPO2DOCKER_VERSION
   variables:
     BASE: jupyterhub/repo2docker
@@ -2746,7 +2753,7 @@ dind:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DIND_VERSION
   variables:
     BASE: docker
@@ -2758,7 +2765,7 @@ pink:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PINK_VERSION
   variables:
     BASE: podman/stable
@@ -2770,7 +2777,7 @@ jupyterhub-http-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_HTTP_PROXY_VERSION
   variables:
     BASE: jupyterhub/configurable-http-proxy
@@ -2782,7 +2789,7 @@ jupyterhub-secret-sync:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_SECRET_SYNC_VERSION
   variables:
     BASE: jupyterhub/k8s-secret-sync
@@ -2794,7 +2801,7 @@ jupyterhub-network-tools:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_NETWORK_TOOLS_VERSION
   variables:
     BASE: jupyterhub/k8s-network-tools
@@ -2806,7 +2813,7 @@ jupyterhub-singleuser-sample:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION
   variables:
     BASE: jupyterhub/k8s-singleuser-sample
@@ -2818,7 +2825,7 @@ jupyterhub-image-awaiter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_IMAGE_AWAITER_VERSION
   variables:
     BASE: jupyterhub/k8s-image-awaiter
@@ -2830,7 +2837,7 @@ jupyterhub-scheduler:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_SCHEDULER_VERSION
   variables:
     BASE: kube-scheduler
@@ -2842,7 +2849,7 @@ jupyterhub-pause:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JUPYTERHUB_PAUSE_VERSION
   variables:
     BASE: pause
@@ -2867,7 +2874,7 @@ jupyter-notebook:
           - notebook
   script:
     - |
-      ./gitlab/build-image.sh jupyter-notebook ${DOCKER_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh jupyter-notebook ${INFRA_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
         --build-arg JUPYTER_VERSION \
         --build-arg FLAVOUR
 
@@ -2877,7 +2884,7 @@ jupyter-notebook:
 #   stage: build
 #   script:
 #     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
 #         --build-arg JUPYTER_VERSION \
 #         --build-arg FLAVOUR=all-spark
 #   variables:
@@ -2889,7 +2896,7 @@ rshiny:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg RSHINY_VERSION
   variables:
     BASE: rocker/shiny
@@ -2899,7 +2906,7 @@ rshiny:
 #   stage: build
 #   script:
 #     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
 #         --build-arg RSTUDIO_VERSION \
 #         --build-arg JUPYTER_VERSION
 
@@ -2909,7 +2916,7 @@ bitnami-minio:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_MINIO_VERSION
   variables:
     BASE: bitnami/minio
@@ -2921,7 +2928,7 @@ bitnami-minio-client:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_MINIO_CLIENT_VERSION
   variables:
     BASE: bitnami/minio-client
@@ -2933,7 +2940,7 @@ bitnami-shell:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_SHELL_VERSION
   variables:
     BASE: bitnami/bitnami-shell
@@ -2945,7 +2952,7 @@ bitnami-metallb-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_METALLB_CONTROLLER_VERSION
   variables:
     BASE: bitnami/metallb-controller
@@ -2957,7 +2964,7 @@ bitnami-metallb-speaker:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_METALLB_SPEAKER_VERSION
   variables:
     BASE: bitnami/metallb-speaker
@@ -2969,7 +2976,7 @@ bitnami-grafana:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_GRAFANA_VERSION
   variables:
     BASE: bitnami/grafana
@@ -2981,7 +2988,7 @@ bitnami-grafana-image-renderer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION
   variables:
     BASE: bitnami/grafana-image-renderer
@@ -2993,7 +3000,7 @@ bitnami-consul:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_CONSUL_VERSION
   variables:
     BASE: bitnami/consul
@@ -3005,7 +3012,7 @@ bitnami-nats:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_NATS_VERSION
   variables:
     BASE: bitnami/nats
@@ -3017,7 +3024,7 @@ bitnami-kube-state-metrics:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBE_STATE_METRICS_VERSION
   variables:
     BASE: bitnami/kube-state-metrics
@@ -3029,7 +3036,7 @@ bitnami-metrics-server:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_METRICS_SERVER_VERSION
   variables:
     BASE: bitnami/metrics-server
@@ -3041,7 +3048,7 @@ bitnami-nginx:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_NGINX_VERSION
   variables:
     BASE: bitnami/nginx
@@ -3053,7 +3060,7 @@ bitnami-nginx-ingress-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION
   variables:
     BASE: bitnami/nginx-ingress-controller
@@ -3065,7 +3072,7 @@ bitnami-keycloak:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KEYCLOAK_VERSION \
         --build-arg KEYCLOAK_THEMES_IMAGE
   variables:
@@ -3078,7 +3085,7 @@ bitnami-keycloak-config-cli:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION
   variables:
     BASE: bitnami/keycloak-config-cli
@@ -3090,7 +3097,7 @@ bitnami-spark:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_SPARK_VERSION
   variables:
     BASE: bitnami/spark
@@ -3102,7 +3109,7 @@ bitnami-prometheus:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_PROMETHEUS_VERSION
   variables:
     BASE: bitnami/prometheus
@@ -3114,7 +3121,7 @@ bitnami-prometheus-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_PROMETHEUS_OPERATOR_VERSION
   variables:
     BASE: bitnami/prometheus-operator
@@ -3126,7 +3133,7 @@ bitnami-node-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_NODE_EXPORTER_VERSION
   variables:
     BASE: bitnami/node-exporter
@@ -3138,7 +3145,7 @@ bitnami-blackbox-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_BLACKBOX_EXPORTER_VERSION
   variables:
     BASE: bitnami/blackbox-exporter
@@ -3150,7 +3157,7 @@ bitnami-postgres-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRES_EXPORTER_VERSION
   variables:
     BASE: bitnami/postgres-exporter
@@ -3162,7 +3169,7 @@ bitnami-redis:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_REDIS_VERSION
   variables:
     BASE: bitnami/redis
@@ -3174,7 +3181,7 @@ bitnami-redis-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_REDIS_EXPORTER_VERSION
   variables:
     BASE: bitnami/redis-exporter
@@ -3186,7 +3193,7 @@ bitnami-postgresql10:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL10_VERSION
   variables:
     BASE: bitnami/postgresql
@@ -3198,7 +3205,7 @@ bitnami-postgresql11:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL11_VERSION
   variables:
     BASE: bitnami/postgresql
@@ -3210,7 +3217,7 @@ bitnami-postgresql12:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL12_VERSION
   variables:
     BASE: bitnami/postgresql
@@ -3220,7 +3227,7 @@ bitnami-postgresql13:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL13_VERSION
   variables:
     BASE: bitnami/postgresql
@@ -3232,7 +3239,7 @@ bitnami-postgresql14:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL14_VERSION
   variables:
     BASE: bitnami/postgresql
@@ -3244,7 +3251,7 @@ bitnami-postgresql15:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL15_VERSION
   variables:
     BASE: bitnami/postgresql
@@ -3256,7 +3263,7 @@ bitnami-postgresql16:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_POSTGRESQL16_VERSION
   variables:
     BASE: bitnami/postgresql
@@ -3268,7 +3275,7 @@ bitnami-tomcat:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_TOMCAT_VERSION
   variables:
     BASE: bitnami/tomcat
@@ -3280,7 +3287,7 @@ bitnami-jmx-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_JMX_EXPORTER_VERSION
   variables:
     BASE: bitnami/jmx-exporter
@@ -3292,7 +3299,7 @@ bitnami-mariadb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_MARIADB_VERSION
   variables:
     BASE: bitnami/mariadb
@@ -3304,7 +3311,7 @@ bitnami-mongodb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_MONGODB_VERSION
   variables:
     BASE: bitnami/mongodb
@@ -3316,7 +3323,7 @@ bitnami-memcached:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_MEMCACHED_VERSION
   variables:
     BASE: bitnami/memcached
@@ -3328,7 +3335,7 @@ bitnami-kubeapps-dashboard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBEAPPS_DASHBOARD_VERSION
   variables:
     BASE: bitnami/kubeapps-dashboard
@@ -3340,7 +3347,7 @@ bitnami-kubeapps-apprepository-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION
   variables:
     BASE: bitnami/kubeapps-apprepository-controller
@@ -3352,7 +3359,7 @@ bitnami-kubeapps-asset-syncer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBEAPPS_ASSET_SYNCER
   variables:
     BASE: bitnami/kubeapps-asset-syncer
@@ -3364,7 +3371,7 @@ bitnami-kubeapps-apis:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBEAPPS_APIS_VERSION
   variables:
     BASE: bitnami/kubeapps-apis
@@ -3374,7 +3381,7 @@ bitnami-kubeapps-pinniped-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION
   variables:
     BASE: bitnami/kubeapps-pinniped-proxy
@@ -3384,7 +3391,7 @@ bitnami-kube-rbac-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KUBE_RBAC_PROXY_VERSION
   variables:
     BASE: bitnami/kube-rbac-proxy
@@ -3396,7 +3403,7 @@ bitnami-openldap:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_OPENLDAP_VERSION
   variables:
     BASE: bitnami/openldap
@@ -3406,7 +3413,7 @@ bitnami-sealed-secrets-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
   variables:
     BASE: bitnami/sealed-secrets-controller
@@ -3416,7 +3423,7 @@ bitnami-trivy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_TRIVY_VERSION
   variables:
     BASE: bitnami/trivy
@@ -3426,7 +3433,7 @@ trivy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TRIVY_VERSION
   variables:
     BASE: aquasec/trivy
@@ -3436,7 +3443,7 @@ external-secrets:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg EXTERNAL_SECRETS_VERSION
   variables:
     BASE: external-secrets/external-secrets
@@ -3448,7 +3455,7 @@ hasura-graphql-engine:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HASURA_GRAPHQL_VERSION
   variables:
     BASE: hasura/graphql-engine
@@ -3460,7 +3467,7 @@ kutt:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KUTT_VERSION
   variables:
     BASE: kutt/kutt
@@ -3472,7 +3479,7 @@ umami:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg UMAMI_VERSION
   variables:
     BASE: mikecao/umami
@@ -3484,7 +3491,7 @@ pihole:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PIHOLE_VERSION
   variables:
     BASE: pihole/pihole
@@ -3496,7 +3503,7 @@ clickhouse-server:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CLICKHOUSE_VERSION
   variables:
     BASE: yandex/clickhouse-server
@@ -3508,7 +3515,7 @@ clickhouse-tabix-web-client:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TABIX_VERSION
   variables:
     BASE: spoonest/clickhouse-tabix-web-client
@@ -3520,7 +3527,7 @@ plausible-analytics:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PLAUSIBLE_VERSION
   variables:
     BASE: plausible/analytics
@@ -3532,7 +3539,7 @@ verdaccio:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VERDACCIO_VERSION
   variables:
     BASE: verdaccio/verdaccio
@@ -3544,7 +3551,7 @@ strapi:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg STRAPI_VERSION
   variables:
     BASE: strapi/strapi
@@ -3556,7 +3563,7 @@ ghost:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GHOST_VERSION
   variables:
     BASE: ghost
@@ -3568,7 +3575,7 @@ bitnami-ghost:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_GHOST_VERSION
   variables:
     BASE: bitnami/ghost
@@ -3580,7 +3587,7 @@ matomo:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MATOMO_VERSION
   variables:
     BASE: matomo
@@ -3592,7 +3599,7 @@ nocodb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NOCODB_VERSION
   variables:
     BASE: nocodb/nocodb
@@ -3604,7 +3611,7 @@ metabase:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg METABASE_VERSION
   variables:
     BASE: metabase/metabase
@@ -3616,7 +3623,7 @@ sftpgo:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SFTPGO_VERSION
   variables:
     BASE: drakkan/sftpgo
@@ -3628,7 +3635,7 @@ hello:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HELLO_VERSION
   variables:
     BASE: paulbouwer/hello-kubernetes
@@ -3640,7 +3647,7 @@ reloader:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg RELOADER_VERSION
   variables:
     BASE: stakater/reloader
@@ -3652,7 +3659,7 @@ configmap-reload:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONFIGMAP_RELOAD_VERSION
   variables:
     BASE: jimmidyson/configmap-reload
@@ -3664,7 +3671,7 @@ docker-registry:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DOCKER_REGISTRY_VERSION
   variables:
     BASE: registry
@@ -3676,7 +3683,7 @@ argocd:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGOCD_VERSION \
         --build-arg ARGOCD_VAULT_PLUGIN_VERSION \
         --build-arg ARGOCD_VAULT_PLUGIN_HASH \
@@ -3692,7 +3699,7 @@ argocd-applicationset:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGOCD_APPLICATIONSET_VERSION
   variables:
     BASE: argoproj/argocd-applicationset
@@ -3704,7 +3711,7 @@ argo-events:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGO_EVENTS_VERSION \
   variables:
     BASE: argoproj/argo-events
@@ -3716,7 +3723,7 @@ argo-workflows-server:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGO_WORKFLOWS_VERSION \
   variables:
     BASE: argoproj/argocli
@@ -3728,7 +3735,7 @@ argo-workflows-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGO_WORKFLOWS_VERSION \
   variables:
     BASE: argoproj/workflow-controller
@@ -3740,7 +3747,7 @@ argo-workflows-executor:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGO_WORKFLOWS_VERSION \
   variables:
     BASE: argoproj/workflow-controller
@@ -3752,7 +3759,7 @@ boky-postfix:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BOKY_POSTFIX_VERSION
   variables:
     BASE: boky/postfix
@@ -3764,7 +3771,7 @@ cryptgeon:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CRYPTGEON_VERSION
   variables:
     BASE: cupcakearmy/cryptgeon
@@ -3776,7 +3783,7 @@ memcached:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MEMCACHED_VERSION
   variables:
     BASE: memcached
@@ -3788,7 +3795,7 @@ dex:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DEX_VERSION
   variables:
     BASE: dexidp/dex
@@ -3800,7 +3807,7 @@ redis:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg REDIS_VERSION
   variables:
     BASE: redis
@@ -3812,7 +3819,7 @@ listmonk:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LISTMONK_VERSION
   variables:
     BASE: listmonk/listmonk
@@ -3824,7 +3831,7 @@ consul:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONSUL_VERSION
   variables:
     BASE: hashicorp/consul
@@ -3836,7 +3843,7 @@ consul-k8s-control-plane:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONSUL_K8S_CP_VERSION
   variables:
     BASE: hashicorp/consul-k8s-control-plane
@@ -3848,7 +3855,7 @@ envoy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ENVOY_VERSION
   variables:
     BASE: envoyproxy/envoy-alpine
@@ -3860,7 +3867,7 @@ vault:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VAULT_VERSION
   variables:
     BASE: hashicorp/vault
@@ -3872,7 +3879,7 @@ vault-k8s:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VAULT_K8S_VERSION
   variables:
     BASE: hashicorp/vault-k8s
@@ -3884,7 +3891,7 @@ vault-csi-provider:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VAULT_CSI_PROVIDER_VERSION
   variables:
     BASE: hashicorp/vault-csi-provider
@@ -3896,7 +3903,7 @@ strimzi-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg STRIMZI_OPERATOR_VERSION
   variables:
     BASE: strimzi/operator
@@ -3908,7 +3915,7 @@ strimzi-kafka:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg STRIMZI_OPERATOR_VERSION \
         --build-arg STRIMZI_KAFKA_VERSION
   variables:
@@ -3920,7 +3927,7 @@ nats-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NATS_OPERATOR_VERSION
   variables:
     BASE: connecteverything/nats-operator
@@ -3932,7 +3939,7 @@ nats:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NATS_VERSION
   variables:
     BASE: nats
@@ -3944,7 +3951,7 @@ nats-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NATS_EXPORTER_VERSION
   variables:
     BASE: natsio/prometheus-nats-exporter
@@ -3956,7 +3963,7 @@ nats-server-config-reloader:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NATS_SERVER_CONFIG_RELOADER
   variables:
     BASE: natsio/nats-server-config-reloader
@@ -3968,7 +3975,7 @@ mosquitto:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MOSQUITTO_VERSION
   variables:
     BASE: eclipse-mosquitto
@@ -3980,7 +3987,7 @@ mosquitto-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MOSQUITTO_EXPORTER_VERSION
   variables:
     BASE: sapcc/mosquitto-exporter
@@ -3992,7 +3999,7 @@ cert-manager-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-controller
@@ -4004,7 +4011,7 @@ cert-manager-webhook:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-webhook
@@ -4016,7 +4023,7 @@ cert-manager-cainjector:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-cainjector
@@ -4028,7 +4035,7 @@ cert-manager-ctl:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_VERSION
   variables:
     BASE: jetstack/cert-manager-ctl
@@ -4040,7 +4047,7 @@ cert-manager-csi-driver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_CSI_DRIVER_VERSION
   variables:
     BASE: jetstack/cert-manager-csi-driver
@@ -4052,7 +4059,7 @@ cert-manager-webhook-pdns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_WEBHOOK_PDNS_VERSION
   variables:
     BASE: zachomedia/cert-manager-webhook-pdns
@@ -4064,7 +4071,7 @@ cert-manager-webhook-powerdns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CERT_MANAGER_WEBHOOK_POWERDNS_VERSION
   variables:
     BASE: vstadtmueller/cert-manager-webhook-powerdns
@@ -4076,7 +4083,7 @@ caddy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CADDY_VERSION
   variables:
     BASE: caddy
@@ -4088,7 +4095,7 @@ bpftrace:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BPFTRACE_VERSION
   variables:
     BASE: iovisor/bpftrace
@@ -4100,7 +4107,7 @@ coredns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg COREDNS_VERSION
   variables:
     BASE: coredns/coredns
@@ -4112,7 +4119,7 @@ k8s-coredns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg K8S_COREDNS_VERSION
   variables:
     BASE: coredns/coredns
@@ -4124,7 +4131,7 @@ k8s-pause:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg K8S_PAUSE_VERSION
   variables:
     BASE: pause
@@ -4136,7 +4143,7 @@ storage-livenessprobe:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg LIVENESSPROBE_VERSION
   variables:
     BASE: sig-storage/livenessprobe
@@ -4148,7 +4155,7 @@ storage-csi-node-driver-registrar:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_NODE_DRIVER_REGISTRAR_VERSION
   variables:
     BASE: sig-storage/csi-node-driver-registrar
@@ -4160,7 +4167,7 @@ storage-csi-attacher:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_ATTACHER_VERSION
   variables:
     BASE: sig-storage/csi-attacher
@@ -4172,7 +4179,7 @@ storage-csi-resizer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_RESIZER_VERSION
   variables:
     BASE: sig-storage/csi-resizer
@@ -4184,7 +4191,7 @@ storage-csi-snapshotter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_SNAPSHOTTER_VERSION
   variables:
     BASE: sig-storage/csi-snapshotter
@@ -4196,7 +4203,7 @@ storage-snapshot-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_SNAPSHOT_CONTROLLER_VERSION
   variables:
     BASE: sig-storage/snapshot-controller
@@ -4208,7 +4215,7 @@ storage-snapshot-validation-webhook:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
   variables:
     BASE: sig-storage/snapshot-validation-webhook
@@ -4220,7 +4227,7 @@ storage-csi-provisioner:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CSI_PROVISIONER_VERSION
   variables:
     BASE: sig-storage/csi-provisioner
@@ -4232,7 +4239,7 @@ vmware-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VMWARE_EXPORTER_VERSION
   variables:
     BASE: pryorda/vmware_exporter
@@ -4244,7 +4251,7 @@ vsphere-csi-driver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VSPHERE_CSI_DRIVER_VERSION
   variables:
     BASE: cloud-provider-vsphere/csi/release/driver
@@ -4256,7 +4263,7 @@ vsphere-csi-syncer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VSPHERE_CSI_SYNCER_VERSION
   variables:
     BASE: cloud-provider-vsphere/csi/release/syncer
@@ -4268,7 +4275,7 @@ vsphere-cpi-manager:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VSPHERE_CPI_MANAGER_VERSION
   variables:
     BASE: cloud-provider-vsphere/cpi/release/manager
@@ -4280,7 +4287,7 @@ kafdrop:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KAFDROP_VERSION
   variables:
     BASE: obsidiandynamics/kafdrop
@@ -4292,7 +4299,7 @@ akhq:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg AKHQ_VERSION
   variables:
     BASE: tchiotludo/akhq
@@ -4304,7 +4311,7 @@ tigera-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TIGERA_OPERATOR_VERSION
   variables:
     BASE: tigera/operator
@@ -4316,7 +4323,7 @@ node-feature-discovery:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg K8S_NFD_VERSION
   variables:
     BASE: nfd/node-feature-discovery
@@ -4328,7 +4335,7 @@ eck-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ECK_OPERATOR_VERSION
   variables:
     BASE: elastic/eck-operator
@@ -4340,7 +4347,7 @@ confluent-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONFLUENTINC_OPERATOR_VERSION
   variables:
     BASE: confluentinc/confluent-operator
@@ -4352,7 +4359,7 @@ confluent-init-container:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CONFLUENTINC_INIT_CONTAINER_VERSION
   variables:
     BASE: confluentinc/confluent-init-container
@@ -4378,7 +4385,7 @@ confluent-platform:
           - dummy
   script:
     - |
-      ./gitlab/build-image.sh confluent-platform ${DOCKER_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh confluent-platform ${INFRA_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
         --build-arg CONFLUENTINC_CP_VERSION \
         --build-arg CONFLUENTINC_CP_COMPONENT
 
@@ -4388,7 +4395,7 @@ uptime-kuma:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg UPTIME_KUMA_VERSION
   variables:
     BASE: louislam/uptime-kuma
@@ -4400,7 +4407,7 @@ airflow:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg AIRFLOW_VERSION
   variables:
     BASE: apache/airflow
@@ -4412,7 +4419,7 @@ git-sync:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GIT_SYNC_VERSION
   variables:
     BASE: git-sync/git-sync
@@ -4424,7 +4431,7 @@ keda:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KEDA_VERSION
   variables:
     BASE: kedacore/keda
@@ -4436,7 +4443,7 @@ keda-metrics-apiserver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KEDA_VERSION
   variables:
     BASE: kedacore/keda-metrics-apiserver
@@ -4448,7 +4455,7 @@ hadolint:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HADOLINT_VERSION
   variables:
     BASE: hadolint/hadolint
@@ -4460,7 +4467,7 @@ outline:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg OUTLINE_VERSION
   variables:
     BASE: outlinewiki/outline
@@ -4472,7 +4479,7 @@ syncthing:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SYNCTHING_VERSION
   variables:
     BASE: syncthing/syncthing
@@ -4484,7 +4491,7 @@ syncthing-discosrv:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SYNCTHING_VERSION
   variables:
     BASE: syncthing/discosrv
@@ -4496,7 +4503,7 @@ syncthing-relaysrv:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg SYNCTHING_VERSION
   variables:
     BASE: syncthing/relaysrv
@@ -4508,7 +4515,7 @@ jellyfin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JELLYFIN_VERSION
   variables:
     BASE: jellyfin/jellyfin
@@ -4520,7 +4527,7 @@ tdarr:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TDARR_VERSION
   variables:
     BASE: haveagitgat/tdarr
@@ -4532,7 +4539,7 @@ tdarr-node:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg TDARR_VERSION
   variables:
     BASE: haveagitgat/tdarr_node
@@ -4544,7 +4551,7 @@ netmaker:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NETMAKER_VERSION
   variables:
     BASE: gravitl/netmaker
@@ -4556,7 +4563,7 @@ netmaker-ui:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NETMAKER_UI_VERSION
   variables:
     BASE: gravitl/netmaker-ui
@@ -4568,7 +4575,7 @@ youtube-dl-server:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg YOUTUBE_DL_SERVER_VERSION
   variables:
     BASE: kmb32123/youtube-dl-server
@@ -4580,7 +4587,7 @@ puppetserver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PUPPETSERVER_VERSION
   variables:
     BASE: puppet/puppetserver
@@ -4592,7 +4599,7 @@ puppetdb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PUPPETDB_VERSION
   variables:
     BASE: puppet/puppetdb
@@ -4604,7 +4611,7 @@ r10k:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg R10K_VERSION
   variables:
     BASE: puppet/r10k
@@ -4616,7 +4623,7 @@ puppetboard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PUPPETBOARD_VERSION
   variables:
     BASE: voxpupuli/puppetboard
@@ -4628,7 +4635,7 @@ restic:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg RESTIC_VERSION
   variables:
     BASE: restic/restic
@@ -4640,7 +4647,7 @@ yugabyte:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg YUGABYTE_VERSION
   variables:
     BASE: yugabytedb/yugabyte
@@ -4652,7 +4659,7 @@ keeweb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KEEWEB_VERSION
   variables:
     BASE: antelle/keeweb
@@ -4664,7 +4671,7 @@ netbird-dashboard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NETBIRD_DASHBOARD_VERSION
   variables:
     BASE: wiretrustee/dashboard
@@ -4676,7 +4683,7 @@ netbird-management:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NETBIRD_MANAGEMENT_VERSION
   variables:
     BASE: netbirdio/management
@@ -4688,7 +4695,7 @@ netbird-signal:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NETBIRD_SIGNAL_VERSION
   variables:
     BASE: netbirdio/signal
@@ -4700,7 +4707,7 @@ coturn:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg COTURN_VERSION
   variables:
     BASE: coturn/coturn
@@ -4712,7 +4719,7 @@ firezone:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg FIREZONE_VERSION
   variables:
     BASE: firezone/firezone
@@ -4724,7 +4731,7 @@ jenkins:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JENKINS_VERSION
   variables:
     BASE: jenkins/jenkins
@@ -4736,7 +4743,7 @@ jenkins-agent:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JENKINS_AGENT_VERSION
   variables:
     BASE: jenkins/agent
@@ -4748,7 +4755,7 @@ jenkins-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg JENKINS_OPERATOR_VERSION
   variables:
     BASE: jenkins-kubernetes-operator/operator
@@ -4760,7 +4767,7 @@ netbox:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NETBOX_VERSION
   variables:
     BASE: netboxcommunity/netbox
@@ -4772,7 +4779,7 @@ velero:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_VERSION
   variables:
     BASE: velero/velero
@@ -4784,7 +4791,7 @@ velero-plugin-for-csi:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_PLUGIN_CSI_VERSION
   variables:
     BASE: velero/velero-plugin-for-csi
@@ -4796,7 +4803,7 @@ velero-plugin-for-aws:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_PLUGIN_AWS_VERSION
   variables:
     BASE: velero/velero-plugin-for-aws
@@ -4808,7 +4815,7 @@ velero-plugin-for-gcp:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_PLUGIN_GCP_VERSION
   variables:
     BASE: velero/velero-plugin-for-gcp
@@ -4820,7 +4827,7 @@ velero-plugin-for-azure:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_PLUGIN_AZURE_VERSION
   variables:
     BASE: velero/velero-plugin-for-microsoft-azure
@@ -4832,7 +4839,7 @@ velero-plugin-for-vsphere:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_PLUGIN_VSPHERE_VERSION
   variables:
     BASE: vsphereveleroplugin/velero-plugin-for-vsphere
@@ -4844,7 +4851,7 @@ backup-driver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_PLUGIN_VSPHERE_VERSION
   variables:
     BASE: vsphereveleroplugin/backup-driver
@@ -4856,7 +4863,7 @@ data-manager-for-plugin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_PLUGIN_VSPHERE_VERSION
   variables:
     BASE: vsphereveleroplugin/data-manager-for-plugin
@@ -4868,7 +4875,7 @@ velero-restic-restore-helper:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_RESTIC_RESTORE_HELPER_VERSION
   variables:
     BASE: velero/velero-plugin-for-csi
@@ -4880,7 +4887,7 @@ velero-kubectl:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg VELERO_KUBECTL_VERSION
   variables:
     BASE: bitnami/kubectl
@@ -4892,7 +4899,7 @@ kubernetes-dashboard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg K8S_DASHBOARD_VERSION
   variables:
     BASE: kubernetesui/dashboard
@@ -4904,7 +4911,7 @@ kubernetes-dashboard-api:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg K8S_DASHBOARD_API_VERSION
   variables:
     BASE: kubernetesui/dashboard-api
@@ -4916,7 +4923,7 @@ kubernetes-dashboard-web:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg K8S_DASHBOARD_WEB_VERSION
   variables:
     BASE: kubernetesui/dashboard
@@ -4928,7 +4935,7 @@ kubernetes-dashboard-metrics-scraper:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg K8S_DASHBOARD_METRICS_SCRAPER_VERSION
   variables:
     BASE: kubernetesui/metrics-scraper
@@ -4940,7 +4947,7 @@ postgrest:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg POSTGREST_VERSION
   variables:
     BASE: postgrest/postgrest
@@ -4952,7 +4959,7 @@ azure-workload-identity-webhook:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg AZURE_WORKLOAD_IDENTITY_VERSION
   variables:
     BASE: oss/azure/workload-identity/webhook
@@ -4964,7 +4971,7 @@ azure-service-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg AZURE_SERVICE_OPERATOR_VERSION
   variables:
     BASE: k8s/azureserviceoperator
@@ -4976,7 +4983,7 @@ guacamole:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GUACAMOLE_VERSION
   variables:
     BASE: guacamole/guacamole
@@ -4988,7 +4995,7 @@ guacd:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GUACAMOLE_VERSION
   variables:
     BASE: guacamole/guacd
@@ -5000,7 +5007,7 @@ cephcsi:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg CEPHCSI_VERSION
   variables:
     BASE: cephcsi/cephcsi
@@ -5012,7 +5019,7 @@ nvidia-cuda:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_CUDA_VERSION
   variables:
     BASE: nvidia/cuda
@@ -5024,7 +5031,7 @@ nvidia-dcgm:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_DCGM_VERSION
   variables:
     BASE: nvidia/cloud-native/dcgm
@@ -5036,7 +5043,7 @@ nvidia-dcgm-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_DCGM_EXPORTER_VERSION
   variables:
     BASE: nvidia/k8s/dcgm-exporter
@@ -5048,7 +5055,7 @@ nvidia-gpu-feature-discovery:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_GPU_FEATURE_DISCOVERY_VERSION
   variables:
     BASE: nvidia/gpu-feature-discovery
@@ -5060,7 +5067,7 @@ nvidia-gpu-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_GPU_OPERATOR_VERSION
   variables:
     BASE: nvidia/gpu-operator
@@ -5072,7 +5079,7 @@ nvidia-gpu-operator-validator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION
   variables:
     BASE: nvidia/cloud-native/gpu-operator-validator
@@ -5084,7 +5091,7 @@ nvidia-k8s-container-toolkit:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION
   variables:
     BASE: nvidia/k8s/container-toolkit
@@ -5096,7 +5103,7 @@ nvidia-k8s-device-plugin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_K8S_DEVICE_PLUGIN_VERSION
   variables:
     BASE: nvidia/k8s-device-plugin
@@ -5108,7 +5115,7 @@ nvidia-k8s-driver-manager:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_K8S_DRIVER_MANAGER_VERSION
   variables:
     BASE: nvidia/cloud-native/k8s-driver-manager
@@ -5120,7 +5127,7 @@ nvidia-k8s-mig-manager:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg NVIDIA_K8S_MIG_MANAGER_VERSION
   variables:
     BASE: nvidia/cloud-native/k8s-mig-manager
@@ -5144,7 +5151,7 @@ bitnami-harbor:
           - dummy
   script:
     - |
-      ./gitlab/build-image.sh bitnami-harbor ${DOCKER_NAMESPACE}/bitnami-harbor-${BITNAMI_HARBOR_COMPONENT}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh bitnami-harbor ${INFRA_NAMESPACE}/bitnami-harbor-${BITNAMI_HARBOR_COMPONENT}:${INFRA_VERSION} \
         --build-arg BITNAMI_HARBOR_VERSION \
         --build-arg BITNAMI_HARBOR_COMPONENT
 
@@ -5166,7 +5173,7 @@ harbor-parts:
           - dummy
   script:
     - |
-      ./gitlab/build-image.sh harbor ${DOCKER_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh harbor ${INFRA_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
         --build-arg HARBOR_VERSION \
         --build-arg HARBOR_COMPONENT=harbor-${HARBOR_COMPONENT}
 
@@ -5186,7 +5193,7 @@ harbor-parts2:
           - dummy
   script:
     - |
-      ./gitlab/build-image.sh harbor ${DOCKER_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh harbor ${INFRA_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
         --build-arg HARBOR_VERSION \
         --build-arg HARBOR_COMPONENT=${HARBOR_COMPONENT}-photon
 
@@ -5196,7 +5203,7 @@ zitadel:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ZITADEL_VERSION
   variables:
     BASE: zitadel/zitadel
@@ -5212,7 +5219,7 @@ infra-docs:
 
       ( cd infra-docs && git archive --format=tar HEAD ) | ( cd docker/infra-docs/docs && tar xf - )
 
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 infra-charts:
   interruptible: true
@@ -5222,7 +5229,7 @@ infra-charts:
     - |
       ./import-charts.sh import-charts.yml docker/infra-charts/charts
 
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
           archive_folder docker/infra-charts/charts charts ${INFRA_VERSION}
@@ -5238,7 +5245,7 @@ run-hadolint:
         shopt -u -o errexit
         for dockerfile in docker/*/Dockerfile; do
           echo ${dockerfile}
-          docker run --rm cr.nrtn.dev/infra/hadolint:${INFRA_VERSION} < ${dockerfile};
+          docker run --rm ${DOCKER_HUB}/${INFRA_NAMESPACE}/hadolint:${INFRA_VERSION} < ${dockerfile};
         done
       )
 
@@ -5247,14 +5254,14 @@ latex:
   stage: build2
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
 builder:
   interruptible: true
   stage: build2
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg HOST_DOCKER_GID \
@@ -5265,7 +5272,7 @@ shell:
   stage: build2
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${DOCKER_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg HOST_DOCKER_GID
