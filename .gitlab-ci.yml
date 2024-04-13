@@ -129,10 +129,18 @@ archive-images1:
           - haproxytech/haproxy-debian
         VERSION:
           - HAPROXY_VERSION
-      - BASE:
+      - REGISTRY:
+          - quay.io
+        BASE:
           - minio/minio
         VERSION:
           - MINIO_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - minio/mc
+        VERSION:
+          - MINIO_MC_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -700,7 +708,9 @@ archive-images3:
           - external-secrets/external-secrets
         VERSION:
           - EXTERNAL_SECRETS_VERSION
-      - BASE:
+      - REGISTRY:
+          - quay.io
+        BASE:
           - minio/console
         VERSION:
           - MINIO_CONSOLE_VERSION
@@ -1257,6 +1267,18 @@ archive-images4:
           - zitadel/zitadel
         VERSION:
           - ZITADEL_VERSION
+      - BASE:
+          - chirpstack/chirpstack
+        VERSION:
+          - CHIRPSTACK_VERSION
+      - BASE:
+          - chirpstack/chirpstack-rest-api
+        VERSION:
+          - CHIRPSTACK_REST_API_VERSION
+      - BASE:
+          - chirpstack/chirpstack-gateway-bridge
+        VERSION:
+          - CHIRPSTACK_GATEWAY_BRIDGE_VERSION
 
 archive-special:
   extends: .archive-images
@@ -1310,7 +1332,8 @@ archive-extra:
           - kubernetes/kube-scheduler
           - kubernetes/kube-controller-manager
         VERSION:
-          - K8S_VERSION
+          - K8S_130_VERSION
+          - K8S_129_VERSION
           - K8S_128_VERSION
           - K8S_127_VERSION
           - K8S_126_VERSION
@@ -2180,6 +2203,18 @@ minio:
     BASE: minio/minio
     VERSION: MINIO_VERSION
 
+minio-client:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg MINIO_MC_VERSION
+  variables:
+    BASE: minio/mc
+    VERSION: MINIO_MC_VERSION
+
 minio-console:
   interruptible: true
   retry: 2
@@ -2189,6 +2224,7 @@ minio-console:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg MINIO_CONSOLE_VERSION
   variables:
+    REGSITRY: quay.io
     BASE: minio/console
     VERSION: MINIO_CONSOLE_VERSION
 
@@ -5208,6 +5244,42 @@ zitadel:
   variables:
     BASE: zitadel/zitadel
     VERSION: ZITADEL_VERSION
+
+chirpstack:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CHIRPSTACK_VERSION
+  variables:
+    BASE: chirpstack/chirpstack
+    VERSION: CHIRPSTACK_VERSION
+
+chirpstack-rest-api:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CHIRPSTACK_REST_API_VERSION
+  variables:
+    BASE: chirpstack/chirpstack-rest-api
+    VERSION: CHIRPSTACK_REST_API_VERSION
+
+chirpstack-gateway-bridge:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg CHIRPSTACK_GATEWAY_BRIDGE_VERSION
+  variables:
+    BASE: chirpstack/chirpstack-gateway-bridge
+    VERSION: CHIRPSTACK_GATEWAY_BRIDGE_VERSION
 
 infra-docs:
   interruptible: true

@@ -31,7 +31,9 @@ import_images() {
         "atlassian/jira-software:${JIRA_VERSION:-8.13.0}"
         "nextcloud:${NEXTCLOUD_VERSION:-20.0.0-fpm-alpine}:::prepend_name=library/"
         "haproxytech/haproxy-debian:${HAPROXY_VERSION:-2.3.4}"
-        "minio/minio:${MINIO_VERSION:-RELEASE.2021-02-07T01-31-02Z}"
+        "quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2021-02-07T01-31-02Z}"
+        "quay.io/minio/mc:${MINIO_MC_VERSION:-RELEASE.2024-04-18T16-45-29Z}"
+        "quay.io/minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "quay.io/coreos/etcd:${ETCD_VERSION:-latest}"
         "quay.io/prometheus/prometheus:${PROMETHEUS_VERSION:-latest}"
         "quay.io/prometheus/alertmanager:${ALERTMANAGER_VERSION:-latest}"
@@ -194,7 +196,6 @@ import_images() {
         "goharbor/nginx-photon:${HARBOR_VERSION:-v2.10.1}"
         "aquasec/trivy:${TRIVY_VERSION:-0.33.0}"
         "ghcr.io/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION:-v0.5.3}"
-        "minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
         "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
         "hasura/graphql-engine:${HASURA_GRAPHQL_VERSION:-v2.0.0-beta.2}"
@@ -272,6 +273,11 @@ import_images() {
         "quay.io/cephcsi/cephcsi:${CEPHCSI_VERSION:-v3.10.2}"
         "ghcr.io/zitadel/zitadel:${ZITADEL_VERSION:-v2.49.3}"
 
+        # chirpstack
+        "chirpstack/chirpstack:${CHIRPSTACK_VERSION:-4.7.0}"
+        "chirpstack/chirpstack-rest-api:${CHIRPSTACK_REST_API_VERSION:-4.7.0}"
+        "chirpstack/chirpstack-gateway-bridge:${CHIRPSTACK_GATEWAY_BRIDGE_VERSION:-4.0.11}"
+
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"
         "velero/velero-plugin-for-csi:${VELERO_PLUGIN_CSI_VERSION:-v0.4.1}"
@@ -319,10 +325,16 @@ import_images() {
         "registry.k8s.io/pause:${K8S_PAUSE_VERSION:-3.7}:::prepend_name=kubernetes/"
         "registry.k8s.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
 
-        "registry.k8s.io/kube-apiserver:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-proxy:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-scheduler:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-controller-manager:${K8S_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-apiserver:${K8S_130_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_130_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_130_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_130_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+
+        # k8s 1.29.x
+        "registry.k8s.io/kube-apiserver:${K8S_129_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_129_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_129_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_129_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
 
         # k8s 1.28.x
         "registry.k8s.io/kube-apiserver:${K8S_128_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
