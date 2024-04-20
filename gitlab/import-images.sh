@@ -278,6 +278,18 @@ import_images() {
         "chirpstack/chirpstack-rest-api:${CHIRPSTACK_REST_API_VERSION:-4.7.0}"
         "chirpstack/chirpstack-gateway-bridge:${CHIRPSTACK_GATEWAY_BRIDGE_VERSION:-4.0.11}"
 
+        # supabase
+        "supabase/studio:${SUPABASE_STUDIO_VERSION:-20240415-304bec8}"
+        "supabase/gotrue:${SUPABASE_GOTRUE_VERSION:-v2.149.0}"
+        "supabase/realtime:${SUPABASE_REALTIME_VERSION:-v2.28.32}"
+        "supabase/postgres-meta:${SUPABASE_POSTGRES_META_VERSION:-v0.80.0}"
+        "supabase/storage-api:${SUPABASE_STORAGE_API_VERSION:-v1.0.10}"
+        "supabase/logflare:${SUPABASE_LOGFLARE_VERSION:-v1.6.3}"
+        "supabase/edge-runtime:${SUPABASE_EDGE_RUNTIME_VERSION:-v1.44.1}"
+        "darthsim/imgproxy:${IMGPROXY_VERSION:-v3.23}"
+        "timberio/vector:${VECTOR_VERSION:-0.37.1-alpine}"
+        "kong:${KONG_VERSION:-3.6.1-ubuntu}:::prepend_name=library/"
+
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"
         "velero/velero-plugin-for-csi:${VELERO_PLUGIN_CSI_VERSION:-v0.4.1}"

@@ -63,9 +63,11 @@ build_image() {
         --secret id=ssh_private_key,src=/home/${BUILDER_USER}/.ssh/id_rsa \
         --secret id=infra_readonly_token,src=/home/${BUILDER_USER}/.infra_readonly_token \
         --build-arg DOCKER_HUB \
+        --build-arg IMAGE_REGISTRY=${DOCKER_HUB} \
+        --build-arg IMAGE_BASE \
+        --build-arg IMAGE_VERSION \
         --build-arg INFRA_VERSION \
-        --build-arg INFRA_NAMESPACE \
-        --build-arg DOCKER_NAMESPACE"
+        --build-arg INFRA_NAMESPACE"
         # --build-arg HTTP_PROXY \
         # --build-arg HTTPS_PROXY \
         # --build-arg NO_PROXY \

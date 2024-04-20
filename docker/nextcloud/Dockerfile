@@ -13,7 +13,7 @@ RUN echo 'deb [signed-by=/etc/apt/keyrings/pgdg-archive-keyring.asc] http://apt.
 
 RUN apt-get -yyq update && \
     apt-get -yyq install --no-install-recommends smbclient sudo && \
-    apt-get -yyq install --target-release bookworm-pgdg --no-install-recommends libpq5 postgresql-client-15 && \
+    apt-get -yyq install --target-release bookworm-pgdg --no-install-recommends libpq5 postgresql-client-16 && \
     rm -rf /var/lib/apt/lists/*
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"

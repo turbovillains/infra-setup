@@ -18,9 +18,7 @@ before_script:
     export INFRA_VERSION=${CI_COMMIT_TAG:-${CI_COMMIT_SHORT_SHA}}
 
     if [[ -z ${CI_COMMIT_TAG} ]]; then
-      export INFRA_NAMESPACE=${DOCKER_NAMESPACE}-dev
-    else
-      export INFRA_NAMESPACE=${DOCKER_NAMESPACE}
+      export INFRA_NAMESPACE=${INFRA_NAMESPACE_DEV}
     fi
 
     export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${INFRA_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
@@ -1279,6 +1277,46 @@ archive-images4:
           - chirpstack/chirpstack-gateway-bridge
         VERSION:
           - CHIRPSTACK_GATEWAY_BRIDGE_VERSION
+      - BASE:
+          - library/kong
+        VERSION:
+          - KONG_VERSION
+      - BASE:
+          - supabase/studio
+        VERSION:
+          - SUPABASE_STUDIO_VERSION
+      - BASE:
+          - supabase/gotrue
+        VERSION:
+          - SUPABASE_GOTRUE_VERSION
+      - BASE:
+          - supabase/realtime
+        VERSION:
+          - SUPABASE_REALTIME_VERSION
+      - BASE:
+          - supabase/postgres-meta
+        VERSION:
+          - SUPABASE_POSTGRES_META_VERSION
+      - BASE:
+          - supabase/storage-api
+        VERSION:
+          - SUPABASE_STORAGE_API_VERSION
+      - BASE:
+          - supabase/logflare
+        VERSION:
+          - SUPABASE_LOGFLARE_VERSION
+      - BASE:
+          - supabase/edge-runtime
+        VERSION:
+          - SUPABASE_EDGE_RUNTIME_VERSION
+      - BASE:
+          - darthsim/imgproxy
+        VERSION:
+          - IMGPROXY_VERSION
+      - BASE:
+          - timberio/vector
+        VERSION:
+          - VECTOR_VERSION
 
 archive-special:
   extends: .archive-images
@@ -5280,6 +5318,117 @@ chirpstack-gateway-bridge:
   variables:
     BASE: chirpstack/chirpstack-gateway-bridge
     VERSION: CHIRPSTACK_GATEWAY_BRIDGE_VERSION
+
+kong:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: library/kong
+    IMAGE_VERSION: ${KONG_VERSION}
+
+supabase-studio:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: supabase/studio
+    IMAGE_VERSION: ${SUPABASE_STUDIO_VERSION}
+
+supabase-gotrue:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: supabase/gotrue
+    IMAGE_VERSION: ${SUPABASE_GOTRUE_VERSION}
+
+supabase-realtime:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: supabase/realtime
+    IMAGE_VERSION: ${SUPABASE_REALTIME_VERSION}
+
+supabase-postgres-meta:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: supabase/postgres-meta
+    IMAGE_VERSION: ${SUPABASE_POSTGRES_META_VERSION}
+
+supabase-storage-api:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: supabase/storage-api
+    IMAGE_VERSION: ${SUPABASE_STORAGE_API_VERSION}
+
+supabase-logflare:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: supabase/logflare
+    IMAGE_VERSION: ${SUPABASE_LOGFLARE_VERSION}
+
+supabase-edge-runtime:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: supabase/edge-runtime
+    IMAGE_VERSION: ${SUPABASE_EDGE_RUNTIME_VERSION}
+
+imgproxy:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg IMGPROXY_VERSION
+  variables:
+    IMAGE_BASE: darthsim/imgproxy
+    IMAGE_VERSION: ${IMGPROXY_VERSION}
+
+vector:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: timberio/vector
+    IMAGE_VERSION: ${VECTOR_VERSION}
 
 infra-docs:
   interruptible: true
