@@ -272,6 +272,7 @@ import_images() {
         "guacamole/guacd:${GUACAMOLE_VERSION:-1.5.3}"
         "quay.io/cephcsi/cephcsi:${CEPHCSI_VERSION:-v3.10.2}"
         "ghcr.io/zitadel/zitadel:${ZITADEL_VERSION:-v2.49.3}"
+        "homeassistant/home-assistant:${HOMEASSISTANT_VERSION:-2024.4}"
 
         # chirpstack
         "chirpstack/chirpstack:${CHIRPSTACK_VERSION:-4.7.0}"
