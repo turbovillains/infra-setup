@@ -34,11 +34,11 @@ variables:
   GITLAB_VERSION: "16.11.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
   GITLAB_AGENTK_VERSION: v16.11.1 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   GITLAB_CLUSTER_APPLICATIONS_VERSION: v2.3.0 # https://gitlab.com/gitlab-org/cluster-integration/cluster-applications/-/tags
-  GITLAB_AUTO_BUILD_VERSION: v3.0.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
+  GITLAB_AUTO_BUILD_VERSION: v4.0.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-build-image/-/tags
   GITLAB_AUTO_DEPLOY_VERSION: v2.90.0 # https://gitlab.com/gitlab-org/cluster-integration/auto-deploy-image/-/tags
   DIND_VERSION: 26.1.0-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   PINK_VERSION: v5.0.1 # https://quay.io/repository/podman/stable?tab=tags&tag=latest
-  ARGOCD_VERSION: v2.10.7 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  ARGOCD_VERSION: v2.10.8 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.48.0" # https://github.com/vmware-tanzu/carvel-ytt/releases
   YTT_HASH: 090dc914c87e5ba5861e37f885f12bac3b15559c183c30d4af2e63ccab03d5f9
   ARGOCD_VAULT_PLUGIN_VERSION: "1.17.0" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
@@ -148,7 +148,7 @@ variables:
   BITNAMI_POSTGRESQL16_VERSION: "16.2.0" # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=16.
   BITNAMI_POSTGRES_EXPORTER_VERSION: 0.15.0 # https://hub.docker.com/r/bitnami/postgres-exporter/tags
   BITNAMI_MARIADB_VERSION: "11.3.2" # https://hub.docker.com/r/bitnami/mariadb/tags?page=1&ordering=last_updated
-  BITNAMI_MONGODB_VERSION: "7.0.8" # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=7.
+  BITNAMI_MONGODB_VERSION: "7.0.9" # https://hub.docker.com/r/bitnami/mongodb/tags?page=1&ordering=last_updated&name=7.
   BITNAMI_MEMCACHED_VERSION: "1.6.26" # https://hub.docker.com/r/bitnami/memcached/tags
   BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.10.1" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_NGINX_VERSION: "1.25.5" # https://hub.docker.com/r/bitnami/nginx/tags?page=1&ordering=last_updated&name=1.2
@@ -172,7 +172,7 @@ variables:
   BITNAMI_OPENLDAP_VERSION: "2.6.7" # https://hub.docker.com/r/bitnami/openldap/tags?page=1&name=2.6
   BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION: "0.26.2" # https://hub.docker.com/r/bitnami/sealed-secrets-controller/tags
   BITNAMI_TRIVY_VERSION: 0.50.4 # https://hub.docker.com/r/bitnami/trivy/tags
-  BITNAMI_KUBECTL_VERSION: 1.29.4 # https://hub.docker.com/r/bitnami/kubectl/tags
+  BITNAMI_KUBECTL_VERSION: 1.30.0 # https://hub.docker.com/r/bitnami/kubectl/tags
   BITNAMI_HARBOR_VERSION: 2.10.2 # https://hub.docker.com/r/bitnami/harbor-core/tags
   HARBOR_VERSION: v2.10.2 # https://hub.docker.com/r/goharbor/harbor-registryctl/tags
   TRIVY_VERSION: 0.50.4 # https://hub.docker.com/r/aquasec/trivy/tags
@@ -182,7 +182,7 @@ variables:
   KUTT_VERSION: v2.7.4 # https://hub.docker.com/r/kutt/kutt/tags?page=1&ordering=last_updated
   SFTPGO_VERSION: v2.5.6 # https://hub.docker.com/r/drakkan/sftpgo/tags?page=1&ordering=last_updated
   HELLO_VERSION: "1.10.1" # https://hub.docker.com/r/paulbouwer/hello-kubernetes/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v1.0.83" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
+  RELOADER_VERSION: "v1.0.91" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   SQUID_VERSION: 4.6-1+deb10u6 # https://packages.debian.org/buster/squid
   DOCKER_REGISTRY_VERSION: "2.8.3" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
@@ -212,6 +212,7 @@ variables:
   CSI_SNAPSHOT_CONTROLLER_VERSION: v7.0.2
   CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION: v7.0.2
   CSI_PROVISIONER_VERSION: v4.0.1
+  CSI_NFSPLUGIN_VERSION: v4.6.0 # https://github.com/kubernetes-csi/csi-driver-nfs/releases
   K8S_NFD_VERSION: v0.15.4 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
   TIGERA_OPERATOR_VERSION: "v1.32.7" # https://quay.io/repository/tigera/operator?tab=tags
   CALICO_VERSION: "v3.27.3" # https://hub.docker.com/r/calico/node/tags
@@ -289,7 +290,7 @@ variables:
   VELERO_PLUGIN_AZURE_VERSION: v1.9.2 # https://hub.docker.com/r/velero/velero-plugin-for-microsoft-azure/tags
   VELERO_PLUGIN_VSPHERE_VERSION: v1.5.3 # https://hub.docker.com/r/vsphereveleroplugin/velero-plugin-for-vsphere/tags
   VELERO_RESTIC_RESTORE_HELPER_VERSION: v1.9.7 # https://hub.docker.com/r/velero/velero-restic-restore-helper/tags
-  VELERO_KUBECTL_VERSION: 1.29.4 # https://hub.docker.com/r/bitnami/kubectl/tags
+  VELERO_KUBECTL_VERSION: 1.30.0 # https://hub.docker.com/r/bitnami/kubectl/tags
   NETBOX_VERSION: v3.7.6 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   K8S_DASHBOARD_VERSION: v2.7.0 # https://hub.docker.com/r/kubernetesui/dashboard/tags
   K8S_DASHBOARD_API_VERSION: 1.5.0 # https://hub.docker.com/r/kubernetesui/dashboard-api/tags

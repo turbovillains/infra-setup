@@ -10,6 +10,10 @@ helm:
     url: https://charts.zitadel.com
     charts:
       - name: zitadel
+  - name: csi-driver-nfs
+    url: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    charts:
+      - name: csi-driver-nfs
   - name: jaconi
     url: https://charts.jaconi.io
     charts:

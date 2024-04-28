@@ -1129,6 +1129,12 @@ archive-images4:
           - sig-storage/snapshot-validation-webhook
         VERSION:
           - CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
+      - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - sig-storage/nfsplugin
+        VERSION:
+          - CSI_NFSPLUGIN_VERSION
       - BASE:
           - obsidiandynamics/kafdrop
         VERSION:
@@ -4310,6 +4316,17 @@ storage-csi-provisioner:
   variables:
     BASE: sig-storage/csi-provisioner
     VERSION: CSI_PROVISIONER_VERSION
+
+storage-csi-driver-nfs:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: sig-storage/nfsplugin
+    IMAGE_VERSION: ${CSI_NFSPLUGIN_VERSION}
 
 vmware-exporter:
   interruptible: true
