@@ -45,7 +45,7 @@ sudo curl -sLo /usr/local/bin/ytt https://github.com/vmware-tanzu/carvel-ytt/rel
 
 # argocd
 # https://github.com/argoproj/argo-cd/releases
-sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.8/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
+sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.9/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
 
 # argo workflows
 # https://github.com/argoproj/argo-workflows/releases

@@ -1327,6 +1327,10 @@ archive-images4:
           - homeassistant/home-assistant
         VERSION:
           - HOMEASSISTANT_VERSION
+      - BASE:
+          - koenkk/zigbee2mqtt
+        VERSION:
+          - ZIGBEE2MQTT_VERSION
 
 archive-special:
   extends: .archive-images
@@ -1483,14 +1487,14 @@ keycloak-themes:
         archive_image ${KEYCLOAK_THEMES_IMAGE}
       fi
 
-grafana-dashboards:
-  interruptible: true
-  retry: 2
-  stage: prebuild
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GRIT_VERSION
+# grafana-dashboards:
+#   interruptible: true
+#   retry: 2
+#   stage: prebuild
+#   script:
+#     - |
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#         --build-arg GRIT_VERSION
 
 ingress-default-backend:
   interruptible: true
@@ -5461,6 +5465,17 @@ home-assistant:
   variables:
     IMAGE_BASE: homeassistant/home-assistant
     IMAGE_VERSION: ${HOMEASSISTANT_VERSION}
+
+zigbee2mqtt:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: koenkk/zigbee2mqtt
+    IMAGE_VERSION: ${ZIGBEE2MQTT_VERSION}
 
 infra-docs:
   interruptible: true

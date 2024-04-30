@@ -25,7 +25,7 @@ FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} as rootca
 #   && yarn install \
 #   && yarn build
 
-FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/grafana-dashboards:${INFRA_VERSION} as dashboards
+# FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/grafana-dashboards:${INFRA_VERSION} as dashboards
 
 FROM ${DOCKER_HUB}/bitnami/grafana:${BITNAMI_GRAFANA_VERSION}
 
@@ -39,8 +39,8 @@ RUN update-ca-certificates
 ADD setup.sh /opt/bitnami/grafana/setup.sh
 RUN /opt/bitnami/grafana/setup.sh
 
-COPY --from=dashboards /dashboards /opt/bitnami/grafana/dashboard-sets
-COPY ./provisioning/gf-dashboard-set.yml ${GF_PATHS_PROVISIONING}/dashboards/gf-dashboard-set.yml
+# COPY --from=dashboards /dashboards /opt/bitnami/grafana/dashboard-sets
+# COPY ./provisioning/gf-dashboard-set.yml ${GF_PATHS_PROVISIONING}/dashboards/gf-dashboard-set.yml
 
 # COPY --from=mqtt_datasource_build /mqtt-datasource/ /opt/bitnami/grafana/data/plugins/mqtt-datasource
 

@@ -273,6 +273,7 @@ import_images() {
         "quay.io/cephcsi/cephcsi:${CEPHCSI_VERSION:-v3.10.2}"
         "ghcr.io/zitadel/zitadel:${ZITADEL_VERSION:-v2.49.3}"
         "homeassistant/home-assistant:${HOMEASSISTANT_VERSION:-2024.4}"
+        "koenkk/zigbee2mqtt:${ZIGBEE2MQTT_VERSION:-1.36.1}"
         "registry.k8s.io/sig-storage/nfsplugin:${CSI_NFSPLUGIN_VERSION:-4.6.0}"
 
         # chirpstack
