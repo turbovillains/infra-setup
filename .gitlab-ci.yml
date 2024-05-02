@@ -416,6 +416,10 @@ archive-images1:
         VERSION:
           - PIHOLE_VERSION
       - BASE:
+          - klutchell/unbound
+        VERSION:
+          - UNBOUND_VERSION
+      - BASE:
           - yandex/clickhouse-server
         VERSION:
           - CLICKHOUSE_VERSION
@@ -1571,25 +1575,25 @@ tripwire:
         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
-tripwire-kafka-mqtt-bridge:
-  interruptible: true
-  retry: 2
-  stage: prebuild
-  script:
-    - |
-      git clone --depth 1 --branch ${TRIPWIRE_KAFKA_MQTT_BRIDGE_VERSION} https://readonly:${SANDBOX_READONLY_TOKEN}@git.nrtn.dev/sandbox/tripwire-kafka-mqtt-bridge.git
-      cd tripwire-kafka-mqtt-bridge
+# tripwire-kafka-mqtt-bridge:
+#   interruptible: true
+#   retry: 2
+#   stage: prebuild
+#   script:
+#     - |
+#       git clone --depth 1 --branch ${TRIPWIRE_KAFKA_MQTT_BRIDGE_VERSION} https://readonly:${SANDBOX_READONLY_TOKEN}@git.nrtn.dev/sandbox/tripwire-kafka-mqtt-bridge.git
+#       cd tripwire-kafka-mqtt-bridge
 
-      pack build \
-        --clear-cache \
-        --publish \
-        --trust-builder \
-        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+#       pack build \
+#         --clear-cache \
+#         --publish \
+#         --trust-builder \
+#         --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
+#         ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
-      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      fi
+#       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
+#         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+#       fi
 
 debian:
   interruptible: true
@@ -2169,7 +2173,10 @@ unbound:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: klutchell/unbound
+    IMAGE_VERSION: ${UNBOUND_VERSION}
 
 keycloak:
   interruptible: true
