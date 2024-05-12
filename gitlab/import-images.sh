@@ -276,6 +276,9 @@ import_images() {
         "homeassistant/home-assistant:${HOMEASSISTANT_VERSION:-2024.4}"
         "koenkk/zigbee2mqtt:${ZIGBEE2MQTT_VERSION:-1.36.1}"
         "registry.k8s.io/sig-storage/nfsplugin:${CSI_NFSPLUGIN_VERSION:-4.6.0}"
+        "spvest/azure-keyvault-controller:${AKV2K8S_VERSION:-1.6.0}"
+        "spvest/azure-keyvault-webhook:${AKV2K8S_VERSION:-1.6.0}"
+        "spvest/azure-keyvault-env:${AKV2K8S_VERSION:-1.6.0}"
 
         # chirpstack
         "chirpstack/chirpstack:${CHIRPSTACK_VERSION:-4.7.0}"

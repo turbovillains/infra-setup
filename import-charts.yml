@@ -6,6 +6,10 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: spv
+    url: https://charts.spvapi.no
+    charts:
+      - name: akv2k8s
   - name: zitadel
     url: https://charts.zitadel.com
     charts:

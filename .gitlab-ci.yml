@@ -1335,6 +1335,12 @@ archive-images4:
           - koenkk/zigbee2mqtt
         VERSION:
           - ZIGBEE2MQTT_VERSION
+      - BASE:
+          - spvest/azure-keyvault-controller
+          - spvest/azure-keyvault-webhook
+          - spvest/azure-keyvault-env
+        VERSION:
+          - AKV2K8S_VERSION
 
 archive-special:
   extends: .archive-images
@@ -5483,6 +5489,24 @@ zigbee2mqtt:
   variables:
     IMAGE_BASE: koenkk/zigbee2mqtt
     IMAGE_VERSION: ${ZIGBEE2MQTT_VERSION}
+
+azure-keyvault:
+  interruptible: true
+  retry: 2
+  parallel:
+    matrix:
+      - AKV_COMPONENT:
+          - azure-keyvault-controller
+          - azure-keyvault-webhook
+          - azure-keyvault-env
+        IMAGE_VERSION:
+          - ${AKV2K8S_VERSION}
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${AKV_COMPONENT}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: spvest/${AKV_COMPONENT}
 
 infra-docs:
   interruptible: true
