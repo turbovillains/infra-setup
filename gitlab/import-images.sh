@@ -279,6 +279,8 @@ import_images() {
         "spvest/azure-keyvault-controller:${AKV2K8S_VERSION:-1.6.0}"
         "spvest/azure-keyvault-webhook:${AKV2K8S_VERSION:-1.6.0}"
         "spvest/azure-keyvault-env:${AKV2K8S_VERSION:-1.6.0}"
+        "gitea/gitea:${GITEA_VERSION:-1.21.11}"
+        "paperlessngx/paperless-ngx:${PAPERLESS_VERSION:-2.8.6}"
 
         # chirpstack
         "chirpstack/chirpstack:${CHIRPSTACK_VERSION:-4.7.0}"
@@ -330,11 +332,10 @@ import_images() {
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"
         "hashicorp/consul-k8s-control-plane:${CONSUL_K8S_CP_VERSION:-0.41.1}"
         "envoyproxy/envoy-alpine:${ENVOY_VERSION:-v1.21.1}"
-
-        # vault
         "hashicorp/vault:${VAULT_VERSION:-1.10.0}"
         "hashicorp/vault-k8s:${VAULT_K8S_VERSION:-0.15.0}"
         "hashicorp/vault-csi-provider:${VAULT_CSI_PROVIDER_VERSION:-1.1.0}"
+        "hashicorp/terraform-cloud-operator:${TERRAFORM_CLOUD_OPERATOR_VERSION:-2.4.0}"
 
         # kafka
         "quay.io/strimzi/operator:${STRIMZI_OPERATOR_VERSION:-0.28.0}"

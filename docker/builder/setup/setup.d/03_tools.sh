@@ -20,15 +20,15 @@ curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/inst
 
 # helm
 # https://github.com/helm/helm/releases
-(curl -sSL "https://get.helm.sh/helm-v3.14.3-linux-amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner --strip-components=1 -xzv linux-amd64/helm)
+(curl -sSL "https://get.helm.sh/helm-v3.15.0-linux-amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner --strip-components=1 -xzv linux-amd64/helm)
 
 # skaffold
 # https://github.com/GoogleContainerTools/skaffold/releases
-sudo curl -sLo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v2.10.1/skaffold-linux-amd64 && sudo chmod +x /usr/local/bin/skaffold
+sudo curl -sLo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v2.12.0/skaffold-linux-amd64 && sudo chmod +x /usr/local/bin/skaffold
 
 # yq
 # https://github.com/mikefarah/yq/releases
-sudo curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.43.1/yq_linux_amd64 && sudo chmod +x /usr/local/bin/yq
+sudo curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.44.1/yq_linux_amd64 && sudo chmod +x /usr/local/bin/yq
 
 # yj
 # https://github.com/sclevine/yj/releases
@@ -37,29 +37,29 @@ sudo curl -sLo /usr/local/bin/yj https://github.com/sclevine/yj/releases/downloa
 
 # ytt
 # https://github.com/vmware-tanzu/carvel-ytt/releases
-sudo curl -sLo /usr/local/bin/ytt https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.48.0/ytt-linux-amd64 && sudo chmod +x /usr/local/bin/ytt
+sudo curl -sLo /usr/local/bin/ytt https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.49.0/ytt-linux-amd64 && sudo chmod +x /usr/local/bin/ytt
 
 # kustomize
 # https://github.com/kubernetes-sigs/kustomize/releases
-(curl -sSL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.3.0/kustomize_v5.3.0_linux_amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv kustomize)
+(curl -sSL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.2/kustomize_v5.4.2_linux_amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv kustomize)
 
 # argocd
 # https://github.com/argoproj/argo-cd/releases
-sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.10.9/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
+sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.11.2/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
 
 # argo workflows
 # https://github.com/argoproj/argo-workflows/releases
-curl -sLo argocli.gz https://github.com/argoproj/argo-workflows/releases/download/v3.5.5/argo-linux-amd64.gz
+curl -sLo argocli.gz https://github.com/argoproj/argo-workflows/releases/download/v3.5.6/argo-linux-amd64.gz
 gunzip argocli.gz
 sudo mv argocli /usr/local/bin/argocli
 
 # https://github.com/goreleaser/goreleaser/releases
-curl -sLo- https://github.com/goreleaser/goreleaser/releases/download/v1.24.0/goreleaser-1.24.0-1-x86_64.pkg.tar.zst \
+curl -sLo- https://github.com/goreleaser/goreleaser/releases/download/v1.26.1/goreleaser-1.26.1-1-x86_64.pkg.tar.zst \
   | sudo tar -C /usr/local/bin/ --no-same-owner --strip-components=2 --use-compress-program=unzstd -xv usr/bin/goreleaser
 
 # terraform
 # https://releases.hashicorp.com/terraform
-curl -sLo terraform.zip https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip
+curl -sLo terraform.zip https://releases.hashicorp.com/terraform/1.8.4/terraform_1.8.4_linux_amd64.zip
 unzip terraform.zip
 chmod +x terraform
 sudo mv terraform /usr/local/bin/terraform

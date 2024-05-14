@@ -6,6 +6,10 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: gitea
+    url: https://dl.gitea.com/charts/
+    charts:
+      - name: gitea
   - name: spv
     url: https://charts.spvapi.no
     charts:
@@ -14,6 +18,10 @@ helm:
     url: https://charts.zitadel.com
     charts:
       - name: zitadel
+  - name: kuzzleio
+    url: https://kuzzleio.github.io/helm-charts/
+    charts:
+      - name: chirpstack
   - name: csi-driver-nfs
     url: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
     charts:
@@ -157,6 +165,9 @@ helm:
     url: https://jenkins-x-charts.github.io/repo
   - name: hashicorp
     url: https://helm.releases.hashicorp.com
+    charts:
+      - name: terraform-cloud-operator
+      - name: vault
   - name: mailu
     url: https://mailu.github.io/helm-charts/
   - name: bokysan
