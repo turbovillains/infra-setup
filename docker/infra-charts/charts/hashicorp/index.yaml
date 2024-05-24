@@ -1,0 +1,329 @@
+apiVersion: v1
+entries:
+  terraform-cloud-operator:
+  - apiVersion: v2
+    appVersion: 2.4.0
+    created: "2024-05-24T16:05:51.763702+02:00"
+    description: Official Helm chart for HCP Terraform Operator for Kubernetes.
+    digest: 1619bdcc71aa1e1dea849fee4e0681838fd1f354800f9f90fe7fbd4e0575e157
+    name: terraform-cloud-operator
+    type: application
+    urls:
+    - terraform-cloud-operator-2.4.0.tgz
+    version: 2.4.0
+  - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2024-05-24T16:05:51.761253+02:00"
+    description: Official Helm chart for HashiCorp Terraform Cloud Kubernetes Operator.
+    digest: 4ca5ad5bd35c6d6c81ecd615adb86b7baa3e11043fcc25a4d5b0f56ce412bdf4
+    name: terraform-cloud-operator
+    type: application
+    urls:
+    - terraform-cloud-operator-2.3.0.tgz
+    version: 2.3.0
+  - apiVersion: v2
+    appVersion: 2.2.0
+    created: "2024-05-24T16:05:51.758491+02:00"
+    description: Official Helm chart for HashiCorp Terraform Cloud Kubernetes Operator.
+    digest: 74e2fd44579b9447aca706066eab010aa9e1e6b19b3787735b474663bef871c0
+    name: terraform-cloud-operator
+    type: application
+    urls:
+    - terraform-cloud-operator-2.2.0.tgz
+    version: 2.2.0
+  - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2024-05-24T16:05:51.756355+02:00"
+    description: Official Helm chart for HashiCorp Terraform Cloud Kubernetes Operator.
+    digest: c8ca65f0f7f264f95748d271d435f0cba5458f5692e63853c54ad5e0cd7b48d3
+    name: terraform-cloud-operator
+    type: application
+    urls:
+    - terraform-cloud-operator-2.1.0.tgz
+    version: 2.1.0
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2024-05-24T16:05:51.754459+02:00"
+    description: Official Helm chart for HashiCorp Terraform Cloud Kubernetes Operator.
+    digest: cedab7318ffa6be2dd5c81b8f47e7d5bde140826e0dc7bb99294eba69f3160bc
+    name: terraform-cloud-operator
+    type: application
+    urls:
+    - terraform-cloud-operator-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 2.0.0-beta6
+    created: "2024-05-24T16:05:51.751845+02:00"
+    description: A Helm chart for HashiCorp Terraform Cloud Kubernetes Operator.
+    digest: 675e1a180cd9000dd2b51a5e6b01a559e26554dff8a7e85c3e4029c092b3dd84
+    name: terraform-cloud-operator
+    type: application
+    urls:
+    - terraform-cloud-operator-0.0.7.tgz
+    version: 0.0.7
+  vault:
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.16.1
+    created: "2024-05-24T16:05:51.789527+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: 76db52a750a0f496a995634d11da8607ad29a2117a3f9096fa22c0f5d64add1b
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.20.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.28.0.tgz
+    version: 0.28.0
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.15.2
+    created: "2024-05-24T16:05:51.787028+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: 4cdbfafaa97b9f4abb4525ff18d0c783fc234e2a8c2904b0b6a32cfadadd59f5
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.20.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.27.0.tgz
+    version: 0.27.0
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.15.1
+    created: "2024-05-24T16:05:51.784533+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: 22b82f772744e43381fba9dc6fee24ff6769dd796930c3776b50a6eeeec83e7d
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.20.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.26.1.tgz
+    version: 0.26.1
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.15.1
+    created: "2024-05-24T16:05:51.781497+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: b6d257ec97bac992d4a08b15a89e2bff4e90c7eca7ca081d16334ba4678473aa
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.20.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.26.0.tgz
+    version: 0.26.0
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.14.0
+    created: "2024-05-24T16:05:51.779044+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: 7d971d699487cb3dfcb8c5de669f0a123b7f7e5e97d20fc5ec04584fe29fc3e4
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.20.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.25.0.tgz
+    version: 0.25.0
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.13.1
+    created: "2024-05-24T16:05:51.776617+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: 857bf5b26a585a4caee1f25d8456fa024d5d65ab4cca8bae480776973386df89
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.22.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.24.1.tgz
+    version: 0.24.1
+  - annotations:
+      charts.openshift.io/name: HashiCorp Vault
+    apiVersion: v2
+    appVersion: 1.13.1
+    created: "2024-05-24T16:05:51.774226+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: c473418c82d947ed8c004873f929668192037391ab9555476a664dc9af6b3bc1
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.22.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.24.0.tgz
+    version: 0.24.0
+  - apiVersion: v2
+    appVersion: 1.12.1
+    created: "2024-05-24T16:05:51.771192+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: b633868393d9588774e7f7aa39d6e67d136561566dc8eecdbf5a343e543828b9
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.16.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.23.0.tgz
+    version: 0.23.0
+  - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2024-05-24T16:05:51.768808+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: 51a3db99ba3438dbaada11e4ff50addace90cadbe07210955d2b074976e9f315
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.16.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.22.1.tgz
+    version: 0.22.1
+  - apiVersion: v2
+    appVersion: 1.11.3
+    created: "2024-05-24T16:05:51.766604+02:00"
+    description: Official HashiCorp Vault Chart
+    digest: ae95120ca4cd0955b3c25d43cf8d0325ea3bc902452f883d880d6307503c0955
+    home: https://www.vaultproject.io
+    icon: https://github.com/hashicorp/vault/raw/f22d202cde2018f9455dec755118a9b84586e082/Vault_PrimaryLogo_Black.png
+    keywords:
+    - vault
+    - security
+    - encryption
+    - secrets
+    - management
+    - automation
+    - infrastructure
+    kubeVersion: '>= 1.16.0-0'
+    name: vault
+    sources:
+    - https://github.com/hashicorp/vault
+    - https://github.com/hashicorp/vault-helm
+    - https://github.com/hashicorp/vault-k8s
+    - https://github.com/hashicorp/vault-csi-provider
+    urls:
+    - vault-0.22.0.tgz
+    version: 0.22.0
+generated: "2024-05-24T16:05:51.749809+02:00"

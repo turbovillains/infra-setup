@@ -4,6 +4,536 @@ entries:
   - annotations:
       artifacthub.io/category: integration-delivery
       artifacthub.io/changes: |
+        - Update `kubernetes` to version `4233.vb_67a_0e11a_039`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.2
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3248.v65ecb_254c298-1
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.049833+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: d8021340c9392e92a4d99d7bd9ef42a7b58a2be0c723c3c9cf92884d0ee758d8
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.23.tgz
+    version: 5.1.23
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `configuration-as-code` to version `1810.v9b_c30a_249a_4c`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.2
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3248.v65ecb_254c298-1
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.046749+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: 3d976077a4a9ce50e2d2528fa2c81f46850fff570fbda817d1e06ff6c9ad3eb2
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.22.tgz
+    version: 5.1.22
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `kubernetes` to version `4231.vb_a_6b_8936497d`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.2
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3248.v65ecb_254c298-1
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.043308+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: 5bbef236a67534ecd865894cb5d15ea534b9f0e46b96758093d8ac20fa3535fc
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.21.tgz
+    version: 5.1.21
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `kubernetes` to version `4230.vceef11cb_ca_37`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.2
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3248.v65ecb_254c298-1
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.039595+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: 796b0924423ccaa6e3bf29925ee4dae80b40f540d1e0c79639b6b4705ef42e3a
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.20.tgz
+    version: 5.1.20
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `docker.io/kiwigrid/k8s-sidecar` to version `1.27.2`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.2
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3248.v65ecb_254c298-1
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.033083+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: a171ac458ffeb9705a5575ef24ebdbf0e5ede1a7a0629377fba19bc94664d3ec
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.19.tgz
+    version: 5.1.19
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `configuration-as-code` to version `1807.v0175eda_00a_20`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.1
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3248.v65ecb_254c298-1
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.029153+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: a5d627e60a582c8d72d6f4261fe95d79dc84f02b09dcca961a78df0a5c912a48
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.18.tgz
+    version: 5.1.18
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `jenkins/inbound-agent` to version `3248.v65ecb_254c298-1`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.1
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3248.v65ecb_254c298-1
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.026126+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: eadbfd289927376a6b433e6482c381b92279ac9fbc7d210b9c8ff8bd55ac1f47
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.17.tgz
+    version: 5.1.17
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `configuration-as-code` to version `1805.v1455f39c04cf`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.1
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3206.vb_15dcf73f6a_9-3
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.023008+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: 3a1a5355546b8a79102b4bd18be723db12c3b1776f92572ca6c4595d776e744e
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.16.tgz
+    version: 5.1.16
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `jenkins/jenkins` to version `2.452.1-jdk17`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.452.1-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.1
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3206.vb_15dcf73f6a_9-3
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.452.1
+    created: "2024-05-24T16:05:52.019968+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: b0a759d58dadc688d7aadcd9c470e9d6fb797bf78fb4ab66b8a49f9e7f3170c5
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.15.tgz
+    version: 5.1.15
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
+        - Update `kubernetes` to version `4219.v40ff98cfb_d6f`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.440.3-jdk17
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.27.1
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3206.vb_15dcf73f6a_9-3
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.440.3
+    created: "2024-05-24T16:05:52.016264+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 1800 plugins to support building, deploying
+      and automating any project. '
+    digest: ac129868467f1d01e4162a67349b8aac546665b60f152eea0310696e910be1b0
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-inbound-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.1.14.tgz
+    version: 5.1.14
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
         - Update `docker.io/bats/bats` to version `1.11.0`
       artifacthub.io/images: |
         - name: jenkins
@@ -22,7 +552,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.2
-    created: "2024-04-01T01:53:07.691041+02:00"
+    created: "2024-05-24T16:05:52.057799+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -75,7 +605,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.2
-    created: "2024-04-01T01:53:07.688013+02:00"
+    created: "2024-05-24T16:05:52.053343+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -128,7 +658,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.684292+02:00"
+    created: "2024-05-24T16:05:52.036587+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -181,7 +711,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.681174+02:00"
+    created: "2024-05-24T16:05:52.01316+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -234,7 +764,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.677943+02:00"
+    created: "2024-05-24T16:05:52.008425+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -287,7 +817,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.674187+02:00"
+    created: "2024-05-24T16:05:52.004091+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -340,7 +870,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.67113+02:00"
+    created: "2024-05-24T16:05:51.999858+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -393,7 +923,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.667738+02:00"
+    created: "2024-05-24T16:05:51.994626+02:00"
     description: Jenkins - Build great things at any scale! The leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project.
@@ -445,7 +975,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.66477+02:00"
+    created: "2024-05-24T16:05:51.990007+02:00"
     description: Jenkins - Build great things at any scale! The leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project.
@@ -497,7 +1027,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2024-04-01T01:53:07.660804+02:00"
+    created: "2024-05-24T16:05:51.985455+02:00"
     description: Jenkins - Build great things at any scale! The leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project.
@@ -528,4 +1058,4 @@ entries:
     urls:
     - jenkins-5.0.16.tgz
     version: 5.0.16
-generated: "2024-04-01T01:53:07.657796+02:00"
+generated: "2024-05-24T16:05:51.977806+02:00"

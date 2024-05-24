@@ -1,9 +1,814 @@
 apiVersion: v1
 entries:
+  gitlab:
+  - apiVersion: v1
+    appVersion: v17.0.1
+    created: "2024-05-24T16:05:51.198825+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.10
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.64.1
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.2.0
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 14dcc06f17232fd6a60628a7e288ef72b0cb4fef9c145d9865b92cce218cf671
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-8.0.1.tgz
+    version: 8.0.1
+  - apiVersion: v1
+    appVersion: v17.0.0
+    created: "2024-05-24T16:05:51.16411+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.10
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.64.1
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.2.0
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 311ecb74de89dc633a19b2a8c28eae074e092f8091795869db947fdbb56418f1
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-8.0.0.tgz
+    version: 8.0.0
+  - apiVersion: v1
+    appVersion: v16.11.3
+    created: "2024-05-24T16:05:51.129037+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.9
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.64.1
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.1.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 6f56690f891a396929e20e85fc7591616c7ad91a285477911e34c7f0873833b2
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.11.3.tgz
+    version: 7.11.3
+  - apiVersion: v1
+    appVersion: v16.11.2
+    created: "2024-05-24T16:05:51.093983+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.9
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.64.0
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.1.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 7a1e9ece3857ef2fdce9593f13eacb056276a3894a5f0497524d2f5409cbb7bc
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.11.2.tgz
+    version: 7.11.2
+  - apiVersion: v1
+    appVersion: v16.11.1
+    created: "2024-05-24T16:05:51.059706+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.9
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.64.0
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.1.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 1ad749880e7601ebe2205c40415297e2e08d4430f264094a2d2a0558c1acd443
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.11.1.tgz
+    version: 7.11.1
+  - apiVersion: v1
+    appVersion: v16.11.0
+    created: "2024-05-24T16:05:51.02538+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.9
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.63.0
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.1.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 247cb50ddcada8b6e39f32416a5d7d761919a7b2dcb2c361628a17697e35a89d
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.11.0.tgz
+    version: 7.11.0
+  - apiVersion: v1
+    appVersion: v16.10.6
+    created: "2024-05-24T16:05:50.991056+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.8
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.63.0
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.0.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 844ddbb4ce5971103760eb6a953511865d456025bc5a0cdfb5e9c9c5108508cf
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.10.6.tgz
+    version: 7.10.6
+  - apiVersion: v1
+    appVersion: v16.10.5
+    created: "2024-05-24T16:05:50.955576+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.8
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.63.0
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.0.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: c75392d758130894035465379fab29af2906f67a21ae476af662fc2179b6dfc6
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.10.5.tgz
+    version: 7.10.5
+  - apiVersion: v1
+    appVersion: v16.10.4
+    created: "2024-05-24T16:05:50.919452+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.8
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.63.0
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.0.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 162fd2b0cf68202a998573a97afe1a8277e7f8962925f1cf96bd7d0d5985b5a4
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.10.4.tgz
+    version: 7.10.4
+  - apiVersion: v1
+    appVersion: v16.10.3
+    created: "2024-05-24T16:05:50.883663+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: 1.12.8
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.63.0
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.13.2
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.0.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 5f347174ed0284b55b4ddea387ee39da006372cca8e815b1fd70bba2fae0b644
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-7.10.3.tgz
+    version: 7.10.3
   gitlab-agent:
   - apiVersion: v2
+    appVersion: v17.0.1
+    created: "2024-05-24T16:05:51.217807+02:00"
+    description: GitLab Agent for Kubernetes is a way to integrate your cluster with
+      GitLab in a secure way.
+    digest: 02984c0f81365d796d8c92856965002a5aabded4717a38f92bbbba31b1fae3df
+    home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
+    name: gitlab-agent
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-agent
+    - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
+    type: application
+    urls:
+    - gitlab-agent-2.2.0.tgz
+    version: 2.2.0
+  - apiVersion: v2
+    appVersion: v17.0.0
+    created: "2024-05-24T16:05:51.21633+02:00"
+    description: GitLab Agent for Kubernetes is a way to integrate your cluster with
+      GitLab in a secure way.
+    digest: c3f5f1e10529c293b533e83310e4df045fcd724b7db68c828a01e2d509e6179a
+    home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
+    name: gitlab-agent
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-agent
+    - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
+    type: application
+    urls:
+    - gitlab-agent-2.1.0.tgz
+    version: 2.1.0
+  - apiVersion: v2
+    appVersion: v17.0.0-rc1
+    created: "2024-05-24T16:05:51.214988+02:00"
+    description: GitLab Agent for Kubernetes is a way to integrate your cluster with
+      GitLab in a secure way.
+    digest: 1aef785fef5a60ab6a32626ae56ff024cabfa59cffdb21099e7f7ab249914bb3
+    home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
+    name: gitlab-agent
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-agent
+    - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
+    type: application
+    urls:
+    - gitlab-agent-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: v16.11.0
+    created: "2024-05-24T16:05:51.213679+02:00"
+    description: GitLab Agent for Kubernetes is a way to integrate your cluster with
+      GitLab in a secure way.
+    digest: dc8c9f4e9ced55e83ed496b335af1287f7b5702dcac79efc2a94cf0843d498cd
+    home: https://gitlab.com/gitlab-org/charts/gitlab-agent
+    icon: https://gitlab.com/uploads/-/system/project/avatar/34907799/kubernetes-agent.png?width=128
+    name: gitlab-agent
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-agent
+    - https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent
+    type: application
+    urls:
+    - gitlab-agent-1.26.0.tgz
+    version: 1.26.0
+  - apiVersion: v2
     appVersion: v16.10.1
-    created: "2024-04-01T01:53:07.351674+02:00"
+    created: "2024-05-24T16:05:51.212254+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 2f55b9689d2739683102eaefe5271584eb4990d5049700e4dc887336981611ee
@@ -19,7 +824,7 @@ entries:
     version: 1.25.0
   - apiVersion: v2
     appVersion: v16.9.3
-    created: "2024-04-01T01:53:07.350877+02:00"
+    created: "2024-05-24T16:05:51.210988+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 034b480a0d8b4f0de451fbbc10b86f64762d2b2cf1f13a277e89137608d77f52
@@ -35,7 +840,7 @@ entries:
     version: 1.24.0
   - apiVersion: v2
     appVersion: v16.8.0
-    created: "2024-04-01T01:53:07.349716+02:00"
+    created: "2024-05-24T16:05:51.209636+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 754beddce02d5fe36583d7c3be8afe32f72267fac41634ff1e64362b262a6a9f
@@ -51,7 +856,7 @@ entries:
     version: 1.23.0
   - apiVersion: v2
     appVersion: v16.7.0
-    created: "2024-04-01T01:53:07.348607+02:00"
+    created: "2024-05-24T16:05:51.208307+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 49554ca7e62bd353cdd726b8a80ace508cc332d44f57f6c8e96ba2feac7805ba
@@ -67,7 +872,7 @@ entries:
     version: 1.22.0
   - apiVersion: v2
     appVersion: v16.6.0
-    created: "2024-04-01T01:53:07.347975+02:00"
+    created: "2024-05-24T16:05:51.207005+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: ca277e80081626d8ec00e33e62ca1a96b37a1f8113ea4d5ba15f09ebaa03de0c
@@ -83,7 +888,7 @@ entries:
     version: 1.21.0
   - apiVersion: v2
     appVersion: v16.5.0
-    created: "2024-04-01T01:53:07.347345+02:00"
+    created: "2024-05-24T16:05:51.205851+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: a06793adf8331167c2430141a4deb089454696a83ed98722427210adcd0ecb3f
@@ -99,7 +904,7 @@ entries:
     version: 1.20.0
   - apiVersion: v2
     appVersion: v16.4.0
-    created: "2024-04-01T01:53:07.346796+02:00"
+    created: "2024-05-24T16:05:51.204884+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 1c73a342f7ec12903da2646036df114afc769bc63993fc65f808ecce37cf77f7
@@ -115,7 +920,7 @@ entries:
     version: 1.19.0
   - apiVersion: v2
     appVersion: v16.3.0
-    created: "2024-04-01T01:53:07.346248+02:00"
+    created: "2024-05-24T16:05:51.203668+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 292605bffbccd5068eaebb2949e2b5fe2d447bab5deea1fe743a38269785f8c6
@@ -131,7 +936,7 @@ entries:
     version: 1.18.1
   - apiVersion: v2
     appVersion: v16.3.0
-    created: "2024-04-01T01:53:07.345678+02:00"
+    created: "2024-05-24T16:05:51.202061+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 69a6f8ae5bfc20b1de1cf25f8ab8ccd864411cea679c042cb07edb55c200833f
@@ -147,7 +952,7 @@ entries:
     version: 1.18.0
   - apiVersion: v2
     appVersion: v16.2.0
-    created: "2024-04-01T01:53:07.345101+02:00"
+    created: "2024-05-24T16:05:51.200342+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 344c664ca4d0065edbfc2a5ced53abc3d9197781c4079ff68db605aa3c2b3e3f
@@ -163,8 +968,71 @@ entries:
     version: 1.17.2
   gitlab-runner:
   - apiVersion: v1
+    appVersion: 17.0.0
+    created: "2024-05-24T16:05:51.244402+02:00"
+    description: GitLab Runner
+    digest: 6312e69318b675a62b8981e25e29ddd46c9d7bc7b0f1955d947f2e0a505ca369
+    icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
+    keywords:
+    - git
+    - ci
+    - deploy
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab-runner
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
+    - https://gitlab.com/gitlab-org/gitlab-runner
+    - https://docs.gitlab.com/runner/
+    urls:
+    - gitlab-runner-0.65.0.tgz
+    version: 0.65.0
+  - apiVersion: v1
+    appVersion: 16.11.1
+    created: "2024-05-24T16:05:51.242356+02:00"
+    description: GitLab Runner
+    digest: 211ce37b73c8677ec05462ad7d221276e8070f3fda4a22a7414ab5abeef4e825
+    icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
+    keywords:
+    - git
+    - ci
+    - deploy
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab-runner
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
+    - https://gitlab.com/gitlab-org/gitlab-runner
+    - https://docs.gitlab.com/runner/
+    urls:
+    - gitlab-runner-0.64.1.tgz
+    version: 0.64.1
+  - apiVersion: v1
+    appVersion: 16.11.0
+    created: "2024-05-24T16:05:51.239847+02:00"
+    description: GitLab Runner
+    digest: 05a2564c71a1cfda61f31fc426f08769e7510bcab3ce15505efa1446112791db
+    icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
+    keywords:
+    - git
+    - ci
+    - deploy
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab-runner
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
+    - https://gitlab.com/gitlab-org/gitlab-runner
+    - https://docs.gitlab.com/runner/
+    urls:
+    - gitlab-runner-0.64.0.tgz
+    version: 0.64.0
+  - apiVersion: v1
     appVersion: 16.10.0
-    created: "2024-04-01T01:53:07.364017+02:00"
+    created: "2024-05-24T16:05:51.237919+02:00"
     description: GitLab Runner
     digest: 55d26d2768d8b10dd485d68c8d479fb8e29bfc8fe0b0fd16eeb91424e1bedfb5
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -185,7 +1053,7 @@ entries:
     version: 0.63.0
   - apiVersion: v1
     appVersion: 16.9.1
-    created: "2024-04-01T01:53:07.362848+02:00"
+    created: "2024-05-24T16:05:51.23573+02:00"
     description: GitLab Runner
     digest: 767c7a8f6e7851dd3e194392fbfc1f6068b788e588d5621d893530c4b145ff56
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -206,7 +1074,7 @@ entries:
     version: 0.62.1
   - apiVersion: v1
     appVersion: 16.9.0
-    created: "2024-04-01T01:53:07.36171+02:00"
+    created: "2024-05-24T16:05:51.233703+02:00"
     description: GitLab Runner
     digest: 489d832ac699a950f4f1659c1cb6cc0127ca36eb506e04ded5cd2170a5a6d840
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -227,7 +1095,7 @@ entries:
     version: 0.62.0
   - apiVersion: v1
     appVersion: 16.8.1
-    created: "2024-04-01T01:53:07.36056+02:00"
+    created: "2024-05-24T16:05:51.231865+02:00"
     description: GitLab Runner
     digest: ef306ac38418df91f5fd3eae95c2f71c323a311acf5f0b8c4e42fe0a1f59d832
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -248,7 +1116,7 @@ entries:
     version: 0.61.3
   - apiVersion: v1
     appVersion: 16.8.0
-    created: "2024-04-01T01:53:07.358953+02:00"
+    created: "2024-05-24T16:05:51.229469+02:00"
     description: GitLab Runner
     digest: 321e7d563ca4dab8fa5ac228ec5a5c98f4c64d198559eb215c604218b79b9133
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -269,7 +1137,7 @@ entries:
     version: 0.61.2
   - apiVersion: v1
     appVersion: 16.8.0
-    created: "2024-04-01T01:53:07.357767+02:00"
+    created: "2024-05-24T16:05:51.22758+02:00"
     description: GitLab Runner
     digest: 041e83185990ec50b61b2a9530b5a1385d34b875170bd7a4a978e949fa4e2660
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -290,7 +1158,7 @@ entries:
     version: 0.61.1
   - apiVersion: v1
     appVersion: 16.8.0
-    created: "2024-04-01T01:53:07.356664+02:00"
+    created: "2024-05-24T16:05:51.225577+02:00"
     description: GitLab Runner
     digest: 26acbb7c924c421b737ab982e526c9516413230b37c36a078a13dc13130ce9ed
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -311,7 +1179,7 @@ entries:
     version: 0.61.0
   - apiVersion: v1
     appVersion: 16.7.1
-    created: "2024-04-01T01:53:07.355479+02:00"
+    created: "2024-05-24T16:05:51.223507+02:00"
     description: GitLab Runner
     digest: 6fac090276b9378c02ae2a63d0abdb00aa377466aac8e10e7a8066a06a8141fb
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -332,7 +1200,7 @@ entries:
     version: 0.60.1
   - apiVersion: v1
     appVersion: 16.7.0
-    created: "2024-04-01T01:53:07.354232+02:00"
+    created: "2024-05-24T16:05:51.221648+02:00"
     description: GitLab Runner
     digest: 20c5ae728363c7b61836031e4f9db7db8d92d9c66ed5910cb591e50b54604633
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -353,7 +1221,7 @@ entries:
     version: 0.60.0
   - apiVersion: v1
     appVersion: 16.6.2
-    created: "2024-04-01T01:53:07.35297+02:00"
+    created: "2024-05-24T16:05:51.219735+02:00"
     description: GitLab Runner
     digest: e4c12fb99ac3756a3f3afa0d0769fcdf5ed1ebc7b91fa4c004c0b4348532b8af
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -372,4 +1240,4 @@ entries:
     urls:
     - gitlab-runner-0.59.3.tgz
     version: 0.59.3
-generated: "2024-04-01T01:53:07.34441+02:00"
+generated: "2024-05-24T16:05:50.845448+02:00"

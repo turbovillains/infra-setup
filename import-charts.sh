@@ -8,6 +8,10 @@ import_charts() {
     for repo in $(yj -y < ${descriptor} | jq -r '.helm[] | .name'); do
         local url=$(yj -y < ${descriptor} \
             | jq -r --arg repo ${repo} '.helm[] | select(.name==$repo) | .url')
+
+        # strip last slash, if exists
+        url=${url%/}
+
         mapfile -t charts < <(yj -y < ${descriptor} \
             | jq -c -r --arg repo ${repo} '.helm[] | select(.name==$repo) | .charts // [] | .[]')
         (
