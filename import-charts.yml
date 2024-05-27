@@ -229,6 +229,8 @@ helm:
     url: https://democratic-csi.github.io/charts
   - name: puppetserver
     url: https://puppetlabs.github.io/puppetserver-helm-chart
+    charts:
+      - name: puppetserver
   - name: yugabyte
     url: https://charts.yugabyte.com
   - name: noroutine

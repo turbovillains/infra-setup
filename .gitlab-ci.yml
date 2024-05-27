@@ -905,12 +905,16 @@ archive-images3:
           - kmb32123/youtube-dl-server
         VERSION:
           - YOUTUBE_DL_SERVER_VERSION
-      - BASE:
-          - puppet/puppetserver
+      - REGISTRY:
+          - ghcr.io
+        BASE:
+          - voxpupuli/container-puppetserver
         VERSION:
           - PUPPETSERVER_VERSION
-      - BASE:
-          - puppet/puppetdb
+      - REGISTRY:
+          - ghcr.io
+        BASE:
+          - voxpupuli/container-puppetdb
         VERSION:
           - PUPPETDB_VERSION
       - REGISTRY:
@@ -923,6 +927,10 @@ archive-images3:
           - puppet/r10k
         VERSION:
           - R10K_VERSION
+      - BASE:
+          - curlimages/curl
+        VERSION:
+          - CURL_VERSION
       - BASE:
           - restic/restic
         VERSION:
@@ -4380,11 +4388,10 @@ vsphere-csi-driver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VSPHERE_CSI_DRIVER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: cloud-provider-vsphere/csi/release/driver
-    VERSION: VSPHERE_CSI_DRIVER_VERSION
+    IMAGE_BASE: cloud-provider-vsphere/csi/release/driver
+    IMAGE_VERSION: ${VSPHERE_CSI_DRIVER_VERSION}
 
 vsphere-csi-syncer:
   interruptible: true
@@ -4392,11 +4399,10 @@ vsphere-csi-syncer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VSPHERE_CSI_SYNCER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: cloud-provider-vsphere/csi/release/syncer
-    VERSION: VSPHERE_CSI_SYNCER_VERSION
+    IMAGE_BASE: cloud-provider-vsphere/csi/release/syncer
+    IMAGE_VERSION: ${VSPHERE_CSI_SYNCER_VERSION}
 
 vsphere-cpi-manager:
   interruptible: true
@@ -4404,11 +4410,10 @@ vsphere-cpi-manager:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VSPHERE_CPI_MANAGER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: cloud-provider-vsphere/cpi/release/manager
-    VERSION: VSPHERE_CPI_MANAGER_VERSION
+    IMAGE_BASE: cloud-provider-vsphere/cpi/release/manager
+    IMAGE_VERSION: ${VSPHERE_CPI_MANAGER_VERSION}
 
 kafdrop:
   interruptible: true
@@ -4710,17 +4715,19 @@ youtube-dl-server:
     BASE: kmb32123/youtube-dl-server
     VERSION: YOUTUBE_DL_SERVER_VERSION
 
+        "ghcr.io/:${PUPPETSERVER_VERSION:-7.17.0-v1.5.0}"
+        "ghcr.io/voxpupuli/container-puppetdb:${PUPPETDB_VERSION:-7.18.0-v1.5.0}"
+
 puppetserver:
   interruptible: true
   retry: 2
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PUPPETSERVER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: puppet/puppetserver
-    VERSION: PUPPETSERVER_VERSION
+    IMAGE_BASE: voxpupuli/container-puppetserver
+    IMAGE_VERSION: ${PUPPETSERVER_VERSION}
 
 puppetdb:
   interruptible: true
@@ -4728,11 +4735,10 @@ puppetdb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PUPPETDB_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: puppet/puppetdb
-    VERSION: PUPPETDB_VERSION
+    IMAGE_BASE: voxpupuli/container-puppetdb
+    IMAGE_VERSION: ${PUPPETDB_VERSION}
 
 r10k:
   interruptible: true
@@ -4740,11 +4746,21 @@ r10k:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg R10K_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: puppet/r10k
-    VERSION: R10K_VERSION
+    IMAGE_BASE: puppet/r10k
+    IMAGE_VERSION: ${R10K_VERSION}
+
+curl:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: curlimages/curl
+    IMAGE_VERSION: ${CURL_VERSION}
 
 puppetboard:
   interruptible: true
@@ -4752,11 +4768,10 @@ puppetboard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PUPPETBOARD_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: voxpupuli/puppetboard
-    VERSION: PUPPETBOARD_VERSION
+    IMAGE_BASE: voxpupuli/puppetboard
+    IMAGE_VERSION: ${PUPPETBOARD_VERSION}
 
 restic:
   interruptible: true
@@ -4800,11 +4815,10 @@ netbird-dashboard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NETBIRD_DASHBOARD_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: wiretrustee/dashboard
-    VERSION: NETBIRD_DASHBOARD_VERSION
+    IMAGE_BASE: wiretrustee/dashboard
+    IMAGE_VERSION: ${NETBIRD_DASHBOARD_VERSION}
 
 netbird-management:
   interruptible: true
@@ -4812,11 +4826,10 @@ netbird-management:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NETBIRD_MANAGEMENT_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: netbirdio/management
-    VERSION: NETBIRD_MANAGEMENT_VERSION
+    IMAGE_BASE: netbirdio/management
+    IMAGE_VERSION: ${NETBIRD_MANAGEMENT_VERSION}
 
 netbird-signal:
   interruptible: true
@@ -4824,11 +4837,10 @@ netbird-signal:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NETBIRD_SIGNAL_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: netbirdio/signal
-    VERSION: NETBIRD_SIGNAL_VERSION
+    IMAGE_BASE: netbirdio/signal
+    IMAGE_VERSION: ${NETBIRD_SIGNAL_VERSION}
 
 coturn:
   interruptible: true
@@ -4836,11 +4848,10 @@ coturn:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg COTURN_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: coturn/coturn
-    VERSION: COTURN_VERSION
+    IMAGE_BASE: coturn/coturn
+    IMAGE_VERSION: ${COTURN_VERSION}
 
 firezone:
   interruptible: true
