@@ -114,7 +114,7 @@ migrate_image() {
     fi
 
     if which crane 2>&1> /dev/null; then
-        crane copy ${source_image} ${target_image}
+        crane copy ${source_image} ${target_image} --jobs 4
     else
         echo "Falling back to shell"
         # We are checking for ref, but pushing only tag

@@ -10,6 +10,12 @@ helm:
     url: https://dl.gitea.com/charts/
     charts:
       - name: gitea
+  - name: scylla
+    url: https://scylla-operator-charts.storage.googleapis.com/stable
+    charts:
+      - name: scylla-operator
+      - name: scylla-manager
+      - name: scylla
   - name: spv
     url: https://charts.spvapi.no
     charts:
@@ -195,6 +201,10 @@ helm:
       - name: velero
   - name: mizu
     url: https://github.com/up9inc/mizu-helm-chart
+  - name: secrets-store-csi
+    url: https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
+    charts:
+      - name: secrets-store-csi-driver
   - name: external-secrets
     url: https://charts.external-secrets.io
     charts:

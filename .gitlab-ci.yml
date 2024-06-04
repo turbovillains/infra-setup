@@ -705,6 +705,13 @@ archive-images3:
         VERSION:
           - TRIVY_VERSION
       - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - csi-secrets-store/driver
+          - csi-secrets-store/driver-crds
+        VERSION:
+          - SECRETS_STORE_CSI_VERSION
+      - REGISTRY:
           - ghcr.io
         BASE:
           - external-secrets/external-secrets
@@ -756,12 +763,6 @@ archive-images3:
           - argoproj/argocd
         VERSION:
           - ARGOCD_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - argoproj/argocd-applicationset
-        VERSION:
-          - ARGOCD_APPLICATIONSET_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -1016,7 +1017,6 @@ archive-images4:
           - jetstack/cert-manager-controller
           - jetstack/cert-manager-cainjector
           - jetstack/cert-manager-webhook
-          - jetstack/cert-manager-ctl
         VERSION:
           - CERT_MANAGER_VERSION
       - REGISTRY:
@@ -1357,6 +1357,18 @@ archive-images4:
           - gitea/gitea
         VERSION:
           - GITEA_VERSION
+      - BASE:
+          - scylladb/scylla
+        VERSION:
+          - SCYLLA_VERSION
+      - BASE:
+          - scylladb/scylla-manager
+        VERSION:
+          - SCYLLA_MANAGER_VERSION
+      - BASE:
+          - scylladb/scylla-operator
+        VERSION:
+          - SCYLLA_OPERATOR_VERSION
       - BASE:
           - paperlessngx/paperless-ngx
         VERSION:
@@ -3560,6 +3572,24 @@ trivy:
     BASE: aquasec/trivy
     VERSION: TRIVY_VERSION
 
+secrets-store-csi-driver:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: csi-secrets-store/driver
+    IMAGE_VERSION: ${SECRETS_STORE_CSI_VERSION}
+
+secrets-store-csi-driver-crds:
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: csi-secrets-store/driver-crds
+    IMAGE_VERSION: ${SECRETS_STORE_CSI_VERSION}
+
 external-secrets:
   stage: build
   script:
@@ -3813,18 +3843,6 @@ argocd:
   variables:
     BASE: argoproj/argocd
     VERSION: ARGOCD_VERSION
-
-argocd-applicationset:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ARGOCD_APPLICATIONSET_VERSION
-  variables:
-    BASE: argoproj/argocd-applicationset
-    VERSION: ARGOCD_APPLICATIONSET_VERSION
 
 argo-events:
   interruptible: true
@@ -4125,11 +4143,10 @@ cert-manager-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jetstack/cert-manager-controller
-    VERSION: CERT_MANAGER_VERSION
+    IMAGE_BASE: jetstack/cert-manager-controller
+    IMAGE_VERSION: ${CERT_MANAGER_VERSION}
 
 cert-manager-webhook:
   interruptible: true
@@ -4137,11 +4154,10 @@ cert-manager-webhook:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jetstack/cert-manager-webhook
-    VERSION: CERT_MANAGER_VERSION
+    IMAGE_BASE: jetstack/cert-manager-webhook
+    IMAGE_VERSION: ${CERT_MANAGER_VERSION}
 
 cert-manager-cainjector:
   interruptible: true
@@ -4149,23 +4165,10 @@ cert-manager-cainjector:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jetstack/cert-manager-cainjector
-    VERSION: CERT_MANAGER_VERSION
-
-cert-manager-ctl:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_VERSION
-  variables:
-    BASE: jetstack/cert-manager-ctl
-    VERSION: CERT_MANAGER_VERSION
+    IMAGE_BASE: jetstack/cert-manager-cainjector
+    IMAGE_VERSION: ${CERT_MANAGER_VERSION}
 
 cert-manager-csi-driver:
   interruptible: true
@@ -4173,11 +4176,10 @@ cert-manager-csi-driver:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_CSI_DRIVER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jetstack/cert-manager-csi-driver
-    VERSION: CERT_MANAGER_CSI_DRIVER_VERSION
+    IMAGE_BASE: jetstack/cert-manager-csi-driver
+    IMAGE_VERSION: ${CERT_MANAGER_CSI_DRIVER_VERSION}
 
 cert-manager-webhook-pdns:
   interruptible: true
@@ -5554,6 +5556,38 @@ paperless:
     IMAGE_BASE: paperlessngx/paperless-ngx
     IMAGE_VERSION: ${PAPERLESS_VERSION}
 
+scylla:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: scylladb/scylla
+    IMAGE_VERSION: ${SCYLLA_VERSION}
+
+scylla-manager:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: scylladb/scylla-manager
+    IMAGE_VERSION: ${SCYLLA_MANAGER_VERSION}
+
+scylla-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: scylladb/scylla-operator
+    IMAGE_VERSION: ${SCYLLA_OPERATOR_VERSION}
 
 infra-docs:
   interruptible: true

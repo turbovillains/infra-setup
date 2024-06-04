@@ -197,6 +197,8 @@ import_images() {
         "goharbor/nginx-photon:${HARBOR_VERSION:-v2.10.1}"
         "aquasec/trivy:${TRIVY_VERSION:-0.33.0}"
         "ghcr.io/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION:-v0.5.3}"
+        "registry.k8s.io/csi-secrets-store/driver:${SECRETS_STORE_CSI_VERSION:-v0.4.3}"
+        "registry.k8s.io/csi-secrets-store/driver-crds:${SECRETS_STORE_CSI_VERSION:-v0.4.3}"
         "kutt/kutt:${KUTT_VERSION:-2.7.2}"
         "drakkan/sftpgo:${SFTPGO_VERSION:-v2.1.0}"
         "hasura/graphql-engine:${HASURA_GRAPHQL_VERSION:-v2.0.0-beta.2}"
@@ -206,7 +208,6 @@ import_images() {
         "registry:${DOCKER_REGISTRY_VERSION:-2.7.1}:::prepend_name=library/"
         "ghcr.io/dexidp/dex:${DEX_VERSION:-v2.30.0}"
         "quay.io/argoproj/argocd:${ARGOCD_VERSION:-v2.1.0-rc2}"
-        "quay.io/argoproj/argocd-applicationset:${ARGOCD_APPLICATIONSET_VERSION:-v0.4.1}"
         "quay.io/argoproj/argo-events:${ARGO_EVENTS_VERSION:-v1.7.6}"
         "quay.io/argoproj/argocli:${ARGO_WORKFLOWS_VERSION:-v3.4.5}"
         "quay.io/argoproj/workflow-controller:${ARGO_WORKFLOWS_VERSION:-v3.4.5}"
@@ -283,6 +284,11 @@ import_images() {
         "gitea/gitea:${GITEA_VERSION:-1.21.11}"
         "paperlessngx/paperless-ngx:${PAPERLESS_VERSION:-2.8.6}"
 
+        # scylladb
+        "scylladb/scylla:${SCYLLA_VERSION:-5.4.7}"
+        "scylladb/scylla-manager:${SCYLLA_MANAGER_VERSION:-3.2.8}"
+        "scylladb/scylla-operator:${SCYLLA_OPERATOR_VERSION:-1.12.2}"
+
         # chirpstack
         "chirpstack/chirpstack:${CHIRPSTACK_VERSION:-4.7.0}"
         "chirpstack/chirpstack-rest-api:${CHIRPSTACK_REST_API_VERSION:-4.7.0}"
@@ -324,7 +330,7 @@ import_images() {
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-webhook:${CERT_MANAGER_VERSION:-v1.8.0}"
-        "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_VERSION:-v1.8.0}"
+        # "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-csi-driver:${CERT_MANAGER_CSI_DRIVER_VERSION:-v0.3.0}"
         "zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION:-v2.0.1}"
         "vstadtmueller/cert-manager-webhook-powerdns:${CERT_MANAGER_WEBHOOK_POWERDNS_VERSION:-main}"
