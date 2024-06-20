@@ -306,6 +306,20 @@ import_images() {
         "timberio/vector:${VECTOR_VERSION:-0.37.1-alpine}"
         "kong:${KONG_VERSION:-3.6.1-ubuntu}:::prepend_name=library/"
 
+        # cilium
+        "quay.io/cilium/clustermesh-apiserver:${CILIUM_CLUSTERMESH_APISERVER_VERSION:-v1.15.6}"
+        "quay.io/cilium/cilium:${CILIUM_VERSION:-v1.15.6}"
+        "quay.io/cilium/operator:${CILIUM_OPERATOR_VERSION:-v1.15.6}"
+        "quay.io/cilium/startup-script:${CILIUM_STARTUP_SCRIPT_VERSION:-19fb149fb3d5c7a37d3edfaf10a2be3ab7386661}"
+        "quay.io/cilium/certgen:${CILIUM_CERTGEN_VERSION:-v0.1.12}"
+        "quay.io/cilium/cilium-envoy:${CILIUM_ENVOY_VERSION:-v1.28.4-b35188ffa1bbe54d1720d2e392779f7a48e58f6b}"
+        "quay.io/cilium/cilium-etcd-operator:${CILIUN_ETCD_OPERATOR_VERSION:-v2.0.7}"
+        "quay.io/cilium/hubble-relay:${CILIUM_HUBBLE_RELAY_VERSION:-v1.15.6}"
+        "quay.io/cilium/hubble-ui:${CILIUM_HUBBLE_UI_VERSION:-v0.13.0}"
+        "quay.io/cilium/hubble-ui-backend:${CILIUM_HUBBLE_UI_BACKEND_VERSION:-v0.13.0}"
+        "ghcr.io/spiffe/spire-server:${SPIRE_SERVER_VERSION:-1.8.5}"
+        "ghcr.io/spiffe/spire-agent:${SPIRE_AGENT_VERSION:-1.8.5}"
+
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"
         "velero/velero-plugin-for-csi:${VELERO_PLUGIN_CSI_VERSION:-v0.4.1}"

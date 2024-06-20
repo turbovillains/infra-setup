@@ -9,6 +9,16 @@ sudo curl -Lo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s htt
 JQ_VERSION=jq-1.7.1
 sudo curl -sLo /usr/local/bin/jq https://github.com/jqlang/jq/releases/download/${JQ_VERSION}/jq-linux64 && sudo chmod +x /usr/local/bin/jq
 
+# cosign
+# https://github.com/sigstore/cosign/releases
+curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64"
+sudo mv cosign-linux-amd64 /usr/local/bin/cosign
+sudo chmod +x /usr/local/bin/cosign
+
+# syft
+# https://github.com/anchore/syft/releases
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+
 # crane
 curl -sLo- "https://github.com/google/go-containerregistry/releases/download/$(curl -s "https://api.github.com/repos/google/go-containerregistry/releases/latest" | jq -r '.tag_name')/go-containerregistry_linux_x86_64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv crane krane gcrane
 
@@ -89,8 +99,6 @@ curl -fsSL https://starship.rs/install.sh | sudo sh -s -- '--yes'
 
 # consul nomad vault envconsul consul-template
 # hey
-# ko crane
 # k9s kubectx
 # instrumenta/instrumenta/kubeval
 # dty1er/tap/kubecolor
-# cosign

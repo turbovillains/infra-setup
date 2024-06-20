@@ -1373,6 +1373,78 @@ archive-images4:
           - paperlessngx/paperless-ngx
         VERSION:
           - PAPERLESS_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/cilium
+        VERSION:
+          - CILIUM_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/clustermesh-apiserver
+        VERSION:
+          - CILIUM_CLUSTERMESH_APISERVER_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/operator
+        VERSION:
+          - CILIUM_OPERATOR_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/startup-script
+        VERSION:
+          - CILIUM_STARTUP_SCRIPT_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/certgen
+        VERSION:
+          - CILIUM_CERTGEN_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/cilium-envoy
+        VERSION:
+          - CILIUM_ENVOY_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/cilium-etcd-operator
+        VERSION:
+          - CILIUN_ETCD_OPERATOR_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/hubble-relay
+        VERSION:
+          - CILIUM_HUBBLE_RELAY_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/hubble-ui
+        VERSION:
+          - CILIUM_HUBBLE_UI_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - cilium/hubble-ui-backend
+        VERSION:
+          - CILIUM_HUBBLE_UI_BACKEND_VERSION
+      - REGISTRY:
+          - ghcr.io
+        BASE:
+          - spiffe/spire-server
+        VERSION:
+          - SPIRE_SERVER_VERSION
+      - REGISTRY:
+          - ghcr.io
+        BASE:
+          - spiffe/spire-agent
+        VERSION:
+          - SPIRE_AGENT_VERSION
 
 archive-special:
   extends: .archive-images
@@ -5588,6 +5660,140 @@ scylla-operator:
   variables:
     IMAGE_BASE: scylladb/scylla-operator
     IMAGE_VERSION: ${SCYLLA_OPERATOR_VERSION}
+
+cilium-clustermesh-apiserver:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/clustermesh-apiserver
+    IMAGE_VERSION: ${CILIUM_CLUSTERMESH_APISERVER_VERSION}
+
+cilium:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/cilium
+    IMAGE_VERSION: ${CILIUM_VERSION}
+
+cilium-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/operator
+    IMAGE_VERSION: ${CILIUM_OPERATOR_VERSION}
+
+cilium-startup-script:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/startup-script
+    IMAGE_VERSION: ${CILIUM_STARTUP_SCRIPT_VERSION}
+
+cilium-certgen:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/certgen
+    IMAGE_VERSION: ${CILIUM_CERTGEN_VERSION}
+
+
+cilium-envoy:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/cilium-envoy
+    IMAGE_VERSION: ${CILIUM_ENVOY_VERSION}
+
+
+cilium-etcd-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/cilium-etcd-operator
+    IMAGE_VERSION: ${CILIUN_ETCD_OPERATOR_VERSION}
+
+cilium-hubble-relay:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/hubble-relay
+    IMAGE_VERSION: ${CILIUM_HUBBLE_RELAY_VERSION}
+
+cilium-hubble-ui:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/hubble-ui
+    IMAGE_VERSION: ${CILIUM_HUBBLE_UI_VERSION}
+
+cilium-hubble-ui-backend:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: cilium/hubble-ui-backend
+    IMAGE_VERSION: ${CILIUM_HUBBLE_UI_BACKEND_VERSION}
+
+spire-server:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: spiffe/spire-server
+    IMAGE_VERSION: ${SPIRE_SERVER_VERSION}
+
+spire-agent:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: spiffe/spire-agent
+    IMAGE_VERSION: ${SPIRE_AGENT_VERSION}
 
 infra-docs:
   interruptible: true
