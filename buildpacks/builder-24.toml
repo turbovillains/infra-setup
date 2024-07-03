@@ -2,12 +2,12 @@
 # https://github.com/heroku/stack-images
 # https://github.com/buildpacks/registry-index
 # https://github.com/heroku/buildpacks-nodejs
-description = "Base builder for Noroutine Heroku-22 stack, based on ubuntu:22.04 base image"
+description = "Base builder for Noroutine Heroku-24 stack, based on ubuntu:24.04 base image"
 
 [stack]
-id = "heroku-22"
-build-image = "heroku/heroku:22-cnb-build"
-run-image = "heroku/heroku:22-cnb"
+id = "heroku-24"
+build-image = "heroku/heroku:24-build"
+run-image = "heroku/heroku:24"
 
 [lifecycle]
 version = "0.19.7"
@@ -43,6 +43,18 @@ version = "0.19.7"
 [[buildpacks]]
   id = "heroku/scala"
   uri = "docker://docker.io/heroku/buildpack-scala@sha256:0c50dda170abd417da3aadde8dd7be5f1e724f6b87137a730e946d814c6b9e92"
+
+# [[buildpacks]]
+#   id = "heroku/procfile"
+#   uri = "docker://docker.io/heroku/buildpack-procfile:3.0.1"
+
+# [[buildpacks]]
+#   id = "heroku/nodejs"
+#   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-buildpack:1.1.2"
+
+# [[buildpacks]]
+#   id = "heroku/nodejs-function"
+#   uri = "docker://cr.nrtn.dev/heroku-buildpacks/heroku-nodejs-function-buildpack:1.1.2"
 
 [[buildpacks]]
   id = "noroutine/static"

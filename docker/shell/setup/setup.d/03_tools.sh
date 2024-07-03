@@ -63,7 +63,7 @@ KUSTOMIZE_VERSION=v5.4.2
 
 # argocd
 # https://github.com/argoproj/argo-cd/releases
-ARGOCD_VERSION=v2.11.3
+ARGOCD_VERSION=v2.11.4
 sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/${ARGOCD_VERSION}/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
 
 # argo workflows

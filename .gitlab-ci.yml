@@ -1409,12 +1409,12 @@ archive-images4:
           - cilium/cilium-envoy
         VERSION:
           - CILIUM_ENVOY_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/cilium-etcd-operator
-        VERSION:
-          - CILIUN_ETCD_OPERATOR_VERSION
+      # - REGISTRY:
+      #     - quay.io
+      #   BASE:
+      #     - cilium/cilium-etcd-operator
+      #   VERSION:
+      #     - CILIUM_ETCD_OPERATOR_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -1475,8 +1475,10 @@ archive-special:
         "${DOCKER_HUB}/longhornio/livenessprobe:${LONGHORN_LIVENESSPROBE_VERSION:-v2.9.0}"
         "${DOCKER_HUB}/longhornio/support-bundle-kit:${LONGHORN_SUPPORT_BUNDLE_KIT_VERSION:-v0.0.25}"
 
-        "${DOCKER_HUB}/heroku/heroku:22-cnb-build"
-        "${DOCKER_HUB}/heroku/heroku:22-cnb"
+        # "${DOCKER_HUB}/heroku/heroku:22-cnb-build"
+        # "${DOCKER_HUB}/heroku/heroku:22-cnb"
+        "${DOCKER_HUB}/heroku/heroku:24-build"
+        "${DOCKER_HUB}/heroku/heroku:24"
       )
 
       for image in "${special_images[@]}"; do
@@ -1898,17 +1900,27 @@ php:
     BASE: php
     VERSION: PHP_VERSION
 
-heroku-20:
-  interruptible: true
-  retry: 2
-  stage: stacks
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+# heroku-22:
+#   interruptible: true
+#   retry: 2
+#   stage: stacks
+#   script:
+#     - |
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
-heroku-22:
+#       # -build is based on stack
+#       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
+#         --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+
+#       # -cnb is based on stack
+#       ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb:${INFRA_VERSION} \
+#         --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+
+#       # -cnb-build is based on -build
+#       ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb-build:${INFRA_VERSION} \
+#         --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION}
+
+heroku-24:
   interruptible: true
   retry: 2
   stage: stacks
@@ -1919,14 +1931,6 @@ heroku-22:
       # -build is based on stack
       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
         --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-      # -cnb is based on stack
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-      # -cnb-build is based on -build
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb-build:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION}
 
 ocsp-responder:
   interruptible: true
@@ -2024,14 +2028,27 @@ buildpacks:
       set -x
       cd ${CI_JOB_NAME}
 
-      builder_toml_path=builder-22.toml
+      # builder_toml_path=builder-22.toml
+      # # Update build image
+      # jq_build_image_filter=".stack[\"build-image\"] |= sub(\"heroku/heroku:22-cnb-build\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb-build:${INFRA_VERSION}\")"
+      # jq_run_image_filter=".stack[\"run-image\"] |= sub(\"heroku/heroku:22-cnb\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb:${INFRA_VERSION}\")"
+      # updated_toml=$(yj -t < "${builder_toml_path}" | jq "${jq_build_image_filter}" | jq "${jq_run_image_filter}" | yj -jt)
+      # echo "${updated_toml}" > "infra-${builder_toml_path}"
+
+      # pack builder create ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} --config infra-builder-22.toml --pull-policy if-not-present
+      # docker push ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      # if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
+      #   archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      # fi
+
+      builder_toml_path=builder-24.toml
       # Update build image
-      jq_build_image_filter=".stack[\"build-image\"] |= sub(\"heroku/heroku:22-cnb-build\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb-build:${INFRA_VERSION}\")"
-      jq_run_image_filter=".stack[\"run-image\"] |= sub(\"heroku/heroku:22-cnb\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb:${INFRA_VERSION}\")"
+      jq_build_image_filter=".stack[\"build-image\"] |= sub(\"heroku/heroku:24-build\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-24-build:${INFRA_VERSION}\")"
+      jq_run_image_filter=".stack[\"run-image\"] |= sub(\"heroku/heroku:24\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-24:${INFRA_VERSION}\")"
       updated_toml=$(yj -t < "${builder_toml_path}" | jq "${jq_build_image_filter}" | jq "${jq_run_image_filter}" | yj -jt)
       echo "${updated_toml}" > "infra-${builder_toml_path}"
 
-      pack builder create ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} --config infra-builder-22.toml --pull-policy if-not-present
+      pack builder create ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} --config "infra-${builder_toml_path}" --pull-policy always
       docker push ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
@@ -5729,16 +5746,16 @@ cilium-envoy:
     IMAGE_VERSION: ${CILIUM_ENVOY_VERSION}
 
 
-cilium-etcd-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/cilium-etcd-operator
-    IMAGE_VERSION: ${CILIUN_ETCD_OPERATOR_VERSION}
+# cilium-etcd-operator:
+#   interruptible: true
+#   retry: 2
+#   stage: build
+#   script:
+#     - |
+#       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+#   variables:
+#     IMAGE_BASE: cilium/cilium-etcd-operator
+#     IMAGE_VERSION: ${CILIUM_ETCD_OPERATOR_VERSION}
 
 cilium-hubble-relay:
   interruptible: true
