@@ -256,11 +256,11 @@ variables:
   CONFLUENTINC_INIT_CONTAINER_VERSION: "2.8.2" # https://registry.hub.docker.com/r/confluentinc/confluent-init-container/tags
   CONFLUENTINC_CP_VERSION: "7.6.1"
   KAFDROP_VERSION: "4.0.1" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
-  AKHQ_VERSION: "0.25.0" # https://hub.docker.com/r/tchiotludo/akhq/tags
+  AKHQ_VERSION: "0.25.1" # https://hub.docker.com/r/tchiotludo/akhq/tags
   ECK_OPERATOR_VERSION: 2.13.0 # https://hub.docker.com/r/elastic/eck-operator/tags
   UPTIME_KUMA_VERSION: 1.23.13-alpine # https://hub.docker.com/r/louislam/uptime-kuma/tags
   AIRFLOW_VERSION: 2.9.2-python3.11 # https://hub.docker.com/r/apache/airflow/tags
-  GIT_SYNC_VERSION: v4.2.3 # registry.k8s.io/git-sync/git-sync
+  GIT_SYNC_VERSION: v4.2.4 # registry.k8s.io/git-sync/git-sync
   KEDA_VERSION: "2.14.0" # ghcr.io/kedacore/keda
   HADOLINT_VERSION: v2.12.1-beta # https://hub.docker.com/r/hadolint/hadolint/tags
   OUTLINE_VERSION: 0.77.2 # https://hub.docker.com/r/outlinewiki/outline/tags
@@ -319,10 +319,10 @@ variables:
   CHIRPSTACK_REST_API_VERSION: "4.8.1" # https://hub.docker.com/r/chirpstack/chirpstack-rest-api/tags
   CHIRPSTACK_GATEWAY_BRIDGE_VERSION: "4.0.11" # https://hub.docker.com/r/chirpstack/chirpstack-gateway-bridge/tags
   SUPABASE_STUDIO_VERSION: 20240415-304bec8 # https://hub.docker.com/r/supabase/studio/tags
-  SUPABASE_GOTRUE_VERSION: v2.155.0 # https://hub.docker.com/r/supabase/gotrue/tags
+  SUPABASE_GOTRUE_VERSION: v2.155.1 # https://hub.docker.com/r/supabase/gotrue/tags
   SUPABASE_REALTIME_VERSION: v2.29.15 # https://hub.docker.com/r/supabase/realtime/tags
   SUPABASE_POSTGRES_META_VERSION: v0.83.2 # https://hub.docker.com/r/supabase/postgres-meta/tags
-  SUPABASE_STORAGE_API_VERSION: v1.6.7 # https://hub.docker.com/r/supabase/storage-api/tags
+  SUPABASE_STORAGE_API_VERSION: v1.6.8 # https://hub.docker.com/r/supabase/storage-api/tags
   SUPABASE_LOGFLARE_VERSION: 1.7.5 # https://hub.docker.com/r/supabase/logflare/tags
   SUPABASE_EDGE_RUNTIME_VERSION: v1.54.9 # https://hub.docker.com/r/supabase/edge-runtime/tags
   IMGPROXY_VERSION: v3.24 # https://hub.docker.com/r/darthsim/imgproxy/tags
