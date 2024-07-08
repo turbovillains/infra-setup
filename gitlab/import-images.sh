@@ -281,6 +281,18 @@ import_images() {
         "spvest/azure-keyvault-env:${AKV2K8S_VERSION:-1.6.0}"
         "gitea/gitea:${GITEA_VERSION:-1.21.11}"
         "paperlessngx/paperless-ngx:${PAPERLESS_VERSION:-2.8.6}"
+        "roundcube/roundcubemail:${ROUNDCUBE_VERSION:-1.6.7-apache}"
+        "changemakerstudiosus/papercut-smtp:${PAPERCUT_VERSION:-7.0.0-rc1}"
+        "docker.n8n.io/n8nio/n8n:${N8N_VERSION:-1.50.0}"
+        "cloudflare/cloudflared:${CLOUDFLARED_VERSION:-2024.6.1}"
+
+        # Nodemailer WildDuck
+        "nodemailer/wildduck:${NODEMAILER_WILDDUCK_VERSION:-1.43.3}"
+        "nodemailer/wildduck-webmail:${NODEMAILER_WILDDUCK_WEBMAIL_VERSION:-1.0.1}"
+        "nodemailer/zonemta-wildduck:${NODEMAILER_ZONEMTA_VERSION:-2.4.3}"
+        "nodemailer/haraka-wildduck:${NODEMAILER_HARAKA_VERSION:-2.8.27}"
+        "nodemailer/rspamd:${NODEMAILER_RSPAMD_VERSION:-2.7.0}"
+        "rspamd/rspamd:${RSPAMD_VERSION:-3.8.4}"
 
         # scylladb
         "scylladb/scylla:${SCYLLA_VERSION:-5.4.7}"
@@ -318,6 +330,14 @@ import_images() {
         "ghcr.io/spiffe/spire-server:${SPIRE_SERVER_VERSION:-1.8.5}"
         "ghcr.io/spiffe/spire-agent:${SPIRE_AGENT_VERSION:-1.8.5}"
 
+        # bitnami cilium
+        "bitnami/cilium:${BITNAMI_CILIUM_VERSION:-1.15.7}"
+        "bitnami/cilium-proxy:${BITNAMI_CILIUM_PROXY_VERSION:-1.28.5}"
+        "bitnami/cilium-operator:${BITNAMI_CILIUM_OPERATOR_VERSION:-1.15.7}"
+        "bitnami/hubble-relay:${BITNAMI_CILIUM_HUBBLE_RELAY_VERSION:-1.15.7}"
+        "bitnami/hubble-ui:${BITNAMI_CILIUM_HUBBLE_UI_VERSION:-0.13.1}"
+        "bitnami/hubble-ui-backend:${BITNAMI_CILIUM_HUBBLE_UI_BACKEND_VERSION:-0.13.1}"
+
         # Velero
         "velero/velero:${VELERO_VERSION:-v1.10.1}"
         "velero/velero-plugin-for-csi:${VELERO_PLUGIN_CSI_VERSION:-v0.4.1}"
@@ -345,7 +365,6 @@ import_images() {
         # "quay.io/jetstack/cert-manager-ctl:${CERT_MANAGER_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-csi-driver:${CERT_MANAGER_CSI_DRIVER_VERSION:-v0.3.0}"
         "zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION:-v2.0.1}"
-        "vstadtmueller/cert-manager-webhook-powerdns:${CERT_MANAGER_WEBHOOK_POWERDNS_VERSION:-main}"
 
         # consul
         "hashicorp/consul:${CONSUL_VERSION:-1.11.4}"

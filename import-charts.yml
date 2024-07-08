@@ -85,6 +85,7 @@ helm:
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
     charts:
+      - name: cilium
       - name: keycloak
       - name: kube-prometheus
       - name: kube-state-metrics
@@ -133,10 +134,10 @@ helm:
     charts:
       - name: cert-manager
       - name: cert-manager-csi-driver
-  - name: lordofsystem
-    url: https://lordofsystem.github.io/cert-manager-webhook-powerdns
+  - name: zachomedia
+    url: https://zachomedia.github.io/cert-manager-webhook-pdns
     charts:
-      - name: cert-manager-webhook-powerdns
+      - name: cert-manager-webhook-pdns
   - name: mattermost
     url: https://helm.mattermost.com
   - name: verdaccio

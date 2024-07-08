@@ -3,6 +3,159 @@ entries:
   airflow:
   - annotations:
       artifacthub.io/changes: |
+        - description: Enable MySQL KEDA support for triggerer
+          kind: added
+          links:
+          - name: '#37365'
+            url: https://github.com/apache/airflow/pull/37365
+        - description: Allow AWS Executors
+          kind: added
+          links:
+          - name: '#38524'
+            url: https://github.com/apache/airflow/pull/38524
+        - description: Allow ``valueFrom`` in env config of components
+          kind: changed
+          links:
+          - name: '#40135'
+            url: https://github.com/apache/airflow/pull/40135
+        - description: Enable templating in ``extraContainers`` and ``extraInitContainers``
+          kind: changed
+          links:
+          - name: '#38507'
+            url: https://github.com/apache/airflow/pull/38507
+        - description: Add safe-to-evict annotation to pod-template-file
+          kind: changed
+          links:
+          - name: '#37352'
+            url: https://github.com/apache/airflow/pull/37352
+        - description: Support ``workers.command`` for KubernetesExecutor
+          kind: changed
+          links:
+          - name: '#39132'
+            url: https://github.com/apache/airflow/pull/39132
+        - description: Add ``priorityClassName`` to Jobs
+          kind: changed
+          links:
+          - name: '#39133'
+            url: https://github.com/apache/airflow/pull/39133
+        - description: Add Kerberos sidecar to pod-template-file
+          kind: changed
+          links:
+          - name: '#38815'
+            url: https://github.com/apache/airflow/pull/38815
+        - description: Add templated field support for extra containers
+          kind: changed
+          links:
+          - name: '#38510'
+            url: https://github.com/apache/airflow/pull/38510
+        - description: Set ``workers.safeToEvict`` default to False
+          kind: fixed
+          links:
+          - name: '#40229'
+            url: https://github.com/apache/airflow/pull/40229
+        - description: 'Docs: Document ``extraContainers`` and ``extraInitContainers`` that
+            are templated'
+          kind: changed
+          links:
+          - name: '#40033'
+            url: https://github.com/apache/airflow/pull/40033
+        - description: 'Docs: Fix typo in HorizontalPodAutoscaling documentation'
+          kind: changed
+          links:
+          - name: '#39307'
+            url: https://github.com/apache/airflow/pull/39307
+        - description: 'Docs: Fix supported k8s versions in docs'
+          kind: changed
+          links:
+          - name: '#39172'
+            url: https://github.com/apache/airflow/pull/39172
+        - description: 'Docs: Fix typo in YAML path for ``brokerUrlSecretName``'
+          kind: changed
+          links:
+          - name: '#39115'
+            url: https://github.com/apache/airflow/pull/39115
+        - description: 'Misc: Default Airflow version to 2.9.2'
+          kind: changed
+          links:
+          - name: '#40160'
+            url: https://github.com/apache/airflow/pull/40160
+        - description: 'Misc: Limit Redis image to 7.2'
+          kind: changed
+          links:
+          - name: '#38928'
+            url: https://github.com/apache/airflow/pull/38928
+        - description: 'Misc: Build Helm values schemas with Kubernetes 1.29 resources'
+          kind: changed
+          links:
+          - name: '#38460'
+            url: https://github.com/apache/airflow/pull/38460
+        - description: 'Misc: Add missing containers to resources docs'
+          kind: changed
+          links:
+          - name: '#38534'
+            url: https://github.com/apache/airflow/pull/38534
+        - description: 'Misc: Upgrade StatsD Exporter image to 0.26.1'
+          kind: changed
+          links:
+          - name: '#38416'
+            url: https://github.com/apache/airflow/pull/38416
+        - description: 'Misc: Remove K8S 1.25 support'
+          kind: changed
+          links:
+          - name: '#38367'
+            url: https://github.com/apache/airflow/pull/38367
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://airflow.apache.org/docs/helm-chart/1.14.0/
+      artifacthub.io/screenshots: |
+        - title: DAGs View
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/dags.png
+        - title: Datasets View
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/datasets.png
+        - title: Grid View
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/grid.png
+        - title: Graph View
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/graph.png
+        - title: Calendar View
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/calendar.png
+        - title: Variable View
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/variable_hidden.png
+        - title: Gantt Chart
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/gantt.png
+        - title: Task Duration
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/duration.png
+        - title: Code View
+          url: https://airflow.apache.org/docs/apache-airflow/2.9.2/_images/code.png
+    apiVersion: v2
+    appVersion: 2.9.2
+    created: "2024-07-11T23:50:03.657723+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.24
+    description: The official Helm chart to deploy Apache Airflow, a platform to programmatically
+      author, schedule, and monitor workflows
+    digest: 206d7eae00697bfd2fbe896b58adf9d66f928f70ee75a07e5772be86c9ed6185
+    home: https://airflow.apache.org/
+    icon: https://airflow.apache.org/images/airflow_dark_bg.png
+    keywords:
+    - apache
+    - airflow
+    - workflow
+    - scheduler
+    maintainers:
+    - email: dev@airflow.apache.org
+      name: Apache Airflow PMC
+    name: airflow
+    sources:
+    - https://github.com/apache/airflow
+    type: application
+    urls:
+    - airflow-1.14.0.tgz
+    version: 1.14.0
+  - annotations:
+      artifacthub.io/changes: |
         - description: Don't overwrite ``.Values.airflowPodAnnotations``
           kind: fixed
           links:
@@ -43,7 +196,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.8.3/_images/code.png
     apiVersion: v2
     appVersion: 2.8.3
-    created: "2024-05-24T16:05:47.438075+02:00"
+    created: "2024-07-11T23:50:03.638635+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -130,7 +283,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.8.2/_images/code.png
     apiVersion: v2
     appVersion: 2.8.2
-    created: "2024-05-24T16:05:47.426643+02:00"
+    created: "2024-07-11T23:50:03.617953+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -330,7 +483,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.8.1/_images/code.png
     apiVersion: v2
     appVersion: 2.8.1
-    created: "2024-05-24T16:05:47.414933+02:00"
+    created: "2024-07-11T23:50:03.597105+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -577,7 +730,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.7.1/_images/code.png
     apiVersion: v2
     appVersion: 2.7.1
-    created: "2024-05-24T16:05:47.40131+02:00"
+    created: "2024-07-11T23:50:03.576373+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -701,7 +854,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.6.2/_images/context.png
     apiVersion: v2
     appVersion: 2.6.2
-    created: "2024-05-24T16:05:47.389303+02:00"
+    created: "2024-07-11T23:50:03.556511+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -912,7 +1065,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.5.3/_images/context.png
     apiVersion: v2
     appVersion: 2.5.3
-    created: "2024-05-24T16:05:47.483347+02:00"
+    created: "2024-07-11T23:50:03.733018+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -1106,7 +1259,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.5.1/_images/context.png
     apiVersion: v2
     appVersion: 2.5.1
-    created: "2024-05-24T16:05:47.473035+02:00"
+    created: "2024-07-11T23:50:03.717312+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -1344,7 +1497,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.4.1/_images/context.png
     apiVersion: v2
     appVersion: 2.4.1
-    created: "2024-05-24T16:05:47.462926+02:00"
+    created: "2024-07-11T23:50:03.701329+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -1478,7 +1631,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.3.0/_images/context.png
     apiVersion: v2
     appVersion: 2.3.0
-    created: "2024-05-24T16:05:47.453783+02:00"
+    created: "2024-07-11T23:50:03.684469+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -1614,7 +1767,7 @@ entries:
           url: https://airflow.apache.org/docs/apache-airflow/2.2.4/_images/context.png
     apiVersion: v2
     appVersion: 2.2.4
-    created: "2024-05-24T16:05:47.445463+02:00"
+    created: "2024-07-11T23:50:03.671169+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -1640,4 +1793,4 @@ entries:
     urls:
     - airflow-1.5.0.tgz
     version: 1.5.0
-generated: "2024-05-24T16:05:47.377243+02:00"
+generated: "2024-07-11T23:50:03.539623+02:00"

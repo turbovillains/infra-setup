@@ -29,11 +29,15 @@ COPY FD380FBB-pub.asc /tmp/pdns-gpg-key-pub.asc
 RUN apt-key add /tmp/pdns-gpg-key-pub.asc && rm /tmp/pdns-gpg-key-pub.asc
 
 RUN apt-get update -qyy && \
-    apt-get install -qyy pdns-server pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-lua2 && \
+    apt-get install -qyy pdns-server pdns-backend-sqlite3 pdns-backend-pgsql pdns-backend-lua2 pdns-backend-pipe python3 && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
+
+# nip.io
+COPY nipio/backend.py /opt/nip.io/
+COPY nipio/backend.conf /opt/nip.io/
 
 EXPOSE 53/tcp 53/udp
 

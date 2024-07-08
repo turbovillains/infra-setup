@@ -2,8 +2,36 @@ apiVersion: v1
 entries:
   harbor:
   - apiVersion: v1
+    appVersion: 2.11.0
+    created: "2024-07-11T23:50:13.362969+02:00"
+    description: An open source trusted cloud native registry that stores, signs,
+      and scans content
+    digest: 0078d0aa0b9888e60cee5c295fb92edbee907906a5e1d113bd39c9ef51d9bb44
+    home: https://goharbor.io
+    icon: https://raw.githubusercontent.com/goharbor/website/main/static/img/logos/harbor-icon-color.png
+    keywords:
+    - docker
+    - registry
+    - harbor
+    maintainers:
+    - email: yan-yw.wang@broadcom.com
+      name: Yan Wang
+    - email: wenkai.yin@broadcom.com
+      name: Wenkai Yin
+    - email: miner.yang@broadcom.com
+      name: Miner Yang
+    - email: shengwen.yu@broadcom.com
+      name: Shengwen Yu
+    name: harbor
+    sources:
+    - https://github.com/goharbor/harbor
+    - https://github.com/goharbor/harbor-helm
+    urls:
+    - harbor-1.15.0.tgz
+    version: 1.15.0
+  - apiVersion: v1
     appVersion: 2.10.2
-    created: "2024-05-24T16:05:51.693503+02:00"
+    created: "2024-07-11T23:50:13.357876+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: d4f08296ab0eb8bc4b8dceee4655e0586a70c9e0258a97c4ea8a330dcdbc228d
@@ -29,7 +57,7 @@ entries:
     version: 1.14.2
   - apiVersion: v1
     appVersion: 2.10.1
-    created: "2024-05-24T16:05:51.690318+02:00"
+    created: "2024-07-11T23:50:13.352216+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 897e62d225ee98f3ad004417e4a6c32d4c0cc5f15c41e817375ad9cb517d1f62
@@ -55,7 +83,7 @@ entries:
     version: 1.14.1
   - apiVersion: v1
     appVersion: 2.10.0
-    created: "2024-05-24T16:05:51.687639+02:00"
+    created: "2024-07-11T23:50:13.3451+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 7cc3fbab53086efccf192f4ccbdd6f6d0d5ddce24c8f073ea3c604fc15d96985
@@ -81,7 +109,7 @@ entries:
     version: 1.14.0
   - apiVersion: v1
     appVersion: 2.9.4
-    created: "2024-05-24T16:05:51.685071+02:00"
+    created: "2024-07-11T23:50:13.339507+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 5b2e403edb5ad63bd13b26fcac4dd87bd7fad854145239ad770fd71c8faaaebc
@@ -107,7 +135,7 @@ entries:
     version: 1.13.4
   - apiVersion: v1
     appVersion: 2.9.3
-    created: "2024-05-24T16:05:51.681696+02:00"
+    created: "2024-07-11T23:50:13.334608+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: d71a93bacaf58ac42f034f181847b0da9f51f07ed7072e1a7420f1db16d7fbff
@@ -133,7 +161,7 @@ entries:
     version: 1.13.3
   - apiVersion: v1
     appVersion: 2.9.2
-    created: "2024-05-24T16:05:51.678946+02:00"
+    created: "2024-07-11T23:50:13.326946+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 5ddc0c5b06b6d9d45ecc249ec11bc03dc6596619ba9c81bba478702d5aab9e2e
@@ -159,7 +187,7 @@ entries:
     version: 1.13.2
   - apiVersion: v1
     appVersion: 2.9.1
-    created: "2024-05-24T16:05:51.675595+02:00"
+    created: "2024-07-11T23:50:13.320126+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: 2ab4fd8225bda1e9796bcfbbaae738e1e157a84f8103f3fbec6425fcb375bfd5
@@ -185,7 +213,7 @@ entries:
     version: 1.13.1
   - apiVersion: v1
     appVersion: 2.9.0
-    created: "2024-05-24T16:05:51.67303+02:00"
+    created: "2024-07-11T23:50:13.313085+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: f4aed82fb0387e9108b9611ebf77fc7244dbe4e0964ddd33f484726563421650
@@ -211,7 +239,7 @@ entries:
     version: 1.13.0
   - apiVersion: v1
     appVersion: 2.8.6
-    created: "2024-05-24T16:05:51.669595+02:00"
+    created: "2024-07-11T23:50:13.307738+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: af6d5e4519b8f40eff682a8b3e9da736081921b28149ccbfa717bdb68cf816d7
@@ -237,7 +265,7 @@ entries:
     version: 1.12.6
   - apiVersion: v1
     appVersion: 2.8.5
-    created: "2024-05-24T16:05:51.665577+02:00"
+    created: "2024-07-11T23:50:13.300386+02:00"
     description: An open source trusted cloud native registry that stores, signs,
       and scans content
     digest: c239f5e0cb9ee79da1d02d2d42d39ece8614ff5d201e070c13fee71debbc1005
@@ -261,4 +289,4 @@ entries:
     urls:
     - harbor-1.12.5.tgz
     version: 1.12.5
-generated: "2024-05-24T16:05:51.662425+02:00"
+generated: "2024-07-11T23:50:13.289917+02:00"
