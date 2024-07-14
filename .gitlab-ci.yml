@@ -86,6 +86,10 @@ archive-images1:
         VERSION:
           - PHP_VERSION
       - BASE:
+          - library/node
+        VERSION:
+          - NODE_VERSION
+      - BASE:
           - library/golang
         VERSION:
           - GOLANG_VERSION
@@ -1507,6 +1511,50 @@ archive-images4:
           - spiffe/spire-agent
         VERSION:
           - SPIRE_AGENT_VERSION
+      - BASE:
+          - airbyte/webapp
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/server
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/worker
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/metrics-reporter
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/bootloader
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/db
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/cron
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/connector-builder-server
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/airbyte-api-server
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - airbyte/workload-api-server
+        VERSION:
+          - AIRBYTE_VERSION
+      - BASE:
+          - temporalio/auto-setup
+        VERSION:
+          - TEMPORTALIO_VERSION
 
 archive-special:
   extends: .archive-images
@@ -1959,8 +2007,19 @@ php:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg PHP_VERSION
   variables:
-    BASE: php
+    BASE: library/php
     VERSION: PHP_VERSION
+
+node:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: library/node
+    IMAGE_VERSION: ${NODE_VERSION}
 
 # heroku-22:
 #   interruptible: true
@@ -6016,6 +6075,127 @@ spire-agent:
   variables:
     IMAGE_BASE: spiffe/spire-agent
     IMAGE_VERSION: ${SPIRE_AGENT_VERSION}
+
+airbyte-webapp:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/webapp
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-server:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/server
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-worker:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/worker
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-metrics-reporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/metrics-reporter
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-bootloader:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/bootloader
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-db:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/db
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-cron:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/cron
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-connector-builder-server:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/connector-builder-server
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-api-server:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/airbyte-api-server
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-workload-api-server:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: airbyte/workload-api-server
+    IMAGE_VERSION: ${AIRBYTE_VERSION}
+
+airbyte-temporalio-auto-setup:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: temporalio/auto-setup
+    IMAGE_VERSION: ${TEMPORTALIO_VERSION}
 
 infra-docs:
   interruptible: true

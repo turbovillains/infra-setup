@@ -18,6 +18,7 @@ import_images() {
         "buildpack-deps:${BUILDPACK_DEPS_FOCAL_VERSION:-focal@sha256:eecbd661c4983df91059018d67c0d7203c68c1eeac036e6a479c3df94483ffba}:::prepend_name=library/"
         "buildpack-deps:${BUILDPACK_DEPS_JAMMY_VERSION:-jammy@sha256:e93e88c6e97ffb6a315182db7d606dcb161714db7b2961a4efe727d39c165e1a}:::prepend_name=library/"
         "php:${PHP_VERSION:-8.1.0-apache}:::prepend_name=library/"
+        "node:${NODE_VERSION:-22.4.1-bookworm}:::prepend_name=library/"
         "python:${PYTHON_VERSION:-3.11.2}:::prepend_name=library/"
         "python:${PYTHON_SLIM_VERSION:-3.11.2-slim}:::prepend_name=library/"
         "golang:${GOLANG_VERSION:-1.17.3-bullseye}:::prepend_name=library/"
@@ -285,6 +286,19 @@ import_images() {
         "changemakerstudiosus/papercut-smtp:${PAPERCUT_VERSION:-7.0.0-rc1}"
         "docker.n8n.io/n8nio/n8n:${N8N_VERSION:-1.50.0}"
         "cloudflare/cloudflared:${CLOUDFLARED_VERSION:-2024.6.1}"
+
+        # Airbyte
+        "airbyte/webapp:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/server:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/worker:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/metrics-reporter:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/bootloader:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/db:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/cron:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/connector-builder-server:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/airbyte-api-server:${AIRBYTE_VERSION:-0.63.8}"
+        "airbyte/workload-api-server:${AIRBYTE_VERSION:-0.63.8}"
+        "temporalio/auto-setup:${TEMPORTALIO_VERSION:-1.23.0}"
 
         # Nodemailer WildDuck
         "nodemailer/wildduck:${NODEMAILER_WILDDUCK_VERSION:-1.43.3}"

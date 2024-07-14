@@ -6,6 +6,24 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: airbyte
+    url: https://airbytehq.github.io/helm-charts/
+    charts:
+      - name: airbyte
+      - name: airbyte-bootloader
+      - name: temporal
+      - name: webapp
+      - name: server
+      - name: worker
+      - name: airbyte-api-server
+      - name: workload-api-server
+      - name: workload-launcher
+      - name: pod-sweeper
+      - name: metrics
+      - name: cron
+      - name: connector-builder-server
+      - name: keycloak
+      - name: keycloak-setup
   - name: cilium
     url: https://helm.cilium.io/
     charts:
