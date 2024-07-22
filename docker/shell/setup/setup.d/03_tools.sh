@@ -58,29 +58,29 @@ sudo curl -sLo /usr/local/bin/ytt https://github.com/carvel-dev/ytt/releases/dow
 
 # kustomize
 # https://github.com/kubernetes-sigs/kustomize/releases
-KUSTOMIZE_VERSION=v5.4.2
+KUSTOMIZE_VERSION=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest" | jq -r '.tag_name' | sed 's/kustomize\///')
 (curl -sSL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv kustomize)
 
 # argocd
 # https://github.com/argoproj/argo-cd/releases
-ARGOCD_VERSION=v2.11.5
+ARGOCD_VERSION=$(curl -s "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | jq -r '.tag_name')
 sudo curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/${ARGOCD_VERSION}/argocd-linux-amd64 && sudo chmod +x /usr/local/bin/argocd
 
 # argo workflows
 # https://github.com/argoproj/argo-workflows/releases
-ARGO_WORKFLOWS_VERSION=v3.5.8
+ARGO_WORKFLOWS_VERSION=$(curl -s "https://api.github.com/repos/argoproj/argo-workflows/releases/latest" | jq -r '.tag_name')
 curl -sLo argocli.gz https://github.com/argoproj/argo-workflows/releases/download/${ARGO_WORKFLOWS_VERSION}/argo-linux-amd64.gz
 gunzip argocli.gz
 sudo mv argocli /usr/local/bin/argocli
 
 # https://github.com/goreleaser/goreleaser/releases
-GORELEASER_VERSION=2.0.1
+GORELEASER_VERSION=$(curl -s "https://api.github.com/repos/goreleaser/goreleaser/releases/latest" | jq -r '.tag_name' | sed 's/v//')
 curl -sLo- https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser-${GORELEASER_VERSION}-1-x86_64.pkg.tar.zst \
   | sudo tar -C /usr/local/bin/ --no-same-owner --strip-components=2 --use-compress-program=unzstd -xv usr/bin/goreleaser
 
 # terraform
 # https://releases.hashicorp.com/terraform
-TERRAFORM_VERSION=1.8.5
+TERRAFORM_VERSION=$(curl -s "https://api.github.com/repos/hashicorp/terraform/releases/latest" | jq -r '.tag_name' | sed 's/v//')
 curl -sLo terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 unzip terraform.zip
 chmod +x terraform
@@ -89,7 +89,7 @@ rm terraform.zip
 
 # cfssl
 # https://github.com/cloudflare/cfssl/releases
-CFSSL_VERSION=1.6.5
+CFSSL_VERSION=$(curl -s "https://api.github.com/repos/cloudflare/cfssl/releases/latest" | jq -r '.tag_name' | sed 's/v//')
 curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v${CFSSL_VERSION}/cfssl_${CFSSL_VERSION}_linux_amd64 && sudo chmod +x /usr/local/bin/cfssl
 
 # starship

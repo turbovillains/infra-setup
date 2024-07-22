@@ -296,7 +296,6 @@ import_images() {
         "airbyte/db:${AIRBYTE_VERSION:-0.63.8}"
         "airbyte/cron:${AIRBYTE_VERSION:-0.63.8}"
         "airbyte/connector-builder-server:${AIRBYTE_VERSION:-0.63.8}"
-        "airbyte/airbyte-api-server:${AIRBYTE_VERSION:-0.63.8}"
         "airbyte/workload-api-server:${AIRBYTE_VERSION:-0.63.8}"
         "temporalio/auto-setup:${TEMPORTALIO_VERSION:-1.23.0}"
 
