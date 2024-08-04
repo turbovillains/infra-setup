@@ -1946,6 +1946,37 @@ jdk-temurin:
     BASE: eclipse-temurin
     VERSION: JDK_TEMURIN_VERSION
 
+android-sdk:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg JDK_ZULU_VERSION \
+        --build-arg GRADLE_URL_BASE \
+        --build-arg GRADLE_VERSION \
+        --build-arg ANDROID_SDK_TOOLS_URL_BASE \
+        --build-arg ANDROID_SDK_TOOLS_VERSION \
+        --build-arg ANDROID_SDK_TOOLS_CHECKSUM
+  variables:
+    BASE: azul/zulu-openjdk
+    VERSION: JDK_ZULU_VERSION
+
+gradle:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg JDK_ZULU_VERSION \
+        --build-arg GRADLE_URL_BASE \
+        --build-arg GRADLE_VERSION
+  variables:
+    BASE: azul/zulu-openjdk
+    VERSION: JDK_ZULU_VERSION
+
 golang:
   interruptible: true
   retry: 2

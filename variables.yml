@@ -19,6 +19,11 @@ variables:
   DISTROLESS_VERSION: debian11 # https://gcr.io/distroless/
   JDK_ZULU_VERSION: 22.0.2-22.32 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   JDK_TEMURIN_VERSION: 22.0.2_9-jdk-jammy # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
+  GRADLE_URL_BASE: https://fs.noroutine.me/attic/install/gradle/
+  GRADLE_VERSION: "8.9"
+  ANDROID_SDK_TOOLS_URL_BASE: https://fs.noroutine.me/attic/install/Android%20Studio
+  ANDROID_SDK_TOOLS_VERSION: "11076708"
+  ANDROID_SDK_TOOLS_CHECKSUM: "2d2d50857e4eb553af5a6dc3ad507a17adf43d115264b1afc116f95c92e5e258"
   GOLANG_VERSION: "1.22.5-bookworm" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.22.5-alpine" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.21
   NODE_VERSION: "22.5.1-bookworm" # https://hub.docker.com/_/node/tags
