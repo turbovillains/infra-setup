@@ -2,8 +2,32 @@ apiVersion: v1
 entries:
   external-secrets:
   - apiVersion: v2
+    appVersion: v0.10.0
+    created: "2024-08-04T20:01:52.616094+02:00"
+    dependencies:
+    - condition: bitwarden-sdk-server.enabled
+      name: bitwarden-sdk-server
+      repository: oci://ghcr.io/external-secrets/charts
+      version: v0.1.4
+    description: External secret management for Kubernetes
+    digest: 2522085608c0f9b1525bedbec1bb15e4be5b22adf69b5d14334958f09b30634d
+    home: https://github.com/external-secrets/external-secrets
+    icon: https://raw.githubusercontent.com/external-secrets/external-secrets/main/assets/eso-logo-large.png
+    keywords:
+    - kubernetes-external-secrets
+    - secrets
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: kellinmcavoy@gmail.com
+      name: mcavoyk
+    name: external-secrets
+    type: application
+    urls:
+    - external-secrets-0.10.0.tgz
+    version: 0.10.0
+  - apiVersion: v2
     appVersion: v0.9.20
-    created: "2024-07-11T23:50:11.208759+02:00"
+    created: "2024-08-04T20:01:52.683821+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -27,7 +51,7 @@ entries:
     version: 0.9.20
   - apiVersion: v2
     appVersion: v0.9.19
-    created: "2024-07-11T23:50:11.200252+02:00"
+    created: "2024-08-04T20:01:52.678396+02:00"
     description: External secret management for Kubernetes
     digest: 2571226e9eba95377692ccebeadca8471e520425ec4a582d152927e4a759ced1
     home: https://github.com/external-secrets/external-secrets
@@ -46,7 +70,7 @@ entries:
     version: 0.9.19
   - apiVersion: v2
     appVersion: v0.9.18
-    created: "2024-07-11T23:50:11.193233+02:00"
+    created: "2024-08-04T20:01:52.674061+02:00"
     description: External secret management for Kubernetes
     digest: fe23bc2500e2415c0ac4aeb5e0b35b10c3a85cc32ca969421eff628371520c96
     home: https://github.com/external-secrets/external-secrets
@@ -65,7 +89,7 @@ entries:
     version: 0.9.18
   - apiVersion: v2
     appVersion: v0.9.17
-    created: "2024-07-11T23:50:11.184667+02:00"
+    created: "2024-08-04T20:01:52.669604+02:00"
     description: External secret management for Kubernetes
     digest: 706d8f80c110ac8a7a24afb76cfb91a746a088be347fd6091e90ff427669454d
     home: https://github.com/external-secrets/external-secrets
@@ -84,7 +108,7 @@ entries:
     version: 0.9.17
   - apiVersion: v2
     appVersion: v0.9.16
-    created: "2024-07-11T23:50:11.177464+02:00"
+    created: "2024-08-04T20:01:52.662751+02:00"
     description: External secret management for Kubernetes
     digest: 8aac798fdfe15bab9a8e9472e4bce6b10d6cc59c8455d70b59c946a97c78be70
     home: https://github.com/external-secrets/external-secrets
@@ -103,7 +127,7 @@ entries:
     version: 0.9.16
   - apiVersion: v2
     appVersion: v0.9.14
-    created: "2024-07-11T23:50:11.167322+02:00"
+    created: "2024-08-04T20:01:52.65695+02:00"
     description: External secret management for Kubernetes
     digest: 1e6b5298b21f6bed77aee5edf5c31d45876805c4fb455d7c030fa0a66ec41dc7
     home: https://github.com/external-secrets/external-secrets
@@ -122,7 +146,7 @@ entries:
     version: 0.9.14
   - apiVersion: v2
     appVersion: v0.9.13
-    created: "2024-07-11T23:50:11.158506+02:00"
+    created: "2024-08-04T20:01:52.650712+02:00"
     description: External secret management for Kubernetes
     digest: 30bd50c71d818e70f05893a7605c13d66f934b948d337ef92dc91eaed7d29bdb
     home: https://github.com/external-secrets/external-secrets
@@ -141,7 +165,7 @@ entries:
     version: 0.9.13
   - apiVersion: v2
     appVersion: v0.9.12
-    created: "2024-07-11T23:50:11.152769+02:00"
+    created: "2024-08-04T20:01:52.645364+02:00"
     description: External secret management for Kubernetes
     digest: 6a01177ec7f223e1ac0079983a48615594509eca4b9ef53acb3eefb8794b8169
     home: https://github.com/external-secrets/external-secrets
@@ -160,7 +184,7 @@ entries:
     version: 0.9.12
   - apiVersion: v2
     appVersion: v0.9.11
-    created: "2024-07-11T23:50:11.142358+02:00"
+    created: "2024-08-04T20:01:52.640629+02:00"
     description: External secret management for Kubernetes
     digest: fec0e3c284d779963f4c0df7274cf0a81b428967b1f9c5063a2d5af4241a021f
     home: https://github.com/external-secrets/external-secrets
@@ -179,7 +203,7 @@ entries:
     version: 0.9.11
   - apiVersion: v2
     appVersion: v0.9.10
-    created: "2024-07-11T23:50:11.135239+02:00"
+    created: "2024-08-04T20:01:52.627672+02:00"
     description: External secret management for Kubernetes
     digest: 3d0cdd6b88805f978022602668d77f15e6cfe70acf34bcbda4710168c3107306
     home: https://github.com/external-secrets/external-secrets
@@ -198,7 +222,7 @@ entries:
     version: 0.9.10
   - apiVersion: v2
     appVersion: v0.9.9
-    created: "2024-07-11T23:50:11.241861+02:00"
+    created: "2024-08-04T20:01:52.705383+02:00"
     description: External secret management for Kubernetes
     digest: 207db76881e95a7b3984e12c12c57f3f83c682bd73ce4c6377fe7deb4b4b10c2
     home: https://github.com/external-secrets/external-secrets
@@ -217,7 +241,7 @@ entries:
     version: 0.9.9
   - apiVersion: v2
     appVersion: v0.9.8
-    created: "2024-07-11T23:50:11.236613+02:00"
+    created: "2024-08-04T20:01:52.700369+02:00"
     description: External secret management for Kubernetes
     digest: ac87b46c71faaddd6e6a89beea564f2b8d2e32b5bdb5db181ac4b0fdae973bde
     home: https://github.com/external-secrets/external-secrets
@@ -236,7 +260,7 @@ entries:
     version: 0.9.8
   - apiVersion: v2
     appVersion: v0.9.7
-    created: "2024-07-11T23:50:11.229426+02:00"
+    created: "2024-08-04T20:01:52.696548+02:00"
     description: External secret management for Kubernetes
     digest: 9737f837540db1a76f248fa5b1392e8b76cbf3790ccd97d8ee71bfaafc4ffa30
     home: https://github.com/external-secrets/external-secrets
@@ -255,7 +279,7 @@ entries:
     version: 0.9.7
   - apiVersion: v2
     appVersion: v0.9.6
-    created: "2024-07-11T23:50:11.221224+02:00"
+    created: "2024-08-04T20:01:52.692546+02:00"
     description: External secret management for Kubernetes
     digest: 5445ce0d5c4dcb21452e001e12950218a27ebff964dc4982a07c5272ca63a47c
     home: https://github.com/external-secrets/external-secrets
@@ -274,7 +298,7 @@ entries:
     version: 0.9.6
   - apiVersion: v2
     appVersion: v0.9.5
-    created: "2024-07-11T23:50:11.214+02:00"
+    created: "2024-08-04T20:01:52.688511+02:00"
     description: External secret management for Kubernetes
     digest: ffb740bdbe02664ad98a192d0098293c49241d0233173d8608146fe5e55e2633
     home: https://github.com/external-secrets/external-secrets
@@ -291,4 +315,4 @@ entries:
     urls:
     - external-secrets-0.9.5.tgz
     version: 0.9.5
-generated: "2024-07-11T23:50:11.126342+02:00"
+generated: "2024-08-04T20:01:52.592731+02:00"

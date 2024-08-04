@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   binderhub:
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.970489+02:00"
+    created: "2024-08-04T20:01:56.520398+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -28,7 +28,7 @@ entries:
     - binderhub-0.2.0-n988.h72e1852.tgz
     version: 0.2.0-n988.h72e1852
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.963318+02:00"
+    created: "2024-08-04T20:01:56.513226+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -54,7 +54,7 @@ entries:
     - binderhub-0.2.0-n978.h2eb8b07.tgz
     version: 0.2.0-n978.h2eb8b07
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.956177+02:00"
+    created: "2024-08-04T20:01:56.507022+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -80,7 +80,7 @@ entries:
     - binderhub-0.2.0-n966.h248f390.tgz
     version: 0.2.0-n966.h248f390
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.947401+02:00"
+    created: "2024-08-04T20:01:56.500457+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -106,7 +106,7 @@ entries:
     - binderhub-0.2.0-n961.h20697c6.tgz
     version: 0.2.0-n961.h20697c6
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.939701+02:00"
+    created: "2024-08-04T20:01:56.489603+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -132,7 +132,7 @@ entries:
     - binderhub-0.2.0-n960.h47d7917.tgz
     version: 0.2.0-n960.h47d7917
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.932658+02:00"
+    created: "2024-08-04T20:01:56.479499+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -158,7 +158,7 @@ entries:
     - binderhub-0.2.0-n956.h64a6ec4.tgz
     version: 0.2.0-n956.h64a6ec4
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.925646+02:00"
+    created: "2024-08-04T20:01:56.47388+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -184,7 +184,7 @@ entries:
     - binderhub-0.2.0-n950.hc93c7dc.tgz
     version: 0.2.0-n950.hc93c7dc
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.918503+02:00"
+    created: "2024-08-04T20:01:56.46731+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -210,7 +210,7 @@ entries:
     - binderhub-0.2.0-n939.h0e1813a.tgz
     version: 0.2.0-n939.h0e1813a
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.910227+02:00"
+    created: "2024-08-04T20:01:56.461106+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -236,7 +236,7 @@ entries:
     - binderhub-0.2.0-n923.hb925fd8.tgz
     version: 0.2.0-n923.hb925fd8
   - apiVersion: v2
-    created: "2024-07-11T23:50:14.903783+02:00"
+    created: "2024-08-04T20:01:56.455914+02:00"
     dependencies:
     - name: jupyterhub
       repository: https://jupyterhub.github.io/helm-chart
@@ -266,6 +266,51 @@ entries:
       artifacthub.io/images: |
         - image: quay.io/jupyterhub/configurable-http-proxy:4.6.1
           name: configurable-http-proxy
+        - image: quay.io/jupyterhub/k8s-hub:3.3.8
+          name: k8s-hub
+        - image: quay.io/jupyterhub/k8s-image-awaiter:3.3.8
+          name: k8s-image-awaiter
+        - image: quay.io/jupyterhub/k8s-network-tools:3.3.8
+          name: k8s-network-tools
+        - image: quay.io/jupyterhub/k8s-secret-sync:3.3.8
+          name: k8s-secret-sync
+        - image: quay.io/jupyterhub/k8s-singleuser-sample:3.3.8
+          name: k8s-singleuser-sample
+        - image: registry.k8s.io/kube-scheduler:v1.26.15
+          name: kube-scheduler
+        - image: registry.k8s.io/pause:3.9
+          name: pause
+        - image: registry.k8s.io/pause:3.9
+          name: pause
+        - image: traefik:v2.11.0
+          name: traefik
+    apiVersion: v2
+    appVersion: 4.1.6
+    created: "2024-08-04T20:01:56.580411+02:00"
+    description: Multi-user Jupyter installation
+    digest: ac4dd85c814a322353d68e1a322ba1a5ea0ada6cd8945affcebc46f6ccb2b645
+    home: https://z2jh.jupyter.org
+    icon: https://hub.jupyter.org/helm-chart/images/hublogo.svg
+    keywords:
+    - jupyter
+    - jupyterhub
+    - z2jh
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - email: erik@sundellopensource.se
+      name: Erik Sundell
+    - name: Simon Li
+      url: https://github.com/manics/
+    name: jupyterhub
+    sources:
+    - https://github.com/jupyterhub/zero-to-jupyterhub-k8s
+    urls:
+    - jupyterhub-3.3.8.tgz
+    version: 3.3.8
+  - annotations:
+      artifacthub.io/images: |
+        - image: quay.io/jupyterhub/configurable-http-proxy:4.6.1
+          name: configurable-http-proxy
         - image: quay.io/jupyterhub/k8s-hub:3.3.7
           name: k8s-hub
         - image: quay.io/jupyterhub/k8s-image-awaiter:3.3.7
@@ -286,7 +331,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.5
-    created: "2024-07-11T23:50:15.034763+02:00"
+    created: "2024-08-04T20:01:56.575878+02:00"
     description: Multi-user Jupyter installation
     digest: 59eef46279f5c34736ef901b1b204ea0d55976f41b5f60bc795b8f5bd40b2aa5
     home: https://z2jh.jupyter.org
@@ -331,7 +376,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.4
-    created: "2024-07-11T23:50:15.029336+02:00"
+    created: "2024-08-04T20:01:56.570782+02:00"
     description: Multi-user Jupyter installation
     digest: dac34c8aea8ea2ff4071d2fb2504ef62bfbcd490feb5cd9e132c6b135c64b908
     home: https://z2jh.jupyter.org
@@ -376,7 +421,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.3
-    created: "2024-07-11T23:50:15.023456+02:00"
+    created: "2024-08-04T20:01:56.565549+02:00"
     description: Multi-user Jupyter installation
     digest: 9c4d773025ad126146e5a837b4c8144a1ad582938c5a08befb8b0a7340c06f76
     home: https://z2jh.jupyter.org
@@ -421,7 +466,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.2
-    created: "2024-07-11T23:50:15.017474+02:00"
+    created: "2024-08-04T20:01:56.560462+02:00"
     description: Multi-user Jupyter installation
     digest: f41784154b079f7c06f0fc9b8f8c7ae6bfbbadb23b91fac79ce1b31b7ce347d8
     home: https://z2jh.jupyter.org
@@ -466,7 +511,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.1
-    created: "2024-07-11T23:50:15.010278+02:00"
+    created: "2024-08-04T20:01:56.555032+02:00"
     description: Multi-user Jupyter installation
     digest: 2b64222d0738d37ed2aca5495375b8be7ba275ab5bdbed809823210d96bfdf13
     home: https://z2jh.jupyter.org
@@ -511,7 +556,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.0
-    created: "2024-07-11T23:50:15.004911+02:00"
+    created: "2024-08-04T20:01:56.549415+02:00"
     description: Multi-user Jupyter installation
     digest: 4afe8ffcd8ec4182d2da5dcd3863e2145da89e5cb59d94fdfb09f956eb66d140
     home: https://z2jh.jupyter.org
@@ -556,7 +601,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.0
-    created: "2024-07-11T23:50:14.999791+02:00"
+    created: "2024-08-04T20:01:56.54498+02:00"
     description: Multi-user Jupyter installation
     digest: 6268fab92d67b6c4b481eef2af3095d1c3a1365bd10728b3b79572fa39949ff7
     home: https://z2jh.jupyter.org
@@ -601,7 +646,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.1.0
-    created: "2024-07-11T23:50:14.99349+02:00"
+    created: "2024-08-04T20:01:56.540388+02:00"
     description: Multi-user Jupyter installation
     digest: 2d44f214f5c9ef9fbf284947d7a269cec202ad8bc17184720edd78b0dcef2b63
     home: https://z2jh.jupyter.org
@@ -646,7 +691,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.0.2
-    created: "2024-07-11T23:50:14.987736+02:00"
+    created: "2024-08-04T20:01:56.533495+02:00"
     description: Multi-user Jupyter installation
     digest: de1d557fe87be41fae2ff4f2c97114eeee32090b5933df531e6291e3381a46de
     home: https://z2jh.jupyter.org
@@ -691,7 +736,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.0.2
-    created: "2024-07-11T23:50:14.983232+02:00"
+    created: "2024-08-04T20:01:56.529167+02:00"
     description: Multi-user Jupyter installation
     digest: bd4a92d7e2d63f7c0ec99ab190b702cfe768dabea2573f67e4a4ad25835337eb
     home: https://z2jh.jupyter.org
@@ -736,7 +781,7 @@ entries:
           name: traefik
     apiVersion: v2
     appVersion: 4.0.2
-    created: "2024-07-11T23:50:14.977485+02:00"
+    created: "2024-08-04T20:01:56.525067+02:00"
     description: Multi-user Jupyter installation
     digest: 161099adb01008761ad242c6a0938a813108ed2f57ba4e0de7bb091ffddcc6a7
     home: https://z2jh.jupyter.org
@@ -757,4 +802,4 @@ entries:
     urls:
     - jupyterhub-3.1.0.tgz
     version: 3.1.0
-generated: "2024-07-11T23:50:14.893561+02:00"
+generated: "2024-08-04T20:01:56.449494+02:00"

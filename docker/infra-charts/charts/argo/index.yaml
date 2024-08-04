@@ -3,6 +3,216 @@ entries:
   argo-cd:
   - annotations:
       artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v2.11.7
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.11.7
+    created: "2024-08-04T20:01:44.636038+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 4249ea76c915bb04f4dda095e608004c08f13a7d0e0da2d1836ffc57a8592f7b
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-7.3.11.tgz
+    version: 7.3.11
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v2.11.6
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.11.6
+    created: "2024-08-04T20:01:44.621329+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: a6abedcb7294b27c7cb83b8d98e6a22f165c1920fb98e018748829dff241c7a1
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-7.3.10.tgz
+    version: 7.3.10
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Add Changelog for v7.0.0
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.11.5
+    created: "2024-08-04T20:01:44.755107+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 810844fc51615aa8c5080adc7810ce67c34ce4cab6f4d9a9b679024f413beea1
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-7.3.9.tgz
+    version: 7.3.9
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Add Redis Sentinel variables to application controller deployment
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.11.5
+    created: "2024-08-04T20:01:44.741196+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 83dd01a6b0bd2a76f56a60e80e67a78ddc8c0b165b2dd216076a2949580feecd
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-7.3.8.tgz
+    version: 7.3.8
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v2.11.5
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.11.5
+    created: "2024-08-04T20:01:44.717639+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 19029066fcfe509ab7d4bab6f1bca728df06b3d535970a6583fd88f7145c312d
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-7.3.7.tgz
+    version: 7.3.7
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Address inconsistent redis-secret-init ServiceAccount handling
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v2.11.4
+    created: "2024-08-04T20:01:44.70342+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.26.1
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 284fdb7f709091cd4101ecbabd0bcfb74d6d0e83fc482cf54be92c01c02cd957
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-7.3.6.tgz
+    version: 7.3.6
+  - annotations:
+      artifacthub.io/changes: |
         - kind: fixed
           description: Address oversights of feature `namespaceOverride`
       artifacthub.io/signKey: |
@@ -10,7 +220,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.4
-    created: "2024-07-11T23:50:04.342148+02:00"
+    created: "2024-08-04T20:01:44.690386+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -45,7 +255,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.4
-    created: "2024-07-11T23:50:04.326932+02:00"
+    created: "2024-08-04T20:01:44.677535+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -80,7 +290,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.309565+02:00"
+    created: "2024-08-04T20:01:44.665+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -115,7 +325,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.294114+02:00"
+    created: "2024-08-04T20:01:44.651167+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -150,7 +360,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.275776+02:00"
+    created: "2024-08-04T20:01:44.603079+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -185,7 +395,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.259272+02:00"
+    created: "2024-08-04T20:01:44.588762+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -220,7 +430,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.243063+02:00"
+    created: "2024-08-04T20:01:44.570104+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -257,7 +467,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.22759+02:00"
+    created: "2024-08-04T20:01:44.55631+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -292,7 +502,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.210576+02:00"
+    created: "2024-08-04T20:01:44.539919+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -327,7 +537,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2024-07-11T23:50:04.195709+02:00"
+    created: "2024-08-04T20:01:44.525717+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -362,7 +572,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.2
-    created: "2024-07-11T23:50:03.934458+02:00"
+    created: "2024-08-04T20:01:44.270481+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -397,7 +607,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2024-07-11T23:50:03.917025+02:00"
+    created: "2024-08-04T20:01:44.255425+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -432,7 +642,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2024-07-11T23:50:03.898352+02:00"
+    created: "2024-08-04T20:01:44.239542+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -467,7 +677,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2024-07-11T23:50:03.878754+02:00"
+    created: "2024-08-04T20:01:44.225018+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -504,7 +714,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2024-07-11T23:50:03.86306+02:00"
+    created: "2024-08-04T20:01:44.211373+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -539,7 +749,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2024-07-11T23:50:04.179194+02:00"
+    created: "2024-08-04T20:01:44.511877+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -574,7 +784,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2024-07-11T23:50:04.162542+02:00"
+    created: "2024-08-04T20:01:44.497753+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -613,7 +823,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2024-07-11T23:50:04.147397+02:00"
+    created: "2024-08-04T20:01:44.482419+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -648,7 +858,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2024-07-11T23:50:04.129888+02:00"
+    created: "2024-08-04T20:01:44.469448+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -683,7 +893,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2024-07-11T23:50:04.113789+02:00"
+    created: "2024-08-04T20:01:44.454222+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -718,7 +928,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.5
-    created: "2024-07-11T23:50:04.098261+02:00"
+    created: "2024-08-04T20:01:44.429504+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -753,7 +963,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.5
-    created: "2024-07-11T23:50:04.080787+02:00"
+    created: "2024-08-04T20:01:44.409512+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -788,7 +998,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.5
-    created: "2024-07-11T23:50:04.064929+02:00"
+    created: "2024-08-04T20:01:44.39486+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -823,7 +1033,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.4
-    created: "2024-07-11T23:50:04.049112+02:00"
+    created: "2024-08-04T20:01:44.380174+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -858,7 +1068,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.3
-    created: "2024-07-11T23:50:04.032718+02:00"
+    created: "2024-08-04T20:01:44.366246+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -893,7 +1103,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2024-07-11T23:50:04.017157+02:00"
+    created: "2024-08-04T20:01:44.350806+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -928,7 +1138,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2024-07-11T23:50:04.001096+02:00"
+    created: "2024-08-04T20:01:44.334555+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -963,7 +1173,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2024-07-11T23:50:03.983683+02:00"
+    created: "2024-08-04T20:01:44.320189+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -998,7 +1208,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2024-07-11T23:50:03.968744+02:00"
+    created: "2024-08-04T20:01:44.304571+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1033,7 +1243,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.1
-    created: "2024-07-11T23:50:03.950713+02:00"
+    created: "2024-08-04T20:01:44.28392+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1069,7 +1279,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.9.2
-    created: "2024-07-11T23:50:04.378074+02:00"
+    created: "2024-08-04T20:01:44.787172+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: b8bc7e1b7b07e4c660a3946b2349129580fbf37af15f18d4c975229f80f951b1
@@ -1096,7 +1306,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.9.2
-    created: "2024-07-11T23:50:04.375951+02:00"
+    created: "2024-08-04T20:01:44.784567+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: 30180054e5a775560fe2ba5930a565b7bfb9f232a51096b007b96d3a8a6dc5e4
@@ -1123,7 +1333,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.9.1
-    created: "2024-07-11T23:50:04.373974+02:00"
+    created: "2024-08-04T20:01:44.782294+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: 01c7e12d26e298140d2a4f1b50fd01a78c23843e890d014ca209a08015a34285
@@ -1150,7 +1360,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.9.1
-    created: "2024-07-11T23:50:04.371124+02:00"
+    created: "2024-08-04T20:01:44.779528+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: 57bed7f1a6d61be4942c395e683fc6987425bd732aa45913eb4a1c2e4d33ca2a
@@ -1177,7 +1387,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.9.1
-    created: "2024-07-11T23:50:04.367135+02:00"
+    created: "2024-08-04T20:01:44.777014+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: 10a18c47a63a1d10cee5bf62deda75e98f40964bab8df9d8e466cc0d146ed6a7
@@ -1204,7 +1414,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.9.0
-    created: "2024-07-11T23:50:04.363906+02:00"
+    created: "2024-08-04T20:01:44.774708+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: 94c9803e62a64b4eabd0095c03ef3cface2c39a761b4b85f1f5c39b964b7e30e
@@ -1231,7 +1441,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.8.1
-    created: "2024-07-11T23:50:04.360765+02:00"
+    created: "2024-08-04T20:01:44.771747+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: 543542ffc386f799b09bec1138b63628a4cd5ac7ceedfd32ac4942a3f2b3869d
@@ -1260,7 +1470,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.8.0
-    created: "2024-07-11T23:50:04.357711+02:00"
+    created: "2024-08-04T20:01:44.769527+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: b14cd1ce6ab188aab2ffea328510bc228b865bc627a84cba98cffce78b88a54a
@@ -1287,7 +1497,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v1.7.6
-    created: "2024-07-11T23:50:04.355065+02:00"
+    created: "2024-08-04T20:01:44.766741+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: f2745b65269846d960d81f39a0c5a8f39ff6be6517cec7352acff11a348ed214
@@ -1311,7 +1521,7 @@ entries:
           description: Use correct artifacthub kind and get latest chart version to artifacthub
     apiVersion: v2
     appVersion: v1.7.6
-    created: "2024-07-11T23:50:04.352952+02:00"
+    created: "2024-08-04T20:01:44.764091+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: a3324a813e53693bd11d72558e98a50f118ec86f96ffe521910353349b2cfd0d
@@ -1335,7 +1545,7 @@ entries:
           description: Update chart icon
     apiVersion: v2
     appVersion: v1.7.6
-    created: "2024-07-11T23:50:04.3509+02:00"
+    created: "2024-08-04T20:01:44.7616+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: a8d8a975ed49fa9e51c11ff068c3f19e1dcbca6381defcf0aeaed8756edf2ebc
@@ -1359,7 +1569,7 @@ entries:
           description: Allow extraObjects to contain string templates
     apiVersion: v2
     appVersion: v1.7.6
-    created: "2024-07-11T23:50:04.348288+02:00"
+    created: "2024-08-04T20:01:44.759415+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: ce4a1b5d41ce6ce3e353fa9cd877d4e848c491bb151713639d77532614c9d509
@@ -1383,7 +1593,7 @@ entries:
           description: add namespace field for namespace scoped resources
     apiVersion: v2
     appVersion: v1.7.6
-    created: "2024-07-11T23:50:04.345132+02:00"
+    created: "2024-08-04T20:01:44.75729+02:00"
     description: A Helm chart for Argo Events, the event-driven workflow automation
       framework
     digest: edcab9ce871682b2a7cb45cc9460160fc2ceda5c2493d15dc5941aae2e07708a
@@ -1405,13 +1615,85 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: fixed
+          description: Avoid empty namespace in role binding when singleNamespace is true
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.5.10
+    created: "2024-08-04T20:01:44.843155+02:00"
+    description: A Helm chart for Argo Workflows
+    digest: 9e5335a97927aea1377c15dd91956b34a1e9bd1dea041643db295b1b9e552d45
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-workflows
+    sources:
+    - https://github.com/argoproj/argo-workflows
+    type: application
+    urls:
+    - argo-workflows-0.41.14.tgz
+    version: 0.41.14
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-workflows to v3.5.10
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.5.10
+    created: "2024-08-04T20:01:44.840735+02:00"
+    description: A Helm chart for Argo Workflows
+    digest: e73f79c7d186bf161f1111807d76e81ac878bed42e18da3fa50ec6afb283ae0e
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-workflows
+    sources:
+    - https://github.com/argoproj/argo-workflows
+    type: application
+    urls:
+    - argo-workflows-0.41.13.tgz
+    version: 0.41.13
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-workflows to v3.5.9
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.5.9
+    created: "2024-08-04T20:01:44.836572+02:00"
+    description: A Helm chart for Argo Workflows
+    digest: 4e96d77fe3a0ab5aff4e796ccc02ff25f620120980c94b0797c92046b7e0d612
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-workflows.readthedocs.io/en/stable/assets/logo.png
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-workflows
+    sources:
+    - https://github.com/argoproj/argo-workflows
+    type: application
+    urls:
+    - argo-workflows-0.41.12.tgz
+    version: 0.41.12
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
           description: Add `app:` label to components to match upstream
       artifacthub.io/signKey: |
         fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.8
-    created: "2024-07-11T23:50:04.43644+02:00"
+    created: "2024-08-04T20:01:44.832917+02:00"
     description: A Helm chart for Argo Workflows
     digest: ed4ad79a4c45c542dfe679c59a3617ec9beb189e49e7d0b78ffb208839e2e014
     home: https://github.com/argoproj/argo-helm
@@ -1435,7 +1717,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.8
-    created: "2024-07-11T23:50:04.431963+02:00"
+    created: "2024-08-04T20:01:44.829411+02:00"
     description: A Helm chart for Argo Workflows
     digest: 2bad74fd2e4ace13e7296596f0755942c87e973be1823b9ba4b51e208b77f6ec
     home: https://github.com/argoproj/argo-helm
@@ -1459,7 +1741,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.7
-    created: "2024-07-11T23:50:04.472334+02:00"
+    created: "2024-08-04T20:01:44.873721+02:00"
     description: A Helm chart for Argo Workflows
     digest: 5c90abcdc5699102cded1366f3a9d352f647801f085ff53161f6276b60e0d704
     home: https://github.com/argoproj/argo-helm
@@ -1483,7 +1765,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.7
-    created: "2024-07-11T23:50:04.468257+02:00"
+    created: "2024-08-04T20:01:44.864934+02:00"
     description: A Helm chart for Argo Workflows
     digest: 7136ec112b34b1d9cd94db7270db903393552a3d82156f18f57cfb6270e17502
     home: https://github.com/argoproj/argo-helm
@@ -1507,7 +1789,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.7
-    created: "2024-07-11T23:50:04.463101+02:00"
+    created: "2024-08-04T20:01:44.861892+02:00"
     description: A Helm chart for Argo Workflows
     digest: c0b70d4f39da843975e589a7262cce196aee9db73743b3e190bb8e7288947ca0
     home: https://github.com/argoproj/argo-helm
@@ -1531,7 +1813,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.6
-    created: "2024-07-11T23:50:04.457645+02:00"
+    created: "2024-08-04T20:01:44.858883+02:00"
     description: A Helm chart for Argo Workflows
     digest: fa8ba8fa936e68c63b32669a2b1ebc2dfb964753d7692d7a15be015a4ead349d
     home: https://github.com/argoproj/argo-helm
@@ -1555,7 +1837,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.6
-    created: "2024-07-11T23:50:04.454299+02:00"
+    created: "2024-08-04T20:01:44.856234+02:00"
     description: A Helm chart for Argo Workflows
     digest: 6cb0278639b70dab451e0e45d5bfcd9a043b312ad2938c17d940c5898764c25f
     home: https://github.com/argoproj/argo-helm
@@ -1579,7 +1861,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.6
-    created: "2024-07-11T23:50:04.450574+02:00"
+    created: "2024-08-04T20:01:44.852759+02:00"
     description: A Helm chart for Argo Workflows
     digest: 334672c4a778cdf510e76906e22734440100120498f4e5c3c432106f303afe2e
     home: https://github.com/argoproj/argo-helm
@@ -1603,7 +1885,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.6
-    created: "2024-07-11T23:50:04.446162+02:00"
+    created: "2024-08-04T20:01:44.84867+02:00"
     description: A Helm chart for Argo Workflows
     digest: 3a08e1b1a9a9d80d1007f6a4ac9622ee8b20a26d384ad16c34cdc8dca16544cf
     home: https://github.com/argoproj/argo-helm
@@ -1627,7 +1909,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.6
-    created: "2024-07-11T23:50:04.441914+02:00"
+    created: "2024-08-04T20:01:44.84604+02:00"
     description: A Helm chart for Argo Workflows
     digest: 3b549aabb4a806af19ff841ace21fa1d713397e0b4368da1f35ffceccf531065
     home: https://github.com/argoproj/argo-helm
@@ -1651,7 +1933,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.5
-    created: "2024-07-11T23:50:04.428238+02:00"
+    created: "2024-08-04T20:01:44.826447+02:00"
     description: A Helm chart for Argo Workflows
     digest: f51e9cd4f036e48b3ecb9ad58f9f48052ba4df7dc7041f9884999d916b738946
     home: https://github.com/argoproj/argo-helm
@@ -1675,7 +1957,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.5
-    created: "2024-07-11T23:50:04.424446+02:00"
+    created: "2024-08-04T20:01:44.823428+02:00"
     description: A Helm chart for Argo Workflows
     digest: 352b602fb00fb4bdaa5d2e04d9fc62b0f54cdade565a5b5da9d8b9ef077ad972
     home: https://github.com/argoproj/argo-helm
@@ -1699,7 +1981,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.5
-    created: "2024-07-11T23:50:04.402709+02:00"
+    created: "2024-08-04T20:01:44.804675+02:00"
     description: A Helm chart for Argo Workflows
     digest: 3b2eb00984b08dc6ef9a1c750234fd60939d3aa0f822672afc2d4c93f3960707
     home: https://github.com/argoproj/argo-helm
@@ -1723,7 +2005,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.5
-    created: "2024-07-11T23:50:04.398627+02:00"
+    created: "2024-08-04T20:01:44.801658+02:00"
     description: A Helm chart for Argo Workflows
     digest: a37f41bd2bbef3318b5188007de4f803b1337c7d4e2658bbf794d13b90ac9c20
     home: https://github.com/argoproj/argo-helm
@@ -1747,7 +2029,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.5
-    created: "2024-07-11T23:50:04.392563+02:00"
+    created: "2024-08-04T20:01:44.797849+02:00"
     description: A Helm chart for Argo Workflows
     digest: 2fab74b43b9f687f5cb8ea0b2569eb0795ed3e1756467a08cd699d0f4a390e55
     home: https://github.com/argoproj/argo-helm
@@ -1771,7 +2053,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.4
-    created: "2024-07-11T23:50:04.388235+02:00"
+    created: "2024-08-04T20:01:44.794717+02:00"
     description: A Helm chart for Argo Workflows
     digest: 1d4b9277e7ff07e2678d968848a5f83d47305cecdaa1b77f6ff586b9ad6bcb3c
     home: https://github.com/argoproj/argo-helm
@@ -1795,7 +2077,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.4
-    created: "2024-07-11T23:50:04.383079+02:00"
+    created: "2024-08-04T20:01:44.790907+02:00"
     description: A Helm chart for Argo Workflows
     digest: b8a9ac8b067362b54c3c1af99e6de969a69ec1ace6c4ee472c1fa6382310b58b
     home: https://github.com/argoproj/argo-helm
@@ -1819,7 +2101,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.4
-    created: "2024-07-11T23:50:04.42013+02:00"
+    created: "2024-08-04T20:01:44.820249+02:00"
     description: A Helm chart for Argo Workflows
     digest: de92deb412f1e1e38d39293a5e77bd14dee415c8912448f9729b7b1c66b961f1
     home: https://github.com/argoproj/argo-helm
@@ -1843,7 +2125,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.4
-    created: "2024-07-11T23:50:04.414513+02:00"
+    created: "2024-08-04T20:01:44.816444+02:00"
     description: A Helm chart for Argo Workflows
     digest: 0a9ff150f208dc7f197d7765e40c320476bdadbf47cae214e5708404d579e387
     home: https://github.com/argoproj/argo-helm
@@ -1867,7 +2149,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.4
-    created: "2024-07-11T23:50:04.410111+02:00"
+    created: "2024-08-04T20:01:44.811691+02:00"
     description: A Helm chart for Argo Workflows
     digest: 923b0d0ae3ed22aa4ac7b938b40ef6fb8dbcf45716a327565d93e8bcc3880aa6
     home: https://github.com/argoproj/argo-helm
@@ -1891,7 +2173,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.5.4
-    created: "2024-07-11T23:50:04.406156+02:00"
+    created: "2024-08-04T20:01:44.808548+02:00"
     description: A Helm chart for Argo Workflows
     digest: e8b38ffaf43e5de3181007d6308efb7f5acde9c80a7f527c2c1763ada50595e0
     home: https://github.com/argoproj/argo-helm
@@ -1906,4 +2188,4 @@ entries:
     urls:
     - argo-workflows-0.40.6.tgz
     version: 0.40.6
-generated: "2024-07-11T23:50:03.843415+02:00"
+generated: "2024-08-04T20:01:44.196099+02:00"
