@@ -396,6 +396,13 @@ import_images() {
         "registry.k8s.io/pause:${K8S_PAUSE_VERSION:-3.7}:::prepend_name=kubernetes/"
         "registry.k8s.io/coredns/coredns:${K8S_COREDNS_VERSION:-v1.8.6}"
 
+        # k8s 1.31.x
+        "registry.k8s.io/kube-apiserver:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+
+        # k8s 1.30.x
         "registry.k8s.io/kube-apiserver:${K8S_130_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-proxy:${K8S_130_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-scheduler:${K8S_130_VERSION:-v1.23.5}:::prepend_name=kubernetes/"

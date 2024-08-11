@@ -6,6 +6,10 @@ helm:
     url: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: coredns
+    url: https://coredns.github.io/helm
+    charts:
+      - name: coredns
   - name: airbyte
     url: https://airbytehq.github.io/helm-charts/
     charts:

@@ -1558,6 +1558,8 @@ archive-special:
   script:
     - |
       declare -a special_images=(
+        "${DOCKER_HUB}/kubernetes/pause:3.9"
+
         "${DOCKER_HUB}/distroless/static-${DISTROLESS_VERSION:-debian11}"
         "${DOCKER_HUB}/distroless/base-${DISTROLESS_VERSION:-debian11}"
         "${DOCKER_HUB}/distroless/java11-${DISTROLESS_VERSION:-debian11}"
@@ -1606,6 +1608,7 @@ archive-extra:
           - kubernetes/kube-scheduler
           - kubernetes/kube-controller-manager
         VERSION:
+          - K8S_131_VERSION
           - K8S_130_VERSION
           - K8S_129_VERSION
           - K8S_128_VERSION
