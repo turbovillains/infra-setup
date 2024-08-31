@@ -1104,21 +1104,21 @@ archive-images4:
         VERSION:
           - K8S_NFD_VERSION
       - REGISTRY:
-          - gcr.io
+          - registry.k8s.io
         BASE:
-          - cloud-provider-vsphere/cpi/release/manager
+          - cloud-pv-vsphere/cloud-provider-vsphere
         VERSION:
           - VSPHERE_CPI_MANAGER_VERSION
       - REGISTRY:
-          - gcr.io
+          - registry.k8s.io
         BASE:
-          - cloud-provider-vsphere/csi/release/driver
+          - csi-vsphere/driver
         VERSION:
           - VSPHERE_CSI_DRIVER_VERSION
       - REGISTRY:
-          - gcr.io
+          - registry.k8s.io
         BASE:
-          - cloud-provider-vsphere/csi/release/syncer
+          - csi-vsphere/syncer
         VERSION:
           - VSPHERE_CSI_SYNCER_VERSION
       - REGISTRY:
@@ -1416,6 +1416,10 @@ archive-images4:
         VERSION:
           - CLOUDFLARED_VERSION
       - BASE:
+          - netsampler/goflow2
+        VERSION:
+          - GOFLOW2_VERSION
+      - BASE:
           - nodemailer/wildduck
         VERSION:
           - NODEMAILER_WILDDUCK_VERSION
@@ -1562,10 +1566,10 @@ archive-special:
 
         "${DOCKER_HUB}/distroless/static-${DISTROLESS_VERSION:-debian11}"
         "${DOCKER_HUB}/distroless/base-${DISTROLESS_VERSION:-debian11}"
-        "${DOCKER_HUB}/distroless/java11-${DISTROLESS_VERSION:-debian11}"
         "${DOCKER_HUB}/distroless/java17-${DISTROLESS_VERSION:-debian11}"
+        "${DOCKER_HUB}/distroless/java21-${DISTROLESS_VERSION:-debian11}"
         "${DOCKER_HUB}/distroless/cc-${DISTROLESS_VERSION:-debian11}"
-        "${DOCKER_HUB}/distroless/nodejs-${DISTROLESS_VERSION:-debian11}"
+        "${DOCKER_HUB}/distroless/nodejs22-${DISTROLESS_VERSION:-debian11}"
 
         "${DOCKER_HUB}/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}"
 
@@ -2462,6 +2466,7 @@ keycloak:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg KEYCLOAK_VERSION \
+        --build-arg EMAIL_TOTP_AUTH_VERSION \
         --build-arg KEYCLOAK_THEMES_IMAGE
   variables:
     BASE: keycloak/keycloak
@@ -2794,11 +2799,10 @@ promtail:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LOKI_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: grafana/promtail
-    VERSION: LOKI_VERSION
+    IMAGE_BASE: grafana/promtail
+    IMAGE_VERSION: ${LOKI_VERSION}
 
 loki:
   interruptible: true
@@ -2806,11 +2810,10 @@ loki:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LOKI_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: grafana/loki
-    VERSION: LOKI_VERSION
+    IMAGE_BASE: grafana/loki
+    IMAGE_VERSION: ${LOKI_VERSION}
 
 loki-canary:
   interruptible: true
@@ -2818,11 +2821,10 @@ loki-canary:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LOKI_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: grafana/loki-canary
-    VERSION: LOKI_VERSION
+    IMAGE_BASE: grafana/loki-canary
+    IMAGE_VERSION: ${LOKI_VERSION}
 
 loki-gateway:
   interruptible: true
@@ -2830,11 +2832,10 @@ loki-gateway:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LOKI_GATEWAY_NGINX_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: nginxinc/nginx-unprivileged
-    VERSION: LOKI_GATEWAY_NGINX_VERSION
+    IMAGE_BASE: nginxinc/nginx-unprivileged
+    IMAGE_VERSION: ${LOKI_GATEWAY_NGINX_VERSION}
 
 nginx-unprivileged:
   interruptible: true
@@ -2842,11 +2843,10 @@ nginx-unprivileged:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NGINX_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: nginxinc/nginx-unprivileged
-    VERSION: NGINX_VERSION
+    IMAGE_BASE: nginxinc/nginx-unprivileged
+    IMAGE_VERSION: ${NGINX_VERSION}
 
 httpd:
   interruptible: true
@@ -3439,6 +3439,7 @@ bitnami-keycloak:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg BITNAMI_KEYCLOAK_VERSION \
+        --build-arg EMAIL_TOTP_AUTH_VERSION \
         --build-arg KEYCLOAK_THEMES_IMAGE
   variables:
     BASE: bitnami/keycloak
@@ -4676,7 +4677,7 @@ vsphere-csi-driver:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: cloud-provider-vsphere/csi/release/driver
+    IMAGE_BASE: csi-vsphere/driver
     IMAGE_VERSION: ${VSPHERE_CSI_DRIVER_VERSION}
 
 vsphere-csi-syncer:
@@ -4687,7 +4688,7 @@ vsphere-csi-syncer:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: cloud-provider-vsphere/csi/release/syncer
+    IMAGE_BASE: csi-vsphere/syncer
     IMAGE_VERSION: ${VSPHERE_CSI_SYNCER_VERSION}
 
 vsphere-cpi-manager:
@@ -4698,7 +4699,7 @@ vsphere-cpi-manager:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: cloud-provider-vsphere/cpi/release/manager
+    IMAGE_BASE: cloud-pv-vsphere/cloud-provider-vsphere
     IMAGE_VERSION: ${VSPHERE_CPI_MANAGER_VERSION}
 
 kafdrop:
@@ -4707,11 +4708,10 @@ kafdrop:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KAFDROP_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: obsidiandynamics/kafdrop
-    VERSION: KAFDROP_VERSION
+    IMAGE_BASE: obsidiandynamics/kafdrop
+    IMAGE_VERSION: ${KAFDROP_VERSION}
 
 akhq:
   interruptible: true
@@ -5872,6 +5872,17 @@ cloudflared:
   variables:
     IMAGE_BASE: cloudflare/cloudflared
     IMAGE_VERSION: ${CLOUDFLARED_VERSION}
+
+goflow2:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: netsampler/goflow2
+    IMAGE_VERSION: ${GOFLOW2_VERSION}
 
 wildduck:
   interruptible: true

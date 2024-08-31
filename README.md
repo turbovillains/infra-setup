@@ -126,6 +126,32 @@ graph LR
 
 ## How to use
 
+### Example building single docker image
+
+```
+docker build -t cr.nrtn.dev/sandbox/bitnami-keycloak:v0.0.350-dirty2 \
+  --build-arg INFRA_VERSION=v0.0.350 \
+  --build-arg INFRA_NAMESPACE=infra \
+  --build-arg DOCKER_HUB=cr.nrtn.dev \
+  --build-arg KEYCLOAK_THEMES_IMAGE=cr.nrtn.dev/infra/keycloak-themes:v0.0.350 \
+  --build-arg BITNAMI_KEYCLOAK_VERSION=25.0.4 \
+  --build-arg EMAIL_TOTP_AUTH_VERSION=2.0.0 \
+  --push \
+  .
+```
+
+```
+  docker build -t cr.nrtn.dev/sandbox/keycloak:v0.0.350-dirty2 \
+  --build-arg INFRA_VERSION=v0.0.350 \
+  --build-arg INFRA_NAMESPACE=infra \
+  --build-arg DOCKER_HUB=cr.nrtn.dev \
+  --build-arg KEYCLOAK_THEMES_IMAGE=cr.nrtn.dev/infra/keycloak-themes:v0.0.350 \
+  --build-arg KEYCLOAK_VERSION=25.0.4 \
+  --build-arg EMAIL_TOTP_AUTH_VERSION=2.0.0 \
+  --push \
+  .
+```
+
 ### Upgrades and changes
 
 Component versions are in [```.gitlab-ci.yml```](.gitlab-ci.yml)

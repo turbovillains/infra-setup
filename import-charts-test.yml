@@ -1,6 +1,13 @@
 ---
 helm:
-  - name: zachomedia
-    url: https://zachomedia.github.io/cert-manager-webhook-pdns
+  - name: netbox
+    type: oci
+    uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
-      - name: cert-manager-webhook-pdns
+      - name: netbox
+        version: 5.0.0-beta.102
+
+  - name: vsphere-cpi
+    uri: https://kubernetes.github.io/cloud-provider-vsphere
+    charts:
+      - name: vsphere-cpi

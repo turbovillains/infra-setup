@@ -2,7 +2,85 @@ apiVersion: v1
 entries:
   kubernetes-dashboard:
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.191733+02:00"
+    created: "2024-09-24T12:03:51.216141+02:00"
+    dependencies:
+    - alias: nginx
+      condition: nginx.enabled
+      name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: 4.10.1
+    - condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.14.5
+    - condition: metrics-server.enabled
+      name: metrics-server
+      repository: https://kubernetes-sigs.github.io/metrics-server/
+      version: 3.12.1
+    - condition: kong.enabled
+      name: kong
+      repository: https://charts.konghq.com
+      version: 2.38.0
+    description: General-purpose web UI for Kubernetes clusters
+    digest: c093e1e713f26ff2007bd824725ee8b857c120305b966e5b44e56c0b60b35cb4
+    home: https://github.com/kubernetes/dashboard
+    icon: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.svg
+    keywords:
+    - kubernetes
+    - dashboard
+    kubeVersion: '>=1.21.0-0'
+    maintainers:
+    - email: cdesaintmartin@wiremind.fr
+      name: desaintmartin
+    - email: s.florek91@gmail.com
+      name: floreks
+    name: kubernetes-dashboard
+    sources:
+    - https://github.com/kubernetes/dashboard
+    urls:
+    - kubernetes-dashboard-7.6.1.tgz
+    version: 7.6.1
+  - apiVersion: v2
+    created: "2024-09-24T12:03:51.197585+02:00"
+    dependencies:
+    - alias: nginx
+      condition: nginx.enabled
+      name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: 4.10.1
+    - condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.14.5
+    - condition: metrics-server.enabled
+      name: metrics-server
+      repository: https://kubernetes-sigs.github.io/metrics-server/
+      version: 3.12.1
+    - condition: kong.enabled
+      name: kong
+      repository: https://charts.konghq.com
+      version: 2.38.0
+    description: General-purpose web UI for Kubernetes clusters
+    digest: ea2420c38f6928a4ca4b93294a3c2343e57195d12159a0a57cd08919f988bac8
+    home: https://github.com/kubernetes/dashboard
+    icon: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.svg
+    keywords:
+    - kubernetes
+    - dashboard
+    kubeVersion: '>=1.21.0-0'
+    maintainers:
+    - email: cdesaintmartin@wiremind.fr
+      name: desaintmartin
+    - email: s.florek91@gmail.com
+      name: floreks
+    name: kubernetes-dashboard
+    sources:
+    - https://github.com/kubernetes/dashboard
+    urls:
+    - kubernetes-dashboard-7.6.0.tgz
+    version: 7.6.0
+  - apiVersion: v2
+    created: "2024-09-24T12:03:51.178898+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -41,7 +119,7 @@ entries:
     - kubernetes-dashboard-7.5.0.tgz
     version: 7.5.0
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.165977+02:00"
+    created: "2024-09-24T12:03:51.161405+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -80,7 +158,7 @@ entries:
     - kubernetes-dashboard-7.4.0.tgz
     version: 7.4.0
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.134654+02:00"
+    created: "2024-09-24T12:03:51.142758+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -119,7 +197,7 @@ entries:
     - kubernetes-dashboard-7.3.2.tgz
     version: 7.3.2
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.10912+02:00"
+    created: "2024-09-24T12:03:51.124479+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -158,7 +236,7 @@ entries:
     - kubernetes-dashboard-7.3.1.tgz
     version: 7.3.1
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.085297+02:00"
+    created: "2024-09-24T12:03:51.106937+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -197,7 +275,7 @@ entries:
     - kubernetes-dashboard-7.3.0.tgz
     version: 7.3.0
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.062006+02:00"
+    created: "2024-09-24T12:03:51.087374+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -236,7 +314,7 @@ entries:
     - kubernetes-dashboard-7.2.0.tgz
     version: 7.2.0
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.032509+02:00"
+    created: "2024-09-24T12:03:51.066175+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -275,7 +353,7 @@ entries:
     - kubernetes-dashboard-7.1.3.tgz
     version: 7.1.3
   - apiVersion: v2
-    created: "2024-08-04T20:01:57.004636+02:00"
+    created: "2024-09-24T12:03:51.047987+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -314,7 +392,7 @@ entries:
     - kubernetes-dashboard-7.1.2.tgz
     version: 7.1.2
   - apiVersion: v2
-    created: "2024-08-04T20:01:56.979442+02:00"
+    created: "2024-09-24T12:03:51.0296+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -353,7 +431,7 @@ entries:
     - kubernetes-dashboard-7.1.1.tgz
     version: 7.1.1
   - apiVersion: v2
-    created: "2024-08-04T20:01:56.957633+02:00"
+    created: "2024-09-24T12:03:51.010482+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -392,7 +470,7 @@ entries:
     - kubernetes-dashboard-7.1.0.tgz
     version: 7.1.0
   - apiVersion: v2
-    created: "2024-08-04T20:01:56.933142+02:00"
+    created: "2024-09-24T12:03:50.992178+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -431,7 +509,7 @@ entries:
     - kubernetes-dashboard-7.0.1.tgz
     version: 7.0.1
   - apiVersion: v2
-    created: "2024-08-04T20:01:56.901458+02:00"
+    created: "2024-09-24T12:03:50.969994+02:00"
     dependencies:
     - alias: nginx
       condition: nginx.enabled
@@ -471,7 +549,7 @@ entries:
     version: 7.0.0
   - apiVersion: v2
     appVersion: v2.7.0
-    created: "2024-08-04T20:01:56.870584+02:00"
+    created: "2024-09-24T12:03:50.946338+02:00"
     dependencies:
     - condition: metrics-server.enabled
       name: metrics-server
@@ -496,7 +574,7 @@ entries:
     version: 6.0.8
   - apiVersion: v2
     appVersion: v2.7.0
-    created: "2024-08-04T20:01:56.866992+02:00"
+    created: "2024-09-24T12:03:50.944034+02:00"
     dependencies:
     - condition: metrics-server.enabled
       name: metrics-server
@@ -521,7 +599,7 @@ entries:
     version: 6.0.7
   - apiVersion: v2
     appVersion: v2.7.0
-    created: "2024-08-04T20:01:56.863479+02:00"
+    created: "2024-09-24T12:03:50.940964+02:00"
     dependencies:
     - condition: metrics-server.enabled
       name: metrics-server
@@ -546,7 +624,7 @@ entries:
     version: 6.0.6
   - apiVersion: v2
     appVersion: v2.7.0
-    created: "2024-08-04T20:01:56.86039+02:00"
+    created: "2024-09-24T12:03:50.938343+02:00"
     dependencies:
     - condition: metrics-server.enabled
       name: metrics-server
@@ -569,4 +647,4 @@ entries:
     urls:
     - kubernetes-dashboard-6.0.5.tgz
     version: 6.0.5
-generated: "2024-08-04T20:01:56.856521+02:00"
+generated: "2024-09-24T12:03:50.934207+02:00"

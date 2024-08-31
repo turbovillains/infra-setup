@@ -1,9 +1,79 @@
 apiVersion: v1
 entries:
   base:
+  - apiVersion: v2
+    appVersion: 1.23.2
+    created: "2024-09-24T12:03:49.841968+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: f79ac5991a58bd312a1bd760c795feae8dc43c707e9585145ad3ab4826bbfed1
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.23.2.tgz
+    version: 1.23.2
+  - apiVersion: v2
+    appVersion: 1.23.1
+    created: "2024-09-24T12:03:49.838164+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 9815ba4ee3f49bbfe3cfd6d591bd4eee250d8aa90d5b153436cfa72e2a0e1409
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.23.1.tgz
+    version: 1.23.1
+  - apiVersion: v2
+    appVersion: 1.23.0
+    created: "2024-09-24T12:03:49.835805+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 7bc0c039f4848b742abdf7394f4e18c66b48074e0c3f08043caf71ca725ede6a
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.23.0.tgz
+    version: 1.23.0
+  - apiVersion: v1
+    appVersion: 1.22.5
+    created: "2024-09-24T12:03:49.833001+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: c2c8d0c48d49d5062d2335c30ecb60160035cf1245efd2358668cf01e8c0eb0d
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.22.5.tgz
+    version: 1.22.5
+  - apiVersion: v1
+    appVersion: 1.22.4
+    created: "2024-09-24T12:03:49.829969+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: bd2c3a66b82c336a150297496dd7a280a77ae6d4a8d9d4f4361f70db82f8aef9
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.22.4.tgz
+    version: 1.22.4
   - apiVersion: v1
     appVersion: 1.22.3
-    created: "2024-08-04T20:01:55.374315+02:00"
+    created: "2024-09-24T12:03:49.827467+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 39ade76db07f1083ada80f8dd6ae52b83c480228e5b642a5112db2b400443d11
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -17,7 +87,7 @@ entries:
     version: 1.22.3
   - apiVersion: v1
     appVersion: 1.22.2
-    created: "2024-08-04T20:01:55.370997+02:00"
+    created: "2024-09-24T12:03:49.824359+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 96cb95a6e61fa0598889feade86cbdffb34c069920983c66fc2ca29a5be63e05
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -31,7 +101,7 @@ entries:
     version: 1.22.2
   - apiVersion: v1
     appVersion: 1.22.1
-    created: "2024-08-04T20:01:55.367869+02:00"
+    created: "2024-09-24T12:03:49.821396+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: ca4f2267f3e63b77a5813f40531f67cbda8232ed1406730a876af2b05c97d8b3
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -45,7 +115,7 @@ entries:
     version: 1.22.1
   - apiVersion: v1
     appVersion: 1.22.0
-    created: "2024-08-04T20:01:55.363585+02:00"
+    created: "2024-09-24T12:03:49.81898+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 956dcdb3117e7f431135b3eb656fb1ecbf844c09b9f26cc476754a08d4e312ee
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -58,8 +128,22 @@ entries:
     - base-1.22.0.tgz
     version: 1.22.0
   - apiVersion: v1
+    appVersion: 1.21.6
+    created: "2024-09-24T12:03:49.815278+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 45559c3b0280443016a672de8d997ef438232468b11f7a77883590a558c0c75f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.21.6.tgz
+    version: 1.21.6
+  - apiVersion: v1
     appVersion: 1.21.5
-    created: "2024-08-04T20:01:55.360661+02:00"
+    created: "2024-09-24T12:03:49.813209+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 36f515245c12512a4e6ff4e037d54126ab4c235112e6fa43844099a575c6b496
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -73,7 +157,7 @@ entries:
     version: 1.21.5
   - apiVersion: v1
     appVersion: 1.21.4
-    created: "2024-08-04T20:01:55.357808+02:00"
+    created: "2024-09-24T12:03:49.811284+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 0b0504f15998c42f1a439e955d8e4a4794e1c24a90620268ec01fc6773fd1883
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -87,7 +171,7 @@ entries:
     version: 1.21.4
   - apiVersion: v1
     appVersion: 1.21.3
-    created: "2024-08-04T20:01:55.355367+02:00"
+    created: "2024-09-24T12:03:49.808312+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 0c5424beb927a4be913414db7fb46a24e111462147b5fc5c02e22b4245d11d57
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -101,7 +185,7 @@ entries:
     version: 1.21.3
   - apiVersion: v1
     appVersion: 1.21.2
-    created: "2024-08-04T20:01:55.353023+02:00"
+    created: "2024-09-24T12:03:49.805321+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 4405d278ffc1584deb3f1f0d0d9f94b788e6eaed02b5bb385cb6308d397361d0
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -115,7 +199,7 @@ entries:
     version: 1.21.2
   - apiVersion: v1
     appVersion: 1.21.1
-    created: "2024-08-04T20:01:55.350795+02:00"
+    created: "2024-09-24T12:03:49.80256+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 20055164e987d1757f303af94af0d4ce3b0be2327f9083b04c0c14cb36f51fe1
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -129,7 +213,7 @@ entries:
     version: 1.21.1
   - apiVersion: v1
     appVersion: 1.21.0
-    created: "2024-08-04T20:01:55.34737+02:00"
+    created: "2024-09-24T12:03:49.799791+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 224b95605f608a9eef6a46a384c54ff440e9d9affa3b34ee22c1059374aa3027
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -143,7 +227,7 @@ entries:
     version: 1.21.0
   - apiVersion: v1
     appVersion: 1.20.8
-    created: "2024-08-04T20:01:55.344325+02:00"
+    created: "2024-09-24T12:03:49.796156+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: f67d300e8885680d5823b214b4ae6be32709e3d2bda9f8c7818d8765e498a39d
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -157,7 +241,7 @@ entries:
     version: 1.20.8
   - apiVersion: v1
     appVersion: 1.20.7
-    created: "2024-08-04T20:01:55.341811+02:00"
+    created: "2024-09-24T12:03:49.793421+02:00"
     description: Helm chart for deploying Istio cluster resources and CRDs
     digest: 38ed4df8d0176ccbe09a0c0f74a06937af8cf7c1b8e740f334094de80a129c28
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -171,8 +255,88 @@ entries:
     version: 1.20.7
   gateway:
   - apiVersion: v2
+    appVersion: 1.23.2
+    created: "2024-09-24T12:03:49.863545+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: adf39286e34f71b57dd6f8bd3f05a0efd8dab9ea860a1a0ff9ad621a3b636ba2
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.23.2.tgz
+    version: 1.23.2
+  - apiVersion: v2
+    appVersion: 1.23.1
+    created: "2024-09-24T12:03:49.862456+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: dd6ecb5761741829928738a5454ab439ba5f58cb0135c57970e1fd81e2e9e025
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.23.1.tgz
+    version: 1.23.1
+  - apiVersion: v2
+    appVersion: 1.23.0
+    created: "2024-09-24T12:03:49.861184+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: a8219181f4942f9d2399af394a9f333b4b2b0dbef0fd3715278e3b463301dc94
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.23.0.tgz
+    version: 1.23.0
+  - apiVersion: v2
+    appVersion: 1.22.5
+    created: "2024-09-24T12:03:49.859992+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 2e068a00d4e1a6da0e02bfd89e79c5064c461bedc62df909def109f59516d10c
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.22.5.tgz
+    version: 1.22.5
+  - apiVersion: v2
+    appVersion: 1.22.4
+    created: "2024-09-24T12:03:49.858824+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 8e8c94da566d29c9da369067f72564c3ed09060441d431d38d558ec237eaba6d
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.22.4.tgz
+    version: 1.22.4
+  - apiVersion: v2
     appVersion: 1.22.3
-    created: "2024-08-04T20:01:55.39565+02:00"
+    created: "2024-09-24T12:03:49.857645+02:00"
     description: Helm chart for deploying Istio gateways
     digest: e8fcc6e624f204efb0665eced8f448b9b4798751b94121f3a31dbbc8e1efbe85
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -188,7 +352,7 @@ entries:
     version: 1.22.3
   - apiVersion: v2
     appVersion: 1.22.2
-    created: "2024-08-04T20:01:55.394245+02:00"
+    created: "2024-09-24T12:03:49.856502+02:00"
     description: Helm chart for deploying Istio gateways
     digest: da325d48e6294729d3990356430235f10c75e4fedc162bba12c18b912171180d
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -204,7 +368,7 @@ entries:
     version: 1.22.2
   - apiVersion: v2
     appVersion: 1.22.1
-    created: "2024-08-04T20:01:55.392631+02:00"
+    created: "2024-09-24T12:03:49.855352+02:00"
     description: Helm chart for deploying Istio gateways
     digest: a29d0216ac8dc854ba972f0c1dacc7fca5b48a854fc96ce1bca229e73a90526b
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -220,7 +384,7 @@ entries:
     version: 1.22.1
   - apiVersion: v2
     appVersion: 1.22.0
-    created: "2024-08-04T20:01:55.391033+02:00"
+    created: "2024-09-24T12:03:49.854213+02:00"
     description: Helm chart for deploying Istio gateways
     digest: dda4634611f985c8cd5876bfe9365b76723df52cd05d70d0d3089490d9918696
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -235,8 +399,24 @@ entries:
     - gateway-1.22.0.tgz
     version: 1.22.0
   - apiVersion: v2
+    appVersion: 1.21.6
+    created: "2024-09-24T12:03:49.853127+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 9c9bceef2da4a3746d18186d5a12e72a7a0d2d733db6fd874c61b2091f1c57c0
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.21.6.tgz
+    version: 1.21.6
+  - apiVersion: v2
     appVersion: 1.21.5
-    created: "2024-08-04T20:01:55.389574+02:00"
+    created: "2024-09-24T12:03:49.851976+02:00"
     description: Helm chart for deploying Istio gateways
     digest: d3d2f10024e14b1d266258d5197bd938a8d525b0773582988eb289af14988637
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -252,7 +432,7 @@ entries:
     version: 1.21.5
   - apiVersion: v2
     appVersion: 1.21.4
-    created: "2024-08-04T20:01:55.387869+02:00"
+    created: "2024-09-24T12:03:49.850708+02:00"
     description: Helm chart for deploying Istio gateways
     digest: a7472c3d4120c22d81dd736f668af64e2a979f49cefd7bcf682358b483311c79
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -268,7 +448,7 @@ entries:
     version: 1.21.4
   - apiVersion: v2
     appVersion: 1.21.3
-    created: "2024-08-04T20:01:55.385739+02:00"
+    created: "2024-09-24T12:03:49.849486+02:00"
     description: Helm chart for deploying Istio gateways
     digest: 96a255a71ec0f168fe92df1d25c2a2d3abc16dc5a895fa706140ed32b65e76b6
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -284,7 +464,7 @@ entries:
     version: 1.21.3
   - apiVersion: v2
     appVersion: 1.21.2
-    created: "2024-08-04T20:01:55.383364+02:00"
+    created: "2024-09-24T12:03:49.84837+02:00"
     description: Helm chart for deploying Istio gateways
     digest: 2395813d63df60470c841077940b3ccae4b797f034478a50e812bb2393e47878
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -300,7 +480,7 @@ entries:
     version: 1.21.2
   - apiVersion: v2
     appVersion: 1.21.1
-    created: "2024-08-04T20:01:55.381603+02:00"
+    created: "2024-09-24T12:03:49.847024+02:00"
     description: Helm chart for deploying Istio gateways
     digest: 5ec303f5a53c5362416a40a337b0a39dc27b5896abd449c5c6c6e6ebca09335b
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -316,7 +496,7 @@ entries:
     version: 1.21.1
   - apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-08-04T20:01:55.379311+02:00"
+    created: "2024-09-24T12:03:49.845775+02:00"
     description: Helm chart for deploying Istio gateways
     digest: fc39477c4ed67c45a2acb21655b722f323d83a1bcf1361618bdc379e6b2a6f66
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -332,7 +512,7 @@ entries:
     version: 1.21.0
   - apiVersion: v2
     appVersion: 1.20.8
-    created: "2024-08-04T20:01:55.377436+02:00"
+    created: "2024-09-24T12:03:49.844516+02:00"
     description: Helm chart for deploying Istio gateways
     digest: 7cb416a79e7021ef184b9dc04307d87e3e6c2906b5fed87fc2ff7f30a1c96035
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -348,7 +528,7 @@ entries:
     version: 1.20.8
   - apiVersion: v2
     appVersion: 1.20.7
-    created: "2024-08-04T20:01:55.375888+02:00"
+    created: "2024-09-24T12:03:49.843242+02:00"
     description: Helm chart for deploying Istio gateways
     digest: f80b20ff462e3d54e6efbf22dc9da27352681bd522be98f9f47965e5f947b68a
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -363,9 +543,89 @@ entries:
     - gateway-1.20.7.tgz
     version: 1.20.7
   istiod:
+  - apiVersion: v2
+    appVersion: 1.23.2
+    created: "2024-09-24T12:03:49.901178+02:00"
+    description: Helm chart for istio control plane
+    digest: 8c5ff2cfe4c17fd89bfc964e6b8fe497a8576bd0ec20da5acf3748e79a05433f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.23.2.tgz
+    version: 1.23.2
+  - apiVersion: v2
+    appVersion: 1.23.1
+    created: "2024-09-24T12:03:49.899142+02:00"
+    description: Helm chart for istio control plane
+    digest: d88da0f1b43858c17ad22ecdef57eb3594a4ea8269565c06cbd2225a05eee41f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.23.1.tgz
+    version: 1.23.1
+  - apiVersion: v2
+    appVersion: 1.23.0
+    created: "2024-09-24T12:03:49.897212+02:00"
+    description: Helm chart for istio control plane
+    digest: a554db7dc4716df301f2f65558e7bc70925185796a4a82af5e6100ab6c02229f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.23.0.tgz
+    version: 1.23.0
+  - apiVersion: v1
+    appVersion: 1.22.5
+    created: "2024-09-24T12:03:49.895111+02:00"
+    description: Helm chart for istio control plane
+    digest: a4babc76840df060b1dc4d00401bf1b86075e6bf4ec0ef796f206ec6b66449c5
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.22.5.tgz
+    version: 1.22.5
+  - apiVersion: v1
+    appVersion: 1.22.4
+    created: "2024-09-24T12:03:49.893106+02:00"
+    description: Helm chart for istio control plane
+    digest: 87332d4bdf7bd841179271b3212f97a69f0f0988cc31ef7f677f251ac4143eb6
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.22.4.tgz
+    version: 1.22.4
   - apiVersion: v1
     appVersion: 1.22.3
-    created: "2024-08-04T20:01:55.436326+02:00"
+    created: "2024-09-24T12:03:49.890567+02:00"
     description: Helm chart for istio control plane
     digest: 6c8afad2b8c739f58de7a835de8896fd37ea8a56b2ce55a21b58de4768d45cdc
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -381,7 +641,7 @@ entries:
     version: 1.22.3
   - apiVersion: v1
     appVersion: 1.22.2
-    created: "2024-08-04T20:01:55.434013+02:00"
+    created: "2024-09-24T12:03:49.888468+02:00"
     description: Helm chart for istio control plane
     digest: 60f13e69f5be0f887adf5c7b935fe3281d794b5602c59c4bebba89d983aa6ed7
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -397,7 +657,7 @@ entries:
     version: 1.22.2
   - apiVersion: v1
     appVersion: 1.22.1
-    created: "2024-08-04T20:01:55.431696+02:00"
+    created: "2024-09-24T12:03:49.886368+02:00"
     description: Helm chart for istio control plane
     digest: 171356f34144995ca913a0f07f4f86dd54026fca6236164cb92b56361a77ce49
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -413,7 +673,7 @@ entries:
     version: 1.22.1
   - apiVersion: v1
     appVersion: 1.22.0
-    created: "2024-08-04T20:01:55.428982+02:00"
+    created: "2024-09-24T12:03:49.88434+02:00"
     description: Helm chart for istio control plane
     digest: 15fd2995781474450c05391c693cff439a7e746ba134319a4db9f6827f68b77f
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -428,8 +688,24 @@ entries:
     - istiod-1.22.0.tgz
     version: 1.22.0
   - apiVersion: v1
+    appVersion: 1.21.6
+    created: "2024-09-24T12:03:49.882365+02:00"
+    description: Helm chart for istio control plane
+    digest: c8bf10e9b79eb0f04f1c2a485a9eac78151a02ca2219ac96e53692af02a29786
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.21.6.tgz
+    version: 1.21.6
+  - apiVersion: v1
     appVersion: 1.21.5
-    created: "2024-08-04T20:01:55.425979+02:00"
+    created: "2024-09-24T12:03:49.880437+02:00"
     description: Helm chart for istio control plane
     digest: 2ebcadd2ba975211cbcb3272d50af7b8b8539fed0ffe182918b6cd6f5330a72b
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -445,7 +721,7 @@ entries:
     version: 1.21.5
   - apiVersion: v1
     appVersion: 1.21.4
-    created: "2024-08-04T20:01:55.423219+02:00"
+    created: "2024-09-24T12:03:49.878014+02:00"
     description: Helm chart for istio control plane
     digest: 4f28364d452be0013054d15f46c4e70259cf6230606b0cd640a54f0121634a60
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -461,7 +737,7 @@ entries:
     version: 1.21.4
   - apiVersion: v1
     appVersion: 1.21.3
-    created: "2024-08-04T20:01:55.419726+02:00"
+    created: "2024-09-24T12:03:49.87594+02:00"
     description: Helm chart for istio control plane
     digest: cc7af5c3f6ec9c012b93273e93b8843b14c55793676ea92a6be9b9ef7823603b
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -477,7 +753,7 @@ entries:
     version: 1.21.3
   - apiVersion: v1
     appVersion: 1.21.2
-    created: "2024-08-04T20:01:55.414418+02:00"
+    created: "2024-09-24T12:03:49.873947+02:00"
     description: Helm chart for istio control plane
     digest: 78112298a79f3a52b34c97e7430d54741920200c8bc10190c6e19f74671c3faa
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -493,7 +769,7 @@ entries:
     version: 1.21.2
   - apiVersion: v1
     appVersion: 1.21.1
-    created: "2024-08-04T20:01:55.410878+02:00"
+    created: "2024-09-24T12:03:49.871929+02:00"
     description: Helm chart for istio control plane
     digest: 1ac4582bcc8a783103fe7e8f6ede2a2c662a75dbbc565ea10d0f59ddb499b17b
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -509,7 +785,7 @@ entries:
     version: 1.21.1
   - apiVersion: v1
     appVersion: 1.21.0
-    created: "2024-08-04T20:01:55.407984+02:00"
+    created: "2024-09-24T12:03:49.870042+02:00"
     description: Helm chart for istio control plane
     digest: 1211c9577bdc51e4002de02c3028376c1d1070c4d57dd2c5c4c84b28b0b7a3f3
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -525,7 +801,7 @@ entries:
     version: 1.21.0
   - apiVersion: v1
     appVersion: 1.20.8
-    created: "2024-08-04T20:01:55.402119+02:00"
+    created: "2024-09-24T12:03:49.868163+02:00"
     description: Helm chart for istio control plane
     digest: 221e8983ca8a6cc8653a3663face9046e5dc108719ac9629818ab93d9fcc32f7
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -541,7 +817,7 @@ entries:
     version: 1.20.8
   - apiVersion: v1
     appVersion: 1.20.7
-    created: "2024-08-04T20:01:55.398048+02:00"
+    created: "2024-09-24T12:03:49.865953+02:00"
     description: Helm chart for istio control plane
     digest: f6ad4c227823276903c5c54555761068fad93d153d3a37fa32c5a23c62a4fe7c
     icon: https://istio.io/latest/favicons/android-192x192.png
@@ -555,4 +831,4 @@ entries:
     urls:
     - istiod-1.20.7.tgz
     version: 1.20.7
-generated: "2024-08-04T20:01:55.337583+02:00"
+generated: "2024-09-24T12:03:49.790535+02:00"

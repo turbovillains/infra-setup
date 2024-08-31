@@ -3,7 +3,7 @@ entries:
   puppetserver:
   - apiVersion: v2
     appVersion: 7.17.0
-    created: "2024-08-04T20:01:58.730832+02:00"
+    created: "2024-09-24T12:03:52.444233+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -52,7 +52,7 @@ entries:
     version: 9.5.2
   - apiVersion: v2
     appVersion: 7.17.0
-    created: "2024-08-04T20:01:58.720527+02:00"
+    created: "2024-09-24T12:03:52.435465+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -101,7 +101,7 @@ entries:
     version: 9.5.1
   - apiVersion: v2
     appVersion: 7.17.0
-    created: "2024-08-04T20:01:58.707525+02:00"
+    created: "2024-09-24T12:03:52.426817+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -150,7 +150,7 @@ entries:
     version: 9.5.0
   - apiVersion: v2
     appVersion: 7.17.0
-    created: "2024-08-04T20:01:58.696125+02:00"
+    created: "2024-09-24T12:03:52.418854+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -197,7 +197,7 @@ entries:
     version: 9.4.2
   - apiVersion: v2
     appVersion: 7.17.0
-    created: "2024-08-04T20:01:58.679804+02:00"
+    created: "2024-09-24T12:03:52.410082+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -244,7 +244,7 @@ entries:
     version: 9.4.1
   - apiVersion: v2
     appVersion: 7.17.0
-    created: "2024-08-04T20:01:58.662269+02:00"
+    created: "2024-09-24T12:03:52.402114+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -291,7 +291,7 @@ entries:
     version: 9.4.0
   - apiVersion: v2
     appVersion: 7.13.0
-    created: "2024-08-04T20:01:58.652119+02:00"
+    created: "2024-09-24T12:03:52.393619+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -338,7 +338,7 @@ entries:
     version: 9.3.4
   - apiVersion: v2
     appVersion: 7.13.0
-    created: "2024-08-04T20:01:58.640267+02:00"
+    created: "2024-09-24T12:03:52.384663+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -385,7 +385,7 @@ entries:
     version: 9.3.3
   - apiVersion: v2
     appVersion: 7.13.0
-    created: "2024-08-04T20:01:58.629161+02:00"
+    created: "2024-09-24T12:03:52.375248+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -432,7 +432,7 @@ entries:
     version: 9.3.2
   - apiVersion: v2
     appVersion: 7.13.0
-    created: "2024-08-04T20:01:58.619015+02:00"
+    created: "2024-09-24T12:03:52.36569+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -477,4 +477,4 @@ entries:
     urls:
     - puppetserver-9.3.1.tgz
     version: 9.3.1
-generated: "2024-08-04T20:01:58.605725+02:00"
+generated: "2024-09-24T12:03:52.355833+02:00"

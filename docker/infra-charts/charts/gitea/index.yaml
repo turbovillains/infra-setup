@@ -2,8 +2,60 @@ apiVersion: v1
 entries:
   gitea:
   - apiVersion: v2
+    appVersion: 1.22.2
+    created: "2024-09-24T12:03:48.05427+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 15.5.20
+    - condition: postgresql-ha.enabled
+      name: postgresql-ha
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 14.2.16
+    - condition: redis-cluster.enabled
+      name: redis-cluster
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 10.3.0
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 19.6.4
+    description: Gitea Helm chart for Kubernetes
+    digest: b2ac71b48f3713ac49bcb927ca463d4d43b0519da9c14a442fd217e2e526da63
+    icon: https://gitea.com/assets/img/logo.svg
+    keywords:
+    - git
+    - issue tracker
+    - code review
+    - wiki
+    - gitea
+    - gogs
+    maintainers:
+    - email: charlie@charliedrage.com
+      name: Charlie Drage
+    - email: maintainers@gitea.io
+      name: Gitea Authors
+    - email: konrad.lother@novum-rgi.de
+      name: Konrad Lother
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    - email: sk.bunsenbrenner@gmail.com
+      name: Steven Kriegler
+    - email: patrick.schratz@gmail.com
+      name: Patrick Schratz
+    name: gitea
+    sources:
+    - https://gitea.com/gitea/helm-chart
+    - https://github.com/go-gitea/gitea
+    - https://hub.docker.com/r/gitea/gitea/
+    type: application
+    urls:
+    - gitea-10.4.1.tgz
+    version: 10.4.1
+  - apiVersion: v2
     appVersion: 1.22.1
-    created: "2024-08-04T20:01:53.032513+02:00"
+    created: "2024-09-24T12:03:48.032994+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -55,7 +107,7 @@ entries:
     version: 10.4.0
   - apiVersion: v2
     appVersion: 1.22.0
-    created: "2024-08-04T20:01:52.996981+02:00"
+    created: "2024-09-24T12:03:48.010355+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -107,7 +159,7 @@ entries:
     version: 10.3.0
   - apiVersion: v2
     appVersion: 1.22.0
-    created: "2024-08-04T20:01:52.969114+02:00"
+    created: "2024-09-24T12:03:47.988369+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -155,7 +207,7 @@ entries:
     version: 10.2.0
   - apiVersion: v2
     appVersion: 1.21.11
-    created: "2024-08-04T20:01:52.950063+02:00"
+    created: "2024-09-24T12:03:47.972493+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -203,7 +255,7 @@ entries:
     version: 10.1.4
   - apiVersion: v2
     appVersion: 1.21.7
-    created: "2024-08-04T20:01:52.931052+02:00"
+    created: "2024-09-24T12:03:47.95702+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -251,7 +303,7 @@ entries:
     version: 10.1.3
   - apiVersion: v2
     appVersion: 1.21.6
-    created: "2024-08-04T20:01:52.911119+02:00"
+    created: "2024-09-24T12:03:47.942232+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -299,7 +351,7 @@ entries:
     version: 10.1.2
   - apiVersion: v2
     appVersion: 1.21.5
-    created: "2024-08-04T20:01:52.888051+02:00"
+    created: "2024-09-24T12:03:47.926839+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -347,7 +399,7 @@ entries:
     version: 10.1.1
   - apiVersion: v2
     appVersion: 1.21.4
-    created: "2024-08-04T20:01:52.867254+02:00"
+    created: "2024-09-24T12:03:47.911808+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -395,7 +447,7 @@ entries:
     version: 10.1.0
   - apiVersion: v2
     appVersion: 1.21.3
-    created: "2024-08-04T20:01:52.847998+02:00"
+    created: "2024-09-24T12:03:47.897159+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -443,7 +495,7 @@ entries:
     version: 10.0.2
   - apiVersion: v2
     appVersion: 1.21.2
-    created: "2024-08-04T20:01:52.833031+02:00"
+    created: "2024-09-24T12:03:47.881685+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -491,7 +543,7 @@ entries:
     version: 10.0.1
   - apiVersion: v2
     appVersion: 1.21.2
-    created: "2024-08-04T20:01:52.813768+02:00"
+    created: "2024-09-24T12:03:47.866933+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -539,7 +591,7 @@ entries:
     version: 10.0.0
   - apiVersion: v2
     appVersion: 1.21.1
-    created: "2024-08-04T20:01:53.068764+02:00"
+    created: "2024-09-24T12:03:48.084904+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -587,7 +639,7 @@ entries:
     version: 9.6.1
   - apiVersion: v2
     appVersion: 1.21.0
-    created: "2024-08-04T20:01:53.051378+02:00"
+    created: "2024-09-24T12:03:48.069688+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -633,4 +685,4 @@ entries:
     urls:
     - gitea-9.6.0.tgz
     version: 9.6.0
-generated: "2024-08-04T20:01:52.79316+02:00"
+generated: "2024-09-24T12:03:47.851854+02:00"

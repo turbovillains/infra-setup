@@ -10,10 +10,10 @@ import_images() {
         "busybox:${BUSYBOX_VERSION:-1.34.1}:::prepend_name=library/"
         "gcr.io/distroless/static-${DISTROLESS_VERSION:-debian11}"
         "gcr.io/distroless/base-${DISTROLESS_VERSION:-debian11}"
-        "gcr.io/distroless/java11-${DISTROLESS_VERSION:-debian11}"
         "gcr.io/distroless/java17-${DISTROLESS_VERSION:-debian11}"
+        "gcr.io/distroless/java21-${DISTROLESS_VERSION:-debian11}"
         "gcr.io/distroless/cc-${DISTROLESS_VERSION:-debian11}"
-        "gcr.io/distroless/nodejs-${DISTROLESS_VERSION:-debian11}"
+        "gcr.io/distroless/nodejs22-${DISTROLESS_VERSION:-debian11}"
         "buildpack-deps:${BUILDPACK_DEPS_BIONIC_VERSION:-bionic@sha256:1ae2e168c8cc4408fdf7cb40244643b99d10757f36391eee844834347de3c15c}:::prepend_name=library/"
         "buildpack-deps:${BUILDPACK_DEPS_FOCAL_VERSION:-focal@sha256:eecbd661c4983df91059018d67c0d7203c68c1eeac036e6a479c3df94483ffba}:::prepend_name=library/"
         "buildpack-deps:${BUILDPACK_DEPS_JAMMY_VERSION:-jammy@sha256:e93e88c6e97ffb6a315182db7d606dcb161714db7b2961a4efe727d39c165e1a}:::prepend_name=library/"
@@ -286,6 +286,7 @@ import_images() {
         "changemakerstudiosus/papercut-smtp:${PAPERCUT_VERSION:-7.0.0-rc1}"
         "docker.n8n.io/n8nio/n8n:${N8N_VERSION:-1.50.0}"
         "cloudflare/cloudflared:${CLOUDFLARED_VERSION:-2024.6.1}"
+        "netsampler/goflow2:${GOFLOW2_VERSION:-v2.2.1}"
 
         # Airbyte
         "airbyte/webapp:${AIRBYTE_VERSION:-0.63.8}"
@@ -482,9 +483,9 @@ import_images() {
         "longhornio/support-bundle-kit:${LONGHORN_SUPPORT_BUNDLE_KIT_VERSION:-v0.0.25}"
 
         # vsphere csi/cpi
-        "gcr.io/cloud-provider-vsphere/cpi/release/manager:${VSPHERE_CPI_MANAGER_VERSION:-v1.23.0}"
-        "gcr.io/cloud-provider-vsphere/csi/release/driver:${VSPHERE_CSI_DRIVER_VERSION:-v2.5.1}"
-        "gcr.io/cloud-provider-vsphere/csi/release/syncer:${VSPHERE_CSI_SYNCER_VERSION:-v2.5.1}"
+        "registry.k8s.io/cloud-pv-vsphere/cloud-provider-vsphere:${VSPHERE_CPI_MANAGER_VERSION:-v1.23.0}"
+        "registry.k8s.io/csi-vsphere/driver:${VSPHERE_CSI_DRIVER_VERSION:-v2.5.1}"
+        "registry.k8s.io/csi-vsphere/syncer:${VSPHERE_CSI_SYNCER_VERSION:-v2.5.1}"
         "registry.k8s.io/sig-storage/livenessprobe:${LIVENESSPROBE_VERSION:-v2.7.0}"
         "registry.k8s.io/sig-storage/csi-node-driver-registrar:${CSI_NODE_DRIVER_REGISTRAR_VERSION:-v2.5.1}"
         "registry.k8s.io/sig-storage/csi-attacher:${CSI_ATTACHER_VERSION:-v3.4.0}"
