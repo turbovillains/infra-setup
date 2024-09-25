@@ -10,7 +10,7 @@ build-image = "heroku/heroku:24-build"
 run-image = "heroku/heroku:24"
 
 [lifecycle]
-version = "0.20.1"
+version = "0.20.2"
 
 [[buildpacks]]
   id = "heroku/go"
