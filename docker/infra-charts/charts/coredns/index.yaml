@@ -3,11 +3,179 @@ entries:
   coredns:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fix
+          description: Add default values to chart to fix cluster role name templating issue
+    apiVersion: v2
+    appVersion: 1.11.3
+    created: "2024-10-31T18:13:21.3018+01:00"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: f790cc67b9e12d9267c2bbfc63ef4143400b9cc8c48ec4a293ce5683292aa53b
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - coredns-1.36.1.tgz
+    version: 1.36.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Add environment variables on container specs
+    apiVersion: v2
+    appVersion: 1.11.3
+    created: "2024-10-31T18:13:21.301128+01:00"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: c625aa58a7f7cae1d2fbbe653dd1252a7d0a82bbca8784ebc3a02b079b39984b
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - coredns-1.36.0.tgz
+    version: 1.36.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Move `trafficDistribution` key to correct path
+    apiVersion: v2
+    appVersion: 1.11.3
+    created: "2024-10-31T18:13:21.300445+01:00"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: 0af7a146a1b5448ded5fb3ec013b8e4fe3ccd87c54edb69c7e0fda9159df5a0a
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - coredns-1.35.1.tgz
+    version: 1.35.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Support `trafficDistribution` property for service
+    apiVersion: v2
+    appVersion: 1.11.3
+    created: "2024-10-31T18:13:21.299772+01:00"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: b2af3779ff14a0b0272802b583adf1b94cdb0df92595b4eb0a934193acfca244
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - coredns-1.35.0.tgz
+    version: 1.35.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Support different service and container ports
+    apiVersion: v2
+    appVersion: 1.11.3
+    created: "2024-10-31T18:13:21.29916+01:00"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: 951af09ba3d777e52b720dd4e10a2801bb0f5137adba379b7bf6ced3a7682ae3
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - coredns-1.34.0.tgz
+    version: 1.34.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Add support for specifying the service loadBalancerClass.
+    apiVersion: v2
+    appVersion: 1.11.3
+    created: "2024-10-31T18:13:21.298532+01:00"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: 3567a4fdbd1cb774a13c050d0417856f6d24d6b5d9958155179894e1452384c7
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - coredns-1.33.0.tgz
+    version: 1.33.0
+  - annotations:
+      artifacthub.io/changes: |
         - kind: changed
           description: Upgrade CoreDNS to 1.11.3
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2024-09-24T12:03:47.248401+02:00"
+    created: "2024-10-31T18:13:21.297475+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 5599ba9de33671243bf93496956eb160fc1aac96728c64e0e33e0f3a35ad4b2b
@@ -37,7 +205,7 @@ entries:
           description: Setting `clusterRole.nameOverride` to allow overriding the ClusterRole name.
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.246586+02:00"
+    created: "2024-10-31T18:13:21.296859+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: a057fed7108dd3e355b5bebeafe2d8b621a20e31e353da1996185ae8595058ff
@@ -65,7 +233,7 @@ entries:
           description: Ability to skip configmap management
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.244116+02:00"
+    created: "2024-10-31T18:13:21.296269+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 8c9018ecfba0a2a8309307df30a9999defc23fb14caf870b5ba0b04c8c653b91
@@ -95,7 +263,7 @@ entries:
           description: Removed deprecated "engine: gotpl" from the Chart.yaml
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.241944+02:00"
+    created: "2024-10-31T18:13:21.295686+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 3c73d9d62313dae6e870abfe357e75059e00b8fef58d65dfd9a8f292614c2c3d
@@ -123,7 +291,7 @@ entries:
           description: add .Release.Namespace in metadata
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.239527+02:00"
+    created: "2024-10-31T18:13:21.29509+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: f64ae3551ca1187264a9421ca61f46b0b4b563333c3cb53d7e25d3b236970cab
@@ -151,7 +319,7 @@ entries:
           description: Added option to override defaultMode for extraSecrets
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.237625+02:00"
+    created: "2024-10-31T18:13:21.294435+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 16ede7be3154a9bd826c83d6b2d797a8d8b8b9b20e473b8969ae513fe6a275d0
@@ -179,7 +347,7 @@ entries:
           description: topologySpreadConstraints can be templated values
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.23529+02:00"
+    created: "2024-10-31T18:13:21.293812+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: f778567b179d4bee3280782b996b16506bc8df842c353e48e6ac577e34eaa350
@@ -207,7 +375,7 @@ entries:
           description: Fixed indentation for sidecar containers
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.232783+02:00"
+    created: "2024-10-31T18:13:21.293127+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 85e58051c926666365fb41e23408778c32111e9fb759e7dc7f830199e9206eb5
@@ -235,7 +403,7 @@ entries:
           description: Added support for sidecar containers via extraContainers
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.230716+02:00"
+    created: "2024-10-31T18:13:21.29202+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 4ee0807012255777a3a4cce783ee55fdb742aaafc1fc3d3b58c7ad8daf472f9e
@@ -263,7 +431,7 @@ entries:
           description: Upgrade CoreDNS to 1.11.1
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2024-09-24T12:03:47.229019+02:00"
+    created: "2024-10-31T18:13:21.291369+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 78093091790c0a193cd9be5fe3f8d69cd82124c3097433811f265522d1755621
@@ -285,4 +453,4 @@ entries:
     urls:
     - coredns-1.26.0.tgz
     version: 1.26.0
-generated: "2024-09-24T12:03:47.225814+02:00"
+generated: "2024-10-31T18:13:21.290643+01:00"

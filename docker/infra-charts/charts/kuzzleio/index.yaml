@@ -2,8 +2,28 @@ apiVersion: v1
 entries:
   chirpstack:
   - apiVersion: v2
+    appVersion: 4.9.0
+    created: "2024-10-31T18:13:23.453519+01:00"
+    description: ChirpStack Kubernetes Chart
+    digest: ba569c17bef8e20054af5b3850d0851b71b8f3e9b5dd8cef14a8c864ecde9c7f
+    name: chirpstack
+    type: application
+    urls:
+    - chirpstack-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 4.9.0
+    created: "2024-10-31T18:13:23.453169+01:00"
+    description: ChirpStack Kubernetes Chart
+    digest: 91aa91a3794738eeb6e7dd37b62553f7485a8a3ae851d397e3f4cde401681a11
+    name: chirpstack
+    type: application
+    urls:
+    - chirpstack-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     appVersion: 4.2.0
-    created: "2024-09-24T12:03:51.277315+02:00"
+    created: "2024-10-31T18:13:23.452798+01:00"
     description: ChirpStack Kubernetes Chart
     digest: 6789ddf3922434bafce1d44a327a17b1e60855a7f59dba3bb32f485d516a413c
     name: chirpstack
@@ -13,7 +33,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: 4.2.0
-    created: "2024-09-24T12:03:51.27594+02:00"
+    created: "2024-10-31T18:13:23.452432+01:00"
     description: ChirpStack Kubernetes Chart
     digest: 7d390511c5a04644acf7e77724ae53066b2737940eaaa75456b2449b2234779b
     name: chirpstack
@@ -23,7 +43,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 4.2.0
-    created: "2024-09-24T12:03:51.27476+02:00"
+    created: "2024-10-31T18:13:23.452049+01:00"
     description: ChirpStack Kubernetes Chart
     digest: 64e8492dab1c28d84c75925af95561de2bcb0bcccefeb50caab56e8d1c541065
     name: chirpstack
@@ -31,4 +51,4 @@ entries:
     urls:
     - chirpstack-0.1.0.tgz
     version: 0.1.0
-generated: "2024-09-24T12:03:51.27299+02:00"
+generated: "2024-10-31T18:13:23.451617+01:00"

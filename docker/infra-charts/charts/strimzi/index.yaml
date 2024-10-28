@@ -2,8 +2,39 @@ apiVersion: v1
 entries:
   strimzi-kafka-operator:
   - apiVersion: v2
+    appVersion: 0.44.0
+    created: "2024-10-31T18:13:24.31464+01:00"
+    description: 'Strimzi: Apache Kafka running on Kubernetes'
+    digest: ea827095480b585cf00b7ce94ef3146e6a83e79459dd3bd65da4464e3b13e14e
+    home: https://strimzi.io/
+    icon: https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/main/documentation/logo/strimzi_logo.png
+    keywords:
+    - kafka
+    - queue
+    - stream
+    - event
+    - messaging
+    - datastore
+    - topic
+    maintainers:
+    - name: Frawless
+    - name: ppatierno
+    - name: samuel-hawker
+    - name: scholzj
+    - name: tombentley
+    - name: sknot-rh
+    - name: PaulRMellor
+    - name: im-konge
+    - name: see-quick
+    name: strimzi-kafka-operator
+    sources:
+    - https://github.com/strimzi/strimzi-kafka-operator
+    urls:
+    - strimzi-kafka-operator-helm-3-chart-0.44.0.tgz
+    version: 0.44.0
+  - apiVersion: v2
     appVersion: 0.43.0
-    created: "2024-09-24T12:03:53.159357+02:00"
+    created: "2024-10-31T18:13:24.311465+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: 36b48f8ec692e47bf478b81b8e208012a3c981d19cb83ac04376ab2cb2120802
     home: https://strimzi.io/
@@ -34,7 +65,7 @@ entries:
     version: 0.43.0
   - apiVersion: v2
     appVersion: 0.42.0
-    created: "2024-09-24T12:03:53.153315+02:00"
+    created: "2024-10-31T18:13:24.30897+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: b4c624ad071149787d94cd782b739df22fe8db7b596d46863557d39177abd025
     home: https://strimzi.io/
@@ -65,7 +96,7 @@ entries:
     version: 0.42.0
   - apiVersion: v2
     appVersion: 0.41.0
-    created: "2024-09-24T12:03:53.148824+02:00"
+    created: "2024-10-31T18:13:24.306194+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: dbc2112011224a46701a253613f50602b4bf6fddd83d95510c4014fe7d28989a
     home: https://strimzi.io/
@@ -96,7 +127,7 @@ entries:
     version: 0.41.0
   - apiVersion: v2
     appVersion: 0.40.0
-    created: "2024-09-24T12:03:53.145259+02:00"
+    created: "2024-10-31T18:13:24.303556+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: a005735c8b397f92ef6c599023a7ee1f2354eabbd8f0282b192f331f02592cc1
     home: https://strimzi.io/
@@ -127,7 +158,7 @@ entries:
     version: 0.40.0
   - apiVersion: v2
     appVersion: 0.39.0
-    created: "2024-09-24T12:03:53.140994+02:00"
+    created: "2024-10-31T18:13:24.300823+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: a0fab1443750719105fc3fba09862a7a325ca9a6241edfec1f45f29117786066
     home: https://strimzi.io/
@@ -158,7 +189,7 @@ entries:
     version: 0.39.0
   - apiVersion: v2
     appVersion: 0.38.0
-    created: "2024-09-24T12:03:53.136878+02:00"
+    created: "2024-10-31T18:13:24.298246+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: 61140ea89859e47dd93b23013127daa7ed4b803f1399fbdf3bc14fdeb80870c8
     home: https://strimzi.io/
@@ -189,7 +220,7 @@ entries:
     version: 0.38.0
   - apiVersion: v2
     appVersion: 0.37.0
-    created: "2024-09-24T12:03:53.132947+02:00"
+    created: "2024-10-31T18:13:24.29568+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: 727804f63fd71be47b3a78df7f9d4496c8a7159cac847ff084454daaef199e6d
     home: https://strimzi.io/
@@ -220,7 +251,7 @@ entries:
     version: 0.37.0
   - apiVersion: v2
     appVersion: 0.36.1
-    created: "2024-09-24T12:03:53.129048+02:00"
+    created: "2024-10-31T18:13:24.293033+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: f938f1e5f93c5a02a97cd157d4f7014ef916d8ff526af821ea87b620e4600a5a
     home: https://strimzi.io/
@@ -251,7 +282,7 @@ entries:
     version: 0.36.1
   - apiVersion: v2
     appVersion: 0.36.0
-    created: "2024-09-24T12:03:53.125143+02:00"
+    created: "2024-10-31T18:13:24.290574+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: 6308d79fd10c3120baee90721691277d9dfcc3432f1e2afdd9218a2dfbe67253
     home: https://strimzi.io/
@@ -282,7 +313,7 @@ entries:
     version: 0.36.0
   - apiVersion: v2
     appVersion: 0.35.1
-    created: "2024-09-24T12:03:53.120221+02:00"
+    created: "2024-10-31T18:13:24.288111+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: 2640bc28c210bf65dde90260626415da222dc757e24aa73909ddf84122f6e486
     home: https://strimzi.io/
@@ -313,7 +344,7 @@ entries:
     version: 0.35.1
   - apiVersion: v2
     appVersion: 0.35.0
-    created: "2024-09-24T12:03:53.116127+02:00"
+    created: "2024-10-31T18:13:24.285737+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: f81af4d34a8ad753ca6ff97f86a040c4a412c2e4412d730b428a8f98072538e4
     home: https://strimzi.io/
@@ -344,7 +375,7 @@ entries:
     version: 0.35.0
   - apiVersion: v2
     appVersion: 0.34.0
-    created: "2024-09-24T12:03:53.110389+02:00"
+    created: "2024-10-31T18:13:24.283175+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: 18fe2d00f34cf6f22608a44d6e6308dd540afa7ecf253301caedeec9fc72a5ec
     home: https://strimzi.io/
@@ -372,7 +403,7 @@ entries:
     version: 0.34.0
   - apiVersion: v2
     appVersion: 0.33.2
-    created: "2024-09-24T12:03:53.105894+02:00"
+    created: "2024-10-31T18:13:24.281453+01:00"
     description: 'Strimzi: Apache Kafka running on Kubernetes'
     digest: 0ccadae1c38c554e615dd3ffcc35b40718c63c4acf0fc4f45168afb785b350f5
     home: https://strimzi.io/
@@ -398,4 +429,4 @@ entries:
     urls:
     - strimzi-kafka-operator-helm-3-chart-0.33.2.tgz
     version: 0.33.2
-generated: "2024-09-24T12:03:53.101162+02:00"
+generated: "2024-10-31T18:13:24.27936+01:00"

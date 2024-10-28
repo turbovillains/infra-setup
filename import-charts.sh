@@ -35,7 +35,7 @@ import_charts() {
                                     '[
                                         .entries[$name]
                                         | .[]
-                                        | select(.version | test("beta|alpha|dev|test|canary|rc|preview") | not)
+                                        | select(.version | test("beta|alpha|dev|test|canary|nightly|rc|preview") | not)
                                     ]
                                     | sort_by(.version | sub("^v"; "") | split(".") | map(tonumber? // 0))
                                     | reverse
