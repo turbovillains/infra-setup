@@ -290,6 +290,7 @@ import_images() {
         "netsampler/goflow2:${GOFLOW2_VERSION:-v2.2.1}"
         "ghcr.io/corentinth/it-tools:${ITTOOLS_VERSION:-2024.5.13-a0bc346}"
         "quay.io/openbgpd/openbgpd:${OPENBGPD_VERISON:-"8.6"}"
+        "swaggerapi/swagger-ui:${SWAGGER_UI_VERSION:-v5.18.2}"
 
         # Airbyte
         "airbyte/webapp:${AIRBYTE_VERSION:-0.63.8}"
