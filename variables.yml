@@ -230,8 +230,8 @@ variables:
   CSI_PROVISIONER_VERSION: v5.1.0
   CSI_NFSPLUGIN_VERSION: v4.9.0 # https://github.com/kubernetes-csi/csi-driver-nfs/releases
   K8S_NFD_VERSION: v0.16.6 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
-  TIGERA_OPERATOR_VERSION: "v1.36.0" # https://github.com/tigera/operator/releases
-  CALICO_VERSION: "v3.29.0" # https://hub.docker.com/r/calico/node/tags
+  TIGERA_OPERATOR_VERSION: "v1.34.6" # https://github.com/tigera/operator/releases
+  CALICO_VERSION: "v3.28.2" # https://hub.docker.com/r/calico/node/tags
   CONSUL_VERSION: "1.20.1" # https://hub.docker.com/r/hashicorp/consul
   CONSUL_K8S_CP_VERSION: "1.6.0" # https://hub.docker.com/r/hashicorp/consul-k8s-control-plane/tags
   ENVOY_VERSION: v1.21.6 # https://hub.docker.com/r/envoyproxy/envoy-alpine/tags
