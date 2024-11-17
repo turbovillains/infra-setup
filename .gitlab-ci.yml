@@ -1747,12 +1747,8 @@ ingress-default-backend:
       git clone --depth 1 https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/ingress-default-backend.git
       cd ingress-default-backend
 
-      pack build \
-        --clear-cache \
-        --publish \
-        --trust-builder \
-        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      docker build --output=type=local,type=registry \
+        -t ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} .
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
