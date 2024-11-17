@@ -2,8 +2,38 @@ apiVersion: v1
 entries:
   eck-operator:
   - apiVersion: v2
+    appVersion: 2.15.0
+    created: "2024-11-19T18:16:06.016596+01:00"
+    dependencies:
+    - condition: installCRDs
+      name: eck-operator-crds
+      repository: ""
+      version: 2.15.0
+    description: Elastic Cloud on Kubernetes (ECK) operator
+    digest: c689808743939e06c51f1d033230a12985f4515f217396ce8041cca7a6f2f3f4
+    home: https://github.com/elastic/cloud-on-k8s
+    icon: https://helm.elastic.co/icons/eck.png
+    keywords:
+    - Logstash
+    - Elasticsearch
+    - Kibana
+    - APM Server
+    - Beats
+    - Enterprise Search
+    - Elastic Stack
+    - Operator
+    kubeVersion: '>=1.21.0-0'
+    maintainers:
+    - email: eck@elastic.co
+      name: Elastic
+    name: eck-operator
+    type: application
+    urls:
+    - eck-operator-2.15.0.tgz
+    version: 2.15.0
+  - apiVersion: v2
     appVersion: 2.14.0
-    created: "2024-11-02T14:14:28.073197+01:00"
+    created: "2024-11-19T18:16:06.010346+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -33,7 +63,7 @@ entries:
     version: 2.14.0
   - apiVersion: v2
     appVersion: 2.13.0
-    created: "2024-11-02T14:14:28.070129+01:00"
+    created: "2024-11-19T18:16:06.004544+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -63,7 +93,7 @@ entries:
     version: 2.13.0
   - apiVersion: v2
     appVersion: 2.12.1
-    created: "2024-11-02T14:14:28.067012+01:00"
+    created: "2024-11-19T18:16:05.998974+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -93,7 +123,7 @@ entries:
     version: 2.12.1
   - apiVersion: v2
     appVersion: 2.12.0
-    created: "2024-11-02T14:14:28.064108+01:00"
+    created: "2024-11-19T18:16:05.993368+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -123,7 +153,7 @@ entries:
     version: 2.12.0
   - apiVersion: v2
     appVersion: 2.11.1
-    created: "2024-11-02T14:14:28.060901+01:00"
+    created: "2024-11-19T18:16:05.987464+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -153,7 +183,7 @@ entries:
     version: 2.11.1
   - apiVersion: v2
     appVersion: 2.11.0
-    created: "2024-11-02T14:14:28.05739+01:00"
+    created: "2024-11-19T18:16:05.981338+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -183,7 +213,7 @@ entries:
     version: 2.11.0
   - apiVersion: v2
     appVersion: 2.10.0
-    created: "2024-11-02T14:14:28.053676+01:00"
+    created: "2024-11-19T18:16:05.975335+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -213,7 +243,7 @@ entries:
     version: 2.10.0
   - apiVersion: v2
     appVersion: 2.9.0
-    created: "2024-11-02T14:14:28.087036+01:00"
+    created: "2024-11-19T18:16:06.044478+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -243,7 +273,7 @@ entries:
     version: 2.9.0
   - apiVersion: v2
     appVersion: 2.8.0
-    created: "2024-11-02T14:14:28.084056+01:00"
+    created: "2024-11-19T18:16:06.038442+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -272,7 +302,7 @@ entries:
     version: 2.8.0
   - apiVersion: v2
     appVersion: 2.7.0
-    created: "2024-11-02T14:14:28.080872+01:00"
+    created: "2024-11-19T18:16:06.032705+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -303,7 +333,7 @@ entries:
     version: 2.7.0
   - apiVersion: v2
     appVersion: 2.6.1
-    created: "2024-11-02T14:14:28.078156+01:00"
+    created: "2024-11-19T18:16:06.027343+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -334,7 +364,7 @@ entries:
     version: 2.6.1
   - apiVersion: v2
     appVersion: 2.6.0
-    created: "2024-11-02T14:14:28.075697+01:00"
+    created: "2024-11-19T18:16:06.02202+01:00"
     dependencies:
     - condition: installCRDs
       name: eck-operator-crds
@@ -363,4 +393,4 @@ entries:
     urls:
     - eck-operator-2.6.0.tgz
     version: 2.6.0
-generated: "2024-11-02T14:14:28.050419+01:00"
+generated: "2024-11-19T18:16:05.969104+01:00"

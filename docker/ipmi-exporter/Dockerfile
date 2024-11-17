@@ -6,6 +6,8 @@ ARG GOLANG_VERSION
 
 FROM ${DOCKER_HUB}/library/golang:${GOLANG_VERSION} as builder
 
+ARG TARGETARCH
+
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 RUN apt-get update && \
@@ -13,8 +15,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV CGO_ENABLED 0
-ENV GOARCH amd64
+# ENV CGO_ENABLED 0
+ENV GOARCH ${TARGETARCH}
 ENV CGO_ENABLED 1
 
 RUN cd / \

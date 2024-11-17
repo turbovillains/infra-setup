@@ -60,6 +60,9 @@ build_image() {
     test ! -z ${BUILDER_USER:-}
 
     local implicit_args="--no-cache \
+        --builder=mybuilder \
+        --platform ${DOCKER_BUILDER_TARGET_PLATFORM:-linux/amd64,linux/arm64} \
+        --push \
         --secret id=ssh_private_key,src=/home/${BUILDER_USER}/.ssh/id_rsa \
         --secret id=infra_readonly_token,src=/home/${BUILDER_USER}/.infra_readonly_token \
         --build-arg DOCKER_HUB \
@@ -76,13 +79,13 @@ build_image() {
     echo "docker build ${implicit_args} ${docker_build_args} -t ${DOCKER_HUB}/${target} docker/${component}"
 
     docker build ${implicit_args} ${docker_build_args} -t ${DOCKER_HUB}/${target} docker/${component}
-    docker push ${DOCKER_HUB}/${target}
+    # docker push ${DOCKER_HUB}/${target}
 
     if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
         archive_image ${DOCKER_HUB}/${target} ${INFRA_VERSION}
     fi
 
-    docker rmi ${DOCKER_HUB}/${target}
+    # docker rmi ${DOCKER_HUB}/${target}
 }
 
 migrate_image() {

@@ -10,7 +10,85 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2024-11-02T14:14:28.758757+01:00"
+    created: "2024-11-19T18:16:07.641162+01:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 3dee8f0d21f0f75b969cecdd5d73ed328fc311a35e6a627d1c2aec70b3c6a3b4
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.6.0.tgz
+    version: 8.6.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.3.0
+    created: "2024-11-19T18:16:07.596112+01:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 2436969a1e33eea5ceb25dcfdb38340d02399f7d4f58b3014a123d1906694465
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.5.12.tgz
+    version: 8.5.12
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.3.0
+    created: "2024-11-19T18:16:07.590802+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d819579b61e79d903572c869ac63481e9f97ab1396866372eb10a7c3d9647d99
     home: https://grafana.com
@@ -49,7 +127,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2024-11-02T14:14:28.756594+01:00"
+    created: "2024-11-19T18:16:07.586045+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6476a47690b6d630d7cc08074e3721e948aabbab41abf001d32d15b9627dce7e
     home: https://grafana.com
@@ -88,7 +166,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2024-11-02T14:14:28.773633+01:00"
+    created: "2024-11-19T18:16:07.635961+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 898cc3b1ee67afc059c9e5f91468210873d9056b8abd76f273bf4d722f5d57a6
     home: https://grafana.com
@@ -127,7 +205,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2-security-01
-    created: "2024-11-02T14:14:28.771876+01:00"
+    created: "2024-11-19T18:16:07.630822+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 64cef28c4e1a3839c64e3f113914aaa92ae9d29c8762b09a2a1d74a242de3a83
     home: https://grafana.com
@@ -166,7 +244,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2-security-01
-    created: "2024-11-02T14:14:28.76995+01:00"
+    created: "2024-11-19T18:16:07.625663+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: f797b1e9d65e4c1d1b73df2b1757d4d00bf747f2c4643f89a2e8f3f89c7c14a7
     home: https://grafana.com
@@ -205,7 +283,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2024-11-02T14:14:28.767986+01:00"
+    created: "2024-11-19T18:16:07.620828+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 12228d85982a1acc5809a1f74fa8e81983007257d88c2d801300a0839a7fe798
     home: https://grafana.com
@@ -244,7 +322,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2024-11-02T14:14:28.766211+01:00"
+    created: "2024-11-19T18:16:07.616282+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 27c388350e800dddb9c6bd27221457444f52bb302813a0953f8ee14e447be710
     home: https://grafana.com
@@ -283,7 +361,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2024-11-02T14:14:28.764139+01:00"
+    created: "2024-11-19T18:16:07.611558+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 372a94f10c642e04fb3dfe332ad51c9a9b1accd9f1b93f080b686329f32e464d
     home: https://grafana.com
@@ -322,7 +400,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2024-11-02T14:14:28.762398+01:00"
+    created: "2024-11-19T18:16:07.605723+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 26aaba2004e5c66b8dde66a51bb4d9ec58f529e6da6a7763adb7e06281647a0c
     home: https://grafana.com
@@ -361,7 +439,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.1
-    created: "2024-11-02T14:14:28.760669+01:00"
+    created: "2024-11-19T18:16:07.60088+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 20e837fc6a1e22da2ead492bb266448b30f4d12b5396355411bc8978f086a5dd
     home: https://grafana.com
@@ -400,7 +478,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.0
-    created: "2024-11-02T14:14:28.754844+01:00"
+    created: "2024-11-19T18:16:07.58138+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d74a57e3b7ea6046391e7ef8794b8b2de37c284d1e220d0810f84ca574a91714
     home: https://grafana.com
@@ -439,7 +517,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.5
-    created: "2024-11-02T14:14:28.753043+01:00"
+    created: "2024-11-19T18:16:07.57664+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: b8078669c8781d3431daa54bbd2f948cc61aa814ed55bd9e86ae3141110758a0
     home: https://grafana.com
@@ -478,7 +556,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.5
-    created: "2024-11-02T14:14:28.751367+01:00"
+    created: "2024-11-19T18:16:07.570602+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: fecba02fbd634be98f5ec034a362cf22bb14917b1daeb7748a30abe13d7c3506
     home: https://grafana.com
@@ -517,7 +595,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2024-11-02T14:14:28.749405+01:00"
+    created: "2024-11-19T18:16:07.56535+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6b5af3d09ec78bf187d914f1abcbf8fd8a78fba2f09819aed6261afad31dfce0
     home: https://grafana.com
@@ -556,7 +634,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2024-11-02T14:14:28.747476+01:00"
+    created: "2024-11-19T18:16:07.560124+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: da522fbb8c7be36a4c2d15b08272fe5f1976ba7a2cca7fea3ae4aa88770bf7d5
     home: https://grafana.com
@@ -595,7 +673,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2024-11-02T14:14:28.745634+01:00"
+    created: "2024-11-19T18:16:07.555138+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d1c32001bfaca17d61ac0de0fae9e9cb290c898d3881c8c063424ad391cb0995
     home: https://grafana.com
@@ -634,7 +712,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2024-11-02T14:14:28.743263+01:00"
+    created: "2024-11-19T18:16:07.549604+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 46cb7b3e02f71df7b2b1a6f55af4708c6ceeaf1f1456b3f328856e4fcd256a19
     home: https://grafana.com
@@ -673,7 +751,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2024-11-02T14:14:28.741477+01:00"
+    created: "2024-11-19T18:16:07.544923+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: ac9078d9d8b7f4fcda0110ab9ae7e912ab672fdac0133f015fb6d3662d77dd79
     home: https://grafana.com
@@ -712,7 +790,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2024-11-02T14:14:28.739714+01:00"
+    created: "2024-11-19T18:16:07.539772+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 9e68f71fe149747090d0a5f7c1e03679de58358aae8883b4ae987039cda71c93
     home: https://grafana.com
@@ -751,7 +829,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2024-11-02T14:14:28.737902+01:00"
+    created: "2024-11-19T18:16:07.534606+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: bc82d3e447cbb8403ef46600e2813723c3ac72a6beb7eaf68849bace75d73127
     home: https://grafana.com
@@ -790,7 +868,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2024-11-02T14:14:28.735776+01:00"
+    created: "2024-11-19T18:16:07.529037+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: f6b4250e65b5fb9cdffd408c3b894975c6be62939ae5070b1420dc06a6ffe47d
     home: https://grafana.com
@@ -829,7 +907,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.73397+01:00"
+    created: "2024-11-19T18:16:07.524266+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 52dafd635d2d99d1339159dcb51e34879f7ccd3677d91d981d1bdc19f8957e33
     home: https://grafana.com
@@ -868,7 +946,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.732318+01:00"
+    created: "2024-11-19T18:16:07.517487+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: a775b978943d53ecbe18098c7a7cb6b39ed17d021a78234f12e36f8fd43f3cc3
     home: https://grafana.com
@@ -907,7 +985,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.730594+01:00"
+    created: "2024-11-19T18:16:07.511255+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: b3098f10779561e3dc81b4fc3fc869738af37288b006b67cf6f9ec50081c707b
     home: https://grafana.com
@@ -946,7 +1024,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.728598+01:00"
+    created: "2024-11-19T18:16:07.5065+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: acb830a96cee3c33a2236b781a3eb2959c260aa2d10ee2f17d100a6f2b9d1d64
     home: https://grafana.com
@@ -985,7 +1063,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.726888+01:00"
+    created: "2024-11-19T18:16:07.501529+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 87acc86c998ebf83ebe6dd5117eb6dcef28d6b8cfc9cb57238cafb97711611b7
     home: https://grafana.com
@@ -1024,7 +1102,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.725168+01:00"
+    created: "2024-11-19T18:16:07.495159+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: c432c862561d99ed1cbc8ffd60a1a7eb557fc379cca08a01ee3b454b53f1cf41
     home: https://grafana.com
@@ -1063,7 +1141,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.723539+01:00"
+    created: "2024-11-19T18:16:07.490131+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6c8acdf29b37cbcc2f812bf3d7aca1c83dd565e14410a4a845383f800c77c080
     home: https://grafana.com
@@ -1102,7 +1180,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.721584+01:00"
+    created: "2024-11-19T18:16:07.48686+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 4f676efaf4c81b6efdbafa6c4cb472adc86cabff8f49bb09bb2a39c782aad47c
     home: https://grafana.com
@@ -1141,7 +1219,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.719555+01:00"
+    created: "2024-11-19T18:16:07.483214+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 1e67e449b9ef4107ee52c1d01f5770cd018559e867ad0a087190306033f29281
     home: https://grafana.com
@@ -1180,7 +1258,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.7178+01:00"
+    created: "2024-11-19T18:16:07.479241+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 9e7993941ee89054aae643ea0d2e6434227b16c10f0ef968378baf977aee37e0
     home: https://grafana.com
@@ -1219,7 +1297,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.715868+01:00"
+    created: "2024-11-19T18:16:07.475613+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 08403f67eb87ba327466eb90b79fb3927451d3f1665b0b8dec453139ed33ac32
     home: https://grafana.com
@@ -1258,7 +1336,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2024-11-02T14:14:28.714191+01:00"
+    created: "2024-11-19T18:16:07.471985+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 745e5ab6f2d12491b3fc2cc515964ec1c87412158aaddd12a87f2daf4821dea7
     home: https://grafana.com
@@ -1297,7 +1375,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2024-11-02T14:14:28.712498+01:00"
+    created: "2024-11-19T18:16:07.467331+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: cda64dbf87f680e845888771fe34dd2d9b7e88b9db6fa290079cde8994a5677d
     home: https://grafana.com
@@ -1336,7 +1414,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2024-11-02T14:14:28.710429+01:00"
+    created: "2024-11-19T18:16:07.463063+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: dbfca6520b202db24e5eae63ccfac6899267693188448d20d8c0fabe74b4920f
     home: https://grafana.com
@@ -1375,7 +1453,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2024-11-02T14:14:28.708737+01:00"
+    created: "2024-11-19T18:16:07.458466+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 03d857c24851cdbfb054339f938f656b103e98f78697490022911aba1cec8fac
     home: https://grafana.com
@@ -1412,7 +1490,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2024-11-02T14:14:28.707036+01:00"
+    created: "2024-11-19T18:16:07.450443+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d2bde1318b2035b3b20b29a958fa9dd1e41f2485f6f50845fab98f0379aa80ff
     home: https://grafana.com
@@ -1449,7 +1527,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2024-11-02T14:14:28.705185+01:00"
+    created: "2024-11-19T18:16:07.443665+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 7e161d8bf7e32ae52bb8508a30c7a439d876e513a18ba508f7d2796ce3785c5b
     home: https://grafana.com
@@ -1486,7 +1564,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2024-11-02T14:14:28.688986+01:00"
+    created: "2024-11-19T18:16:07.375465+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 5980b2fad88f91beee7e886f99416b6a816a9b39599c0c13cfd6104ba766dbd2
     home: https://grafana.com
@@ -1523,7 +1601,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2024-11-02T14:14:28.687343+01:00"
+    created: "2024-11-19T18:16:07.368809+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: a351e7fb1e489f22e4a0e0c1d3f8ed5f440ff91647ecd72e02941754cfa98286
     home: https://grafana.com
@@ -1560,7 +1638,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2024-11-02T14:14:28.703497+01:00"
+    created: "2024-11-19T18:16:07.436941+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: eb68b49c8074143e064f17bfd31ebd67ebaf07e525426745c07477d4bdef8de4
     home: https://grafana.com
@@ -1597,7 +1675,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2024-11-02T14:14:28.701647+01:00"
+    created: "2024-11-19T18:16:07.427098+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 36b6528a4a466c4cd3ca00d045c052dfbddc5f6c2950e441ae833f0f5b7bc743
     home: https://grafana.com
@@ -1634,7 +1712,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.0
-    created: "2024-11-02T14:14:28.699904+01:00"
+    created: "2024-11-19T18:16:07.416919+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 7e273851e7eb72417327dfd5115e42ebb032ff88a362c716f4a8666864c2a8ad
     home: https://grafana.com
@@ -1671,7 +1749,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2024-11-02T14:14:28.697903+01:00"
+    created: "2024-11-19T18:16:07.409352+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: e58171f0adfcafecbb98d9a90bf8aa8515e8f92f50b61aecb6e900db9fdf2e5c
     home: https://grafana.com
@@ -1708,7 +1786,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2024-11-02T14:14:28.695886+01:00"
+    created: "2024-11-19T18:16:07.400235+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: a954f566f7d5b68ede82d225d9a01f790225d1a9e7507f01ae515070b7300db9
     home: https://grafana.com
@@ -1745,7 +1823,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2024-11-02T14:14:28.694176+01:00"
+    created: "2024-11-19T18:16:07.392904+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6f0182c6291bed77d96f41c27c614e02f34328235e0085773e23e976d28cf62f
     home: https://grafana.com
@@ -1782,7 +1860,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2024-11-02T14:14:28.692431+01:00"
+    created: "2024-11-19T18:16:07.386483+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 8cefbb13926ceaf3d399a25d12fcdff7b1d3206c0c2fe06a9d233200c9b3e76d
     home: https://grafana.com
@@ -1819,7 +1897,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2024-11-02T14:14:28.690658+01:00"
+    created: "2024-11-19T18:16:07.381322+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 5ff9d78a1033cb527ae8d8feff1d4625593ba4ad6fcce02641ea1e5908cc09df
     home: https://grafana.com
@@ -1856,7 +1934,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2024-11-02T14:14:28.685179+01:00"
+    created: "2024-11-19T18:16:07.361802+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 99408f8c6534ee5ba7a84c072eb4ce805ae6e4c0e163c9c8a14fb29af0bf67c8
     home: https://grafana.com
@@ -1893,7 +1971,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.1
-    created: "2024-11-02T14:14:28.683414+01:00"
+    created: "2024-11-19T18:16:07.35386+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: f3b6df391b12a93de8c9f719f5e6531647ddb9f9f106fccbe6408a09f8515b38
     home: https://grafana.com
@@ -1930,7 +2008,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.2.3
-    created: "2024-11-02T14:14:28.68167+01:00"
+    created: "2024-11-19T18:16:07.344972+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 27d149575f4f569a977cac97c204cbce55e8f146ff289b3f313df7f1ab292516
     home: https://grafana.com
@@ -1967,7 +2045,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.2.3
-    created: "2024-11-02T14:14:28.679263+01:00"
+    created: "2024-11-19T18:16:07.337232+01:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: cd7b4005a11833b5e048715739c12de397a97c4f94e49eb8b6aa7f167cb49c43
     home: https://grafana.com
@@ -1998,7 +2076,151 @@ entries:
   loki:
   - apiVersion: v2
     appVersion: 3.2.0
-    created: "2024-11-02T14:14:28.895125+01:00"
+    created: "2024-11-19T18:16:07.90333+01:00"
+    dependencies:
+    - alias: minio
+      condition: minio.enabled
+      name: minio
+      repository: https://charts.min.io/
+      version: 4.1.0
+    - alias: grafana-agent-operator
+      condition: monitoring.selfMonitoring.grafanaAgent.installOperator
+      name: grafana-agent-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.5.0
+    - alias: rollout_operator
+      condition: rollout_operator.enabled
+      name: rollout-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.19.1
+    description: Helm chart for Grafana Loki and Grafana Enterprise Logs supporting
+      both simple, scalable and distributed modes.
+    digest: 0a1f49bdcaab1e01442d2f0fb4ff5b09e3c435f56fb8d1b5b51bdd51ba4756b7
+    home: https://grafana.github.io/helm-charts
+    icon: https://grafana.com/docs/loki/latest/logo_and_name.png
+    maintainers:
+    - name: trevorwhitney
+    - name: jeschkies
+    name: loki
+    sources:
+    - https://github.com/grafana/loki
+    - https://grafana.com/oss/loki/
+    - https://grafana.com/docs/loki/latest/
+    type: application
+    urls:
+    - loki-6.20.0.tgz
+    version: 6.20.0
+  - apiVersion: v2
+    appVersion: k229
+    created: "2024-11-19T18:16:07.889603+01:00"
+    dependencies:
+    - alias: minio
+      condition: minio.enabled
+      name: minio
+      repository: https://charts.min.io/
+      version: 4.1.0
+    - alias: grafana-agent-operator
+      condition: monitoring.selfMonitoring.grafanaAgent.installOperator
+      name: grafana-agent-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.5.0
+    - alias: rollout_operator
+      condition: rollout_operator.enabled
+      name: rollout-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.19.1
+    description: Helm chart for Grafana Loki and Grafana Enterprise Logs supporting
+      both simple, scalable and distributed modes.
+    digest: 01fe5f1952b664bd958137e2a181ccd20de5a3d4ea21b13fc0bc0996644c9827
+    home: https://grafana.github.io/helm-charts
+    icon: https://grafana.com/docs/loki/latest/logo_and_name.png
+    maintainers:
+    - name: trevorwhitney
+    - name: jeschkies
+    name: loki
+    sources:
+    - https://github.com/grafana/loki
+    - https://grafana.com/oss/loki/
+    - https://grafana.com/docs/loki/latest/
+    type: application
+    urls:
+    - loki-6.20.0-weekly.229.tgz
+    version: 6.20.0-weekly.229
+  - apiVersion: v2
+    appVersion: 3.2.0
+    created: "2024-11-19T18:16:07.876432+01:00"
+    dependencies:
+    - alias: minio
+      condition: minio.enabled
+      name: minio
+      repository: https://charts.min.io/
+      version: 4.0.15
+    - alias: grafana-agent-operator
+      condition: monitoring.selfMonitoring.grafanaAgent.installOperator
+      name: grafana-agent-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.3.15
+    - alias: rollout_operator
+      condition: rollout_operator.enabled
+      name: rollout-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.13.0
+    description: Helm chart for Grafana Loki and Grafana Enterprise Logs supporting
+      both simple, scalable and distributed modes.
+    digest: db4013cbf3e6b84e986dc3571e08c958e0c13ad9f282b187299ecf15a014b816
+    home: https://grafana.github.io/helm-charts
+    icon: https://grafana.com/docs/loki/latest/logo_and_name.png
+    maintainers:
+    - name: trevorwhitney
+    - name: jeschkies
+    name: loki
+    sources:
+    - https://github.com/grafana/loki
+    - https://grafana.com/oss/loki/
+    - https://grafana.com/docs/loki/latest/
+    type: application
+    urls:
+    - loki-6.19.0.tgz
+    version: 6.19.0
+  - apiVersion: v2
+    appVersion: k227
+    created: "2024-11-19T18:16:07.861531+01:00"
+    dependencies:
+    - alias: minio
+      condition: minio.enabled
+      name: minio
+      repository: https://charts.min.io/
+      version: 4.0.15
+    - alias: grafana-agent-operator
+      condition: monitoring.selfMonitoring.grafanaAgent.installOperator
+      name: grafana-agent-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.3.15
+    - alias: rollout_operator
+      condition: rollout_operator.enabled
+      name: rollout-operator
+      repository: https://grafana.github.io/helm-charts
+      version: 0.13.0
+    description: Helm chart for Grafana Loki and Grafana Enterprise Logs supporting
+      both simple, scalable and distributed modes.
+    digest: 4ef783f3784157f246e5abe1adedeb526ff30753ed9111424c1e00348a10f08b
+    home: https://grafana.github.io/helm-charts
+    icon: https://grafana.com/docs/loki/latest/logo_and_name.png
+    maintainers:
+    - name: trevorwhitney
+    - name: jeschkies
+    name: loki
+    sources:
+    - https://github.com/grafana/loki
+    - https://grafana.com/oss/loki/
+    - https://grafana.com/docs/loki/latest/
+    type: application
+    urls:
+    - loki-6.19.0-weekly.227.tgz
+    version: 6.19.0-weekly.227
+  - apiVersion: v2
+    appVersion: 3.2.0
+    created: "2024-11-19T18:16:07.847034+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2034,7 +2256,7 @@ entries:
     version: 6.18.0
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2024-11-02T14:14:28.885454+01:00"
+    created: "2024-11-19T18:16:07.831585+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2070,7 +2292,7 @@ entries:
     version: 6.16.0
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2024-11-02T14:14:28.875504+01:00"
+    created: "2024-11-19T18:16:07.815881+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2106,7 +2328,7 @@ entries:
     version: 6.15.0
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2024-11-02T14:14:28.866006+01:00"
+    created: "2024-11-19T18:16:07.800868+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2142,7 +2364,7 @@ entries:
     version: 6.12.0
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2024-11-02T14:14:28.858654+01:00"
+    created: "2024-11-19T18:16:07.787742+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2178,7 +2400,7 @@ entries:
     version: 6.11.0
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2024-11-02T14:14:28.85118+01:00"
+    created: "2024-11-19T18:16:07.776361+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2214,7 +2436,7 @@ entries:
     version: 6.10.2
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2024-11-02T14:14:28.843528+01:00"
+    created: "2024-11-19T18:16:07.764378+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2250,7 +2472,7 @@ entries:
     version: 6.10.1
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2024-11-02T14:14:28.83635+01:00"
+    created: "2024-11-19T18:16:07.751797+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2286,7 +2508,7 @@ entries:
     version: 6.10.0
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2024-11-02T14:14:29.122264+01:00"
+    created: "2024-11-19T18:16:08.235884+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2322,7 +2544,7 @@ entries:
     version: 6.9.0
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2024-11-02T14:14:29.114416+01:00"
+    created: "2024-11-19T18:16:08.221686+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2358,7 +2580,7 @@ entries:
     version: 6.8.0
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2024-11-02T14:14:29.106871+01:00"
+    created: "2024-11-19T18:16:08.207927+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2394,7 +2616,7 @@ entries:
     version: 6.7.4
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2024-11-02T14:14:29.099241+01:00"
+    created: "2024-11-19T18:16:08.194382+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2430,7 +2652,7 @@ entries:
     version: 6.7.3
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2024-11-02T14:14:29.091702+01:00"
+    created: "2024-11-19T18:16:08.181853+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2466,7 +2688,7 @@ entries:
     version: 6.7.2
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2024-11-02T14:14:29.022201+01:00"
+    created: "2024-11-19T18:16:08.109906+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2502,7 +2724,7 @@ entries:
     version: 6.7.1
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.014773+01:00"
+    created: "2024-11-19T18:16:08.098731+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2538,7 +2760,7 @@ entries:
     version: 6.7.0
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.006952+01:00"
+    created: "2024-11-19T18:16:08.087675+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2574,7 +2796,7 @@ entries:
     version: 6.6.6
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.999647+01:00"
+    created: "2024-11-19T18:16:08.075856+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2610,7 +2832,7 @@ entries:
     version: 6.6.5
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.992194+01:00"
+    created: "2024-11-19T18:16:08.063504+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2646,7 +2868,7 @@ entries:
     version: 6.6.4
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.98466+01:00"
+    created: "2024-11-19T18:16:08.051755+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2682,7 +2904,7 @@ entries:
     version: 6.6.3
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.976921+01:00"
+    created: "2024-11-19T18:16:08.040245+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2718,7 +2940,7 @@ entries:
     version: 6.6.2
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.967871+01:00"
+    created: "2024-11-19T18:16:08.028114+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2754,7 +2976,7 @@ entries:
     version: 6.6.1
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.960633+01:00"
+    created: "2024-11-19T18:16:08.01722+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2790,7 +3012,7 @@ entries:
     version: 6.6.0
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.953456+01:00"
+    created: "2024-11-19T18:16:08.004602+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2826,7 +3048,7 @@ entries:
     version: 6.5.2
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.946183+01:00"
+    created: "2024-11-19T18:16:07.993527+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2862,7 +3084,7 @@ entries:
     version: 6.5.1
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.938796+01:00"
+    created: "2024-11-19T18:16:07.980041+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2897,7 +3119,7 @@ entries:
     version: 6.5.0
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.931432+01:00"
+    created: "2024-11-19T18:16:07.968167+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2932,7 +3154,7 @@ entries:
     version: 6.4.2
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.924157+01:00"
+    created: "2024-11-19T18:16:07.955457+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -2967,7 +3189,7 @@ entries:
     version: 6.4.1
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.917246+01:00"
+    created: "2024-11-19T18:16:07.942963+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3002,7 +3224,7 @@ entries:
     version: 6.4.0
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.910236+01:00"
+    created: "2024-11-19T18:16:07.929751+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3037,7 +3259,7 @@ entries:
     version: 6.3.4
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:28.902705+01:00"
+    created: "2024-11-19T18:16:07.915532+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3072,7 +3294,7 @@ entries:
     version: 6.3.3
   - apiVersion: v2
     appVersion: 2.9.6
-    created: "2024-11-02T14:14:28.828468+01:00"
+    created: "2024-11-19T18:16:07.742059+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3102,7 +3324,7 @@ entries:
     version: 5.47.2
   - apiVersion: v2
     appVersion: 2.9.6
-    created: "2024-11-02T14:14:28.82353+01:00"
+    created: "2024-11-19T18:16:07.734222+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3132,7 +3354,7 @@ entries:
     version: 5.47.1
   - apiVersion: v2
     appVersion: 2.9.6
-    created: "2024-11-02T14:14:28.818069+01:00"
+    created: "2024-11-19T18:16:07.726567+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3162,7 +3384,7 @@ entries:
     version: 5.47.0
   - apiVersion: v2
     appVersion: 2.9.5
-    created: "2024-11-02T14:14:28.812479+01:00"
+    created: "2024-11-19T18:16:07.718093+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3192,7 +3414,7 @@ entries:
     version: 5.46.0
   - apiVersion: v2
     appVersion: 2.9.4
-    created: "2024-11-02T14:14:28.806896+01:00"
+    created: "2024-11-19T18:16:07.70911+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3222,7 +3444,7 @@ entries:
     version: 5.45.0
   - apiVersion: v2
     appVersion: 2.9.4
-    created: "2024-11-02T14:14:28.801646+01:00"
+    created: "2024-11-19T18:16:07.700187+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3252,7 +3474,7 @@ entries:
     version: 5.44.4
   - apiVersion: v2
     appVersion: 2.9.4
-    created: "2024-11-02T14:14:28.796042+01:00"
+    created: "2024-11-19T18:16:07.690257+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3282,7 +3504,7 @@ entries:
     version: 5.44.3
   - apiVersion: v2
     appVersion: 2.9.4
-    created: "2024-11-02T14:14:28.790421+01:00"
+    created: "2024-11-19T18:16:07.679792+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3312,7 +3534,7 @@ entries:
     version: 5.44.2
   - apiVersion: v2
     appVersion: 2.9.4
-    created: "2024-11-02T14:14:28.784761+01:00"
+    created: "2024-11-19T18:16:07.668161+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3342,7 +3564,7 @@ entries:
     version: 5.44.1
   - apiVersion: v2
     appVersion: 2.9.4
-    created: "2024-11-02T14:14:28.779136+01:00"
+    created: "2024-11-19T18:16:07.655508+01:00"
     dependencies:
     - alias: minio
       condition: minio.enabled
@@ -3373,7 +3595,7 @@ entries:
   promtail:
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.143945+01:00"
+    created: "2024-11-19T18:16:08.3473+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 1decc4e8efc7b9c801ac8cbcf0f11df2596c2b7e67b3bd86ced05929279ddfee
@@ -3394,7 +3616,7 @@ entries:
     version: 6.16.6
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.142606+01:00"
+    created: "2024-11-19T18:16:08.341363+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 49ed2bc7341c176787ed989e88f93ddc6e99f4aad9173e00857545b6ba59efe0
@@ -3415,7 +3637,7 @@ entries:
     version: 6.16.5
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.141351+01:00"
+    created: "2024-11-19T18:16:08.335449+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 76286f8cc0a6070a69eb450a14182a3f7a1fd8f25d33b68db336fe91e818ae88
@@ -3436,7 +3658,7 @@ entries:
     version: 6.16.4
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.140096+01:00"
+    created: "2024-11-19T18:16:08.330708+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 170ada65568eeba8aac0847a0a1a8dc9ea2e7c6a5272f003a717bbec22c20696
@@ -3457,7 +3679,7 @@ entries:
     version: 6.16.3
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.138939+01:00"
+    created: "2024-11-19T18:16:08.324445+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: bd9d67ac62768f36e96526d5435c7c00eb484cfe05f3ce8b8f895de6297fa13b
@@ -3478,7 +3700,7 @@ entries:
     version: 6.16.2
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.137469+01:00"
+    created: "2024-11-19T18:16:08.318647+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 585226f2b288d65f9ac959491df5efb92214f657ad2a6814d726732985530b86
@@ -3499,7 +3721,7 @@ entries:
     version: 6.16.1
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2024-11-02T14:14:29.136247+01:00"
+    created: "2024-11-19T18:16:08.312313+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 5c274240939acecc4e67a1cd097fa95f8c8ffc77ed8ef5ea90a6ec1bd9ac4ab7
@@ -3520,7 +3742,7 @@ entries:
     version: 6.16.0
   - apiVersion: v2
     appVersion: 2.9.3
-    created: "2024-11-02T14:14:29.135016+01:00"
+    created: "2024-11-19T18:16:08.305984+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 8bf485b757bfc7c37e809b60a8f61324c84160c820269fda469cb6270045c514
@@ -3541,7 +3763,7 @@ entries:
     version: 6.15.5
   - apiVersion: v2
     appVersion: 2.9.3
-    created: "2024-11-02T14:14:29.133726+01:00"
+    created: "2024-11-19T18:16:08.29878+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 49592bb9901965193c01b872c1c6ec5f21c06e37366c7b9c28fc92ac6eece6c3
@@ -3562,7 +3784,7 @@ entries:
     version: 6.15.4
   - apiVersion: v2
     appVersion: 2.9.2
-    created: "2024-11-02T14:14:29.13252+01:00"
+    created: "2024-11-19T18:16:08.291348+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 30458957ec1a664a5f01de791c5dcb995d791ed001bd4b104bec8eb4ef314ea9
@@ -3583,7 +3805,7 @@ entries:
     version: 6.15.3
   - apiVersion: v2
     appVersion: 2.9.1
-    created: "2024-11-02T14:14:29.13137+01:00"
+    created: "2024-11-19T18:16:08.283262+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 562b483909b7b5359a29cbb28a948a54bff25182ff497540655fa7f71d243fba
@@ -3604,7 +3826,7 @@ entries:
     version: 6.15.2
   - apiVersion: v2
     appVersion: 2.8.4
-    created: "2024-11-02T14:14:29.129947+01:00"
+    created: "2024-11-19T18:16:08.276759+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: aa24c89a49c4941fabc5a5048f294d9538f0a5e7ae0331c6b02db67f9ea2d8bf
@@ -3625,7 +3847,7 @@ entries:
     version: 6.15.1
   - apiVersion: v2
     appVersion: 2.8.3
-    created: "2024-11-02T14:14:29.128745+01:00"
+    created: "2024-11-19T18:16:08.27015+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 1dd8f9c5eb0814378f685d7cf30e1ea68824bbee7edbca6b3c1692071350fd18
@@ -3646,7 +3868,7 @@ entries:
     version: 6.15.0
   - apiVersion: v2
     appVersion: 2.8.3
-    created: "2024-11-02T14:14:29.127549+01:00"
+    created: "2024-11-19T18:16:08.262507+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 015d1147a4a476f0fbc7985287a850701174ade2d49ff5badeea4bd395099b36
@@ -3667,7 +3889,7 @@ entries:
     version: 6.14.1
   - apiVersion: v2
     appVersion: 2.8.3
-    created: "2024-11-02T14:14:29.126195+01:00"
+    created: "2024-11-19T18:16:08.256689+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: 3b1899b21807aa6e9f926e7c3420c9204f5e21ba178f8fba8dcae09c8d3d0f10
@@ -3688,7 +3910,7 @@ entries:
     version: 6.14.0
   - apiVersion: v2
     appVersion: 2.8.3
-    created: "2024-11-02T14:14:29.124941+01:00"
+    created: "2024-11-19T18:16:08.249482+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: e15182e6c7fa0c2afae4f7cbba5347f56218ecc6cf2aef5968b2598ce1d5a211
@@ -3709,7 +3931,7 @@ entries:
     version: 6.13.1
   - apiVersion: v2
     appVersion: 2.8.3
-    created: "2024-11-02T14:14:29.123628+01:00"
+    created: "2024-11-19T18:16:08.242196+01:00"
     description: Promtail is an agent which ships the contents of local logs to a
       Loki instance
     digest: adf8e185a3a1dd75a7821b503093524f9b3540a0005391561d4e708e57fcb175
@@ -3728,4 +3950,4 @@ entries:
     urls:
     - promtail-6.13.0.tgz
     version: 6.13.0
-generated: "2024-11-02T14:14:28.677319+01:00"
+generated: "2024-11-19T18:16:07.324289+01:00"

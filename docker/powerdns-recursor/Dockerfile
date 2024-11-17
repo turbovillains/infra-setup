@@ -19,7 +19,7 @@ echo "Pin-Priority: 600"                ;\
 ) > /etc/apt/preferences.d/pdns
 
 RUN (                                                                       \
-echo "deb [arch=amd64] http://repo.powerdns.com/debian bookworm-rec-50 main" \
+echo "deb http://repo.powerdns.com/debian bookworm-rec-51 main" \
 ) > /etc/apt/sources.list.d/pdns.list
 
 COPY CBC8B383-pub.asc /tmp/pdns-gpg-key-pub.asc

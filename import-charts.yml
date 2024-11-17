@@ -11,65 +11,19 @@ helm:
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 5.0.0-beta.102
-  - name: vsphere-cpi
-    uri: https://kubernetes.github.io/cloud-provider-vsphere
-    charts:
-      - name: vsphere-cpi
+        version: 5.0.0-beta.144
   - name: coredns
     uri: https://coredns.github.io/helm
     charts:
       - name: coredns
-  - name: airbyte
-    uri: https://airbytehq.github.io/helm-charts/
-    charts:
-      - name: airbyte
-      - name: airbyte-bootloader
-      - name: temporal
-      - name: webapp
-      - name: server
-      - name: worker
-      - name: airbyte-api-server
-      - name: workload-api-server
-      - name: workload-launcher
-      - name: pod-sweeper
-      - name: metrics
-      - name: cron
-      - name: connector-builder-server
-      - name: keycloak
-      - name: keycloak-setup
-  - name: cilium
-    uri: https://helm.cilium.io/
-    charts:
-      - name: cilium
-  - name: istio
-    uri: https://istio-release.storage.googleapis.com/charts
-    charts:
-      - name: base
-      - name: istiod
-      - name: gateway
   - name: gitea
     uri: https://dl.gitea.com/charts/
     charts:
       - name: gitea
-  - name: scylla
-    uri: https://scylla-operator-charts.storage.googleapis.com/stable
-    charts:
-      - name: scylla-operator
-      - name: scylla-manager
-      - name: scylla
-  - name: spv
-    uri: https://charts.spvapi.no
-    charts:
-      - name: akv2k8s
   - name: zitadel
     uri: https://charts.zitadel.com
     charts:
       - name: zitadel
-  - name: kuzzleio
-    uri: https://kuzzleio.github.io/helm-charts/
-    charts:
-      - name: chirpstack
   - name: csi-driver-nfs
     uri: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
     charts:
@@ -77,13 +31,7 @@ helm:
   - name: jaconi
     uri: https://charts.jaconi.io
     charts:
-      - name: netbird
-      - name: netbird-dashboard
       - name: coturn
-  - name: harbor
-    uri: https://helm.goharbor.io
-    charts:
-      - name: harbor
   - name: jenkinsci
     uri: https://charts.jenkins.io
     charts:
@@ -97,31 +45,18 @@ helm:
     charts:
       - name: ceph-csi-rbd
       - name: ceph-csi-cephfs
-  - name: aso2
-    uri: https://raw.githubusercontent.com/Azure/azure-service-operator/main/v2/charts
-    charts:
-      - name: azure-service-operator
-  - name: kubernetes-dashboard
-    uri: https://kubernetes.github.io/dashboard
-    charts:
-      - name: kubernetes-dashboard
-  - name: m3
-    uri: https://m3-helm-charts.storage.googleapis.com/stable
   - name: cetic
     uri: https://cetic.github.io/helm-charts
     charts:
       - name: adminer
       - name: pgadmin
       - name: postgresql
-      - name: phpldapadmin
   - name: bitnami
     uri: https://charts.bitnami.com/bitnami
     charts:
-      - name: cilium
       - name: keycloak
       - name: kube-prometheus
       - name: kube-state-metrics
-      - name: kubeapps
       - name: memcached
       - name: metallb
       - name: metrics-server
@@ -132,8 +67,6 @@ helm:
       - name: minio
       - name: grafana
       - name: nats
-      - name: tomcat
-      - name: harbor
   - name: elastic
     uri: https://helm.elastic.co
     charts:
@@ -145,12 +78,6 @@ helm:
     charts:
       - name: gitlab-agent
       - name: gitlab-runner
-  - name: jupyterhub
-    uri: https://jupyterhub.github.io/helm-chart/
-    charts:
-      - name: jupyterhub
-      - name: binderhub
-        by: created
   - name: sonatype
     uri: https://sonatype.github.io/helm3-charts
   - name: prometheus-community
@@ -170,55 +97,18 @@ helm:
     uri: https://zachomedia.github.io/cert-manager-webhook-pdns
     charts:
       - name: cert-manager-webhook-pdns
-  - name: mattermost
-    uri: https://helm.mattermost.com
-  - name: verdaccio
-    uri: https://charts.verdaccio.org
-    charts:
-      - name: verdaccio
-  - name: actions-runner-controller
-    uri: https://actions-runner-controller.github.io/actions-runner-controller
-    charts:
-      - name: actions-runner-controller
   - name: pihole
     uri: https://mojo2600.github.io/pihole-kubernetes/
-  - name: 8gears
-    uri: https://8gears.container-registry.com/chartrepo/library
-  - name: liwenhe
-    uri: https://liwenhe1993.github.io/charts/
-  - name: banzaicloud
-    uri: https://kubernetes-charts.banzaicloud.com
   - name: pravega
     uri: https://charts.pravega.io
-  - name: sagikazarmark
-    uri: https://charts.sagikazarmark.dev
-    charts:
-      - name: sftpgo
-  - name: aad-pod-identity
-    uri: https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
-  - name: azure-workload-identity
-    uri: https://azure.github.io/azure-workload-identity/charts
-  - name: longhorn
-    uri: https://charts.longhorn.io
-    charts:
-      - name: longhorn
   - name: projectcalico
     uri: https://projectcalico.docs.tigera.io/charts
     charts:
       - name: tigera-operator
-  - name: strimzi
-    uri: https://strimzi.io/charts/
-    charts:
-      - name: strimzi-kafka-operator
-  - name: jx3
-    uri: https://jenkins-x-charts.github.io/repo
   - name: hashicorp
     uri: https://helm.releases.hashicorp.com
     charts:
-      - name: terraform-cloud-operator
       - name: vault
-  - name: mailu
-    uri: https://mailu.github.io/helm-charts/
   - name: bokysan
     uri: https://bokysan.github.io/docker-postfix
     charts:
@@ -232,18 +122,10 @@ helm:
     uri: https://grafana.github.io/helm-charts
     charts:
       - name: grafana
-      - name: loki
-      - name: promtail
   - name: t3n
     uri: https://storage.googleapis.com/t3n-helm-charts
     charts:
       - name: mosquitto
-  - name: tanzu
-    uri: https://vmware-tanzu.github.io/helm-charts
-    charts:
-      - name: velero
-  - name: mizu
-    uri: https://github.com/up9inc/mizu-helm-chart
   - name: secrets-store-csi
     uri: https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
     charts:
@@ -256,49 +138,14 @@ helm:
     uri: https://bitnami-labs.github.io/sealed-secrets
     charts:
       - name: sealed-secrets
-  - name: crowdfox
-    uri: https://crowdfoxgmbh.github.io/cfcharts
-  - name: openkruise
-    uri: https://openkruise.github.io/charts/
-  - name: confluentinc
-    uri: https://packages.confluent.io/helm
-    charts:
-      - name: confluent-for-kubernetes
-  - name: confluentinc-oss
-    uri: https://confluentinc.github.io/cp-helm-charts
-  - name: akhq
-    uri: https://akhq.io/
-  - name: budibase
-    uri: https://budibase.github.io/budibase
-  - name: airflow
-    uri: https://airflow.apache.org
-    charts:
-      - name: airflow
-  - name: kedacore
-    uri: https://kedacore.github.io/charts
-    charts:
-      - name: keda
   - name: democratic-csi
     uri: https://democratic-csi.github.io/charts
-  - name: puppetserver
-    uri: https://puppetlabs.github.io/puppetserver-helm-chart
-    charts:
-      - name: puppetserver
   - name: yugabyte
     uri: https://charts.yugabyte.com
-  - name: noroutine
-    uri: https://nexus.nrtn.dev/repository/helm-noroutine/
-  - name: noroutine-binderhub
-    uri: https://noroutine.github.io/binderhub-helm-chart/
-    charts:
-      - name: binderhub
-        version: 1.0.0-0.dev.git.3042.h40a07a4
   - name: argo
     uri: https://argoproj.github.io/argo-helm
     charts:
       - name: argo-cd
-      - name: argo-events
-      - name: argo-workflows
   - name: dexidp
     uri: https://charts.dexidp.io
     charts:

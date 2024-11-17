@@ -162,6 +162,7 @@ hawk.setup.yj() {
 
   yj -v || (
     echo "Installing yj ${YJ_VERSION}"
+    ARCHX=$(uname -m | sed 's/aarch64/arm64/;s/x86_64/amd64/')
     sudo curl \
       --show-error \
       --silent \
@@ -171,7 +172,7 @@ hawk.setup.yj() {
       --connect-timeout 5 \
       --max-time 60 \
       --output "${HOME}/bin/yj" \
-      "https://github.com/sclevine/yj/releases/download/v${YJ_VERSION}/yj-linux-amd64"
+      "https://github.com/sclevine/yj/releases/download/v${YJ_VERSION}/yj-linux-${ARCHX}"
     sudo chmod +x "${HOME}"/bin/yj
   )
 }

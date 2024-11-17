@@ -1,6 +1,0 @@
-ARG DOCKER_HUB
-ARG BITNAMI_HARBOR_VERSION
-ARG BITNAMI_HARBOR_COMPONENT
-FROM ${DOCKER_HUB}/bitnami/harbor-${BITNAMI_HARBOR_COMPONENT}:${BITNAMI_HARBOR_VERSION}
-
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"

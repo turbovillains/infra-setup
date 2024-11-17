@@ -5,8 +5,6 @@ stages:
   - archive
   - base
   - stacks
-  - buildpacks
-  - prebuild
   - build
   - build2
 
@@ -21,7 +19,6 @@ before_script:
       export INFRA_NAMESPACE=${INFRA_NAMESPACE_DEV}
     fi
 
-    export KEYCLOAK_THEMES_IMAGE=${DOCKER_HUB}/${INFRA_NAMESPACE}/keycloak-themes:${INFRA_VERSION}
     export HOST_DOCKER_GID=$(stat -t /var/run/docker.sock | awk '{ print $6 }')
 
     echo "Infra: ${INFRA_VERSION}"
@@ -56,8 +53,7 @@ archive-images1:
       - BASE:
           - library/ubuntu
         VERSION:
-          - UBUNTU_JAMMY_VERSION
-          - UBUNTU_FOCAL_VERSION
+          - UBUNTU_NOBLE_VERSION
       - BASE:
           - library/busybox
         VERSION:
@@ -67,20 +63,10 @@ archive-images1:
         VERSION:
           - ALPINE_VERSION
       - BASE:
-          - library/buildpack-deps
-        VERSION:
-          - BUILDPACK_DEPS_FOCAL_VERSION
-          - BUILDPACK_DEPS_JAMMY_VERSION
-          - BUILDPACK_DEPS_BIONIC_VERSION
-      - BASE:
           - library/python
         VERSION:
           - PYTHON_VERSION
           - PYTHON_SLIM_VERSION
-      - BASE:
-          - locustio/locust
-        VERSION:
-          - LOCUST_VERSION
       - BASE:
           - library/php
         VERSION:
@@ -119,10 +105,6 @@ archive-images1:
           - library/postgres
         VERSION:
           - POSTGRES_VERSION
-      - BASE:
-          - atlassian/jira-software
-        VERSION:
-          - JIRA_VERSION
       - BASE:
           - library/nextcloud
         VERSION:
@@ -167,10 +149,6 @@ archive-images1:
         VERSION:
           - NODE_EXPORTER_VERSION
       - BASE:
-          - prometheus/consul-exporter
-        VERSION:
-          - CONSUL_EXPORTER_VERSION
-      - BASE:
           - prometheus/blackbox-exporter
         VERSION:
           - BLACKBOX_EXPORTER_VERSION
@@ -191,62 +169,19 @@ archive-images1:
         VERSION:
           - GRAFANA_VERSION
       - BASE:
-          - grafana/loki
-          - grafana/loki-canary
-          - grafana/promtail
-        VERSION:
-          - LOKI_VERSION
-      - BASE:
           - nginxinc/nginx-unprivileged
         VERSION:
           - NGINX_VERSION
-          - LOKI_GATEWAY_NGINX_VERSION
-      - BASE:
-          - library/httpd
-        VERSION:
-          - HTTPD_VERSION
-      - BASE:
-          - library/tomcat
-        VERSION:
-          - TOMCAT_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - m3db/m3coordinator
-        VERSION:
-          - M3COORDINATOR_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - m3db/m3dbnode
-        VERSION:
-          - M3DBNODE_VERSION
-      - BASE:
-          - braedon/prometheus-es-exporter
-        VERSION:
-          - PROMETHEUS_ES_EXPORTER_VERSION
       - BASE:
           - ribbybibby/ssl-exporter
         VERSION:
           - SSL_EXPORTER_VERSION
-      - REGISTRY:
-          - gcr.io
-        BASE:
-          - cadvisor/cadvisor
-        VERSION:
-          - CADVISOR_VERSION
       - REGISTRY:
           - ghcr.io
         BASE:
           - prymitive/karma
         VERSION:
           - KARMA_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cortexproject/cortex
-        VERSION:
-          - CORTEX_VERSION
       - REGISTRY:
           - docker.elastic.co
         BASE:
@@ -304,10 +239,6 @@ archive-images1:
         VERSION:
           - OAUTH2_PROXY_VERSION
       - BASE:
-          - buildpacksio/lifecycle
-        VERSION:
-          - BUILDPACKSIO_LIFECYCLE_VERSION
-      - BASE:
           - gitlab/gitlab-runner
         VERSION:
           - GITLAB_RUNNER_VERSION
@@ -343,78 +274,12 @@ archive-images1:
           - gitlab-org/cluster-integration/cluster-applications
         VERSION:
           - GITLAB_CLUSTER_APPLICATIONS_VERSION
-      - BASE:
-          - summerwind/actions-runner-controller
-        VERSION:
-          - ACTIONS_RUNNER_CONTROLLER_VERSION
-      - BASE:
-          - summerwind/actions-runner
-        VERSION:
-          - ACTIONS_RUNNER_IMAGE_VERSION
-      - BASE:
-          - summerwind/actions-runner-dind
-        VERSION:
-          - ACTIONS_RUNNER_IMAGE_VERSION
       - REGISTRY:
           - quay.io
         BASE:
           - brancz/kube-rbac-proxy
         VERSION:
           - KUBE_RBAC_PROXY_VERSION
-      - BASE:
-          - jupyterhub/k8s-image-cleaner
-        VERSION:
-          - BINDERHUB_IMAGE_CLEANER_VERSION
-      - BASE:
-          - noroutine/k8s-binderhub
-        VERSION:
-          - BINDERHUB_VERSION
-      - BASE:
-          - jupyterhub/k8s-hub
-        VERSION:
-          - JUPYTERHUB_VERSION
-      - BASE:
-          - jupyterhub/k8s-secret-sync
-        VERSION:
-          - JUPYTERHUB_SECRET_SYNC_VERSION
-      - BASE:
-          - jupyterhub/k8s-network-tools
-        VERSION:
-          - JUPYTERHUB_NETWORK_TOOLS_VERSION
-      - BASE:
-          - jupyterhub/k8s-image-awaiter
-        VERSION:
-          - JUPYTERHUB_IMAGE_AWAITER_VERSION
-      - BASE:
-          - jupyterhub/k8s-singleuser-sample
-        VERSION:
-          - JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION
-      - BASE:
-          - jupyterhub/configurable-http-proxy
-        VERSION:
-          - JUPYTERHUB_HTTP_PROXY_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - kubernetes/kube-scheduler
-        VERSION:
-          - JUPYTERHUB_SCHEDULER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - kubernetes/pause
-        VERSION:
-          - K8S_PAUSE_VERSION
-      - BASE:
-          - kubernetes/pause
-        VERSION:
-          - JUPYTERHUB_PAUSE_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - jupyterhub/repo2docker
-        VERSION:
-          - REPO2DOCKER_VERSION
       - BASE:
           - pihole/pihole
         VERSION:
@@ -423,38 +288,6 @@ archive-images1:
           - klutchell/unbound
         VERSION:
           - UNBOUND_VERSION
-      - BASE:
-          - yandex/clickhouse-server
-        VERSION:
-          - CLICKHOUSE_VERSION
-      - BASE:
-          - spoonest/clickhouse-tabix-web-client
-        VERSION:
-          - TABIX_VERSION
-      - BASE:
-          - plausible/analytics
-        VERSION:
-          - PLAUSIBLE_VERSION
-      - BASE:
-          - verdaccio/verdaccio
-        VERSION:
-          - VERDACCIO_VERSION
-      - BASE:
-          - strapi/strapi
-        VERSION:
-          - STRAPI_VERSION
-      - BASE:
-          - library/ghost
-        VERSION:
-          - GHOST_VERSION
-      - BASE:
-          - bitnami/ghost
-        VERSION:
-          - BITNAMI_GHOST_VERSION
-      - BASE:
-          - library/matomo
-        VERSION:
-          - MATOMO_VERSION
       - BASE:
           - nocodb/nocodb
         VERSION:
@@ -467,35 +300,6 @@ archive-images1:
           - library/docker
         VERSION:
           - DIND_VERSION
-      - BASE:
-          - podman/stable
-        VERSION:
-          - PINK_VERSION
-      - BASE:
-          - jupyter/base-notebook
-          - jupyter/minimal-notebook
-          - jupyter/r-notebook
-          - jupyter/scipy-notebook
-          - jupyter/tensorflow-notebook
-          - jupyter/datascience-notebook
-          - jupyter/pyspark-notebook
-          - jupyter/all-spark-notebook
-        VERSION:
-          - JUPYTER_VERSION
-      - BASE:
-          - rocker/shiny
-        VERSION:
-          - RSHINY_VERSION
-      - BASE:
-          - caprover/caprover
-        VERSION:
-          - CAPROVER_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - mikecao/umami
-        VERSION:
-          - UMAMI_VERSION
 
 archive-images2:
   extends: .archive-images
@@ -540,15 +344,6 @@ archive-images2:
           - BITNAMI_POSTGRESQL17_VERSION
           - BITNAMI_POSTGRESQL16_VERSION
           - BITNAMI_POSTGRESQL15_VERSION
-          - BITNAMI_POSTGRESQL14_VERSION
-          - BITNAMI_POSTGRESQL13_VERSION
-          - BITNAMI_POSTGRESQL12_VERSION
-          - BITNAMI_POSTGRESQL11_VERSION
-          - BITNAMI_POSTGRESQL10_VERSION
-      - BASE:
-          - bitnami/tomcat
-        VERSION:
-          - BITNAMI_TOMCAT_VERSION
       - BASE:
           - bitnami/jmx-exporter
         VERSION:
@@ -565,10 +360,6 @@ archive-images2:
           - bitnami/mariadb
         VERSION:
           - BITNAMI_MARIADB_VERSION
-      - BASE:
-          - bitnami/mongodb
-        VERSION:
-          - BITNAMI_MONGODB_VERSION
       - BASE:
           - bitnami/memcached
         VERSION:
@@ -606,14 +397,6 @@ archive-images2:
         VERSION:
           - BITNAMI_GRAFANA_VERSION
       - BASE:
-          - bitnami/grafana-image-renderer
-        VERSION:
-          - BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION
-      - BASE:
-          - bitnami/consul
-        VERSION:
-          - BITNAMI_CONSUL_VERSION
-      - BASE:
           - bitnami/nats
         VERSION:
           - BITNAMI_NATS_VERSION
@@ -625,26 +408,6 @@ archive-images2:
           - bitnami/metrics-server
         VERSION:
           - BITNAMI_METRICS_SERVER_VERSION
-      - BASE:
-          - bitnami/kubeapps-dashboard
-        VERSION:
-          - BITNAMI_KUBEAPPS_DASHBOARD_VERSION
-      - BASE:
-          - bitnami/kubeapps-apprepository-controller
-        VERSION:
-          - BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION
-      - BASE:
-          - bitnami/kubeapps-asset-syncer
-        VERSION:
-          - BITNAMI_KUBEAPPS_ASSET_SYNCER
-      - BASE:
-          - bitnami/kubeapps-apis
-        VERSION:
-          - BITNAMI_KUBEAPPS_APIS_VERSION
-      - BASE:
-          - bitnami/kubeapps-pinniped-proxy
-        VERSION:
-          - BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION
       - BASE:
           - bitnami/kube-rbac-proxy
         VERSION:
@@ -658,71 +421,9 @@ archive-images2:
         VERSION:
           - BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
       - BASE:
-          - bitnami/cilium
-        VERSION:
-          - BITNAMI_CILIUM_VERSION
-      - BASE:
-          - bitnami/cilium-proxy
-        VERSION:
-          - BITNAMI_CILIUM_PROXY_VERSION
-      - BASE:
-          - bitnami/cilium-operator
-        VERSION:
-          - BITNAMI_CILIUM_OPERATOR_VERSION
-      - BASE:
-          - bitnami/hubble-relay
-        VERSION:
-          - BITNAMI_CILIUM_HUBBLE_RELAY_VERSION
-      - BASE:
-          - bitnami/hubble-ui
-        VERSION:
-          - BITNAMI_CILIUM_HUBBLE_UI_VERSION
-      - BASE:
-          - bitnami/hubble-ui-backend
-        VERSION:
-          - BITNAMI_CILIUM_HUBBLE_UI_BACKEND_VERSION
-      - BASE:
-          - bitnami/trivy
-        VERSION:
-          - BITNAMI_TRIVY_VERSION
-      - BASE:
           - bitnami/kubectl
         VERSION:
           - BITNAMI_KUBECTL_VERSION
-      - BASE:
-          - velero/velero
-        VERSION:
-          - VELERO_VERSION
-      - BASE:
-          - velero/velero-plugin-for-csi
-        VERSION:
-          - VELERO_PLUGIN_CSI_VERSION
-      - BASE:
-          - velero/velero-plugin-for-aws
-        VERSION:
-          - VELERO_PLUGIN_AWS_VERSION
-      - BASE:
-          - velero/velero-plugin-for-gcp
-        VERSION:
-          - VELERO_PLUGIN_GCP_VERSION
-      - BASE:
-          - velero/velero-plugin-for-microsoft-azure
-        VERSION:
-          - VELERO_PLUGIN_AZURE_VERSION
-      - BASE:
-          - vsphereveleroplugin/velero-plugin-for-vsphere
-          - vsphereveleroplugin/backup-driver
-          - vsphereveleroplugin/data-manager-for-plugin
-        VERSION:
-          - VELERO_PLUGIN_VSPHERE_VERSION
-      - BASE:
-          - velero/velero-restic-restore-helper
-        VERSION:
-          - VELERO_RESTIC_RESTORE_HELPER_VERSION
-      - BASE:
-          - bitnami/kubectl
-        VERSION:
-          - VELERO_KUBECTL_VERSION
 
 archive-images3:
   extends: .archive-images
@@ -753,21 +454,9 @@ archive-images3:
         VERSION:
           - MINIO_CONSOLE_VERSION
       - BASE:
-          - kutt/kutt
-        VERSION:
-          - KUTT_VERSION
-      - BASE:
-          - drakkan/sftpgo
-        VERSION:
-          - SFTPGO_VERSION
-      - BASE:
           - hasura/graphql-engine
         VERSION:
           - HASURA_GRAPHQL_VERSION
-      - BASE:
-          - paulbouwer/hello-kubernetes
-        VERSION:
-          - HELLO_VERSION
       - BASE:
           - stakater/reloader
         VERSION:
@@ -792,28 +481,10 @@ archive-images3:
           - argoproj/argocd
         VERSION:
           - ARGOCD_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - argoproj/argo-events
-        VERSION:
-          - ARGO_EVENTS_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - argoproj/argocli
-          - argoproj/workflow-controller
-          - argoproj/argoexec
-        VERSION:
-          - ARGO_WORKFLOWS_VERSION
       - BASE:
           - library/redis
         VERSION:
           - REDIS_VERSION
-      - BASE:
-          - listmonk/listmonk
-        VERSION:
-          - LISTMONK_VERSION
       - BASE:
           - vaultwarden/server
         VERSION:
@@ -863,12 +534,6 @@ archive-images3:
         VERSION:
           - CADDY_VERSION
       - REGISTRY:
-          - quay.io
-        BASE:
-          - outline/shadowbox
-        VERSION:
-          - SHADOWBOX_VERSION
-      - REGISTRY:
           - gcr.io
         BASE:
           - kaniko-project/executor
@@ -880,10 +545,6 @@ archive-images3:
           - iovisor/bpftrace
         VERSION:
           - BPFTRACE_VERSION
-      - BASE:
-          - pryorda/vmware_exporter
-        VERSION:
-          - VMWARE_EXPORTER_VERSION
       - BASE:
           - azul/zulu-openjdk
         VERSION:
@@ -924,40 +585,6 @@ archive-images3:
         VERSION:
           - TDARR_VERSION
       - BASE:
-          - gravitl/netmaker
-        VERSION:
-          - NETMAKER_VERSION
-      - BASE:
-          - gravitl/netmaker-ui
-        VERSION:
-          - NETMAKER_UI_VERSION
-      - BASE:
-          - kmb32123/youtube-dl-server
-        VERSION:
-          - YOUTUBE_DL_SERVER_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - voxpupuli/container-puppetserver
-        VERSION:
-          - PUPPETSERVER_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - voxpupuli/container-puppetdb
-        VERSION:
-          - PUPPETDB_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - voxpupuli/puppetboard
-        VERSION:
-          - PUPPETBOARD_VERSION
-      - BASE:
-          - puppet/r10k
-        VERSION:
-          - R10K_VERSION
-      - BASE:
           - curlimages/curl
         VERSION:
           - CURL_VERSION
@@ -965,32 +592,10 @@ archive-images3:
           - restic/restic
         VERSION:
           - RESTIC_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - coredns/coredns
-        VERSION:
-          - COREDNS_VERSION
       - BASE:
           - yugabytedb/yugabyte
         VERSION:
           - YUGABYTE_VERSION
-      - BASE:
-          - antelle/keeweb
-        VERSION:
-          - KEEWEB_VERSION
-      - BASE:
-          - wiretrustee/dashboard
-        VERSION:
-          - NETBIRD_DASHBOARD_VERSION
-      - BASE:
-          - netbirdio/signal
-        VERSION:
-          - NETBIRD_SIGNAL_VERSION
-      - BASE:
-          - netbirdio/management
-        VERSION:
-          - NETBIRD_MANAGEMENT_VERSION
       - BASE:
           - coturn/coturn
         VERSION:
@@ -1001,10 +606,6 @@ archive-images4:
   stage: archive
   parallel:
     matrix:
-      - BASE:
-          - firezone/firezone
-        VERSION:
-          - FIREZONE_VERSION
       - BASE:
           - netboxcommunity/netbox
         VERSION:
@@ -1023,23 +624,12 @@ archive-images4:
           - jenkins-kubernetes-operator/operator
         VERSION:
           - JENKINS_OPERATOR_VERSION
-      - BASE:
-          - apache/airflow
-        VERSION:
-          - AIRFLOW_VERSION
       - REGISTRY:
           - registry.k8s.io
         BASE:
           - git-sync/git-sync
         VERSION:
           - GIT_SYNC_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - kedacore/keda
-          - kedacore/keda-metrics-apiserver
-        VERSION:
-          - KEDA_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -1059,18 +649,6 @@ archive-images4:
         VERSION:
           - CERT_MANAGER_WEBHOOK_PDNS_VERSION
       - BASE:
-          - hashicorp/consul
-        VERSION:
-          - CONSUL_VERSION
-      - BASE:
-          - hashicorp/consul-k8s-control-plane
-        VERSION:
-          - CONSUL_K8S_CP_VERSION
-      - BASE:
-          - envoyproxy/envoy-alpine
-        VERSION:
-          - ENVOY_VERSION
-      - BASE:
           - hashicorp/vault
         VERSION:
           - VAULT_VERSION
@@ -1082,16 +660,6 @@ archive-images4:
           - hashicorp/vault-csi-provider
         VERSION:
           - VAULT_CSI_PROVIDER_VERSION
-      - BASE:
-          - hashicorp/terraform-cloud-operator
-        VERSION:
-          - TERRAFORM_CLOUD_OPERATOR_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - strimzi/operator
-        VERSION:
-          - STRIMZI_OPERATOR_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -1104,24 +672,6 @@ archive-images4:
           - nfd/node-feature-discovery
         VERSION:
           - K8S_NFD_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - cloud-pv-vsphere/cloud-provider-vsphere
-        VERSION:
-          - VSPHERE_CPI_MANAGER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - csi-vsphere/driver
-        VERSION:
-          - VSPHERE_CSI_DRIVER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - csi-vsphere/syncer
-        VERSION:
-          - VSPHERE_CSI_SYNCER_VERSION
       - REGISTRY:
           - registry.k8s.io
         BASE:
@@ -1177,46 +727,9 @@ archive-images4:
         VERSION:
           - CSI_NFSPLUGIN_VERSION
       - BASE:
-          - obsidiandynamics/kafdrop
-        VERSION:
-          - KAFDROP_VERSION
-      - BASE:
-          - tchiotludo/akhq
-        VERSION:
-          - AKHQ_VERSION
-      - BASE:
-          - kubernetesui/dashboard
-        VERSION:
-          - K8S_DASHBOARD_VERSION
-      - BASE:
-          - kubernetesui/dashboard-api
-        VERSION:
-          - K8S_DASHBOARD_API_VERSION
-      - BASE:
-          - kubernetesui/dashboard-web
-        VERSION:
-          - K8S_DASHBOARD_WEB_VERSION
-      - BASE:
-          - kubernetesui/metrics-scraper
-        VERSION:
-          - K8S_DASHBOARD_METRICS_SCRAPER_VERSION
-      - BASE:
           - postgrest/postgrest
         VERSION:
           - POSTGREST_VERSION
-      - BASE:
-          - microsoft/oss/azure/workload-identity/webhook
-        VERSION:
-          - AZURE_WORKLOAD_IDENTITY_VERSION
-      - BASE:
-          - microsoft/k8s/azureserviceoperator
-        VERSION:
-          - AZURE_SERVICE_OPERATOR_VERSION
-      - BASE:
-          - guacamole/guacamole
-          - guacamole/guacd
-        VERSION:
-          - GUACAMOLE_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -1283,87 +796,12 @@ archive-images4:
           - nvidia/cloud-native/k8s-mig-manager
         VERSION:
           - NVIDIA_K8S_MIG_MANAGER_VERSION
-      - BASE:
-          - bitnami/harbor-adapter-trivy
-          - bitnami/harbor-core
-          - bitnami/harbor-exporter
-          - bitnami/harbor-jobservice
-          - bitnami/harbor-portal
-          - bitnami/harbor-registry
-          - bitnami/harbor-registryctl
-        VERSION:
-          - BITNAMI_HARBOR_VERSION
-      - BASE:
-          - goharbor/harbor-portal
-          - goharbor/harbor-core
-          - goharbor/harbor-jobservice
-          - goharbor/registry-photon
-          - goharbor/harbor-registryctl
-          - goharbor/harbor-db
-          - goharbor/harbor-exporter
-          - goharbor/trivy-adapter-photon
-          - goharbor/nginx-photon
-          - goharbor/redis-photon
-        VERSION:
-          - HARBOR_VERSION
       - REGISTRY:
           - ghcr.io
         BASE:
           - zitadel/zitadel
         VERSION:
           - ZITADEL_VERSION
-      - BASE:
-          - chirpstack/chirpstack
-        VERSION:
-          - CHIRPSTACK_VERSION
-      - BASE:
-          - chirpstack/chirpstack-rest-api
-        VERSION:
-          - CHIRPSTACK_REST_API_VERSION
-      - BASE:
-          - chirpstack/chirpstack-gateway-bridge
-        VERSION:
-          - CHIRPSTACK_GATEWAY_BRIDGE_VERSION
-      - BASE:
-          - library/kong
-        VERSION:
-          - KONG_VERSION
-      - BASE:
-          - supabase/studio
-        VERSION:
-          - SUPABASE_STUDIO_VERSION
-      - BASE:
-          - supabase/gotrue
-        VERSION:
-          - SUPABASE_GOTRUE_VERSION
-      - BASE:
-          - supabase/realtime
-        VERSION:
-          - SUPABASE_REALTIME_VERSION
-      - BASE:
-          - supabase/postgres-meta
-        VERSION:
-          - SUPABASE_POSTGRES_META_VERSION
-      - BASE:
-          - supabase/storage-api
-        VERSION:
-          - SUPABASE_STORAGE_API_VERSION
-      - BASE:
-          - supabase/logflare
-        VERSION:
-          - SUPABASE_LOGFLARE_VERSION
-      - BASE:
-          - supabase/edge-runtime
-        VERSION:
-          - SUPABASE_EDGE_RUNTIME_VERSION
-      - BASE:
-          - darthsim/imgproxy
-        VERSION:
-          - IMGPROXY_VERSION
-      - BASE:
-          - timberio/vector
-        VERSION:
-          - VECTOR_VERSION
       - BASE:
           - homeassistant/home-assistant
         VERSION:
@@ -1373,27 +811,9 @@ archive-images4:
         VERSION:
           - ZIGBEE2MQTT_VERSION
       - BASE:
-          - spvest/azure-keyvault-controller
-          - spvest/azure-keyvault-webhook
-          - spvest/azure-keyvault-env
-        VERSION:
-          - AZURE_KV2K8S_VERSION
-      - BASE:
           - gitea/gitea
         VERSION:
           - GITEA_VERSION
-      - BASE:
-          - scylladb/scylla
-        VERSION:
-          - SCYLLA_VERSION
-      - BASE:
-          - scylladb/scylla-manager
-        VERSION:
-          - SCYLLA_MANAGER_VERSION
-      - BASE:
-          - scylladb/scylla-operator
-        VERSION:
-          - SCYLLA_OPERATOR_VERSION
       - BASE:
           - paperlessngx/paperless-ngx
         VERSION:
@@ -1406,12 +826,6 @@ archive-images4:
           - changemakerstudiosus/papercut-smtp
         VERSION:
           - PAPERCUT_VERSION
-      - REGISTRY:
-          - docker.n8n.io
-        BASE:
-          - n8nio/n8n
-        VERSION:
-          - N8N_VERSION
       - BASE:
           - cloudflare/cloudflared
         VERSION:
@@ -1460,118 +874,6 @@ archive-images4:
           - rspamd/rspamd
         VERSION:
           - RSPAMD_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/cilium
-        VERSION:
-          - CILIUM_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/clustermesh-apiserver
-        VERSION:
-          - CILIUM_CLUSTERMESH_APISERVER_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/operator
-        VERSION:
-          - CILIUM_OPERATOR_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/startup-script
-        VERSION:
-          - CILIUM_STARTUP_SCRIPT_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/certgen
-        VERSION:
-          - CILIUM_CERTGEN_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/cilium-envoy
-        VERSION:
-          - CILIUM_ENVOY_VERSION
-      # - REGISTRY:
-      #     - quay.io
-      #   BASE:
-      #     - cilium/cilium-etcd-operator
-      #   VERSION:
-      #     - CILIUM_ETCD_OPERATOR_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/hubble-relay
-        VERSION:
-          - CILIUM_HUBBLE_RELAY_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/hubble-ui
-        VERSION:
-          - CILIUM_HUBBLE_UI_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cilium/hubble-ui-backend
-        VERSION:
-          - CILIUM_HUBBLE_UI_BACKEND_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - spiffe/spire-server
-        VERSION:
-          - SPIRE_SERVER_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - spiffe/spire-agent
-        VERSION:
-          - SPIRE_AGENT_VERSION
-      - BASE:
-          - airbyte/webapp
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/server
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/worker
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/metrics-reporter
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/bootloader
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/db
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/cron
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/connector-builder-server
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - airbyte/workload-api-server
-        VERSION:
-          - AIRBYTE_VERSION
-      - BASE:
-          - temporalio/auto-setup
-        VERSION:
-          - TEMPORTALIO_VERSION
 
 archive-special:
   extends: .archive-images
@@ -1579,35 +881,6 @@ archive-special:
   script:
     - |
       declare -a special_images=(
-        "${DOCKER_HUB}/kubernetes/pause:3.9"
-
-        "${DOCKER_HUB}/distroless/static-${DISTROLESS_VERSION:-debian11}"
-        "${DOCKER_HUB}/distroless/base-${DISTROLESS_VERSION:-debian11}"
-        "${DOCKER_HUB}/distroless/java17-${DISTROLESS_VERSION:-debian11}"
-        "${DOCKER_HUB}/distroless/java21-${DISTROLESS_VERSION:-debian11}"
-        "${DOCKER_HUB}/distroless/cc-${DISTROLESS_VERSION:-debian11}"
-        "${DOCKER_HUB}/distroless/nodejs22-${DISTROLESS_VERSION:-debian11}"
-
-        "${DOCKER_HUB}/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}"
-
-        "${DOCKER_HUB}/longhornio/longhorn-manager:${LONGHORN_VERSION:-v1.5.1}"
-        "${DOCKER_HUB}/longhornio/longhorn-ui:${LONGHORN_VERSION:-v1.5.1}"
-        "${DOCKER_HUB}/longhornio/longhorn-engine:${LONGHORN_VERSION:-v1.5.1}"
-        "${DOCKER_HUB}/longhornio/longhorn-instance-manager:${LONGHORN_VERSION:-v1.5.1}"
-        "${DOCKER_HUB}/longhornio/longhorn-share-manager:${LONGHORN_VERSION:-v1.5.1}"
-        "${DOCKER_HUB}/longhornio/backing-image-manager:${LONGHORN_VERSION:-v1.5.1}"
-        "${DOCKER_HUB}/longhornio/csi-node-driver-registrar:${LONGHORN_CSI_NODE_DRIVER_REGISTRAR_VERSION:-v2.7.0}"
-        "${DOCKER_HUB}/longhornio/csi-snapshotter:${LONGHORN_CSI_SNAPSHOTTER_VERSION:-v6.2.1}"
-        "${DOCKER_HUB}/longhornio/csi-resizer:${LONGHORN_CSI_RESIZER_VERSION:-v1.7.0}"
-        "${DOCKER_HUB}/longhornio/csi-provisioner:${LONGHORN_CSI_PROVISIONER_VERSION:-v3.4.1}"
-        "${DOCKER_HUB}/longhornio/csi-attacher:${LONGHORN_CSI_ATTACHER_VERSION:-v4.2.0}"
-        "${DOCKER_HUB}/longhornio/livenessprobe:${LONGHORN_LIVENESSPROBE_VERSION:-v2.9.0}"
-        "${DOCKER_HUB}/longhornio/support-bundle-kit:${LONGHORN_SUPPORT_BUNDLE_KIT_VERSION:-v0.0.25}"
-
-        # "${DOCKER_HUB}/heroku/heroku:22-cnb-build"
-        # "${DOCKER_HUB}/heroku/heroku:22-cnb"
-        "${DOCKER_HUB}/heroku/heroku:24-build"
-        "${DOCKER_HUB}/heroku/heroku:24"
       )
 
       for image in "${special_images[@]}"; do
@@ -1630,20 +903,12 @@ archive-extra:
           - kubernetes/kube-controller-manager
         VERSION:
           - K8S_131_VERSION
-          - K8S_130_VERSION
-          - K8S_129_VERSION
-          - K8S_128_VERSION
-          - K8S_127_VERSION
-          - K8S_126_VERSION
-          - K8S_125_VERSION
-          - K8S_124_VERSION
-          - K8S_123_VERSION
       - REGISTRY:
           - registry.k8s.io
         BASE:
           - coredns/coredns
         VERSION:
-          - K8S_COREDNS_VERSION
+          - COREDNS_VERSION
       - REGISTRY:
           - registry.k8s.io
         BASE:
@@ -1663,26 +928,6 @@ archive-extra:
           - calico/csi
         VERSION:
           - CALICO_VERSION
-      - BASE:
-          - confluentinc/cp-enterprise-control-center
-          - confluentinc/cp-enterprise-replicator
-          - confluentinc/cp-kafka-rest
-          - confluentinc/cp-ksqldb-server
-          - confluentinc/cp-ksqldb-cli
-          - confluentinc/cp-schema-registry
-          - confluentinc/cp-server
-          - confluentinc/cp-server-connect
-          - confluentinc/cp-zookeeper
-        VERSION:
-          - CONFLUENTINC_CP_VERSION
-      - BASE:
-          - confluentinc/confluent-init-container
-        VERSION:
-          - CONFLUENTINC_INIT_CONTAINER_VERSION
-      - BASE:
-          - confluentinc/confluent-operator
-        VERSION:
-          - CONFLUENTINC_OPERATOR_VERSION
 
 turbovillains-mirror:
   interruptible: true
@@ -1694,13 +939,6 @@ turbovillains-mirror:
       cd .${CI_JOB_NAME}
       git push --mirror --force git@github.com:turbovillains/infra-setup.git
 
-# mirror-homebrew:
-#   interruptible: true
-#   retry: 2
-#   stage: scratch
-#   script:
-#     - ./gitlab/${CI_JOB_NAME}.sh
-
 noroutine-ca:
   interruptible: true
   retry: 2
@@ -1709,125 +947,38 @@ noroutine-ca:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
-keycloak-themes:
-  interruptible: true
-  retry: 2
-  stage: prebuild
-  script:
-    - |
-      git clone https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/keycloak-themes.git
-      cd keycloak-themes
-
-      pack build \
-        --clear-cache \
-        --publish \
-        --trust-builder \
-        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${KEYCLOAK_THEMES_IMAGE}
-
-      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${KEYCLOAK_THEMES_IMAGE}
-      fi
-
-# grafana-dashboards:
-#   interruptible: true
-#   retry: 2
-#   stage: prebuild
-#   script:
-#     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-#         --build-arg GRIT_VERSION
-
 ingress-default-backend:
   interruptible: true
   retry: 2
-  stage: prebuild
+  stage: build
   script:
     - |
       git clone --depth 1 https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/ingress-default-backend.git
       cd ingress-default-backend
 
-      docker build --output=type=local,type=registry \
+      docker buildx build --builder=mybuilder --platform linux/amd64,linux/arm64 --push \
         -t ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} .
 
       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
-website:
-  interruptible: true
-  retry: 2
-  stage: prebuild
-  script:
-    - |
-      rm -rf ~/.npmrc ~/.yarnrc
-      git clone --depth 1 --branch ${WEBSITE_VERSION} https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/noroutine-website.git
-      cd noroutine-website
-
-      pack build \
-        --clear-cache \
-        --publish \
-        --trust-builder \
-        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      fi
-
-connect-landing:
-  interruptible: true
-  retry: 2
-  stage: prebuild
-  script:
-    - |
-      git clone --depth 1 --branch ${CONNECT_LANDING_VERSION} https://readonly:${SANDBOX_READONLY_TOKEN}@git.nrtn.dev/sandbox/noroutine-connect-landing.git
-      cd noroutine-connect-landing
-
-      pack build \
-        --clear-cache \
-        --publish \
-        --trust-builder \
-        --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-        ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      fi
-
-tripwire:
-  interruptible: true
-  retry: 2
-  stage: prebuild
-  script:
-    - |
-      git clone --depth 1 --branch ${TRIPWIRE_VERSION} https://readonly:${SANDBOX_READONLY_TOKEN}@git.nrtn.dev/sandbox/tripwire.git
-      cd tripwire
-      docker build --build-arg FROM=${DOCKER_HUB}/${INFRA_NAMESPACE}/debian:${INFRA_VERSION} -t ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} .
-      docker push ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      fi
-
-# tripwire-kafka-mqtt-bridge:
+# website:
 #   interruptible: true
 #   retry: 2
 #   stage: prebuild
 #   script:
 #     - |
-#       git clone --depth 1 --branch ${TRIPWIRE_KAFKA_MQTT_BRIDGE_VERSION} https://readonly:${SANDBOX_READONLY_TOKEN}@git.nrtn.dev/sandbox/tripwire-kafka-mqtt-bridge.git
-#       cd tripwire-kafka-mqtt-bridge
+#       rm -rf ~/.npmrc ~/.yarnrc
+#       git clone --depth 1 --branch ${WEBSITE_VERSION} https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/noroutine-website.git
+#       cd noroutine-website
 
-#       pack build \
-#         --clear-cache \
-#         --publish \
-#         --trust-builder \
-#         --builder ${DOCKER_HUB}/${INFRA_NAMESPACE}/buildpacks:${INFRA_VERSION} \
-#         ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+#       docker build
 
 #       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
 #         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 #       fi
+
 
 debian:
   interruptible: true
@@ -1840,66 +991,6 @@ debian:
   variables:
     BASE: debian
     VERSION: DEBIAN_VERSION
-
-buildpack-deps-bionic:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACK_DEPS_BIONIC_VERSION
-  variables:
-    BASE: buildpack-deps
-    VERSION: BUILDPACK_DEPS_BIONIC_VERSION
-
-buildpack-deps-focal:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACK_DEPS_FOCAL_VERSION
-  variables:
-    BASE: buildpack-deps
-    VERSION: BUILDPACK_DEPS_FOCAL_VERSION
-
-buildpack-deps-jammy:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACK_DEPS_JAMMY_VERSION
-  variables:
-    BASE: buildpack-deps
-    VERSION: BUILDPACK_DEPS_JAMMY_VERSION
-
-ubuntu20:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg UBUNTU_FOCAL_VERSION
-  variables:
-    BASE: ubuntu
-    VERSION: UBUNTU_FOCAL_VERSION
-
-ubuntu22:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg UBUNTU_JAMMY_VERSION
-  variables:
-    BASE: ubuntu
-    VERSION: UBUNTU_JAMMY_VERSION
 
 ubuntu24:
   interruptible: true
@@ -1962,37 +1053,6 @@ jdk-temurin:
     BASE: eclipse-temurin
     VERSION: JDK_TEMURIN_VERSION
 
-android-sdk:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JDK_ZULU_VERSION \
-        --build-arg GRADLE_URL_BASE \
-        --build-arg GRADLE_VERSION \
-        --build-arg ANDROID_SDK_TOOLS_URL_BASE \
-        --build-arg ANDROID_SDK_TOOLS_VERSION \
-        --build-arg ANDROID_SDK_TOOLS_CHECKSUM
-  variables:
-    BASE: azul/zulu-openjdk
-    VERSION: JDK_ZULU_VERSION
-
-gradle:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JDK_ZULU_VERSION \
-        --build-arg GRADLE_URL_BASE \
-        --build-arg GRADLE_VERSION
-  variables:
-    BASE: azul/zulu-openjdk
-    VERSION: JDK_ZULU_VERSION
-
 golang:
   interruptible: true
   retry: 2
@@ -2029,18 +1089,6 @@ python-slim:
     BASE: python
     VERSION: PYTHON_SLIM_VERSION
 
-locust:
-  interruptible: true
-  retry: 2
-  stage: base
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LOCUST_VERSION
-  variables:
-    BASE: locustio/locust
-    VERSION: LOCUST_VERSION
-
 php:
   interruptible: true
   retry: 2
@@ -2064,47 +1112,7 @@ node:
     IMAGE_BASE: library/node
     IMAGE_VERSION: ${NODE_VERSION}
 
-# heroku-22:
-#   interruptible: true
-#   retry: 2
-#   stage: stacks
-#   script:
-#     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-#       # -build is based on stack
-#       ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
-#         --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-#       # -cnb is based on stack
-#       ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb:${INFRA_VERSION} \
-#         --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-#       # -cnb-build is based on -build
-#       ./gitlab/build-image.sh ${CI_JOB_NAME}-cnb-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-cnb-build:${INFRA_VERSION} \
-#         --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION}
-
-heroku-24:
-  interruptible: true
-  retry: 2
-  stage: stacks
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-      # -build is based on stack
-      ./gitlab/build-image.sh ${CI_JOB_NAME}-build ${INFRA_NAMESPACE}/${CI_JOB_NAME}-build:${INFRA_VERSION} \
-        --build-arg STACK_IMAGE=${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
 ocsp-responder:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-openvpn:
   interruptible: true
   retry: 2
   stage: build
@@ -2118,11 +1126,10 @@ wireguard:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg WIREGUARD_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: masipcat/wireguard-go
-    VERSION: WIREGUARD_VERSION
+    IMAGE_BASE: masipcat/wireguard-go
+    IMAGE_VERSION: ${WIREGUARD_VERSION}
 
 wiretraefik:
   interruptible: true
@@ -2137,29 +1144,16 @@ wiretraefik:
     BASE: masipcat/wireguard-go
     VERSION: WIREGUARD_VERSION
 
-shadowbox:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SHADOWBOX_VERSION
-  variables:
-    BASE: outline/shadowbox
-    VERSION: SHADOWBOX_VERSION
-
 gitlab-auto-build:
   interruptible: true
   retry: 2
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_AUTO_BUILD_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: gitlab-org/cluster-integration/auto-build-image
-    VERSION: GITLAB_AUTO_BUILD_VERSION
+    IMAGE_BASE: gitlab-org/cluster-integration/auto-build-image
+    IMAGE_VERSION: ${GITLAB_AUTO_BUILD_VERSION}
 
 gitlab-auto-deploy:
   interruptible: true
@@ -2167,11 +1161,10 @@ gitlab-auto-deploy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_AUTO_DEPLOY_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: gitlab-org/cluster-integration/auto-deploy-image
-    VERSION: GITLAB_AUTO_DEPLOY_VERSION
+    IMAGE_BASE: gitlab-org/cluster-integration/auto-deploy-image
+    IMAGE_VERSION: ${GITLAB_AUTO_DEPLOY_VERSION}
 
 gitlab-agentk:
   interruptible: true
@@ -2179,11 +1172,10 @@ gitlab-agentk:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_AGENTK_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: gitlab-org/cluster-integration/gitlab-agent/agentk
-    VERSION: GITLAB_AGENTK_VERSION
+    IMAGE_BASE: gitlab-org/cluster-integration/gitlab-agent/agentk
+    IMAGE_VERSION: ${GITLAB_AGENTK_VERSION}
 
 gitlab-cluster-applications:
   interruptible: true
@@ -2191,123 +1183,10 @@ gitlab-cluster-applications:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_CLUSTER_APPLICATIONS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: gitlab-org/cluster-integration/cluster-applications
-    VERSION: GITLAB_CLUSTER_APPLICATIONS_VERSION
-
-buildpacks:
-  interruptible: true
-  stage: buildpacks
-  script:
-    - |
-      set -x
-      cd ${CI_JOB_NAME}
-
-      # builder_toml_path=builder-22.toml
-      # # Update build image
-      # jq_build_image_filter=".stack[\"build-image\"] |= sub(\"heroku/heroku:22-cnb-build\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb-build:${INFRA_VERSION}\")"
-      # jq_run_image_filter=".stack[\"run-image\"] |= sub(\"heroku/heroku:22-cnb\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-22-cnb:${INFRA_VERSION}\")"
-      # updated_toml=$(yj -t < "${builder_toml_path}" | jq "${jq_build_image_filter}" | jq "${jq_run_image_filter}" | yj -jt)
-      # echo "${updated_toml}" > "infra-${builder_toml_path}"
-
-      # pack builder create ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} --config infra-builder-22.toml --pull-policy if-not-present
-      # docker push ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      # if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-      #   archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      # fi
-
-      builder_toml_path=builder-24.toml
-      # Update build image
-      jq_build_image_filter=".stack[\"build-image\"] |= sub(\"heroku/heroku:24-build\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-24-build:${INFRA_VERSION}\")"
-      jq_run_image_filter=".stack[\"run-image\"] |= sub(\"heroku/heroku:24\"; \"${DOCKER_HUB}/${INFRA_NAMESPACE}/heroku-24:${INFRA_VERSION}\")"
-      updated_toml=$(yj -t < "${builder_toml_path}" | jq "${jq_build_image_filter}" | jq "${jq_run_image_filter}" | yj -jt)
-      echo "${updated_toml}" > "infra-${builder_toml_path}"
-
-      pack builder create ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} --config "infra-${builder_toml_path}" --pull-policy always
-      docker push ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-        archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-      fi
-
-# heroku-buildpacks:
-#   interruptible: true
-#   stage: buildpacks
-#   script:
-#     - |
-#       set -x
-
-#       export ALL_PROXY=
-#       export all_proxy=
-#       export HTTP_PROXY=
-#       export http_proxy=
-#       export HTTPS_PROXY=
-#       export https_proxy=
-#       export FTP_PROXY=
-#       export ftp_proxy=
-
-#       git config --global --unset http.proxy || true
-#       git config --unset http.proxy || true
-
-#       sudo apt update -yyq
-#       sudo apt install -yyq musl-tools
-#       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y -t x86_64-unknown-linux-musl
-
-#       source $HOME/.cargo/env
-
-#       cat $HOME/.cargo/env
-
-#       env | grep -i proxy
-
-#       cargo install libcnb-cargo
-#     - cd ${CI_JOB_NAME}
-#     - |
-#       # Fetch upstream buildpack sources
-#       curl -sLo- https://github.com/heroku/buildpacks-nodejs/archive/refs/heads/main.tar.gz | tar zxv buildpacks-nodejs-main/{Cargo.lock,Cargo.toml,common,buildpacks,test_support}
-#       # curl -sLo- https://github.com/heroku/buildpacks-jvm/archive/refs/heads/main.tar.gz | tar zxv buildpacks-jvm-main/{common,buildpacks}
-#     - |
-
-#       export -f archive_image
-
-#       # Available buildpacks
-#       find . -name buildpack.toml
-#       # Release upstream buildpacks
-#       for buildpack_id in heroku/nodejs-npm heroku/nodejs-corepack heroku/nodejs-pnpm-install heroku/nodejs-yarn heroku/nodejs-engine heroku/nodejs-function-invoker; do
-#         REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh
-#       done
-#     - |
-#       # Release meta-buildpacks
-#       for buildpack_id in heroku/nodejs heroku/nodejs-function; do
-#         REQUESTED_BUILDPACK_ID=${buildpack_id} ./release-buildpack.sh
-#       done
-#     - |
-#       # Release builder
-#       make publish20 \
-#         BUILDPACKS_VERSION=${INFRA_VERSION} \
-#         BUILDPACKS_BASE=infra/heroku-20 \
-#         BUILDPACKS_BASE_VERSION=${INFRA_VERSION}
-
-#       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-#           archive_image ${DOCKER_HUB}/infra/pack-build:20
-#           archive_image ${DOCKER_HUB}/infra/pack:20
-#           archive_image ${DOCKER_HUB}/infra/buildpacks:${INFRA_VERSION}
-#       fi
-
-#       # make publish22 \
-#       #   BUILDPACKS_VERSION=${INFRA_VERSION} \
-#       #   BUILDPACKS_BASE=infra/heroku-22 \
-#       #   BUILDPACKS_BASE_VERSION=${INFRA_VERSION}
-
-buildpacksio-lifecycle:
-  interruptible: true
-  retry: 2
-  stage: buildpacks
-  script:
-    - ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \ --build-arg BUILDPACKSIO_LIFECYCLE_VERSION
-  variables:
-    BASE: buildpacksio/lifecycle
-    VERSION: BUILDPACKSIO_LIFECYCLE_VERSION
+    IMAGE_BASE: gitlab-org/cluster-integration/cluster-applications
+    IMAGE_VERSION: ${GITLAB_CLUSTER_APPLICATIONS_VERSION}
 
 gitlab-runner:
   interruptible: true
@@ -2315,11 +1194,10 @@ gitlab-runner:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_RUNNER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: gitlab/gitlab-runner
-    VERSION: GITLAB_RUNNER_VERSION
+    IMAGE_BASE: gitlab/gitlab-runner
+    IMAGE_VERSION: ${GITLAB_RUNNER_VERSION}
 
 gitlab:
   interruptible: true
@@ -2327,49 +1205,10 @@ gitlab:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GITLAB_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: gitlab/gitlab-ce
-    VERSION: GITLAB_VERSION
-
-actions-runner-controller:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ACTIONS_RUNNER_CONTROLLER_VERSION
-  variables:
-    BASE: summerwind/actions-runner-controller
-    VERSION: ACTIONS_RUNNER_CONTROLLER_VERSION
-
-actions-runner:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HOST_DOCKER_GID \
-        --build-arg ACTIONS_RUNNER_IMAGE_VERSION
-  variables:
-    BASE: summerwind/actions-runner
-    VERSION: ACTIONS_RUNNER_IMAGE_VERSION
-
-actions-runner-dind:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HOST_DOCKER_GID \
-        --build-arg ACTIONS_RUNNER_IMAGE_VERSION
-  variables:
-    BASE: summerwind/actions-runner-dind
-    VERSION: ACTIONS_RUNNER_IMAGE_VERSION
+    IMAGE_BASE: gitlab/gitlab-ce
+    IMAGE_VERSION: ${GITLAB_VERSION}
 
 kube-rbac-proxy:
   interruptible: true
@@ -2377,11 +1216,10 @@ kube-rbac-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KUBE_RBAC_PROXY_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: brancz/kube-rbac-proxy
-    VERSION: KUBE_RBAC_PROXY_VERSION
+    IMAGE_BASE: brancz/kube-rbac-proxy
+    IMAGE_VERSION: ${KUBE_RBAC_PROXY_VERSION}
 
 kaniko-executor:
   interruptible: true
@@ -2389,11 +1227,10 @@ kaniko-executor:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KANIKO_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: kaniko-project/executor
-    VERSION: KANIKO_VERSION
+    IMAGE_BASE: kaniko-project/executor
+    IMAGE_VERSION: ${KANIKO_VERSION}
 
 nexus:
   interruptible: true
@@ -2401,11 +1238,10 @@ nexus:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NEXUS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sonatype/nexus3
-    VERSION: NEXUS_VERSION
+    IMAGE_BASE: sonatype/nexus3
+    IMAGE_VERSION: ${NEXUS_VERSION}
 
 vaultwarden:
   interruptible: true
@@ -2413,11 +1249,10 @@ vaultwarden:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VAULTWARDEN_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: vaultwarden/server
-    VERSION: VAULTWARDEN_VERSION
+    IMAGE_BASE: vaultwarden/server
+    IMAGE_VERSION: ${VAULTWARDEN_VERSION}
 
 radius:
   interruptible: true
@@ -2425,11 +1260,10 @@ radius:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg FREERADIUS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: freeradius/freeradius-server
-    VERSION: FREERADIUS_VERSION
+    IMAGE_BASE: freeradius/freeradius-server
+    IMAGE_VERSION: ${FREERADIUS_VERSION}
 
 mkdocs:
   interruptible: true
@@ -2486,13 +1320,10 @@ keycloak:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KEYCLOAK_VERSION \
-        --build-arg EMAIL_TOTP_AUTH_VERSION \
-        --build-arg KEYCLOAK_THEMES_IMAGE
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: keycloak/keycloak
-    VERSION: KEYCLOAK_VERSION
+    IMAGE_BASE: keycloak/keycloak
+    IMAGE_VERSION: ${KEYCLOAK_VERSION}
 
 postgres:
   interruptible: true
@@ -2505,17 +1336,6 @@ postgres:
     IMAGE_BASE: library/postgres
     IMAGE_VERSION: ${POSTGRES_VERSION}
 
-jira:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: atlassian/jira-software
-    IMAGE_VERSION: ${JIRA_VERSION}
-
 nextcloud:
   interruptible: true
   retry: 2
@@ -2526,17 +1346,6 @@ nextcloud:
   variables:
     IMAGE_BASE: library/nextcloud
     IMAGE_VERSION: ${NEXTCLOUD_VERSION}
-
-speedtest:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SPEEDTEST_VERSION \
-        --build-arg GOLANG_ALPINE_IMAGE=${DOCKER_HUB}/library/golang:${GOLANG_ALPINE_VERSION} \
-        --build-arg ALPINE_IMAGE=${DOCKER_HUB}/${INFRA_NAMESPACE}/alpine:${INFRA_VERSION}
 
 haproxy:
   interruptible: true
@@ -2590,11 +1399,10 @@ prometheus:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PROMETHEUS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus/prometheus
-    VERSION: PROMETHEUS_VERSION
+    IMAGE_BASE: prometheus/prometheus
+    IMAGE_VERSION: ${PROMETHEUS_VERSION}
 
 prometheus-operator:
   interruptible: true
@@ -2602,11 +1410,10 @@ prometheus-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PROMETHEUS_OPERATOR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus-operator/prometheus-operator
-    VERSION: PROMETHEUS_OPERATOR_VERSION
+    IMAGE_BASE: prometheus-operator/prometheus-operator
+    IMAGE_VERSION: ${PROMETHEUS_OPERATOR_VERSION}
 
 prometheus-config-reloader:
   interruptible: true
@@ -2614,11 +1421,10 @@ prometheus-config-reloader:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PROMETHEUS_OPERATOR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus-operator/prometheus-config-reloader
-    VERSION: PROMETHEUS_OPERATOR_VERSION
+    IMAGE_BASE: prometheus-operator/prometheus-config-reloader
+    IMAGE_VERSION: ${PROMETHEUS_OPERATOR_VERSION}
 
 karma:
   interruptible: true
@@ -2626,11 +1432,10 @@ karma:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KARMA_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prymitive/karma
-    VERSION: KARMA_VERSION
+    IMAGE_BASE: prymitive/karma
+    IMAGE_VERSION: ${KARMA_VERSION}
 
 alertmanager:
   interruptible: true
@@ -2638,11 +1443,10 @@ alertmanager:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ALERTMANAGER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus/alertmanager
-    VERSION: ALERTMANAGER_VERSION
+    IMAGE_BASE: prometheus/alertmanager
+    IMAGE_VERSION: ${ALERTMANAGER_VERSION}
 
 pushgateway:
   interruptible: true
@@ -2650,11 +1454,10 @@ pushgateway:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PUSHGATEWAY_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus/pushgateway
-    VERSION: PUSHGATEWAY_VERSION
+    IMAGE_BASE: prometheus/pushgateway
+    IMAGE_VERSION: ${PUSHGATEWAY_VERSION}
 
 blackbox-exporter:
   interruptible: true
@@ -2674,11 +1477,10 @@ snmp-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SNMP_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus/snmp-exporter
-    VERSION: SNMP_EXPORTER_VERSION
+    IMAGE_BASE: prometheus/snmp-exporter
+    IMAGE_VERSION: ${SNMP_EXPORTER_VERSION}
 
 memcached-exporter:
   interruptible: true
@@ -2686,11 +1488,10 @@ memcached-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MEMCACHED_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus/snmp-exporter
-    VERSION: MEMCACHED_EXPORTER_VERSION
+    IMAGE_BASE: prometheus/memcached-exporter
+    IMAGE_VERSION: ${MEMCACHED_EXPORTER_VERSION}
 
 ipmi-exporter:
   interruptible: true
@@ -2703,19 +1504,8 @@ ipmi-exporter:
         --build-arg GOLANG_VERSION
   variables:
     BASE: golang
-    VERSION: GOLANG_VERSION as builder
-
-cadvisor:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CADVISOR_VERSION
-  variables:
-    BASE: cadvisor/cadvisor
-    VERSION: CADVISOR_VERSION
+    VERSION: GOLANG_VERSION
+    DOCKER_BUILDER_TARGET_PLATFORM: linux/amd64
 
 node-exporter:
   interruptible: true
@@ -2723,35 +1513,10 @@ node-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NODE_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: prometheus/node-exporter
-    VERSION: NODE_EXPORTER_VERSION
-
-consul-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CONSUL_EXPORTER_VERSION
-  variables:
-    BASE: prometheus/consul-exporter
-    VERSION: CONSUL_EXPORTER_VERSION
-
-prometheus-es-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PROMETHEUS_ES_EXPORTER_VERSION
-  variables:
-    BASE: braedon/prometheus-es-exporter
-    VERSION: PROMETHEUS_ES_EXPORTER_VERSION
+    IMAGE_BASE: prometheus/node-exporter
+    IMAGE_VERSION: ${NODE_EXPORTER_VERSION}
 
 ssl-exporter:
   interruptible: true
@@ -2759,49 +1524,10 @@ ssl-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SSL_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: ribbybibby/ssl-exporter
-    VERSION: SSL_EXPORTER_VERSION
-
-rsyslog:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
-squid:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SQUID_VERSION
-
-ioping-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GOLANG_VERSION
-  variables:
-    BASE: golang
-    VERSION: GOLANG_VERSION
-
-ldap-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LDAP_EXPORTER_VERSION
+    IMAGE_BASE: ribbybibby/ssl-exporter
+    IMAGE_VERSION: ${SSL_EXPORTER_VERSION}
 
 grafana:
   interruptible: true
@@ -2815,50 +1541,6 @@ grafana:
     BASE: grafana/grafana
     VERSION: GRAFANA_VERSION
 
-promtail:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: grafana/promtail
-    IMAGE_VERSION: ${LOKI_VERSION}
-
-loki:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: grafana/loki
-    IMAGE_VERSION: ${LOKI_VERSION}
-
-loki-canary:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: grafana/loki-canary
-    IMAGE_VERSION: ${LOKI_VERSION}
-
-loki-gateway:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nginxinc/nginx-unprivileged
-    IMAGE_VERSION: ${LOKI_GATEWAY_NGINX_VERSION}
-
 nginx-unprivileged:
   interruptible: true
   retry: 2
@@ -2870,77 +1552,16 @@ nginx-unprivileged:
     IMAGE_BASE: nginxinc/nginx-unprivileged
     IMAGE_VERSION: ${NGINX_VERSION}
 
-httpd:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HTTPD_VERSION
-  variables:
-    BASE: httpd
-    VERSION: HTTPD_VERSION
-
-tomcat:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg TOMCAT_VERSION
-  variables:
-    BASE: tomcat
-    VERSION: TOMCAT_VERSION
-
-m3dbnode:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg M3DBNODE_VERSION
-  variables:
-    BASE: m3db/m3dbnode
-    VERSION: M3DBNODE_VERSION
-
-m3coordinator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg M3COORDINATOR_VERSION
-  variables:
-    BASE: m3db/m3coordinator
-    VERSION: M3COORDINATOR_VERSION
-
-cortex:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CORTEX_VERSION
-  variables:
-    BASE: cortexproject/cortex
-    VERSION: CORTEX_VERSION
-
 elasticsearch:
   interruptible: true
   retry: 2
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ELASTICSEARCH_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: elasticsearch/elasticsearch
-    VERSION: ELASTICSEARCH_VERSION
+    IMAGE_BASE: elastic/elasticsearch/elasticsearch
+    IMAGE_VERSION: ${ELASTICSEARCH_VERSION}
 
 logstash:
   interruptible: true
@@ -2948,11 +1569,10 @@ logstash:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LOGSTASH_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: logstash/logstash
-    VERSION: LOGSTASH_VERSION
+    IMAGE_BASE: elastic/logstash/logstash
+    IMAGE_VERSION: ${LOGSTASH_VERSION}
 
 kibana:
   interruptible: true
@@ -2960,11 +1580,10 @@ kibana:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KIBANA_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: kibana/kibana
-    VERSION: KIBANA_VERSION
+    IMAGE_BASE: elastic/kibana/kibana
+    IMAGE_VERSION: ${KIBANA_VERSION}
 
 mongo:
   interruptible: true
@@ -2972,11 +1591,10 @@ mongo:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MONGO_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: mongo
-    VERSION: MONGO_VERSION
+    IMAGE_BASE: library/mongo
+    IMAGE_VERSION: ${MONGO_VERSION}
 
 alerta:
   interruptible: true
@@ -2984,11 +1602,10 @@ alerta:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ALERTA_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: alerta/alerta-web
-    VERSION: ALERTA_VERSION
+    IMAGE_BASE: alerta/alerta-web
+    IMAGE_VERSION: ${ALERTA_VERSION}
 
 wordpress:
   interruptible: true
@@ -2996,11 +1613,10 @@ wordpress:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg WORDPRESS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: wordpress
-    VERSION: WORDPRESS_VERSION
+    IMAGE_BASE: library/wordpress
+    IMAGE_VERSION: ${WORDPRESS_VERSION}
 
 pgadmin:
   interruptible: true
@@ -3008,11 +1624,10 @@ pgadmin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PGADMIN_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: dpage/pgadmin4
-    VERSION: PGADMIN_VERSION
+    IMAGE_BASE: dpage/pgadmin4
+    IMAGE_VERSION: ${PGADMIN_VERSION}
 
 adminer:
   interruptible: true
@@ -3020,11 +1635,10 @@ adminer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ADMINER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: adminer
-    VERSION: ADMINER_VERSION
+    IMAGE_BASE: library/adminer
+    IMAGE_VERSION: ${ADMINER_VERSION}
 
 mysql:
   interruptible: true
@@ -3032,11 +1646,10 @@ mysql:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MYSQL_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: mysql
-    VERSION: MYSQL_VERSION
+    IMAGE_BASE: library/mysql
+    IMAGE_VERSION: ${MYSQL_VERSION}
 
 mariadb:
   interruptible: true
@@ -3044,11 +1657,10 @@ mariadb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MARIADB_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: mariadb
-    VERSION: MARIADB_VERSION
+    IMAGE_BASE: library/mariadb
+    IMAGE_VERSION: ${MARIADB_VERSION}
 
 httpbin:
   interruptible: true
@@ -3056,11 +1668,10 @@ httpbin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HTTPBIN_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: mccutchen/go-httpbin
-    VERSION: HTTPBIN_VERSION
+    IMAGE_BASE: mccutchen/go-httpbin
+    IMAGE_VERSION: ${HTTPBIN_VERSION}
 
 oauth2-proxy:
   interruptible: true
@@ -3068,71 +1679,10 @@ oauth2-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg OAUTH2_PROXY_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: oauth2-proxy/oauth2-proxy
-    VERSION: OAUTH2_PROXY_VERSION
-
-caprover:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CAPROVER_VERSION
-  variables:
-    BASE: caprover/caprover
-    VERSION: CAPROVER_VERSION
-
-binderhub:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BINDERHUB_VERSION
-  variables:
-    BASE: noroutine/k8s-binderhub
-    VERSION: BINDERHUB_VERSION
-
-binderhub-image-cleaner:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BINDERHUB_IMAGE_CLEANER_VERSION
-  variables:
-    BASE: jupyterhub/k8s-image-cleaner
-    VERSION: BINDERHUB_IMAGE_CLEANER_VERSION
-
-jupyterhub:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_VERSION
-  variables:
-    BASE: jupyterhub/k8s-hub
-    VERSION: JUPYTERHUB_VERSION
-
-repo2docker:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg REPO2DOCKER_VERSION
-  variables:
-    BASE: jupyterhub/repo2docker
-    VERSION: REPO2DOCKER_VERSION
+    IMAGE_BASE: oauth2-proxy/oauth2-proxy
+    IMAGE_VERSION: ${OAUTH2_PROXY_VERSION}
 
 dind:
   interruptible: true
@@ -3140,162 +1690,10 @@ dind:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DIND_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: docker
-    VERSION: DIND_VERSION
-
-pink:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PINK_VERSION
-  variables:
-    BASE: podman/stable
-    VERSION: PINK_VERSION
-
-jupyterhub-http-proxy:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_HTTP_PROXY_VERSION
-  variables:
-    BASE: jupyterhub/configurable-http-proxy
-    VERSION: JUPYTERHUB_HTTP_PROXY_VERSION
-
-jupyterhub-secret-sync:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_SECRET_SYNC_VERSION
-  variables:
-    BASE: jupyterhub/k8s-secret-sync
-    VERSION: JUPYTERHUB_SECRET_SYNC_VERSION
-
-jupyterhub-network-tools:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_NETWORK_TOOLS_VERSION
-  variables:
-    BASE: jupyterhub/k8s-network-tools
-    VERSION: JUPYTERHUB_NETWORK_TOOLS_VERSION
-
-jupyterhub-singleuser-sample:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION
-  variables:
-    BASE: jupyterhub/k8s-singleuser-sample
-    VERSION: JUPYTERHUB_SINGLEUSER_SAMPLE_VERSION
-
-jupyterhub-image-awaiter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_IMAGE_AWAITER_VERSION
-  variables:
-    BASE: jupyterhub/k8s-image-awaiter
-    VERSION: JUPYTERHUB_IMAGE_AWAITER_VERSION
-
-jupyterhub-scheduler:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_SCHEDULER_VERSION
-  variables:
-    BASE: kube-scheduler
-    VERSION: JUPYTERHUB_SCHEDULER_VERSION
-
-jupyterhub-pause:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JUPYTERHUB_PAUSE_VERSION
-  variables:
-    BASE: pause
-    VERSION: JUPYTERHUB_PAUSE_VERSION
-
-jupyter-notebook:
-  interruptible: true
-  retry: 2
-  stage: build
-  parallel:
-    matrix:
-      - FLAVOUR:
-          - base
-          - minimal
-          - r
-          - scipy
-          - tensorflow
-          - datascience
-          - pyspark
-          - all-spark
-        NOTEBOOK:
-          - notebook
-  script:
-    - |
-      ./gitlab/build-image.sh jupyter-notebook ${INFRA_NAMESPACE}/jupyter-${FLAVOUR}-${NOTEBOOK}:${INFRA_VERSION} \
-        --build-arg JUPYTER_VERSION \
-        --build-arg FLAVOUR
-
-# jupyter-all-spark-cuda-notebook:
-#   interruptible: true
-#   retry: 2
-#   stage: build
-#   script:
-#     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-#         --build-arg JUPYTER_VERSION \
-#         --build-arg FLAVOUR=all-spark
-#   variables:
-#     VERSION: JUPYTER_VERSION
-
-rshiny:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg RSHINY_VERSION
-  variables:
-    BASE: rocker/shiny
-    VERSION: RSHINY_VERSION
-
-# rstudio:
-#   stage: build
-#   script:
-#     - |
-#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-#         --build-arg RSTUDIO_VERSION \
-#         --build-arg JUPYTER_VERSION
+    IMAGE_BASE: library/docker
+    IMAGE_VERSION: ${DIND_VERSION}
 
 bitnami-minio:
   interruptible: true
@@ -3327,11 +1725,10 @@ bitnami-shell:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_SHELL_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/bitnami-shell
-    VERSION: BITNAMI_SHELL_VERSION
+    IMAGE_BASE: bitnami/os-shell
+    IMAGE_VERSION: ${BITNAMI_SHELL_VERSION}
 
 bitnami-metallb-controller:
   interruptible: true
@@ -3368,30 +1765,6 @@ bitnami-grafana:
   variables:
     BASE: bitnami/grafana
     VERSION: BITNAMI_GRAFANA_VERSION
-
-bitnami-grafana-image-renderer:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION
-  variables:
-    BASE: bitnami/grafana-image-renderer
-    VERSION: BITNAMI_GRAFANA_IMAGE_RENDERER_VERSION
-
-bitnami-consul:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_CONSUL_VERSION
-  variables:
-    BASE: bitnami/consul
-    VERSION: BITNAMI_CONSUL_VERSION
 
 bitnami-nats:
   interruptible: true
@@ -3459,13 +1832,10 @@ bitnami-keycloak:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KEYCLOAK_VERSION \
-        --build-arg EMAIL_TOTP_AUTH_VERSION \
-        --build-arg KEYCLOAK_THEMES_IMAGE
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/keycloak
-    VERSION: BITNAMI_KEYCLOAK_VERSION
+    IMAGE_BASE: bitnami/keycloak
+    IMAGE_VERSION: ${BITNAMI_KEYCLOAK_VERSION}
 
 bitnami-keycloak-config-cli:
   interruptible: true
@@ -3473,11 +1843,10 @@ bitnami-keycloak-config-cli:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/keycloak-config-cli
-    VERSION: BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION
+    IMAGE_BASE: bitnami/keycloak-config-cli
+    IMAGE_VERSION: ${BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION}
 
 bitnami-spark:
   interruptible: true
@@ -3575,64 +1944,6 @@ bitnami-redis-exporter:
     BASE: bitnami/redis-exporter
     VERSION: BITNAMI_REDIS_EXPORTER_VERSION
 
-bitnami-postgresql10:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL10_VERSION
-  variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL10_VERSION
-
-bitnami-postgresql11:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL11_VERSION
-  variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL11_VERSION
-
-bitnami-postgresql12:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL12_VERSION
-  variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL12_VERSION
-
-bitnami-postgresql13:
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL13_VERSION
-  variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL13_VERSION
-
-bitnami-postgresql14:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL14_VERSION
-  variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL14_VERSION
-
 bitnami-postgresql15:
   interruptible: true
   retry: 2
@@ -3669,18 +1980,6 @@ bitnami-postgresql17:
     BASE: bitnami/postgresql
     VERSION: BITNAMI_POSTGRESQL17_VERSION
 
-bitnami-tomcat:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_TOMCAT_VERSION
-  variables:
-    BASE: bitnami/tomcat
-    VERSION: BITNAMI_TOMCAT_VERSION
-
 bitnami-jmx-exporter:
   interruptible: true
   retry: 2
@@ -3705,87 +2004,6 @@ bitnami-mariadb:
     BASE: bitnami/mariadb
     VERSION: BITNAMI_MARIADB_VERSION
 
-bitnami-mongodb:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MONGODB_VERSION
-  variables:
-    BASE: bitnami/mongodb
-    VERSION: BITNAMI_MONGODB_VERSION
-
-bitnami-memcached:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MEMCACHED_VERSION
-  variables:
-    BASE: bitnami/memcached
-    VERSION: BITNAMI_MEMCACHED_VERSION
-
-bitnami-kubeapps-dashboard:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_DASHBOARD_VERSION
-  variables:
-    BASE: bitnami/kubeapps-dashboard
-    VERSION: BITNAMI_KUBEAPPS_DASHBOARD_VERSION
-
-bitnami-kubeapps-apprepository-controller:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION
-  variables:
-    BASE: bitnami/kubeapps-apprepository-controller
-    VERSION: BITNAMI_KUBEAPPS_APPREPOSITORY_CONTROLLER_VERSION
-
-bitnami-kubeapps-asset-syncer:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_ASSET_SYNCER
-  variables:
-    BASE: bitnami/kubeapps-asset-syncer
-    VERSION: BITNAMI_KUBEAPPS_ASSET_SYNCER
-
-bitnami-kubeapps-apis:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_APIS_VERSION
-  variables:
-    BASE: bitnami/kubeapps-apis
-    VERSION: BITNAMI_KUBEAPPS_APIS_VERSION
-
-bitnami-kubeapps-pinniped-proxy:
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION
-  variables:
-    BASE: bitnami/kubeapps-pinniped-proxy
-    VERSION: BITNAMI_KUBEAPPS_PINNIPED_PROXY_VERSION
 
 bitnami-kube-rbac-proxy:
   stage: build
@@ -3819,91 +2037,14 @@ bitnami-sealed-secrets-controller:
     BASE: bitnami/sealed-secrets-controller
     VERSION: BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
 
-bitnami-cilium:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/cilium
-    IMAGE_VERSION: ${BITNAMI_CILIUM_VERSION}
-
-bitnami-cilium-proxy:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/cilium-proxy
-    IMAGE_VERSION: ${BITNAMI_CILIUM_PROXY_VERSION}
-
-bitnami-cilium-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/cilium-operator
-    IMAGE_VERSION: ${BITNAMI_CILIUM_OPERATOR_VERSION}
-
-bitnami-hubble-relay:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/hubble-relay
-    IMAGE_VERSION: ${BITNAMI_CILIUM_HUBBLE_RELAY_VERSION}
-
-bitnami-hubble-ui:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/hubble-ui
-    IMAGE_VERSION: ${BITNAMI_CILIUM_HUBBLE_UI_VERSION}
-
-bitnami-hubble-ui-backend:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/hubble-ui-backend
-    IMAGE_VERSION: ${BITNAMI_CILIUM_HUBBLE_UI_BACKEND_VERSION}
-
-bitnami-trivy:
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_TRIVY_VERSION
-  variables:
-    BASE: bitnami/trivy
-    VERSION: BITNAMI_TRIVY_VERSION
-
 trivy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg TRIVY_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: aquasec/trivy
-    VERSION: TRIVY_VERSION
+    IMAGE_BASE: aquasec/trivy
+    IMAGE_VERSION: ${TRIVY_VERSION}
 
 secrets-store-csi-driver:
   stage: build
@@ -3931,7 +2072,7 @@ external-secrets:
         --build-arg EXTERNAL_SECRETS_VERSION
   variables:
     BASE: external-secrets/external-secrets
-    VERSION: EXTERNAL_SECRETS_VERSION as binary
+    VERSION: EXTERNAL_SECRETS_VERSION
 
 hasura-graphql-engine:
   interruptible: true
@@ -3939,35 +2080,10 @@ hasura-graphql-engine:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HASURA_GRAPHQL_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: hasura/graphql-engine
-    VERSION: HASURA_GRAPHQL_VERSION
-
-kutt:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KUTT_VERSION
-  variables:
-    BASE: kutt/kutt
-    VERSION: KUTT_VERSION
-
-umami:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg UMAMI_VERSION
-  variables:
-    BASE: mikecao/umami
-    VERSION: UMAMI_VERSION
+    IMAGE_BASE: hasura/graphql-engine
+    IMAGE_VERSION: ${HASURA_GRAPHQL_VERSION}
 
 pihole:
   interruptible: true
@@ -3975,107 +2091,10 @@ pihole:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PIHOLE_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: pihole/pihole
-    VERSION: PIHOLE_VERSION
-
-clickhouse-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CLICKHOUSE_VERSION
-  variables:
-    BASE: yandex/clickhouse-server
-    VERSION: CLICKHOUSE_VERSION
-
-clickhouse-tabix-web-client:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg TABIX_VERSION
-  variables:
-    BASE: spoonest/clickhouse-tabix-web-client
-    VERSION: TABIX_VERSION
-
-plausible-analytics:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg PLAUSIBLE_VERSION
-  variables:
-    BASE: plausible/analytics
-    VERSION: PLAUSIBLE_VERSION
-
-verdaccio:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VERDACCIO_VERSION
-  variables:
-    BASE: verdaccio/verdaccio
-    VERSION: VERDACCIO_VERSION
-
-strapi:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg STRAPI_VERSION
-  variables:
-    BASE: strapi/strapi
-    VERSION: STRAPI_VERSION
-
-ghost:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GHOST_VERSION
-  variables:
-    BASE: ghost
-    VERSION: GHOST_VERSION
-
-bitnami-ghost:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_GHOST_VERSION
-  variables:
-    BASE: bitnami/ghost
-    VERSION: BITNAMI_GHOST_VERSION
-
-matomo:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MATOMO_VERSION
-  variables:
-    BASE: matomo
-    VERSION: MATOMO_VERSION
+    IMAGE_BASE: pihole/pihole
+    IMAGE_VERSION: ${PIHOLE_VERSION}
 
 nocodb:
   interruptible: true
@@ -4083,11 +2102,10 @@ nocodb:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NOCODB_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: nocodb/nocodb
-    VERSION: NOCODB_VERSION
+    IMAGE_BASE: nocodb/nocodb
+    IMAGE_VERSION: ${NOCODB_VERSION}
 
 metabase:
   interruptible: true
@@ -4100,41 +2118,16 @@ metabase:
     IMAGE_BASE: metabase/metabase
     IMAGE_VERSION: ${METABASE_VERSION}
 
-sftpgo:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SFTPGO_VERSION
-  variables:
-    BASE: drakkan/sftpgo
-    VERSION: SFTPGO_VERSION
-
-hello:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HELLO_VERSION
-  variables:
-    BASE: paulbouwer/hello-kubernetes
-    VERSION: HELLO_VERSION
-
 reloader:
   interruptible: true
   retry: 2
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg RELOADER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: stakater/reloader
-    VERSION: RELOADER_VERSION
+    IMAGE_BASE: stakater/reloader
+    IMAGE_VERSION: ${RELOADER_VERSION}
 
 configmap-reload:
   interruptible: true
@@ -4142,11 +2135,10 @@ configmap-reload:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CONFIGMAP_RELOAD_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jimmidyson/configmap-reload
-    VERSION: CONFIGMAP_RELOAD_VERSION
+    IMAGE_BASE: jimmidyson/configmap-reload
+    IMAGE_VERSION: ${CONFIGMAP_RELOAD_VERSION}
 
 docker-registry:
   interruptible: true
@@ -4154,11 +2146,11 @@ docker-registry:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg DOCKER_REGISTRY_VERSION
   variables:
-    BASE: registry
-    VERSION: DOCKER_REGISTRY_VERSION
+    IMAGE_BASE: library/registry
+    IMAGE_VERSION: ${DOCKER_REGISTRY_VERSION}
 
 argocd:
   interruptible: true
@@ -4175,54 +2167,6 @@ argocd:
   variables:
     BASE: argoproj/argocd
     VERSION: ARGOCD_VERSION
-
-argo-events:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ARGO_EVENTS_VERSION \
-  variables:
-    BASE: argoproj/argo-events
-    VERSION: ARGO_EVENTS_VERSION
-
-argo-workflows-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ARGO_WORKFLOWS_VERSION \
-  variables:
-    BASE: argoproj/argocli
-    VERSION: ARGO_WORKFLOWS_VERSION
-
-argo-workflows-controller:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ARGO_WORKFLOWS_VERSION \
-  variables:
-    BASE: argoproj/workflow-controller
-    VERSION: ARGO_WORKFLOWS_VERSION
-
-argo-workflows-executor:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ARGO_WORKFLOWS_VERSION \
-  variables:
-    BASE: argoproj/workflow-controller
-    VERSION: ARGO_WORKFLOWS_VERSION
 
 boky-postfix:
   interruptible: true
@@ -4241,11 +2185,10 @@ cryptgeon:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CRYPTGEON_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: cupcakearmy/cryptgeon
-    VERSION: CRYPTGEON_VERSION
+    IMAGE_BASE: cupcakearmy/cryptgeon
+    IMAGE_VERSION: ${CRYPTGEON_VERSION}
 
 memcached:
   interruptible: true
@@ -4265,11 +2208,10 @@ dex:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg DEX_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: dexidp/dex
-    VERSION: DEX_VERSION
+    IMAGE_BASE: dexidp/dex
+    IMAGE_VERSION: ${DEX_VERSION}
 
 redis:
   interruptible: true
@@ -4277,56 +2219,10 @@ redis:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg REDIS_VERSION
-  variables:
-    BASE: redis
-    VERSION: REDIS_VERSION
-
-listmonk:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LISTMONK_VERSION
-  variables:
-    BASE: listmonk/listmonk
-    VERSION: LISTMONK_VERSION
-
-consul:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: hashicorp/consul
-    IMAGE_VERSION: ${CONSUL_VERSION}
-
-consul-k8s-control-plane:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: hashicorp/consul-k8s-control-plane
-    IMAGE_VERSION: ${CONSUL_K8S_CP_VERSION}
-
-envoy:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: envoyproxy/envoy-alpine
-    IMAGE_VERSION: ${ENVOY_VERSION}
+    IMAGE_BASE: library/redis
+    IMAGE_VERSION: ${REDIS_VERSION}
 
 vault:
   interruptible: true
@@ -4361,7 +2257,7 @@ vault-csi-provider:
     IMAGE_BASE: hashicorp/vault-csi-provider
     IMAGE_VERSION: ${VAULT_CSI_PROVIDER_VERSION}
 
-terraform-cloud-operator:
+nats-operator:
   interruptible: true
   retry: 2
   stage: build
@@ -4369,44 +2265,8 @@ terraform-cloud-operator:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: hashicorp/terraform-cloud-operator
-    IMAGE_VERSION: ${TERRAFORM_CLOUD_OPERATOR_VERSION}
-
-strimzi-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg STRIMZI_OPERATOR_VERSION
-  variables:
-    BASE: strimzi/operator
-    VERSION: STRIMZI_OPERATOR_VERSION
-
-strimzi-kafka:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg STRIMZI_OPERATOR_VERSION \
-        --build-arg STRIMZI_KAFKA_VERSION
-  variables:
-    BASE: strimzi/kafka
-
-nats-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NATS_OPERATOR_VERSION
-  variables:
-    BASE: connecteverything/nats-operator
-    VERSION: NATS_OPERATOR_VERSION
+    IMAGE_BASE: connecteverything/nats-operator
+    IMAGE_VERSION: ${NATS_OPERATOR_VERSION}
 
 nats:
   interruptible: true
@@ -4414,11 +2274,10 @@ nats:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NATS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: nats
-    VERSION: NATS_VERSION
+    IMAGE_BASE: library/nats
+    IMAGE_VERSION: ${NATS_VERSION}
 
 nats-exporter:
   interruptible: true
@@ -4426,11 +2285,10 @@ nats-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NATS_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: natsio/prometheus-nats-exporter
-    VERSION: NATS_EXPORTER_VERSION
+    IMAGE_BASE: natsio/prometheus-nats-exporter
+    IMAGE_VERSION: ${NATS_EXPORTER_VERSION}
 
 nats-server-config-reloader:
   interruptible: true
@@ -4438,11 +2296,10 @@ nats-server-config-reloader:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NATS_SERVER_CONFIG_RELOADER
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: natsio/nats-server-config-reloader
-    VERSION: NATS_SERVER_CONFIG_RELOADER
+    IMAGE_BASE: natsio/nats-server-config-reloader
+    IMAGE_VERSION: ${NATS_SERVER_CONFIG_RELOADER}
 
 mosquitto:
   interruptible: true
@@ -4450,11 +2307,10 @@ mosquitto:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MOSQUITTO_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: eclipse-mosquitto
-    VERSION: MOSQUITTO_VERSION
+    IMAGE_BASE: library/eclipse-mosquitto
+    IMAGE_VERSION: ${MOSQUITTO_VERSION}
 
 mosquitto-exporter:
   interruptible: true
@@ -4462,11 +2318,10 @@ mosquitto-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MOSQUITTO_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sapcc/mosquitto-exporter
-    VERSION: MOSQUITTO_EXPORTER_VERSION
+    IMAGE_BASE: sapcc/mosquitto-exporter
+    IMAGE_VERSION: ${MOSQUITTO_EXPORTER_VERSION}
 
 cert-manager-controller:
   interruptible: true
@@ -4518,11 +2373,10 @@ cert-manager-webhook-pdns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CERT_MANAGER_WEBHOOK_PDNS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: zachomedia/cert-manager-webhook-pdns
-    VERSION: CERT_MANAGER_WEBHOOK_PDNS_VERSION
+    IMAGE_BASE: zachomedia/cert-manager-webhook-pdns
+    IMAGE_VERSION: ${CERT_MANAGER_WEBHOOK_PDNS_VERSION}
 
 caddy:
   interruptible: true
@@ -4530,11 +2384,10 @@ caddy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CADDY_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: caddy
-    VERSION: CADDY_VERSION
+    IMAGE_BASE: library/caddy
+    IMAGE_VERSION: ${CADDY_VERSION}
 
 bpftrace:
   interruptible: true
@@ -4542,11 +2395,10 @@ bpftrace:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BPFTRACE_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: iovisor/bpftrace
-    VERSION: BPFTRACE_VERSION
+    IMAGE_BASE: iovisor/bpftrace
+    IMAGE_VERSION: ${BPFTRACE_VERSION}
 
 coredns:
   interruptible: true
@@ -4554,35 +2406,10 @@ coredns:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg COREDNS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: coredns/coredns
-    VERSION: COREDNS_VERSION
-
-k8s-coredns:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg K8S_COREDNS_VERSION
-  variables:
-    BASE: coredns/coredns
-    VERSION: K8S_COREDNS_VERSION
-
-k8s-pause:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg K8S_PAUSE_VERSION
-  variables:
-    BASE: pause
-    VERSION: K8S_PAUSE_VERSION
+    IMAGE_BASE: coredns/coredns
+    IMAGE_VERSION: ${COREDNS_VERSION}
 
 storage-livenessprobe:
   interruptible: true
@@ -4590,11 +2417,10 @@ storage-livenessprobe:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg LIVENESSPROBE_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/livenessprobe
-    VERSION: LIVENESSPROBE_VERSION
+    IMAGE_BASE: sig-storage/livenessprobe
+    IMAGE_VERSION: ${LIVENESSPROBE_VERSION}
 
 storage-csi-node-driver-registrar:
   interruptible: true
@@ -4602,11 +2428,10 @@ storage-csi-node-driver-registrar:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_NODE_DRIVER_REGISTRAR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/csi-node-driver-registrar
-    VERSION: CSI_NODE_DRIVER_REGISTRAR_VERSION
+    IMAGE_BASE: sig-storage/csi-node-driver-registrar
+    IMAGE_VERSION: ${CSI_NODE_DRIVER_REGISTRAR_VERSION}
 
 storage-csi-attacher:
   interruptible: true
@@ -4614,11 +2439,10 @@ storage-csi-attacher:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_ATTACHER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/csi-attacher
-    VERSION: CSI_ATTACHER_VERSION
+    IMAGE_BASE: sig-storage/csi-attacher
+    IMAGE_VERSION: ${CSI_ATTACHER_VERSION}
 
 storage-csi-resizer:
   interruptible: true
@@ -4626,11 +2450,10 @@ storage-csi-resizer:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_RESIZER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/csi-resizer
-    VERSION: CSI_RESIZER_VERSION
+    IMAGE_BASE: sig-storage/csi-resizer
+    IMAGE_VERSION: ${CSI_RESIZER_VERSION}
 
 storage-csi-snapshotter:
   interruptible: true
@@ -4638,11 +2461,10 @@ storage-csi-snapshotter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_SNAPSHOTTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/csi-snapshotter
-    VERSION: CSI_SNAPSHOTTER_VERSION
+    IMAGE_BASE: sig-storage/csi-snapshotter
+    IMAGE_VERSION: ${CSI_SNAPSHOTTER_VERSION}
 
 storage-snapshot-controller:
   interruptible: true
@@ -4650,11 +2472,10 @@ storage-snapshot-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_SNAPSHOT_CONTROLLER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/snapshot-controller
-    VERSION: CSI_SNAPSHOT_CONTROLLER_VERSION
+    IMAGE_BASE: sig-storage/snapshot-controller
+    IMAGE_VERSION: ${CSI_SNAPSHOT_CONTROLLER_VERSION}
 
 storage-snapshot-validation-webhook:
   interruptible: true
@@ -4662,11 +2483,10 @@ storage-snapshot-validation-webhook:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/snapshot-validation-webhook
-    VERSION: CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
+    IMAGE_BASE: sig-storage/snapshot-validation-webhook
+    IMAGE_VERSION: ${CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION}
 
 storage-csi-provisioner:
   interruptible: true
@@ -4674,11 +2494,10 @@ storage-csi-provisioner:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CSI_PROVISIONER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: sig-storage/csi-provisioner
-    VERSION: CSI_PROVISIONER_VERSION
+    IMAGE_BASE: sig-storage/csi-provisioner
+    IMAGE_VERSION: ${CSI_PROVISIONER_VERSION}
 
 storage-csi-driver-nfs:
   interruptible: true
@@ -4691,85 +2510,16 @@ storage-csi-driver-nfs:
     IMAGE_BASE: sig-storage/nfsplugin
     IMAGE_VERSION: ${CSI_NFSPLUGIN_VERSION}
 
-vmware-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VMWARE_EXPORTER_VERSION
-  variables:
-    BASE: pryorda/vmware_exporter
-    VERSION: VMWARE_EXPORTER_VERSION
-
-vsphere-csi-driver:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: csi-vsphere/driver
-    IMAGE_VERSION: ${VSPHERE_CSI_DRIVER_VERSION}
-
-vsphere-csi-syncer:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: csi-vsphere/syncer
-    IMAGE_VERSION: ${VSPHERE_CSI_SYNCER_VERSION}
-
-vsphere-cpi-manager:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cloud-pv-vsphere/cloud-provider-vsphere
-    IMAGE_VERSION: ${VSPHERE_CPI_MANAGER_VERSION}
-
-kafdrop:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: obsidiandynamics/kafdrop
-    IMAGE_VERSION: ${KAFDROP_VERSION}
-
-akhq:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg AKHQ_VERSION
-  variables:
-    BASE: tchiotludo/akhq
-    VERSION: AKHQ_VERSION
-
 tigera-operator:
   interruptible: true
   retry: 2
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg TIGERA_OPERATOR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: tigera/operator
-    VERSION: TIGERA_OPERATOR_VERSION
+    IMAGE_BASE: tigera/operator
+    IMAGE_VERSION: ${TIGERA_OPERATOR_VERSION}
 
 node-feature-discovery:
   interruptible: true
@@ -4777,11 +2527,10 @@ node-feature-discovery:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg K8S_NFD_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: nfd/node-feature-discovery
-    VERSION: K8S_NFD_VERSION
+    IMAGE_BASE: nfd/node-feature-discovery
+    IMAGE_VERSION: ${K8S_NFD_VERSION}
 
 eck-operator:
   interruptible: true
@@ -4789,59 +2538,10 @@ eck-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg ECK_OPERATOR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: elastic/eck-operator
-    VERSION: ECK_OPERATOR_VERSION
-
-confluent-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CONFLUENTINC_OPERATOR_VERSION
-  variables:
-    BASE: confluentinc/confluent-operator
-    VERSION: CONFLUENTINC_OPERATOR_VERSION
-
-confluent-init-container:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CONFLUENTINC_INIT_CONTAINER_VERSION
-  variables:
-    BASE: confluentinc/confluent-init-container
-    VERSION: CONFLUENTINC_INIT_CONTAINER_VERSION
-
-confluent-platform:
-  interruptible: true
-  retry: 2
-  stage: build
-  parallel:
-    matrix:
-      - CONFLUENTINC_CP_COMPONENT:
-          - enterprise-control-center
-          - enterprise-replicator
-          - kafka-rest
-          - ksqldb-server
-          - ksqldb-cli
-          - schema-registry
-          - server
-          - server-connect
-          - zookeeper
-        DUMMY:
-          - dummy
-  script:
-    - |
-      ./gitlab/build-image.sh confluent-platform ${INFRA_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
-        --build-arg CONFLUENTINC_CP_VERSION \
-        --build-arg CONFLUENTINC_CP_COMPONENT
+    IMAGE_BASE: elastic/eck-operator
+    IMAGE_VERSION: ${ECK_OPERATOR_VERSION}
 
 uptime-kuma:
   interruptible: true
@@ -4849,23 +2549,10 @@ uptime-kuma:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg UPTIME_KUMA_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: louislam/uptime-kuma
-    VERSION: UPTIME_KUMA_VERSION
-
-airflow:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg AIRFLOW_VERSION
-  variables:
-    BASE: apache/airflow
-    VERSION: AIRFLOW_VERSION
+    IMAGE_BASE: louislam/uptime-kuma
+    IMAGE_VERSION: ${UPTIME_KUMA_VERSION}
 
 git-sync:
   interruptible: true
@@ -4873,35 +2560,10 @@ git-sync:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GIT_SYNC_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: git-sync/git-sync
-    VERSION: GIT_SYNC_VERSION
-
-keda:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KEDA_VERSION
-  variables:
-    BASE: kedacore/keda
-    VERSION: KEDA_VERSION
-
-keda-metrics-apiserver:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KEDA_VERSION
-  variables:
-    BASE: kedacore/keda-metrics-apiserver
-    VERSION: KEDA_VERSION
+    IMAGE_BASE: git-sync/git-sync
+    IMAGE_VERSION: ${GIT_SYNC_VERSION}
 
 hadolint:
   interruptible: true
@@ -4909,11 +2571,10 @@ hadolint:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HADOLINT_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: hadolint/hadolint
-    VERSION: HADOLINT_VERSION
+    IMAGE_BASE: hadolint/hadolint
+    IMAGE_VERSION: ${HADOLINT_VERSION}
 
 outline:
   interruptible: true
@@ -4921,11 +2582,10 @@ outline:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg OUTLINE_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: outlinewiki/outline
-    VERSION: OUTLINE_VERSION
+    IMAGE_BASE: outlinewiki/outline
+    IMAGE_VERSION: ${OUTLINE_VERSION}
 
 syncthing:
   interruptible: true
@@ -4933,11 +2593,10 @@ syncthing:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SYNCTHING_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: syncthing/syncthing
-    VERSION: SYNCTHING_VERSION
+    IMAGE_BASE: syncthing/syncthing
+    IMAGE_VERSION: ${SYNCTHING_VERSION}
 
 syncthing-discosrv:
   interruptible: true
@@ -4945,11 +2604,10 @@ syncthing-discosrv:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SYNCTHING_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: syncthing/discosrv
-    VERSION: SYNCTHING_VERSION
+    IMAGE_BASE: syncthing/discosrv
+    IMAGE_VERSION: ${SYNCTHING_VERSION}
 
 syncthing-relaysrv:
   interruptible: true
@@ -4957,11 +2615,10 @@ syncthing-relaysrv:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg SYNCTHING_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: syncthing/relaysrv
-    VERSION: SYNCTHING_VERSION
+    IMAGE_BASE: syncthing/relaysrv
+    IMAGE_VERSION: ${SYNCTHING_VERSION}
 
 jellyfin:
   interruptible: true
@@ -4969,11 +2626,10 @@ jellyfin:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JELLYFIN_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jellyfin/jellyfin
-    VERSION: JELLYFIN_VERSION
+    IMAGE_BASE: jellyfin/jellyfin
+    IMAGE_VERSION: ${JELLYFIN_VERSION}
 
 tdarr:
   interruptible: true
@@ -4981,11 +2637,10 @@ tdarr:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg TDARR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: haveagitgat/tdarr
-    VERSION: TDARR_VERSION
+    IMAGE_BASE: haveagitgat/tdarr
+    IMAGE_VERSION: ${TDARR_VERSION}
 
 tdarr-node:
   interruptible: true
@@ -4993,83 +2648,10 @@ tdarr-node:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg TDARR_VERSION
-  variables:
-    BASE: haveagitgat/tdarr_node
-    VERSION: TDARR_VERSION
-
-netmaker:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NETMAKER_VERSION
-  variables:
-    BASE: gravitl/netmaker
-    VERSION: NETMAKER_VERSION
-
-netmaker-ui:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg NETMAKER_UI_VERSION
-  variables:
-    BASE: gravitl/netmaker-ui
-    VERSION: NETMAKER_UI_VERSION
-
-youtube-dl-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg YOUTUBE_DL_SERVER_VERSION
-  variables:
-    BASE: kmb32123/youtube-dl-server
-    VERSION: YOUTUBE_DL_SERVER_VERSION
-
-        "ghcr.io/:${PUPPETSERVER_VERSION:-7.17.0-v1.5.0}"
-        "ghcr.io/voxpupuli/container-puppetdb:${PUPPETDB_VERSION:-7.18.0-v1.5.0}"
-
-puppetserver:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: voxpupuli/container-puppetserver
-    IMAGE_VERSION: ${PUPPETSERVER_VERSION}
-
-puppetdb:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: voxpupuli/container-puppetdb
-    IMAGE_VERSION: ${PUPPETDB_VERSION}
-
-r10k:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: puppet/r10k
-    IMAGE_VERSION: ${R10K_VERSION}
+    IMAGE_BASE: haveagitgat/tdarr_node
+    IMAGE_VERSION: ${TDARR_VERSION}
 
 curl:
   interruptible: true
@@ -5082,7 +2664,7 @@ curl:
     IMAGE_BASE: curlimages/curl
     IMAGE_VERSION: ${CURL_VERSION}
 
-puppetboard:
+restic:
   interruptible: true
   retry: 2
   stage: build
@@ -5090,20 +2672,8 @@ puppetboard:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: voxpupuli/puppetboard
-    IMAGE_VERSION: ${PUPPETBOARD_VERSION}
-
-restic:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg RESTIC_VERSION
-  variables:
-    BASE: restic/restic
-    VERSION: RESTIC_VERSION
+    IMAGE_BASE: restic/restic
+    IMAGE_VERSION: ${RESTIC_VERSION}
 
 yugabyte:
   interruptible: true
@@ -5111,56 +2681,10 @@ yugabyte:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg YUGABYTE_VERSION
-  variables:
-    BASE: yugabytedb/yugabyte
-    VERSION: YUGABYTE_VERSION
-
-keeweb:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg KEEWEB_VERSION
-  variables:
-    BASE: antelle/keeweb
-    VERSION: KEEWEB_VERSION
-
-netbird-dashboard:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: wiretrustee/dashboard
-    IMAGE_VERSION: ${NETBIRD_DASHBOARD_VERSION}
-
-netbird-management:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: netbirdio/management
-    IMAGE_VERSION: ${NETBIRD_MANAGEMENT_VERSION}
-
-netbird-signal:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: netbirdio/signal
-    IMAGE_VERSION: ${NETBIRD_SIGNAL_VERSION}
+    IMAGE_BASE: yugabytedb/yugabyte
+    IMAGE_VERSION: ${YUGABYTE_VERSION}
 
 coturn:
   interruptible: true
@@ -5172,18 +2696,6 @@ coturn:
   variables:
     IMAGE_BASE: coturn/coturn
     IMAGE_VERSION: ${COTURN_VERSION}
-
-firezone:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg FIREZONE_VERSION
-  variables:
-    BASE: firezone/firezone
-    VERSION: FIREZONE_VERSION
 
 jenkins:
   interruptible: true
@@ -5203,11 +2715,10 @@ jenkins-agent:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JENKINS_AGENT_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jenkins/agent
-    VERSION: JENKINS_AGENT_VERSION
+    IMAGE_BASE: jenkins/agent
+    IMAGE_VERSION: ${JENKINS_AGENT_VERSION}
 
 jenkins-operator:
   interruptible: true
@@ -5215,11 +2726,10 @@ jenkins-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg JENKINS_OPERATOR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: jenkins-kubernetes-operator/operator
-    VERSION: JENKINS_OPERATOR_VERSION
+    IMAGE_BASE: jenkins-kubernetes-operator/operator
+    IMAGE_VERSION: ${JENKINS_OPERATOR_VERSION}
 
 netbox:
   interruptible: true
@@ -5232,233 +2742,16 @@ netbox:
     IMAGE_BASE: netboxcommunity/netbox
     IMAGE_VERSION: ${NETBOX_VERSION}
 
-velero:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_VERSION
-  variables:
-    BASE: velero/velero
-    VERSION: VELERO_VERSION
-
-velero-plugin-for-csi:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_PLUGIN_CSI_VERSION
-  variables:
-    BASE: velero/velero-plugin-for-csi
-    VERSION: VELERO_PLUGIN_CSI_VERSION
-
-velero-plugin-for-aws:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_PLUGIN_AWS_VERSION
-  variables:
-    BASE: velero/velero-plugin-for-aws
-    VERSION: VELERO_PLUGIN_AWS_VERSION
-
-velero-plugin-for-gcp:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_PLUGIN_GCP_VERSION
-  variables:
-    BASE: velero/velero-plugin-for-gcp
-    VERSION: VELERO_PLUGIN_GCP_VERSION
-
-velero-plugin-for-azure:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_PLUGIN_AZURE_VERSION
-  variables:
-    BASE: velero/velero-plugin-for-microsoft-azure
-    VERSION: VELERO_PLUGIN_AZURE_VERSION
-
-velero-plugin-for-vsphere:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_PLUGIN_VSPHERE_VERSION
-  variables:
-    BASE: vsphereveleroplugin/velero-plugin-for-vsphere
-    VERSION: VELERO_PLUGIN_VSPHERE_VERSION
-
-backup-driver:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_PLUGIN_VSPHERE_VERSION
-  variables:
-    BASE: vsphereveleroplugin/backup-driver
-    VERSION: VELERO_PLUGIN_VSPHERE_VERSION
-
-data-manager-for-plugin:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_PLUGIN_VSPHERE_VERSION
-  variables:
-    BASE: vsphereveleroplugin/data-manager-for-plugin
-    VERSION: VELERO_PLUGIN_VSPHERE_VERSION
-
-velero-restic-restore-helper:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_RESTIC_RESTORE_HELPER_VERSION
-  variables:
-    BASE: velero/velero-plugin-for-csi
-    VERSION: VELERO_RESTIC_RESTORE_HELPER_VERSION
-
-velero-kubectl:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg VELERO_KUBECTL_VERSION
-  variables:
-    BASE: bitnami/kubectl
-    VERSION: VELERO_KUBECTL_VERSION
-
-kubernetes-dashboard:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg K8S_DASHBOARD_VERSION
-  variables:
-    BASE: kubernetesui/dashboard
-    VERSION: K8S_DASHBOARD_VERSION
-
-kubernetes-dashboard-api:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg K8S_DASHBOARD_API_VERSION
-  variables:
-    BASE: kubernetesui/dashboard-api
-    VERSION: K8S_DASHBOARD_API_VERSION
-
-kubernetes-dashboard-web:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg K8S_DASHBOARD_WEB_VERSION
-  variables:
-    BASE: kubernetesui/dashboard
-    VERSION: K8S_DASHBOARD_WEB_VERSION
-
-kubernetes-dashboard-metrics-scraper:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg K8S_DASHBOARD_METRICS_SCRAPER_VERSION
-  variables:
-    BASE: kubernetesui/metrics-scraper
-    VERSION: K8S_DASHBOARD_METRICS_SCRAPER_VERSION
-
 postgrest:
   interruptible: true
   retry: 2
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg POSTGREST_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: postgrest/postgrest
-    VERSION: POSTGREST_VERSION
-
-azure-workload-identity-webhook:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg AZURE_WORKLOAD_IDENTITY_VERSION
-  variables:
-    BASE: oss/azure/workload-identity/webhook
-    VERSION: AZURE_WORKLOAD_IDENTITY_VERSION
-
-azure-service-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg AZURE_SERVICE_OPERATOR_VERSION
-  variables:
-    BASE: k8s/azureserviceoperator
-    VERSION: AZURE_SERVICE_OPERATOR_VERSION
-
-guacamole:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GUACAMOLE_VERSION
-  variables:
-    BASE: guacamole/guacamole
-    VERSION: GUACAMOLE_VERSION
-
-guacd:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GUACAMOLE_VERSION
-  variables:
-    BASE: guacamole/guacd
-    VERSION: GUACAMOLE_VERSION
+    IMAGE_BASE: postgrest/postgrest
+    IMAGE_VERSION: ${POSTGREST_VERSION}
 
 cephcsi:
   interruptible: true
@@ -5466,11 +2759,10 @@ cephcsi:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg CEPHCSI_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: cephcsi/cephcsi
-    VERSION: CEPHCSI_VERSION
+    IMAGE_BASE: cephcsi/cephcsi
+    IMAGE_VERSION: ${CEPHCSI_VERSION}
 
 nvidia-cuda:
   interruptible: true
@@ -5582,70 +2874,6 @@ nvidia-k8s-mig-manager:
     IMAGE_BASE: nvidia/cloud-native/k8s-mig-manager
     IMAGE_VERSION: ${NVIDIA_K8S_MIG_MANAGER_VERSION}
 
-bitnami-harbor:
-  interruptible: true
-  retry: 2
-  stage: build
-  parallel:
-    matrix:
-      - BITNAMI_HARBOR_COMPONENT:
-          - adapter-trivy
-          - core
-          - exporter
-          - jobservice
-          - portal
-          - registry
-          - registryctl
-        DUMMY:
-          - dummy
-  script:
-    - |
-      ./gitlab/build-image.sh bitnami-harbor ${INFRA_NAMESPACE}/bitnami-harbor-${BITNAMI_HARBOR_COMPONENT}:${INFRA_VERSION} \
-        --build-arg BITNAMI_HARBOR_VERSION \
-        --build-arg BITNAMI_HARBOR_COMPONENT
-
-# harbor-*
-harbor-parts:
-  interruptible: true
-  retry: 2
-  stage: build
-  parallel:
-    matrix:
-      - HARBOR_COMPONENT:
-          - portal
-          - core
-          - jobservice
-          - registryctl
-          - db
-          - exporter
-        DUMMY:
-          - dummy
-  script:
-    - |
-      ./gitlab/build-image.sh harbor ${INFRA_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
-        --build-arg HARBOR_VERSION \
-        --build-arg HARBOR_COMPONENT=harbor-${HARBOR_COMPONENT}
-
-# *-photon
-harbor-parts2:
-  interruptible: true
-  retry: 2
-  stage: build
-  parallel:
-    matrix:
-      - HARBOR_COMPONENT:
-          - registry
-          - trivy-adapter
-          - nginx
-          - redis
-        DUMMY:
-          - dummy
-  script:
-    - |
-      ./gitlab/build-image.sh harbor ${INFRA_NAMESPACE}/harbor-${HARBOR_COMPONENT}:${INFRA_VERSION} \
-        --build-arg HARBOR_VERSION \
-        --build-arg HARBOR_COMPONENT=${HARBOR_COMPONENT}-photon
-
 zitadel:
   interruptible: true
   retry: 2
@@ -5656,150 +2884,6 @@ zitadel:
   variables:
     IMAGE_BASE: zitadel/zitadel
     IMAGE_VERSION: ${ZITADEL_VERSION}
-
-chirpstack:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: chirpstack/chirpstack
-    IMAGE_VERSION: ${CHIRPSTACK_VERSION}
-
-chirpstack-rest-api:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: chirpstack/chirpstack-rest-api
-    IMAGE_VERSION: ${CHIRPSTACK_REST_API_VERSION}
-
-chirpstack-gateway-bridge:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: chirpstack/chirpstack-gateway-bridge
-    IMAGE_VERSION: ${CHIRPSTACK_GATEWAY_BRIDGE_VERSION}
-
-kong:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: library/kong
-    IMAGE_VERSION: ${KONG_VERSION}
-
-supabase-studio:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: supabase/studio
-    IMAGE_VERSION: ${SUPABASE_STUDIO_VERSION}
-
-supabase-gotrue:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: supabase/gotrue
-    IMAGE_VERSION: ${SUPABASE_GOTRUE_VERSION}
-
-supabase-realtime:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: supabase/realtime
-    IMAGE_VERSION: ${SUPABASE_REALTIME_VERSION}
-
-supabase-postgres-meta:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: supabase/postgres-meta
-    IMAGE_VERSION: ${SUPABASE_POSTGRES_META_VERSION}
-
-supabase-storage-api:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: supabase/storage-api
-    IMAGE_VERSION: ${SUPABASE_STORAGE_API_VERSION}
-
-supabase-logflare:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: supabase/logflare
-    IMAGE_VERSION: ${SUPABASE_LOGFLARE_VERSION}
-
-supabase-edge-runtime:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: supabase/edge-runtime
-    IMAGE_VERSION: ${SUPABASE_EDGE_RUNTIME_VERSION}
-
-imgproxy:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg IMGPROXY_VERSION
-  variables:
-    IMAGE_BASE: darthsim/imgproxy
-    IMAGE_VERSION: ${IMGPROXY_VERSION}
-
-vector:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: timberio/vector
-    IMAGE_VERSION: ${VECTOR_VERSION}
 
 home-assistant:
   interruptible: true
@@ -5822,24 +2906,6 @@ zigbee2mqtt:
   variables:
     IMAGE_BASE: koenkk/zigbee2mqtt
     IMAGE_VERSION: ${ZIGBEE2MQTT_VERSION}
-
-azure-keyvault:
-  interruptible: true
-  retry: 2
-  parallel:
-    matrix:
-      - AKV_COMPONENT:
-          - azure-keyvault-controller
-          - azure-keyvault-webhook
-          - azure-keyvault-env
-        IMAGE_VERSION:
-          - ${AZURE_KV2K8S_VERSION}
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${AKV_COMPONENT}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: spvest/${AKV_COMPONENT}
 
 gitea:
   interruptible: true
@@ -5884,17 +2950,6 @@ papercut:
   variables:
     IMAGE_BASE: changemakerstudiosus/papercut-smtp
     IMAGE_VERSION: ${PAPERCUT_VERSION}
-
-n8n:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: n8nio/n8n
-    IMAGE_VERSION: ${N8N_VERSION}
 
 cloudflared:
   interruptible: true
@@ -6017,283 +3072,6 @@ rspamd:
     IMAGE_BASE: rspamd/rspamd
     IMAGE_VERSION: ${RSPAMD_VERSION}
 
-scylla:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: scylladb/scylla
-    IMAGE_VERSION: ${SCYLLA_VERSION}
-
-scylla-manager:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: scylladb/scylla-manager
-    IMAGE_VERSION: ${SCYLLA_MANAGER_VERSION}
-
-scylla-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: scylladb/scylla-operator
-    IMAGE_VERSION: ${SCYLLA_OPERATOR_VERSION}
-
-cilium-clustermesh-apiserver:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/clustermesh-apiserver
-    IMAGE_VERSION: ${CILIUM_CLUSTERMESH_APISERVER_VERSION}
-
-cilium:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/cilium
-    IMAGE_VERSION: ${CILIUM_VERSION}
-
-cilium-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/operator
-    IMAGE_VERSION: ${CILIUM_OPERATOR_VERSION}
-
-cilium-startup-script:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/startup-script
-    IMAGE_VERSION: ${CILIUM_STARTUP_SCRIPT_VERSION}
-
-cilium-certgen:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/certgen
-    IMAGE_VERSION: ${CILIUM_CERTGEN_VERSION}
-
-
-cilium-envoy:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/cilium-envoy
-    IMAGE_VERSION: ${CILIUM_ENVOY_VERSION}
-
-
-# cilium-etcd-operator:
-#   interruptible: true
-#   retry: 2
-#   stage: build
-#   script:
-#     - |
-#       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-#   variables:
-#     IMAGE_BASE: cilium/cilium-etcd-operator
-#     IMAGE_VERSION: ${CILIUM_ETCD_OPERATOR_VERSION}
-
-cilium-hubble-relay:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/hubble-relay
-    IMAGE_VERSION: ${CILIUM_HUBBLE_RELAY_VERSION}
-
-cilium-hubble-ui:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/hubble-ui
-    IMAGE_VERSION: ${CILIUM_HUBBLE_UI_VERSION}
-
-cilium-hubble-ui-backend:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: cilium/hubble-ui-backend
-    IMAGE_VERSION: ${CILIUM_HUBBLE_UI_BACKEND_VERSION}
-
-spire-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: spiffe/spire-server
-    IMAGE_VERSION: ${SPIRE_SERVER_VERSION}
-
-spire-agent:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: spiffe/spire-agent
-    IMAGE_VERSION: ${SPIRE_AGENT_VERSION}
-
-airbyte-webapp:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/webapp
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/server
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-worker:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/worker
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-metrics-reporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/metrics-reporter
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-bootloader:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/bootloader
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-db:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/db
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-cron:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/cron
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-connector-builder-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/connector-builder-server
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-workload-api-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: airbyte/workload-api-server
-    IMAGE_VERSION: ${AIRBYTE_VERSION}
-
-airbyte-temporalio-auto-setup:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: temporalio/auto-setup
-    IMAGE_VERSION: ${TEMPORTALIO_VERSION}
-
 infra-docs:
   interruptible: true
   retry: 2
@@ -6334,23 +3112,16 @@ run-hadolint:
         done
       )
 
-latex:
-  interruptible: true
-  stage: build2
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-
 builder:
   interruptible: true
   stage: build2
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID \
-        --build-arg ACTIONS_RUNNER_VERSION
+        --build-arg HOST_DOCKER_GID
+  variables:
+    DOCKER_BUILDER_TARGET_PLATFORM: linux/amd64
 
 shell:
   interruptible: true
@@ -6358,6 +3129,7 @@ shell:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BUILDPACKS_VERSION=${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg HOST_DOCKER_GID
+  variables:
+    DOCKER_BUILDER_TARGET_PLATFORM: linux/amd64
