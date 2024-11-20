@@ -4,7 +4,7 @@ ARG IMAGE_VERSION
 ARG INFRA_VERSION
 ARG INFRA_NAMESPACE
 
-FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} as rootca
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
 
 FROM ${DOCKER_HUB}/${IMAGE_BASE}:${IMAGE_VERSION}
 
@@ -14,7 +14,7 @@ RUN echo 'deb [signed-by=/etc/apt/keyrings/pgdg-archive-keyring.asc] http://apt.
 
 RUN apt-get -yyq update && \
     apt-get -yyq install --no-install-recommends smbclient sudo && \
-    apt-get -yyq install --target-release bookworm-pgdg --no-install-recommends libpq5 postgresql-client-16 && \
+    apt-get -yyq install --target-release bookworm-pgdg --no-install-recommends libpq5 postgresql-client-17 && \
     rm -rf /var/lib/apt/lists/*
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"

@@ -7,10 +7,6 @@ LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 ARG HOST_DOCKER_GID
 
-ARG HTTP_PROXY
-ARG HTTPS_PROXY
-ARG NO_PROXY
-
 ENV BUILDER_USER=builder
 
 ADD setup /setup

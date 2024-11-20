@@ -7,28 +7,8 @@ include_env() {
     [[ ! -z ${source_dir} ]]
     [[ ! -z ${deploy_environment} ]]
 
-    # export ALL_PROXY=${HTTP_PROXY:-}
-    # export all_proxy=${HTTP_PROXY}
-    # export HTTP_PROXY=${HTTP_PROXY:-}
-    # export http_proxy=${HTTP_PROXY}
-    # export HTTPS_PROXY=${HTTP_PROXY}
-    # export https_proxy=${HTTP_PROXY}
-    # export FTP_PROXY=${HTTP_PROXY}
-    # export ftp_proxy=${HTTP_PROXY}
-
-    export ALL_PROXY=
-    export all_proxy=
-    export HTTP_PROXY=
-    export http_proxy=
-    export HTTPS_PROXY=
-    export https_proxy=
-    export FTP_PROXY=
-    export ftp_proxy=
     git config --global --unset http.proxy || true
     git config --unset http.proxy || true
-
-    export NO_PROXY=${NO_PROXY:-}
-    export no_proxy=${NO_PROXY}
 
     if [[ -d "${source_dir}/env.${deploy_environment}" ]]; then
       export PROJECT_SOURCE_DIR=$(dirname ${source_dir})

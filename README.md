@@ -167,6 +167,3 @@ Variables that shall be setup for this repo are:
 
 * ```DOCKER_HUB``` (mandatory) refers to target docker registry
 * ```DOCKER_CFG``` (mandatory) is base64 encoded auth file for that registry
-* ```HTTP_PROXY``` (optional)
-* ```HTTPS_PROXY``` (optional)
-* ```NO_PROXY``` (optional)

@@ -6,4 +6,3 @@ chmod +x /usr/local/bin/*
 rm -rf /root/.cache /home/${BUILDER_USER}/.cache
 
 apt-get clean && rm -rf /var/lib/apt/lists/*
-# rm -rf /etc/apt/apt.conf.d/00proxy

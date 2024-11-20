@@ -71,9 +71,6 @@ build_image() {
         --build-arg IMAGE_VERSION \
         --build-arg INFRA_VERSION \
         --build-arg INFRA_NAMESPACE"
-        # --build-arg HTTP_PROXY \
-        # --build-arg HTTPS_PROXY \
-        # --build-arg NO_PROXY \
 
     echo "Building ${component} as ${target}"
     echo "docker build ${implicit_args} ${docker_build_args} -t ${DOCKER_HUB}/${target} docker/${component}"

@@ -217,10 +217,6 @@ archive-images1:
         VERSION:
           - PGADMIN_VERSION
       - BASE:
-          - library/adminer
-        VERSION:
-          - ADMINER_VERSION
-      - BASE:
           - library/mysql
         VERSION:
           - MYSQL_VERSION
@@ -253,27 +249,9 @@ archive-images1:
       - REGISTRY:
           - registry.gitlab.com
         BASE:
-          - gitlab-org/cluster-integration/auto-build-image
-        VERSION:
-          - GITLAB_AUTO_BUILD_VERSION
-      - REGISTRY:
-          - registry.gitlab.com
-        BASE:
-          - gitlab-org/cluster-integration/auto-deploy-image
-        VERSION:
-          - GITLAB_AUTO_DEPLOY_VERSION
-      - REGISTRY:
-          - registry.gitlab.com
-        BASE:
           - gitlab-org/cluster-integration/gitlab-agent/agentk
         VERSION:
           - GITLAB_AGENTK_VERSION
-      - REGISTRY:
-          - registry.gitlab.com
-        BASE:
-          - gitlab-org/cluster-integration/cluster-applications
-        VERSION:
-          - GITLAB_CLUSTER_APPLICATIONS_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -357,10 +335,6 @@ archive-images2:
         VERSION:
           - BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION
       - BASE:
-          - bitnami/mariadb
-        VERSION:
-          - BITNAMI_MARIADB_VERSION
-      - BASE:
           - bitnami/memcached
         VERSION:
           - BITNAMI_MEMCACHED_VERSION
@@ -416,10 +390,6 @@ archive-images2:
           - bitnami/openldap
         VERSION:
           - BITNAMI_OPENLDAP_VERSION
-      - BASE:
-          - bitnami/sealed-secrets-controller
-        VERSION:
-          - BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
       - BASE:
           - bitnami/kubectl
         VERSION:
@@ -1144,28 +1114,6 @@ wiretraefik:
     BASE: masipcat/wireguard-go
     VERSION: WIREGUARD_VERSION
 
-gitlab-auto-build:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: gitlab-org/cluster-integration/auto-build-image
-    IMAGE_VERSION: ${GITLAB_AUTO_BUILD_VERSION}
-
-gitlab-auto-deploy:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: gitlab-org/cluster-integration/auto-deploy-image
-    IMAGE_VERSION: ${GITLAB_AUTO_DEPLOY_VERSION}
-
 gitlab-agentk:
   interruptible: true
   retry: 2
@@ -1176,17 +1124,6 @@ gitlab-agentk:
   variables:
     IMAGE_BASE: gitlab-org/cluster-integration/gitlab-agent/agentk
     IMAGE_VERSION: ${GITLAB_AGENTK_VERSION}
-
-gitlab-cluster-applications:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: gitlab-org/cluster-integration/cluster-applications
-    IMAGE_VERSION: ${GITLAB_CLUSTER_APPLICATIONS_VERSION}
 
 gitlab-runner:
   interruptible: true
@@ -1629,17 +1566,6 @@ pgadmin:
     IMAGE_BASE: dpage/pgadmin4
     IMAGE_VERSION: ${PGADMIN_VERSION}
 
-adminer:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: library/adminer
-    IMAGE_VERSION: ${ADMINER_VERSION}
-
 mysql:
   interruptible: true
   retry: 2
@@ -1701,11 +1627,10 @@ bitnami-minio:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MINIO_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/minio
-    VERSION: BITNAMI_MINIO_VERSION
+    IMAGE_BASE: bitnami/minio
+    IMAGE_VERSION: ${BITNAMI_MINIO_VERSION}
 
 bitnami-minio-client:
   interruptible: true
@@ -1713,11 +1638,10 @@ bitnami-minio-client:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MINIO_CLIENT_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/minio-client
-    VERSION: BITNAMI_MINIO_CLIENT_VERSION
+    IMAGE_BASE: bitnami/minio-client
+    IMAGE_VERSION: ${BITNAMI_MINIO_CLIENT_VERSION}
 
 bitnami-shell:
   interruptible: true
@@ -1736,11 +1660,10 @@ bitnami-metallb-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_METALLB_CONTROLLER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/metallb-controller
-    VERSION: BITNAMI_METALLB_CONTROLLER_VERSION
+    IMAGE_BASE: bitnami/metallb-controller
+    IMAGE_VERSION: ${BITNAMI_METALLB_CONTROLLER_VERSION}
 
 bitnami-metallb-speaker:
   interruptible: true
@@ -1748,11 +1671,10 @@ bitnami-metallb-speaker:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_METALLB_SPEAKER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/metallb-speaker
-    VERSION: BITNAMI_METALLB_SPEAKER_VERSION
+    IMAGE_BASE: bitnami/metallb-speaker
+    IMAGE_VERSION: ${BITNAMI_METALLB_SPEAKER_VERSION}
 
 bitnami-grafana:
   interruptible: true
@@ -1772,11 +1694,10 @@ bitnami-nats:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NATS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/nats
-    VERSION: BITNAMI_NATS_VERSION
+    IMAGE_BASE: bitnami/nats
+    IMAGE_VERSION: ${BITNAMI_NATS_VERSION}
 
 bitnami-kube-state-metrics:
   interruptible: true
@@ -1784,11 +1705,10 @@ bitnami-kube-state-metrics:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBE_STATE_METRICS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/kube-state-metrics
-    VERSION: BITNAMI_KUBE_STATE_METRICS_VERSION
+    IMAGE_BASE: bitnami/kube-state-metrics
+    IMAGE_VERSION: ${BITNAMI_KUBE_STATE_METRICS_VERSION}
 
 bitnami-metrics-server:
   interruptible: true
@@ -1796,11 +1716,10 @@ bitnami-metrics-server:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_METRICS_SERVER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/metrics-server
-    VERSION: BITNAMI_METRICS_SERVER_VERSION
+    IMAGE_BASE: bitnami/metrics-server
+    IMAGE_VERSION: ${BITNAMI_METRICS_SERVER_VERSION}
 
 bitnami-nginx:
   interruptible: true
@@ -1808,11 +1727,32 @@ bitnami-nginx:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NGINX_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/nginx
-    VERSION: BITNAMI_NGINX_VERSION
+    IMAGE_BASE: bitnami/nginx
+    IMAGE_VERSION: ${BITNAMI_NGINX_VERSION}
+
+bitnami-memcached:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: bitnami/memcached
+    IMAGE_VERSION: ${BITNAMI_MEMCACHED_VERSION}
+
+bitnami-kubectl:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: bitnami/kubectl
+    IMAGE_VERSION: ${BITNAMI_KUBECTL_VERSION}
 
 bitnami-nginx-ingress-controller:
   interruptible: true
@@ -1820,11 +1760,10 @@ bitnami-nginx-ingress-controller:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/nginx-ingress-controller
-    VERSION: BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION
+    IMAGE_BASE: bitnami/nginx-ingress-controller
+    IMAGE_VERSION: ${BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION}
 
 bitnami-keycloak:
   interruptible: true
@@ -1854,11 +1793,10 @@ bitnami-spark:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_SPARK_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/spark
-    VERSION: BITNAMI_SPARK_VERSION
+    IMAGE_BASE: bitnami/spark
+    IMAGE_VERSION: ${BITNAMI_SPARK_VERSION}
 
 bitnami-prometheus:
   interruptible: true
@@ -1866,11 +1804,10 @@ bitnami-prometheus:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_PROMETHEUS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/prometheus
-    VERSION: BITNAMI_PROMETHEUS_VERSION
+    IMAGE_BASE: bitnami/prometheus
+    IMAGE_VERSION: ${BITNAMI_PROMETHEUS_VERSION}
 
 bitnami-prometheus-operator:
   interruptible: true
@@ -1878,11 +1815,10 @@ bitnami-prometheus-operator:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_PROMETHEUS_OPERATOR_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/prometheus-operator
-    VERSION: BITNAMI_PROMETHEUS_OPERATOR_VERSION
+    IMAGE_BASE: bitnami/prometheus-operator
+    IMAGE_VERSION: ${BITNAMI_PROMETHEUS_OPERATOR_VERSION}
 
 bitnami-node-exporter:
   interruptible: true
@@ -1890,11 +1826,10 @@ bitnami-node-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_NODE_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/node-exporter
-    VERSION: BITNAMI_NODE_EXPORTER_VERSION
+    IMAGE_BASE: bitnami/node-exporter
+    IMAGE_VERSION: ${BITNAMI_NODE_EXPORTER_VERSION}
 
 bitnami-blackbox-exporter:
   interruptible: true
@@ -1902,11 +1837,10 @@ bitnami-blackbox-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_BLACKBOX_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/blackbox-exporter
-    VERSION: BITNAMI_BLACKBOX_EXPORTER_VERSION
+    IMAGE_BASE: bitnami/blackbox-exporter
+    IMAGE_VERSION: ${BITNAMI_BLACKBOX_EXPORTER_VERSION}
 
 bitnami-postgres-exporter:
   interruptible: true
@@ -1914,11 +1848,10 @@ bitnami-postgres-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRES_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/postgres-exporter
-    VERSION: BITNAMI_POSTGRES_EXPORTER_VERSION
+    IMAGE_BASE: bitnami/postgres-exporter
+    IMAGE_VERSION: ${BITNAMI_POSTGRES_EXPORTER_VERSION}
 
 bitnami-redis:
   interruptible: true
@@ -1926,11 +1859,10 @@ bitnami-redis:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_REDIS_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/redis
-    VERSION: BITNAMI_REDIS_VERSION
+    IMAGE_BASE: bitnami/redis
+    IMAGE_VERSION: ${BITNAMI_REDIS_VERSION}
 
 bitnami-redis-exporter:
   interruptible: true
@@ -1938,11 +1870,10 @@ bitnami-redis-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_REDIS_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/redis-exporter
-    VERSION: BITNAMI_REDIS_EXPORTER_VERSION
+    IMAGE_BASE: bitnami/redis-exporter
+    IMAGE_VERSION: ${BITNAMI_REDIS_EXPORTER_VERSION}
 
 bitnami-postgresql15:
   interruptible: true
@@ -1950,11 +1881,10 @@ bitnami-postgresql15:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL15_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL15_VERSION
+    IMAGE_BASE: bitnami/postgresql
+    IMAGE_VERSION: ${BITNAMI_POSTGRESQL15_VERSION}
 
 bitnami-postgresql16:
   interruptible: true
@@ -1962,11 +1892,10 @@ bitnami-postgresql16:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL16_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL16_VERSION
+    IMAGE_BASE: bitnami/postgresql
+    IMAGE_VERSION: ${BITNAMI_POSTGRESQL16_VERSION}
 
 bitnami-postgresql17:
   interruptible: true
@@ -1974,11 +1903,10 @@ bitnami-postgresql17:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_POSTGRESQL17_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/postgresql
-    VERSION: BITNAMI_POSTGRESQL17_VERSION
+    IMAGE_BASE: bitnami/postgresql
+    IMAGE_VERSION: ${BITNAMI_POSTGRESQL17_VERSION}
 
 bitnami-jmx-exporter:
   interruptible: true
@@ -1986,34 +1914,19 @@ bitnami-jmx-exporter:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_JMX_EXPORTER_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/jmx-exporter
-    VERSION: BITNAMI_JMX_EXPORTER_VERSION
-
-bitnami-mariadb:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_MARIADB_VERSION
-  variables:
-    BASE: bitnami/mariadb
-    VERSION: BITNAMI_MARIADB_VERSION
-
+    IMAGE_BASE: bitnami/jmx-exporter
+    IMAGE_VERSION: ${BITNAMI_JMX_EXPORTER_VERSION}
 
 bitnami-kube-rbac-proxy:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_KUBE_RBAC_PROXY_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/kube-rbac-proxy
-    VERSION: BITNAMI_KUBE_RBAC_PROXY_VERSION
+    IMAGE_BASE: bitnami/kube-rbac-proxy
+    IMAGE_VERSION: ${BITNAMI_KUBE_RBAC_PROXY_VERSION}
 
 bitnami-openldap:
   interruptible: true
@@ -2021,21 +1934,10 @@ bitnami-openldap:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_OPENLDAP_VERSION
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    BASE: bitnami/openldap
-    VERSION: BITNAMI_OPENLDAP_VERSION
-
-bitnami-sealed-secrets-controller:
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
-  variables:
-    BASE: bitnami/sealed-secrets-controller
-    VERSION: BITNAMI_SEALED_SECRETS_CONTROLLER_VERSION
+    IMAGE_BASE: bitnami/openldap
+    IMAGE_VERSION: ${BITNAMI_OPENLDAP_VERSION}
 
 trivy:
   stage: build
@@ -2161,9 +2063,7 @@ argocd:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg ARGOCD_VERSION \
         --build-arg ARGOCD_VAULT_PLUGIN_VERSION \
-        --build-arg ARGOCD_VAULT_PLUGIN_HASH \
         --build-arg YTT_VERSION \
-        --build-arg YTT_HASH
   variables:
     BASE: argoproj/argocd
     VERSION: ARGOCD_VERSION
@@ -3120,8 +3020,6 @@ builder:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg HOST_DOCKER_GID
-  variables:
-    DOCKER_BUILDER_TARGET_PLATFORM: linux/amd64
 
 shell:
   interruptible: true
@@ -3131,5 +3029,3 @@ shell:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
         --build-arg HOST_DOCKER_GID
-  variables:
-    DOCKER_BUILDER_TARGET_PLATFORM: linux/amd64

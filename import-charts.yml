@@ -48,7 +48,6 @@ helm:
   - name: cetic
     uri: https://cetic.github.io/helm-charts
     charts:
-      - name: adminer
       - name: pgadmin
       - name: postgresql
   - name: bitnami
@@ -99,8 +98,6 @@ helm:
       - name: cert-manager-webhook-pdns
   - name: pihole
     uri: https://mojo2600.github.io/pihole-kubernetes/
-  - name: pravega
-    uri: https://charts.pravega.io
   - name: projectcalico
     uri: https://projectcalico.docs.tigera.io/charts
     charts:
@@ -134,10 +131,6 @@ helm:
     uri: https://charts.external-secrets.io
     charts:
       - name: external-secrets
-  - name: sealed-secrets
-    uri: https://bitnami-labs.github.io/sealed-secrets
-    charts:
-      - name: sealed-secrets
   - name: democratic-csi
     uri: https://democratic-csi.github.io/charts
   - name: yugabyte

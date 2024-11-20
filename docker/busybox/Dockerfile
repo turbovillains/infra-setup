@@ -4,9 +4,9 @@ ARG INFRA_NAMESPACE
 ARG ALPINE_VERSION
 ARG BUSYBOX_VERSION
 
-FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} as rootca
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
 
-FROM ${DOCKER_HUB}/library/alpine:${ALPINE_VERSION} as alpine
+FROM ${DOCKER_HUB}/library/alpine:${ALPINE_VERSION} AS alpine
 
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
 

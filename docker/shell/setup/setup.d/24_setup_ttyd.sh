@@ -1,6 +1,8 @@
 #!/usr/bin/env bash -eux
 
-# ttyd
-curl -sLo /usr/local/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/1.7.2/ttyd.x86_64
+# Plane linux arch
+ARCHZ=$(uname -m)
 
+# ttyd
+curl -sLo /usr/local/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/$(curl -s "https://api.github.com/repos/tsl0922/ttyd/releases/latest" | jq -r '.tag_name')/ttyd.${ARCHZ}
 chmod +x /usr/local/bin/ttyd
