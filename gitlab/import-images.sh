@@ -40,6 +40,8 @@ import_images() {
         "docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION:-latest}:::prepend_name=elastic/"
         "docker.elastic.co/logstash/logstash:${LOGSTASH_VERSION:-latest}:::prepend_name=elastic/"
         "docker.elastic.co/kibana/kibana:${KIBANA_VERSION:-latest}:::prepend_name=elastic/"
+        "docker.elastic.co/apm/apm-server:${APMSERVER_VERSION:-latest}:::prepend_name=elastic/"
+        "docker.elastic.co/beats/elastic-agent:${ELASTICAGENT_VERSION:-latest}:::prepend_name=elastic/"
         "alerta/alerta-web:${ALERTA_VERSION:-latest}"
         "mongo:${MONGO_VERSION:-latest}:::prepend_name=library/"
         "wordpress:${WORDPRESS_VERSION:-5.7.0-apache}:::prepend_name=library/"
