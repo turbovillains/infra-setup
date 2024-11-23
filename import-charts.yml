@@ -12,10 +12,6 @@ helm:
     charts:
       - name: netbox
         version: 5.0.0-beta.144
-  - name: coredns
-    uri: https://coredns.github.io/helm
-    charts:
-      - name: coredns
   - name: gitea
     uri: https://dl.gitea.com/charts/
     charts:
@@ -56,10 +52,8 @@ helm:
       - name: keycloak
       - name: kube-prometheus
       - name: kube-state-metrics
-      - name: memcached
       - name: metallb
       - name: metrics-server
-      - name: spark
       - name: redis
       - name: nginx-ingress-controller
       - name: postgresql
@@ -70,8 +64,6 @@ helm:
     uri: https://helm.elastic.co
     charts:
       - name: eck-operator
-  - name: haproxytech
-    uri: https://haproxytech.github.io/helm-charts
   - name: gitlab
     uri: https://charts.gitlab.io/
     charts:
@@ -96,8 +88,6 @@ helm:
     uri: https://zachomedia.github.io/cert-manager-webhook-pdns
     charts:
       - name: cert-manager-webhook-pdns
-  - name: pihole
-    uri: https://mojo2600.github.io/pihole-kubernetes/
   - name: projectcalico
     uri: https://projectcalico.docs.tigera.io/charts
     charts:
@@ -133,8 +123,6 @@ helm:
       - name: external-secrets
   - name: democratic-csi
     uri: https://democratic-csi.github.io/charts
-  - name: yugabyte
-    uri: https://charts.yugabyte.com
   - name: argo
     uri: https://argoproj.github.io/argo-helm
     charts:
