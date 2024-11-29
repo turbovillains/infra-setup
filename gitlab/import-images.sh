@@ -47,6 +47,7 @@ import_images() {
         "quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION:-v0.12.0}"
         "pihole/pihole:${PIHOLE_VERSION:-v5.8.1}"
         "klutchell/unbound:${UNBOUND_VERSION:-v1.19.3}"
+        "nextcloud:${NEXTCLOUD_VERSION:-20.0.0-fpm-alpine}:::prepend_name=library/"
         "docker:${DIND_VERSION:-20.10.7-dind}:::prepend_name=library/"
         "bitnami/prometheus:${BITNAMI_PROMETHEUS_VERSION:-2.27.1-debian-10-r13}"
         "bitnami/prometheus-operator:${BITNAMI_PROMETHEUS_OPERATOR_VERSION:-0.48.1-debian-10-r0}"

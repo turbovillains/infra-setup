@@ -242,6 +242,10 @@ archive-images1:
           - library/docker
         VERSION:
           - DIND_VERSION
+      - BASE:
+          - library/nextcloud
+        VERSION:
+          - NEXTCLOUD_VERSION
 
 archive-images2:
   extends: .archive-images
@@ -1052,6 +1056,17 @@ unbound:
   variables:
     IMAGE_BASE: klutchell/unbound
     IMAGE_VERSION: ${UNBOUND_VERSION}
+
+nextcloud:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: library/nextcloud
+    IMAGE_VERSION: ${NEXTCLOUD_VERSION}
 
 keycloak:
   interruptible: true
