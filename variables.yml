@@ -20,7 +20,7 @@ variables:
   GITLAB_RUNNER_VERSION: "alpine-v17.6.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_RUNNER_HELPER_VERSION: x86_64-v17.6.0
   GITLAB_AGENTK_VERSION: v17.6.1 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
-  DIND_VERSION: 27.3.1-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
+  DIND_VERSION: 27.4.0-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   K8S_PAUSE_VERSION: "3.10"
   K8S_131_VERSION: "v1.31.3" # https://github.com/kubernetes/kubernetes/releases
   COREDNS_VERSION: "v1.12.0" # https://hub.docker.com/r/coredns/coredns/tags
@@ -42,8 +42,8 @@ variables:
   ARGOCD_VAULT_PLUGIN_VERSION: "1.18.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   NEXUS_VERSION: "3.75.1" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.6-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v3.2.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "9.5.47" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  TRAEFIK_VERSION: "v3.2.2" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  MKDOCS_VERSION: "9.5.48" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.0.7" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "17.2-bookworm" # https://hub.docker.com/_/postgres
@@ -65,7 +65,7 @@ variables:
   KIBANA_VERSION: "8.16.1"
   APMSERVER_VERSION: "8.16.1"
   ELASTICAGENT_VERSION: "8.16.1"
-  MONGO_VERSION: 8.0.3-noble # https://hub.docker.com/_/mongo
+  MONGO_VERSION: 8.0.4-noble # https://hub.docker.com/_/mongo
   PGADMIN_VERSION: "8.13" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   HTTPBIN_VERSION: v2.15.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.7.1-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
@@ -129,7 +129,7 @@ variables:
   CURL_VERSION: 8.11.0 # https://hub.docker.com/r/curlimages/curl/tags
   RESTIC_VERSION: 0.17.3 # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: 4.6.2 # https://hub.docker.com/r/coturn/coturn/tags
-  JENKINS_VERSION: 2.488-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
+  JENKINS_VERSION: 2.489-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
   NETBOX_VERSION: v4.1.7 # https://hub.docker.com/r/netboxcommunity/netbox/tags
@@ -149,4 +149,4 @@ variables:
   HOMEASSISTANT_VERSION: "2024.12" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
   ZIGBEE2MQTT_VERSION: 1.42.0 # https://github.com/Koenkk/zigbee2mqtt/releases
   GITEA_VERSION: 1.22.4-rootless # https://hub.docker.com/r/gitea/gitea/tags
-  CLOUDFLARED_VERSION: "2024.11.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
+  CLOUDFLARED_VERSION: "2024.12.0" # https://hub.docker.com/r/cloudflare/cloudflared/tags
