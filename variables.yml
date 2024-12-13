@@ -51,7 +51,7 @@ variables:
   MINIO_VERSION: RELEASE.2024-11-07T00-52-20Z # https://github.com/minio/minio/releases
   MINIO_MC_VERSION: RELEASE.2024-11-17T19-35-25Z # https://github.com/minio/mc/releases
   PROMETHEUS_VERSION: v3.0.1 # https://prometheus.io/download/
-  PROMETHEUS_OPERATOR_VERSION: v0.78.2 # https://quay.io/repository/prometheus-operator/prometheus-operator?tag=latest&tab=tags
+  PROMETHEUS_OPERATOR_VERSION: v0.79.0 # https://quay.io/repository/prometheus-operator/prometheus-operator?tag=latest&tab=tags
   ALERTMANAGER_VERSION: v0.27.0
   BLACKBOX_EXPORTER_VERSION: v0.25.0
   NODE_EXPORTER_VERSION: v1.8.2
@@ -61,22 +61,22 @@ variables:
   GRAFANA_VERSION: "11.4.0" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   NGINX_VERSION: 1.27.2-alpine-slim # https://hub.docker.com/r/nginxinc/nginx-unprivileged/tags
   KARMA_VERSION: "v0.120" # https://github.com/prymitive/karma/pkgs/container/karma
-  ELASTICSEARCH_VERSION: "8.16.1" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "8.16.1"
-  KIBANA_VERSION: "8.16.1"
-  APMSERVER_VERSION: "8.16.1"
-  ELASTICAGENT_VERSION: "8.16.1"
+  ELASTICSEARCH_VERSION: "8.17.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "8.17.0"
+  KIBANA_VERSION: "8.17.0"
+  APMSERVER_VERSION: "8.17.0"
+  ELASTICAGENT_VERSION: "8.17.0"
   MONGO_VERSION: 8.0.4-noble # https://hub.docker.com/_/mongo
   PGADMIN_VERSION: "8.14" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   HTTPBIN_VERSION: v2.15.0 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.7.1-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   PIHOLE_VERSION: "2024.07.0" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
   UNBOUND_VERSION: v1.22.0 # https://github.com/klutchell/unbound-docker/tags
-  NEXTCLOUD_VERSION: "30.0.3-apache" # https://hub.docker.com/_/nextcloud
+  NEXTCLOUD_VERSION: "30.0.4-apache" # https://hub.docker.com/_/nextcloud
   BITNAMI_KEYCLOAK_VERSION: "26.0.7" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=25
   BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION: "6.2.1" # https://hub.docker.com/r/bitnami/keycloak-config-cli/tags
   BITNAMI_PROMETHEUS_VERSION: "3.0.1" # https://hub.docker.com/r/bitnami/prometheus/tags?page=1&ordering=last_updated
-  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.78.2" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
+  BITNAMI_PROMETHEUS_OPERATOR_VERSION: "0.79.0" # https://hub.docker.com/r/bitnami/prometheus-operator/tags?page=1&ordering=last_updated
   BITNAMI_NODE_EXPORTER_VERSION: "1.8.2" # https://hub.docker.com/r/bitnami/node-exporter/tags
   BITNAMI_BLACKBOX_EXPORTER_VERSION: "0.25.0" # https://hub.docker.com/r/bitnami/blackbox-exporter/tags
   BITNAMI_REDIS_VERSION: "7.4.1" # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
@@ -123,7 +123,7 @@ variables:
   CERT_MANAGER_WEBHOOK_PDNS_VERSION: v2.5.1 # https://hub.docker.com/r/zachomedia/cert-manager-webhook-pdns/tags
   CADDY_VERSION: 2.8.4-alpine # https://hub.docker.com/_/caddy?tab=description
   ECK_OPERATOR_VERSION: 2.15.0 # https://hub.docker.com/r/elastic/eck-operator/tags
-  GIT_SYNC_VERSION: v4.3.0 # registry.k8s.io/git-sync/git-sync
+  GIT_SYNC_VERSION: v4.4.0 # registry.k8s.io/git-sync/git-sync
   SYNCTHING_VERSION: "1.28.1" # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: "10.10.3" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
   TDARR_VERSION: "2.27.02" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
@@ -133,7 +133,7 @@ variables:
   JENKINS_VERSION: 2.489-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
-  NETBOX_VERSION: v4.1.7 # https://hub.docker.com/r/netboxcommunity/netbox/tags
+  NETBOX_VERSION: v4.1.8 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v12.2.3 # https://hub.docker.com/r/postgrest/postgrest/tags
   CEPHCSI_VERSION: v3.13.0 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v24.9.1 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
@@ -149,5 +149,5 @@ variables:
   ZITADEL_VERSION: v2.65.1 # https://github.com/zitadel/zitadel/pkgs/container/zitadel
   HOMEASSISTANT_VERSION: "2024.12" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
   ZIGBEE2MQTT_VERSION: 1.42.0 # https://github.com/Koenkk/zigbee2mqtt/releases
-  GITEA_VERSION: 1.22.5-rootless # https://hub.docker.com/r/gitea/gitea/tags
+  GITEA_VERSION: 1.22.6-rootless # https://hub.docker.com/r/gitea/gitea/tags
   CLOUDFLARED_VERSION: "2024.12.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
