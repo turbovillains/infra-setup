@@ -4,8 +4,8 @@ variables:
   INFRA_NAMESPACE: infra
   INFRA_NAMESPACE_DEV: infra-dev
   WEBSITE_VERSION: v0.2.11
-  DEBIAN_VERSION: "bookworm-20241202-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
-  UBUNTU_NOBLE_VERSION: "noble-20241015" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=jammy
+  DEBIAN_VERSION: "bookworm-20241223-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
+  UBUNTU_NOBLE_VERSION: "noble-20241118.1" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
   ALPINE_VERSION: "3.21.0" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.37.0" # https://hub.docker.com/_/busybox
   JDK_ZULU_VERSION: 23.0.1-23.30 # https://hub.docker.com/r/azul/zulu-openjdk/tags
@@ -35,7 +35,7 @@ variables:
   CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION: v8.1.1
   CSI_PROVISIONER_VERSION: v5.1.0
   CSI_NFSPLUGIN_VERSION: v4.9.0 # https://github.com/kubernetes-csi/csi-driver-nfs/releases
-  K8S_NFD_VERSION: v0.16.6 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
+  K8S_NFD_VERSION: v0.17.0 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
   TIGERA_OPERATOR_VERSION: "v1.36.3" # https://github.com/tigera/operator/releases
   CALICO_VERSION: "v3.29.1" # https://hub.docker.com/r/calico/node/tags
   ARGOCD_VERSION: v2.13.2 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
@@ -98,9 +98,9 @@ variables:
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.18.2" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_OPENLDAP_VERSION: "2.6.9" # https://hub.docker.com/r/bitnami/openldap/tags?page=1&name=2.6
   BITNAMI_KUBECTL_VERSION: 1.32.0 # https://hub.docker.com/r/bitnami/kubectl/tags
-  TRIVY_VERSION: 0.58.0 # https://hub.docker.com/r/aquasec/trivy/tags
+  TRIVY_VERSION: 0.58.1 # https://hub.docker.com/r/aquasec/trivy/tags
   SECRETS_STORE_CSI_VERSION: v1.4.7 # https://github.com/kubernetes-sigs/secrets-store-csi-driver/releases
-  EXTERNAL_SECRETS_VERSION: v0.11.0 # https://github.com/external-secrets/external-secrets/releases
+  EXTERNAL_SECRETS_VERSION: v0.12.1 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.30.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
   RELOADER_VERSION: "v1.2.0" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
@@ -133,7 +133,7 @@ variables:
   JENKINS_VERSION: 2.491-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
-  NETBOX_VERSION: v4.1.9 # https://hub.docker.com/r/netboxcommunity/netbox/tags
+  NETBOX_VERSION: v4.1.10 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v12.2.3 # https://hub.docker.com/r/postgrest/postgrest/tags
   CEPHCSI_VERSION: v3.13.0 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v24.9.1 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
