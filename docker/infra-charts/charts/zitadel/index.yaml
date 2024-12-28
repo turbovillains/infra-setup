@@ -2,8 +2,120 @@ apiVersion: v1
 entries:
   zitadel:
   - apiVersion: v2
+    appVersion: v2.66.1
+    created: "2024-12-28T22:04:30.135483+01:00"
+    description: A Helm chart for ZITADEL
+    digest: 08c84acaafdc8ec9fbb5f5c35534926448b6b8fc8df222195239a5c765f4fec8
+    icon: https://zitadel.com/zitadel-logo-dark.svg
+    kubeVersion: '>= 1.21.0-0'
+    maintainers:
+    - email: support@zitadel.com
+      name: zitadel
+      url: https://zitadel.com
+    name: zitadel
+    type: application
+    urls:
+    - zitadel-8.8.1.tgz
+    version: 8.8.1
+  - apiVersion: v2
+    appVersion: v2.66.0
+    created: "2024-12-28T22:04:30.132143+01:00"
+    description: A Helm chart for ZITADEL
+    digest: fc05550a9c63d301c9edc2c7f5282bcf0f194cb1d6842bbe0565fbdc2576de19
+    icon: https://zitadel.com/zitadel-logo-dark.svg
+    kubeVersion: '>= 1.21.0-0'
+    maintainers:
+    - email: support@zitadel.com
+      name: zitadel
+      url: https://zitadel.com
+    name: zitadel
+    type: application
+    urls:
+    - zitadel-8.8.0.tgz
+    version: 8.8.0
+  - apiVersion: v2
+    appVersion: v2.65.4
+    created: "2024-12-28T22:04:30.128146+01:00"
+    description: A Helm chart for ZITADEL
+    digest: eff0921e32fcde53a2830e82ed020bdeadc3633047a4b80491dc08c90f01581b
+    icon: https://zitadel.com/zitadel-logo-dark.svg
+    kubeVersion: '>= 1.21.0-0'
+    maintainers:
+    - email: support@zitadel.com
+      name: zitadel
+      url: https://zitadel.com
+    name: zitadel
+    type: application
+    urls:
+    - zitadel-8.7.2.tgz
+    version: 8.7.2
+  - apiVersion: v2
+    appVersion: v2.65.3
+    created: "2024-12-28T22:04:30.123736+01:00"
+    description: A Helm chart for ZITADEL
+    digest: 8c06e14538145f8a5eb9664686ece0d2bc090e45cd6e3ef5856f8b5c6fdd94f0
+    icon: https://zitadel.com/zitadel-logo-dark.svg
+    kubeVersion: '>= 1.21.0-0'
+    maintainers:
+    - email: support@zitadel.com
+      name: zitadel
+      url: https://zitadel.com
+    name: zitadel
+    type: application
+    urls:
+    - zitadel-8.7.1.tgz
+    version: 8.7.1
+  - apiVersion: v2
+    appVersion: v2.65.3
+    created: "2024-12-28T22:04:30.119593+01:00"
+    description: A Helm chart for ZITADEL
+    digest: 73c85cd7198fed549cdd3d638f9fbcb025edfa2e45825ffa8352ef18a8b5c703
+    icon: https://zitadel.com/zitadel-logo-dark.svg
+    kubeVersion: '>= 1.21.0-0'
+    maintainers:
+    - email: support@zitadel.com
+      name: zitadel
+      url: https://zitadel.com
+    name: zitadel
+    type: application
+    urls:
+    - zitadel-8.7.0.tgz
+    version: 8.7.0
+  - apiVersion: v2
+    appVersion: v2.65.3
+    created: "2024-12-28T22:04:30.116196+01:00"
+    description: A Helm chart for ZITADEL
+    digest: 34ef4041e09827f0ff8f10f00ac91ebeccaa791da1bb547712754ed71f00d22d
+    icon: https://zitadel.com/zitadel-logo-dark.svg
+    kubeVersion: '>= 1.21.0-0'
+    maintainers:
+    - email: support@zitadel.com
+      name: zitadel
+      url: https://zitadel.com
+    name: zitadel
+    type: application
+    urls:
+    - zitadel-8.6.3.tgz
+    version: 8.6.3
+  - apiVersion: v2
+    appVersion: v2.65.2
+    created: "2024-12-28T22:04:30.112627+01:00"
+    description: A Helm chart for ZITADEL
+    digest: f83b08a74f3f9dda2c71e49be67225b6213c983fa59036e520529fe2568d71bb
+    icon: https://zitadel.com/zitadel-logo-dark.svg
+    kubeVersion: '>= 1.21.0-0'
+    maintainers:
+    - email: support@zitadel.com
+      name: zitadel
+      url: https://zitadel.com
+    name: zitadel
+    type: application
+    urls:
+    - zitadel-8.6.2.tgz
+    version: 8.6.2
+  - apiVersion: v2
     appVersion: v2.65.1
-    created: "2024-11-20T14:43:25.361769+01:00"
+    created: "2024-12-28T22:04:30.108815+01:00"
     description: A Helm chart for ZITADEL
     digest: ff694231bbb1cda83c30dbff65c78f11ee4b2adeb81c438e3be6901c4821884a
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -19,7 +131,7 @@ entries:
     version: 8.6.1
   - apiVersion: v2
     appVersion: v2.65.0
-    created: "2024-11-20T14:43:25.361126+01:00"
+    created: "2024-12-28T22:04:30.104285+01:00"
     description: A Helm chart for ZITADEL
     digest: 6d263057450c2a5635eda580dc024a2a9c047b91793b48256d30a4edd3ceffb2
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -35,7 +147,7 @@ entries:
     version: 8.6.0
   - apiVersion: v2
     appVersion: v2.61.0
-    created: "2024-11-20T14:43:25.360502+01:00"
+    created: "2024-12-28T22:04:30.099894+01:00"
     description: A Helm chart for ZITADEL
     digest: 7aec360ef9cbc6a4b0c987bb08ddc48a34c4892c1855b9f05f0847a711ec74c9
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -51,7 +163,7 @@ entries:
     version: 8.5.0
   - apiVersion: v2
     appVersion: v2.61.0
-    created: "2024-11-20T14:43:25.359817+01:00"
+    created: "2024-12-28T22:04:30.094875+01:00"
     description: A Helm chart for ZITADEL
     digest: d4f1f52718b5611d6431c14986445fa5ecbab44d9056e629dc13ed2fab6fe384
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -67,7 +179,7 @@ entries:
     version: 8.4.1
   - apiVersion: v2
     appVersion: v2.61.0
-    created: "2024-11-20T14:43:25.359139+01:00"
+    created: "2024-12-28T22:04:30.091521+01:00"
     description: A Helm chart for ZITADEL
     digest: 9df0efa597c7cac8fce2e373bc6c085596d9539fc64cb140bd38acbdf74eaee0
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -83,7 +195,7 @@ entries:
     version: 8.4.0
   - apiVersion: v2
     appVersion: v2.60.0
-    created: "2024-11-20T14:43:25.358478+01:00"
+    created: "2024-12-28T22:04:30.086638+01:00"
     description: A Helm chart for ZITADEL
     digest: 6be03fa0188b34c6cc95870501bba9e193c436d54789a45b9213c9cadf738548
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -99,7 +211,7 @@ entries:
     version: 8.3.0
   - apiVersion: v2
     appVersion: v2.59.1
-    created: "2024-11-20T14:43:25.357536+01:00"
+    created: "2024-12-28T22:04:30.083627+01:00"
     description: A Helm chart for ZITADEL
     digest: 1920ad7b4993ed0f0f7c2ec1fdfe1b7b19a06800d3bf5b867241311d9221aa4f
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -115,7 +227,7 @@ entries:
     version: 8.2.0
   - apiVersion: v2
     appVersion: v2.55.0
-    created: "2024-11-20T14:43:25.356845+01:00"
+    created: "2024-12-28T22:04:30.080525+01:00"
     description: A Helm chart for ZITADEL
     digest: 15cc311fbf8b32688610ae645a4b1212d2602114de80150923cbcbe08e418624
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -131,7 +243,7 @@ entries:
     version: 8.1.0
   - apiVersion: v2
     appVersion: v2.55.0
-    created: "2024-11-20T14:43:25.356177+01:00"
+    created: "2024-12-28T22:04:30.077132+01:00"
     description: A Helm chart for ZITADEL
     digest: fda39ffdd76f7cd537a9620eb4ec9cfc28548c72e989eaa7543cb51180df4dfb
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -147,7 +259,7 @@ entries:
     version: 8.0.0
   - apiVersion: v2
     appVersion: v2.51.3
-    created: "2024-11-20T14:43:25.352956+01:00"
+    created: "2024-12-28T22:04:30.056822+01:00"
     description: A Helm chart for ZITADEL
     digest: 6f9b63bca905d51897b7cfb6200a77fd250f4a8cbf91d415d0bd51bfa921ead0
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -163,7 +275,7 @@ entries:
     version: 7.15.0
   - apiVersion: v2
     appVersion: v2.51.3
-    created: "2024-11-20T14:43:25.352058+01:00"
+    created: "2024-12-28T22:04:30.053659+01:00"
     description: A Helm chart for ZITADEL
     digest: 91a2e9bb696a876608934e5f57f17497cb88bd3f56b4457ff4d604ae162ef578
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -179,7 +291,7 @@ entries:
     version: 7.14.0
   - apiVersion: v2
     appVersion: v2.49.1
-    created: "2024-11-20T14:43:25.351369+01:00"
+    created: "2024-12-28T22:04:30.050994+01:00"
     description: A Helm chart for ZITADEL
     digest: 277fb35f370a6b57d72ce85e5107ab3c964b2c3bb6b00453222101403e3521b3
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -195,7 +307,7 @@ entries:
     version: 7.13.0
   - apiVersion: v2
     appVersion: v2.49.1
-    created: "2024-11-20T14:43:25.350654+01:00"
+    created: "2024-12-28T22:04:30.046951+01:00"
     description: A Helm chart for ZITADEL
     digest: 72ec5453be23fff7c5a917b665816215e3bc47fe120b0ac03079bacd1c3f0c10
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -211,7 +323,7 @@ entries:
     version: 7.12.1
   - apiVersion: v2
     appVersion: v2.49.1
-    created: "2024-11-20T14:43:25.349951+01:00"
+    created: "2024-12-28T22:04:30.042566+01:00"
     description: A Helm chart for ZITADEL
     digest: c6e8709e1bd0e058d1268a5b8a57b463f13782e069584feef0ade3aa61e75e8b
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -227,7 +339,7 @@ entries:
     version: 7.12.0
   - apiVersion: v2
     appVersion: v2.46.0
-    created: "2024-11-20T14:43:25.349255+01:00"
+    created: "2024-12-28T22:04:30.038276+01:00"
     description: A Helm chart for ZITADEL
     digest: 0cf15c26177c748995fef0bf62d0026b5913129ab56e6e34b5775024763826f7
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -243,7 +355,7 @@ entries:
     version: 7.11.0
   - apiVersion: v2
     appVersion: v2.46.0
-    created: "2024-11-20T14:43:25.348519+01:00"
+    created: "2024-12-28T22:04:30.032896+01:00"
     description: A Helm chart for ZITADEL
     digest: 21cfdb2efa3e73021aacec456ebf19d2238615e7277e81bdbc51f15c180495bc
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -259,7 +371,7 @@ entries:
     version: 7.10.0
   - apiVersion: v2
     appVersion: v2.46.0
-    created: "2024-11-20T14:43:25.35547+01:00"
+    created: "2024-12-28T22:04:30.073829+01:00"
     description: A Helm chart for ZITADEL
     digest: 988046adf567863175d1e505f38287987eea9a8b1be4189dec39ecd40aab3eb6
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -275,7 +387,7 @@ entries:
     version: 7.9.2
   - apiVersion: v2
     appVersion: v2.46.0
-    created: "2024-11-20T14:43:25.354825+01:00"
+    created: "2024-12-28T22:04:30.070119+01:00"
     description: A Helm chart for ZITADEL
     digest: 6c0c6d37f48d2f59d84e92584f3f087849c1edfe3d4e42c0e9d94936816bf2ed
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -291,7 +403,7 @@ entries:
     version: 7.9.1
   - apiVersion: v2
     appVersion: v2.46.0
-    created: "2024-11-20T14:43:25.354187+01:00"
+    created: "2024-12-28T22:04:30.066005+01:00"
     description: A Helm chart for ZITADEL
     digest: a8d79863a5cc28df988b1bfd4be8817ed24aa361b86d55bc0f71de1f2852913f
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -307,7 +419,7 @@ entries:
     version: 7.9.0
   - apiVersion: v2
     appVersion: v2.46.0
-    created: "2024-11-20T14:43:25.353546+01:00"
+    created: "2024-12-28T22:04:30.061226+01:00"
     description: A Helm chart for ZITADEL
     digest: b44f900fb87d6a84c18e286af866f8efc2a705f583317ed44f1b378fc2a91fd9
     icon: https://zitadel.com/zitadel-logo-dark.svg
@@ -321,4 +433,4 @@ entries:
     urls:
     - zitadel-7.8.0.tgz
     version: 7.8.0
-generated: "2024-11-20T14:43:25.347732+01:00"
+generated: "2024-12-28T22:04:30.026976+01:00"

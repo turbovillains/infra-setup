@@ -3,7 +3,7 @@ entries:
   jenkins-operator:
   - apiVersion: v2
     appVersion: 0.8.1
-    created: "2024-11-20T14:43:24.625045+01:00"
+    created: "2024-12-28T22:04:28.435864+01:00"
     dependencies:
     - condition: cert-manager.enabled
       name: cert-manager
@@ -22,7 +22,7 @@ entries:
     version: 0.8.1
   - apiVersion: v2
     appVersion: 0.8.0
-    created: "2024-11-20T14:43:24.621346+01:00"
+    created: "2024-12-28T22:04:28.42967+01:00"
     dependencies:
     - condition: webhook.enabled
       name: cert-manager
@@ -37,7 +37,7 @@ entries:
     version: 0.8.0
   - apiVersion: v2
     appVersion: 0.7.1
-    created: "2024-11-20T14:43:24.61504+01:00"
+    created: "2024-12-28T22:04:28.419914+01:00"
     dependencies:
     - condition: webhook.enabled
       name: cert-manager
@@ -52,7 +52,7 @@ entries:
     version: 0.6.2
   - apiVersion: v2
     appVersion: 0.7.1
-    created: "2024-11-20T14:43:24.60886+01:00"
+    created: "2024-12-28T22:04:28.408787+01:00"
     dependencies:
     - condition: webhook.enabled
       name: cert-manager
@@ -67,7 +67,7 @@ entries:
     version: 0.6.1
   - apiVersion: v2
     appVersion: 0.7.0
-    created: "2024-11-20T14:43:24.60232+01:00"
+    created: "2024-12-28T22:04:28.396362+01:00"
     dependencies:
     - condition: webhook.enabled
       name: cert-manager
@@ -82,7 +82,7 @@ entries:
     version: 0.6.0
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2024-11-20T14:43:24.595457+01:00"
+    created: "2024-12-28T22:04:28.383828+01:00"
     description: Kubernetes native operator which fully manages Jenkins on Kubernetes
     digest: bcba67a3294cfa2064c7c27bffb4a49259c3fedcb753f011e8c30af998cdc5f2
     icon: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/assets/jenkins-operator-icon.png
@@ -92,7 +92,7 @@ entries:
     version: 0.5.3
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2024-11-20T14:43:24.594477+01:00"
+    created: "2024-12-28T22:04:28.379287+01:00"
     description: Kubernetes native operator which fully manages Jenkins on Kubernetes
     digest: 48fbf15c3ffff7003623edcde0bec39dc37d0a62303f08066960d5fac799af90
     icon: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/assets/jenkins-operator-icon.png
@@ -102,7 +102,7 @@ entries:
     version: 0.5.2
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2024-11-20T14:43:24.593612+01:00"
+    created: "2024-12-28T22:04:28.375328+01:00"
     description: Kubernetes native operator which fully manages Jenkins on Kubernetes
     digest: 6f92759aaa7baafe5fe3a07f237b2c31b6921ca20cba145ee168c8fdb331d294
     icon: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/assets/jenkins-operator-icon.png
@@ -112,7 +112,7 @@ entries:
     version: 0.5.1
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2024-11-20T14:43:24.592704+01:00"
+    created: "2024-12-28T22:04:28.371092+01:00"
     description: Kubernetes native operator which fully manages Jenkins on Kubernetes
     digest: aae33e13b8fcab6957b8ded2a2ae08025db38e1d86bbec8f8d9595b9eb904df1
     icon: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/assets/jenkins-operator-icon.png
@@ -122,7 +122,7 @@ entries:
     version: 0.5.0
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2024-11-20T14:43:24.591493+01:00"
+    created: "2024-12-28T22:04:28.366602+01:00"
     description: Kubernetes native operator which fully manages Jenkins on Kubernetes
     digest: 7a63ffab918dc012e0231cb362f16fa33d61b6db37a70b00b8c08ceb8cc90768
     icon: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/assets/jenkins-operator-icon.png
@@ -132,7 +132,7 @@ entries:
     version: 0.4.3
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2024-11-20T14:43:24.590998+01:00"
+    created: "2024-12-28T22:04:28.362102+01:00"
     description: Kubernetes native operator which fully manages Jenkins on Kubernetes
     digest: f045e699339da7345a1b848c5a068ec932ee3da7dfccf8c1f62c4df67aca488e
     icon: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/assets/jenkins-operator-icon.png
@@ -140,4 +140,4 @@ entries:
     urls:
     - jenkins-operator-0.4.2.tgz
     version: 0.4.2
-generated: "2024-11-20T14:43:24.590434+01:00"
+generated: "2024-12-28T22:04:28.357882+01:00"

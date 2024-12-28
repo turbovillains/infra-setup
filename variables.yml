@@ -131,7 +131,9 @@ variables:
   RESTIC_VERSION: 0.17.3 # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: 4.6.3 # https://hub.docker.com/r/coturn/coturn/tags
   JENKINS_VERSION: 2.491-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
+  KIWIGRID_K8S_SIDECAR_VERSION: "1.28.4" # https://github.com/kiwigrid/k8s-sidecar
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
+  JENKINS_INBOUND_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
   NETBOX_VERSION: v4.1.10 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v12.2.3 # https://hub.docker.com/r/postgrest/postgrest/tags

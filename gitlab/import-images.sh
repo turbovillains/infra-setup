@@ -105,8 +105,6 @@ import_images() {
         "curlimages/curl:${CURL_VERSION:-8.7.1}"
         "restic/restic:${RESTIC_VERSION:-0.14.0}"
         "coturn/coturn:${COTURN_VERSION:-4.6.1}"
-        "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
-        "jenkins/agent:${JENKINS_AGENT_VERSION:-3085.vc4c6977c075a-5-jdk17}"
         "netboxcommunity/netbox:${NETBOX_VERSION:-v3.4.5}"
         "postgrest/postgrest:${POSTGREST_VERSION:-v10.2.0.20230209}"
         "quay.io/cephcsi/cephcsi:${CEPHCSI_VERSION:-v3.10.2}"
@@ -116,6 +114,12 @@ import_images() {
         "gitea/gitea:${GITEA_VERSION:-1.21.11}"
         "cloudflare/cloudflared:${CLOUDFLARED_VERSION:-2024.6.1}"
         "registry.k8s.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
+
+        # jenkins
+        "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
+        "jenkins/agent:${JENKINS_AGENT_VERSION:-3085.vc4c6977c075a-5-jdk17}"
+        "jenkins/inbound-agent:${JENKINS_INBOUND_AGENT_VERSION:-3273.v4cfe589b_fd83-1-jdk17}"
+        "quay.io/kiwigrid/k8s-sidecar:${KIWIGRID_K8S_SIDECAR_VERSION:-1.28.4}"
 
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_VERSION:-v1.8.0}"
