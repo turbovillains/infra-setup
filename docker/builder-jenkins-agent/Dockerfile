@@ -4,7 +4,7 @@ ARG INFRA_NAMESPACE
 
 FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/tools:${INFRA_VERSION} AS tools
 
-FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/debian:${INFRA_VERSION}
+FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/jenkins-inbound-agent:${INFRA_VERSION}
 
 LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
@@ -17,8 +17,9 @@ COPY --from=tools /usr/local/bin /usr/local/bin
 ENV DOCKER_HUB=${DOCKER_HUB} \
   DOCKER_CLI_EXPERIMENTAL=enabled \
   DOCKER_BUILDKIT=1 \
-  BUILDER_USER=builder
+  BUILDER_USER=jenkins
 
+USER 0
 ADD setup /setup
 RUN --mount=type=secret,id=ssh_private_key --mount=type=secret,id=infra_readonly_token /setup/setup.sh
 

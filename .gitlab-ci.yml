@@ -800,6 +800,17 @@ ingress-default-backend:
 #         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 #       fi
 
+tools:
+  interruptible: true
+  retry: 2
+  stage: base
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg DEBIAN_VERSION
+  variables:
+    BASE: debian
+    VERSION: DEBIAN_VERSION
 
 debian:
   interruptible: true
@@ -2445,7 +2456,14 @@ builder:
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+        --build-arg HOST_DOCKER_GID
+
+builder-jenkins-agent:
+  interruptible: true
+  stage: build2
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HOST_DOCKER_GID
 
 shell:
