@@ -6,9 +6,8 @@ virtualenv -p python3 /home/${BUILDER_USER}/.py3
 
 . /home/${BUILDER_USER}/.py3/bin/activate
 
-pip install --upgrade pip
-pip install ansible
-pip install nexus3-cli
+pip install --upgrade pip --index-url https://nexus.nrtn.dev/repository/pypi-proxy/simple
+pip install ansible nexus3-cli --index-url https://nexus.nrtn.dev/repository/pypi-proxy/simple
 
 python -V | egrep '^Python 3'   # fail on python 2
 

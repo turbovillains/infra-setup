@@ -50,7 +50,7 @@ variables:
   POSTGRES_VERSION: "17.2-bookworm" # https://hub.docker.com/_/postgres
   MINIO_VERSION: RELEASE.2024-12-18T13-15-44Z # https://github.com/minio/minio/releases
   MINIO_MC_VERSION: RELEASE.2024-11-21T17-21-54Z # https://github.com/minio/mc/releases
-  PROMETHEUS_VERSION: v3.0.1 # https://prometheus.io/download/
+  PROMETHEUS_VERSION: v3.1.0 # https://prometheus.io/download/
   PROMETHEUS_OPERATOR_VERSION: v0.79.2 # https://quay.io/repository/prometheus-operator/prometheus-operator?tag=latest&tab=tags
   ALERTMANAGER_VERSION: v0.27.0
   BLACKBOX_EXPORTER_VERSION: v0.25.0
@@ -85,7 +85,7 @@ variables:
   BITNAMI_POSTGRESQL16_VERSION: "16.6.0" # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=16.
   BITNAMI_POSTGRESQL17_VERSION: "17.2.0" # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=17.
   BITNAMI_POSTGRES_EXPORTER_VERSION: 0.16.0 # https://hub.docker.com/r/bitnami/postgres-exporter/tags
-  BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.11.3" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
+  BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION: "1.12.0" # https://hub.docker.com/r/bitnami/nginx-ingress-controller/tags?page=1&ordering=last_updated
   BITNAMI_SHELL_VERSION: "12" # https://hub.docker.com/r/bitnami/os-shell/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_VERSION: "2024.12.18" # https://hub.docker.com/r/bitnami/minio/tags?page=1&ordering=last_updated
   BITNAMI_MINIO_CLIENT_VERSION: "2024.11.21" # https://hub.docker.com/r/bitnami/minio-client/tags?page=1&ordering=last_updated
@@ -102,7 +102,7 @@ variables:
   SECRETS_STORE_CSI_VERSION: v1.4.7 # https://github.com/kubernetes-sigs/secrets-store-csi-driver/releases
   EXTERNAL_SECRETS_VERSION: v0.12.1 # https://github.com/external-secrets/external-secrets/releases
   MINIO_CONSOLE_VERSION: "v0.30.0" # https://hub.docker.com/r/minio/console/tags?page=1&ordering=last_updated
-  RELOADER_VERSION: "v1.2.0" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
+  RELOADER_VERSION: "v1.2.1" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   DOCKER_REGISTRY_VERSION: "2.8.3" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.41.1 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
