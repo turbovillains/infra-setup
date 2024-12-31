@@ -40,7 +40,7 @@ grafana_plugin_list=(
 
 for plugin in "${grafana_plugin_list[@]}"; do
     echo "Installing ${plugin} plugin"
-    grafana-cli --pluginsDir /opt/bitnami/grafana/default-plugins plugins install "$plugin"
+    grafana cli --pluginsDir /opt/bitnami/grafana/default-plugins plugins install "$plugin"
 done
 
 

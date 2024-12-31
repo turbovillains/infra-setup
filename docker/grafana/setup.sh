@@ -40,7 +40,7 @@ grafana_plugin_list=(
 
 for plugin in "${grafana_plugin_list[@]}"; do
     echo "Installing ${plugin} plugin"
-    grafana-cli plugins install "$plugin"
+    grafana cli plugins install "$plugin"
 done
 
 # End of file
