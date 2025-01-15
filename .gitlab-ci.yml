@@ -71,10 +71,12 @@ archive-images1:
           - library/node
         VERSION:
           - NODE_VERSION
+          - NODE_ALPINE_VERSION
       - BASE:
           - library/golang
         VERSION:
           - GOLANG_VERSION
+          - GOLANG_ALPINE_VERSION
       - BASE:
           - library/traefik
         VERSION:
@@ -694,6 +696,10 @@ archive-images4:
           - cloudflare/cloudflared
         VERSION:
           - CLOUDFLARED_VERSION
+      - BASE:
+          - sj26/mailcatcher
+        VERSION:
+          - MAILCATCHER_VERSION
 
 archive-special:
   extends: .archive-images
@@ -1759,7 +1765,7 @@ boky-postfix:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
     IMAGE_BASE: boky/postfix
     IMAGE_VERSION: ${BOKY_POSTFIX_VERSION}
@@ -2243,7 +2249,7 @@ netbox:
   stage: build
   script:
     - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
     IMAGE_BASE: netboxcommunity/netbox
     IMAGE_VERSION: ${NETBOX_VERSION}
@@ -2423,6 +2429,17 @@ cloudflared:
   variables:
     IMAGE_BASE: cloudflare/cloudflared
     IMAGE_VERSION: ${CLOUDFLARED_VERSION}
+
+mailcatcher:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: sj26/mailcatcher
+    IMAGE_VERSION: ${MAILCATCHER_VERSION}
 
 infra-docs:
   interruptible: true
