@@ -364,7 +364,7 @@ archive-images3:
           - csi-secrets-store/driver
           - csi-secrets-store/driver-crds
         VERSION:
-          - SECRETS_STORE_CSI_VERSION
+          - CSI_SECRETS_STORE_VERSION
       - REGISTRY:
           - ghcr.io
         BASE:
@@ -700,6 +700,11 @@ archive-images4:
           - sj26/mailcatcher
         VERSION:
           - MAILCATCHER_VERSION
+      - BASE:
+          - fatedier/frps
+          - fatedier/frpc
+        VERSION:
+          - FRP_VERSION
 
 archive-special:
   extends: .archive-images
@@ -1672,23 +1677,23 @@ trivy:
     IMAGE_BASE: aquasec/trivy
     IMAGE_VERSION: ${TRIVY_VERSION}
 
-secrets-store-csi-driver:
+csi-secrets-store-driver:
   stage: build
   script:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
     IMAGE_BASE: csi-secrets-store/driver
-    IMAGE_VERSION: ${SECRETS_STORE_CSI_VERSION}
+    IMAGE_VERSION: ${CSI_SECRETS_STORE_VERSION}
 
-secrets-store-csi-driver-crds:
+csi-secrets-store-driver-crds:
   stage: build
   script:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
     IMAGE_BASE: csi-secrets-store/driver-crds
-    IMAGE_VERSION: ${SECRETS_STORE_CSI_VERSION}
+    IMAGE_VERSION: ${CSI_SECRETS_STORE_VERSION}
 
 external-secrets:
   stage: build
@@ -2440,6 +2445,28 @@ mailcatcher:
   variables:
     IMAGE_BASE: sj26/mailcatcher
     IMAGE_VERSION: ${MAILCATCHER_VERSION}
+
+frps:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: fatedier/frps
+    IMAGE_VERSION: ${FRP_VERSION}
+
+frpc:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: fatedier/frpc
+    IMAGE_VERSION: ${FRP_VERSION}
 
 infra-docs:
   interruptible: true

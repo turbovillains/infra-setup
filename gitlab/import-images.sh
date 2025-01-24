@@ -77,8 +77,8 @@ import_images() {
         "bitnami/kubectl:${BITNAMI_KUBECTL_VERSION:-1.26.1-debian-11-r9}"
         "aquasec/trivy:${TRIVY_VERSION:-0.33.0}"
         "ghcr.io/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION:-v0.5.3}"
-        "registry.k8s.io/csi-secrets-store/driver:${SECRETS_STORE_CSI_VERSION:-v0.4.3}"
-        "registry.k8s.io/csi-secrets-store/driver-crds:${SECRETS_STORE_CSI_VERSION:-v0.4.3}"
+        "registry.k8s.io/csi-secrets-store/driver:${CSI_SECRETS_STORE_VERSION:-v0.4.3}"
+        "registry.k8s.io/csi-secrets-store/driver-crds:${CSI_SECRETS_STORE_VERSION:-v0.4.3}"
         "stakater/reloader:${RELOADER_VERSION:-v0.0.97}"
         "jimmidyson/configmap-reload:${CONFIGMAP_RELOAD_VERSION:-v0.5.0}"
         "registry:${DOCKER_REGISTRY_VERSION:-2.7.1}:::prepend_name=library/"
@@ -116,6 +116,8 @@ import_images() {
         "cloudflare/cloudflared:${CLOUDFLARED_VERSION:-2024.6.1}"
         "registry.k8s.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
         "sj26/mailcatcher:${MAILCATCHER_VERSION:-v0.10.0}"
+        "fatedier/frps:${FRP_VERSION:-v0.16.1}"
+        "fatedier/frpc:${FRP_VERSION:-v0.16.1}"
 
         # jenkins
         "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
