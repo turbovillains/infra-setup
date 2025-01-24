@@ -18,8 +18,8 @@ variables:
   PYTHON_SLIM_VERSION: 3.13.1-slim-bookworm # https://hub.docker.com/_/python/tags?page=1&name=3.11
   KUBE_RBAC_PROXY_VERSION: v0.18.2 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_VERSION: "17.8.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
-  GITLAB_RUNNER_VERSION: "alpine-v17.8.2" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_RUNNER_HELPER_VERSION: x86_64-v17.8.2
+  GITLAB_RUNNER_VERSION: "alpine-v17.8.3" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_RUNNER_HELPER_VERSION: x86_64-v17.8.3
   GITLAB_AGENTK_VERSION: v17.8.1 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   DIND_VERSION: 27.5.1-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   K8S_PAUSE_VERSION: "3.10"
@@ -42,7 +42,7 @@ variables:
   ARGOCD_VERSION: v2.13.3 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.51.0" # https://github.com/vmware-tanzu/carvel-ytt/releases
   ARGOCD_VAULT_PLUGIN_VERSION: "1.18.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
-  NEXUS_VERSION: "3.76.0" # https://hub.docker.com/r/sonatype/nexus3/tags
+  NEXUS_VERSION: "3.76.1" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.6-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v3.3.2" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "9.5.50" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
@@ -114,7 +114,7 @@ variables:
   VAULT_K8S_VERSION: "1.6.1" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
   VAULT_CSI_PROVIDER_VERSION: "1.5.0"  # https://hub.docker.com/r/hashicorp/vault-csi-provider/tags
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
-  NATS_VERSION: "2.10.24-alpine" # https://hub.docker.com/_/nats?tab=tags
+  NATS_VERSION: "2.10.25-alpine" # https://hub.docker.com/_/nats?tab=tags
   NATS_EXPORTER_VERSION: 0.16.0 # https://hub.docker.com/r/natsio/prometheus-nats-exporter/tags
   NATS_SERVER_CONFIG_RELOADER: 0.16.1 # https://hub.docker.com/r/natsio/nats-server-config-reloader/tags
   WIREGUARD_VERSION: "0.0.20230223" # https://hub.docker.com/r/masipcat/wireguard-go/tags
