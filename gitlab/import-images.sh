@@ -62,6 +62,8 @@ import_images() {
         "bitnami/postgresql:${BITNAMI_POSTGRESQL17_VERSION:-17.0.0-debian-12-r0}"
         "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
         "bitnami/keycloak-config-cli:${BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION:-5.5.0-debian-11-r11}"
+        "bitnami/nginx:${BITNAMI_NGINX_VERSION:-1.27.4}"
+        "bitnami/haproxy:${BITNAMI_HAPROXY_VERSION:-3.1.5}"
         "bitnami/nginx-ingress-controller:${BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION:-0.47.0-debian-10-r10}"
         "bitnami/minio:${BITNAMI_MINIO_VERSION:-2021.6.17-debian-10-r5}"
         "bitnami/minio-client:${BITNAMI_MINIO_CLIENT_VERSION:-2021.6.13-debian-10-r12}"

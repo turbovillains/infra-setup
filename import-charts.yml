@@ -55,11 +55,13 @@ helm:
       - name: metallb
       - name: metrics-server
       - name: redis
+      - name: nginx
       - name: nginx-ingress-controller
       - name: postgresql
       - name: minio
       - name: grafana
       - name: nats
+      - name: haproxy
   - name: elastic
     uri: https://helm.elastic.co
     charts:
