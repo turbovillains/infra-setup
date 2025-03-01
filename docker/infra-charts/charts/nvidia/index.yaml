@@ -2,8 +2,35 @@ apiVersion: v1
 entries:
   gpu-operator:
   - apiVersion: v2
+    appVersion: v24.9.2
+    created: "2025-02-28T20:22:21.531375+01:00"
+    dependencies:
+    - condition: nfd.enabled
+      name: node-feature-discovery
+      repository: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+      version: v0.16.6
+    description: NVIDIA GPU Operator creates/configures/manages GPUs atop Kubernetes
+    digest: a55ca5dfe924b8fb6d0e54d9b35ac29a4ce32515e6fbc762cbb2e7209ffcf79f
+    home: https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/overview.html
+    icon: https://assets.nvidiagrid.net/ngc/logos/GPUoperator.png
+    keywords:
+    - gpu
+    - cuda
+    - compute
+    - operator
+    - deep learning
+    - monitoring
+    - tesla
+    kubeVersion: '>= 1.16.0-0'
+    name: gpu-operator
+    sources:
+    - https://github.com/NVIDIA/gpu-operator
+    urls:
+    - gpu-operator-v24.9.2.tgz
+    version: v24.9.2
+  - apiVersion: v2
     appVersion: v24.9.1
-    created: "2024-12-28T22:04:29.277405+01:00"
+    created: "2025-02-28T20:22:21.525898+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -30,7 +57,7 @@ entries:
     version: v24.9.1
   - apiVersion: v2
     appVersion: v24.9.0
-    created: "2024-12-28T22:04:29.269824+01:00"
+    created: "2025-02-28T20:22:21.519369+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -57,7 +84,7 @@ entries:
     version: v24.9.0
   - apiVersion: v2
     appVersion: v24.6.2
-    created: "2024-12-28T22:04:29.263872+01:00"
+    created: "2025-02-28T20:22:21.513266+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -84,7 +111,7 @@ entries:
     version: v24.6.2
   - apiVersion: v2
     appVersion: v24.6.1
-    created: "2024-12-28T22:04:29.25864+01:00"
+    created: "2025-02-28T20:22:21.506788+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -111,7 +138,7 @@ entries:
     version: v24.6.1
   - apiVersion: v2
     appVersion: v24.6.0
-    created: "2024-12-28T22:04:29.250989+01:00"
+    created: "2025-02-28T20:22:21.498284+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -138,7 +165,7 @@ entries:
     version: v24.6.0
   - apiVersion: v2
     appVersion: v24.3.0
-    created: "2024-12-28T22:04:29.246025+01:00"
+    created: "2025-02-28T20:22:21.492064+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -165,7 +192,7 @@ entries:
     version: v24.3.0
   - apiVersion: v2
     appVersion: v23.9.2
-    created: "2024-12-28T22:04:29.241731+01:00"
+    created: "2025-02-28T20:22:21.485204+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -192,7 +219,7 @@ entries:
     version: v23.9.2
   - apiVersion: v2
     appVersion: v23.9.1
-    created: "2024-12-28T22:04:29.237328+01:00"
+    created: "2025-02-28T20:22:21.477408+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -219,7 +246,7 @@ entries:
     version: v23.9.1
   - apiVersion: v2
     appVersion: v23.9.0
-    created: "2024-12-28T22:04:29.224074+01:00"
+    created: "2025-02-28T20:22:21.470962+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -246,7 +273,7 @@ entries:
     version: v23.9.0
   - apiVersion: v2
     appVersion: v23.6.2
-    created: "2024-12-28T22:04:29.219315+01:00"
+    created: "2025-02-28T20:22:21.465399+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -273,7 +300,7 @@ entries:
     version: v23.6.2
   - apiVersion: v2
     appVersion: v23.6.1
-    created: "2024-12-28T22:04:29.215263+01:00"
+    created: "2025-02-28T20:22:21.459612+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -300,7 +327,7 @@ entries:
     version: v23.6.1
   - apiVersion: v2
     appVersion: v23.6.0
-    created: "2024-12-28T22:04:29.21009+01:00"
+    created: "2025-02-28T20:22:21.453159+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -327,7 +354,7 @@ entries:
     version: v23.6.0
   - apiVersion: v2
     appVersion: v23.3.2
-    created: "2024-12-28T22:04:29.201883+01:00"
+    created: "2025-02-28T20:22:21.446447+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -354,7 +381,7 @@ entries:
     version: v23.3.2
   - apiVersion: v2
     appVersion: v23.3.1
-    created: "2024-12-28T22:04:29.193712+01:00"
+    created: "2025-02-28T20:22:21.439657+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -381,7 +408,7 @@ entries:
     version: v23.3.1
   - apiVersion: v2
     appVersion: v23.3.0
-    created: "2024-12-28T22:04:29.187039+01:00"
+    created: "2025-02-28T20:22:21.429535+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -408,7 +435,7 @@ entries:
     version: v23.3.0
   - apiVersion: v2
     appVersion: v22.9.2
-    created: "2024-12-28T22:04:29.179611+01:00"
+    created: "2025-02-28T20:22:21.424476+01:00"
     dependencies:
     - condition: nfd.enabled
       name: node-feature-discovery
@@ -433,4 +460,4 @@ entries:
     urls:
     - gpu-operator-v22.9.2.tgz
     version: v22.9.2
-generated: "2024-12-28T22:04:29.173237+01:00"
+generated: "2025-02-28T20:22:21.418699+01:00"
