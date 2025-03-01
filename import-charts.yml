@@ -11,7 +11,12 @@ helm:
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 5.0.22
+        version: 5.0.37
+  - name: haproxytech
+    uri: https://haproxytech.github.io/helm-charts
+    charts:
+      - name: haproxy
+      - name: kubernetes-ingress
   - name: gitea
     uri: https://dl.gitea.com/charts/
     charts:

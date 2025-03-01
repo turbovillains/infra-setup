@@ -77,6 +77,8 @@ import_images() {
         "bitnami/kube-rbac-proxy:${BITNAMI_KUBE_RBAC_PROXY_VERSION:-0.12.0-scratch-r2}"
         "bitnami/openldap:${BITNAMI_OPENLDAP_VERSION:-2.5.13-debian-11-r0}"
         "bitnami/kubectl:${BITNAMI_KUBECTL_VERSION:-1.26.1-debian-11-r9}"
+        "haproxytech/haproxy-alpine:${HAPROXY_VERSION:-3.1.5}"
+        "haproxytech/kubernetes-ingress:${HAPROXY_INGRESS_VERSION:-3.1.2}"
         "aquasec/trivy:${TRIVY_VERSION:-0.33.0}"
         "ghcr.io/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION:-v0.5.3}"
         "registry.k8s.io/csi-secrets-store/driver:${CSI_SECRETS_STORE_VERSION:-v0.4.3}"

@@ -1,13 +1,14 @@
 ---
 helm:
-  - name: netbox
-    type: oci
-    uri: oci://ghcr.io/netbox-community/netbox-chart/
-    charts:
-      - name: netbox
-        version: 5.0.0-beta.102
+  # - name: netbox
+  #   type: oci
+  #   uri: oci://ghcr.io/netbox-community/netbox-chart/
+  #   charts:
+  #     - name: netbox
+  #       version: 5.0.0-beta.102
 
-  - name: vsphere-cpi
-    uri: https://kubernetes.github.io/cloud-provider-vsphere
+  - name: haproxytech
+    uri: https://haproxytech.github.io/helm-charts
     charts:
-      - name: vsphere-cpi
+      - name: haproxy
+      - name: kubernetes-ingress
