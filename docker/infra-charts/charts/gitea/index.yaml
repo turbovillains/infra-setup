@@ -3,7 +3,7 @@ entries:
   gitea:
   - apiVersion: v2
     appVersion: 1.23.4
-    created: "2025-03-02T22:38:02.146894+01:00"
+    created: "2025-03-08T20:47:29.69032+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -55,7 +55,7 @@ entries:
     version: 11.0.0
   - apiVersion: v2
     appVersion: 1.22.3
-    created: "2025-03-02T22:38:02.135166+01:00"
+    created: "2025-03-08T20:47:29.672106+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -107,7 +107,7 @@ entries:
     version: 10.6.0
   - apiVersion: v2
     appVersion: 1.22.3
-    created: "2025-03-02T22:38:02.1235+01:00"
+    created: "2025-03-08T20:47:29.65561+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -159,7 +159,7 @@ entries:
     version: 10.5.0
   - apiVersion: v2
     appVersion: 1.22.2
-    created: "2025-03-02T22:38:02.112111+01:00"
+    created: "2025-03-08T20:47:29.641194+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -211,7 +211,7 @@ entries:
     version: 10.4.1
   - apiVersion: v2
     appVersion: 1.22.1
-    created: "2025-03-02T22:38:02.100885+01:00"
+    created: "2025-03-08T20:47:29.62646+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -263,7 +263,7 @@ entries:
     version: 10.4.0
   - apiVersion: v2
     appVersion: 1.22.0
-    created: "2025-03-02T22:38:02.08945+01:00"
+    created: "2025-03-08T20:47:29.611224+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -315,7 +315,7 @@ entries:
     version: 10.3.0
   - apiVersion: v2
     appVersion: 1.22.0
-    created: "2025-03-02T22:38:02.07853+01:00"
+    created: "2025-03-08T20:47:29.598752+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -363,7 +363,7 @@ entries:
     version: 10.2.0
   - apiVersion: v2
     appVersion: 1.21.11
-    created: "2025-03-02T22:38:02.070308+01:00"
+    created: "2025-03-08T20:47:29.588483+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -411,7 +411,7 @@ entries:
     version: 10.1.4
   - apiVersion: v2
     appVersion: 1.21.7
-    created: "2025-03-02T22:38:02.062122+01:00"
+    created: "2025-03-08T20:47:29.578673+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -459,7 +459,7 @@ entries:
     version: 10.1.3
   - apiVersion: v2
     appVersion: 1.21.6
-    created: "2025-03-02T22:38:02.054368+01:00"
+    created: "2025-03-08T20:47:29.56909+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -507,7 +507,7 @@ entries:
     version: 10.1.2
   - apiVersion: v2
     appVersion: 1.21.5
-    created: "2025-03-02T22:38:02.046406+01:00"
+    created: "2025-03-08T20:47:29.558883+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -555,7 +555,7 @@ entries:
     version: 10.1.1
   - apiVersion: v2
     appVersion: 1.21.4
-    created: "2025-03-02T22:38:02.038418+01:00"
+    created: "2025-03-08T20:47:29.548405+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -603,7 +603,7 @@ entries:
     version: 10.1.0
   - apiVersion: v2
     appVersion: 1.21.3
-    created: "2025-03-02T22:38:02.030669+01:00"
+    created: "2025-03-08T20:47:29.538615+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -651,7 +651,7 @@ entries:
     version: 10.0.2
   - apiVersion: v2
     appVersion: 1.21.2
-    created: "2025-03-02T22:38:02.022966+01:00"
+    created: "2025-03-08T20:47:29.529169+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -699,7 +699,7 @@ entries:
     version: 10.0.1
   - apiVersion: v2
     appVersion: 1.21.2
-    created: "2025-03-02T22:38:02.014815+01:00"
+    created: "2025-03-08T20:47:29.518864+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -747,7 +747,7 @@ entries:
     version: 10.0.0
   - apiVersion: v2
     appVersion: 1.21.1
-    created: "2025-03-02T22:38:02.16249+01:00"
+    created: "2025-03-08T20:47:29.722173+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -795,7 +795,7 @@ entries:
     version: 9.6.1
   - apiVersion: v2
     appVersion: 1.21.0
-    created: "2025-03-02T22:38:02.154707+01:00"
+    created: "2025-03-08T20:47:29.706587+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -841,4 +841,4 @@ entries:
     urls:
     - gitea-9.6.0.tgz
     version: 9.6.0
-generated: "2025-03-02T22:38:02.007026+01:00"
+generated: "2025-03-08T20:47:29.507772+01:00"
