@@ -18,8 +18,8 @@ variables:
   PYTHON_SLIM_VERSION: 3.13.2-slim-bookworm # https://hub.docker.com/_/python/tags?page=1&name=3.11
   KUBE_RBAC_PROXY_VERSION: v0.19.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_VERSION: "17.9.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
-  GITLAB_RUNNER_VERSION: "alpine-v17.9.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
-  GITLAB_RUNNER_HELPER_VERSION: x86_64-v17.9.0
+  GITLAB_RUNNER_VERSION: "alpine-v17.9.1" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
+  GITLAB_RUNNER_HELPER_VERSION: x86_64-v17.9.1
   GITLAB_AGENTK_VERSION: v17.9.1 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   DIND_VERSION: 28.0.1-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   K8S_PAUSE_VERSION: "3.10"
@@ -72,7 +72,7 @@ variables:
   ELASTICAGENT_VERSION: "8.17.3"
   MONGO_VERSION: 8.0.5-noble # https://hub.docker.com/_/mongo
   PGADMIN_VERSION: "9.1" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
-  HTTPBIN_VERSION: v2.16.1 # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
+  HTTPBIN_VERSION: "2.17.1" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.8.1-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   PIHOLE_VERSION: "2025.03.0" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
   UNBOUND_VERSION: v1.22.0 # https://github.com/klutchell/unbound-docker/tags
@@ -136,7 +136,7 @@ variables:
   RESTIC_VERSION: 0.17.3 # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: 4.6.3 # https://hub.docker.com/r/coturn/coturn/tags
   JENKINS_VERSION: 2.500-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
-  KIWIGRID_K8S_SIDECAR_VERSION: "1.30.1" # https://github.com/kiwigrid/k8s-sidecar
+  KIWIGRID_K8S_SIDECAR_VERSION: "1.30.2" # https://github.com/kiwigrid/k8s-sidecar
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_INBOUND_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
