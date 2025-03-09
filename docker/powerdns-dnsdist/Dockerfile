@@ -19,7 +19,7 @@ echo "Pin-Priority: 600"                ;\
 ) > /etc/apt/preferences.d/pdns
 
 RUN (                                                                       \
-echo "deb http://repo.powerdns.com/debian bookworm-rec-52 main" \
+echo "deb http://repo.powerdns.com/debian bookworm-dnsdist-19 main" \
 ) > /etc/apt/sources.list.d/pdns.list
 
 COPY CBC8B383-pub.asc /tmp/pdns-gpg-key-pub.asc
@@ -29,7 +29,7 @@ COPY FD380FBB-pub.asc /tmp/pdns-gpg-key-pub.asc
 RUN apt-key add /tmp/pdns-gpg-key-pub.asc && rm /tmp/pdns-gpg-key-pub.asc
 
 RUN apt-get update -qyy && \
-    apt-get install -qyy pdns-recursor && \
+    apt-get install -qyy dnsdist && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
