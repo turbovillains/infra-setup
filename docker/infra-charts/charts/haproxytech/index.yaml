@@ -9,7 +9,7 @@ entries:
         - Add deployment annotations as a configurable property. (#281)
     apiVersion: v2
     appVersion: 3.1.5
-    created: "2025-03-22T01:29:16.832649+01:00"
+    created: "2025-03-22T13:39:08.463772+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: 914274b4df29b1690144d984dd7cf4f6719f5faa71f82429f7a9c51483d3763b
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -32,7 +32,7 @@ entries:
         - Update base image to HAProxy 3.0.4
     apiVersion: v2
     appVersion: 3.0.4
-    created: "2025-03-22T01:29:16.827319+01:00"
+    created: "2025-03-22T13:39:08.461248+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: d13ed4c3fc96528e58d4fb6b5beb80c035da9ac98310525aff6d0716c8a4c25e
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -56,7 +56,7 @@ entries:
         - Update base image to HAProxy 2.9.6
     apiVersion: v2
     appVersion: 2.9.6
-    created: "2025-03-22T01:29:16.822186+01:00"
+    created: "2025-03-22T13:39:08.458973+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: fe61c2e4d930bdb8121559b0f486d47e9d417972d3ca75b782b3de7bda5270ed
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -79,7 +79,7 @@ entries:
         - Remove hardcode from configmap template for haproxy chart (#233)
     apiVersion: v2
     appVersion: 2.9.5
-    created: "2025-03-22T01:29:16.814978+01:00"
+    created: "2025-03-22T13:39:08.456953+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: 8801426bcdf1fcc9b0bea62727637f0fe1af8379a4416f7316fd2ead22d63a75
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -104,7 +104,7 @@ entries:
         - Update podAnnotations rendering for better flexibility (#224)
     apiVersion: v2
     appVersion: 2.9.5
-    created: "2025-03-22T01:29:16.808361+01:00"
+    created: "2025-03-22T13:39:08.455244+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: 51c5e395e8d99b7a27c326bc6708e47e9e3e8af1407df63ae25a71d767523585
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -128,7 +128,7 @@ entries:
         - Add automountServiceAccountToken feature for ServiceAccount (#192)
     apiVersion: v2
     appVersion: 2.9.2
-    created: "2025-03-22T01:29:16.801733+01:00"
+    created: "2025-03-22T13:39:08.453105+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: abba494cf9af94248071d2d565ca45efb68c6cbf27506894db222efed07b9c7d
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -152,7 +152,7 @@ entries:
         - Fix includes name in haproxy charts (#203)
     apiVersion: v2
     appVersion: 2.8.2
-    created: "2025-03-22T01:29:16.796632+01:00"
+    created: "2025-03-22T13:39:08.450928+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: 93c4a8c36395d027e6630d9db851d8acfbef1a5f3e4a23eab6b89cc7ebccede9
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -176,7 +176,7 @@ entries:
         - Derive Configmap haproxy.includes from haproxy.fullname (#180)
     apiVersion: v2
     appVersion: 2.8.1
-    created: "2025-03-22T01:29:16.791978+01:00"
+    created: "2025-03-22T13:39:08.448916+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: de0b1efa3e947f4bca8c6a5f535a1f2bf8a5e32e60d9f4f88a26eb36e4d1642a
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -199,7 +199,7 @@ entries:
         - Update base image to HAProxy 2.8.0
     apiVersion: v2
     appVersion: 2.8.0
-    created: "2025-03-22T01:29:16.784982+01:00"
+    created: "2025-03-22T13:39:08.446433+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: 8cc4505cc9dbe05004d27b2c5486f07b3fabaf8b04bf7afde64fd6e5aaa232f6
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -224,7 +224,7 @@ entries:
         - Fix includesMountPath default location
     apiVersion: v2
     appVersion: 2.7.5
-    created: "2025-03-22T01:29:16.778485+01:00"
+    created: "2025-03-22T13:39:08.444202+01:00"
     description: A Helm chart for HAProxy on Kubernetes
     digest: 9fae0b583e0d124cd0220f04cf52999b528352b188694b6b126e7de17db212bd
     home: https://github.com/haproxytech/helm-charts/tree/main/haproxy
@@ -249,7 +249,7 @@ entries:
         - Use Ingress Controller 3.1.2 version for base image
     apiVersion: v2
     appVersion: 3.1.2
-    created: "2025-03-22T01:29:16.918353+01:00"
+    created: "2025-03-22T13:39:08.49234+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 80b2ed6276c1d3a493c0c19cad5af0287b0688c41c3c662bf024dff704636667
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -274,7 +274,7 @@ entries:
         - Bind only defined ports as HostPort (#286)
     apiVersion: v2
     appVersion: 3.1.1
-    created: "2025-03-22T01:29:16.910981+01:00"
+    created: "2025-03-22T13:39:08.489296+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 72bfb64899bb9537203039027fbae5be02166fbc18fb7ad4721adeb9230a220f
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -303,7 +303,7 @@ entries:
         - Make controller.config templatable (#279)
     apiVersion: v2
     appVersion: 3.1.0-rc1
-    created: "2025-03-22T01:29:16.901666+01:00"
+    created: "2025-03-22T13:39:08.486368+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 1086129a39f38520c017a81a149c0c2dd6bb40e26e37f87f5b94f09d373a6aa6
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -328,7 +328,7 @@ entries:
         - Use Ingress Controller 3.1.0-rc1 version for base image
     apiVersion: v2
     appVersion: 3.1.0-rc1
-    created: "2025-03-22T01:29:16.892617+01:00"
+    created: "2025-03-22T13:39:08.482671+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 02f01e374a5f9792a950ce5d09bb6a00b3dbf457f7c61971532cb654f295aa36
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -354,7 +354,7 @@ entries:
         - Add possibility to set crdjob annotations (#264)
     apiVersion: v2
     appVersion: 3.0.4
-    created: "2025-03-22T01:29:16.886085+01:00"
+    created: "2025-03-22T13:39:08.480126+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 63335dadcedd838710a79894aa660d4a30ef6eb01640d662f527f3bf2fcf1ef5
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -380,7 +380,7 @@ entries:
         - Add pre-install hook annotation for namespace creation (#254)
     apiVersion: v2
     appVersion: 3.0.1
-    created: "2025-03-22T01:29:16.875894+01:00"
+    created: "2025-03-22T13:39:08.477357+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 9beb462019c45d02a745523f51e424e54e55c0669bfa19d5f93e3cf3ca8b2489
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -405,7 +405,7 @@ entries:
         - Limit template spec name to 15 characters (#247)
     apiVersion: v2
     appVersion: 3.0.1
-    created: "2025-03-22T01:29:16.864369+01:00"
+    created: "2025-03-22T13:39:08.474525+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 02302f8df09d9b3a190fa1433ed0687b784a8d4bf7cee7c82d6dc7fed96142da
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -429,7 +429,7 @@ entries:
         - Use Ingress Controller 3.0.0 version for base image
     apiVersion: v2
     appVersion: 3.0.0
-    created: "2025-03-22T01:29:16.855633+01:00"
+    created: "2025-03-22T13:39:08.471343+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: a43d0f15bbf3415b3facb6c422182b0bf9b2c6bafc6d987f74e49061a8349f1f
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -453,7 +453,7 @@ entries:
         - Replace tpl with default for Ingress Controller image tag (#244)
     apiVersion: v2
     appVersion: 1.11.4
-    created: "2025-03-22T01:29:16.849095+01:00"
+    created: "2025-03-22T13:39:08.468927+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 8e3f86e6c9303e2a39bbf9590863966af584ddcfb0ade57ef119205a472c19b2
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -477,7 +477,7 @@ entries:
         - Use Ingress Controller 1.11.4 version for base image
     apiVersion: v2
     appVersion: 1.11.4
-    created: "2025-03-22T01:29:16.840191+01:00"
+    created: "2025-03-22T13:39:08.466284+01:00"
     description: A Helm chart for HAProxy Kubernetes Ingress Controller
     digest: 16babbf7d4b9d71c88f8b41b6ffb16e587f349e6b229f89ca9ecffff26431168
     home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
@@ -496,4 +496,4 @@ entries:
     urls:
     - kubernetes-ingress-1.39.3.tgz
     version: 1.39.3
-generated: "2025-03-22T01:29:16.771502+01:00"
+generated: "2025-03-22T13:39:08.441194+01:00"

@@ -26,7 +26,7 @@ variables:
   K8S_132_VERSION: "v1.32.3" # https://github.com/kubernetes/kubernetes/releases
   K8S_131_VERSION: "v1.31.7" # https://github.com/kubernetes/kubernetes/releases
   COREDNS_VERSION: "v1.12.0" # https://hub.docker.com/r/coredns/coredns/tags
-  ETCD_VERSION: v3.5.19 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
+  ETCD_VERSION: v3.5.20 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
   LIVENESSPROBE_VERSION: v2.15.0
   CSI_NODE_DRIVER_REGISTRAR_VERSION: v2.13.0
   CSI_ATTACHER_VERSION: v4.8.1
@@ -140,7 +140,7 @@ variables:
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_INBOUND_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
-  NETBOX_VERSION: v4.2.5 # https://hub.docker.com/r/netboxcommunity/netbox/tags
+  NETBOX_VERSION: v4.2.6 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v12.2.8 # https://hub.docker.com/r/postgrest/postgrest/tags
   CEPHCSI_VERSION: v3.13.1 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v24.9.2 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
