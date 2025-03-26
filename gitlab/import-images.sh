@@ -20,7 +20,6 @@ import_images() {
         "postgres:${POSTGRES_VERSION:-13.0}:::prepend_name=library/"
         "quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2021-02-07T01-31-02Z}"
         "quay.io/minio/mc:${MINIO_MC_VERSION:-RELEASE.2024-04-18T16-45-29Z}"
-        "quay.io/minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "quay.io/coreos/etcd:${ETCD_VERSION:-latest}"
         "quay.io/prometheus/prometheus:${PROMETHEUS_VERSION:-latest}"
         "quay.io/prometheus/alertmanager:${ALERTMANAGER_VERSION:-latest}"
