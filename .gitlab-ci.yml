@@ -387,12 +387,6 @@ archive-images3:
           - external-secrets/external-secrets
         VERSION:
           - EXTERNAL_SECRETS_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - minio/console
-        VERSION:
-          - MINIO_CONSOLE_VERSION
       - BASE:
           - stakater/reloader
         VERSION:
@@ -750,7 +744,10 @@ archive-extra:
           - kubernetes/kube-controller-manager
         VERSION:
           - K8S_131_VERSION
+          - K8S_131_VERSION2
           - K8S_132_VERSION
+          - K8S_132_VERSION2
+          - K8S_133_VERSION
       - REGISTRY:
           - registry.k8s.io
         BASE:
@@ -1180,19 +1177,6 @@ minio-client:
   variables:
     IMAGE_BASE: minio/mc
     IMAGE_VERSION: ${MINIO_MC_VERSION}
-
-minio-console:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg MINIO_CONSOLE_VERSION
-  variables:
-    REGSITRY: quay.io
-    BASE: minio/console
-    VERSION: MINIO_CONSOLE_VERSION
 
 prometheus:
   interruptible: true

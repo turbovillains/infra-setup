@@ -20,7 +20,6 @@ import_images() {
         "postgres:${POSTGRES_VERSION:-13.0}:::prepend_name=library/"
         "quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2021-02-07T01-31-02Z}"
         "quay.io/minio/mc:${MINIO_MC_VERSION:-RELEASE.2024-04-18T16-45-29Z}"
-        "quay.io/minio/console:${MINIO_CONSOLE_VERSION:-v0.7.4}"
         "quay.io/coreos/etcd:${ETCD_VERSION:-latest}"
         "quay.io/prometheus/prometheus:${PROMETHEUS_VERSION:-latest}"
         "quay.io/prometheus/alertmanager:${ALERTMANAGER_VERSION:-latest}"
@@ -146,17 +145,31 @@ import_images() {
         "registry.k8s.io/pause:${K8S_PAUSE_VERSION:-3.7}:::prepend_name=kubernetes/"
         "registry.k8s.io/coredns/coredns:${COREDNS_VERSION:-v1.8.6}"
 
+        # k8s 1.33.x
+        "registry.k8s.io/kube-apiserver:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+
         # k8s 1.32.x
         "registry.k8s.io/kube-apiserver:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-proxy:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-scheduler:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-controller-manager:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-apiserver:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
 
         # k8s 1.31.x
         "registry.k8s.io/kube-apiserver:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-proxy:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-scheduler:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-controller-manager:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-apiserver:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
 
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
