@@ -2,8 +2,80 @@ apiVersion: v1
 entries:
   external-secrets:
   - apiVersion: v2
+    appVersion: v0.16.1
+    created: "2025-05-01T12:29:46.260949+02:00"
+    dependencies:
+    - condition: bitwarden-sdk-server.enabled
+      name: bitwarden-sdk-server
+      repository: oci://ghcr.io/external-secrets/charts
+      version: v0.3.1
+    description: External secret management for Kubernetes
+    digest: 848189f301b16e16765d62cae93cf3a05ab32b674ce47bbab58cc1db0e0102d6
+    home: https://github.com/external-secrets/external-secrets
+    icon: https://raw.githubusercontent.com/external-secrets/external-secrets/main/assets/eso-logo-large.png
+    keywords:
+    - kubernetes-external-secrets
+    - secrets
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: kellinmcavoy@gmail.com
+      name: mcavoyk
+    name: external-secrets
+    type: application
+    urls:
+    - external-secrets-0.16.1.tgz
+    version: 0.16.1
+  - apiVersion: v2
+    appVersion: v0.16.0
+    created: "2025-05-01T12:29:46.258098+02:00"
+    dependencies:
+    - condition: bitwarden-sdk-server.enabled
+      name: bitwarden-sdk-server
+      repository: oci://ghcr.io/external-secrets/charts
+      version: v0.3.1
+    description: External secret management for Kubernetes
+    digest: 3881092262a5e2cffdd7664d8da3136f49a96fc8b5c0e45ac30db56f0d4fc9f1
+    home: https://github.com/external-secrets/external-secrets
+    icon: https://raw.githubusercontent.com/external-secrets/external-secrets/main/assets/eso-logo-large.png
+    keywords:
+    - kubernetes-external-secrets
+    - secrets
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: kellinmcavoy@gmail.com
+      name: mcavoyk
+    name: external-secrets
+    type: application
+    urls:
+    - external-secrets-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v2
+    appVersion: v0.15.1
+    created: "2025-05-01T12:29:46.255063+02:00"
+    dependencies:
+    - condition: bitwarden-sdk-server.enabled
+      name: bitwarden-sdk-server
+      repository: oci://ghcr.io/external-secrets/charts
+      version: v0.3.1
+    description: External secret management for Kubernetes
+    digest: 1504fceaaeb9ea440a54a3589280d42823758e8b984c9f6b15177d32ddf878c8
+    home: https://github.com/external-secrets/external-secrets
+    icon: https://raw.githubusercontent.com/external-secrets/external-secrets/main/assets/eso-logo-large.png
+    keywords:
+    - kubernetes-external-secrets
+    - secrets
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: kellinmcavoy@gmail.com
+      name: mcavoyk
+    name: external-secrets
+    type: application
+    urls:
+    - external-secrets-0.15.1.tgz
+    version: 0.15.1
+  - apiVersion: v2
     appVersion: v0.15.0
-    created: "2025-03-22T13:39:06.529129+01:00"
+    created: "2025-05-01T12:29:46.252369+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -27,7 +99,7 @@ entries:
     version: 0.15.0
   - apiVersion: v2
     appVersion: v0.14.4
-    created: "2025-03-22T13:39:06.522454+01:00"
+    created: "2025-05-01T12:29:46.249477+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -51,7 +123,7 @@ entries:
     version: 0.14.4
   - apiVersion: v2
     appVersion: v0.14.3
-    created: "2025-03-22T13:39:06.514516+01:00"
+    created: "2025-05-01T12:29:46.246782+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -75,7 +147,7 @@ entries:
     version: 0.14.3
   - apiVersion: v2
     appVersion: v0.14.2
-    created: "2025-03-22T13:39:06.50809+01:00"
+    created: "2025-05-01T12:29:46.244245+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -99,7 +171,7 @@ entries:
     version: 0.14.2
   - apiVersion: v2
     appVersion: v0.14.1
-    created: "2025-03-22T13:39:06.503273+01:00"
+    created: "2025-05-01T12:29:46.242013+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -123,7 +195,7 @@ entries:
     version: 0.14.1
   - apiVersion: v2
     appVersion: v0.14.0
-    created: "2025-03-22T13:39:06.499019+01:00"
+    created: "2025-05-01T12:29:46.239352+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -147,7 +219,7 @@ entries:
     version: 0.14.0
   - apiVersion: v2
     appVersion: v0.13.0
-    created: "2025-03-22T13:39:06.494749+01:00"
+    created: "2025-05-01T12:29:46.236845+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -171,7 +243,7 @@ entries:
     version: 0.13.0
   - apiVersion: v2
     appVersion: v0.12.1
-    created: "2025-03-22T13:39:06.486797+01:00"
+    created: "2025-05-01T12:29:46.234342+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -195,7 +267,7 @@ entries:
     version: 0.12.1
   - apiVersion: v2
     appVersion: v0.11.0
-    created: "2025-03-22T13:39:06.481823+01:00"
+    created: "2025-05-01T12:29:46.231908+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -219,7 +291,7 @@ entries:
     version: 0.11.0
   - apiVersion: v2
     appVersion: v0.10.7
-    created: "2025-03-22T13:39:06.474417+01:00"
+    created: "2025-05-01T12:29:46.229609+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -243,7 +315,7 @@ entries:
     version: 0.10.7
   - apiVersion: v2
     appVersion: v0.10.6
-    created: "2025-03-22T13:39:06.470265+01:00"
+    created: "2025-05-01T12:29:46.227086+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -267,7 +339,7 @@ entries:
     version: 0.10.6
   - apiVersion: v2
     appVersion: v0.10.5
-    created: "2025-03-22T13:39:06.460508+01:00"
+    created: "2025-05-01T12:29:46.224734+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -291,7 +363,7 @@ entries:
     version: 0.10.5
   - apiVersion: v2
     appVersion: v0.10.4
-    created: "2025-03-22T13:39:06.45373+01:00"
+    created: "2025-05-01T12:29:46.222379+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -315,7 +387,7 @@ entries:
     version: 0.10.4
   - apiVersion: v2
     appVersion: v0.10.3
-    created: "2025-03-22T13:39:06.449651+01:00"
+    created: "2025-05-01T12:29:46.220086+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -339,7 +411,7 @@ entries:
     version: 0.10.3
   - apiVersion: v2
     appVersion: v0.10.2
-    created: "2025-03-22T13:39:06.445808+01:00"
+    created: "2025-05-01T12:29:46.218001+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -363,7 +435,7 @@ entries:
     version: 0.10.2
   - apiVersion: v2
     appVersion: v0.10.1
-    created: "2025-03-22T13:39:06.441282+01:00"
+    created: "2025-05-01T12:29:46.215827+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -387,7 +459,7 @@ entries:
     version: 0.10.1
   - apiVersion: v2
     appVersion: v0.10.0
-    created: "2025-03-22T13:39:06.437013+01:00"
+    created: "2025-05-01T12:29:46.21343+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -411,7 +483,7 @@ entries:
     version: 0.10.0
   - apiVersion: v2
     appVersion: v0.9.20
-    created: "2025-03-22T13:39:06.615757+01:00"
+    created: "2025-05-01T12:29:46.282297+02:00"
     dependencies:
     - condition: bitwarden-sdk-server.enabled
       name: bitwarden-sdk-server
@@ -435,7 +507,7 @@ entries:
     version: 0.9.20
   - apiVersion: v2
     appVersion: v0.9.19
-    created: "2025-03-22T13:39:06.610815+01:00"
+    created: "2025-05-01T12:29:46.279989+02:00"
     description: External secret management for Kubernetes
     digest: 2571226e9eba95377692ccebeadca8471e520425ec4a582d152927e4a759ced1
     home: https://github.com/external-secrets/external-secrets
@@ -454,7 +526,7 @@ entries:
     version: 0.9.19
   - apiVersion: v2
     appVersion: v0.9.18
-    created: "2025-03-22T13:39:06.600452+01:00"
+    created: "2025-05-01T12:29:46.278027+02:00"
     description: External secret management for Kubernetes
     digest: fe23bc2500e2415c0ac4aeb5e0b35b10c3a85cc32ca969421eff628371520c96
     home: https://github.com/external-secrets/external-secrets
@@ -473,7 +545,7 @@ entries:
     version: 0.9.18
   - apiVersion: v2
     appVersion: v0.9.17
-    created: "2025-03-22T13:39:06.594218+01:00"
+    created: "2025-05-01T12:29:46.276252+02:00"
     description: External secret management for Kubernetes
     digest: 706d8f80c110ac8a7a24afb76cfb91a746a088be347fd6091e90ff427669454d
     home: https://github.com/external-secrets/external-secrets
@@ -492,7 +564,7 @@ entries:
     version: 0.9.17
   - apiVersion: v2
     appVersion: v0.9.16
-    created: "2025-03-22T13:39:06.585449+01:00"
+    created: "2025-05-01T12:29:46.273943+02:00"
     description: External secret management for Kubernetes
     digest: 8aac798fdfe15bab9a8e9472e4bce6b10d6cc59c8455d70b59c946a97c78be70
     home: https://github.com/external-secrets/external-secrets
@@ -511,7 +583,7 @@ entries:
     version: 0.9.16
   - apiVersion: v2
     appVersion: v0.9.14
-    created: "2025-03-22T13:39:06.574757+01:00"
+    created: "2025-05-01T12:29:46.271562+02:00"
     description: External secret management for Kubernetes
     digest: 1e6b5298b21f6bed77aee5edf5c31d45876805c4fb455d7c030fa0a66ec41dc7
     home: https://github.com/external-secrets/external-secrets
@@ -530,7 +602,7 @@ entries:
     version: 0.9.14
   - apiVersion: v2
     appVersion: v0.9.13
-    created: "2025-03-22T13:39:06.552019+01:00"
+    created: "2025-05-01T12:29:46.269532+02:00"
     description: External secret management for Kubernetes
     digest: 30bd50c71d818e70f05893a7605c13d66f934b948d337ef92dc91eaed7d29bdb
     home: https://github.com/external-secrets/external-secrets
@@ -549,7 +621,7 @@ entries:
     version: 0.9.13
   - apiVersion: v2
     appVersion: v0.9.12
-    created: "2025-03-22T13:39:06.542243+01:00"
+    created: "2025-05-01T12:29:46.267205+02:00"
     description: External secret management for Kubernetes
     digest: 6a01177ec7f223e1ac0079983a48615594509eca4b9ef53acb3eefb8794b8169
     home: https://github.com/external-secrets/external-secrets
@@ -568,7 +640,7 @@ entries:
     version: 0.9.12
   - apiVersion: v2
     appVersion: v0.9.11
-    created: "2025-03-22T13:39:06.538232+01:00"
+    created: "2025-05-01T12:29:46.26514+02:00"
     description: External secret management for Kubernetes
     digest: fec0e3c284d779963f4c0df7274cf0a81b428967b1f9c5063a2d5af4241a021f
     home: https://github.com/external-secrets/external-secrets
@@ -587,7 +659,7 @@ entries:
     version: 0.9.11
   - apiVersion: v2
     appVersion: v0.9.10
-    created: "2025-03-22T13:39:06.534373+01:00"
+    created: "2025-05-01T12:29:46.263267+02:00"
     description: External secret management for Kubernetes
     digest: 3d0cdd6b88805f978022602668d77f15e6cfe70acf34bcbda4710168c3107306
     home: https://github.com/external-secrets/external-secrets
@@ -606,7 +678,7 @@ entries:
     version: 0.9.10
   - apiVersion: v2
     appVersion: v0.9.9
-    created: "2025-03-22T13:39:06.643898+01:00"
+    created: "2025-05-01T12:29:46.291929+02:00"
     description: External secret management for Kubernetes
     digest: 207db76881e95a7b3984e12c12c57f3f83c682bd73ce4c6377fe7deb4b4b10c2
     home: https://github.com/external-secrets/external-secrets
@@ -625,7 +697,7 @@ entries:
     version: 0.9.9
   - apiVersion: v2
     appVersion: v0.9.8
-    created: "2025-03-22T13:39:06.636731+01:00"
+    created: "2025-05-01T12:29:46.290128+02:00"
     description: External secret management for Kubernetes
     digest: ac87b46c71faaddd6e6a89beea564f2b8d2e32b5bdb5db181ac4b0fdae973bde
     home: https://github.com/external-secrets/external-secrets
@@ -644,7 +716,7 @@ entries:
     version: 0.9.8
   - apiVersion: v2
     appVersion: v0.9.7
-    created: "2025-03-22T13:39:06.632232+01:00"
+    created: "2025-05-01T12:29:46.287999+02:00"
     description: External secret management for Kubernetes
     digest: 9737f837540db1a76f248fa5b1392e8b76cbf3790ccd97d8ee71bfaafc4ffa30
     home: https://github.com/external-secrets/external-secrets
@@ -663,7 +735,7 @@ entries:
     version: 0.9.7
   - apiVersion: v2
     appVersion: v0.9.6
-    created: "2025-03-22T13:39:06.627963+01:00"
+    created: "2025-05-01T12:29:46.286297+02:00"
     description: External secret management for Kubernetes
     digest: 5445ce0d5c4dcb21452e001e12950218a27ebff964dc4982a07c5272ca63a47c
     home: https://github.com/external-secrets/external-secrets
@@ -682,7 +754,7 @@ entries:
     version: 0.9.6
   - apiVersion: v2
     appVersion: v0.9.5
-    created: "2025-03-22T13:39:06.621101+01:00"
+    created: "2025-05-01T12:29:46.284098+02:00"
     description: External secret management for Kubernetes
     digest: ffb740bdbe02664ad98a192d0098293c49241d0233173d8608146fe5e55e2633
     home: https://github.com/external-secrets/external-secrets
@@ -699,4 +771,4 @@ entries:
     urls:
     - external-secrets-0.9.5.tgz
     version: 0.9.5
-generated: "2025-03-22T13:39:06.432304+01:00"
+generated: "2025-05-01T12:29:46.21111+02:00"

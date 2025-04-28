@@ -11,7 +11,7 @@ helm:
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 5.0.53
+        version: 5.0.75
   - name: haproxytech
     uri: https://haproxytech.github.io/helm-charts
     charts:
@@ -74,6 +74,7 @@ helm:
   - name: gitlab
     uri: https://charts.gitlab.io/
     charts:
+      - name: gitlab
       - name: gitlab-agent
       - name: gitlab-runner
   - name: sonatype

@@ -9,8 +9,398 @@ entries:
         - name: Upstream Project
           url: https://github.com/grafana/grafana
     apiVersion: v2
+    appVersion: 11.6.1
+    created: "2025-05-01T12:29:47.086774+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: a12fd7f7804eed1f750aeee4f788db73260b6fd18f65a3153a2d72d944b5329c
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.14.0.tgz
+    version: 8.14.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.1
+    created: "2025-05-01T12:29:47.085228+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: a2271ff164cc7abb36f6dc8e494fec8ccf38649606ff9c20c8db66a8eb3a7145
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.13.2.tgz
+    version: 8.13.2
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.1
+    created: "2025-05-01T12:29:47.083209+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 9e2b17ef0fd850884ab41470f358f0ffaaf1bb8945eb2dd9e4c2fa9e1a948468
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.13.1.tgz
+    version: 8.13.1
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.0-security-01
+    created: "2025-05-01T12:29:47.081601+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 32b12ae0ea88398c1fcc862b196d205dce6fcaaad4ba6015b022dc9c9e3b3665
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.13.0.tgz
+    version: 8.13.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.0
+    created: "2025-05-01T12:29:47.079958+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 4b1339359a514dd2db75451afc747e743974912ec27962cd4c4c266fd6f1f8f1
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.12.1.tgz
+    version: 8.12.1
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.0
+    created: "2025-05-01T12:29:47.078344+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 0789d975d56c04158dc950fc016efe91cf72ad2632934550e2a522785c5be404
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.12.0.tgz
+    version: 8.12.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.0
+    created: "2025-05-01T12:29:47.076596+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: fbda594bc704d94a64f91053d7c52f462f8670176168aaa6b8f54296862bfc94
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.11.4.tgz
+    version: 8.11.4
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.0
+    created: "2025-05-01T12:29:47.075013+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: cfbb03cf60ab36cf68c6ed91355e9c5a754bc1c5bdb0138cc11b1fafe79080a5
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.11.3.tgz
+    version: 8.11.3
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.0
+    created: "2025-05-01T12:29:47.073407+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: d5d8aa1a17a67eddb4ec2cdf9135bef88a6ced25d71bfea0c953656fbf49fedf
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.11.2.tgz
+    version: 8.11.2
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 11.6.0
+    created: "2025-05-01T12:29:47.071698+02:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 0119a3edfc163e62c63f687a2dbac53b4f868eaee8a12d7a97b09d765965c93f
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - grafana-8.11.1.tgz
+    version: 8.11.1
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
     appVersion: 11.5.2
-    created: "2025-03-22T13:39:07.967288+01:00"
+    created: "2025-05-01T12:29:47.070174+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 2191bff43335783f0e9804ef022140037c9d45755d8bdebeef5bcd1141556809
     home: https://grafana.com
@@ -49,7 +439,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.5.2
-    created: "2025-03-22T13:39:07.954315+01:00"
+    created: "2025-05-01T12:29:47.0687+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 5654a3bf2f342f1bccb4fb6ddbacd39d61faad11a3bce0b9c90e6ed00b701450
     home: https://grafana.com
@@ -88,7 +478,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.5.2
-    created: "2025-03-22T13:39:07.943414+01:00"
+    created: "2025-05-01T12:29:47.067127+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 042a6251f2893c4d1604d058af8d8d1cbc8e0c374352574dc03cad22538fa957
     home: https://grafana.com
@@ -127,7 +517,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.5.2
-    created: "2025-03-22T13:39:07.934108+01:00"
+    created: "2025-05-01T12:29:47.065337+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 5ef0f0521036a65b0907ac3471057a816467e58bf98566700fc89fcae894de86
     home: https://grafana.com
@@ -166,7 +556,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.5.1
-    created: "2025-03-22T13:39:07.923582+01:00"
+    created: "2025-05-01T12:29:47.063857+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 7412d081196227d30769fb9d3645e6986d0c64c2100664014fcbca0b1a386a21
     home: https://grafana.com
@@ -205,7 +595,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.5.1
-    created: "2025-03-22T13:39:08.395441+01:00"
+    created: "2025-05-01T12:29:47.184085+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 7b600a861b95383450cea0b2ce9708af5622a57e47bfc87607bbd71351c98652
     home: https://grafana.com
@@ -244,7 +634,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.5.1
-    created: "2025-03-22T13:39:08.391297+01:00"
+    created: "2025-05-01T12:29:47.179796+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: a905a6dd69a449768aaccf524d8a8255b29c30fc7814c83880e00d3817ca7294
     home: https://grafana.com
@@ -283,7 +673,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.1
-    created: "2025-03-22T13:39:08.385574+01:00"
+    created: "2025-05-01T12:29:47.174628+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 49875f86d8d5b53a2a7d0fb98fb83ffb8a17caecfde6fb98322b866ee5009ff3
     home: https://grafana.com
@@ -322,7 +712,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.379843+01:00"
+    created: "2025-05-01T12:29:47.164677+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6396435773280da39056a7df6a0912b372cdfca34039358ac43c52aa7211ff1a
     home: https://grafana.com
@@ -361,7 +751,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.374446+01:00"
+    created: "2025-05-01T12:29:47.163019+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 860334536326e1c01694dc35b9f1c95fba01e40c84c1912e40dfa87f6abbf0da
     home: https://grafana.com
@@ -400,7 +790,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.368803+01:00"
+    created: "2025-05-01T12:29:47.161396+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: bb495728fa9f1c9639312b6ebfd56aba2aca737db11d6d5ab23fac6577719a09
     home: https://grafana.com
@@ -439,7 +829,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.363157+01:00"
+    created: "2025-05-01T12:29:47.15937+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: b244a04ccfac950853080eede6bf1b716b2966ca707e69f6f3623b3d690e36b8
     home: https://grafana.com
@@ -478,7 +868,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.35791+01:00"
+    created: "2025-05-01T12:29:47.157792+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 551c24e080669c89f23c528a53be9f9e6c69d62e9afe477b413e09bd8ed9eff6
     home: https://grafana.com
@@ -517,7 +907,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.352079+01:00"
+    created: "2025-05-01T12:29:47.156181+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 5310a0d63510a01de0c6a72182377f8de3eb078f352a0c2427dd5a453dc25251
     home: https://grafana.com
@@ -556,7 +946,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.344735+01:00"
+    created: "2025-05-01T12:29:47.154578+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: b40b09a6ef1ff48536db294d78f2152a386dca9c7359d2467b5c45df1207da03
     home: https://grafana.com
@@ -595,7 +985,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.4.0
-    created: "2025-03-22T13:39:08.337515+01:00"
+    created: "2025-05-01T12:29:47.152754+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: b1e567fa79b6400e490ab89b8455ffeef8d9ec29611690c3f4bab7e909427a12
     home: https://grafana.com
@@ -634,7 +1024,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.1
-    created: "2025-03-22T13:39:08.330768+01:00"
+    created: "2025-05-01T12:29:47.151151+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: e54f8304820d56afa48f7e85328f70e001de5233eb8862a3bf8dad617e232d35
     home: https://grafana.com
@@ -673,7 +1063,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.1
-    created: "2025-03-22T13:39:08.325087+01:00"
+    created: "2025-05-01T12:29:47.14953+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: aa48e4ad5197906e403cb7f3d98a326753810eaf62140c9aa02ca7fc22a927c0
     home: https://grafana.com
@@ -712,7 +1102,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.1
-    created: "2025-03-22T13:39:08.318057+01:00"
+    created: "2025-05-01T12:29:47.147841+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: cbe9fa9027b80a2f617b7a80815a53c2cd7781d27b010ccf7b6a2a2139efa9ec
     home: https://grafana.com
@@ -751,7 +1141,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.1
-    created: "2025-03-22T13:39:08.310867+01:00"
+    created: "2025-05-01T12:29:47.146239+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 68bbd717aa11f567bb76e93438c622cfba7407b88c7e9084869489f2551ec7df
     home: https://grafana.com
@@ -790,7 +1180,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2025-03-22T13:39:08.30491+01:00"
+    created: "2025-05-01T12:29:47.144665+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 3dee8f0d21f0f75b969cecdd5d73ed328fc311a35e6a627d1c2aec70b3c6a3b4
     home: https://grafana.com
@@ -829,7 +1219,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2025-03-22T13:39:08.241358+01:00"
+    created: "2025-05-01T12:29:47.130163+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 2436969a1e33eea5ceb25dcfdb38340d02399f7d4f58b3014a123d1906694465
     home: https://grafana.com
@@ -868,7 +1258,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2025-03-22T13:39:08.234633+01:00"
+    created: "2025-05-01T12:29:47.128349+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d819579b61e79d903572c869ac63481e9f97ab1396866372eb10a7c3d9647d99
     home: https://grafana.com
@@ -907,7 +1297,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2025-03-22T13:39:08.226503+01:00"
+    created: "2025-05-01T12:29:47.126937+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6476a47690b6d630d7cc08074e3721e948aabbab41abf001d32d15b9627dce7e
     home: https://grafana.com
@@ -946,7 +1336,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.3.0
-    created: "2025-03-22T13:39:08.298443+01:00"
+    created: "2025-05-01T12:29:47.142985+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 898cc3b1ee67afc059c9e5f91468210873d9056b8abd76f273bf4d722f5d57a6
     home: https://grafana.com
@@ -985,7 +1375,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2-security-01
-    created: "2025-03-22T13:39:08.291114+01:00"
+    created: "2025-05-01T12:29:47.141113+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 64cef28c4e1a3839c64e3f113914aaa92ae9d29c8762b09a2a1d74a242de3a83
     home: https://grafana.com
@@ -1024,7 +1414,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2-security-01
-    created: "2025-03-22T13:39:08.285275+01:00"
+    created: "2025-05-01T12:29:47.139589+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: f797b1e9d65e4c1d1b73df2b1757d4d00bf747f2c4643f89a2e8f3f89c7c14a7
     home: https://grafana.com
@@ -1063,7 +1453,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2025-03-22T13:39:08.278966+01:00"
+    created: "2025-05-01T12:29:47.138031+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 12228d85982a1acc5809a1f74fa8e81983007257d88c2d801300a0839a7fe798
     home: https://grafana.com
@@ -1102,7 +1492,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2025-03-22T13:39:08.272067+01:00"
+    created: "2025-05-01T12:29:47.136537+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 27c388350e800dddb9c6bd27221457444f52bb302813a0953f8ee14e447be710
     home: https://grafana.com
@@ -1141,7 +1531,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2025-03-22T13:39:08.26604+01:00"
+    created: "2025-05-01T12:29:47.134727+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 372a94f10c642e04fb3dfe332ad51c9a9b1accd9f1b93f080b686329f32e464d
     home: https://grafana.com
@@ -1180,7 +1570,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.2
-    created: "2025-03-22T13:39:08.25883+01:00"
+    created: "2025-05-01T12:29:47.13317+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 26aaba2004e5c66b8dde66a51bb4d9ec58f529e6da6a7763adb7e06281647a0c
     home: https://grafana.com
@@ -1219,7 +1609,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.1
-    created: "2025-03-22T13:39:08.252829+01:00"
+    created: "2025-05-01T12:29:47.131631+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 20e837fc6a1e22da2ead492bb266448b30f4d12b5396355411bc8978f086a5dd
     home: https://grafana.com
@@ -1258,7 +1648,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.2.0
-    created: "2025-03-22T13:39:08.216671+01:00"
+    created: "2025-05-01T12:29:47.125397+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d74a57e3b7ea6046391e7ef8794b8b2de37c284d1e220d0810f84ca574a91714
     home: https://grafana.com
@@ -1297,7 +1687,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.5
-    created: "2025-03-22T13:39:08.203173+01:00"
+    created: "2025-05-01T12:29:47.123549+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: b8078669c8781d3431daa54bbd2f948cc61aa814ed55bd9e86ae3141110758a0
     home: https://grafana.com
@@ -1336,7 +1726,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.5
-    created: "2025-03-22T13:39:08.1848+01:00"
+    created: "2025-05-01T12:29:47.121944+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: fecba02fbd634be98f5ec034a362cf22bb14917b1daeb7748a30abe13d7c3506
     home: https://grafana.com
@@ -1375,7 +1765,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2025-03-22T13:39:08.169149+01:00"
+    created: "2025-05-01T12:29:47.120342+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6b5af3d09ec78bf187d914f1abcbf8fd8a78fba2f09819aed6261afad31dfce0
     home: https://grafana.com
@@ -1414,7 +1804,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2025-03-22T13:39:08.160387+01:00"
+    created: "2025-05-01T12:29:47.11886+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: da522fbb8c7be36a4c2d15b08272fe5f1976ba7a2cca7fea3ae4aa88770bf7d5
     home: https://grafana.com
@@ -1453,7 +1843,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2025-03-22T13:39:08.149403+01:00"
+    created: "2025-05-01T12:29:47.11709+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d1c32001bfaca17d61ac0de0fae9e9cb290c898d3881c8c063424ad391cb0995
     home: https://grafana.com
@@ -1492,7 +1882,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.4
-    created: "2025-03-22T13:39:08.137784+01:00"
+    created: "2025-05-01T12:29:47.115573+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 46cb7b3e02f71df7b2b1a6f55af4708c6ceeaf1f1456b3f328856e4fcd256a19
     home: https://grafana.com
@@ -1531,7 +1921,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2025-03-22T13:39:08.12615+01:00"
+    created: "2025-05-01T12:29:47.114124+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: ac9078d9d8b7f4fcda0110ab9ae7e912ab672fdac0133f015fb6d3662d77dd79
     home: https://grafana.com
@@ -1570,7 +1960,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2025-03-22T13:39:08.116213+01:00"
+    created: "2025-05-01T12:29:47.112378+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 9e68f71fe149747090d0a5f7c1e03679de58358aae8883b4ae987039cda71c93
     home: https://grafana.com
@@ -1609,7 +1999,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2025-03-22T13:39:08.105132+01:00"
+    created: "2025-05-01T12:29:47.110862+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: bc82d3e447cbb8403ef46600e2813723c3ac72a6beb7eaf68849bace75d73127
     home: https://grafana.com
@@ -1648,7 +2038,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.3
-    created: "2025-03-22T13:39:08.094977+01:00"
+    created: "2025-05-01T12:29:47.109351+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: f6b4250e65b5fb9cdffd408c3b894975c6be62939ae5070b1420dc06a6ffe47d
     home: https://grafana.com
@@ -1687,7 +2077,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.087275+01:00"
+    created: "2025-05-01T12:29:47.107633+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 52dafd635d2d99d1339159dcb51e34879f7ccd3677d91d981d1bdc19f8957e33
     home: https://grafana.com
@@ -1726,7 +2116,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.078587+01:00"
+    created: "2025-05-01T12:29:47.106166+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: a775b978943d53ecbe18098c7a7cb6b39ed17d021a78234f12e36f8fd43f3cc3
     home: https://grafana.com
@@ -1765,7 +2155,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.067221+01:00"
+    created: "2025-05-01T12:29:47.104649+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: b3098f10779561e3dc81b4fc3fc869738af37288b006b67cf6f9ec50081c707b
     home: https://grafana.com
@@ -1804,7 +2194,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.059641+01:00"
+    created: "2025-05-01T12:29:47.103187+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: acb830a96cee3c33a2236b781a3eb2959c260aa2d10ee2f17d100a6f2b9d1d64
     home: https://grafana.com
@@ -1843,7 +2233,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.051186+01:00"
+    created: "2025-05-01T12:29:47.101277+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 87acc86c998ebf83ebe6dd5117eb6dcef28d6b8cfc9cb57238cafb97711611b7
     home: https://grafana.com
@@ -1882,7 +2272,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.041795+01:00"
+    created: "2025-05-01T12:29:47.099683+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: c432c862561d99ed1cbc8ffd60a1a7eb557fc379cca08a01ee3b454b53f1cf41
     home: https://grafana.com
@@ -1921,7 +2311,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.030639+01:00"
+    created: "2025-05-01T12:29:47.09807+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6c8acdf29b37cbcc2f812bf3d7aca1c83dd565e14410a4a845383f800c77c080
     home: https://grafana.com
@@ -1960,7 +2350,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.020659+01:00"
+    created: "2025-05-01T12:29:47.096232+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 4f676efaf4c81b6efdbafa6c4cb472adc86cabff8f49bb09bb2a39c782aad47c
     home: https://grafana.com
@@ -1999,7 +2389,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.012792+01:00"
+    created: "2025-05-01T12:29:47.094701+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 1e67e449b9ef4107ee52c1d01f5770cd018559e867ad0a087190306033f29281
     home: https://grafana.com
@@ -2038,7 +2428,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:08.00548+01:00"
+    created: "2025-05-01T12:29:47.093163+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 9e7993941ee89054aae643ea0d2e6434227b16c10f0ef968378baf977aee37e0
     home: https://grafana.com
@@ -2077,7 +2467,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:07.995799+01:00"
+    created: "2025-05-01T12:29:47.091565+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 08403f67eb87ba327466eb90b79fb3927451d3f1665b0b8dec453139ed33ac32
     home: https://grafana.com
@@ -2116,7 +2506,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.1.0
-    created: "2025-03-22T13:39:07.984929+01:00"
+    created: "2025-05-01T12:29:47.089808+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 745e5ab6f2d12491b3fc2cc515964ec1c87412158aaddd12a87f2daf4821dea7
     home: https://grafana.com
@@ -2155,7 +2545,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2025-03-22T13:39:07.976191+01:00"
+    created: "2025-05-01T12:29:47.088307+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: cda64dbf87f680e845888771fe34dd2d9b7e88b9db6fa290079cde8994a5677d
     home: https://grafana.com
@@ -2194,7 +2584,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2025-03-22T13:39:07.913224+01:00"
+    created: "2025-05-01T12:29:47.06232+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: dbfca6520b202db24e5eae63ccfac6899267693188448d20d8c0fabe74b4920f
     home: https://grafana.com
@@ -2233,7 +2623,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2025-03-22T13:39:07.904073+01:00"
+    created: "2025-05-01T12:29:47.060525+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 03d857c24851cdbfb054339f938f656b103e98f78697490022911aba1cec8fac
     home: https://grafana.com
@@ -2270,7 +2660,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2025-03-22T13:39:07.894782+01:00"
+    created: "2025-05-01T12:29:47.059098+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: d2bde1318b2035b3b20b29a958fa9dd1e41f2485f6f50845fab98f0379aa80ff
     home: https://grafana.com
@@ -2307,7 +2697,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 11.0.0
-    created: "2025-03-22T13:39:07.884769+01:00"
+    created: "2025-05-01T12:29:47.057663+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 7e161d8bf7e32ae52bb8508a30c7a439d876e513a18ba508f7d2796ce3785c5b
     home: https://grafana.com
@@ -2344,7 +2734,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2025-03-22T13:39:07.812333+01:00"
+    created: "2025-05-01T12:29:47.043311+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 5980b2fad88f91beee7e886f99416b6a816a9b39599c0c13cfd6104ba766dbd2
     home: https://grafana.com
@@ -2381,7 +2771,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2025-03-22T13:39:07.803714+01:00"
+    created: "2025-05-01T12:29:47.041781+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: a351e7fb1e489f22e4a0e0c1d3f8ed5f440ff91647ecd72e02941754cfa98286
     home: https://grafana.com
@@ -2418,7 +2808,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2025-03-22T13:39:07.877593+01:00"
+    created: "2025-05-01T12:29:47.056041+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: eb68b49c8074143e064f17bfd31ebd67ebaf07e525426745c07477d4bdef8de4
     home: https://grafana.com
@@ -2455,7 +2845,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.1
-    created: "2025-03-22T13:39:07.870393+01:00"
+    created: "2025-05-01T12:29:47.054578+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 36b6528a4a466c4cd3ca00d045c052dfbddc5f6c2950e441ae833f0f5b7bc743
     home: https://grafana.com
@@ -2492,7 +2882,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.4.0
-    created: "2025-03-22T13:39:07.858482+01:00"
+    created: "2025-05-01T12:29:47.053048+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 7e273851e7eb72417327dfd5115e42ebb032ff88a362c716f4a8666864c2a8ad
     home: https://grafana.com
@@ -2529,7 +2919,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2025-03-22T13:39:07.850622+01:00"
+    created: "2025-05-01T12:29:47.051337+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: e58171f0adfcafecbb98d9a90bf8aa8515e8f92f50b61aecb6e900db9fdf2e5c
     home: https://grafana.com
@@ -2566,7 +2956,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2025-03-22T13:39:07.84264+01:00"
+    created: "2025-05-01T12:29:47.049559+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: a954f566f7d5b68ede82d225d9a01f790225d1a9e7507f01ae515070b7300db9
     home: https://grafana.com
@@ -2603,7 +2993,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2025-03-22T13:39:07.834378+01:00"
+    created: "2025-05-01T12:29:47.047994+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 6f0182c6291bed77d96f41c27c614e02f34328235e0085773e23e976d28cf62f
     home: https://grafana.com
@@ -2640,7 +3030,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2025-03-22T13:39:07.825975+01:00"
+    created: "2025-05-01T12:29:47.046525+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 8cefbb13926ceaf3d399a25d12fcdff7b1d3206c0c2fe06a9d233200c9b3e76d
     home: https://grafana.com
@@ -2677,7 +3067,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2025-03-22T13:39:07.818762+01:00"
+    created: "2025-05-01T12:29:47.044765+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 5ff9d78a1033cb527ae8d8feff1d4625593ba4ad6fcce02641ea1e5908cc09df
     home: https://grafana.com
@@ -2714,7 +3104,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.3
-    created: "2025-03-22T13:39:07.797257+01:00"
+    created: "2025-05-01T12:29:47.040052+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 99408f8c6534ee5ba7a84c072eb4ce805ae6e4c0e163c9c8a14fb29af0bf67c8
     home: https://grafana.com
@@ -2751,7 +3141,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.3.1
-    created: "2025-03-22T13:39:07.7904+01:00"
+    created: "2025-05-01T12:29:47.038514+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: f3b6df391b12a93de8c9f719f5e6531647ddb9f9f106fccbe6408a09f8515b38
     home: https://grafana.com
@@ -2788,7 +3178,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.2.3
-    created: "2025-03-22T13:39:07.783648+01:00"
+    created: "2025-05-01T12:29:47.037053+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 27d149575f4f569a977cac97c204cbce55e8f146ff289b3f313df7f1ab292516
     home: https://grafana.com
@@ -2825,7 +3215,7 @@ entries:
           url: https://github.com/grafana/grafana
     apiVersion: v2
     appVersion: 10.2.3
-    created: "2025-03-22T13:39:07.777262+01:00"
+    created: "2025-05-01T12:29:47.035282+02:00"
     description: The leading tool for querying and visualizing time series and metrics.
     digest: cd7b4005a11833b5e048715739c12de397a97c4f94e49eb8b6aa7f167cb49c43
     home: https://grafana.com
@@ -2853,4 +3243,4 @@ entries:
     urls:
     - grafana-7.2.4.tgz
     version: 7.2.4
-generated: "2025-03-22T13:39:07.768764+01:00"
+generated: "2025-05-01T12:29:47.033663+02:00"
