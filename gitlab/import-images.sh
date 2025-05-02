@@ -20,7 +20,8 @@ import_images() {
         "postgres:${POSTGRES_VERSION:-13.0}:::prepend_name=library/"
         "quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2021-02-07T01-31-02Z}"
         "quay.io/minio/mc:${MINIO_MC_VERSION:-RELEASE.2024-04-18T16-45-29Z}"
-        "quay.io/coreos/etcd:${ETCD_VERSION:-latest}"
+        "quay.io/coreos/etcd:${ETCD_35_VERSION:-latest}"
+        "quay.io/coreos/etcd:${ETCD_36_VERSION:-latest}"
         "quay.io/prometheus/prometheus:${PROMETHEUS_VERSION:-latest}"
         "quay.io/prometheus/alertmanager:${ALERTMANAGER_VERSION:-latest}"
         "quay.io/prometheus/node-exporter:${NODE_EXPORTER_VERSION:-latest}"
@@ -150,6 +151,10 @@ import_images() {
         "registry.k8s.io/kube-proxy:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-scheduler:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-controller-manager:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-apiserver:${K8S_133_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_133_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_133_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_133_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
 
         # k8s 1.32.x
         "registry.k8s.io/kube-apiserver:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"

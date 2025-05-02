@@ -120,7 +120,8 @@ archive-images1:
         BASE:
           - coreos/etcd
         VERSION:
-          - ETCD_VERSION
+          - ETCD_35_VERSION
+          - ETCD_36_VERSION
       - BASE:
           - prometheus-operator/prometheus-operator
           - prometheus-operator/prometheus-config-reloader
@@ -748,6 +749,7 @@ archive-extra:
           - K8S_132_VERSION
           - K8S_132_VERSION2
           - K8S_133_VERSION
+          - K8S_133_VERSION2
       - REGISTRY:
           - registry.k8s.io
         BASE:
