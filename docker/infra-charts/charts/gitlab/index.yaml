@@ -2,8 +2,82 @@ apiVersion: v1
 entries:
   gitlab:
   - apiVersion: v1
+    appVersion: v18.0.1
+    created: "2025-05-24T10:32:32.016501+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install,installCertmanager
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: v1.12.17
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 27.12.1
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.4.4
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.74.1
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.19.4
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 2.3.0
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 76002f4cce83c986167afecd687be4c758651be46a1d0923bda28b83075f9481
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-9.0.1.tgz
+    version: 9.0.1
+  - apiVersion: v1
     appVersion: v18.0.0
-    created: "2025-05-17T22:27:15.919447+02:00"
+    created: "2025-05-24T10:32:31.989312+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -76,8 +150,82 @@ entries:
     - gitlab-9.0.0.tgz
     version: 9.0.0
   - apiVersion: v1
+    appVersion: v17.11.3
+    created: "2025-05-24T10:32:31.863952+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: v1.12.16
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.74.1
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.19.4
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.8.1
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 39a391d70f0269c82823ae35a3e1d46f1d5cecfb019dbce2dfbeea0ec0e20bdf
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-8.11.3.tgz
+    version: 8.11.3
+  - apiVersion: v1
     appVersion: v17.11.2
-    created: "2025-05-17T22:27:15.779075+02:00"
+    created: "2025-05-24T10:32:31.841862+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -151,7 +299,7 @@ entries:
     version: 8.11.2
   - apiVersion: v1
     appVersion: v17.11.1
-    created: "2025-05-17T22:27:15.755757+02:00"
+    created: "2025-05-24T10:32:31.819486+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -225,7 +373,7 @@ entries:
     version: 8.11.1
   - apiVersion: v1
     appVersion: v17.11.0
-    created: "2025-05-17T22:27:15.728926+02:00"
+    created: "2025-05-24T10:32:31.796001+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -298,8 +446,82 @@ entries:
     - gitlab-8.11.0.tgz
     version: 8.11.0
   - apiVersion: v1
+    appVersion: v17.10.7
+    created: "2025-05-24T10:32:31.755884+02:00"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: certmanager-issuer
+      repository: ""
+      version: '*.*.*'
+    - name: minio
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - alias: certmanager
+      condition: certmanager.install
+      name: cert-manager
+      repository: https://charts.jetstack.io/
+      version: v1.12.16
+    - condition: prometheus.install
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 15.18.0
+    - condition: postgresql.install
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.5.2
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.74.1
+    - condition: redis.install
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.14.6
+    - condition: nginx-ingress.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - alias: nginx-ingress-geo
+      condition: nginx-ingress-geo.enabled
+      name: nginx-ingress
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.6.2
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    - alias: haproxy
+      condition: haproxy.install
+      name: kubernetes-ingress
+      repository: https://haproxytech.github.io/helm-charts
+      version: 1.32.0
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 6ff7d65bfa8ce9b32270829b9d2195723ca729b7f9b31eadd2a54d72d4ba0cdd
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - gitlab-8.10.7.tgz
+    version: 8.10.7
+  - apiVersion: v1
     appVersion: v17.10.6
-    created: "2025-05-17T22:27:15.702725+02:00"
+    created: "2025-05-24T10:32:31.728678+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -373,7 +595,7 @@ entries:
     version: 8.10.6
   - apiVersion: v1
     appVersion: v17.10.5
-    created: "2025-05-17T22:27:15.680125+02:00"
+    created: "2025-05-24T10:32:31.700057+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -447,7 +669,7 @@ entries:
     version: 8.10.5
   - apiVersion: v1
     appVersion: v17.10.4
-    created: "2025-05-17T22:27:15.654404+02:00"
+    created: "2025-05-24T10:32:31.675409+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -521,7 +743,7 @@ entries:
     version: 8.10.4
   - apiVersion: v1
     appVersion: v17.10.3
-    created: "2025-05-17T22:27:15.627996+02:00"
+    created: "2025-05-24T10:32:31.64871+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -595,7 +817,7 @@ entries:
     version: 8.10.3
   - apiVersion: v1
     appVersion: v17.10.1
-    created: "2025-05-17T22:27:15.601837+02:00"
+    created: "2025-05-24T10:32:31.62432+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -669,7 +891,7 @@ entries:
     version: 8.10.1
   - apiVersion: v1
     appVersion: v17.10.0
-    created: "2025-05-17T22:27:15.576285+02:00"
+    created: "2025-05-24T10:32:31.599145+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -743,7 +965,7 @@ entries:
     version: 8.10.0
   - apiVersion: v1
     appVersion: v17.9.8
-    created: "2025-05-17T22:27:15.892612+02:00"
+    created: "2025-05-24T10:32:31.960662+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -817,7 +1039,7 @@ entries:
     version: 8.9.8
   - apiVersion: v1
     appVersion: v17.9.7
-    created: "2025-05-17T22:27:15.869376+02:00"
+    created: "2025-05-24T10:32:31.937757+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -891,7 +1113,7 @@ entries:
     version: 8.9.7
   - apiVersion: v1
     appVersion: v17.9.6
-    created: "2025-05-17T22:27:15.844916+02:00"
+    created: "2025-05-24T10:32:31.913189+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -965,7 +1187,7 @@ entries:
     version: 8.9.6
   - apiVersion: v1
     appVersion: v17.9.5
-    created: "2025-05-17T22:27:15.821001+02:00"
+    created: "2025-05-24T10:32:31.887154+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1039,7 +1261,7 @@ entries:
     version: 8.9.5
   - apiVersion: v1
     appVersion: v17.0.1
-    created: "2025-05-17T22:27:15.551037+02:00"
+    created: "2025-05-24T10:32:31.573043+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1113,7 +1335,7 @@ entries:
     version: 8.0.1
   - apiVersion: v1
     appVersion: v17.0.0
-    created: "2025-05-17T22:27:15.526443+02:00"
+    created: "2025-05-24T10:32:31.549593+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1187,7 +1409,7 @@ entries:
     version: 8.0.0
   - apiVersion: v1
     appVersion: v16.11.3
-    created: "2025-05-17T22:27:15.500316+02:00"
+    created: "2025-05-24T10:32:31.526628+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1261,7 +1483,7 @@ entries:
     version: 7.11.3
   - apiVersion: v1
     appVersion: v16.11.2
-    created: "2025-05-17T22:27:15.475571+02:00"
+    created: "2025-05-24T10:32:31.501484+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1335,7 +1557,7 @@ entries:
     version: 7.11.2
   - apiVersion: v1
     appVersion: v16.11.1
-    created: "2025-05-17T22:27:15.450478+02:00"
+    created: "2025-05-24T10:32:31.476547+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1409,7 +1631,7 @@ entries:
     version: 7.11.1
   - apiVersion: v1
     appVersion: v16.11.0
-    created: "2025-05-17T22:27:15.425362+02:00"
+    created: "2025-05-24T10:32:31.450401+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1483,7 +1705,7 @@ entries:
     version: 7.11.0
   - apiVersion: v1
     appVersion: v16.10.6
-    created: "2025-05-17T22:27:15.401644+02:00"
+    created: "2025-05-24T10:32:31.422248+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1557,7 +1779,7 @@ entries:
     version: 7.10.6
   - apiVersion: v1
     appVersion: v16.10.5
-    created: "2025-05-17T22:27:15.377309+02:00"
+    created: "2025-05-24T10:32:31.395181+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1631,7 +1853,7 @@ entries:
     version: 7.10.5
   - apiVersion: v1
     appVersion: v16.10.4
-    created: "2025-05-17T22:27:15.353007+02:00"
+    created: "2025-05-24T10:32:31.372504+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1705,7 +1927,7 @@ entries:
     version: 7.10.4
   - apiVersion: v1
     appVersion: v16.10.3
-    created: "2025-05-17T22:27:15.326761+02:00"
+    created: "2025-05-24T10:32:31.347741+02:00"
     dependencies:
     - name: gitlab
       repository: ""
@@ -1780,7 +2002,7 @@ entries:
   gitlab-agent:
   - apiVersion: v2
     appVersion: v18.0.0
-    created: "2025-05-17T22:27:16.005799+02:00"
+    created: "2025-05-24T10:32:32.149263+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1801,7 +2023,7 @@ entries:
     version: 2.15.0
   - apiVersion: v2
     appVersion: v17.11.1
-    created: "2025-05-17T22:27:16.002678+02:00"
+    created: "2025-05-24T10:32:32.141134+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1822,7 +2044,7 @@ entries:
     version: 2.14.1
   - apiVersion: v2
     appVersion: v17.11.0
-    created: "2025-05-17T22:27:15.99838+02:00"
+    created: "2025-05-24T10:32:32.132341+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1843,7 +2065,7 @@ entries:
     version: 2.14.0
   - apiVersion: v2
     appVersion: v17.10.0
-    created: "2025-05-17T22:27:15.989515+02:00"
+    created: "2025-05-24T10:32:32.124122+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1864,7 +2086,7 @@ entries:
     version: 2.13.0
   - apiVersion: v2
     appVersion: v17.9.2
-    created: "2025-05-17T22:27:15.984149+02:00"
+    created: "2025-05-24T10:32:32.114197+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1885,7 +2107,7 @@ entries:
     version: 2.12.2
   - apiVersion: v2
     appVersion: v17.9.1
-    created: "2025-05-17T22:27:15.979048+02:00"
+    created: "2025-05-24T10:32:32.104985+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1906,7 +2128,7 @@ entries:
     version: 2.12.1
   - apiVersion: v2
     appVersion: v17.9.0
-    created: "2025-05-17T22:27:15.974244+02:00"
+    created: "2025-05-24T10:32:32.096919+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1927,7 +2149,7 @@ entries:
     version: 2.12.0
   - apiVersion: v2
     appVersion: v17.8.0
-    created: "2025-05-17T22:27:15.969045+02:00"
+    created: "2025-05-24T10:32:32.089919+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1948,7 +2170,7 @@ entries:
     version: 2.11.0
   - apiVersion: v2
     appVersion: v17.7.0
-    created: "2025-05-17T22:27:15.963702+02:00"
+    created: "2025-05-24T10:32:32.082303+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1969,7 +2191,7 @@ entries:
     version: 2.10.0
   - apiVersion: v2
     appVersion: v17.6.1
-    created: "2025-05-17T22:27:16.058349+02:00"
+    created: "2025-05-24T10:32:32.256323+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -1990,7 +2212,7 @@ entries:
     version: 2.9.1
   - apiVersion: v2
     appVersion: v17.6.0
-    created: "2025-05-17T22:27:16.054508+02:00"
+    created: "2025-05-24T10:32:32.247849+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2011,7 +2233,7 @@ entries:
     version: 2.9.0
   - apiVersion: v2
     appVersion: v17.5.2
-    created: "2025-05-17T22:27:16.050363+02:00"
+    created: "2025-05-24T10:32:32.240465+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2032,7 +2254,7 @@ entries:
     version: 2.8.3
   - apiVersion: v2
     appVersion: v17.5.1
-    created: "2025-05-17T22:27:16.046752+02:00"
+    created: "2025-05-24T10:32:32.232684+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2053,7 +2275,7 @@ entries:
     version: 2.8.2
   - apiVersion: v2
     appVersion: v17.5.0
-    created: "2025-05-17T22:27:16.042794+02:00"
+    created: "2025-05-24T10:32:32.224745+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2074,7 +2296,7 @@ entries:
     version: 2.8.1
   - apiVersion: v2
     appVersion: v17.5.0
-    created: "2025-05-17T22:27:16.039399+02:00"
+    created: "2025-05-24T10:32:32.217374+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2095,7 +2317,7 @@ entries:
     version: 2.8.0
   - apiVersion: v2
     appVersion: v17.4.1
-    created: "2025-05-17T22:27:16.034953+02:00"
+    created: "2025-05-24T10:32:32.211453+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2116,7 +2338,7 @@ entries:
     version: 2.7.2
   - apiVersion: v2
     appVersion: v17.4.1
-    created: "2025-05-17T22:27:16.031613+02:00"
+    created: "2025-05-24T10:32:32.204974+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2137,7 +2359,7 @@ entries:
     version: 2.7.1
   - apiVersion: v2
     appVersion: v17.4.0
-    created: "2025-05-17T22:27:16.027845+02:00"
+    created: "2025-05-24T10:32:32.198015+02:00"
     dependencies:
     - condition: ingress-nginx.enabled
       name: ingress-nginx
@@ -2158,7 +2380,7 @@ entries:
     version: 2.7.0
   - apiVersion: v2
     appVersion: v17.3.1
-    created: "2025-05-17T22:27:16.023937+02:00"
+    created: "2025-05-24T10:32:32.189974+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 38294bc89110d858a48fb54c8fcc27485e5a3ff36941ff70828e42ee8806912c
@@ -2174,7 +2396,7 @@ entries:
     version: 2.6.2
   - apiVersion: v2
     appVersion: v17.3.0
-    created: "2025-05-17T22:27:16.022467+02:00"
+    created: "2025-05-24T10:32:32.185685+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 4c748dcbd890d06db400ccd68ac6898bdf5162749134d1f266b79ce55cef8e10
@@ -2190,7 +2412,7 @@ entries:
     version: 2.6.1
   - apiVersion: v2
     appVersion: v17.3.0
-    created: "2025-05-17T22:27:16.020678+02:00"
+    created: "2025-05-24T10:32:32.181239+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: f2ff44164ff7ea2cd8bd2bdc3b54afac42b0885bce97f5287c6783f803eea2c8
@@ -2206,7 +2428,7 @@ entries:
     version: 2.6.0
   - apiVersion: v2
     appVersion: v17.2.2
-    created: "2025-05-17T22:27:16.018875+02:00"
+    created: "2025-05-24T10:32:32.177244+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 2ffc6d7e20d890616aad0babdc91b38dc192f894fac19f6847e796e80c9a17a7
@@ -2222,7 +2444,7 @@ entries:
     version: 2.5.1
   - apiVersion: v2
     appVersion: v17.2.0
-    created: "2025-05-17T22:27:16.017432+02:00"
+    created: "2025-05-24T10:32:32.172712+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 90b648345b5f3999e4bb1ab7373306192b8c5a6e444a4e784ce5cbd906fd5047
@@ -2238,7 +2460,7 @@ entries:
     version: 2.5.0
   - apiVersion: v2
     appVersion: v17.1.2
-    created: "2025-05-17T22:27:16.015978+02:00"
+    created: "2025-05-24T10:32:32.167215+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: a76e0d0fa918f9778d8234bc6cb0af68f243f5094d88f02dc2ff0b5a666048eb
@@ -2254,7 +2476,7 @@ entries:
     version: 2.4.0
   - apiVersion: v2
     appVersion: v17.1.0
-    created: "2025-05-17T22:27:16.014264+02:00"
+    created: "2025-05-24T10:32:32.162493+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 8d1aa9a4f1dc980724ca2e8e170ac65e45c897396bed52931cc14b71f4ec1585
@@ -2270,7 +2492,7 @@ entries:
     version: 2.3.0
   - apiVersion: v2
     appVersion: v17.0.2
-    created: "2025-05-17T22:27:16.012198+02:00"
+    created: "2025-05-24T10:32:32.158941+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 9acfd1a1786f6437390e0a0e5c4247e8566a9f033a4451844e9e1ae6dbc3f094
@@ -2286,7 +2508,7 @@ entries:
     version: 2.2.1
   - apiVersion: v2
     appVersion: v17.0.1
-    created: "2025-05-17T22:27:16.007846+02:00"
+    created: "2025-05-24T10:32:32.154079+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 02984c0f81365d796d8c92856965002a5aabded4717a38f92bbbba31b1fae3df
@@ -2302,7 +2524,7 @@ entries:
     version: 2.2.0
   - apiVersion: v2
     appVersion: v17.0.0
-    created: "2025-05-17T22:27:15.957687+02:00"
+    created: "2025-05-24T10:32:32.074325+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: c3f5f1e10529c293b533e83310e4df045fcd724b7db68c828a01e2d509e6179a
@@ -2318,7 +2540,7 @@ entries:
     version: 2.1.0
   - apiVersion: v2
     appVersion: v17.0.0-rc1
-    created: "2025-05-17T22:27:15.955408+02:00"
+    created: "2025-05-24T10:32:32.069285+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 1aef785fef5a60ab6a32626ae56ff024cabfa59cffdb21099e7f7ab249914bb3
@@ -2334,7 +2556,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: v16.11.0
-    created: "2025-05-17T22:27:15.952366+02:00"
+    created: "2025-05-24T10:32:32.064096+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: dc8c9f4e9ced55e83ed496b335af1287f7b5702dcac79efc2a94cf0843d498cd
@@ -2350,7 +2572,7 @@ entries:
     version: 1.26.0
   - apiVersion: v2
     appVersion: v16.10.1
-    created: "2025-05-17T22:27:15.950225+02:00"
+    created: "2025-05-24T10:32:32.060648+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 2f55b9689d2739683102eaefe5271584eb4990d5049700e4dc887336981611ee
@@ -2366,7 +2588,7 @@ entries:
     version: 1.25.0
   - apiVersion: v2
     appVersion: v16.9.3
-    created: "2025-05-17T22:27:15.94765+02:00"
+    created: "2025-05-24T10:32:32.057328+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 034b480a0d8b4f0de451fbbc10b86f64762d2b2cf1f13a277e89137608d77f52
@@ -2382,7 +2604,7 @@ entries:
     version: 1.24.0
   - apiVersion: v2
     appVersion: v16.8.0
-    created: "2025-05-17T22:27:15.945124+02:00"
+    created: "2025-05-24T10:32:32.053613+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 754beddce02d5fe36583d7c3be8afe32f72267fac41634ff1e64362b262a6a9f
@@ -2398,7 +2620,7 @@ entries:
     version: 1.23.0
   - apiVersion: v2
     appVersion: v16.7.0
-    created: "2025-05-17T22:27:15.943126+02:00"
+    created: "2025-05-24T10:32:32.049474+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 49554ca7e62bd353cdd726b8a80ace508cc332d44f57f6c8e96ba2feac7805ba
@@ -2414,7 +2636,7 @@ entries:
     version: 1.22.0
   - apiVersion: v2
     appVersion: v16.6.0
-    created: "2025-05-17T22:27:15.940302+02:00"
+    created: "2025-05-24T10:32:32.045943+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: ca277e80081626d8ec00e33e62ca1a96b37a1f8113ea4d5ba15f09ebaa03de0c
@@ -2430,7 +2652,7 @@ entries:
     version: 1.21.0
   - apiVersion: v2
     appVersion: v16.5.0
-    created: "2025-05-17T22:27:15.935792+02:00"
+    created: "2025-05-24T10:32:32.04077+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: a06793adf8331167c2430141a4deb089454696a83ed98722427210adcd0ecb3f
@@ -2446,7 +2668,7 @@ entries:
     version: 1.20.0
   - apiVersion: v2
     appVersion: v16.4.0
-    created: "2025-05-17T22:27:15.933873+02:00"
+    created: "2025-05-24T10:32:32.037181+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 1c73a342f7ec12903da2646036df114afc769bc63993fc65f808ecce37cf77f7
@@ -2462,7 +2684,7 @@ entries:
     version: 1.19.0
   - apiVersion: v2
     appVersion: v16.3.0
-    created: "2025-05-17T22:27:15.930884+02:00"
+    created: "2025-05-24T10:32:32.033045+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 292605bffbccd5068eaebb2949e2b5fe2d447bab5deea1fe743a38269785f8c6
@@ -2478,7 +2700,7 @@ entries:
     version: 1.18.1
   - apiVersion: v2
     appVersion: v16.3.0
-    created: "2025-05-17T22:27:15.928244+02:00"
+    created: "2025-05-24T10:32:32.029479+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 69a6f8ae5bfc20b1de1cf25f8ab8ccd864411cea679c042cb07edb55c200833f
@@ -2494,7 +2716,7 @@ entries:
     version: 1.18.0
   - apiVersion: v2
     appVersion: v16.2.0
-    created: "2025-05-17T22:27:15.925034+02:00"
+    created: "2025-05-24T10:32:32.024384+02:00"
     description: GitLab Agent for Kubernetes is a way to integrate your cluster with
       GitLab in a secure way.
     digest: 344c664ca4d0065edbfc2a5ced53abc3d9197781c4079ff68db605aa3c2b3e3f
@@ -2510,8 +2732,29 @@ entries:
     version: 1.17.2
   gitlab-runner:
   - apiVersion: v1
+    appVersion: 18.0.2
+    created: "2025-05-24T10:32:32.626835+02:00"
+    description: GitLab Runner
+    digest: 39425869ed4d0037efe7e6a9cef63d9ea7584dd41b26c572e7bde7bb0226a912
+    icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
+    keywords:
+    - git
+    - ci
+    - deploy
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab-runner
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
+    - https://gitlab.com/gitlab-org/gitlab-runner
+    - https://docs.gitlab.com/runner/
+    urls:
+    - gitlab-runner-0.77.2.tgz
+    version: 0.77.2
+  - apiVersion: v1
     appVersion: 18.0.1
-    created: "2025-05-17T22:27:16.166106+02:00"
+    created: "2025-05-24T10:32:32.617587+02:00"
     description: GitLab Runner
     digest: f0e45ef23f59d2e08b83fd03469847904e51f2807fa83ca26e2c8af7a50eaab1
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2532,7 +2775,7 @@ entries:
     version: 0.77.1
   - apiVersion: v1
     appVersion: 18.0.0
-    created: "2025-05-17T22:27:16.164661+02:00"
+    created: "2025-05-24T10:32:32.607129+02:00"
     description: GitLab Runner
     digest: bf74acf4d211d37694fc40db2b302343959e3ac409eeb147c20bf38c363187f6
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2552,8 +2795,29 @@ entries:
     - gitlab-runner-0.77.0.tgz
     version: 0.77.0
   - apiVersion: v1
+    appVersion: 17.11.2
+    created: "2025-05-24T10:32:32.598214+02:00"
+    description: GitLab Runner
+    digest: 69a2abcda182fdd7017b5ddcb3753700e11e3d539e41abcd5a14263198c0e0ff
+    icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
+    keywords:
+    - git
+    - ci
+    - deploy
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab-runner
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab-runner
+    - https://gitlab.com/gitlab-org/gitlab-runner
+    - https://docs.gitlab.com/runner/
+    urls:
+    - gitlab-runner-0.76.2.tgz
+    version: 0.76.2
+  - apiVersion: v1
     appVersion: 17.11.1
-    created: "2025-05-17T22:27:16.163138+02:00"
+    created: "2025-05-24T10:32:32.589366+02:00"
     description: GitLab Runner
     digest: 6b6911736166af30c3f07a31e8d485808fd08bbfaf2fbc69ea67e608b318bfac
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2574,7 +2838,7 @@ entries:
     version: 0.76.1
   - apiVersion: v1
     appVersion: 17.11.0
-    created: "2025-05-17T22:27:16.161536+02:00"
+    created: "2025-05-24T10:32:32.57891+02:00"
     description: GitLab Runner
     digest: 20785fa45915adc833d8494ea69b9ad4fc9cf92d25af36a178e21615274663a7
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2595,7 +2859,7 @@ entries:
     version: 0.76.0
   - apiVersion: v1
     appVersion: 17.10.1
-    created: "2025-05-17T22:27:16.158999+02:00"
+    created: "2025-05-24T10:32:32.570067+02:00"
     description: GitLab Runner
     digest: dd2747e81126b3b0723539613fbf539ff231c7254a502d7756cb1573f2e1d361
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2616,7 +2880,7 @@ entries:
     version: 0.75.1
   - apiVersion: v1
     appVersion: 17.10.0
-    created: "2025-05-17T22:27:16.1565+02:00"
+    created: "2025-05-24T10:32:32.560366+02:00"
     description: GitLab Runner
     digest: a5a2c34a38d5afd6fe2fffc3d72388d603f712b06d30f8d4c6b87ac74d32018c
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2637,7 +2901,7 @@ entries:
     version: 0.75.0
   - apiVersion: v1
     appVersion: 17.9.3
-    created: "2025-05-17T22:27:16.153846+02:00"
+    created: "2025-05-24T10:32:32.551521+02:00"
     description: GitLab Runner
     digest: d806776e7f4a883f8fe7337e6c0779ac7fdffad848c43ebd858d014803aede4f
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2658,7 +2922,7 @@ entries:
     version: 0.74.3
   - apiVersion: v1
     appVersion: 17.9.2
-    created: "2025-05-17T22:27:16.151236+02:00"
+    created: "2025-05-24T10:32:32.541939+02:00"
     description: GitLab Runner
     digest: 2df5031dfe7279c99cd87a4aa791916bf704aace6e3742f4c71e85a2cc384fd1
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2679,7 +2943,7 @@ entries:
     version: 0.74.2
   - apiVersion: v1
     appVersion: 17.9.1
-    created: "2025-05-17T22:27:16.148903+02:00"
+    created: "2025-05-24T10:32:32.531206+02:00"
     description: GitLab Runner
     digest: 424d754b7590a7798f495434957d8bbefe12a236bc9a1c25ed6da912f56be0d0
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2700,7 +2964,7 @@ entries:
     version: 0.74.1
   - apiVersion: v1
     appVersion: 17.9.0
-    created: "2025-05-17T22:27:16.146564+02:00"
+    created: "2025-05-24T10:32:32.521199+02:00"
     description: GitLab Runner
     digest: 8735bf128c9548693247b73cee6f94cc8ccff11e0cfdb376a2db5c18f3640d6f
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2721,7 +2985,7 @@ entries:
     version: 0.74.0
   - apiVersion: v1
     appVersion: 17.8.5
-    created: "2025-05-17T22:27:16.144176+02:00"
+    created: "2025-05-24T10:32:32.508181+02:00"
     description: GitLab Runner
     digest: 741772b1305337ab760c0d0865f8c644f7f308dc49260406899e99d252b3e845
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2742,7 +3006,7 @@ entries:
     version: 0.73.5
   - apiVersion: v1
     appVersion: 17.8.4
-    created: "2025-05-17T22:27:16.141614+02:00"
+    created: "2025-05-24T10:32:32.500539+02:00"
     description: GitLab Runner
     digest: 29f0007ae38b7875015e65523977998fe52fe4720431a1551c41580973dd6dea
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2763,7 +3027,7 @@ entries:
     version: 0.73.4
   - apiVersion: v1
     appVersion: 17.8.3
-    created: "2025-05-17T22:27:16.139029+02:00"
+    created: "2025-05-24T10:32:32.491875+02:00"
     description: GitLab Runner
     digest: 1518dc8703235e494e293d8218d432bf343ff2d22be5cab752d3b42fb90566eb
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2784,7 +3048,7 @@ entries:
     version: 0.73.3
   - apiVersion: v1
     appVersion: 17.8.2
-    created: "2025-05-17T22:27:16.13651+02:00"
+    created: "2025-05-24T10:32:32.480431+02:00"
     description: GitLab Runner
     digest: eed2787ae53b9415af943f562a585c697801e6ae32d9fa1064959c7b06dbb480
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2805,7 +3069,7 @@ entries:
     version: 0.73.2
   - apiVersion: v1
     appVersion: 17.8.1
-    created: "2025-05-17T22:27:16.134146+02:00"
+    created: "2025-05-24T10:32:32.472657+02:00"
     description: GitLab Runner
     digest: 26abf3606fc8c1465d6f512a0b5f71eb61a8fce1b738ac238ba97e6e18d7a2a4
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2826,7 +3090,7 @@ entries:
     version: 0.73.1
   - apiVersion: v1
     appVersion: 17.8.0
-    created: "2025-05-17T22:27:16.131445+02:00"
+    created: "2025-05-24T10:32:32.463754+02:00"
     description: GitLab Runner
     digest: c4e8b8f1fe1bd081792424d8f45fd47f9edd44537edbdf6b91353242983c231a
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2847,7 +3111,7 @@ entries:
     version: 0.73.0
   - apiVersion: v1
     appVersion: 17.7.1
-    created: "2025-05-17T22:27:16.129481+02:00"
+    created: "2025-05-24T10:32:32.454882+02:00"
     description: GitLab Runner
     digest: 475b287afbb35f622077ca204f240c09d43a8073eb9e378c1d7531e19cd07071
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2868,7 +3132,7 @@ entries:
     version: 0.72.1
   - apiVersion: v1
     appVersion: 17.7.0
-    created: "2025-05-17T22:27:16.127116+02:00"
+    created: "2025-05-24T10:32:32.445554+02:00"
     description: GitLab Runner
     digest: 3665a77f35af5e361b77e290818d95f788542e589481dc6c43af3edfee12cf1d
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2889,7 +3153,7 @@ entries:
     version: 0.72.0
   - apiVersion: v1
     appVersion: 17.6.0
-    created: "2025-05-17T22:27:16.124722+02:00"
+    created: "2025-05-24T10:32:32.437502+02:00"
     description: GitLab Runner
     digest: b299801d6e12d2624b1677d22fdd829d12fcc48527b807c748a1ce7437429505
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2910,7 +3174,7 @@ entries:
     version: 0.71.0
   - apiVersion: v1
     appVersion: 17.5.5
-    created: "2025-05-17T22:27:16.122384+02:00"
+    created: "2025-05-24T10:32:32.431491+02:00"
     description: GitLab Runner
     digest: 3915f3fb05ac4a5be2551b61eca3374d360f9289a19402a7ac5c40155a9a68ab
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2931,7 +3195,7 @@ entries:
     version: 0.70.5
   - apiVersion: v1
     appVersion: 17.5.4
-    created: "2025-05-17T22:27:16.120164+02:00"
+    created: "2025-05-24T10:32:32.423688+02:00"
     description: GitLab Runner
     digest: 64cfecdbdfae4f9ebc30fcdc7d8cb9eaca557d4bb56baa37f7aaf6dcabadc78b
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2952,7 +3216,7 @@ entries:
     version: 0.70.4
   - apiVersion: v1
     appVersion: 17.5.3
-    created: "2025-05-17T22:27:16.117853+02:00"
+    created: "2025-05-24T10:32:32.417658+02:00"
     description: GitLab Runner
     digest: 9d0deb85f0f8a5ac8045f1ecd0890ee379d3b7bac951534be57155cb02843b11
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2973,7 +3237,7 @@ entries:
     version: 0.70.3
   - apiVersion: v1
     appVersion: 17.5.2
-    created: "2025-05-17T22:27:16.115524+02:00"
+    created: "2025-05-24T10:32:32.411699+02:00"
     description: GitLab Runner
     digest: abd89bea2f7800f94bf7edf55084a06af865fb0cc706a089ef344e7515f32592
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -2994,7 +3258,7 @@ entries:
     version: 0.70.2
   - apiVersion: v1
     appVersion: 17.5.1
-    created: "2025-05-17T22:27:16.113212+02:00"
+    created: "2025-05-24T10:32:32.405727+02:00"
     description: GitLab Runner
     digest: 71303b085c47123c3efe1c76755d6a03559fa8ced352e6d54a4aefb8fd8c4daa
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3015,7 +3279,7 @@ entries:
     version: 0.70.1
   - apiVersion: v1
     appVersion: 17.5.0
-    created: "2025-05-17T22:27:16.111286+02:00"
+    created: "2025-05-24T10:32:32.400472+02:00"
     description: GitLab Runner
     digest: 3e3764b7a42a1a808d6d3e9205e4f7f332b275f94475993ca15341c592f8f766
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3036,7 +3300,7 @@ entries:
     version: 0.70.0
   - apiVersion: v1
     appVersion: 17.4.2
-    created: "2025-05-17T22:27:16.109086+02:00"
+    created: "2025-05-24T10:32:32.394887+02:00"
     description: GitLab Runner
     digest: 4287fc1a8c99417a2c40dd08764d08a0966bb1ca9baa0607d8547f7b03e7586c
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3057,7 +3321,7 @@ entries:
     version: 0.69.2
   - apiVersion: v1
     appVersion: 17.4.1
-    created: "2025-05-17T22:27:16.107091+02:00"
+    created: "2025-05-24T10:32:32.389941+02:00"
     description: GitLab Runner
     digest: 35a6dc3a403a5226a3ad4d59987903e35488620085ee5aa7a827c3dd55b6c9f8
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3078,7 +3342,7 @@ entries:
     version: 0.69.1
   - apiVersion: v1
     appVersion: 17.4.0
-    created: "2025-05-17T22:27:16.10519+02:00"
+    created: "2025-05-24T10:32:32.38375+02:00"
     description: GitLab Runner
     digest: 625c1e78bd0b2afa0cdd9dcb0c48da338aa84ac991bb425f369d39d62696ebe1
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3099,7 +3363,7 @@ entries:
     version: 0.69.0
   - apiVersion: v1
     appVersion: 17.3.3
-    created: "2025-05-17T22:27:16.103267+02:00"
+    created: "2025-05-24T10:32:32.377957+02:00"
     description: GitLab Runner
     digest: cb61342bf39dd1d9b8a20060886130ab07ece0a65438739ffdb67b1c97a6ad6f
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3120,7 +3384,7 @@ entries:
     version: 0.68.3
   - apiVersion: v1
     appVersion: 17.3.2
-    created: "2025-05-17T22:27:16.101383+02:00"
+    created: "2025-05-24T10:32:32.371793+02:00"
     description: GitLab Runner
     digest: 8e619396630fb850da80565319ee6dd8ce1edbf17ad3dfdf01a05b58d814a6cb
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3141,7 +3405,7 @@ entries:
     version: 0.68.2
   - apiVersion: v1
     appVersion: 17.3.1
-    created: "2025-05-17T22:27:16.099551+02:00"
+    created: "2025-05-24T10:32:32.365405+02:00"
     description: GitLab Runner
     digest: 0b8e63a3e755e43ddb2f21c69dcfa29a134a610f95b2c7b7f42ad8ee1764f674
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3162,7 +3426,7 @@ entries:
     version: 0.68.1
   - apiVersion: v1
     appVersion: 17.3.0
-    created: "2025-05-17T22:27:16.097543+02:00"
+    created: "2025-05-24T10:32:32.359858+02:00"
     description: GitLab Runner
     digest: ea879a3ea87d0f26e61aa914eba64803278c17c0acd122929aef537e679ed371
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3183,7 +3447,7 @@ entries:
     version: 0.68.0
   - apiVersion: v1
     appVersion: 17.2.1
-    created: "2025-05-17T22:27:16.095791+02:00"
+    created: "2025-05-24T10:32:32.354145+02:00"
     description: GitLab Runner
     digest: 3d6b4ce34525b3a5fb16539902a2069abbc2628bebdd3543dab827f867f1c581
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3204,7 +3468,7 @@ entries:
     version: 0.67.1
   - apiVersion: v1
     appVersion: 17.2.0
-    created: "2025-05-17T22:27:16.094021+02:00"
+    created: "2025-05-24T10:32:32.34984+02:00"
     description: GitLab Runner
     digest: 91e6e7f02b6b6b162c1c9964f100c0c42d9e59f91f3bd770d3ddbbb30baef36f
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3225,7 +3489,7 @@ entries:
     version: 0.67.0
   - apiVersion: v1
     appVersion: 17.1.1
-    created: "2025-05-17T22:27:16.092266+02:00"
+    created: "2025-05-24T10:32:32.345398+02:00"
     description: GitLab Runner
     digest: 4ff2c43f5038ac9912411c69cf67a76eb6b83c376d0df47cc5aeec408836a1b9
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3246,7 +3510,7 @@ entries:
     version: 0.66.1
   - apiVersion: v1
     appVersion: 17.1.0
-    created: "2025-05-17T22:27:16.090535+02:00"
+    created: "2025-05-24T10:32:32.341024+02:00"
     description: GitLab Runner
     digest: 5de65bf259eccc785645111b0159a6c8b0b4ec906514472e47de8d65f8154771
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3267,7 +3531,7 @@ entries:
     version: 0.66.0
   - apiVersion: v1
     appVersion: 17.0.2
-    created: "2025-05-17T22:27:16.088797+02:00"
+    created: "2025-05-24T10:32:32.336498+02:00"
     description: GitLab Runner
     digest: aa840d64e8366655c5cb6ee6889d09816f98c21b89a77319da10b1f2a21d8609
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3288,7 +3552,7 @@ entries:
     version: 0.65.2
   - apiVersion: v1
     appVersion: 17.0.1
-    created: "2025-05-17T22:27:16.086841+02:00"
+    created: "2025-05-24T10:32:32.332347+02:00"
     description: GitLab Runner
     digest: 55f5deffe26a80295de1c3e678ef3ad59888a75075b6f2ee7228c347f0ebb989
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3309,7 +3573,7 @@ entries:
     version: 0.65.1
   - apiVersion: v1
     appVersion: 17.0.0
-    created: "2025-05-17T22:27:16.085093+02:00"
+    created: "2025-05-24T10:32:32.327496+02:00"
     description: GitLab Runner
     digest: 6312e69318b675a62b8981e25e29ddd46c9d7bc7b0f1955d947f2e0a505ca369
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3330,7 +3594,7 @@ entries:
     version: 0.65.0
   - apiVersion: v1
     appVersion: 16.11.3
-    created: "2025-05-17T22:27:16.083442+02:00"
+    created: "2025-05-24T10:32:32.322768+02:00"
     description: GitLab Runner
     digest: 46ef22f2a53ae048cacd3330b07561ed2584df8ca630d3cc496fcb7fab67a072
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3351,7 +3615,7 @@ entries:
     version: 0.64.3
   - apiVersion: v1
     appVersion: 16.11.2
-    created: "2025-05-17T22:27:16.081321+02:00"
+    created: "2025-05-24T10:32:32.319142+02:00"
     description: GitLab Runner
     digest: 292e8d8847de13d86cf7a5b00d7a7a32b06105706b544e820af77201038b597d
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3372,7 +3636,7 @@ entries:
     version: 0.64.2
   - apiVersion: v1
     appVersion: 16.11.1
-    created: "2025-05-17T22:27:16.079624+02:00"
+    created: "2025-05-24T10:32:32.315282+02:00"
     description: GitLab Runner
     digest: 211ce37b73c8677ec05462ad7d221276e8070f3fda4a22a7414ab5abeef4e825
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3393,7 +3657,7 @@ entries:
     version: 0.64.1
   - apiVersion: v1
     appVersion: 16.11.0
-    created: "2025-05-17T22:27:16.077955+02:00"
+    created: "2025-05-24T10:32:32.310916+02:00"
     description: GitLab Runner
     digest: 05a2564c71a1cfda61f31fc426f08769e7510bcab3ce15505efa1446112791db
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3414,7 +3678,7 @@ entries:
     version: 0.64.0
   - apiVersion: v1
     appVersion: 16.10.0
-    created: "2025-05-17T22:27:16.076221+02:00"
+    created: "2025-05-24T10:32:32.306736+02:00"
     description: GitLab Runner
     digest: 55d26d2768d8b10dd485d68c8d479fb8e29bfc8fe0b0fd16eeb91424e1bedfb5
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3435,7 +3699,7 @@ entries:
     version: 0.63.0
   - apiVersion: v1
     appVersion: 16.9.1
-    created: "2025-05-17T22:27:16.074484+02:00"
+    created: "2025-05-24T10:32:32.30281+02:00"
     description: GitLab Runner
     digest: 767c7a8f6e7851dd3e194392fbfc1f6068b788e588d5621d893530c4b145ff56
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3456,7 +3720,7 @@ entries:
     version: 0.62.1
   - apiVersion: v1
     appVersion: 16.9.0
-    created: "2025-05-17T22:27:16.072757+02:00"
+    created: "2025-05-24T10:32:32.297686+02:00"
     description: GitLab Runner
     digest: 489d832ac699a950f4f1659c1cb6cc0127ca36eb506e04ded5cd2170a5a6d840
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3477,7 +3741,7 @@ entries:
     version: 0.62.0
   - apiVersion: v1
     appVersion: 16.8.1
-    created: "2025-05-17T22:27:16.070883+02:00"
+    created: "2025-05-24T10:32:32.292883+02:00"
     description: GitLab Runner
     digest: ef306ac38418df91f5fd3eae95c2f71c323a311acf5f0b8c4e42fe0a1f59d832
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3498,7 +3762,7 @@ entries:
     version: 0.61.3
   - apiVersion: v1
     appVersion: 16.8.0
-    created: "2025-05-17T22:27:16.069117+02:00"
+    created: "2025-05-24T10:32:32.288383+02:00"
     description: GitLab Runner
     digest: 321e7d563ca4dab8fa5ac228ec5a5c98f4c64d198559eb215c604218b79b9133
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3519,7 +3783,7 @@ entries:
     version: 0.61.2
   - apiVersion: v1
     appVersion: 16.8.0
-    created: "2025-05-17T22:27:16.06729+02:00"
+    created: "2025-05-24T10:32:32.283377+02:00"
     description: GitLab Runner
     digest: 041e83185990ec50b61b2a9530b5a1385d34b875170bd7a4a978e949fa4e2660
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3540,7 +3804,7 @@ entries:
     version: 0.61.1
   - apiVersion: v1
     appVersion: 16.8.0
-    created: "2025-05-17T22:27:16.065397+02:00"
+    created: "2025-05-24T10:32:32.277826+02:00"
     description: GitLab Runner
     digest: 26acbb7c924c421b737ab982e526c9516413230b37c36a078a13dc13130ce9ed
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3561,7 +3825,7 @@ entries:
     version: 0.61.0
   - apiVersion: v1
     appVersion: 16.7.1
-    created: "2025-05-17T22:27:16.06359+02:00"
+    created: "2025-05-24T10:32:32.272784+02:00"
     description: GitLab Runner
     digest: 6fac090276b9378c02ae2a63d0abdb00aa377466aac8e10e7a8066a06a8141fb
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3582,7 +3846,7 @@ entries:
     version: 0.60.1
   - apiVersion: v1
     appVersion: 16.7.0
-    created: "2025-05-17T22:27:16.061861+02:00"
+    created: "2025-05-24T10:32:32.266741+02:00"
     description: GitLab Runner
     digest: 20c5ae728363c7b61836031e4f9db7db8d92d9c66ed5910cb591e50b54604633
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3603,7 +3867,7 @@ entries:
     version: 0.60.0
   - apiVersion: v1
     appVersion: 16.6.2
-    created: "2025-05-17T22:27:16.060129+02:00"
+    created: "2025-05-24T10:32:32.261315+02:00"
     description: GitLab Runner
     digest: e4c12fb99ac3756a3f3afa0d0769fcdf5ed1ebc7b91fa4c004c0b4348532b8af
     icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
@@ -3622,4 +3886,4 @@ entries:
     urls:
     - gitlab-runner-0.59.3.tgz
     version: 0.59.3
-generated: "2025-05-17T22:27:15.300951+02:00"
+generated: "2025-05-24T10:32:31.323832+02:00"
