@@ -280,6 +280,10 @@ archive-images2:
         VERSION:
           - BITNAMI_REDIS_VERSION
       - BASE:
+          - bitnami/valkey
+        VERSION:
+          - BITNAMI_VALKEY_VERSION
+      - BASE:
           - bitnami/redis-exporter
         VERSION:
           - BITNAMI_REDIS_EXPORTER_VERSION
@@ -1647,6 +1651,17 @@ bitnami-redis:
   variables:
     IMAGE_BASE: bitnami/redis
     IMAGE_VERSION: ${BITNAMI_REDIS_VERSION}
+
+bitnami-valkey:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: bitnami/valkey
+    IMAGE_VERSION: ${BITNAMI_VALKEY_VERSION}
 
 bitnami-redis-exporter:
   interruptible: true

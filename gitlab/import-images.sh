@@ -56,6 +56,7 @@ import_images() {
         "bitnami/blackbox-exporter:${BITNAMI_BLACKBOX_EXPORTER_VERSION:-0.21.0-debian-11-r7}"
         "bitnami/postgres-exporter:${BITNAMI_POSTGRES_EXPORTER_VERSION:-0.10.1-debian-10-r131}"
         "bitnami/redis:${BITNAMI_REDIS_VERSION:-6.2.4-debian-10-r0}"
+        "bitnami/valkey:${BITNAMI_VALKEY_VERSION:-8.1.1-debian-12-r2}"
         "bitnami/redis-exporter:${BITNAMI_REDIS_EXPORTER_VERSION:-1.43.1-debian-11-r0}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL15_VERSION:-15.0.0-debian-11-r0}"
         "bitnami/postgresql:${BITNAMI_POSTGRESQL16_VERSION:-16.0.0-debian-11-r0}"

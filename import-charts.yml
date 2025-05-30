@@ -15,7 +15,7 @@ helm:
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 6.0.18
+        version: 6.0.21
   - name: haproxytech
     uri: https://haproxytech.github.io/helm-charts
     charts:
@@ -64,6 +64,7 @@ helm:
       - name: metallb
       - name: metrics-server
       - name: redis
+      - name: valkey
       - name: nginx
       - name: nginx-ingress-controller
       - name: postgresql
