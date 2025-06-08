@@ -1,14 +1,8 @@
 ---
 helm:
-  # - name: netbox
-  #   type: oci
-  #   uri: oci://ghcr.io/netbox-community/netbox-chart/
-  #   charts:
-  #     - name: netbox
-  #       version: 5.0.0-beta.102
-
-  - name: haproxytech
-    uri: https://haproxytech.github.io/helm-charts
+  - name: netbox
+    type: oci
+    uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
-      - name: haproxy
-      - name: kubernetes-ingress
+      - name: netbox
+        version: 6.0.29

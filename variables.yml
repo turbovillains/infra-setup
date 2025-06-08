@@ -31,7 +31,7 @@ variables:
   K8S_131_VERSION2: "v1.31.8" # https://github.com/kubernetes/kubernetes/releases
   COREDNS_VERSION: "v1.12.1" # https://hub.docker.com/r/coredns/coredns/tags
   ETCD_35_VERSION: v3.5.21 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
-  ETCD_36_VERSION: v3.6.0 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
+  ETCD_36_VERSION: v3.6.1 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
   LIVENESSPROBE_VERSION: v2.16.0
   CSI_NODE_DRIVER_REGISTRAR_VERSION: v2.14.0
   CSI_ATTACHER_VERSION: v4.9.0
@@ -79,7 +79,7 @@ variables:
   PGADMIN_VERSION: "9.4" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   HTTPBIN_VERSION: "2.18.1" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.9.0-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
-  PIHOLE_VERSION: "2025.05.1" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
+  PIHOLE_VERSION: "2025.06.1" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
   UNBOUND_VERSION: v1.23.0 # https://github.com/klutchell/unbound-docker/tags
   NEXTCLOUD_VERSION: "31.0.5-apache" # https://hub.docker.com/_/nextcloud
   BITNAMI_KEYCLOAK_VERSION: "26.2.5" # https://hub.docker.com/r/bitnami/keycloak/tags?page=1&ordering=last_updated&name=25
@@ -90,7 +90,7 @@ variables:
   BITNAMI_BLACKBOX_EXPORTER_VERSION: "0.26.0" # https://hub.docker.com/r/bitnami/blackbox-exporter/tags
   BITNAMI_REDIS_VERSION: "8.0.2" # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
   BITNAMI_VALKEY_VERSION: "8.1.1" # https://hub.docker.com/r/bitnami/redis/tags?page=1&ordering=last_updated
-  BITNAMI_REDIS_EXPORTER_VERSION: "1.73.0" # https://hub.docker.com/r/bitnami/redis-exporter/tags
+  BITNAMI_REDIS_EXPORTER_VERSION: "1.74.0" # https://hub.docker.com/r/bitnami/redis-exporter/tags
   BITNAMI_POSTGRESQL15_VERSION: "15.10.0" # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=15.
   BITNAMI_POSTGRESQL16_VERSION: "16.6.0" # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=16.
   BITNAMI_POSTGRESQL17_VERSION: "17.5.0" # https://hub.docker.com/r/bitnami/postgresql/tags?page=1&ordering=last_updated&name=17.
@@ -145,7 +145,7 @@ variables:
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_INBOUND_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
-  NETBOX_VERSION: v4.3.1 # https://hub.docker.com/r/netboxcommunity/netbox/tags
+  NETBOX_VERSION: v4.3.2 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v13.0.2 # https://hub.docker.com/r/postgrest/postgrest/tags
   CEPHCSI_VERSION: v3.14.0 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v25.3.0 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
