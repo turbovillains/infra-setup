@@ -10,7 +10,69 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.1
-    created: "2025-06-08T17:00:15.297758+02:00"
+    created: "2025-06-20T10:17:08.048678+02:00"
+    dependencies:
+    - condition: alertmanager.enabled
+      name: alertmanager
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.20.*
+    - condition: kube-state-metrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 5.33.*
+    - condition: prometheus-node-exporter.enabled
+      name: prometheus-node-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.46.*
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 3.3.*
+    description: Prometheus is a monitoring system and time series database.
+    digest: 0409b7404d9a6489f04dab4509fe088afebfc337fde134b6795d2d20803ccec6
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - monitoring
+    - prometheus
+    kubeVersion: '>=1.19.0-0'
+    maintainers:
+    - email: gianrubio@gmail.com
+      name: gianrubio
+      url: https://github.com/gianrubio
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+      url: https://github.com/zanhsieh
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+      url: https://github.com/Xtigyro
+    - email: naseem@transit.app
+      name: naseemkullah
+      url: https://github.com/naseemkullah
+    - email: rootsandtrees@posteo.de
+      name: zeritti
+      url: https://github.com/zeritti
+    name: prometheus
+    sources:
+    - https://github.com/prometheus/alertmanager
+    - https://github.com/prometheus/prometheus
+    - https://github.com/prometheus/pushgateway
+    - https://github.com/prometheus/node_exporter
+    - https://github.com/kubernetes/kube-state-metrics
+    type: application
+    urls:
+    - prometheus-27.20.1.tgz
+    version: 27.20.1
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus/prometheus
+    apiVersion: v2
+    appVersion: v3.4.1
+    created: "2025-06-20T10:17:08.043005+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -72,7 +134,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.1
-    created: "2025-06-08T17:00:15.269837+02:00"
+    created: "2025-06-20T10:17:08.032295+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -134,7 +196,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.1
-    created: "2025-06-08T17:00:15.256579+02:00"
+    created: "2025-06-20T10:17:08.026652+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -196,7 +258,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.0
-    created: "2025-06-08T17:00:15.245107+02:00"
+    created: "2025-06-20T10:17:08.021068+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -258,7 +320,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.0
-    created: "2025-06-08T17:00:15.231967+02:00"
+    created: "2025-06-20T10:17:08.016194+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -320,7 +382,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-06-08T17:00:15.217901+02:00"
+    created: "2025-06-20T10:17:08.010788+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -382,7 +444,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-06-08T17:00:15.204755+02:00"
+    created: "2025-06-20T10:17:08.00571+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -444,7 +506,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-06-08T17:00:15.19083+02:00"
+    created: "2025-06-20T10:17:08.000559+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -506,7 +568,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-06-08T17:00:15.177281+02:00"
+    created: "2025-06-20T10:17:07.99531+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -568,7 +630,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-06-08T17:00:15.162944+02:00"
+    created: "2025-06-20T10:17:07.990201+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -630,7 +692,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.0
-    created: "2025-06-08T17:00:15.149774+02:00"
+    created: "2025-06-20T10:17:07.984837+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -692,7 +754,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-06-08T17:00:15.137781+02:00"
+    created: "2025-06-20T10:17:07.97971+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -754,7 +816,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-06-08T17:00:15.418237+02:00"
+    created: "2025-06-20T10:17:08.11457+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -816,7 +878,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-06-08T17:00:15.404906+02:00"
+    created: "2025-06-20T10:17:08.109761+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -878,7 +940,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-06-08T17:00:15.389648+02:00"
+    created: "2025-06-20T10:17:08.103978+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -940,7 +1002,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-06-08T17:00:15.380391+02:00"
+    created: "2025-06-20T10:17:08.097904+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1002,7 +1064,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-06-08T17:00:15.368791+02:00"
+    created: "2025-06-20T10:17:08.091691+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1064,7 +1126,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-06-08T17:00:15.356248+02:00"
+    created: "2025-06-20T10:17:08.08552+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1126,7 +1188,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.0
-    created: "2025-06-08T17:00:15.345989+02:00"
+    created: "2025-06-20T10:17:08.079027+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1188,7 +1250,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-06-08T17:00:15.335023+02:00"
+    created: "2025-06-20T10:17:08.069314+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1250,7 +1312,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-06-08T17:00:15.32227+02:00"
+    created: "2025-06-20T10:17:08.060104+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1312,7 +1374,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-06-08T17:00:15.310851+02:00"
+    created: "2025-06-20T10:17:08.054601+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1374,7 +1436,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-06-08T17:00:15.283239+02:00"
+    created: "2025-06-20T10:17:08.037759+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1436,7 +1498,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-06-08T17:00:15.127428+02:00"
+    created: "2025-06-20T10:17:07.974565+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1498,7 +1560,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-06-08T17:00:15.113854+02:00"
+    created: "2025-06-20T10:17:07.968988+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1560,7 +1622,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-06-08T17:00:15.101096+02:00"
+    created: "2025-06-20T10:17:07.963882+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1617,7 +1679,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.0.1
-    created: "2025-06-08T17:00:15.090494+02:00"
+    created: "2025-06-20T10:17:07.95835+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1674,7 +1736,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.0.0
-    created: "2025-06-08T17:00:15.077458+02:00"
+    created: "2025-06-20T10:17:07.953054+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1731,7 +1793,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.1
-    created: "2025-06-08T17:00:15.066748+02:00"
+    created: "2025-06-20T10:17:07.94793+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1788,7 +1850,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.1
-    created: "2025-06-08T17:00:15.053567+02:00"
+    created: "2025-06-20T10:17:07.941912+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1845,7 +1907,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.1
-    created: "2025-06-08T17:00:15.041146+02:00"
+    created: "2025-06-20T10:17:07.93621+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1902,7 +1964,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.0
-    created: "2025-06-08T17:00:15.030645+02:00"
+    created: "2025-06-20T10:17:07.930421+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1959,7 +2021,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.0
-    created: "2025-06-08T17:00:15.017323+02:00"
+    created: "2025-06-20T10:17:07.925188+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2016,7 +2078,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.54.1
-    created: "2025-06-08T17:00:15.006436+02:00"
+    created: "2025-06-20T10:17:07.919876+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2073,7 +2135,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.54.0
-    created: "2025-06-08T17:00:14.99544+02:00"
+    created: "2025-06-20T10:17:07.91455+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2130,7 +2192,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-06-08T17:00:14.983581+02:00"
+    created: "2025-06-20T10:17:07.909473+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2187,7 +2249,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-06-08T17:00:14.972289+02:00"
+    created: "2025-06-20T10:17:07.904199+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2244,7 +2306,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-06-08T17:00:14.96044+02:00"
+    created: "2025-06-20T10:17:07.898854+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2301,7 +2363,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-06-08T17:00:14.952375+02:00"
+    created: "2025-06-20T10:17:07.893638+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2358,7 +2420,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.0
-    created: "2025-06-08T17:00:14.943846+02:00"
+    created: "2025-06-20T10:17:07.888008+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2415,7 +2477,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.0
-    created: "2025-06-08T17:00:14.933949+02:00"
+    created: "2025-06-20T10:17:07.882642+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2472,7 +2534,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.0
-    created: "2025-06-08T17:00:14.926504+02:00"
+    created: "2025-06-20T10:17:07.877131+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2529,7 +2591,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.52.0
-    created: "2025-06-08T17:00:14.917636+02:00"
+    created: "2025-06-20T10:17:07.870255+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2586,7 +2648,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.52.0
-    created: "2025-06-08T17:00:14.908929+02:00"
+    created: "2025-06-20T10:17:07.863548+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2643,7 +2705,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.2
-    created: "2025-06-08T17:00:14.898076+02:00"
+    created: "2025-06-20T10:17:07.856833+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2700,7 +2762,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.2
-    created: "2025-06-08T17:00:14.886359+02:00"
+    created: "2025-06-20T10:17:07.84915+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2757,7 +2819,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.2
-    created: "2025-06-08T17:00:14.874897+02:00"
+    created: "2025-06-20T10:17:07.840017+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2814,7 +2876,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.1
-    created: "2025-06-08T17:00:14.866196+02:00"
+    created: "2025-06-20T10:17:07.831841+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2871,7 +2933,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.1
-    created: "2025-06-08T17:00:14.858952+02:00"
+    created: "2025-06-20T10:17:07.821133+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2928,7 +2990,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.0
-    created: "2025-06-08T17:00:14.850986+02:00"
+    created: "2025-06-20T10:17:07.809063+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2985,7 +3047,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.1
-    created: "2025-06-08T17:00:14.843161+02:00"
+    created: "2025-06-20T10:17:07.79462+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3042,7 +3104,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.1
-    created: "2025-06-08T17:00:14.835281+02:00"
+    created: "2025-06-20T10:17:07.783421+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3099,7 +3161,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.1
-    created: "2025-06-08T17:00:14.827766+02:00"
+    created: "2025-06-20T10:17:07.771942+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3156,7 +3218,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.0
-    created: "2025-06-08T17:00:14.820445+02:00"
+    created: "2025-06-20T10:17:07.75994+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3213,7 +3275,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-06-08T17:00:14.813101+02:00"
+    created: "2025-06-20T10:17:07.747641+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3270,7 +3332,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-06-08T17:00:14.806131+02:00"
+    created: "2025-06-20T10:17:07.737778+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3327,7 +3389,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-06-08T17:00:14.799451+02:00"
+    created: "2025-06-20T10:17:07.727891+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3384,7 +3446,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-06-08T17:00:14.792879+02:00"
+    created: "2025-06-20T10:17:07.717841+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3441,7 +3503,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-06-08T17:00:14.784605+02:00"
+    created: "2025-06-20T10:17:07.707172+02:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3489,4 +3551,4 @@ entries:
     urls:
     - prometheus-25.10.0.tgz
     version: 25.10.0
-generated: "2025-06-08T17:00:14.773646+02:00"
+generated: "2025-06-20T10:17:07.696422+02:00"
