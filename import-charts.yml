@@ -6,16 +6,12 @@ helm:
     uri: https://charts.helm.sh/incubator
     charts:
       - name: raw
-  - name: loft
-    uri: https://charts.loft.sh
-    charts:
-      - name: vcluster
   - name: netbox
     type: oci
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 6.0.41
+        version: 6.0.57
   - name: haproxytech
     uri: https://haproxytech.github.io/helm-charts
     charts:
