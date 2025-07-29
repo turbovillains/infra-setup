@@ -4,6 +4,200 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: remove pat-s from maintainers (#918)
+        - kind: changed
+          description: step down as maintainer (#917)
+        - kind: changed
+          description: update alpine/helm docker tag to v3.18.4 (#913)
+        - kind: changed
+          description: update postgresql docker tag to v16.7.21 (#908)
+    apiVersion: v2
+    appVersion: 1.24.3
+    created: "2025-08-09T08:16:31.729277+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.7.21
+    - condition: postgresql-ha.enabled
+      name: postgresql-ha
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.0.22
+    - condition: valkey-cluster.enabled
+      name: valkey-cluster
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 3.0.18
+    - condition: valkey.enabled
+      name: valkey
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 3.0.22
+    description: Gitea Helm chart for Kubernetes
+    digest: 212dd393d3101dd96d769a8b9a22f6e5bf30ecf48d8376884ef4a62692318d34
+    icon: https://gitea.com/assets/img/logo.svg
+    keywords:
+    - git
+    - issue tracker
+    - code review
+    - wiki
+    - gitea
+    - gogs
+    maintainers:
+    - email: charlie@charliedrage.com
+      name: Charlie Drage
+    - email: maintainers@gitea.io
+      name: Gitea Authors
+    - email: konrad.lother@novum-rgi.de
+      name: Konrad Lother
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    name: gitea
+    sources:
+    - https://gitea.com/gitea/helm-gitea
+    - https://github.com/go-gitea/gitea
+    - https://docker.gitea.com/gitea
+    type: application
+    urls:
+    - gitea-12.1.3.tgz
+    version: 12.1.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: update subcharts (minor & patch) (#905)
+        - kind: changed
+          description: update workflow dependencies (minor & patch) (#906)
+        - kind: changed
+          description: add workaround for rotating TLS certificates (#907)
+        - kind: changed
+          description: fix broken links (#904)
+        - kind: changed
+          description: update dependency go-gitea/gitea to v1.24.3 (#902)
+        - kind: changed
+          description: update subcharts (minor & patch) (#901)
+        - kind: changed
+          description: update subcharts (minor & patch) (#899)
+        - kind: changed
+          description: update subcharts (minor & patch) (#895)
+    apiVersion: v2
+    appVersion: 1.24.3
+    created: "2025-08-09T08:16:31.71008+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.7.20
+    - condition: postgresql-ha.enabled
+      name: postgresql-ha
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.0.22
+    - condition: valkey-cluster.enabled
+      name: valkey-cluster
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 3.0.18
+    - condition: valkey.enabled
+      name: valkey
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 3.0.22
+    description: Gitea Helm chart for Kubernetes
+    digest: 3e59596f4974753ddac54f63501ebd1a37116dd282e229dd2d7d09cfb37c3f0d
+    icon: https://gitea.com/assets/img/logo.svg
+    keywords:
+    - git
+    - issue tracker
+    - code review
+    - wiki
+    - gitea
+    - gogs
+    maintainers:
+    - email: charlie@charliedrage.com
+      name: Charlie Drage
+    - email: maintainers@gitea.io
+      name: Gitea Authors
+    - email: konrad.lother@novum-rgi.de
+      name: Konrad Lother
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    - email: sk.bunsenbrenner@gmail.com
+      name: Steven Kriegler
+    - email: patrick.schratz@gmail.com
+      name: Patrick Schratz
+    name: gitea
+    sources:
+    - https://gitea.com/gitea/helm-gitea
+    - https://github.com/go-gitea/gitea
+    - https://docker.gitea.com/gitea
+    type: application
+    urls:
+    - gitea-12.1.2.tgz
+    version: 12.1.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: add `srCheckPassword` param to support new postgresql-ha stream replication check requirements (#894)
+        - kind: changed
+          description: update workflow dependencies (minor & patch) (#892)
+        - kind: changed
+          description: update subcharts (minor & patch) (#891)
+        - kind: changed
+          description: update dependency go-gitea/gitea to v1.24.2 (#890)
+        - kind: changed
+          description: update bats testing framework (#889)
+        - kind: changed
+          description: update dependency go-gitea/gitea to v1.24.1 (#887)
+    apiVersion: v2
+    appVersion: 1.24.2
+    created: "2025-08-09T08:16:31.694703+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.7.13
+    - condition: postgresql-ha.enabled
+      name: postgresql-ha
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.0.14
+    - condition: valkey-cluster.enabled
+      name: valkey-cluster
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 3.0.14
+    - condition: valkey.enabled
+      name: valkey
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 3.0.15
+    description: Gitea Helm chart for Kubernetes
+    digest: 71f7feeb995d3c1569e305bc6e29008ea7e8992c00244816c9b03854bf45ba2a
+    icon: https://gitea.com/assets/img/logo.svg
+    keywords:
+    - git
+    - issue tracker
+    - code review
+    - wiki
+    - gitea
+    - gogs
+    maintainers:
+    - email: charlie@charliedrage.com
+      name: Charlie Drage
+    - email: maintainers@gitea.io
+      name: Gitea Authors
+    - email: konrad.lother@novum-rgi.de
+      name: Konrad Lother
+    - email: lucas.hahn@novum-rgi.de
+      name: Lucas Hahn
+    - email: sk.bunsenbrenner@gmail.com
+      name: Steven Kriegler
+    - email: patrick.schratz@gmail.com
+      name: Patrick Schratz
+    name: gitea
+    sources:
+    - https://gitea.com/gitea/helm-gitea
+    - https://github.com/go-gitea/gitea
+    - https://docker.gitea.com/gitea
+    type: application
+    urls:
+    - gitea-12.1.1.tgz
+    version: 12.1.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: remove comment
         - kind: added
           description: add Artifacthub annotation 'artifacthub.io/changes' (#881)
@@ -25,7 +219,7 @@ entries:
           description: fully re-enable release-workflow
     apiVersion: v2
     appVersion: 1.24.0
-    created: "2025-06-20T10:17:01.956069+02:00"
+    created: "2025-08-09T08:16:31.677352+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -77,7 +271,7 @@ entries:
     version: 12.1.0
   - apiVersion: v2
     appVersion: 1.23.8
-    created: "2025-06-20T10:17:01.942438+02:00"
+    created: "2025-08-09T08:16:31.661577+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -129,7 +323,7 @@ entries:
     version: 12.0.0
   - apiVersion: v2
     appVersion: 1.23.6
-    created: "2025-06-20T10:17:01.929461+02:00"
+    created: "2025-08-09T08:16:31.645816+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -181,7 +375,7 @@ entries:
     version: 11.0.1
   - apiVersion: v2
     appVersion: 1.23.4
-    created: "2025-06-20T10:17:01.915687+02:00"
+    created: "2025-08-09T08:16:31.626097+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -233,7 +427,7 @@ entries:
     version: 11.0.0
   - apiVersion: v2
     appVersion: 1.22.3
-    created: "2025-06-20T10:17:01.902383+02:00"
+    created: "2025-08-09T08:16:31.606308+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -285,7 +479,7 @@ entries:
     version: 10.6.0
   - apiVersion: v2
     appVersion: 1.22.3
-    created: "2025-06-20T10:17:01.889862+02:00"
+    created: "2025-08-09T08:16:31.586819+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -337,7 +531,7 @@ entries:
     version: 10.5.0
   - apiVersion: v2
     appVersion: 1.22.2
-    created: "2025-06-20T10:17:01.876796+02:00"
+    created: "2025-08-09T08:16:31.567476+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -389,7 +583,7 @@ entries:
     version: 10.4.1
   - apiVersion: v2
     appVersion: 1.22.1
-    created: "2025-06-20T10:17:01.862728+02:00"
+    created: "2025-08-09T08:16:31.551791+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -441,7 +635,7 @@ entries:
     version: 10.4.0
   - apiVersion: v2
     appVersion: 1.22.0
-    created: "2025-06-20T10:17:01.848153+02:00"
+    created: "2025-08-09T08:16:31.537625+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -493,7 +687,7 @@ entries:
     version: 10.3.0
   - apiVersion: v2
     appVersion: 1.22.0
-    created: "2025-06-20T10:17:01.834467+02:00"
+    created: "2025-08-09T08:16:31.522105+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -541,7 +735,7 @@ entries:
     version: 10.2.0
   - apiVersion: v2
     appVersion: 1.21.11
-    created: "2025-06-20T10:17:01.822896+02:00"
+    created: "2025-08-09T08:16:31.510493+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -589,7 +783,7 @@ entries:
     version: 10.1.4
   - apiVersion: v2
     appVersion: 1.21.7
-    created: "2025-06-20T10:17:01.810815+02:00"
+    created: "2025-08-09T08:16:31.499411+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -637,7 +831,7 @@ entries:
     version: 10.1.3
   - apiVersion: v2
     appVersion: 1.21.6
-    created: "2025-06-20T10:17:01.801553+02:00"
+    created: "2025-08-09T08:16:31.489922+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -685,7 +879,7 @@ entries:
     version: 10.1.2
   - apiVersion: v2
     appVersion: 1.21.5
-    created: "2025-06-20T10:17:01.791305+02:00"
+    created: "2025-08-09T08:16:31.479801+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -733,7 +927,7 @@ entries:
     version: 10.1.1
   - apiVersion: v2
     appVersion: 1.21.4
-    created: "2025-06-20T10:17:01.781229+02:00"
+    created: "2025-08-09T08:16:31.469959+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -781,7 +975,7 @@ entries:
     version: 10.1.0
   - apiVersion: v2
     appVersion: 1.21.3
-    created: "2025-06-20T10:17:01.771725+02:00"
+    created: "2025-08-09T08:16:31.460228+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -829,7 +1023,7 @@ entries:
     version: 10.0.2
   - apiVersion: v2
     appVersion: 1.21.2
-    created: "2025-06-20T10:17:01.761528+02:00"
+    created: "2025-08-09T08:16:31.450871+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -877,7 +1071,7 @@ entries:
     version: 10.0.1
   - apiVersion: v2
     appVersion: 1.21.2
-    created: "2025-06-20T10:17:01.750136+02:00"
+    created: "2025-08-09T08:16:31.440894+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -925,7 +1119,7 @@ entries:
     version: 10.0.0
   - apiVersion: v2
     appVersion: 1.21.1
-    created: "2025-06-20T10:17:01.975592+02:00"
+    created: "2025-08-09T08:16:31.760625+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -973,7 +1167,7 @@ entries:
     version: 9.6.1
   - apiVersion: v2
     appVersion: 1.21.0
-    created: "2025-06-20T10:17:01.965922+02:00"
+    created: "2025-08-09T08:16:31.744965+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -1019,4 +1213,4 @@ entries:
     urls:
     - gitea-9.6.0.tgz
     version: 9.6.0
-generated: "2025-06-20T10:17:01.738572+02:00"
+generated: "2025-08-09T08:16:31.431656+02:00"
