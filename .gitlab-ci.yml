@@ -754,6 +754,7 @@ archive-extra:
           - K8S_132_VERSION2
           - K8S_133_VERSION
           - K8S_133_VERSION2
+          - K8S_134_VERSION
       - REGISTRY:
           - registry.k8s.io
         BASE:
@@ -779,6 +780,12 @@ archive-extra:
           - calico/csi
         VERSION:
           - CALICO_VERSION
+      - BASE:
+          - istio/pilot
+          - istio/proxyv2
+          - istio/ztunnel
+        VERSION:
+          - ISTIO_VERSION
 
 turbovillains-mirror:
   interruptible: true

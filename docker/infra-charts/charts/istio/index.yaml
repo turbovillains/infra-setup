@@ -1,0 +1,1089 @@
+apiVersion: v1
+entries:
+  ambient:
+  - apiVersion: v2
+    appVersion: 1.27.0
+    created: "2025-08-28T19:38:22.317641+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.27.0
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.27.0
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.27.0
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.27.0
+    description: Helm umbrella chart for ambient
+    digest: f38c69ec35f2a99f2c972c13a594e3d29345fb8d7952b1682bba90e475ece444
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.27.0.tgz
+    version: 1.27.0
+  - apiVersion: v2
+    appVersion: 1.26.3
+    created: "2025-08-28T19:38:22.312843+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.26.3
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.26.3
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.26.3
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.26.3
+    description: Helm umbrella chart for ambient
+    digest: dfca7d506787843ac7dd6cd03e8518ff83e819a382aa7f8127062cba69f39eb9
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.26.3.tgz
+    version: 1.26.3
+  - apiVersion: v2
+    appVersion: 1.26.2
+    created: "2025-08-28T19:38:22.30846+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.26.2
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.26.2
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.26.2
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.26.2
+    description: Helm umbrella chart for ambient
+    digest: 3faec9c6c20e3306d67ad9bd4564251e3c03362c83501ee9aed7e98210e8dbe0
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.26.2.tgz
+    version: 1.26.2
+  - apiVersion: v2
+    appVersion: 1.26.1
+    created: "2025-08-28T19:38:22.304388+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.26.1
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.26.1
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.26.1
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.26.1
+    description: Helm umbrella chart for ambient
+    digest: 77853b0f26522ed0170ea8ebd7d52fef900583a72fcb7ac65a31759bd86e91aa
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.26.1.tgz
+    version: 1.26.1
+  - apiVersion: v2
+    appVersion: 1.26.0
+    created: "2025-08-28T19:38:22.300059+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.26.0
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.26.0
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.26.0
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.26.0
+    description: Helm umbrella chart for ambient
+    digest: 2887ff7e284fe7221647e1d7a899fd6a0ddfdb131a925648fa803dcdc87a2686
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.26.0.tgz
+    version: 1.26.0
+  - apiVersion: v2
+    appVersion: 1.25.4
+    created: "2025-08-28T19:38:22.295773+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.25.4
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.25.4
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.25.4
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.25.4
+    description: Helm umbrella chart for ambient
+    digest: 06c220073395108f06425c075f2c6a5adacb6dd598f13e77d62dc1a01e768863
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.25.4.tgz
+    version: 1.25.4
+  - apiVersion: v2
+    appVersion: 1.25.3
+    created: "2025-08-28T19:38:22.291255+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.25.3
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.25.3
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.25.3
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.25.3
+    description: Helm umbrella chart for ambient
+    digest: 328cd1a84fd6ca291e94c50cfa2e8948546a22612dcc59f491aa0193e6fd276f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.25.3.tgz
+    version: 1.25.3
+  - apiVersion: v2
+    appVersion: 1.25.2
+    created: "2025-08-28T19:38:22.287364+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.25.2
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.25.2
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.25.2
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.25.2
+    description: Helm umbrella chart for ambient
+    digest: 92bf59cf74eda56446948b48b9df0e28b19ebb9be504b5f62c955aabb6d00643
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.25.2.tgz
+    version: 1.25.2
+  - apiVersion: v2
+    appVersion: 1.25.1
+    created: "2025-08-28T19:38:22.283242+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.25.1
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.25.1
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.25.1
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.25.1
+    description: Helm umbrella chart for ambient
+    digest: 0f8bc17b1be704ef22a327caa3f9e4448f09c8305e3b2006edbe65953dde621e
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.25.1.tgz
+    version: 1.25.1
+  - apiVersion: v2
+    appVersion: 1.25.0
+    created: "2025-08-28T19:38:22.279064+02:00"
+    dependencies:
+    - name: base
+      repository: file://../../charts/base
+      version: 1.25.0
+    - name: cni
+      repository: file://../../charts/istio-cni
+      version: 1.25.0
+    - condition: istiod.enabled
+      name: istiod
+      repository: file://../../charts/istio-control/istio-discovery
+      version: 1.25.0
+    - name: ztunnel
+      repository: file://../../charts/ztunnel
+      version: 1.25.0
+    description: Helm umbrella chart for ambient
+    digest: 86a1e639814e846eec64835fd9a8f32cc5912619a3414d5a573df72c6784bb0f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    - ambient
+    kubeVersion: '>= 1.23.0-0'
+    name: ambient
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - ambient-1.25.0.tgz
+    version: 1.25.0
+  base:
+  - apiVersion: v2
+    appVersion: 1.27.0
+    created: "2025-08-28T19:38:22.355172+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 791895e7bb322d5703696da67caa4f375299b045740417a50de8f77a7b02e35f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.27.0.tgz
+    version: 1.27.0
+  - apiVersion: v2
+    appVersion: 1.26.3
+    created: "2025-08-28T19:38:22.351047+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 4176fb642b575315980caf8b422a9f06e7830a609b78a49c0880e28531af0d8c
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.26.3.tgz
+    version: 1.26.3
+  - apiVersion: v2
+    appVersion: 1.26.2
+    created: "2025-08-28T19:38:22.347058+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 1e900b0aefe0af2015aa0dcbba7b84333f50cd1a7e8330e09f3c93e6e38a5d6c
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.26.2.tgz
+    version: 1.26.2
+  - apiVersion: v2
+    appVersion: 1.26.1
+    created: "2025-08-28T19:38:22.342315+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: d1a6d3cc488903e498c8acc9c6d7cfe5fb555e951fe3a6fd1962d4a03751e89d
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.26.1.tgz
+    version: 1.26.1
+  - apiVersion: v2
+    appVersion: 1.26.0
+    created: "2025-08-28T19:38:22.338548+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 34fd9f5b05e9f05a474758d1e27e513d2120b5ff523c507fa39c466183caa424
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.26.0.tgz
+    version: 1.26.0
+  - apiVersion: v2
+    appVersion: 1.25.4
+    created: "2025-08-28T19:38:22.334668+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: da6fbecf71b1e67e3c06c6a5d4c288cf83bbf2dd3f6271586cce552d2581f390
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.25.4.tgz
+    version: 1.25.4
+  - apiVersion: v2
+    appVersion: 1.25.3
+    created: "2025-08-28T19:38:22.329925+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 4d96e90ee70af7d30f7660f744507c1e42f0496401d79b845b80c6ef9655eaae
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.25.3.tgz
+    version: 1.25.3
+  - apiVersion: v2
+    appVersion: 1.25.2
+    created: "2025-08-28T19:38:22.326953+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 5928df33236f2e7be01382140454762d414d3c1361de7a74808691ee843122e8
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.25.2.tgz
+    version: 1.25.2
+  - apiVersion: v2
+    appVersion: 1.25.1
+    created: "2025-08-28T19:38:22.32425+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 23d586a2a9662495da8cb6e023f5a4b8308e586b215d3b5a9d14819a0ce0fe98
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.25.1.tgz
+    version: 1.25.1
+  - apiVersion: v2
+    appVersion: 1.25.0
+    created: "2025-08-28T19:38:22.320392+02:00"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: 07cd834a3afbccedda99c75c55e967b04a4a4353df277e132f5935069ec1d96f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - base-1.25.0.tgz
+    version: 1.25.0
+  cni:
+  - apiVersion: v2
+    appVersion: 1.27.0
+    created: "2025-08-28T19:38:22.388149+02:00"
+    description: Helm chart for istio-cni components
+    digest: 0a0ba6f3e63fb950deb9cbad50127aa70d60ff26a57726d4be7a50ebefd7d89e
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.27.0.tgz
+    version: 1.27.0
+  - apiVersion: v2
+    appVersion: 1.26.3
+    created: "2025-08-28T19:38:22.384793+02:00"
+    description: Helm chart for istio-cni components
+    digest: d6a57497939b5cd3a50d535a2dde9ec524be0ecad3082d32b4910ffa4b907a06
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.26.3.tgz
+    version: 1.26.3
+  - apiVersion: v2
+    appVersion: 1.26.2
+    created: "2025-08-28T19:38:22.38135+02:00"
+    description: Helm chart for istio-cni components
+    digest: 6f93f68a184644cf0ae708de3d8d0a1907396638cc5bf4781e93de34d69bbe68
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.26.2.tgz
+    version: 1.26.2
+  - apiVersion: v2
+    appVersion: 1.26.1
+    created: "2025-08-28T19:38:22.377988+02:00"
+    description: Helm chart for istio-cni components
+    digest: b0c5f38c092adc51b312bca29f21d896be8ca3045f0245ca98570454e9c5c8a8
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.26.1.tgz
+    version: 1.26.1
+  - apiVersion: v2
+    appVersion: 1.26.0
+    created: "2025-08-28T19:38:22.374903+02:00"
+    description: Helm chart for istio-cni components
+    digest: c78f41669e1dcef77d3a954a28356bbe69d076694eacd78a8f0819544d65759b
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.26.0.tgz
+    version: 1.26.0
+  - apiVersion: v2
+    appVersion: 1.25.4
+    created: "2025-08-28T19:38:22.370466+02:00"
+    description: Helm chart for istio-cni components
+    digest: 11e1f886da9602320b09782d1ba30e6b4e462a1d3ab2b501635e24eca5d40b94
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.25.4.tgz
+    version: 1.25.4
+  - apiVersion: v2
+    appVersion: 1.25.3
+    created: "2025-08-28T19:38:22.367474+02:00"
+    description: Helm chart for istio-cni components
+    digest: d6289cf270968daca530247d494810d6bae6ea08cb06fae34f72673365702373
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.25.3.tgz
+    version: 1.25.3
+  - apiVersion: v2
+    appVersion: 1.25.2
+    created: "2025-08-28T19:38:22.364387+02:00"
+    description: Helm chart for istio-cni components
+    digest: 0a9764c577361c15249513983bfd0d36780eecaebf865e41725a9e472371e694
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.25.2.tgz
+    version: 1.25.2
+  - apiVersion: v2
+    appVersion: 1.25.1
+    created: "2025-08-28T19:38:22.361218+02:00"
+    description: Helm chart for istio-cni components
+    digest: c20fc310965f7b649cf960134d2b011c8a0c7be96b36282799f9875a7fc13b96
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.25.1.tgz
+    version: 1.25.1
+  - apiVersion: v2
+    appVersion: 1.25.0
+    created: "2025-08-28T19:38:22.358326+02:00"
+    description: Helm chart for istio-cni components
+    digest: 7819b78b27658d9555cfda7aa8090b8067e4e35bf19dc70e60d01fa15a414b93
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - cni-1.25.0.tgz
+    version: 1.25.0
+  gateway:
+  - apiVersion: v2
+    appVersion: 1.27.0
+    created: "2025-08-28T19:38:22.4221+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: d4bb97c1f6f5bd96fd789bb572f5b381dd2853259190d91abfafc1452e2aea25
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.27.0.tgz
+    version: 1.27.0
+  - apiVersion: v2
+    appVersion: 1.26.3
+    created: "2025-08-28T19:38:22.419555+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 2afa5f170b2d5a3a36dfea62d9128d329471fb09dbefa7e95f9424bf782c4988
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.26.3.tgz
+    version: 1.26.3
+  - apiVersion: v2
+    appVersion: 1.26.2
+    created: "2025-08-28T19:38:22.416834+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: ffca670e1f5deb1b9ef419e2ddcde7610f4934f4a4bad45b1460c42912d10426
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.26.2.tgz
+    version: 1.26.2
+  - apiVersion: v2
+    appVersion: 1.26.1
+    created: "2025-08-28T19:38:22.414079+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 4a5118554f1fa525a83e9745fde79708d927034f61a713d517c2770a78ec4339
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.26.1.tgz
+    version: 1.26.1
+  - apiVersion: v2
+    appVersion: 1.26.0
+    created: "2025-08-28T19:38:22.411209+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: cca26106f0fec208561e464c7bbb5de60e987b564c64b92fd11ca420b9589953
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.26.0.tgz
+    version: 1.26.0
+  - apiVersion: v2
+    appVersion: 1.25.4
+    created: "2025-08-28T19:38:22.407702+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 67feaf4cf5d6744cfbce67a1e479e3d436a59e964dc063d9ec0ca80c51f20655
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.25.4.tgz
+    version: 1.25.4
+  - apiVersion: v2
+    appVersion: 1.25.3
+    created: "2025-08-28T19:38:22.404476+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: c7b15f8cdd5f74f6fc0b45b1cafa83d80829d3447df77d395d4a7484e0185d30
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.25.3.tgz
+    version: 1.25.3
+  - apiVersion: v2
+    appVersion: 1.25.2
+    created: "2025-08-28T19:38:22.399087+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 93bf5dc2b6338500d574ab54de34ce94e04b8d820db64acdac1c1f8b0d5eda05
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.25.2.tgz
+    version: 1.25.2
+  - apiVersion: v2
+    appVersion: 1.25.1
+    created: "2025-08-28T19:38:22.395116+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 19af36cc07c3dd7330d4f38b37243cff4a52aac34cece004a75d60d5d63553da
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.25.1.tgz
+    version: 1.25.1
+  - apiVersion: v2
+    appVersion: 1.25.0
+    created: "2025-08-28T19:38:22.391614+02:00"
+    description: Helm chart for deploying Istio gateways
+    digest: 8c9c929e5525fe01cda158c028f0c32c42e6957fa2f9a45b0a719c258f93438f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - gateway-1.25.0.tgz
+    version: 1.25.0
+  istiod:
+  - apiVersion: v2
+    appVersion: 1.27.0
+    created: "2025-08-28T19:38:22.461549+02:00"
+    description: Helm chart for istio control plane
+    digest: fbe55cc9c2bdc959b40dd43138b65397d4661a2d7f6eaaf22e0426db14a16248
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.27.0.tgz
+    version: 1.27.0
+  - apiVersion: v2
+    appVersion: 1.26.3
+    created: "2025-08-28T19:38:22.45657+02:00"
+    description: Helm chart for istio control plane
+    digest: f2df1ac103bcc3d408ad2d5f6bc254149136afb01b10a5c2f76cd429b8c779b1
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.26.3.tgz
+    version: 1.26.3
+  - apiVersion: v2
+    appVersion: 1.26.2
+    created: "2025-08-28T19:38:22.451922+02:00"
+    description: Helm chart for istio control plane
+    digest: 183a5508c0bb997f67194e5ee15f4b1c1b1b56a6318a1b7315fa1c74d4d13a8c
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.26.2.tgz
+    version: 1.26.2
+  - apiVersion: v2
+    appVersion: 1.26.1
+    created: "2025-08-28T19:38:22.447584+02:00"
+    description: Helm chart for istio control plane
+    digest: cccf8661535155d0d28d5db57e0663f9c3e2840eeb4daa30d5149a054b7298d7
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.26.1.tgz
+    version: 1.26.1
+  - apiVersion: v2
+    appVersion: 1.26.0
+    created: "2025-08-28T19:38:22.443241+02:00"
+    description: Helm chart for istio control plane
+    digest: f584459900ca949e060170b3a75d0334676a207989a6566bd70654571f4ff24b
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.26.0.tgz
+    version: 1.26.0
+  - apiVersion: v2
+    appVersion: 1.25.4
+    created: "2025-08-28T19:38:22.438233+02:00"
+    description: Helm chart for istio control plane
+    digest: 5783362e3d5c54f760e901092dbb351ccbd1b8a257b93fb03cb6e33cc2d6359b
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.25.4.tgz
+    version: 1.25.4
+  - apiVersion: v2
+    appVersion: 1.25.3
+    created: "2025-08-28T19:38:22.435518+02:00"
+    description: Helm chart for istio control plane
+    digest: f5af843de4a635240976cc23cf0f290ea11bb9e6ccd8f1b3eadb9d38648bd49c
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.25.3.tgz
+    version: 1.25.3
+  - apiVersion: v2
+    appVersion: 1.25.2
+    created: "2025-08-28T19:38:22.432598+02:00"
+    description: Helm chart for istio control plane
+    digest: 3c1f749f94e9ac1a14ef60a739c2599fbd483e2dfa23f036e4277f36395bf06c
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.25.2.tgz
+    version: 1.25.2
+  - apiVersion: v2
+    appVersion: 1.25.1
+    created: "2025-08-28T19:38:22.428536+02:00"
+    description: Helm chart for istio control plane
+    digest: 343fbe7c2d23c929038af6310f393b702c7c24ef7bd9e134d675c62af6dfdc36
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.25.1.tgz
+    version: 1.25.1
+  - apiVersion: v2
+    appVersion: 1.25.0
+    created: "2025-08-28T19:38:22.425108+02:00"
+    description: Helm chart for istio control plane
+    digest: 1f5b43febf282990ef3f495a0f0cf512f85cd3e983f454fd4b10ac98f6b45e2f
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - istiod-1.25.0.tgz
+    version: 1.25.0
+  ztunnel:
+  - apiVersion: v2
+    appVersion: 1.27.0
+    created: "2025-08-28T19:38:22.495215+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: a1a9e3300194daeb8c627ddcbc1ead8e1c6f2f7f25abb638694021deb4b650b1
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.27.0.tgz
+    version: 1.27.0
+  - apiVersion: v2
+    appVersion: 1.26.3
+    created: "2025-08-28T19:38:22.491147+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: 825fc498f9538c17a7e14495e4b2101e4e756983d19cc02794929777682cb2bf
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.26.3.tgz
+    version: 1.26.3
+  - apiVersion: v2
+    appVersion: 1.26.2
+    created: "2025-08-28T19:38:22.488504+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: 1ce812c9761da547a7b5d03e07f5f424dee0b0972764bd513575279c2c2ed8fd
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.26.2.tgz
+    version: 1.26.2
+  - apiVersion: v2
+    appVersion: 1.26.1
+    created: "2025-08-28T19:38:22.485919+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: 529f0407535faa9aa2b907c50cfaa3f626c0abfec884984465c2313865e9e384
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.26.1.tgz
+    version: 1.26.1
+  - apiVersion: v2
+    appVersion: 1.26.0
+    created: "2025-08-28T19:38:22.483631+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: 1c1d97cbb5147da70f6e839cd2c42a62514ef30391e5f402a3ca3f85f91dcdc0
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.26.0.tgz
+    version: 1.26.0
+  - apiVersion: v2
+    appVersion: 1.25.4
+    created: "2025-08-28T19:38:22.478453+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: c52c9ecbc43678310fffd032ec13d1a371e9969bec3e9fe21e580e5592bd48a2
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.25.4.tgz
+    version: 1.25.4
+  - apiVersion: v2
+    appVersion: 1.25.3
+    created: "2025-08-28T19:38:22.476238+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: 65f5b0fdfeb74b54a9ece4930e40fa842f9891b0b429027b729f1902fbadb8dd
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.25.3.tgz
+    version: 1.25.3
+  - apiVersion: v2
+    appVersion: 1.25.2
+    created: "2025-08-28T19:38:22.474043+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: b7c520c06e0b795dea8181164e2f31704cc888850a0d8565df6a77b40dd46ab1
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.25.2.tgz
+    version: 1.25.2
+  - apiVersion: v2
+    appVersion: 1.25.1
+    created: "2025-08-28T19:38:22.470493+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: 681f9f4ec73493a0bf77939a9850f27ee368cc3435e18017d1b66f7f9a450e54
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.25.1.tgz
+    version: 1.25.1
+  - apiVersion: v2
+    appVersion: 1.25.0
+    created: "2025-08-28T19:38:22.467637+02:00"
+    description: Helm chart for istio ztunnel components
+    digest: 3f886fdaadefa34d5593c12cf663c9077637672619ddbaeeb1a79c1879535738
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - ztunnel-1.25.0.tgz
+    version: 1.25.0
+generated: "2025-08-28T19:38:22.274201+02:00"

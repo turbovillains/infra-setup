@@ -6,12 +6,25 @@ helm:
     uri: https://charts.helm.sh/incubator
     charts:
       - name: raw
-  - name: netbox
+  - name: metallb
+    uri: https://metallb.github.io/metallb
+    charts:
+      - name: metallb
+  - name: istio
+    uri: https://istio-release.storage.googleapis.com/charts
+    charts:
+      - name: base
+      - name: istiod
+      - name: gateway
+      - name: cni
+      - name: ztunnel
+      - name: ambient
+  - name: netbox  # https://github.com/netbox-community/netbox-chart/blob/main/charts/netbox/Chart.yaml
     type: oci
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 6.1.6
+        version: 6.1.15
   - name: haproxytech
     uri: https://haproxytech.github.io/helm-charts
     charts:
@@ -51,23 +64,23 @@ helm:
     charts:
       - name: pgadmin
       - name: postgresql
-  - name: bitnami
-    uri: https://charts.bitnami.com/bitnami
-    charts:
-      - name: keycloak
-      - name: kube-prometheus
-      - name: kube-state-metrics
-      - name: metallb
-      - name: metrics-server
-      - name: redis
-      - name: valkey
-      - name: nginx
-      - name: nginx-ingress-controller
-      - name: postgresql
-      - name: minio
-      - name: grafana
-      - name: nats
-      - name: haproxy
+  # - name: bitnami
+  #   uri: https://charts.bitnami.com/bitnami
+  #   charts:
+  #     - name: keycloak
+  #     - name: kube-prometheus
+  #     - name: kube-state-metrics
+  #     - name: metallb
+  #     - name: metrics-server
+  #     - name: redis
+  #     - name: valkey
+  #     - name: nginx
+  #     - name: nginx-ingress-controller
+  #     - name: postgresql
+  #     - name: minio
+  #     - name: grafana
+  #     - name: nats
+  #     - name: haproxy
   - name: elastic
     uri: https://helm.elastic.co
     charts:
@@ -84,6 +97,14 @@ helm:
     uri: https://prometheus-community.github.io/helm-charts
     charts:
       - name: prometheus
+      - name: prometheus-blackbox-exporter
+      - name: prometheus-ipmi-exporter
+      - name: prometheus-node-exporter
+      - name: prometheus-snmp-exporter
+      - name: prometheus-postgres-exporter
+      - name: prometheus-pushgateway
+      - name: kube-state-metrics
+      - name: alertmanager
   - name: stakater
     uri: https://stakater.github.io/stakater-charts
     charts:
