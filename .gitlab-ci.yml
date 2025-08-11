@@ -779,6 +779,12 @@ archive-extra:
           - calico/csi
         VERSION:
           - CALICO_VERSION
+      - BASE:
+          - istio/pilot
+          - istio/proxyv2
+          - istio/ztunnel
+        VERSION:
+          - ISTIO_VERSION
 
 turbovillains-mirror:
   interruptible: true
