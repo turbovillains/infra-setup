@@ -6,12 +6,21 @@ helm:
     uri: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: istio
+    uri: https://istio-release.storage.googleapis.com/charts
+    charts:
+      - name: base
+      - name: istiod
+      - name: gateway
+      - name: cni
+      - name: ztunnel
+      - name: ambient
   - name: netbox
     type: oci
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 6.1.6
+        version: 6.1.10
   - name: haproxytech
     uri: https://haproxytech.github.io/helm-charts
     charts:

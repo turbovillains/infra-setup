@@ -190,6 +190,11 @@ import_images() {
         "calico/node-driver-registrar:${CALICO_VERSION:-v3.22.1}"
         "calico/csi:${CALICO_VERSION:-v3.22.1}"
 
+        # istio
+        "istio/pilot:${ISTIO_VERSION:-1.27.0}"
+        "istio/proxyv2:${ISTIO_VERSION:-1.27.0}"
+        "istio/ztunnel:${ISTIO_VERSION:-1.27.0}"
+
         # NFD
         "registry.k8s.io/nfd/node-feature-discovery:${K8S_NFD_VERSION:-v0.13.3}"
         
