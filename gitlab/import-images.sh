@@ -152,6 +152,10 @@ import_images() {
         "registry.k8s.io/kube-proxy:${K8S_134_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-scheduler:${K8S_134_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-controller-manager:${K8S_134_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-apiserver:${K8S_134_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-proxy:${K8S_134_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-scheduler:${K8S_134_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
+        "registry.k8s.io/kube-controller-manager:${K8S_134_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
 
         # k8s 1.33.x
         "registry.k8s.io/kube-apiserver:${K8S_133_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
