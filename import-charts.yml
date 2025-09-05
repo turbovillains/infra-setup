@@ -10,6 +10,12 @@ helm:
     uri: https://metallb.github.io/metallb
     charts:
       - name: metallb
+  - name: strimzi-cluster-operator
+    type: oci
+    uri: oci://quay.io/strimzi-helm/
+    charts:
+      - name: strimzi-kafka-operator
+        version: 0.48.0
   - name: istio
     uri: https://istio-release.storage.googleapis.com/charts
     charts:
@@ -24,7 +30,7 @@ helm:
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 6.1.15
+        version: 7.0.2
   - name: haproxytech
     uri: https://haproxytech.github.io/helm-charts
     charts:

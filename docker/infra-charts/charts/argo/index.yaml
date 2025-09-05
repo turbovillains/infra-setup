@@ -4,13 +4,608 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
+          description: Bump argo-cd to v3.1.8
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.8
+    created: "2025-10-01T22:56:07.272509+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 9dca2fff9fe882f5e7fb4bc80db4074d31a00b2b59ec95cd153c846ae72af81e
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.8.tgz
+    version: 8.5.8
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Allow configuring resource requests/limits for copyutil initContainer in repo-server pod
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.7
+    created: "2025-10-01T22:56:07.264875+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 3bdccbaac25ec54c3ace3b5880460c4421136dd8c688eccf4a6344b86113e0cf
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.7.tgz
+    version: 8.5.7
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Add missing environment variable for v3.1.7
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.7
+    created: "2025-10-01T22:56:07.256955+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: b8f7ee1c0c1f7437425003d2e759a160b94438062a7db00a996f413de1fb46ce
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.6.tgz
+    version: 8.5.6
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v3.1.7
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.7
+    created: "2025-10-01T22:56:07.248858+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 72650590f1561dab5827e8f4f9fcb5ed0bdb5aa764654c7f34de1bd86247b652
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.5.tgz
+    version: 8.5.5
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Fix repo-server NetworkPolicy to allow metrics port access without requiring separate metrics service
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.6
+    created: "2025-10-01T22:56:07.240633+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: c818edc54efba44866c15ebf87ff140efcfca434dae199143735f30ab3cdc6ae
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.4.tgz
+    version: 8.5.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Add custom roleRules support for application-controller Role resource
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.6
+    created: "2025-10-01T22:56:07.232044+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: eb06cbc0a9ed7d9dffa12be1941e79357838a9b5f1740b6892c2b734e5320466
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.3.tgz
+    version: 8.5.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v3.1.6
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.6
+    created: "2025-10-01T22:56:07.223943+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: a9126cff37e54e4940d395520cdc664235393d24ada6eb343707b9ede490d094
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.2.tgz
+    version: 8.5.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Replace Bitnami dependency used to automatically test this chart
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.5
+    created: "2025-10-01T22:56:07.215979+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 84af0c6fac60bacadb13e2a632b1753149f46619a4e723adffa8557a9b50e298
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.1.tgz
+    version: 8.5.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Add size limit for emptyDir in statefulset of argocd-application-controller
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.5
+    created: "2025-10-01T22:56:07.207833+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 0ce6ca493728fb12e335e45be58bf07ce8eb090f84c0b6c2d715442a480cddcc
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.5.0.tgz
+    version: 8.5.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Added more example code regarding `oidc.config` from upstream docs to align better
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.5
+    created: "2025-10-01T22:56:07.199972+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: f179a8256999a7e8d43e2067dc1c39441fdcad59d3b19e8ebcd03d6d17b6d787
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.4.1.tgz
+    version: 8.4.1
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: support VerticalPodAutoscaler for application controller
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.5
+    created: "2025-10-01T22:56:07.191879+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: c92d63c0b7bba30ed3d7053fb1d5dd8afa8ab165144f97fe01647a126206b898
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.4.0.tgz
+    version: 8.4.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump redis_exporter to v1.77.0
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.5
+    created: "2025-10-01T22:56:07.183254+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 01e242b7556039ec0441bd7c87faa87b66363b0fa643d7499873f5b5306c039e
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.3.7.tgz
+    version: 8.3.7
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v3.1.5
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.5
+    created: "2025-10-01T22:56:07.174623+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 8aa6a5c5d1d4716051d4744ef59b960f7c234f4a1e93465049f0ace79afd46fb
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.3.6.tgz
+    version: 8.3.6
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v3.1.4
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.4
+    created: "2025-10-01T22:56:07.166217+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 5d03a3d6846009be4f4592023ae3a1766f14d6088a31b8a78de11ed20060f68d
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.3.5.tgz
+    version: 8.3.5
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump argo-cd to v3.1.3
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.3
+    created: "2025-10-01T22:56:07.157994+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 7014017a6c327bd6c682ad71f866f4a0e11508a01e9c39af1b1d8151186cbd61
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.3.4.tgz
+    version: 8.3.4
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump dex to v2.44.0
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.1
+    created: "2025-10-01T22:56:07.149868+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 87cc1b10e9f74d36c51a531e84f4d7365285fdec8e3b6913a02e1094e7770772
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.3.3.tgz
+    version: 8.3.3
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bump redis_exporter to v1.76.0
+      artifacthub.io/signKey: |
+        fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
+        url: https://argoproj.github.io/argo-helm/pgp_keys.asc
+    apiVersion: v2
+    appVersion: v3.1.1
+    created: "2025-10-01T22:56:07.14182+02:00"
+    dependencies:
+    - condition: redis-ha.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts/
+      version: 4.33.7
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 3b27fae20979cce377e4141ce4c79e4d5a7e04ac2b1027beb8492b25989893c5
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argo-cd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - argo-cd-8.3.2.tgz
+    version: 8.3.2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
           description: Bump argo-cd to v3.1.1
       artifacthub.io/signKey: |
         fingerprint: 2B8F22F57260EFA67BE1C5824B11F800CD9D2252
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.1.1
-    created: "2025-08-28T19:38:10.308559+02:00"
+    created: "2025-10-01T22:56:07.133672+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -45,7 +640,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-08-28T19:38:10.296085+02:00"
+    created: "2025-10-01T22:56:07.125056+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -80,7 +675,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.12
-    created: "2025-08-28T19:38:10.283641+02:00"
+    created: "2025-10-01T22:56:07.117097+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -115,7 +710,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.12
-    created: "2025-08-28T19:38:10.270731+02:00"
+    created: "2025-10-01T22:56:07.10921+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -150,7 +745,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.12
-    created: "2025-08-28T19:38:10.256753+02:00"
+    created: "2025-10-01T22:56:07.099664+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -185,7 +780,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.12
-    created: "2025-08-28T19:38:10.242708+02:00"
+    created: "2025-10-01T22:56:07.091481+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -220,7 +815,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.12
-    created: "2025-08-28T19:38:10.22986+02:00"
+    created: "2025-10-01T22:56:07.082863+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -255,7 +850,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.12
-    created: "2025-08-28T19:38:10.219571+02:00"
+    created: "2025-10-01T22:56:07.074615+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -290,7 +885,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.11
-    created: "2025-08-28T19:38:10.205061+02:00"
+    created: "2025-10-01T22:56:07.065933+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -325,7 +920,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.11
-    created: "2025-08-28T19:38:10.191422+02:00"
+    created: "2025-10-01T22:56:07.057441+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -360,7 +955,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.11
-    created: "2025-08-28T19:38:10.178002+02:00"
+    created: "2025-10-01T22:56:07.048313+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -395,7 +990,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.11
-    created: "2025-08-28T19:38:10.164279+02:00"
+    created: "2025-10-01T22:56:07.038833+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -430,7 +1025,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.6
-    created: "2025-08-28T19:38:10.152111+02:00"
+    created: "2025-10-01T22:56:07.030158+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -465,7 +1060,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.6
-    created: "2025-08-28T19:38:10.139789+02:00"
+    created: "2025-10-01T22:56:07.021419+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -500,7 +1095,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.6
-    created: "2025-08-28T19:38:10.126775+02:00"
+    created: "2025-10-01T22:56:07.012914+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -535,7 +1130,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.6
-    created: "2025-08-28T19:38:10.013479+02:00"
+    created: "2025-10-01T22:56:06.940646+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -570,7 +1165,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.5
-    created: "2025-08-28T19:38:10.004034+02:00"
+    created: "2025-10-01T22:56:06.932529+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -605,7 +1200,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.5
-    created: "2025-08-28T19:38:09.994281+02:00"
+    created: "2025-10-01T22:56:06.924169+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -640,7 +1235,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.5
-    created: "2025-08-28T19:38:09.98462+02:00"
+    created: "2025-10-01T22:56:06.914888+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -675,7 +1270,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.5
-    created: "2025-08-28T19:38:09.975362+02:00"
+    created: "2025-10-01T22:56:06.905827+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -710,7 +1305,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.4
-    created: "2025-08-28T19:38:09.966551+02:00"
+    created: "2025-10-01T22:56:06.897493+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -745,7 +1340,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.4
-    created: "2025-08-28T19:38:09.957599+02:00"
+    created: "2025-10-01T22:56:06.888989+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -780,7 +1375,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.3
-    created: "2025-08-28T19:38:09.94836+02:00"
+    created: "2025-10-01T22:56:06.881004+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -815,7 +1410,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.3
-    created: "2025-08-28T19:38:10.11233+02:00"
+    created: "2025-10-01T22:56:07.004168+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -850,7 +1445,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.3
-    created: "2025-08-28T19:38:10.098154+02:00"
+    created: "2025-10-01T22:56:06.995639+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -885,7 +1480,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.3
-    created: "2025-08-28T19:38:10.087798+02:00"
+    created: "2025-10-01T22:56:06.987482+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -920,7 +1515,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.2
-    created: "2025-08-28T19:38:10.074362+02:00"
+    created: "2025-10-01T22:56:06.979647+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -955,7 +1550,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.2
-    created: "2025-08-28T19:38:10.062131+02:00"
+    created: "2025-10-01T22:56:06.972024+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -990,7 +1585,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.1
-    created: "2025-08-28T19:38:10.050444+02:00"
+    created: "2025-10-01T22:56:06.964396+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1025,7 +1620,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.1
-    created: "2025-08-28T19:38:10.037961+02:00"
+    created: "2025-10-01T22:56:06.956451+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1060,7 +1655,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.1
-    created: "2025-08-28T19:38:10.02515+02:00"
+    created: "2025-10-01T22:56:06.948504+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1095,7 +1690,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.0
-    created: "2025-08-28T19:38:09.94084+02:00"
+    created: "2025-10-01T22:56:06.872722+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1130,7 +1725,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v3.0.0
-    created: "2025-08-28T19:38:09.933541+02:00"
+    created: "2025-10-01T22:56:06.864696+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1165,7 +1760,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.11
-    created: "2025-08-28T19:38:09.926213+02:00"
+    created: "2025-10-01T22:56:06.857083+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1200,7 +1795,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.11
-    created: "2025-08-28T19:38:09.918726+02:00"
+    created: "2025-10-01T22:56:06.849228+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1235,7 +1830,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.11
-    created: "2025-08-28T19:38:09.86056+02:00"
+    created: "2025-10-01T22:56:06.786488+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1270,7 +1865,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.10
-    created: "2025-08-28T19:38:09.853333+02:00"
+    created: "2025-10-01T22:56:06.778845+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1305,7 +1900,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.10
-    created: "2025-08-28T19:38:09.845777+02:00"
+    created: "2025-10-01T22:56:06.77136+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1340,7 +1935,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.10
-    created: "2025-08-28T19:38:09.838191+02:00"
+    created: "2025-10-01T22:56:06.763601+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1375,7 +1970,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.9
-    created: "2025-08-28T19:38:09.7974+02:00"
+    created: "2025-10-01T22:56:06.756041+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1410,7 +2005,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.9
-    created: "2025-08-28T19:38:09.765423+02:00"
+    created: "2025-10-01T22:56:06.748421+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1445,7 +2040,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.9
-    created: "2025-08-28T19:38:09.754604+02:00"
+    created: "2025-10-01T22:56:06.740265+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1480,7 +2075,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.8
-    created: "2025-08-28T19:38:09.744607+02:00"
+    created: "2025-10-01T22:56:06.732299+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1515,7 +2110,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.8
-    created: "2025-08-28T19:38:09.731817+02:00"
+    created: "2025-10-01T22:56:06.723769+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1550,7 +2145,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.7
-    created: "2025-08-28T19:38:09.707284+02:00"
+    created: "2025-10-01T22:56:06.706407+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1585,7 +2180,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.6
-    created: "2025-08-28T19:38:09.693592+02:00"
+    created: "2025-10-01T22:56:06.697707+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1620,7 +2215,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.5
-    created: "2025-08-28T19:38:09.681163+02:00"
+    created: "2025-10-01T22:56:06.689256+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1655,7 +2250,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.5
-    created: "2025-08-28T19:38:09.667212+02:00"
+    created: "2025-10-01T22:56:06.68158+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1690,7 +2285,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.4
-    created: "2025-08-28T19:38:09.911448+02:00"
+    created: "2025-10-01T22:56:06.841137+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1725,7 +2320,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.4
-    created: "2025-08-28T19:38:09.904615+02:00"
+    created: "2025-10-01T22:56:06.833421+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1760,7 +2355,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.3
-    created: "2025-08-28T19:38:09.897498+02:00"
+    created: "2025-10-01T22:56:06.825399+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1795,7 +2390,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.3
-    created: "2025-08-28T19:38:09.890452+02:00"
+    created: "2025-10-01T22:56:06.81752+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1830,7 +2425,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.2
-    created: "2025-08-28T19:38:09.883287+02:00"
+    created: "2025-10-01T22:56:06.80965+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1865,7 +2460,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.2
-    created: "2025-08-28T19:38:09.875727+02:00"
+    created: "2025-10-01T22:56:06.80171+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1900,7 +2495,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.2
-    created: "2025-08-28T19:38:09.86773+02:00"
+    created: "2025-10-01T22:56:06.793968+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1935,7 +2530,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.2
-    created: "2025-08-28T19:38:09.720017+02:00"
+    created: "2025-10-01T22:56:06.714995+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -1970,7 +2565,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.2
-    created: "2025-08-28T19:38:09.654217+02:00"
+    created: "2025-10-01T22:56:06.673944+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2005,7 +2600,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.14.1
-    created: "2025-08-28T19:38:09.641775+02:00"
+    created: "2025-10-01T22:56:06.666414+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2040,7 +2635,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.2
-    created: "2025-08-28T19:38:09.512567+02:00"
+    created: "2025-10-01T22:56:06.599195+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2075,7 +2670,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.2
-    created: "2025-08-28T19:38:09.502234+02:00"
+    created: "2025-10-01T22:56:06.591147+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2110,7 +2705,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.1
-    created: "2025-08-28T19:38:09.626745+02:00"
+    created: "2025-10-01T22:56:06.658392+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2145,7 +2740,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.1
-    created: "2025-08-28T19:38:09.616001+02:00"
+    created: "2025-10-01T22:56:06.650955+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2180,7 +2775,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.1
-    created: "2025-08-28T19:38:09.582606+02:00"
+    created: "2025-10-01T22:56:06.643708+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2215,7 +2810,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.1
-    created: "2025-08-28T19:38:09.571035+02:00"
+    created: "2025-10-01T22:56:06.635799+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2250,7 +2845,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.1
-    created: "2025-08-28T19:38:09.559609+02:00"
+    created: "2025-10-01T22:56:06.628543+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2285,7 +2880,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.1
-    created: "2025-08-28T19:38:09.54779+02:00"
+    created: "2025-10-01T22:56:06.621379+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2320,7 +2915,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.0
-    created: "2025-08-28T19:38:09.537254+02:00"
+    created: "2025-10-01T22:56:06.613766+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2355,7 +2950,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.0
-    created: "2025-08-28T19:38:09.527538+02:00"
+    created: "2025-10-01T22:56:06.606594+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2390,7 +2985,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.0
-    created: "2025-08-28T19:38:09.490866+02:00"
+    created: "2025-10-01T22:56:06.583123+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2425,7 +3020,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.13.0
-    created: "2025-08-28T19:38:09.47966+02:00"
+    created: "2025-10-01T22:56:06.57528+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2460,7 +3055,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.6
-    created: "2025-08-28T19:38:09.412292+02:00"
+    created: "2025-10-01T22:56:06.510283+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2495,7 +3090,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.5
-    created: "2025-08-28T19:38:09.406059+02:00"
+    created: "2025-10-01T22:56:06.502914+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2530,7 +3125,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.4
-    created: "2025-08-28T19:38:09.399513+02:00"
+    created: "2025-10-01T22:56:06.495436+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2565,7 +3160,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.4
-    created: "2025-08-28T19:38:09.470703+02:00"
+    created: "2025-10-01T22:56:06.567787+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2600,7 +3195,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.4
-    created: "2025-08-28T19:38:09.462442+02:00"
+    created: "2025-10-01T22:56:06.560875+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2635,7 +3230,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.4
-    created: "2025-08-28T19:38:09.454142+02:00"
+    created: "2025-10-01T22:56:06.554179+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2670,7 +3265,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.4
-    created: "2025-08-28T19:38:09.445953+02:00"
+    created: "2025-10-01T22:56:06.547216+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2705,7 +3300,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.4
-    created: "2025-08-28T19:38:09.437421+02:00"
+    created: "2025-10-01T22:56:06.539809+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2740,7 +3335,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.431317+02:00"
+    created: "2025-10-01T22:56:06.532711+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2775,7 +3370,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.425134+02:00"
+    created: "2025-10-01T22:56:06.525637+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2810,7 +3405,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.418926+02:00"
+    created: "2025-10-01T22:56:06.517946+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2845,7 +3440,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.393123+02:00"
+    created: "2025-10-01T22:56:06.487938+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2880,7 +3475,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.387176+02:00"
+    created: "2025-10-01T22:56:06.48088+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2915,7 +3510,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.381021+02:00"
+    created: "2025-10-01T22:56:06.473399+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2950,7 +3545,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.374692+02:00"
+    created: "2025-10-01T22:56:06.464421+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -2985,7 +3580,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.368657+02:00"
+    created: "2025-10-01T22:56:06.457267+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3020,7 +3615,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.3
-    created: "2025-08-28T19:38:09.36232+02:00"
+    created: "2025-10-01T22:56:06.450101+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3055,7 +3650,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.2
-    created: "2025-08-28T19:38:09.356042+02:00"
+    created: "2025-10-01T22:56:06.443072+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3090,7 +3685,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.2
-    created: "2025-08-28T19:38:09.349929+02:00"
+    created: "2025-10-01T22:56:06.435818+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3125,7 +3720,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.12.1
-    created: "2025-08-28T19:38:09.343784+02:00"
+    created: "2025-10-01T22:56:06.427904+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3160,7 +3755,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.7
-    created: "2025-08-28T19:38:09.288231+02:00"
+    created: "2025-10-01T22:56:06.345024+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3195,7 +3790,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.6
-    created: "2025-08-28T19:38:09.282221+02:00"
+    created: "2025-10-01T22:56:06.334985+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3230,7 +3825,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.5
-    created: "2025-08-28T19:38:09.337607+02:00"
+    created: "2025-10-01T22:56:06.41872+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3265,7 +3860,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.5
-    created: "2025-08-28T19:38:09.331362+02:00"
+    created: "2025-10-01T22:56:06.410938+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3300,7 +3895,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.5
-    created: "2025-08-28T19:38:09.324949+02:00"
+    created: "2025-10-01T22:56:06.401877+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3335,7 +3930,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.4
-    created: "2025-08-28T19:38:09.318884+02:00"
+    created: "2025-10-01T22:56:06.392875+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3370,7 +3965,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.4
-    created: "2025-08-28T19:38:09.313049+02:00"
+    created: "2025-10-01T22:56:06.38323+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3405,7 +4000,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.4
-    created: "2025-08-28T19:38:09.306924+02:00"
+    created: "2025-10-01T22:56:06.373011+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3440,7 +4035,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.300838+02:00"
+    created: "2025-10-01T22:56:06.364201+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3475,7 +4070,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.29465+02:00"
+    created: "2025-10-01T22:56:06.355493+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3510,7 +4105,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.276194+02:00"
+    created: "2025-10-01T22:56:06.324502+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3545,7 +4140,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.270048+02:00"
+    created: "2025-10-01T22:56:06.313629+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3580,7 +4175,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.264014+02:00"
+    created: "2025-10-01T22:56:06.301961+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3617,7 +4212,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.257653+02:00"
+    created: "2025-10-01T22:56:06.289648+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3652,7 +4247,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.251031+02:00"
+    created: "2025-10-01T22:56:06.278438+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3687,7 +4282,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.3
-    created: "2025-08-28T19:38:09.244406+02:00"
+    created: "2025-10-01T22:56:06.267925+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3722,7 +4317,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.2
-    created: "2025-08-28T19:38:09.108267+02:00"
+    created: "2025-10-01T22:56:06.105548+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3757,7 +4352,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2025-08-28T19:38:09.099362+02:00"
+    created: "2025-10-01T22:56:06.094851+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3792,7 +4387,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2025-08-28T19:38:09.089264+02:00"
+    created: "2025-10-01T22:56:06.085328+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3827,7 +4422,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2025-08-28T19:38:09.077831+02:00"
+    created: "2025-10-01T22:56:06.074318+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3864,7 +4459,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.1
-    created: "2025-08-28T19:38:09.065439+02:00"
+    created: "2025-10-01T22:56:06.063051+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3899,7 +4494,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2025-08-28T19:38:09.237836+02:00"
+    created: "2025-10-01T22:56:06.258422+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3934,7 +4529,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2025-08-28T19:38:09.231556+02:00"
+    created: "2025-10-01T22:56:06.248991+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -3973,7 +4568,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2025-08-28T19:38:09.225177+02:00"
+    created: "2025-10-01T22:56:06.239211+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4008,7 +4603,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2025-08-28T19:38:09.218567+02:00"
+    created: "2025-10-01T22:56:06.229171+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4043,7 +4638,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.11.0
-    created: "2025-08-28T19:38:09.212156+02:00"
+    created: "2025-10-01T22:56:06.216504+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4078,7 +4673,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.5
-    created: "2025-08-28T19:38:09.204784+02:00"
+    created: "2025-10-01T22:56:06.204027+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4113,7 +4708,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.5
-    created: "2025-08-28T19:38:09.197889+02:00"
+    created: "2025-10-01T22:56:06.195102+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4148,7 +4743,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.5
-    created: "2025-08-28T19:38:09.190882+02:00"
+    created: "2025-10-01T22:56:06.186435+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4183,7 +4778,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.4
-    created: "2025-08-28T19:38:09.183777+02:00"
+    created: "2025-10-01T22:56:06.177515+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4218,7 +4813,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.3
-    created: "2025-08-28T19:38:09.176657+02:00"
+    created: "2025-10-01T22:56:06.168508+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4253,7 +4848,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2025-08-28T19:38:09.169062+02:00"
+    created: "2025-10-01T22:56:06.158065+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4288,7 +4883,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2025-08-28T19:38:09.158854+02:00"
+    created: "2025-10-01T22:56:06.147516+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4323,7 +4918,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2025-08-28T19:38:09.145291+02:00"
+    created: "2025-10-01T22:56:06.138137+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4358,7 +4953,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.2
-    created: "2025-08-28T19:38:09.131948+02:00"
+    created: "2025-10-01T22:56:06.125526+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4393,7 +4988,7 @@ entries:
         url: https://argoproj.github.io/argo-helm/pgp_keys.asc
     apiVersion: v2
     appVersion: v2.10.1
-    created: "2025-08-28T19:38:09.119952+02:00"
+    created: "2025-10-01T22:56:06.116441+02:00"
     dependencies:
     - condition: redis-ha.enabled
       name: redis-ha
@@ -4419,4 +5014,4 @@ entries:
     urls:
     - argo-cd-6.5.0.tgz
     version: 6.5.0
-generated: "2025-08-28T19:38:09.052092+02:00"
+generated: "2025-10-01T22:56:06.052565+02:00"
