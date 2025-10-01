@@ -70,7 +70,7 @@ variables:
   HAPROXY_VERSION: "3.2.5" # https://hub.docker.com/r/haproxytech/haproxy-alpine/tags
   HAPROXY_INGRESS_VERSION: "3.1.12" # https://hub.docker.com/r/haproxytech/kubernetes-ingress/tags
   KARMA_VERSION: "v0.121" # https://github.com/prymitive/karma/pkgs/container/karma
-  ECK_OPERATOR_VERSION: 3.1.0 # https://hub.docker.com/r/elastic/eck-operator/tags
+  ECK_OPERATOR_VERSION: "3.1.0" # https://hub.docker.com/r/elastic/eck-operator/tags
   ELASTICSEARCH_VERSION: "9.1.4" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
   LOGSTASH_VERSION: "9.1.4"
   KIBANA_VERSION: "9.1.4"
@@ -111,8 +111,8 @@ variables:
   BITNAMI_KUBE_RBAC_PROXY_VERSION: "0.19.1" # https://hub.docker.com/r/bitnami/kube-rbac-proxy/tags
   BITNAMI_OPENLDAP_VERSION: "2.6.10" # https://hub.docker.com/r/bitnami/openldap/tags?page=1&name=2.6
   BITNAMI_KUBECTL_VERSION: "1.33.4" # https://hub.docker.com/r/bitnami/kubectl/tags
-  TRIVY_VERSION: 0.67.0 # https://hub.docker.com/r/aquasec/trivy/tags
-  CSI_SECRETS_STORE_VERSION: v1.5.3 # https://github.com/kubernetes-sigs/secrets-store-csi-driver/releases
+  TRIVY_VERSION: "0.67.0" # https://hub.docker.com/r/aquasec/trivy/tags
+  CSI_SECRETS_STORE_VERSION: v1.5.4 # https://github.com/kubernetes-sigs/secrets-store-csi-driver/releases
   EXTERNAL_SECRETS_VERSION: v0.20.1 # https://github.com/external-secrets/external-secrets/releases
   RELOADER_VERSION: "v1.4.8" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
@@ -138,15 +138,15 @@ variables:
   SYNCTHING_VERSION: "2.0.10" # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: "10.10.7" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
   TDARR_VERSION: "2.47.01" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
-  CURL_VERSION: 8.16.0 # https://hub.docker.com/r/curlimages/curl/tags
-  RESTIC_VERSION: 0.18.1 # https://hub.docker.com/r/restic/restic/tags
-  COTURN_VERSION: 4.7.0 # https://hub.docker.com/r/coturn/coturn/tags
+  CURL_VERSION: "8.16.0" # https://hub.docker.com/r/curlimages/curl/tags
+  RESTIC_VERSION: "0.18.1" # https://hub.docker.com/r/restic/restic/tags
+  COTURN_VERSION: "4.7.0" # https://hub.docker.com/r/coturn/coturn/tags
   JENKINS_VERSION: 2.530-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
   KIWIGRID_K8S_SIDECAR_VERSION: "1.30.10" # https://github.com/kiwigrid/k8s-sidecar
   JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_INBOUND_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
-  NETBOX_VERSION: v4.4.1 # https://hub.docker.com/r/netboxcommunity/netbox/tags
+  NETBOX_VERSION: v4.4.2 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v13.0.7 # https://hub.docker.com/r/postgrest/postgrest/tags
   CEPHCSI_VERSION: v3.15.0 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v25.3.4 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
@@ -161,10 +161,18 @@ variables:
   NVIDIA_K8S_MIG_MANAGER_VERSION: v0.9.1-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-mig-manager/tags
   ZITADEL_VERSION: v2.65.1 # https://github.com/zitadel/zitadel/pkgs/container/zitadel
   HOMEASSISTANT_VERSION: "2025.9" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
-  ZIGBEE2MQTT_VERSION: "2.6.1" # https://github.com/Koenkk/zigbee2mqtt/releases
+  ZIGBEE2MQTT_VERSION: "2.6.2" # https://github.com/Koenkk/zigbee2mqtt/releases
   GITEA_VERSION: 1.24.6-rootless # https://hub.docker.com/r/gitea/gitea/tags
   CLOUDFLARED_VERSION: "2025.9.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
   MAILCATCHER_VERSION: "v0.10.0" # https://github.com/sj26/mailcatcher/releases
   FRP_VERSION: "v0.65.0" # https://github.com/fatedier/frp/releases/tag/v0.61.1
   ISTIO_VERSION: "1.27.1" # https://github.com/istio/istio/releases/tag/1.27.0
-  STRIMZI_OPERATOR_VERSION: "0.48.0" # https://quay.io/repository/strimzi-helm/strimzi-kafka-operator?tab=tags&tag=latest
+  APACHE_KAFKA_VERSION: "4.1.0" # https://hub.docker.com/r/apache/kafka/tags
+  STRIMZI_OPERATOR_VERSION: "0.48.0"  # https://quay.io/repository/strimzi/operator?tab=tags
+  STRIMZI_KAFKA_VERSION: "4.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
+  CONFLUENTINC_OPERATOR_VERSION: "0.1263.34" # https://hub.docker.com/r/confluentinc/confluent-operator/tags
+  CONFLUENTINC_INIT_CONTAINER_VERSION: "3.0.1" # https://registry.hub.docker.com/r/confluentinc/confluent-init-container/tags
+  CONFLUENTINC_CP_VERSION: "7.9.3" # https://hub.docker.com/r/confluentinc/cp-server/tags
+  KAFDROP_VERSION: "4.0.2" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
+  AKHQ_VERSION: "0.25.1" # https://hub.docker.com/r/tchiotludo/akhq/tags
+  AIRFLOW_VERSION: 2.10.3-python3.12 # https://hub.docker.com/r/apache/airflow/tags

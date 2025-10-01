@@ -238,6 +238,25 @@ import_images() {
         # "nvcr.io/nvidia/cloud-native/k8s-kata-manager:v0.1.2"
         # "nvcr.io/nvidia/kubevirt-gpu-device-plugin:v1.2.4"
         # "nvcr.io/nvidia/cloud-native/k8s-cc-manager:v0.1.1"
+
+        # kafka
+        "quay.io/strimzi/operator:${STRIMZI_OPERATOR_VERSION:-0.28.0}"
+        "quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION:-0.28.0}-kafka-${STRIMZI_KAFKA_VERSION:-3.1.0}"
+
+        # confluent shit, https://docs.confluent.io/operator/current/co-custom-registry.html
+        "confluentinc/confluent-init-container:${CONFLUENTINC_INIT_CONTAINER_VERSION:-2.3.1}"
+        "confluentinc/confluent-operator:${CONFLUENTINC_OPERATOR_VERSION:-0.435.23}"
+        "confluentinc/cp-enterprise-control-center:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-enterprise-replicator:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-kafka-rest:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-ksqldb-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-ksqldb-cli:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-schema-registry:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-server-connect:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-zookeeper:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "obsidiandynamics/kafdrop:${KAFDROP_VERSION:-3.30.0}"
+        "tchiotludo/akhq:${AKHQ_VERSION:-0.21.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

@@ -727,6 +727,7 @@ archive-special:
   script:
     - |
       declare -a special_images=(
+        "${DOCKER_HUB}/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}"
       )
 
       for image in "${special_images[@]}"; do
@@ -787,6 +788,44 @@ archive-extra:
           - istio/ztunnel
         VERSION:
           - ISTIO_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - strimzi/operator
+        VERSION:
+          - STRIMZI_OPERATOR_VERSION
+      - BASE:
+          - tchiotludo/akhq
+        VERSION:
+          - AKHQ_VERSION
+      - BASE:
+          - obsidiandynamics/kafdrop
+        VERSION:
+          - KAFDROP_VERSION
+      - BASE:
+          - apache/kafka
+        VERSION:
+          - APACHE_KAFKA_VERSION
+      - BASE:
+          - confluentinc/cp-enterprise-control-center
+          - confluentinc/cp-enterprise-replicator
+          - confluentinc/cp-kafka-rest
+          - confluentinc/cp-ksqldb-server
+          - confluentinc/cp-ksqldb-cli
+          - confluentinc/cp-schema-registry
+          - confluentinc/cp-server
+          - confluentinc/cp-server-connect
+          - confluentinc/cp-zookeeper
+        VERSION:
+          - CONFLUENTINC_CP_VERSION
+      - BASE:
+          - confluentinc/confluent-init-container
+        VERSION:
+          - CONFLUENTINC_INIT_CONTAINER_VERSION
+      - BASE:
+          - confluentinc/confluent-operator
+        VERSION:
+          - CONFLUENTINC_OPERATOR_VERSION
 
 turbovillains-mirror:
   interruptible: true
@@ -2557,6 +2596,107 @@ frpc:
   variables:
     IMAGE_BASE: fatedier/frpc
     IMAGE_VERSION: ${FRP_VERSION}
+
+kafdrop:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: obsidiandynamics/kafdrop
+    IMAGE_VERSION: ${KAFDROP_VERSION}
+
+akhq:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: tchiotludo/akhq
+    IMAGE_VERSION: ${AKHQ_VERSION}
+
+apache-kafka:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: apache/kafka
+    IMAGE_VERSION: ${APACHE_KAFKA_VERSION}
+
+strimzi-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: strimzi/operator
+    IMAGE_VERSION: ${STRIMZI_OPERATOR_VERSION}
+
+strimzi-kafka:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: strimzi/kafka
+    IMAGE_VERSION: ${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}
+
+confluent-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: confluentinc/confluent-operator
+    IMAGE_VERSION: ${CONFLUENTINC_OPERATOR_VERSION}
+
+confluent-init-container:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: confluentinc/confluent-init-container
+    IMAGE_VERSION: ${CONFLUENTINC_INIT_CONTAINER_VERSION}
+
+confluent-platform:
+  interruptible: true
+  retry: 2
+  stage: build
+  parallel:
+    matrix:
+      - CONFLUENTINC_CP_COMPONENT:
+          - enterprise-control-center
+          - enterprise-replicator
+          - kafka-rest
+          - ksqldb-server
+          - ksqldb-cli
+          - schema-registry
+          - server
+          - server-connect
+          - zookeeper
+        DUMMY:
+          - dummy
+  script:
+    - |
+      ./gitlab/build-image.sh confluent-platform ${INFRA_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
+        --build-arg CONFLUENTINC_CP_VERSION \
+        --build-arg CONFLUENTINC_CP_COMPONENT
 
 infra-docs:
   interruptible: true

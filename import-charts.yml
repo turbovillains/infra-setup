@@ -16,6 +16,18 @@ helm:
     charts:
       - name: strimzi-kafka-operator
         version: 0.48.0
+  # - name: strimzi
+  #   uri: https://strimzi.io/charts/
+  #   charts:
+  #     - name: strimzi-kafka-operator
+  - name: akhq
+    uri: https://akhq.io/
+  - name: confluentinc
+    uri: https://packages.confluent.io/helm
+    charts:
+      - name: confluent-for-kubernetes
+  - name: confluentinc-oss
+    uri: https://confluentinc.github.io/cp-helm-charts
   - name: istio
     uri: https://istio-release.storage.googleapis.com/charts
     charts:
