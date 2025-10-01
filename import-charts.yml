@@ -10,6 +10,10 @@ helm:
     uri: https://metallb.github.io/metallb
     charts:
       - name: metallb
+  - name: altinity
+    uri: https://helm.altinity.com
+    charts:
+      - name: altinity-clickhouse-operator
   - name: strimzi-cluster-operator
     type: oci
     uri: oci://quay.io/strimzi-helm/
@@ -28,6 +32,16 @@ helm:
       - name: confluent-for-kubernetes
   - name: confluentinc-oss
     uri: https://confluentinc.github.io/cp-helm-charts
+  - name: scylla
+    uri: https://scylla-operator-charts.storage.googleapis.com/stable
+    charts:
+      - name: scylla-operator
+      - name: scylla-manager
+      - name: scylla
+  - name: airflow
+    uri: https://airflow.apache.org
+    charts:
+      - name: airflow
   - name: istio
     uri: https://istio-release.storage.googleapis.com/charts
     charts:

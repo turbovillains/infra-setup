@@ -720,6 +720,28 @@ archive-images4:
           - fatedier/frpc
         VERSION:
           - FRP_VERSION
+      - REGISTRY:
+          - docker.n8n.io
+        BASE:
+          - n8nio/n8n
+        VERSION:
+          - N8N_VERSION
+      - BASE:
+          - netsampler/goflow2
+        VERSION:
+          - GOFLOW2_VERSION
+      - REGISTRY:
+          - ghcr.io
+        BASE:
+          - corentinth/it-tools
+        VERSION:
+          - ITTOOLS_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - openbgpd/openbgpd
+        VERSION:
+          - OPENBGPD_VERISON
 
 archive-special:
   extends: .archive-images
@@ -807,7 +829,6 @@ archive-extra:
         VERSION:
           - APACHE_KAFKA_VERSION
       - BASE:
-          - confluentinc/cp-enterprise-control-center
           - confluentinc/cp-enterprise-replicator
           - confluentinc/cp-kafka-rest
           - confluentinc/cp-ksqldb-server
@@ -815,7 +836,6 @@ archive-extra:
           - confluentinc/cp-schema-registry
           - confluentinc/cp-server
           - confluentinc/cp-server-connect
-          - confluentinc/cp-zookeeper
         VERSION:
           - CONFLUENTINC_CP_VERSION
       - BASE:
@@ -823,9 +843,37 @@ archive-extra:
         VERSION:
           - CONFLUENTINC_INIT_CONTAINER_VERSION
       - BASE:
+          - confluentinc/cp-enterprise-control-center-next-gen
+        VERSION:
+          - CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION
+      - BASE:
           - confluentinc/confluent-operator
         VERSION:
           - CONFLUENTINC_OPERATOR_VERSION
+      - BASE:
+          - scylladb/scylla
+        VERSION:
+          - SCYLLA_VERSION
+      - BASE:
+          - scylladb/scylla-manager
+        VERSION:
+          - SCYLLA_MANAGER_VERSION
+      - BASE:
+          - scylladb/scylla-operator
+        VERSION:
+          - SCYLLA_OPERATOR_VERSION
+      - BASE:
+          - apache/airflow
+        VERSION:
+          - AIRFLOW_VERSION
+      - BASE:
+          - library/clickhouse
+        VERSION:
+          - CLICKHOUSE_VERSION
+      - BASE:
+          - altinity/clickhouse-operator
+        VERSION:
+          - CLICHOUSE_OPERATOR_VERSION
 
 turbovillains-mirror:
   interruptible: true
@@ -2234,6 +2282,18 @@ git-sync:
     IMAGE_BASE: git-sync/git-sync
     IMAGE_VERSION: ${GIT_SYNC_VERSION}
 
+airflow:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+        --build-arg AIRFLOW_VERSION
+  variables:
+    BASE: apache/airflow
+    VERSION: AIRFLOW_VERSION
+
 syncthing:
   interruptible: true
   retry: 2
@@ -2674,6 +2734,17 @@ confluent-init-container:
     IMAGE_BASE: confluentinc/confluent-init-container
     IMAGE_VERSION: ${CONFLUENTINC_INIT_CONTAINER_VERSION}
 
+confluent-enterprise-control-center:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: confluentinc/cp-enterprise-control-center-next-gen
+    IMAGE_VERSION: ${CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION}
+
 confluent-platform:
   interruptible: true
   retry: 2
@@ -2681,7 +2752,6 @@ confluent-platform:
   parallel:
     matrix:
       - CONFLUENTINC_CP_COMPONENT:
-          - enterprise-control-center
           - enterprise-replicator
           - kafka-rest
           - ksqldb-server
@@ -2689,7 +2759,6 @@ confluent-platform:
           - schema-registry
           - server
           - server-connect
-          - zookeeper
         DUMMY:
           - dummy
   script:
@@ -2697,6 +2766,105 @@ confluent-platform:
       ./gitlab/build-image.sh confluent-platform ${INFRA_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
         --build-arg CONFLUENTINC_CP_VERSION \
         --build-arg CONFLUENTINC_CP_COMPONENT
+
+scylla:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: scylladb/scylla
+    IMAGE_VERSION: ${SCYLLA_VERSION}
+
+scylla-manager:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: scylladb/scylla-manager
+    IMAGE_VERSION: ${SCYLLA_MANAGER_VERSION}
+
+scylla-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: scylladb/scylla-operator
+    IMAGE_VERSION: ${SCYLLA_OPERATOR_VERSION}
+
+n8n:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: n8nio/n8n
+    IMAGE_VERSION: ${N8N_VERSION}
+
+goflow2:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: netsampler/goflow2
+    IMAGE_VERSION: ${GOFLOW2_VERSION}
+
+it-tools:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: corentinth/it-tools
+    IMAGE_VERSION: ${ITTOOLS_VERSION}
+
+openbgpd:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: openbgpd/openbgpd
+    IMAGE_VERSION: ${OPENBGPD_VERISON}
+
+clickhouse:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: library/clickhouse
+    IMAGE_VERSION: ${CLICKHOUSE_VERSION}
+
+clickhouse-operator:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: altinity/clickhouse-operator
+    IMAGE_VERSION: ${CLICHOUSE_OPERATOR_VERSION}
 
 infra-docs:
   interruptible: true

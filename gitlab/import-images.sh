@@ -120,9 +120,14 @@ import_images() {
         "gitea/gitea:${GITEA_VERSION:-1.21.11}"
         "cloudflare/cloudflared:${CLOUDFLARED_VERSION:-2024.6.1}"
         "registry.k8s.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
+        "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
         "sj26/mailcatcher:${MAILCATCHER_VERSION:-v0.10.0}"
         "fatedier/frps:${FRP_VERSION:-v0.16.1}"
         "fatedier/frpc:${FRP_VERSION:-v0.16.1}"
+        "docker.n8n.io/n8nio/n8n:${N8N_VERSION:-1.50.0}"
+        "netsampler/goflow2:${GOFLOW2_VERSION:-v2.2.1}"
+        "ghcr.io/corentinth/it-tools:${ITTOOLS_VERSION:-2024.5.13-a0bc346}"
+        "quay.io/openbgpd/openbgpd:${OPENBGPD_VERISON:-"8.6"}"
 
         # jenkins
         "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
@@ -240,13 +245,14 @@ import_images() {
         # "nvcr.io/nvidia/cloud-native/k8s-cc-manager:v0.1.1"
 
         # kafka
+        "apache/kafka:${APACHE_KAFKA_VERSION:-4.1.0}"
         "quay.io/strimzi/operator:${STRIMZI_OPERATOR_VERSION:-0.28.0}"
         "quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION:-0.28.0}-kafka-${STRIMZI_KAFKA_VERSION:-3.1.0}"
 
         # confluent shit, https://docs.confluent.io/operator/current/co-custom-registry.html
         "confluentinc/confluent-init-container:${CONFLUENTINC_INIT_CONTAINER_VERSION:-2.3.1}"
         "confluentinc/confluent-operator:${CONFLUENTINC_OPERATOR_VERSION:-0.435.23}"
-        "confluentinc/cp-enterprise-control-center:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        "confluentinc/cp-enterprise-control-center-next-gen:${CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION:-2.2.1}"
         "confluentinc/cp-enterprise-replicator:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-kafka-rest:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-ksqldb-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
@@ -254,9 +260,17 @@ import_images() {
         "confluentinc/cp-schema-registry:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-server-connect:${CONFLUENTINC_CP_VERSION:-7.1.1}"
-        "confluentinc/cp-zookeeper:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "obsidiandynamics/kafdrop:${KAFDROP_VERSION:-3.30.0}"
         "tchiotludo/akhq:${AKHQ_VERSION:-0.21.0}"
+
+        # scylladb
+        "scylladb/scylla:${SCYLLA_VERSION:-5.4.7}"
+        "scylladb/scylla-manager:${SCYLLA_MANAGER_VERSION:-3.2.8}"
+        "scylladb/scylla-operator:${SCYLLA_OPERATOR_VERSION:-1.12.2}"
+
+        # clickhouse
+        "clickhouse:${CLICKHOUSE_VERSION:-21.5.6-alpine}:::prepend_name=library/"
+        "altinity/clickhouse-operator:${CLICHOUSE_OPERATOR_VERSION:-0.25.4}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

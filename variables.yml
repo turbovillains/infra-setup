@@ -5,7 +5,7 @@ variables:
   INFRA_NAMESPACE_DEV: infra-dev
   WEBSITE_VERSION: v0.2.11
   DEBIAN_VERSION: "bookworm-20250929-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
-  UBUNTU_NOBLE_VERSION: "noble-20250910" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
+  UBUNTU_NOBLE_VERSION: "noble-20250925" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
   ALPINE_VERSION: "3.22.1" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.37.0" # https://hub.docker.com/_/busybox
   JDK_ZULU_VERSION: 25.0.0-25.28 # https://hub.docker.com/r/azul/zulu-openjdk/tags
@@ -43,7 +43,7 @@ variables:
   CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION: v8.1.1
   CSI_PROVISIONER_VERSION: v5.3.0
   CSI_NFSPLUGIN_VERSION: v4.11.0 # https://github.com/kubernetes-csi/csi-driver-nfs/releases
-  K8S_NFD_VERSION: v0.17.4 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
+  K8S_NFD_VERSION: v0.18.0 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
   TIGERA_OPERATOR_VERSION: "v1.38.6" # https://github.com/tigera/operator/releases
   CALICO_VERSION: "v3.30.3" # https://hub.docker.com/r/calico/node/tags
   ARGOCD_VERSION: v3.1.8 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
@@ -134,6 +134,7 @@ variables:
   CERT_MANAGER_CSI_DRIVER_VERSION: v0.11.0 # https://quay.io/repository/jetstack/cert-manager-csi-driver?tab=tags&tag=latest
   CERT_MANAGER_WEBHOOK_PDNS_VERSION: v2.5.3 # https://hub.docker.com/r/zachomedia/cert-manager-webhook-pdns/tags
   CADDY_VERSION: 2.10.2-alpine # https://hub.docker.com/_/caddy?tab=description
+  AIRFLOW_VERSION: 3.1.0-python3.13 # https://hub.docker.com/r/apache/airflow/tags
   GIT_SYNC_VERSION: v4.5.0 # registry.k8s.io/git-sync/git-sync
   SYNCTHING_VERSION: "2.0.10" # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: "10.10.7" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
@@ -160,7 +161,7 @@ variables:
   NVIDIA_DCGM_EXPORTER_VERSION: 4.4.1-4.5.2-ubi9 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/dcgm-exporter/tags
   NVIDIA_K8S_MIG_MANAGER_VERSION: v0.9.1-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-mig-manager/tags
   ZITADEL_VERSION: v2.65.1 # https://github.com/zitadel/zitadel/pkgs/container/zitadel
-  HOMEASSISTANT_VERSION: "2025.9" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
+  HOMEASSISTANT_VERSION: "2025.10" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
   ZIGBEE2MQTT_VERSION: "2.6.2" # https://github.com/Koenkk/zigbee2mqtt/releases
   GITEA_VERSION: 1.24.6-rootless # https://hub.docker.com/r/gitea/gitea/tags
   CLOUDFLARED_VERSION: "2025.9.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
@@ -172,7 +173,16 @@ variables:
   STRIMZI_KAFKA_VERSION: "4.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
   CONFLUENTINC_OPERATOR_VERSION: "0.1263.34" # https://hub.docker.com/r/confluentinc/confluent-operator/tags
   CONFLUENTINC_INIT_CONTAINER_VERSION: "3.0.1" # https://registry.hub.docker.com/r/confluentinc/confluent-init-container/tags
-  CONFLUENTINC_CP_VERSION: "7.9.3" # https://hub.docker.com/r/confluentinc/cp-server/tags
-  KAFDROP_VERSION: "4.0.2" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
-  AKHQ_VERSION: "0.25.1" # https://hub.docker.com/r/tchiotludo/akhq/tags
-  AIRFLOW_VERSION: 2.10.3-python3.12 # https://hub.docker.com/r/apache/airflow/tags
+  CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION: "2.2.1" # https://hub.docker.com/r/confluentinc/cp-enterprise-control-center-next-gen/tags
+  CONFLUENTINC_CP_VERSION: "8.0.1" # https://hub.docker.com/r/confluentinc/cp-server/tags
+  KAFDROP_VERSION: "4.2.0" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
+  AKHQ_VERSION: "0.26.0" # https://hub.docker.com/r/tchiotludo/akhq/tags
+  N8N_VERSION: "1.114.0" # https://github.com/n8n-io/n8n/releases
+  GOFLOW2_VERSION: v2.2.3 # https://hub.docker.com/r/netsampler/goflow2/tags
+  ITTOOLS_VERSION: "2024.10.22-7ca5933" # https://github.com/CorentinTh/it-tools/releases
+  OPENBGPD_VERISON: "8.9" # https://quay.io/repository/openbgpd/openbgpd?tab=tags&tag=latest
+  SCYLLA_VERSION: "2025.3.1" # https://hub.docker.com/r/scylladb/scylla/tags
+  SCYLLA_MANAGER_VERSION: 3.6.0 # https://hub.docker.com/r/scylladb/scylla-manager/tags
+  SCYLLA_OPERATOR_VERSION: 1.18.1 # https://hub.docker.com/r/scylladb/scylla-operator/tags
+  CLICKHOUSE_VERSION: "25.8" # https://hub.docker.com/_/clickhouse
+  CLICHOUSE_OPERATOR_VERSION: "0.25.5" # https://hub.docker.com/r/altinity/clickhouse-operator/tags
