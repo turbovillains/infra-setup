@@ -76,7 +76,7 @@ variables:
   KIBANA_VERSION: "9.1.4"
   APMSERVER_VERSION: "9.1.4"
   ELASTICAGENT_VERSION: "8.19.4"
-  MONGO_VERSION: 8.0.14-noble # https://hub.docker.com/_/mongo
+  MONGO_VERSION: 8.0.15-noble # https://hub.docker.com/_/mongo
   PGADMIN_VERSION: "9.8" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   HTTPBIN_VERSION: "2.18.3" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.12.0-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
@@ -184,5 +184,5 @@ variables:
   SCYLLA_VERSION: "2025.3.1" # https://hub.docker.com/r/scylladb/scylla/tags
   SCYLLA_MANAGER_VERSION: 3.6.0 # https://hub.docker.com/r/scylladb/scylla-manager/tags
   SCYLLA_OPERATOR_VERSION: 1.18.1 # https://hub.docker.com/r/scylladb/scylla-operator/tags
-  CLICKHOUSE_VERSION: "25.8" # https://hub.docker.com/_/clickhouse
+  CLICKHOUSE_VERSION: "25.9" # https://hub.docker.com/_/clickhouse
   CLICHOUSE_OPERATOR_VERSION: "0.25.5" # https://hub.docker.com/r/altinity/clickhouse-operator/tags
