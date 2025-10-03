@@ -151,6 +151,18 @@ archive-images1:
           - prometheus/pushgateway
         VERSION:
           - PUSHGATEWAY_VERSION
+      - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - kube-state-metrics/kube-state-metrics
+        VERSION:
+          - KUBE_STATE_METRICS_VERSION
+      - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - metrics-server/metrics-server
+        VERSION:
+          - METRICS_SERVER_VERSION
       - BASE:
           - grafana/grafana
         VERSION:
@@ -256,26 +268,6 @@ archive-images2:
   parallel:
     matrix:
       - BASE:
-          - bitnami/prometheus
-        VERSION:
-          - BITNAMI_PROMETHEUS_VERSION
-      - BASE:
-          - bitnami/prometheus-operator
-        VERSION:
-          - BITNAMI_PROMETHEUS_OPERATOR_VERSION
-      - BASE:
-          - bitnami/node-exporter
-        VERSION:
-          - BITNAMI_NODE_EXPORTER_VERSION
-      - BASE:
-          - bitnami/blackbox-exporter
-        VERSION:
-          - BITNAMI_BLACKBOX_EXPORTER_VERSION
-      - BASE:
-          - bitnami/postgres-exporter
-        VERSION:
-          - BITNAMI_POSTGRES_EXPORTER_VERSION
-      - BASE:
           - bitnami/redis
         VERSION:
           - BITNAMI_REDIS_VERSION
@@ -284,15 +276,9 @@ archive-images2:
         VERSION:
           - BITNAMI_VALKEY_VERSION
       - BASE:
-          - bitnami/redis-exporter
-        VERSION:
-          - BITNAMI_REDIS_EXPORTER_VERSION
-      - BASE:
           - bitnami/postgresql
         VERSION:
           - BITNAMI_POSTGRESQL17_VERSION
-          - BITNAMI_POSTGRESQL16_VERSION
-          - BITNAMI_POSTGRESQL15_VERSION
       - BASE:
           - bitnami/keycloak
         VERSION:
@@ -306,14 +292,6 @@ archive-images2:
         VERSION:
           - BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION
       - BASE:
-          - bitnami/nginx
-        VERSION:
-          - BITNAMI_NGINX_VERSION
-      - BASE:
-          - bitnami/haproxy
-        VERSION:
-          - BITNAMI_HAPROXY_VERSION
-      - BASE:
           - bitnami/minio
         VERSION:
           - BITNAMI_MINIO_VERSION
@@ -321,46 +299,26 @@ archive-images2:
           - bitnami/minio-client
         VERSION:
           - BITNAMI_MINIO_CLIENT_VERSION
-      - BASE:
-          - bitnami/os-shell
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - metallb/controller
         VERSION:
-          - BITNAMI_SHELL_VERSION
-      - BASE:
-          - bitnami/metallb-controller
+          - METALLB_CONTROLLER_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - metallb/speaker
         VERSION:
-          - BITNAMI_METALLB_CONTROLLER_VERSION
-      - BASE:
-          - bitnami/metallb-speaker
-        VERSION:
-          - BITNAMI_METALLB_SPEAKER_VERSION
+          - METALLB_SPEAKER_VERSION
       - BASE:
           - bitnami/grafana
         VERSION:
           - BITNAMI_GRAFANA_VERSION
       - BASE:
-          - bitnami/nats
-        VERSION:
-          - BITNAMI_NATS_VERSION
-      - BASE:
-          - bitnami/kube-state-metrics
-        VERSION:
-          - BITNAMI_KUBE_STATE_METRICS_VERSION
-      - BASE:
-          - bitnami/metrics-server
-        VERSION:
-          - BITNAMI_METRICS_SERVER_VERSION
-      - BASE:
-          - bitnami/kube-rbac-proxy
-        VERSION:
-          - BITNAMI_KUBE_RBAC_PROXY_VERSION
-      - BASE:
           - bitnami/openldap
         VERSION:
           - BITNAMI_OPENLDAP_VERSION
-      - BASE:
-          - bitnami/kubectl
-        VERSION:
-          - BITNAMI_KUBECTL_VERSION
 
 archive-images3:
   extends: .archive-images
@@ -1537,7 +1495,7 @@ bitnami-minio-client:
     IMAGE_BASE: bitnami/minio-client
     IMAGE_VERSION: ${BITNAMI_MINIO_CLIENT_VERSION}
 
-bitnami-shell:
+metallb-controller:
   interruptible: true
   retry: 2
   stage: build
@@ -1545,10 +1503,10 @@ bitnami-shell:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: bitnami/os-shell
-    IMAGE_VERSION: ${BITNAMI_SHELL_VERSION}
+    IMAGE_BASE: metallb/controller
+    IMAGE_VERSION: ${METALLB_CONTROLLER_VERSION}
 
-bitnami-metallb-controller:
+metallb-speaker:
   interruptible: true
   retry: 2
   stage: build
@@ -1556,19 +1514,8 @@ bitnami-metallb-controller:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: bitnami/metallb-controller
-    IMAGE_VERSION: ${BITNAMI_METALLB_CONTROLLER_VERSION}
-
-bitnami-metallb-speaker:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/metallb-speaker
-    IMAGE_VERSION: ${BITNAMI_METALLB_SPEAKER_VERSION}
+    IMAGE_BASE: metallb/speaker
+    IMAGE_VERSION: ${METALLB_SPEAKER_VERSION}
 
 bitnami-grafana:
   interruptible: true
@@ -1582,7 +1529,7 @@ bitnami-grafana:
     BASE: bitnami/grafana
     VERSION: BITNAMI_GRAFANA_VERSION
 
-bitnami-nats:
+kube-state-metrics:
   interruptible: true
   retry: 2
   stage: build
@@ -1590,10 +1537,10 @@ bitnami-nats:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: bitnami/nats
-    IMAGE_VERSION: ${BITNAMI_NATS_VERSION}
+    IMAGE_BASE: kube-state-metrics/kube-state-metrics
+    IMAGE_VERSION: ${KUBE_STATE_METRICS_VERSION}
 
-bitnami-kube-state-metrics:
+metrics-server:
   interruptible: true
   retry: 2
   stage: build
@@ -1601,30 +1548,8 @@ bitnami-kube-state-metrics:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: bitnami/kube-state-metrics
-    IMAGE_VERSION: ${BITNAMI_KUBE_STATE_METRICS_VERSION}
-
-bitnami-metrics-server:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/metrics-server
-    IMAGE_VERSION: ${BITNAMI_METRICS_SERVER_VERSION}
-
-bitnami-kubectl:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/kubectl
-    IMAGE_VERSION: ${BITNAMI_KUBECTL_VERSION}
+    IMAGE_BASE: metrics-server/metrics-server
+    IMAGE_VERSION: ${METRICS_SERVER_VERSION}
 
 bitnami-nginx-ingress-controller:
   interruptible: true
@@ -1636,28 +1561,6 @@ bitnami-nginx-ingress-controller:
   variables:
     IMAGE_BASE: bitnami/nginx-ingress-controller
     IMAGE_VERSION: ${BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION}
-
-bitnami-nginx:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/nginx
-    IMAGE_VERSION: ${BITNAMI_NGINX_VERSION}
-
-bitnami-haproxy:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/haproxy
-    IMAGE_VERSION: ${BITNAMI_HAPROXY_VERSION}
 
 bitnami-keycloak:
   interruptible: true
@@ -1681,61 +1584,6 @@ bitnami-keycloak-config-cli:
     IMAGE_BASE: bitnami/keycloak-config-cli
     IMAGE_VERSION: ${BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION}
 
-bitnami-prometheus:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/prometheus
-    IMAGE_VERSION: ${BITNAMI_PROMETHEUS_VERSION}
-
-bitnami-prometheus-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/prometheus-operator
-    IMAGE_VERSION: ${BITNAMI_PROMETHEUS_OPERATOR_VERSION}
-
-bitnami-node-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/node-exporter
-    IMAGE_VERSION: ${BITNAMI_NODE_EXPORTER_VERSION}
-
-bitnami-blackbox-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/blackbox-exporter
-    IMAGE_VERSION: ${BITNAMI_BLACKBOX_EXPORTER_VERSION}
-
-bitnami-postgres-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/postgres-exporter
-    IMAGE_VERSION: ${BITNAMI_POSTGRES_EXPORTER_VERSION}
-
 bitnami-redis:
   interruptible: true
   retry: 2
@@ -1758,39 +1606,6 @@ bitnami-valkey:
     IMAGE_BASE: bitnami/valkey
     IMAGE_VERSION: ${BITNAMI_VALKEY_VERSION}
 
-bitnami-redis-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/redis-exporter
-    IMAGE_VERSION: ${BITNAMI_REDIS_EXPORTER_VERSION}
-
-bitnami-postgresql15:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/postgresql
-    IMAGE_VERSION: ${BITNAMI_POSTGRESQL15_VERSION}
-
-bitnami-postgresql16:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/postgresql
-    IMAGE_VERSION: ${BITNAMI_POSTGRESQL16_VERSION}
-
 bitnami-postgresql17:
   interruptible: true
   retry: 2
@@ -1802,15 +1617,6 @@ bitnami-postgresql17:
     IMAGE_BASE: bitnami/postgresql
     IMAGE_VERSION: ${BITNAMI_POSTGRESQL17_VERSION}
 
-bitnami-kube-rbac-proxy:
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/kube-rbac-proxy
-    IMAGE_VERSION: ${BITNAMI_KUBE_RBAC_PROXY_VERSION}
-
 bitnami-openldap:
   interruptible: true
   retry: 2
@@ -1821,7 +1627,6 @@ bitnami-openldap:
   variables:
     IMAGE_BASE: bitnami/openldap
     IMAGE_VERSION: ${BITNAMI_OPENLDAP_VERSION}
-
 
 haproxy:
   interruptible: true

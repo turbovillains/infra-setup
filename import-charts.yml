@@ -100,10 +100,6 @@ helm:
   #   uri: https://charts.bitnami.com/bitnami
   #   charts:
   #     - name: keycloak
-  #     - name: kube-prometheus
-  #     - name: kube-state-metrics
-  #     - name: metallb
-  #     - name: metrics-server
   #     - name: redis
   #     - name: valkey
   #     - name: nginx
@@ -137,6 +133,10 @@ helm:
       - name: prometheus-pushgateway
       - name: kube-state-metrics
       - name: alertmanager
+  - name: metrics-server
+    uri: https://kubernetes-sigs.github.io/metrics-server/
+    charts:
+      - name: metrics-server
   - name: stakater
     uri: https://stakater.github.io/stakater-charts
     charts:
