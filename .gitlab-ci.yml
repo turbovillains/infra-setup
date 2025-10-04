@@ -287,18 +287,12 @@ archive-images2:
           - bitnami/keycloak-config-cli
         VERSION:
           - BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION
-      - BASE:
-          - bitnami/nginx-ingress-controller
+      - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - ingress-nginx/controller
         VERSION:
-          - BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION
-      - BASE:
-          - bitnami/minio
-        VERSION:
-          - BITNAMI_MINIO_VERSION
-      - BASE:
-          - bitnami/minio-client
-        VERSION:
-          - BITNAMI_MINIO_CLIENT_VERSION
+          - NGINX_INGRESS_CONTROLLER_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -1473,28 +1467,6 @@ dind:
     IMAGE_BASE: library/docker
     IMAGE_VERSION: ${DIND_VERSION}
 
-bitnami-minio:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/minio
-    IMAGE_VERSION: ${BITNAMI_MINIO_VERSION}
-
-bitnami-minio-client:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/minio-client
-    IMAGE_VERSION: ${BITNAMI_MINIO_CLIENT_VERSION}
-
 metallb-controller:
   interruptible: true
   retry: 2
@@ -1551,7 +1523,7 @@ metrics-server:
     IMAGE_BASE: metrics-server/metrics-server
     IMAGE_VERSION: ${METRICS_SERVER_VERSION}
 
-bitnami-nginx-ingress-controller:
+nginx-ingress-controller:
   interruptible: true
   retry: 2
   stage: build
@@ -1559,8 +1531,8 @@ bitnami-nginx-ingress-controller:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: bitnami/nginx-ingress-controller
-    IMAGE_VERSION: ${BITNAMI_NGINX_INGRESS_CONTROLLER_VERSION}
+    IMAGE_BASE: ingress-nginx/controller
+    IMAGE_VERSION: ${NGINX_INGRESS_CONTROLLER_VERSION}
 
 bitnami-keycloak:
   interruptible: true
@@ -2705,19 +2677,19 @@ builder:
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
         --build-arg HOST_DOCKER_GID
 
-builder-jenkins-agent:
-  interruptible: true
-  stage: build2
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HOST_DOCKER_GID
+# builder-jenkins-agent:
+#   interruptible: true
+#   stage: build2
+#   script:
+#     - |
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#         --build-arg HOST_DOCKER_GID
 
-shell:
-  interruptible: true
-  stage: build2
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
-        --build-arg HOST_DOCKER_GID
+# shell:
+#   interruptible: true
+#   stage: build2
+#   script:
+#     - |
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#         --build-arg GIT_SERVER_HOST=${CI_SERVER_HOST} \
+#         --build-arg HOST_DOCKER_GID

@@ -4,6 +4,59 @@ entries:
   - annotations:
       artifacthub.io/category: integration-delivery
       artifacthub.io/changes: |
+        - Update `jenkins/inbound-agent` to version `3341.v0766d82b_dec0-4`
+      artifacthub.io/images: |
+        - name: jenkins
+          image: docker.io/jenkins/jenkins:2.516.3-jdk21
+        - name: k8s-sidecar
+          image: docker.io/kiwigrid/k8s-sidecar:1.30.7
+        - name: inbound-agent
+          image: jenkins/inbound-agent:3341.v0766d82b_dec0-4
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+        - name: Jenkins
+          url: https://www.jenkins.io/
+        - name: support
+          url: https://github.com/jenkinsci/helm-charts/issues
+    apiVersion: v2
+    appVersion: 2.516.3
+    created: "2025-10-04T13:49:13.821547+02:00"
+    description: 'Jenkins - Build great things at any scale! As the leading open source
+      automation server, Jenkins provides over 2000 plugins to support building, deploying
+      and automating any project. '
+    digest: e901d4d3db77dc4be118f7ad3843ac73a945c48ec154a8b6665b0c9e50bb6e6e
+    home: https://www.jenkins.io/
+    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
+    keywords:
+    - jenkins
+    - ci
+    - devops
+    maintainers:
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: garridomota@gmail.com
+      name: mogaal
+    - email: wmcdona89@gmail.com
+      name: wmcdona89
+    - email: timjacomb1@gmail.com
+      name: timja
+    name: jenkins
+    sources:
+    - https://github.com/jenkinsci/jenkins
+    - https://github.com/jenkinsci/docker-agent
+    - https://github.com/maorfr/kube-tasks
+    - https://github.com/jenkinsci/configuration-as-code-plugin
+    type: application
+    urls:
+    - jenkins-5.8.98.tgz
+    version: 5.8.98
+  - annotations:
+      artifacthub.io/category: integration-delivery
+      artifacthub.io/changes: |
         - Update `configuration-as-code` to version `1998.v3e50e6e9d9d3`
       artifacthub.io/images: |
         - name: jenkins
@@ -22,7 +75,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.885651+02:00"
+    created: "2025-10-04T13:49:13.818864+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -75,7 +128,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.881191+02:00"
+    created: "2025-10-04T13:49:13.81631+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -128,7 +181,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.878314+02:00"
+    created: "2025-10-04T13:49:13.813679+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -181,7 +234,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.87489+02:00"
+    created: "2025-10-04T13:49:13.810439+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -234,7 +287,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.869708+02:00"
+    created: "2025-10-04T13:49:13.808272+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -287,7 +340,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.864655+02:00"
+    created: "2025-10-04T13:49:13.805692+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -340,7 +393,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.861438+02:00"
+    created: "2025-10-04T13:49:13.80333+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -393,7 +446,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.842512+02:00"
+    created: "2025-10-04T13:49:13.801036+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -446,7 +499,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.3
-    created: "2025-10-03T20:56:41.836277+02:00"
+    created: "2025-10-04T13:49:13.796204+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -499,7 +552,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.2
-    created: "2025-10-03T20:56:41.833177+02:00"
+    created: "2025-10-04T13:49:13.793785+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -552,7 +605,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.2
-    created: "2025-10-03T20:56:41.829672+02:00"
+    created: "2025-10-04T13:49:13.791227+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -605,7 +658,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.2
-    created: "2025-10-03T20:56:41.825106+02:00"
+    created: "2025-10-04T13:49:13.788978+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -658,7 +711,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.2
-    created: "2025-10-03T20:56:41.819229+02:00"
+    created: "2025-10-04T13:49:13.786579+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -711,7 +764,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.2
-    created: "2025-10-03T20:56:41.791204+02:00"
+    created: "2025-10-04T13:49:13.784042+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -764,7 +817,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.787941+02:00"
+    created: "2025-10-04T13:49:13.781807+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -819,7 +872,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.78498+02:00"
+    created: "2025-10-04T13:49:13.779538+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -872,7 +925,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.778883+02:00"
+    created: "2025-10-04T13:49:13.774697+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -925,7 +978,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.776012+02:00"
+    created: "2025-10-04T13:49:13.772439+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -978,7 +1031,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.772664+02:00"
+    created: "2025-10-04T13:49:13.769835+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1031,7 +1084,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.769204+02:00"
+    created: "2025-10-04T13:49:13.767578+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1084,7 +1137,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.766104+02:00"
+    created: "2025-10-04T13:49:13.765379+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1137,7 +1190,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.761342+02:00"
+    created: "2025-10-04T13:49:13.762711+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1192,7 +1245,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.757434+02:00"
+    created: "2025-10-04T13:49:13.760438+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1245,7 +1298,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.753925+02:00"
+    created: "2025-10-04T13:49:13.75815+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1298,7 +1351,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.749808+02:00"
+    created: "2025-10-04T13:49:13.755538+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1351,7 +1404,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.745906+02:00"
+    created: "2025-10-04T13:49:13.753279+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1404,7 +1457,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.516.1
-    created: "2025-10-03T20:56:41.742437+02:00"
+    created: "2025-10-04T13:49:13.750925+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1457,7 +1510,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.3
-    created: "2025-10-03T20:56:41.738791+02:00"
+    created: "2025-10-04T13:49:13.748404+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1510,7 +1563,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.3
-    created: "2025-10-03T20:56:41.732972+02:00"
+    created: "2025-10-04T13:49:13.746147+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1563,7 +1616,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.3
-    created: "2025-10-03T20:56:41.73002+02:00"
+    created: "2025-10-04T13:49:13.743879+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1616,7 +1669,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.3
-    created: "2025-10-03T20:56:41.726811+02:00"
+    created: "2025-10-04T13:49:13.741271+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1669,7 +1722,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.3
-    created: "2025-10-03T20:56:41.723245+02:00"
+    created: "2025-10-04T13:49:13.738922+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1722,7 +1775,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.2
-    created: "2025-10-03T20:56:41.719502+02:00"
+    created: "2025-10-04T13:49:13.736873+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1775,7 +1828,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.2
-    created: "2025-10-03T20:56:41.715471+02:00"
+    created: "2025-10-04T13:49:13.73429+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1828,7 +1881,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.2
-    created: "2025-10-03T20:56:41.711724+02:00"
+    created: "2025-10-04T13:49:13.731999+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1881,7 +1934,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.2
-    created: "2025-10-03T20:56:41.706786+02:00"
+    created: "2025-10-04T13:49:13.729729+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1934,7 +1987,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.2
-    created: "2025-10-03T20:56:41.703824+02:00"
+    created: "2025-10-04T13:49:13.72712+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -1987,7 +2040,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.2
-    created: "2025-10-03T20:56:41.700584+02:00"
+    created: "2025-10-04T13:49:13.724839+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2040,7 +2093,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.695638+02:00"
+    created: "2025-10-04T13:49:13.722574+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2093,7 +2146,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.690376+02:00"
+    created: "2025-10-04T13:49:13.720009+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2146,7 +2199,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.687233+02:00"
+    created: "2025-10-04T13:49:13.717699+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2199,7 +2252,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.683939+02:00"
+    created: "2025-10-04T13:49:13.715313+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2252,7 +2305,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.678893+02:00"
+    created: "2025-10-04T13:49:13.71274+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2305,7 +2358,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.671772+02:00"
+    created: "2025-10-04T13:49:13.710488+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2358,7 +2411,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.668506+02:00"
+    created: "2025-10-04T13:49:13.708211+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2411,7 +2464,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.665204+02:00"
+    created: "2025-10-04T13:49:13.705724+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2464,7 +2517,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.660583+02:00"
+    created: "2025-10-04T13:49:13.70349+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2517,7 +2570,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.657387+02:00"
+    created: "2025-10-04T13:49:13.701237+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2570,7 +2623,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.653482+02:00"
+    created: "2025-10-04T13:49:13.698685+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2623,7 +2676,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.650241+02:00"
+    created: "2025-10-04T13:49:13.696436+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2676,7 +2729,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.646877+02:00"
+    created: "2025-10-04T13:49:13.694171+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2729,7 +2782,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.643966+02:00"
+    created: "2025-10-04T13:49:13.691997+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2782,7 +2835,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.504.1
-    created: "2025-10-03T20:56:41.639764+02:00"
+    created: "2025-10-04T13:49:13.689558+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2835,7 +2888,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.3
-    created: "2025-10-03T20:56:41.636175+02:00"
+    created: "2025-10-04T13:49:13.68746+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2888,7 +2941,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.3
-    created: "2025-10-03T20:56:41.632154+02:00"
+    created: "2025-10-04T13:49:13.684776+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2941,7 +2994,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.3
-    created: "2025-10-03T20:56:41.618494+02:00"
+    created: "2025-10-04T13:49:13.682536+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -2994,7 +3047,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.3
-    created: "2025-10-03T20:56:41.613419+02:00"
+    created: "2025-10-04T13:49:13.680286+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3047,7 +3100,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.3
-    created: "2025-10-03T20:56:41.610346+02:00"
+    created: "2025-10-04T13:49:13.678243+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3100,7 +3153,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.3
-    created: "2025-10-03T20:56:41.607277+02:00"
+    created: "2025-10-04T13:49:13.675597+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3153,7 +3206,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.3
-    created: "2025-10-03T20:56:41.603827+02:00"
+    created: "2025-10-04T13:49:13.673252+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3206,7 +3259,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.599429+02:00"
+    created: "2025-10-04T13:49:13.670661+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3259,7 +3312,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.591427+02:00"
+    created: "2025-10-04T13:49:13.668385+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3312,7 +3365,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.58673+02:00"
+    created: "2025-10-04T13:49:13.666073+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3365,7 +3418,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.577811+02:00"
+    created: "2025-10-04T13:49:13.663945+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3418,7 +3471,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.574031+02:00"
+    created: "2025-10-04T13:49:13.661849+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3471,7 +3524,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.570482+02:00"
+    created: "2025-10-04T13:49:13.659733+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3524,7 +3577,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.565291+02:00"
+    created: "2025-10-04T13:49:13.657153+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3577,7 +3630,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.560958+02:00"
+    created: "2025-10-04T13:49:13.654887+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3630,7 +3683,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.2
-    created: "2025-10-03T20:56:41.557018+02:00"
+    created: "2025-10-04T13:49:13.652471+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3683,7 +3736,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.549741+02:00"
+    created: "2025-10-04T13:49:13.649934+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3736,7 +3789,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.546718+02:00"
+    created: "2025-10-04T13:49:13.647628+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3789,7 +3842,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.542012+02:00"
+    created: "2025-10-04T13:49:13.645373+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3842,7 +3895,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.536915+02:00"
+    created: "2025-10-04T13:49:13.643313+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3895,7 +3948,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.53286+02:00"
+    created: "2025-10-04T13:49:13.6407+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -3948,7 +4001,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.524618+02:00"
+    created: "2025-10-04T13:49:13.638633+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 2000 plugins to support building, deploying
       and automating any project. '
@@ -4001,7 +4054,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.520141+02:00"
+    created: "2025-10-04T13:49:13.635958+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4054,7 +4107,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-10-03T20:56:41.516292+02:00"
+    created: "2025-10-04T13:49:13.633711+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4107,7 +4160,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.3
-    created: "2025-10-03T20:56:41.839213+02:00"
+    created: "2025-10-04T13:49:13.798481+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4160,7 +4213,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.3
-    created: "2025-10-03T20:56:41.781749+02:00"
+    created: "2025-10-04T13:49:13.776958+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4213,7 +4266,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.479772+02:00"
+    created: "2025-10-04T13:49:13.615255+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4266,7 +4319,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.475392+02:00"
+    created: "2025-10-04T13:49:13.612873+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4319,7 +4372,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.471319+02:00"
+    created: "2025-10-04T13:49:13.610568+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4372,7 +4425,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.465995+02:00"
+    created: "2025-10-04T13:49:13.608512+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4425,7 +4478,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.462173+02:00"
+    created: "2025-10-04T13:49:13.606094+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4478,7 +4531,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.45812+02:00"
+    created: "2025-10-04T13:49:13.603751+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4531,7 +4584,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.454127+02:00"
+    created: "2025-10-04T13:49:13.601687+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4584,7 +4637,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.440491+02:00"
+    created: "2025-10-04T13:49:13.596593+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4637,7 +4690,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.436731+02:00"
+    created: "2025-10-04T13:49:13.594384+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4690,7 +4743,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-10-03T20:56:41.432671+02:00"
+    created: "2025-10-04T13:49:13.591658+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4743,7 +4796,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.1
-    created: "2025-10-03T20:56:41.428066+02:00"
+    created: "2025-10-04T13:49:13.589313+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4796,7 +4849,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.1
-    created: "2025-10-03T20:56:41.423675+02:00"
+    created: "2025-10-04T13:49:13.587122+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4849,7 +4902,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.1
-    created: "2025-10-03T20:56:41.415837+02:00"
+    created: "2025-10-04T13:49:13.584555+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4902,7 +4955,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.1
-    created: "2025-10-03T20:56:41.412405+02:00"
+    created: "2025-10-04T13:49:13.582268+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -4955,7 +5008,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.512564+02:00"
+    created: "2025-10-04T13:49:13.631513+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5008,7 +5061,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.507746+02:00"
+    created: "2025-10-04T13:49:13.629386+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5061,7 +5114,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.503542+02:00"
+    created: "2025-10-04T13:49:13.62693+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5112,7 +5165,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.499534+02:00"
+    created: "2025-10-04T13:49:13.62459+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5165,7 +5218,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.494398+02:00"
+    created: "2025-10-04T13:49:13.622332+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5218,7 +5271,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.490356+02:00"
+    created: "2025-10-04T13:49:13.619804+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5271,7 +5324,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.48424+02:00"
+    created: "2025-10-04T13:49:13.617452+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5324,7 +5377,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.3
-    created: "2025-10-03T20:56:41.445495+02:00"
+    created: "2025-10-04T13:49:13.599097+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5377,7 +5430,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.408917+02:00"
+    created: "2025-10-04T13:49:13.579938+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5430,7 +5483,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.405093+02:00"
+    created: "2025-10-04T13:49:13.577413+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5483,7 +5536,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.401555+02:00"
+    created: "2025-10-04T13:49:13.57515+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5536,7 +5589,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.396649+02:00"
+    created: "2025-10-04T13:49:13.572847+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5589,7 +5642,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.392949+02:00"
+    created: "2025-10-04T13:49:13.57026+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5642,7 +5695,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.389793+02:00"
+    created: "2025-10-04T13:49:13.567574+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5695,7 +5748,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.381776+02:00"
+    created: "2025-10-04T13:49:13.562685+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5748,7 +5801,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.377846+02:00"
+    created: "2025-10-04T13:49:13.560483+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5801,7 +5854,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.2
-    created: "2025-10-03T20:56:41.373741+02:00"
+    created: "2025-10-04T13:49:13.558451+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5854,7 +5907,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.1
-    created: "2025-10-03T20:56:41.370264+02:00"
+    created: "2025-10-04T13:49:13.556247+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5907,7 +5960,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.462.1
-    created: "2025-10-03T20:56:41.367269+02:00"
+    created: "2025-10-04T13:49:13.554212+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -5960,7 +6013,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.386136+02:00"
+    created: "2025-10-04T13:49:13.564976+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6013,7 +6066,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.361661+02:00"
+    created: "2025-10-04T13:49:13.552111+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6066,7 +6119,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.357469+02:00"
+    created: "2025-10-04T13:49:13.55+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6119,7 +6172,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.354269+02:00"
+    created: "2025-10-04T13:49:13.547841+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6172,7 +6225,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.350024+02:00"
+    created: "2025-10-04T13:49:13.545838+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6225,7 +6278,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.344296+02:00"
+    created: "2025-10-04T13:49:13.543529+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6278,7 +6331,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.341075+02:00"
+    created: "2025-10-04T13:49:13.541581+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6331,7 +6384,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.2
-    created: "2025-10-03T20:56:41.336658+02:00"
+    created: "2025-10-04T13:49:13.539588+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6384,7 +6437,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.329148+02:00"
+    created: "2025-10-04T13:49:13.537356+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6437,7 +6490,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.324423+02:00"
+    created: "2025-10-04T13:49:13.535344+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6490,7 +6543,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.3
-    created: "2025-10-03T20:56:41.319619+02:00"
+    created: "2025-10-04T13:49:13.533379+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6543,7 +6596,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.2
-    created: "2025-10-03T20:56:41.316468+02:00"
+    created: "2025-10-04T13:49:13.530765+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6596,7 +6649,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.2
-    created: "2025-10-03T20:56:41.312371+02:00"
+    created: "2025-10-04T13:49:13.528714+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6649,7 +6702,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.2
-    created: "2025-10-03T20:56:41.308783+02:00"
+    created: "2025-10-04T13:49:13.526718+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6702,7 +6755,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.2
-    created: "2025-10-03T20:56:41.304982+02:00"
+    created: "2025-10-04T13:49:13.5242+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6755,7 +6808,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.2
-    created: "2025-10-03T20:56:41.300532+02:00"
+    created: "2025-10-04T13:49:13.522158+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6808,7 +6861,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.2
-    created: "2025-10-03T20:56:41.297164+02:00"
+    created: "2025-10-04T13:49:13.520244+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6861,7 +6914,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.286206+02:00"
+    created: "2025-10-04T13:49:13.513362+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6914,7 +6967,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.282537+02:00"
+    created: "2025-10-04T13:49:13.51108+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -6967,7 +7020,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.279122+02:00"
+    created: "2025-10-04T13:49:13.509148+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7020,7 +7073,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.274304+02:00"
+    created: "2025-10-04T13:49:13.507088+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7073,7 +7126,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.265839+02:00"
+    created: "2025-10-04T13:49:13.502509+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7126,7 +7179,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.261487+02:00"
+    created: "2025-10-04T13:49:13.500497+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7179,7 +7232,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.258134+02:00"
+    created: "2025-10-04T13:49:13.497994+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7232,7 +7285,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.25492+02:00"
+    created: "2025-10-04T13:49:13.495898+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7285,7 +7338,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.452.1
-    created: "2025-10-03T20:56:41.250477+02:00"
+    created: "2025-10-04T13:49:13.493925+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7338,7 +7391,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.3
-    created: "2025-10-03T20:56:41.247587+02:00"
+    created: "2025-10-04T13:49:13.491724+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7391,7 +7444,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.2
-    created: "2025-10-03T20:56:41.293478+02:00"
+    created: "2025-10-04T13:49:13.517728+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7444,7 +7497,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.2
-    created: "2025-10-03T20:56:41.289213+02:00"
+    created: "2025-10-04T13:49:13.515634+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7497,7 +7550,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.269143+02:00"
+    created: "2025-10-04T13:49:13.504469+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7550,7 +7603,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.245182+02:00"
+    created: "2025-10-04T13:49:13.489761+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7603,7 +7656,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.242264+02:00"
+    created: "2025-10-04T13:49:13.487508+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7656,7 +7709,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.23789+02:00"
+    created: "2025-10-04T13:49:13.485447+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7709,7 +7762,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.232436+02:00"
+    created: "2025-10-04T13:49:13.482978+02:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
@@ -7762,7 +7815,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.22882+02:00"
+    created: "2025-10-04T13:49:13.481013+02:00"
     description: Jenkins - Build great things at any scale! The leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project.
@@ -7814,7 +7867,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.225875+02:00"
+    created: "2025-10-04T13:49:13.479003+02:00"
     description: Jenkins - Build great things at any scale! The leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project.
@@ -7866,7 +7919,7 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.440.1
-    created: "2025-10-03T20:56:41.222083+02:00"
+    created: "2025-10-04T13:49:13.476812+02:00"
     description: Jenkins - Build great things at any scale! The leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project.
@@ -7897,4 +7950,4 @@ entries:
     urls:
     - jenkins-5.0.16.tgz
     version: 5.0.16
-generated: "2025-10-03T20:56:41.218098+02:00"
+generated: "2025-10-04T13:49:13.47463+02:00"

@@ -57,6 +57,10 @@ helm:
     charts:
       - name: netbox
         version: 7.0.2
+  - name: ingress-nginx
+    uri: https://kubernetes.github.io/ingress-nginx
+    charts:
+      - name: ingress-nginx
   - name: haproxytech
     uri: https://haproxytech.github.io/helm-charts
     charts:
@@ -86,6 +90,10 @@ helm:
     uri: https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
     charts:
       - name: jenkins-operator
+  - name: minio
+    uri: https://charts.min.io/
+    charts:
+      - name: minio
   - name: ceph-csi
     uri: https://ceph.github.io/csi-charts
     charts:
@@ -102,13 +110,8 @@ helm:
   #     - name: keycloak
   #     - name: redis
   #     - name: valkey
-  #     - name: nginx
-  #     - name: nginx-ingress-controller
   #     - name: postgresql
-  #     - name: minio
   #     - name: grafana
-  #     - name: nats
-  #     - name: haproxy
   - name: elastic
     uri: https://helm.elastic.co
     charts:
@@ -130,6 +133,9 @@ helm:
       - name: prometheus-node-exporter
       - name: prometheus-snmp-exporter
       - name: prometheus-postgres-exporter
+      - name: prometheus-mongodb-exporter
+      - name: prometheus-nats-exporter
+      - name: prometheus-redis-exporter
       - name: prometheus-pushgateway
       - name: kube-state-metrics
       - name: alertmanager
