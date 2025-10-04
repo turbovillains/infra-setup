@@ -294,6 +294,12 @@ archive-images2:
         VERSION:
           - NGINX_INGRESS_CONTROLLER_VERSION
       - REGISTRY:
+          - registry.k8s.io
+        BASE:
+          - ingress-nginx/kube-webhook-certgen
+        VERSION:
+          - NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION
+      - REGISTRY:
           - quay.io
         BASE:
           - metallb/controller
@@ -1533,6 +1539,17 @@ nginx-ingress-controller:
   variables:
     IMAGE_BASE: ingress-nginx/controller
     IMAGE_VERSION: ${NGINX_INGRESS_CONTROLLER_VERSION}
+
+nginx-ingress-kube-webhook-certgen:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: ingress-nginx/kube-webhook-certgen
+    IMAGE_VERSION: ${NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION}
 
 bitnami-keycloak:
   interruptible: true

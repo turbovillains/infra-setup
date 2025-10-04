@@ -58,6 +58,7 @@ import_images() {
         # "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
         # "bitnami/keycloak-config-cli:${BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION:-5.5.0-debian-11-r11}"
         "registry.k8s.io/ingress-nginx/controller:${NGINX_INGRESS_CONTROLLER_VERSION:-v1.13.3}"
+        "registry.k8s.io/ingress-nginx/kube-webhook-certgen:${NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION:-v1.6.3}"
         "quay.io/metallb/controller:${METALLB_CONTROLLER_VERSION:-0.15.2}"
         "quay.io/metallb/speaker:${METALLB_SPEAKER_VERSION:-0.15.2}"
         # "bitnami/grafana:${BITNAMI_GRAFANA_VERSION:-8.0.6-debian-10-r3}"
