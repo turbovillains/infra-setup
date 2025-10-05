@@ -56,6 +56,7 @@ variables:
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.4.0" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "18.0-bookworm" # https://hub.docker.com/_/postgres
+  POSTGRES_EXPORTER_VERSION: v0.18.1 # https://hub.docker.com/r/prometheuscommunity/postgres-exporter/tags
   MINIO_VERSION: RELEASE.2025-09-07T16-13-09Z # https://github.com/minio/minio/releases
   MINIO_MC_VERSION: RELEASE.2025-08-13T08-35-41Z # https://github.com/minio/mc/releases
   PROMETHEUS_VERSION: v3.6.0 # https://prometheus.io/download/
@@ -78,7 +79,8 @@ variables:
   KIBANA_VERSION: "9.1.4"
   APMSERVER_VERSION: "9.1.4"
   ELASTICAGENT_VERSION: "8.19.4"
-  MONGO_VERSION: 8.0.15-noble # https://hub.docker.com/_/mongo
+  MONGODB_VERSION: "8.0.15-noble" # https://hub.docker.com/_/mongo
+  MONGODB_EXPORTER_VERSION: "0.47.1" # https://hub.docker.com/r/percona/mongodb_exporter/tags
   PGADMIN_VERSION: "9.8" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   HTTPBIN_VERSION: "2.18.3" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.12.0-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
@@ -94,6 +96,7 @@ variables:
   NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION: "v1.6.3" # https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
   METALLB_CONTROLLER_VERSION: "v0.15.2" # https://quay.io/repository/metallb/controller?tab=tags&tag=latest
   METALLB_SPEAKER_VERSION: "v0.15.2" # https://quay.io/repository/metallb/speaker?tab=tags&tag=latest
+  METALLB_FRR_VERSION: "9.1.0" # https://github.com/metallb/metallb/blob/main/charts/metallb/values.yaml
   BITNAMI_GRAFANA_VERSION: "12.1.1" # https://hub.docker.com/r/bitnami/grafana/tags?page=1&ordering=last_updated&name=11.
   BITNAMI_OPENLDAP_VERSION: "2.6.10" # https://hub.docker.com/r/bitnami/openldap/tags?page=1&name=2.6
   TRIVY_VERSION: "0.67.0" # https://hub.docker.com/r/aquasec/trivy/tags
@@ -103,7 +106,9 @@ variables:
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   DOCKER_REGISTRY_VERSION: "3.0.0" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.44.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
+  VALKEY_VERSION: "8.1.4" # https://hub.docker.com/r/valkey/valkey/tags
   REDIS_VERSION: "8.2.2" # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
+  REDIS_EXPORTER_VERSION: "v1.77.0" # https://hub.docker.com/r/oliver006/redis_exporter/tags
   BOKY_POSTFIX_VERSION: v4.4.0 # https://hub.docker.com/r/boky/postfix/tags
   VAULT_VERSION: "1.20.4" # https://hub.docker.com/r/hashicorp/vault
   VAULT_K8S_VERSION: "1.7.0" # https://hub.docker.com/r/hashicorp/vault-k8s/tags

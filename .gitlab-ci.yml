@@ -103,6 +103,10 @@ archive-images1:
           - library/postgres
         VERSION:
           - POSTGRES_VERSION
+      - BASE:
+          - prometheuscommunity/postgres-exporter
+        VERSION:
+          - POSTGRES_EXPORTER_VERSION
       - REGISTRY:
           - quay.io
         BASE:
@@ -206,7 +210,7 @@ archive-images1:
       - BASE:
           - library/mongo
         VERSION:
-          - MONGO_VERSION
+          - MONGODB_VERSION
       - BASE:
           - dpage/pgadmin4
         VERSION:
@@ -268,14 +272,6 @@ archive-images2:
   parallel:
     matrix:
       - BASE:
-          - bitnami/redis
-        VERSION:
-          - BITNAMI_REDIS_VERSION
-      - BASE:
-          - bitnami/valkey
-        VERSION:
-          - BITNAMI_VALKEY_VERSION
-      - BASE:
           - bitnami/postgresql
         VERSION:
           - BITNAMI_POSTGRESQL17_VERSION
@@ -311,6 +307,12 @@ archive-images2:
           - metallb/speaker
         VERSION:
           - METALLB_SPEAKER_VERSION
+      - REGISTRY:
+          - quay.io
+        BASE:
+          - frrouting/frr
+        VERSION:
+          - METALLB_FRR_VERSION
       - BASE:
           - bitnami/grafana
         VERSION:
@@ -375,9 +377,17 @@ archive-images3:
         VERSION:
           - ARGOCD_VERSION
       - BASE:
+          - valkey/valkey
+        VERSION:
+          - VALKEY_VERSION
+      - BASE:
           - library/redis
         VERSION:
           - REDIS_VERSION
+      - BASE:
+          - oliver006/redis_exporter
+        VERSION:
+          - REDIS_EXPORTER_VERSION
       - BASE:
           - boky/postfix
         VERSION:
@@ -1215,6 +1225,17 @@ postgres:
     IMAGE_BASE: library/postgres
     IMAGE_VERSION: ${POSTGRES_VERSION}
 
+postgres-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: prometheuscommunity/postgres-exporter
+    IMAGE_VERSION: ${POSTGRES_EXPORTER_VERSION}
+
 minio:
   interruptible: true
   retry: 2
@@ -1418,7 +1439,7 @@ elastic-agent:
     IMAGE_BASE: elastic/beats/elastic-agent
     IMAGE_VERSION: ${ELASTICAGENT_VERSION}
 
-mongo:
+mongodb:
   interruptible: true
   retry: 2
   stage: build
@@ -1427,7 +1448,18 @@ mongo:
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
     IMAGE_BASE: library/mongo
-    IMAGE_VERSION: ${MONGO_VERSION}
+    IMAGE_VERSION: ${MONGODB_VERSION}
+
+mongodb-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: percona/mongodb_exporter
+    IMAGE_VERSION: ${MONGODB_EXPORTER_VERSION}
 
 pgadmin:
   interruptible: true
@@ -1494,6 +1526,17 @@ metallb-speaker:
   variables:
     IMAGE_BASE: metallb/speaker
     IMAGE_VERSION: ${METALLB_SPEAKER_VERSION}
+
+metallb-frr:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: frrouting/frr
+    IMAGE_VERSION: ${METALLB_FRR_VERSION}
 
 bitnami-grafana:
   interruptible: true
@@ -1572,28 +1615,6 @@ bitnami-keycloak-config-cli:
   variables:
     IMAGE_BASE: bitnami/keycloak-config-cli
     IMAGE_VERSION: ${BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION}
-
-bitnami-redis:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/redis
-    IMAGE_VERSION: ${BITNAMI_REDIS_VERSION}
-
-bitnami-valkey:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: bitnami/valkey
-    IMAGE_VERSION: ${BITNAMI_VALKEY_VERSION}
 
 bitnami-postgresql17:
   interruptible: true
@@ -1757,6 +1778,17 @@ dex:
     IMAGE_BASE: dexidp/dex
     IMAGE_VERSION: ${DEX_VERSION}
 
+valkey:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: valkey/valkey
+    IMAGE_VERSION: ${VALKEY_VERSION}
+
 redis:
   interruptible: true
   retry: 2
@@ -1767,6 +1799,17 @@ redis:
   variables:
     IMAGE_BASE: library/redis
     IMAGE_VERSION: ${REDIS_VERSION}
+
+redis-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: oliver006/redis_exporter
+    IMAGE_VERSION: ${REDIS_EXPORTER_VERSION}
 
 vault:
   interruptible: true
