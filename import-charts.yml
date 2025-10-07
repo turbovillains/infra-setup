@@ -104,12 +104,6 @@ helm:
     charts:
       - name: pgadmin
       - name: postgresql
-  # - name: bitnami
-  #   uri: https://charts.bitnami.com/bitnami
-  #   charts:
-  #     - name: keycloak
-  #     - name: postgresql
-  #     - name: grafana
   - name: elastic
     uri: https://helm.elastic.co
     charts:

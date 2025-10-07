@@ -54,16 +54,11 @@ import_images() {
         "klutchell/unbound:${UNBOUND_VERSION:-v1.19.3}"
         "nextcloud:${NEXTCLOUD_VERSION:-20.0.0-fpm-alpine}:::prepend_name=library/"
         "docker:${DIND_VERSION:-20.10.7-dind}:::prepend_name=library/"
-        # "bitnami/postgresql:${BITNAMI_POSTGRESQL17_VERSION:-17.0.0-debian-12-r0}"
-        # "bitnami/keycloak:${BITNAMI_KEYCLOAK_VERSION:-13.0.1-debian-10-r13}"
-        # "bitnami/keycloak-config-cli:${BITNAMI_KEYCLOAK_CONFIG_CLI_VERSION:-5.5.0-debian-11-r11}"
         "registry.k8s.io/ingress-nginx/controller:${NGINX_INGRESS_CONTROLLER_VERSION:-v1.13.3}"
         "registry.k8s.io/ingress-nginx/kube-webhook-certgen:${NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION:-v1.6.3}"
         "quay.io/metallb/controller:${METALLB_CONTROLLER_VERSION:-0.15.2}"
         "quay.io/metallb/speaker:${METALLB_SPEAKER_VERSION:-0.15.2}"
         "quay.io/frrouting/frr:${METALLB_FRR_VERSION:-9.1.0}"
-        # "bitnami/grafana:${BITNAMI_GRAFANA_VERSION:-8.0.6-debian-10-r3}"
-        # "bitnami/openldap:${BITNAMI_OPENLDAP_VERSION:-2.5.13-debian-11-r0}"
         "haproxytech/haproxy-alpine:${HAPROXY_VERSION:-3.1.5}"
         "haproxytech/kubernetes-ingress:${HAPROXY_INGRESS_VERSION:-3.1.2}"
         "aquasec/trivy:${TRIVY_VERSION:-0.33.0}"
@@ -259,6 +254,9 @@ import_images() {
         # clickhouse
         "clickhouse:${CLICKHOUSE_VERSION:-21.5.6-alpine}:::prepend_name=library/"
         "altinity/clickhouse-operator:${CLICHOUSE_OPERATOR_VERSION:-0.25.4}"
+
+        "rabbitmq:${RABBITMQ_VERSION:-4.1.4}:::prepend_name=library/"
+        "kbudde/rabbitmq-exporter:${RABBITMQ_EXPROTER_VERSION:-1.0.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
