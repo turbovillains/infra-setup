@@ -24,6 +24,10 @@ helm:
   #   uri: https://strimzi.io/charts/
   #   charts:
   #     - name: strimzi-kafka-operator
+  - name: valkey
+    uri: https://valkey.io/valkey-helm/
+    charts:
+      - name: valkey
   - name: akhq
     uri: https://akhq.io/
   - name: confluentinc
@@ -56,7 +60,7 @@ helm:
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 7.0.2
+        version: 7.1.11
   - name: ingress-nginx
     uri: https://kubernetes.github.io/ingress-nginx
     charts:

@@ -239,7 +239,7 @@ import_images() {
         "confluentinc/cp-enterprise-replicator:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-kafka-rest:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-ksqldb-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
-        "confluentinc/cp-ksqldb-cli:${CONFLUENTINC_CP_VERSION:-7.1.1}"
+        # "confluentinc/cp-ksqldb-cli:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-schema-registry:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-server:${CONFLUENTINC_CP_VERSION:-7.1.1}"
         "confluentinc/cp-server-connect:${CONFLUENTINC_CP_VERSION:-7.1.1}"

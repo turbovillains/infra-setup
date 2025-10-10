@@ -13,7 +13,7 @@ entries:
           description: "Update the _Metrics Server_ OCI image to [`0.8.0`](https://github.com/kubernetes-sigs/metrics-server/releases/tag/v0.8.0)."
     apiVersion: v2
     appVersion: 0.8.0
-    created: "2025-10-04T13:49:14.167969+02:00"
+    created: "2025-10-17T12:07:06.659873+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: fb929902e3b7565663cdd1734f31d63735c932be1541a7228b5aeef6d2348a1f
@@ -49,7 +49,7 @@ entries:
           description: "Fixed nanny's RoleBinding which contained a hard-coded namespace instead of the Helm's release namespace."
     apiVersion: v2
     appVersion: 0.7.2
-    created: "2025-10-04T13:49:14.167318+02:00"
+    created: "2025-10-17T12:07:06.655567+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: e904ffa2fe33c429e12cac8aa013ba38f42d944e315d060e94230a53b98985cf
@@ -79,7 +79,7 @@ entries:
           description: "Updated the _Metrics Server_ OCI image to [v0.7.1](https://github.com/kubernetes-sigs/metrics-server/releases/tag/v0.7.1)."
     apiVersion: v2
     appVersion: 0.7.1
-    created: "2025-10-04T13:49:14.166378+02:00"
+    created: "2025-10-17T12:07:06.650843+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: bed08344ab4b070db463ad63c5effb2ad23a158090ffdb2c1a960895110ee12e
@@ -111,7 +111,7 @@ entries:
           description: "Updated the _addon-resizer_ OCI image to [v1.8.20](https://github.com/kubernetes/autoscaler/releases/tag/addon-resizer-1.8.20)."
     apiVersion: v2
     appVersion: 0.7.0
-    created: "2025-10-04T13:49:14.165755+02:00"
+    created: "2025-10-17T12:07:06.646838+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: 19df2fa9c4c6e1ec4f134da56ae9c3e6b610bfd5674744115c9e9864c5f3debe
@@ -147,7 +147,7 @@ entries:
           description: "Changed the default addon resizer nanny resource configuration to match the documented Metrics Server autoscaling values."
     apiVersion: v2
     appVersion: 0.6.4
-    created: "2025-10-04T13:49:14.165102+02:00"
+    created: "2025-10-17T12:07:06.642914+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: e7cba5a2d7e2b0949b3ea1aa48fc3780b71eba17e1edccc8273f5da67048164b
@@ -183,7 +183,7 @@ entries:
           description: "Fixed container port default not having been updated to 10250."
     apiVersion: v2
     appVersion: 0.6.3
-    created: "2025-10-04T13:49:14.164496+02:00"
+    created: "2025-10-17T12:07:06.636746+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: a85c6df5b2cb9b1afeb1744637827f4bae25a02d526ba70142d2b42022f78b49
@@ -217,7 +217,7 @@ entries:
           description: "Fixed service labels/annotations."
     apiVersion: v2
     appVersion: 0.6.3
-    created: "2025-10-04T13:49:14.170033+02:00"
+    created: "2025-10-17T12:07:06.677163+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: 211ed5798a8b44ecae271f5615dcfe101d919dbaf47dda447f952b174dce5395
@@ -247,7 +247,7 @@ entries:
           description: "Changed the image registry location to registry.k8s.io."
     apiVersion: v2
     appVersion: 0.6.2
-    created: "2025-10-04T13:49:14.169486+02:00"
+    created: "2025-10-17T12:07:06.672647+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: 48ec8d161e687a4be8de265b810505721b9850cf391b0031cb6051b19836fc9f
@@ -289,7 +289,7 @@ entries:
           description: "Updated Metrics Server image to v0.6.2."
     apiVersion: v2
     appVersion: 0.6.2
-    created: "2025-10-04T13:49:14.168991+02:00"
+    created: "2025-10-17T12:07:06.668577+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: 6321fffa4bb34de22aee439a6893db329ff784e977e2204b5b57e8468ceb0e52
@@ -319,7 +319,7 @@ entries:
           description: "Allow probes to be turned off completly (this is not advised unless you know what you're doing)."
     apiVersion: v2
     appVersion: 0.6.1
-    created: "2025-10-04T13:49:14.168454+02:00"
+    created: "2025-10-17T12:07:06.664116+02:00"
     description: Metrics Server is a scalable, efficient source of container resource
       metrics for Kubernetes built-in autoscaling pipelines.
     digest: 4358fb2014c1e8311653d9495216555e4897db28464b95c96619b0be94b253ec
@@ -343,4 +343,4 @@ entries:
     urls:
     - metrics-server-3.8.2.tgz
     version: 3.8.2
-generated: "2025-10-04T13:49:14.163821+02:00"
+generated: "2025-10-17T12:07:06.630412+02:00"
