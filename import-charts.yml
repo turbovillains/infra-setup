@@ -6,6 +6,12 @@ helm:
     uri: https://charts.helm.sh/incubator
     charts:
       - name: raw
+  - name: prefect
+    uri: https://prefecthq.github.io/prefect-helm
+    charts:
+      - name: prefect-server
+      - name: prefect-worker
+      - name: prometheus-prefect-exporter
   - name: metallb
     uri: https://metallb.github.io/metallb
     charts:

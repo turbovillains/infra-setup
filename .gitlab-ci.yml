@@ -690,6 +690,14 @@ archive-images4:
           - kbudde/rabbitmq-exporter
         VERSION:
           - RABBITMQ_EXPORTER_VERSION
+      - BASE:
+          - prefecthq/prefect
+        VERSION:
+          - PREFECT_VERSION
+      - BASE:
+          - prefecthq/prometheus-prefect-exporter
+        VERSION:
+          - PREFECT_EXPORTER_VERSION
       - REGISTRY:
           - ghcr.io
         BASE:
@@ -2616,6 +2624,39 @@ rabbitmq-exporter:
   variables:
     IMAGE_BASE: kbudde/rabbitmq-exporter
     IMAGE_VERSION: ${RABBITMQ_EXPORTER_VERSION}
+
+prefect:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: prefecthq/prefect
+    IMAGE_VERSION: ${PREFECT_VERSION}
+
+prefect-worker:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: prefecthq/prefect
+    IMAGE_VERSION: ${PREFECT_VERSION}-kubernetes
+
+prefect-exporter:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: prefecthq/prometheus-prefect-exporter
+    IMAGE_VERSION: ${PREFECT_EXPORTER_VERSION}
 
 it-tools:
   interruptible: true

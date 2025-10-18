@@ -259,6 +259,11 @@ import_images() {
 
         "rabbitmq:${RABBITMQ_VERSION:-4.1.4}:::prepend_name=library/"
         "kbudde/rabbitmq-exporter:${RABBITMQ_EXPROTER_VERSION:-1.0.0}"
+
+        # prefect
+        "prefecthq/prefect:${PREFECT_VERSION:-3.4.24-python3.13}"
+        "prefecthq/prefect:${PREFECT_VERSION:-3.4.24-python3.13}-kubernetes"
+        "prefecthq/prometheus-prefect-exporter:${PREFECT_EXPORTER_VERSION:-1.1.0}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
