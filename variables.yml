@@ -58,7 +58,8 @@ variables:
   KEYCLOAK_VERSION: "26.4.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "18.0-bookworm" # https://hub.docker.com/_/postgres
   POSTGRES_EXPORTER_VERSION: v0.18.1 # https://hub.docker.com/r/prometheuscommunity/postgres-exporter/tags
-  MINIO_VERSION: RELEASE.2025-09-07T16-13-09Z # https://github.com/minio/minio/releases
+  # last minio release with admin ui
+  MINIO_VERSION: RELEASE.2025-04-22T22-12-26Z # https://github.com/minio/minio/releases
   MINIO_MC_VERSION: RELEASE.2025-08-13T08-35-41Z # https://github.com/minio/mc/releases
   PROMETHEUS_VERSION: v3.7.0 # https://prometheus.io/download/
   PROMETHEUS_OPERATOR_VERSION: v0.86.1 # https://quay.io/repository/prometheus-operator/prometheus-operator?tag=latest&tab=tags
