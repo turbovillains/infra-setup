@@ -47,7 +47,7 @@ variables:
   K8S_NFD_VERSION: v0.18.1 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
   TIGERA_OPERATOR_VERSION: "v1.38.7" # https://github.com/tigera/operator/releases
   CALICO_VERSION: "v3.30.4" # https://hub.docker.com/r/calico/node/tags
-  ARGOCD_VERSION: v3.1.8 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
+  ARGOCD_VERSION: v3.1.9 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.52.0" # https://github.com/vmware-tanzu/carvel-ytt/releases
   ARGOCD_VAULT_PLUGIN_VERSION: "1.18.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   NEXUS_VERSION: "3.85.0" # https://hub.docker.com/r/sonatype/nexus3/tags
@@ -61,7 +61,7 @@ variables:
   # last minio release with admin ui
   MINIO_VERSION: RELEASE.2025-04-22T22-12-26Z # https://github.com/minio/minio/releases
   MINIO_MC_VERSION: RELEASE.2025-08-13T08-35-41Z # https://github.com/minio/mc/releases
-  PROMETHEUS_VERSION: v3.7.0 # https://prometheus.io/download/
+  PROMETHEUS_VERSION: v3.7.1 # https://prometheus.io/download/
   PROMETHEUS_OPERATOR_VERSION: v0.86.1 # https://quay.io/repository/prometheus-operator/prometheus-operator?tag=latest&tab=tags
   ALERTMANAGER_VERSION: v0.28.1
   BLACKBOX_EXPORTER_VERSION: v0.27.0
@@ -103,7 +103,7 @@ variables:
   DEX_VERSION: v2.44.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
   VALKEY_VERSION: "8.1.4" # https://hub.docker.com/r/valkey/valkey/tags
   REDIS_VERSION: "8.2.2" # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
-  REDIS_EXPORTER_VERSION: "v1.78.0" # https://hub.docker.com/r/oliver006/redis_exporter/tags
+  REDIS_EXPORTER_VERSION: "v1.79.0" # https://hub.docker.com/r/oliver006/redis_exporter/tags
   BOKY_POSTFIX_VERSION: v4.4.0 # https://hub.docker.com/r/boky/postfix/tags
   VAULT_VERSION: "1.20.4" # https://hub.docker.com/r/hashicorp/vault
   VAULT_K8S_VERSION: "1.7.0" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
