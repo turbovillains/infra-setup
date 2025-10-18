@@ -175,6 +175,8 @@ import_images() {
         "registry.k8s.io/kube-scheduler:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-controller-manager:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
 
+        "rancher/kubectl:${KUBECTL_VERSION:-v1.34.1}"
+
         # calico
         "quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION:-v1.25.3}"
         "calico/typha:${CALICO_VERSION:-v3.22.1}"

@@ -127,6 +127,10 @@ archive-images1:
           - ETCD_35_VERSION
           - ETCD_36_VERSION
       - BASE:
+          - rancher/kubectl
+        VERSION:
+          - KUBECTL_VERSION
+      - BASE:
           - prometheus-operator/prometheus-operator
           - prometheus-operator/prometheus-config-reloader
         VERSION:
@@ -2656,6 +2660,17 @@ clickhouse-operator:
   variables:
     IMAGE_BASE: altinity/clickhouse-operator
     IMAGE_VERSION: ${CLICHOUSE_OPERATOR_VERSION}
+
+kubectl:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: rancher/kubectl
+    IMAGE_VERSION: ${KUBECTL_VERSION}
 
 infra-docs:
   interruptible: true
