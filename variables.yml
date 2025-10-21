@@ -4,18 +4,18 @@ variables:
   INFRA_NAMESPACE: infra
   INFRA_NAMESPACE_DEV: infra-dev
   WEBSITE_VERSION: v0.2.11
-  DEBIAN_VERSION: "bookworm-20250929-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
+  DEBIAN_VERSION: "trixie-20251020-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_NOBLE_VERSION: "noble-20251001" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
   ALPINE_VERSION: "3.22.2" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.37.0" # https://hub.docker.com/_/busybox
   JDK_ZULU_VERSION: 25.0.0-25.28 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   JDK_TEMURIN_VERSION: 25-noble # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
-  GOLANG_VERSION: "1.25.3-bookworm" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
+  GOLANG_VERSION: "1.25.3-trixie" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.25.3-alpine" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.21
-  NODE_VERSION: "25.0.0-bookworm" # https://hub.docker.com/_/node/tags
+  NODE_VERSION: "25.0.0-trixie" # https://hub.docker.com/_/node/tags
   NODE_ALPINE_VERSION: "25.0.0-alpine" # https://hub.docker.com/_/node/tags
-  PYTHON_VERSION: 3.14.0-bookworm # https://hub.docker.com/_/python/tags?page=1&name=3.13
-  PYTHON_SLIM_VERSION: 3.14.0-slim-bookworm # https://hub.docker.com/_/python/tags?page=1&name=3.13
+  PYTHON_VERSION: 3.14.0-trixie # https://hub.docker.com/_/python/tags?page=1&name=3.13
+  PYTHON_SLIM_VERSION: 3.14.0-slim-trixie # https://hub.docker.com/_/python/tags?page=1&name=3.13
   KUBE_RBAC_PROXY_VERSION: v0.20.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_VERSION: "18.5.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
   GITLAB_RUNNER_VERSION: "alpine-v18.5.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
@@ -56,7 +56,7 @@ variables:
   MKDOCS_VERSION: "9.6.22" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.4.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
-  POSTGRES_VERSION: "18.0-bookworm" # https://hub.docker.com/_/postgres
+  POSTGRES_VERSION: "18.0-trixie" # https://hub.docker.com/_/postgres
   POSTGRES_EXPORTER_VERSION: v0.18.1 # https://hub.docker.com/r/prometheuscommunity/postgres-exporter/tags
   # last minio release with admin ui
   MINIO_VERSION: RELEASE.2025-04-22T22-12-26Z # https://github.com/minio/minio/releases
@@ -129,8 +129,8 @@ variables:
   COTURN_VERSION: "4.7.0" # https://hub.docker.com/r/coturn/coturn/tags
   JENKINS_VERSION: 2.532-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
   KIWIGRID_K8S_SIDECAR_VERSION: "1.30.11" # https://github.com/kiwigrid/k8s-sidecar
-  JENKINS_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
-  JENKINS_INBOUND_AGENT_VERSION: bookworm-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
+  JENKINS_AGENT_VERSION: trixie-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
+  JENKINS_INBOUND_AGENT_VERSION: trixie-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
   JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
   NETBOX_VERSION: v4.4.4 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v13.0.7 # https://hub.docker.com/r/postgrest/postgrest/tags
@@ -152,7 +152,7 @@ variables:
   CLOUDFLARED_VERSION: "2025.10.0" # https://hub.docker.com/r/cloudflare/cloudflared/tags
   MAILCATCHER_VERSION: "v0.10.0" # https://github.com/sj26/mailcatcher/releases
   FRP_VERSION: "v0.65.0" # https://github.com/fatedier/frp/releases/tag/v0.61.1
-  ISTIO_VERSION: "1.27.2" # https://github.com/istio/istio/releases/tag/1.27.0
+  ISTIO_VERSION: "1.27.3" # https://github.com/istio/istio/releases/tag/1.27.0
   APACHE_KAFKA_VERSION: "4.1.0" # https://hub.docker.com/r/apache/kafka/tags
   STRIMZI_OPERATOR_VERSION: "0.48.0"  # https://quay.io/repository/strimzi/operator?tab=tags
   STRIMZI_KAFKA_VERSION: "4.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
