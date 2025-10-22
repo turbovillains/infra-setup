@@ -655,10 +655,18 @@ archive-images4:
           - koenkk/zigbee2mqtt
         VERSION:
           - ZIGBEE2MQTT_VERSION
-      - BASE:
-          - gitea/gitea
+      - REGISTRY:
+          - codeberg.org
+        BASE:
+          - forgejo/forgejo
         VERSION:
-          - GITEA_VERSION
+          - FORGEJO_VERSION
+      - REGISTRY:
+          - code.forgejo.org
+        BASE:
+          - forgejo/runner
+        VERSION:
+          - FORGEJO_RUNNER_VERSION
       - BASE:
           - cloudflare/cloudflared
         VERSION:
@@ -2383,7 +2391,7 @@ zigbee2mqtt:
     IMAGE_BASE: koenkk/zigbee2mqtt
     IMAGE_VERSION: ${ZIGBEE2MQTT_VERSION}
 
-gitea:
+forgejo:
   interruptible: true
   retry: 2
   stage: build
@@ -2391,8 +2399,19 @@ gitea:
     - |
       ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
   variables:
-    IMAGE_BASE: gitea/gitea
-    IMAGE_VERSION: ${GITEA_VERSION}
+    IMAGE_BASE: forgejo/forgejo
+    IMAGE_VERSION: ${FORGEJO_VERSION}
+
+forgejo-runner:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: forgejo/runner
+    IMAGE_VERSION: ${FORGEJO_RUNNER_VERSION}
 
 cloudflared:
   interruptible: true

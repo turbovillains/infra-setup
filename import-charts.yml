@@ -76,10 +76,6 @@ helm:
     charts:
       - name: haproxy
       - name: kubernetes-ingress
-  - name: gitea
-    uri: https://dl.gitea.com/charts/
-    charts:
-      - name: gitea
   - name: zitadel
     uri: https://charts.zitadel.com
     charts:

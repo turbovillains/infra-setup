@@ -100,7 +100,6 @@ import_images() {
         "homeassistant/home-assistant:${HOMEASSISTANT_VERSION:-2024.4}"
         "koenkk/zigbee2mqtt:${ZIGBEE2MQTT_VERSION:-1.36.1}"
         "registry.k8s.io/sig-storage/nfsplugin:${CSI_NFSPLUGIN_VERSION:-4.6.0}"
-        "gitea/gitea:${GITEA_VERSION:-1.21.11}"
         "cloudflare/cloudflared:${CLOUDFLARED_VERSION:-2024.6.1}"
         "registry.k8s.io/git-sync/git-sync:${GIT_SYNC_VERSION:-v3.6.1}"
         "apache/airflow:${AIRFLOW_VERSION:-2.3.4-python3.10}"
@@ -264,6 +263,10 @@ import_images() {
         "prefecthq/prefect:${PREFECT_VERSION:-3.4.24-python3.13}"
         "prefecthq/prefect:${PREFECT_VERSION:-3.4.24-python3.13}-kubernetes"
         "prefecthq/prometheus-prefect-exporter:${PREFECT_EXPORTER_VERSION:-1.1.0}"
+
+        # forgejo
+        "codeberg.org/forgejo/forgejo:${FORGEJO_VERSION:-1.21.11}"
+        "code.forgejo.org/forgejo/runner:${FORGEJO_RUNNER_VERSION:-1.21.11}"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
