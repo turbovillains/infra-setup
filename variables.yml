@@ -8,7 +8,7 @@ variables:
   UBUNTU_NOBLE_VERSION: "noble-20251001" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
   ALPINE_VERSION: "3.22.2" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.37.0" # https://hub.docker.com/_/busybox
-  JDK_ZULU_VERSION: 25.0.0-25.28 # https://hub.docker.com/r/azul/zulu-openjdk/tags
+  JDK_ZULU_VERSION: 25.0.1-25.30 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   JDK_TEMURIN_VERSION: 25-noble # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
   GOLANG_VERSION: "1.25.3-trixie" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
   GOLANG_ALPINE_VERSION: "1.25.3-alpine" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.21
@@ -17,10 +17,10 @@ variables:
   PYTHON_VERSION: 3.14.0-trixie # https://hub.docker.com/_/python/tags?page=1&name=3.13
   PYTHON_SLIM_VERSION: 3.14.0-slim-trixie # https://hub.docker.com/_/python/tags?page=1&name=3.13
   KUBE_RBAC_PROXY_VERSION: v0.20.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
-  GITLAB_VERSION: "18.5.0-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
+  GITLAB_VERSION: "18.5.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
   GITLAB_RUNNER_VERSION: "alpine-v18.5.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_RUNNER_HELPER_VERSION: x86_64-v18.5.0
-  GITLAB_AGENTK_VERSION: v18.5.0 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
+  GITLAB_AGENTK_VERSION: v18.5.1 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
   DIND_VERSION: 28.5.1-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   K8S_PAUSE_VERSION: "3.10"
   K8S_134_VERSION: "v1.34.1" # https://github.com/kubernetes/kubernetes/releases
@@ -71,7 +71,7 @@ variables:
   METRICS_SERVER_VERSION: "v0.8.0" # https://github.com/kubernetes-sigs/metrics-server
   SNMP_EXPORTER_VERSION: v0.29.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
-  GRAFANA_VERSION: "12.2.0" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
+  GRAFANA_VERSION: "12.2.1" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
   HAPROXY_VERSION: "3.2.6" # https://hub.docker.com/r/haproxytech/haproxy-alpine/tags
   HAPROXY_INGRESS_VERSION: "3.1.13" # https://hub.docker.com/r/haproxytech/kubernetes-ingress/tags
   KARMA_VERSION: "v0.121" # https://github.com/prymitive/karma/pkgs/container/karma
@@ -101,7 +101,7 @@ variables:
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   DOCKER_REGISTRY_VERSION: "3.0.0" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.44.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
-  VALKEY_VERSION: "8.1.4" # https://hub.docker.com/r/valkey/valkey/tags
+  VALKEY_VERSION: "9.0.0" # https://hub.docker.com/r/valkey/valkey/tags
   REDIS_VERSION: "8.2.2" # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   REDIS_EXPORTER_VERSION: "v1.79.0" # https://hub.docker.com/r/oliver006/redis_exporter/tags
   BOKY_POSTFIX_VERSION: v4.4.0 # https://hub.docker.com/r/boky/postfix/tags
@@ -127,7 +127,7 @@ variables:
   CURL_VERSION: "8.16.0" # https://hub.docker.com/r/curlimages/curl/tags
   RESTIC_VERSION: "0.18.1" # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: "4.7.0" # https://hub.docker.com/r/coturn/coturn/tags
-  JENKINS_VERSION: 2.532-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
+  JENKINS_VERSION: 2.533-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
   KIWIGRID_K8S_SIDECAR_VERSION: "1.30.11" # https://github.com/kiwigrid/k8s-sidecar
   JENKINS_AGENT_VERSION: trixie-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
   JENKINS_INBOUND_AGENT_VERSION: trixie-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
@@ -137,7 +137,7 @@ variables:
   CEPHCSI_VERSION: v3.15.0 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v25.3.4 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
   NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION: v25.3.4 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/gpu-operator-validator/tags
-  NVIDIA_K8S_DRIVER_MANAGER_VERSION: v0.8.1 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-driver-manager/tags
+  NVIDIA_K8S_DRIVER_MANAGER_VERSION: v0.9.0 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-driver-manager/tags
   NVIDIA_CUDA_VERSION: 13.0.1-base-ubi9 # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda/tags
   NVIDIA_K8S_DEVICE_PLUGIN_VERSION: v0.16.2-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/k8s-device-plugin/tags
   NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION: v1.17.9-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/container-toolkit/tags
@@ -162,7 +162,7 @@ variables:
   CONFLUENTINC_CP_VERSION: "8.1.0" # https://hub.docker.com/r/confluentinc/cp-server/tags
   KAFDROP_VERSION: "4.2.0" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
   AKHQ_VERSION: "0.26.0" # https://hub.docker.com/r/tchiotludo/akhq/tags
-  N8N_VERSION: "1.116.1" # https://github.com/n8n-io/n8n/releases
+  N8N_VERSION: "1.116.2" # https://github.com/n8n-io/n8n/releases
   GOFLOW2_VERSION: v2.2.3 # https://hub.docker.com/r/netsampler/goflow2/tags
   ITTOOLS_VERSION: "2024.10.22-7ca5933" # https://github.com/CorentinTh/it-tools/releases
   OPENBGPD_VERISON: "8.9" # https://quay.io/repository/openbgpd/openbgpd?tab=tags&tag=latest
