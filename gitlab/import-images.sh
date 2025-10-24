@@ -267,6 +267,8 @@ import_images() {
         # forgejo
         "codeberg.org/forgejo/forgejo:${FORGEJO_VERSION:-1.21.11}"
         "code.forgejo.org/forgejo/runner:${FORGEJO_RUNNER_VERSION:-1.21.11}"
+        "ghcr.io/catthehacker/ubuntu:act-24.04"
+        "ghcr.io/catthehacker/ubuntu:runner-24.04"
     )
 
     local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}

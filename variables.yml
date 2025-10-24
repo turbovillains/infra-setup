@@ -55,7 +55,7 @@ variables:
   TRAEFIK_VERSION: "v3.5.3" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "9.6.22" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
-  KEYCLOAK_VERSION: "26.4.1" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
+  KEYCLOAK_VERSION: "26.4.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "18.0-trixie" # https://hub.docker.com/_/postgres
   POSTGRES_EXPORTER_VERSION: v0.18.1 # https://hub.docker.com/r/prometheuscommunity/postgres-exporter/tags
   # last minio release with admin ui
@@ -72,15 +72,15 @@ variables:
   SNMP_EXPORTER_VERSION: v0.29.0 # https://github.com/prometheus/snmp_exporter/releases
   IPMI_EXPORTER_VERSION: v1.4.0 # https://github.com/soundcloud/ipmi_exporter/releases
   GRAFANA_VERSION: "12.2.1" # https://hub.docker.com/r/grafana/grafana/tags?page=1&ordering=last_updated
-  HAPROXY_VERSION: "3.2.6" # https://hub.docker.com/r/haproxytech/haproxy-alpine/tags
+  HAPROXY_VERSION: "3.2.7" # https://hub.docker.com/r/haproxytech/haproxy-alpine/tags
   HAPROXY_INGRESS_VERSION: "3.1.14" # https://hub.docker.com/r/haproxytech/kubernetes-ingress/tags
   KARMA_VERSION: "v0.121" # https://github.com/prymitive/karma/pkgs/container/karma
   ECK_OPERATOR_VERSION: "3.1.0" # https://hub.docker.com/r/elastic/eck-operator/tags
-  ELASTICSEARCH_VERSION: "9.1.5" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-  LOGSTASH_VERSION: "9.1.5"
-  KIBANA_VERSION: "9.1.5"
-  APMSERVER_VERSION: "9.1.5"
-  ELASTICAGENT_VERSION: "8.19.5"
+  ELASTICSEARCH_VERSION: "9.2.0" # https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+  LOGSTASH_VERSION: "9.2.0"
+  KIBANA_VERSION: "9.2.0"
+  APMSERVER_VERSION: "9.2.0"
+  ELASTICAGENT_VERSION: "8.19.6"
   MONGODB_VERSION: "8.0.15-noble" # https://hub.docker.com/_/mongo
   MONGODB_EXPORTER_VERSION: "0.47.1" # https://hub.docker.com/r/percona/mongodb_exporter/tags
   PGADMIN_VERSION: "9.9" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
@@ -123,7 +123,7 @@ variables:
   GIT_SYNC_VERSION: v4.5.0 # registry.k8s.io/git-sync/git-sync
   SYNCTHING_VERSION: "2.0.10" # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: "10.11.0" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
-  TDARR_VERSION: "2.49.01" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
+  TDARR_VERSION: "2.50.01" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
   CURL_VERSION: "8.16.0" # https://hub.docker.com/r/curlimages/curl/tags
   RESTIC_VERSION: "0.18.1" # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: "4.7.0" # https://hub.docker.com/r/coturn/coturn/tags
@@ -174,5 +174,5 @@ variables:
   CLICHOUSE_OPERATOR_VERSION: "0.25.5" # https://hub.docker.com/r/altinity/clickhouse-operator/tags
   RABBITMQ_VERSION: "4.1.4" # https://hub.docker.com/_/rabbitmq/tags
   RABBITMQ_EXPORTER_VERSION: "1.0.0" # https://hub.docker.com/_/rabbitmq/tags
-  PREFECT_VERSION: 3.4.24-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
+  PREFECT_VERSION: 3.4.25-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
   PREFECT_EXPORTER_VERSION: "3.0.0" # https://hub.docker.com/r/prefecthq/prometheus-prefect-exporter/tags

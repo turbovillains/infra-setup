@@ -726,6 +726,8 @@ archive-special:
     - |
       declare -a special_images=(
         "${DOCKER_HUB}/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}"
+        "${DOCKER_HUB}/catthehacker/ubuntu:act-24.04"
+        "${DOCKER_HUB}/catthehacker/ubuntu:runner-24.04"
       )
 
       for image in "${special_images[@]}"; do
@@ -2412,6 +2414,28 @@ forgejo-runner:
   variables:
     IMAGE_BASE: forgejo/runner
     IMAGE_VERSION: ${FORGEJO_RUNNER_VERSION}
+
+forgejo-actions-ubuntu-act:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: catthehacker/ubuntu
+    IMAGE_VERSION: act-24.04
+
+forgejo-actions-ubuntu-runner:
+  interruptible: true
+  retry: 2
+  stage: build
+  script:
+    - |
+      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+  variables:
+    IMAGE_BASE: catthehacker/ubuntu
+    IMAGE_VERSION: runner-24.04
 
 cloudflared:
   interruptible: true
