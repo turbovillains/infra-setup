@@ -7,7 +7,6 @@ import_images() {
         "alpine:${ALPINE_VERSION:-3.14.0}:::prepend_name=library/"
         "busybox:${BUSYBOX_VERSION:-1.34.1}:::prepend_name=library/"
         "node:${NODE_VERSION:-22.4.1-bookworm}:::prepend_name=library/"
-        "node:${NODE_ALPINE_VERSION:-22.4.1-bookworm}:::prepend_name=library/"
         "python:${PYTHON_VERSION:-3.11.2}:::prepend_name=library/"
         "python:${PYTHON_SLIM_VERSION:-3.11.2-slim}:::prepend_name=library/"
         "golang:${GOLANG_VERSION:-1.17.3-bullseye}:::prepend_name=library/"
