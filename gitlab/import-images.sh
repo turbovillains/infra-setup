@@ -256,7 +256,7 @@ import_images() {
         "altinity/clickhouse-operator:${CLICHOUSE_OPERATOR_VERSION:-0.25.4}"
 
         "rabbitmq:${RABBITMQ_VERSION:-4.1.4}:::prepend_name=library/"
-        "kbudde/rabbitmq-exporter:${RABBITMQ_EXPROTER_VERSION:-1.0.0}"
+        "kbudde/rabbitmq-exporter:${RABBITMQ_EXPORTER_VERSION:-1.0.0}"
 
         # prefect
         "prefecthq/prefect:${PREFECT_VERSION:-3.4.24-python3.13}"

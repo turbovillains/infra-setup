@@ -8,7 +8,7 @@ deb https://fs.noroutine.me/attic/debian bookworm-updates main
 deb http://security.debian.org/debian-security bookworm-security main
 SOURCES
 
-apt-get update -yyq && apt-get install -yyq unzip curl
+apt-get update -yyq && apt-get install -yyq unzip zstd curl
 
 # Docker style, used by most
 ARCHX=$(uname -m | sed 's/aarch64/arm64/;s/x86_64/amd64/')
@@ -18,6 +18,8 @@ ARCHY=$(uname -m | sed 's/aarch64/arm64/')
 
 # Plane linux arch, used by goreleaser
 ARCHZ=$(uname -m)
+
+set -e
 
 # kubectl
 curl -sLo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/${ARCHX}/kubectl" && chmod +x /usr/local/bin/kubectl
@@ -103,6 +105,9 @@ rm terraform.zip
 # https://github.com/cloudflare/cfssl/releases
 CFSSL_VERSION=$(curl -s "https://api.github.com/repos/cloudflare/cfssl/releases/latest" | jq -r '.tag_name' | sed 's/v//')
 curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v${CFSSL_VERSION}/cfssl_${CFSSL_VERSION}_linux_${ARCHX} && chmod +x /usr/local/bin/cfssl
+
+# dagger
+curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh
 
 # brew install nvm
 
