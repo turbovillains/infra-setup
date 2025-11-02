@@ -1,4 +1,4 @@
-# infra-setup
+infra-setup
 ===
 
 Repository aim is to version and generate pre-deployment artifacts for infra-cluster:
