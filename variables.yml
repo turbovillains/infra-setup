@@ -52,7 +52,7 @@ variables:
   NEXUS_VERSION: "3.85.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.8-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
   TRAEFIK_VERSION: "v3.5.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
-  MKDOCS_VERSION: "9.6.22" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
+  MKDOCS_VERSION: "9.6.23" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.4.2" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
   POSTGRES_VERSION: "18.0-trixie" # https://hub.docker.com/_/postgres
@@ -83,12 +83,12 @@ variables:
   MONGODB_VERSION: "8.2.1-noble" # https://hub.docker.com/_/mongo
   MONGODB_EXPORTER_VERSION: "0.47.1" # https://hub.docker.com/r/percona/mongodb_exporter/tags
   PGADMIN_VERSION: "9.9" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
-  HTTPBIN_VERSION: "2.18.3" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
+  HTTPBIN_VERSION: "2.19.0" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.12.0-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   PIHOLE_VERSION: "2025.10.3" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
   UNBOUND_VERSION: v1.24.1 # https://github.com/klutchell/unbound-docker/tags
   NEXTCLOUD_VERSION: "32.0.1-apache" # https://hub.docker.com/_/nextcloud
-  NGINX_INGRESS_CONTROLLER_VERSION: "v1.13.3" # https://github.com/kubernetes/ingress-nginx/tree/main
+  NGINX_INGRESS_CONTROLLER_VERSION: "v1.14.0" # https://github.com/kubernetes/ingress-nginx/tree/main
   NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION: "v1.6.4" # https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml
   METALLB_CONTROLLER_VERSION: "v0.15.2" # https://quay.io/repository/metallb/controller?tab=tags&tag=latest
   METALLB_SPEAKER_VERSION: "v0.15.2" # https://quay.io/repository/metallb/speaker?tab=tags&tag=latest
@@ -146,7 +146,7 @@ variables:
   NVIDIA_K8S_MIG_MANAGER_VERSION: v0.9.1-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-mig-manager/tags
   ZITADEL_VERSION: v2.65.1 # https://github.com/zitadel/zitadel/pkgs/container/zitadel
   HOMEASSISTANT_VERSION: "2025.10" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
-  ZIGBEE2MQTT_VERSION: "2.6.2" # https://github.com/Koenkk/zigbee2mqtt/releases
+  ZIGBEE2MQTT_VERSION: "2.6.3" # https://github.com/Koenkk/zigbee2mqtt/releases
   FORGEJO_VERSION: "13.0.2" # https://codeberg.org/forgejo/forgejo
   FORGEJO_RUNNER_VERSION: "11.2.0" # https://codeberg.org/forgejo/forgejo
   CLOUDFLARED_VERSION: "2025.10.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
@@ -173,5 +173,5 @@ variables:
   CLICHOUSE_OPERATOR_VERSION: "0.25.5" # https://hub.docker.com/r/altinity/clickhouse-operator/tags
   RABBITMQ_VERSION: "4.2.0" # https://hub.docker.com/_/rabbitmq/tags
   RABBITMQ_EXPORTER_VERSION: "1.0.0" # https://hub.docker.com/_/rabbitmq/tags
-  PREFECT_VERSION: 3.4.25-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
+  PREFECT_VERSION: 3.5.0-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
   PREFECT_EXPORTER_VERSION: "3.0.0" # https://hub.docker.com/r/prefecthq/prometheus-prefect-exporter/tags

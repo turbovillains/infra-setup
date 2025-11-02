@@ -20,7 +20,7 @@ jobs:
         uses: https://github.com/dagger/dagger-for-github@v8.2.0
         with:
           version: "latest"
-          args: with-docker-cfg --docker-cfg env://DOCKER_CFG import-images --pattern alpine
+          args: with-docker-cfg --docker-cfg env://DOCKER_CFG import-images
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
         env:
           DOCKER_CFG: ${{ secrets.DOCKER_CFG }}
