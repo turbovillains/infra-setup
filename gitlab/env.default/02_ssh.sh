@@ -10,7 +10,7 @@ if [[ ! -z "${SSH_PRIVATE_KEY}" ]]; then
     # http://docs.gitlab.com/ce/ci/ssh_keys/README.html
     which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
     eval $(ssh-agent -s)
-    echo "${SSH_PRIVATE_KEY}" | tee /home/${BUILDER_USER}/.ssh/id_rsa | tr -d '\r' | ssh-add - > /dev/null
+    echo "${SSH_PRIVATE_KEY}" | base64 -d | tee /home/${BUILDER_USER}/.ssh/id_rsa | tr -d '\r' | ssh-add - > /dev/null
     chmod 600 /home/${BUILDER_USER}/.ssh/id_rsa
 fi
 

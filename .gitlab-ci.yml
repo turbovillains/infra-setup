@@ -2,7 +2,7 @@ include: variables.yml
 
 stages:
   - scratch
-  - archive
+  # - archive
   - base
   - stacks
   - build
@@ -31,826 +31,826 @@ before_script:
 #   script:
 #     - ./gitlab/${CI_JOB_NAME}.sh
 
-.archive-images:
-  interruptible: true
-  rules:
-    - if: $CI_COMMIT_TAG
-  script:
-    - |
-      echo "Archiving ${DOCKER_HUB}/${BASE}:${!VERSION}"
-      docker pull ${DOCKER_HUB}/${BASE}:${!VERSION}
-      archive_image ${DOCKER_HUB}/${BASE}:${!VERSION} ${INFRA_VERSION}
+# .archive-images:
+#   interruptible: true
+#   rules:
+#     - if: $CI_COMMIT_TAG
+#   script:
+#     - |
+#       echo "Archiving ${DOCKER_HUB}/${BASE}:${!VERSION}"
+#       docker pull ${DOCKER_HUB}/${BASE}:${!VERSION}
+#       archive_image ${DOCKER_HUB}/${BASE}:${!VERSION} ${INFRA_VERSION}
 
-archive-images1:
-  extends: .archive-images
-  stage: archive
-  parallel:
-    matrix:
-      - BASE:
-          - library/debian
-        VERSION:
-          - DEBIAN_VERSION
-      - BASE:
-          - library/ubuntu
-        VERSION:
-          - UBUNTU_NOBLE_VERSION
-      - BASE:
-          - library/busybox
-        VERSION:
-          - BUSYBOX_VERSION
-      - BASE:
-          - library/alpine
-        VERSION:
-          - ALPINE_VERSION
-      - BASE:
-          - library/python
-        VERSION:
-          - PYTHON_VERSION
-          - PYTHON_SLIM_VERSION
-      - BASE:
-          - library/node
-        VERSION:
-          - NODE_VERSION
-      - BASE:
-          - library/golang
-        VERSION:
-          - GOLANG_VERSION
-          - GOLANG_ALPINE_VERSION
-      - BASE:
-          - library/traefik
-        VERSION:
-          - TRAEFIK_VERSION
-      - BASE:
-          - sonatype/nexus3
-        VERSION:
-          - NEXUS_VERSION
-      - BASE:
-          - squidfunk/mkdocs-material
-        VERSION:
-          - MKDOCS_VERSION
-      - BASE:
-          - freeradius/freeradius-server
-        VERSION:
-          - FREERADIUS_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - keycloak/keycloak
-        VERSION:
-          - KEYCLOAK_VERSION
-      - BASE:
-          - library/postgres
-        VERSION:
-          - POSTGRES_VERSION
-      - BASE:
-          - prometheuscommunity/postgres-exporter
-        VERSION:
-          - POSTGRES_EXPORTER_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - minio/minio
-        VERSION:
-          - MINIO_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - minio/mc
-        VERSION:
-          - MINIO_MC_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - coreos/etcd
-        VERSION:
-          - ETCD_35_VERSION
-          - ETCD_36_VERSION
-      - BASE:
-          - rancher/kubectl
-        VERSION:
-          - KUBECTL_VERSION
-      - BASE:
-          - prometheus-operator/prometheus-operator
-          - prometheus-operator/prometheus-config-reloader
-        VERSION:
-          - PROMETHEUS_OPERATOR_VERSION
-      - BASE:
-          - prometheus/prometheus
-        VERSION:
-          - PROMETHEUS_VERSION
-      - BASE:
-          - prometheus/alertmanager
-        VERSION:
-          - ALERTMANAGER_VERSION
-      - BASE:
-          - prometheus/node-exporter
-        VERSION:
-          - NODE_EXPORTER_VERSION
-      - BASE:
-          - prometheus/blackbox-exporter
-        VERSION:
-          - BLACKBOX_EXPORTER_VERSION
-      - BASE:
-          - prometheus/snmp-exporter
-        VERSION:
-          - SNMP_EXPORTER_VERSION
-      - BASE:
-          - prometheus/pushgateway
-        VERSION:
-          - PUSHGATEWAY_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - kube-state-metrics/kube-state-metrics
-        VERSION:
-          - KUBE_STATE_METRICS_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - metrics-server/metrics-server
-        VERSION:
-          - METRICS_SERVER_VERSION
-      - BASE:
-          - grafana/grafana
-        VERSION:
-          - GRAFANA_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - prymitive/karma
-        VERSION:
-          - KARMA_VERSION
-      - REGISTRY:
-          - docker.elastic.co
-        BASE:
-          - elastic/elasticsearch/elasticsearch
-        VERSION:
-          - ELASTICSEARCH_VERSION
-      - REGISTRY:
-          - docker.elastic.co
-        BASE:
-          - elastic/logstash/logstash
-        VERSION:
-          - LOGSTASH_VERSION
-      - REGISTRY:
-          - docker.elastic.co
-        BASE:
-          - elastic/kibana/kibana
-        VERSION:
-          - KIBANA_VERSION
-      - REGISTRY:
-          - docker.elastic.co
-        BASE:
-          - elastic/apm/apm-server
-        VERSION:
-          - APMSERVER_VERSION
-      - REGISTRY:
-          - docker.elastic.co
-        BASE:
-          - elastic/beats/elastic-agent
-        VERSION:
-          - ELASTICAGENT_VERSION
-      - BASE:
-          - library/mongo
-        VERSION:
-          - MONGODB_VERSION
-      - BASE:
-          - dpage/pgadmin4
-        VERSION:
-          - PGADMIN_VERSION
-      - BASE:
-          - mccutchen/go-httpbin
-        VERSION:
-          - HTTPBIN_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - oauth2-proxy/oauth2-proxy
-        VERSION:
-          - OAUTH2_PROXY_VERSION
-      - BASE:
-          - gitlab/gitlab-runner
-        VERSION:
-          - GITLAB_RUNNER_VERSION
-      - BASE:
-          - gitlab-org/gitlab-runner/gitlab-runner-helper
-        VERSION:
-          - GITLAB_RUNNER_HELPER_VERSION
-      - BASE:
-          - gitlab/gitlab-ce
-        VERSION:
-          - GITLAB_VERSION
-      - REGISTRY:
-          - registry.gitlab.com
-        BASE:
-          - gitlab-org/cluster-integration/gitlab-agent/agentk
-        VERSION:
-          - GITLAB_AGENTK_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - brancz/kube-rbac-proxy
-        VERSION:
-          - KUBE_RBAC_PROXY_VERSION
-      - BASE:
-          - pihole/pihole
-        VERSION:
-          - PIHOLE_VERSION
-      - BASE:
-          - klutchell/unbound
-        VERSION:
-          - UNBOUND_VERSION
-      - BASE:
-          - library/docker
-        VERSION:
-          - DIND_VERSION
-      - BASE:
-          - library/nextcloud
-        VERSION:
-          - NEXTCLOUD_VERSION
+# archive-images1:
+#   extends: .archive-images
+#   stage: archive
+#   parallel:
+#     matrix:
+#       - BASE:
+#           - library/debian
+#         VERSION:
+#           - DEBIAN_VERSION
+#       - BASE:
+#           - library/ubuntu
+#         VERSION:
+#           - UBUNTU_NOBLE_VERSION
+#       - BASE:
+#           - library/busybox
+#         VERSION:
+#           - BUSYBOX_VERSION
+#       - BASE:
+#           - library/alpine
+#         VERSION:
+#           - ALPINE_VERSION
+#       - BASE:
+#           - library/python
+#         VERSION:
+#           - PYTHON_VERSION
+#           - PYTHON_SLIM_VERSION
+#       - BASE:
+#           - library/node
+#         VERSION:
+#           - NODE_VERSION
+#       - BASE:
+#           - library/golang
+#         VERSION:
+#           - GOLANG_VERSION
+#           - GOLANG_ALPINE_VERSION
+#       - BASE:
+#           - library/traefik
+#         VERSION:
+#           - TRAEFIK_VERSION
+#       - BASE:
+#           - sonatype/nexus3
+#         VERSION:
+#           - NEXUS_VERSION
+#       - BASE:
+#           - squidfunk/mkdocs-material
+#         VERSION:
+#           - MKDOCS_VERSION
+#       - BASE:
+#           - freeradius/freeradius-server
+#         VERSION:
+#           - FREERADIUS_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - keycloak/keycloak
+#         VERSION:
+#           - KEYCLOAK_VERSION
+#       - BASE:
+#           - library/postgres
+#         VERSION:
+#           - POSTGRES_VERSION
+#       - BASE:
+#           - prometheuscommunity/postgres-exporter
+#         VERSION:
+#           - POSTGRES_EXPORTER_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - minio/minio
+#         VERSION:
+#           - MINIO_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - minio/mc
+#         VERSION:
+#           - MINIO_MC_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - coreos/etcd
+#         VERSION:
+#           - ETCD_35_VERSION
+#           - ETCD_36_VERSION
+#       - BASE:
+#           - rancher/kubectl
+#         VERSION:
+#           - KUBECTL_VERSION
+#       - BASE:
+#           - prometheus-operator/prometheus-operator
+#           - prometheus-operator/prometheus-config-reloader
+#         VERSION:
+#           - PROMETHEUS_OPERATOR_VERSION
+#       - BASE:
+#           - prometheus/prometheus
+#         VERSION:
+#           - PROMETHEUS_VERSION
+#       - BASE:
+#           - prometheus/alertmanager
+#         VERSION:
+#           - ALERTMANAGER_VERSION
+#       - BASE:
+#           - prometheus/node-exporter
+#         VERSION:
+#           - NODE_EXPORTER_VERSION
+#       - BASE:
+#           - prometheus/blackbox-exporter
+#         VERSION:
+#           - BLACKBOX_EXPORTER_VERSION
+#       - BASE:
+#           - prometheus/snmp-exporter
+#         VERSION:
+#           - SNMP_EXPORTER_VERSION
+#       - BASE:
+#           - prometheus/pushgateway
+#         VERSION:
+#           - PUSHGATEWAY_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - kube-state-metrics/kube-state-metrics
+#         VERSION:
+#           - KUBE_STATE_METRICS_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - metrics-server/metrics-server
+#         VERSION:
+#           - METRICS_SERVER_VERSION
+#       - BASE:
+#           - grafana/grafana
+#         VERSION:
+#           - GRAFANA_VERSION
+#       - REGISTRY:
+#           - ghcr.io
+#         BASE:
+#           - prymitive/karma
+#         VERSION:
+#           - KARMA_VERSION
+#       - REGISTRY:
+#           - docker.elastic.co
+#         BASE:
+#           - elastic/elasticsearch/elasticsearch
+#         VERSION:
+#           - ELASTICSEARCH_VERSION
+#       - REGISTRY:
+#           - docker.elastic.co
+#         BASE:
+#           - elastic/logstash/logstash
+#         VERSION:
+#           - LOGSTASH_VERSION
+#       - REGISTRY:
+#           - docker.elastic.co
+#         BASE:
+#           - elastic/kibana/kibana
+#         VERSION:
+#           - KIBANA_VERSION
+#       - REGISTRY:
+#           - docker.elastic.co
+#         BASE:
+#           - elastic/apm/apm-server
+#         VERSION:
+#           - APMSERVER_VERSION
+#       - REGISTRY:
+#           - docker.elastic.co
+#         BASE:
+#           - elastic/beats/elastic-agent
+#         VERSION:
+#           - ELASTICAGENT_VERSION
+#       - BASE:
+#           - library/mongo
+#         VERSION:
+#           - MONGODB_VERSION
+#       - BASE:
+#           - dpage/pgadmin4
+#         VERSION:
+#           - PGADMIN_VERSION
+#       - BASE:
+#           - mccutchen/go-httpbin
+#         VERSION:
+#           - HTTPBIN_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - oauth2-proxy/oauth2-proxy
+#         VERSION:
+#           - OAUTH2_PROXY_VERSION
+#       - BASE:
+#           - gitlab/gitlab-runner
+#         VERSION:
+#           - GITLAB_RUNNER_VERSION
+#       - BASE:
+#           - gitlab-org/gitlab-runner/gitlab-runner-helper
+#         VERSION:
+#           - GITLAB_RUNNER_HELPER_VERSION
+#       - BASE:
+#           - gitlab/gitlab-ce
+#         VERSION:
+#           - GITLAB_VERSION
+#       - REGISTRY:
+#           - registry.gitlab.com
+#         BASE:
+#           - gitlab-org/cluster-integration/gitlab-agent/agentk
+#         VERSION:
+#           - GITLAB_AGENTK_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - brancz/kube-rbac-proxy
+#         VERSION:
+#           - KUBE_RBAC_PROXY_VERSION
+#       - BASE:
+#           - pihole/pihole
+#         VERSION:
+#           - PIHOLE_VERSION
+#       - BASE:
+#           - klutchell/unbound
+#         VERSION:
+#           - UNBOUND_VERSION
+#       - BASE:
+#           - library/docker
+#         VERSION:
+#           - DIND_VERSION
+#       - BASE:
+#           - library/nextcloud
+#         VERSION:
+#           - NEXTCLOUD_VERSION
 
-archive-images2:
-  extends: .archive-images
-  stage: archive
-  parallel:
-    matrix:
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - ingress-nginx/controller
-        VERSION:
-          - NGINX_INGRESS_CONTROLLER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - ingress-nginx/kube-webhook-certgen
-        VERSION:
-          - NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - metallb/controller
-        VERSION:
-          - METALLB_CONTROLLER_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - metallb/speaker
-        VERSION:
-          - METALLB_SPEAKER_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - frrouting/frr
-        VERSION:
-          - METALLB_FRR_VERSION
+# archive-images2:
+#   extends: .archive-images
+#   stage: archive
+#   parallel:
+#     matrix:
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - ingress-nginx/controller
+#         VERSION:
+#           - NGINX_INGRESS_CONTROLLER_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - ingress-nginx/kube-webhook-certgen
+#         VERSION:
+#           - NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - metallb/controller
+#         VERSION:
+#           - METALLB_CONTROLLER_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - metallb/speaker
+#         VERSION:
+#           - METALLB_SPEAKER_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - frrouting/frr
+#         VERSION:
+#           - METALLB_FRR_VERSION
 
-archive-images3:
-  extends: .archive-images
-  stage: archive
-  parallel:
-    matrix:
-      - BASE:
-          - haproxytech/haproxy-alpine
-        VERSION:
-          - HAPROXY_VERSION
-      - BASE:
-          - haproxytech/kubernetes-ingress
-        VERSION:
-          - HAPROXY_INGRESS_VERSION
-      - BASE:
-          - aquasec/trivy
-        VERSION:
-          - TRIVY_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - csi-secrets-store/driver
-          - csi-secrets-store/driver-crds
-        VERSION:
-          - CSI_SECRETS_STORE_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - external-secrets/external-secrets
-        VERSION:
-          - EXTERNAL_SECRETS_VERSION
-      - BASE:
-          - stakater/reloader
-        VERSION:
-          - RELOADER_VERSION
-      - BASE:
-          - jimmidyson/configmap-reload
-        VERSION:
-          - CONFIGMAP_RELOAD_VERSION
-      - BASE:
-          - library/registry
-        VERSION:
-          - DOCKER_REGISTRY_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - dexidp/dex
-        VERSION:
-          - DEX_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - argoproj/argocd
-        VERSION:
-          - ARGOCD_VERSION
-      - BASE:
-          - valkey/valkey
-        VERSION:
-          - VALKEY_VERSION
-      - BASE:
-          - library/redis
-        VERSION:
-          - REDIS_VERSION
-      - BASE:
-          - oliver006/redis_exporter
-        VERSION:
-          - REDIS_EXPORTER_VERSION
-      - BASE:
-          - boky/postfix
-        VERSION:
-          - BOKY_POSTFIX_VERSION
-      - BASE:
-          - connecteverything/nats-operator
-        VERSION:
-          - NATS_OPERATOR_VERSION
-      - BASE:
-          - library/nats
-        VERSION:
-          - NATS_VERSION
-      - BASE:
-          - natsio/prometheus-nats-exporter
-        VERSION:
-          - NATS_EXPORTER_VERSION
-      - BASE:
-          - natsio/nats-server-config-reloader
-        VERSION:
-          - NATS_SERVER_CONFIG_RELOADER
-      - BASE:
-          - masipcat/wireguard-go
-        VERSION:
-          - WIREGUARD_VERSION
-      - BASE:
-          - library/eclipse-mosquitto
-        VERSION:
-          - MOSQUITTO_VERSION
-      - BASE:
-          - sapcc/mosquitto-exporter
-        VERSION:
-          - MOSQUITTO_EXPORTER_VERSION
-      - BASE:
-          - library/caddy
-        VERSION:
-          - CADDY_VERSION
-      - BASE:
-          - azul/zulu-openjdk
-        VERSION:
-          - JDK_ZULU_VERSION
-      - BASE:
-          - library/eclipse-temurin
-        VERSION:
-          - JDK_TEMURIN_VERSION
-      - BASE:
-          - elastic/eck-operator
-        VERSION:
-          - ECK_OPERATOR_VERSION
-      - BASE:
-          - syncthing/syncthing
-          - syncthing/relaysrv
-          - syncthing/discosrv
-        VERSION:
-          - SYNCTHING_VERSION
-      - BASE:
-          - jellyfin/jellyfin
-        VERSION:
-          - JELLYFIN_VERSION
-      - BASE:
-          - haveagitgat/tdarr
-          - haveagitgat/tdarr_node
-        VERSION:
-          - TDARR_VERSION
-      - BASE:
-          - curlimages/curl
-        VERSION:
-          - CURL_VERSION
-      - BASE:
-          - restic/restic
-        VERSION:
-          - RESTIC_VERSION
-      - BASE:
-          - coturn/coturn
-        VERSION:
-          - COTURN_VERSION
+# archive-images3:
+#   extends: .archive-images
+#   stage: archive
+#   parallel:
+#     matrix:
+#       - BASE:
+#           - haproxytech/haproxy-alpine
+#         VERSION:
+#           - HAPROXY_VERSION
+#       - BASE:
+#           - haproxytech/kubernetes-ingress
+#         VERSION:
+#           - HAPROXY_INGRESS_VERSION
+#       - BASE:
+#           - aquasec/trivy
+#         VERSION:
+#           - TRIVY_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - csi-secrets-store/driver
+#           - csi-secrets-store/driver-crds
+#         VERSION:
+#           - CSI_SECRETS_STORE_VERSION
+#       - REGISTRY:
+#           - ghcr.io
+#         BASE:
+#           - external-secrets/external-secrets
+#         VERSION:
+#           - EXTERNAL_SECRETS_VERSION
+#       - BASE:
+#           - stakater/reloader
+#         VERSION:
+#           - RELOADER_VERSION
+#       - BASE:
+#           - jimmidyson/configmap-reload
+#         VERSION:
+#           - CONFIGMAP_RELOAD_VERSION
+#       - BASE:
+#           - library/registry
+#         VERSION:
+#           - DOCKER_REGISTRY_VERSION
+#       - REGISTRY:
+#           - ghcr.io
+#         BASE:
+#           - dexidp/dex
+#         VERSION:
+#           - DEX_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - argoproj/argocd
+#         VERSION:
+#           - ARGOCD_VERSION
+#       - BASE:
+#           - valkey/valkey
+#         VERSION:
+#           - VALKEY_VERSION
+#       - BASE:
+#           - library/redis
+#         VERSION:
+#           - REDIS_VERSION
+#       - BASE:
+#           - oliver006/redis_exporter
+#         VERSION:
+#           - REDIS_EXPORTER_VERSION
+#       - BASE:
+#           - boky/postfix
+#         VERSION:
+#           - BOKY_POSTFIX_VERSION
+#       - BASE:
+#           - connecteverything/nats-operator
+#         VERSION:
+#           - NATS_OPERATOR_VERSION
+#       - BASE:
+#           - library/nats
+#         VERSION:
+#           - NATS_VERSION
+#       - BASE:
+#           - natsio/prometheus-nats-exporter
+#         VERSION:
+#           - NATS_EXPORTER_VERSION
+#       - BASE:
+#           - natsio/nats-server-config-reloader
+#         VERSION:
+#           - NATS_SERVER_CONFIG_RELOADER
+#       - BASE:
+#           - masipcat/wireguard-go
+#         VERSION:
+#           - WIREGUARD_VERSION
+#       - BASE:
+#           - library/eclipse-mosquitto
+#         VERSION:
+#           - MOSQUITTO_VERSION
+#       - BASE:
+#           - sapcc/mosquitto-exporter
+#         VERSION:
+#           - MOSQUITTO_EXPORTER_VERSION
+#       - BASE:
+#           - library/caddy
+#         VERSION:
+#           - CADDY_VERSION
+#       - BASE:
+#           - azul/zulu-openjdk
+#         VERSION:
+#           - JDK_ZULU_VERSION
+#       - BASE:
+#           - library/eclipse-temurin
+#         VERSION:
+#           - JDK_TEMURIN_VERSION
+#       - BASE:
+#           - elastic/eck-operator
+#         VERSION:
+#           - ECK_OPERATOR_VERSION
+#       - BASE:
+#           - syncthing/syncthing
+#           - syncthing/relaysrv
+#           - syncthing/discosrv
+#         VERSION:
+#           - SYNCTHING_VERSION
+#       - BASE:
+#           - jellyfin/jellyfin
+#         VERSION:
+#           - JELLYFIN_VERSION
+#       - BASE:
+#           - haveagitgat/tdarr
+#           - haveagitgat/tdarr_node
+#         VERSION:
+#           - TDARR_VERSION
+#       - BASE:
+#           - curlimages/curl
+#         VERSION:
+#           - CURL_VERSION
+#       - BASE:
+#           - restic/restic
+#         VERSION:
+#           - RESTIC_VERSION
+#       - BASE:
+#           - coturn/coturn
+#         VERSION:
+#           - COTURN_VERSION
 
-archive-images4:
-  extends: .archive-images
-  stage: archive
-  parallel:
-    matrix:
-      - BASE:
-          - netboxcommunity/netbox
-        VERSION:
-          - NETBOX_VERSION
-      - BASE:
-          - jenkins/jenkins
-        VERSION:
-          - JENKINS_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - kiwigrid/k8s-sidecar
-        VERSION:
-          - KIWIGRID_K8S_SIDECAR_VERSION
-      - BASE:
-          - jenkins/agent
-        VERSION:
-          - JENKINS_AGENT_VERSION
-      - BASE:
-          - jenkins/inbound-agent
-        VERSION:
-          - JENKINS_INBOUND_AGENT_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - git-sync/git-sync
-        VERSION:
-          - GIT_SYNC_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - jetstack/cert-manager-controller
-          - jetstack/cert-manager-cainjector
-          - jetstack/cert-manager-webhook
-        VERSION:
-          - CERT_MANAGER_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - jetstack/cert-manager-csi-driver
-        VERSION:
-          - CERT_MANAGER_CSI_DRIVER_VERSION
-      - BASE:
-          - zachomedia/cert-manager-webhook-pdns
-        VERSION:
-          - CERT_MANAGER_WEBHOOK_PDNS_VERSION
-      - BASE:
-          - hashicorp/vault
-        VERSION:
-          - VAULT_VERSION
-      - BASE:
-          - hashicorp/vault-k8s
-        VERSION:
-          - VAULT_K8S_VERSION
-      - BASE:
-          - hashicorp/vault-csi-provider
-        VERSION:
-          - VAULT_CSI_PROVIDER_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - tigera/operator
-        VERSION:
-          - TIGERA_OPERATOR_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - nfd/node-feature-discovery
-        VERSION:
-          - K8S_NFD_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/livenessprobe
-        VERSION:
-          - LIVENESSPROBE_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/csi-node-driver-registrar
-        VERSION:
-          - CSI_NODE_DRIVER_REGISTRAR_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/csi-attacher
-        VERSION:
-          - CSI_ATTACHER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/csi-resizer
-        VERSION:
-          - CSI_RESIZER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/csi-provisioner
-        VERSION:
-          - CSI_PROVISIONER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/csi-snapshotter
-        VERSION:
-          - CSI_SNAPSHOTTER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/snapshot-controller
-        VERSION:
-          - CSI_SNAPSHOT_CONTROLLER_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/snapshot-validation-webhook
-        VERSION:
-          - CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - sig-storage/nfsplugin
-        VERSION:
-          - CSI_NFSPLUGIN_VERSION
-      - BASE:
-          - postgrest/postgrest
-        VERSION:
-          - POSTGREST_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - cephcsi/cephcsi
-        VERSION:
-          - CEPHCSI_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/cuda
-        VERSION:
-          - NVIDIA_CUDA_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/cloud-native/dcgm
-        VERSION:
-          - NVIDIA_DCGM_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/k8s/dcgm-exporter
-        VERSION:
-          - NVIDIA_DCGM_EXPORTER_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/gpu-feature-discovery
-        VERSION:
-          - NVIDIA_GPU_FEATURE_DISCOVERY_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/gpu-operator
-        VERSION:
-          - NVIDIA_GPU_OPERATOR_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/cloud-native/gpu-operator-validator
-        VERSION:
-          - NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/k8s/container-toolkit
-        VERSION:
-          - NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/k8s-device-plugin
-        VERSION:
-          - NVIDIA_K8S_DEVICE_PLUGIN_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/cloud-native/k8s-driver-manager
-        VERSION:
-          - NVIDIA_K8S_DRIVER_MANAGER_VERSION
-      - REGISTRY:
-          - nvcr.io
-        BASE:
-          - nvidia/cloud-native/k8s-mig-manager
-        VERSION:
-          - NVIDIA_K8S_MIG_MANAGER_VERSION
-      - BASE:
-          - homeassistant/home-assistant
-        VERSION:
-          - HOMEASSISTANT_VERSION
-      - BASE:
-          - koenkk/zigbee2mqtt
-        VERSION:
-          - ZIGBEE2MQTT_VERSION
-      - REGISTRY:
-          - codeberg.org
-        BASE:
-          - forgejo/forgejo
-        VERSION:
-          - FORGEJO_VERSION
-      - REGISTRY:
-          - code.forgejo.org
-        BASE:
-          - forgejo/runner
-        VERSION:
-          - FORGEJO_RUNNER_VERSION
-      - BASE:
-          - cloudflare/cloudflared
-        VERSION:
-          - CLOUDFLARED_VERSION
-      - BASE:
-          - sj26/mailcatcher
-        VERSION:
-          - MAILCATCHER_VERSION
-      - BASE:
-          - fatedier/frps
-          - fatedier/frpc
-        VERSION:
-          - FRP_VERSION
-      - REGISTRY:
-          - docker.n8n.io
-        BASE:
-          - n8nio/n8n
-        VERSION:
-          - N8N_VERSION
-      - BASE:
-          - netsampler/goflow2
-        VERSION:
-          - GOFLOW2_VERSION
-      - BASE:
-          - library/rabbitmq
-        VERSION:
-          - RABBITMQ_VERSION
-      - BASE:
-          - kbudde/rabbitmq-exporter
-        VERSION:
-          - RABBITMQ_EXPORTER_VERSION
-      - BASE:
-          - prefecthq/prefect
-        VERSION:
-          - PREFECT_VERSION
-      - BASE:
-          - prefecthq/prometheus-prefect-exporter
-        VERSION:
-          - PREFECT_EXPORTER_VERSION
-      - REGISTRY:
-          - ghcr.io
-        BASE:
-          - corentinth/it-tools
-        VERSION:
-          - ITTOOLS_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - openbgpd/openbgpd
-        VERSION:
-          - OPENBGPD_VERISON
+# archive-images4:
+#   extends: .archive-images
+#   stage: archive
+#   parallel:
+#     matrix:
+#       - BASE:
+#           - netboxcommunity/netbox
+#         VERSION:
+#           - NETBOX_VERSION
+#       - BASE:
+#           - jenkins/jenkins
+#         VERSION:
+#           - JENKINS_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - kiwigrid/k8s-sidecar
+#         VERSION:
+#           - KIWIGRID_K8S_SIDECAR_VERSION
+#       - BASE:
+#           - jenkins/agent
+#         VERSION:
+#           - JENKINS_AGENT_VERSION
+#       - BASE:
+#           - jenkins/inbound-agent
+#         VERSION:
+#           - JENKINS_INBOUND_AGENT_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - git-sync/git-sync
+#         VERSION:
+#           - GIT_SYNC_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - jetstack/cert-manager-controller
+#           - jetstack/cert-manager-cainjector
+#           - jetstack/cert-manager-webhook
+#         VERSION:
+#           - CERT_MANAGER_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - jetstack/cert-manager-csi-driver
+#         VERSION:
+#           - CERT_MANAGER_CSI_DRIVER_VERSION
+#       - BASE:
+#           - zachomedia/cert-manager-webhook-pdns
+#         VERSION:
+#           - CERT_MANAGER_WEBHOOK_PDNS_VERSION
+#       - BASE:
+#           - hashicorp/vault
+#         VERSION:
+#           - VAULT_VERSION
+#       - BASE:
+#           - hashicorp/vault-k8s
+#         VERSION:
+#           - VAULT_K8S_VERSION
+#       - BASE:
+#           - hashicorp/vault-csi-provider
+#         VERSION:
+#           - VAULT_CSI_PROVIDER_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - tigera/operator
+#         VERSION:
+#           - TIGERA_OPERATOR_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - nfd/node-feature-discovery
+#         VERSION:
+#           - K8S_NFD_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/livenessprobe
+#         VERSION:
+#           - LIVENESSPROBE_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/csi-node-driver-registrar
+#         VERSION:
+#           - CSI_NODE_DRIVER_REGISTRAR_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/csi-attacher
+#         VERSION:
+#           - CSI_ATTACHER_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/csi-resizer
+#         VERSION:
+#           - CSI_RESIZER_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/csi-provisioner
+#         VERSION:
+#           - CSI_PROVISIONER_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/csi-snapshotter
+#         VERSION:
+#           - CSI_SNAPSHOTTER_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/snapshot-controller
+#         VERSION:
+#           - CSI_SNAPSHOT_CONTROLLER_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/snapshot-validation-webhook
+#         VERSION:
+#           - CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - sig-storage/nfsplugin
+#         VERSION:
+#           - CSI_NFSPLUGIN_VERSION
+#       - BASE:
+#           - postgrest/postgrest
+#         VERSION:
+#           - POSTGREST_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - cephcsi/cephcsi
+#         VERSION:
+#           - CEPHCSI_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/cuda
+#         VERSION:
+#           - NVIDIA_CUDA_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/cloud-native/dcgm
+#         VERSION:
+#           - NVIDIA_DCGM_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/k8s/dcgm-exporter
+#         VERSION:
+#           - NVIDIA_DCGM_EXPORTER_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/gpu-feature-discovery
+#         VERSION:
+#           - NVIDIA_GPU_FEATURE_DISCOVERY_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/gpu-operator
+#         VERSION:
+#           - NVIDIA_GPU_OPERATOR_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/cloud-native/gpu-operator-validator
+#         VERSION:
+#           - NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/k8s/container-toolkit
+#         VERSION:
+#           - NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/k8s-device-plugin
+#         VERSION:
+#           - NVIDIA_K8S_DEVICE_PLUGIN_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/cloud-native/k8s-driver-manager
+#         VERSION:
+#           - NVIDIA_K8S_DRIVER_MANAGER_VERSION
+#       - REGISTRY:
+#           - nvcr.io
+#         BASE:
+#           - nvidia/cloud-native/k8s-mig-manager
+#         VERSION:
+#           - NVIDIA_K8S_MIG_MANAGER_VERSION
+#       - BASE:
+#           - homeassistant/home-assistant
+#         VERSION:
+#           - HOMEASSISTANT_VERSION
+#       - BASE:
+#           - koenkk/zigbee2mqtt
+#         VERSION:
+#           - ZIGBEE2MQTT_VERSION
+#       - REGISTRY:
+#           - codeberg.org
+#         BASE:
+#           - forgejo/forgejo
+#         VERSION:
+#           - FORGEJO_VERSION
+#       - REGISTRY:
+#           - code.forgejo.org
+#         BASE:
+#           - forgejo/runner
+#         VERSION:
+#           - FORGEJO_RUNNER_VERSION
+#       - BASE:
+#           - cloudflare/cloudflared
+#         VERSION:
+#           - CLOUDFLARED_VERSION
+#       - BASE:
+#           - sj26/mailcatcher
+#         VERSION:
+#           - MAILCATCHER_VERSION
+#       - BASE:
+#           - fatedier/frps
+#           - fatedier/frpc
+#         VERSION:
+#           - FRP_VERSION
+#       - REGISTRY:
+#           - docker.n8n.io
+#         BASE:
+#           - n8nio/n8n
+#         VERSION:
+#           - N8N_VERSION
+#       - BASE:
+#           - netsampler/goflow2
+#         VERSION:
+#           - GOFLOW2_VERSION
+#       - BASE:
+#           - library/rabbitmq
+#         VERSION:
+#           - RABBITMQ_VERSION
+#       - BASE:
+#           - kbudde/rabbitmq-exporter
+#         VERSION:
+#           - RABBITMQ_EXPORTER_VERSION
+#       - BASE:
+#           - prefecthq/prefect
+#         VERSION:
+#           - PREFECT_VERSION
+#       - BASE:
+#           - prefecthq/prometheus-prefect-exporter
+#         VERSION:
+#           - PREFECT_EXPORTER_VERSION
+#       - REGISTRY:
+#           - ghcr.io
+#         BASE:
+#           - corentinth/it-tools
+#         VERSION:
+#           - ITTOOLS_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - openbgpd/openbgpd
+#         VERSION:
+#           - OPENBGPD_VERISON
 
-archive-special:
-  extends: .archive-images
-  stage: archive
-  script:
-    - |
-      declare -a special_images=(
-        "${DOCKER_HUB}/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}"
-        "${DOCKER_HUB}/catthehacker/ubuntu:act-24.04"
-        "${DOCKER_HUB}/catthehacker/ubuntu:runner-24.04"
-      )
+# archive-special:
+#   extends: .archive-images
+#   stage: archive
+#   script:
+#     - |
+#       declare -a special_images=(
+#         "${DOCKER_HUB}/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}"
+#         "${DOCKER_HUB}/catthehacker/ubuntu:act-24.04"
+#         "${DOCKER_HUB}/catthehacker/ubuntu:runner-24.04"
+#       )
 
-      for image in "${special_images[@]}"; do
-        echo "Archiving ${image}"
-        docker pull ${image}
-        archive_image ${image} ${INFRA_VERSION}
-      done
+#       for image in "${special_images[@]}"; do
+#         echo "Archiving ${image}"
+#         docker pull ${image}
+#         archive_image ${image} ${INFRA_VERSION}
+#       done
 
-archive-extra:
-  extends: .archive-images
-  stage: archive
-  parallel:
-    matrix:
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - kubernetes/kube-apiserver
-          - kubernetes/kube-proxy
-          - kubernetes/kube-scheduler
-          - kubernetes/kube-controller-manager
-        VERSION:
-          - K8S_131_VERSION
-          - K8S_131_VERSION2
-          - K8S_132_VERSION
-          - K8S_132_VERSION2
-          - K8S_133_VERSION
-          - K8S_133_VERSION2
-          - K8S_134_VERSION
-          - K8S_134_VERSION2
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - coredns/coredns
-        VERSION:
-          - COREDNS_VERSION
-      - REGISTRY:
-          - registry.k8s.io
-        BASE:
-          - kubernetes/pause
-        VERSION:
-          - K8S_PAUSE_VERSION
-      - BASE:
-          - calico/typha
-          - calico/ctl
-          - calico/node
-          - calico/cni
-          - calico/apiserver
-          - calico/kube-controllers
-          - calico/dikastes
-          - calico/pod2daemon-flexvol
-          - calico/node-driver-registrar
-          - calico/csi
-        VERSION:
-          - CALICO_VERSION
-      - BASE:
-          - istio/pilot
-          - istio/proxyv2
-          - istio/ztunnel
-        VERSION:
-          - ISTIO_VERSION
-      - REGISTRY:
-          - quay.io
-        BASE:
-          - strimzi/operator
-        VERSION:
-          - STRIMZI_OPERATOR_VERSION
-      - BASE:
-          - tchiotludo/akhq
-        VERSION:
-          - AKHQ_VERSION
-      - BASE:
-          - obsidiandynamics/kafdrop
-        VERSION:
-          - KAFDROP_VERSION
-      - BASE:
-          - apache/kafka
-        VERSION:
-          - APACHE_KAFKA_VERSION
-      - BASE:
-          - confluentinc/cp-enterprise-replicator
-          - confluentinc/cp-kafka-rest
-          - confluentinc/cp-ksqldb-server
-          # - confluentinc/cp-ksqldb-cli
-          - confluentinc/cp-schema-registry
-          - confluentinc/cp-server
-          - confluentinc/cp-server-connect
-        VERSION:
-          - CONFLUENTINC_CP_VERSION
-      - BASE:
-          - confluentinc/confluent-init-container
-        VERSION:
-          - CONFLUENTINC_INIT_CONTAINER_VERSION
-      - BASE:
-          - confluentinc/cp-enterprise-control-center-next-gen
-        VERSION:
-          - CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION
-      - BASE:
-          - confluentinc/confluent-operator
-        VERSION:
-          - CONFLUENTINC_OPERATOR_VERSION
-      - BASE:
-          - scylladb/scylla
-        VERSION:
-          - SCYLLA_VERSION
-      - BASE:
-          - scylladb/scylla-manager
-        VERSION:
-          - SCYLLA_MANAGER_VERSION
-      - BASE:
-          - scylladb/scylla-operator
-        VERSION:
-          - SCYLLA_OPERATOR_VERSION
-      - BASE:
-          - apache/airflow
-        VERSION:
-          - AIRFLOW_VERSION
-      - BASE:
-          - library/clickhouse
-        VERSION:
-          - CLICKHOUSE_VERSION
-      - BASE:
-          - altinity/clickhouse-operator
-        VERSION:
-          - CLICHOUSE_OPERATOR_VERSION
+# archive-extra:
+#   extends: .archive-images
+#   stage: archive
+#   parallel:
+#     matrix:
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - kubernetes/kube-apiserver
+#           - kubernetes/kube-proxy
+#           - kubernetes/kube-scheduler
+#           - kubernetes/kube-controller-manager
+#         VERSION:
+#           - K8S_131_VERSION
+#           - K8S_131_VERSION2
+#           - K8S_132_VERSION
+#           - K8S_132_VERSION2
+#           - K8S_133_VERSION
+#           - K8S_133_VERSION2
+#           - K8S_134_VERSION
+#           - K8S_134_VERSION2
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - coredns/coredns
+#         VERSION:
+#           - COREDNS_VERSION
+#       - REGISTRY:
+#           - registry.k8s.io
+#         BASE:
+#           - kubernetes/pause
+#         VERSION:
+#           - K8S_PAUSE_VERSION
+#       - BASE:
+#           - calico/typha
+#           - calico/ctl
+#           - calico/node
+#           - calico/cni
+#           - calico/apiserver
+#           - calico/kube-controllers
+#           - calico/dikastes
+#           - calico/pod2daemon-flexvol
+#           - calico/node-driver-registrar
+#           - calico/csi
+#         VERSION:
+#           - CALICO_VERSION
+#       - BASE:
+#           - istio/pilot
+#           - istio/proxyv2
+#           - istio/ztunnel
+#         VERSION:
+#           - ISTIO_VERSION
+#       - REGISTRY:
+#           - quay.io
+#         BASE:
+#           - strimzi/operator
+#         VERSION:
+#           - STRIMZI_OPERATOR_VERSION
+#       - BASE:
+#           - tchiotludo/akhq
+#         VERSION:
+#           - AKHQ_VERSION
+#       - BASE:
+#           - obsidiandynamics/kafdrop
+#         VERSION:
+#           - KAFDROP_VERSION
+#       - BASE:
+#           - apache/kafka
+#         VERSION:
+#           - APACHE_KAFKA_VERSION
+#       - BASE:
+#           - confluentinc/cp-enterprise-replicator
+#           - confluentinc/cp-kafka-rest
+#           - confluentinc/cp-ksqldb-server
+#           # - confluentinc/cp-ksqldb-cli
+#           - confluentinc/cp-schema-registry
+#           - confluentinc/cp-server
+#           - confluentinc/cp-server-connect
+#         VERSION:
+#           - CONFLUENTINC_CP_VERSION
+#       - BASE:
+#           - confluentinc/confluent-init-container
+#         VERSION:
+#           - CONFLUENTINC_INIT_CONTAINER_VERSION
+#       - BASE:
+#           - confluentinc/cp-enterprise-control-center-next-gen
+#         VERSION:
+#           - CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION
+#       - BASE:
+#           - confluentinc/confluent-operator
+#         VERSION:
+#           - CONFLUENTINC_OPERATOR_VERSION
+#       - BASE:
+#           - scylladb/scylla
+#         VERSION:
+#           - SCYLLA_VERSION
+#       - BASE:
+#           - scylladb/scylla-manager
+#         VERSION:
+#           - SCYLLA_MANAGER_VERSION
+#       - BASE:
+#           - scylladb/scylla-operator
+#         VERSION:
+#           - SCYLLA_OPERATOR_VERSION
+#       - BASE:
+#           - apache/airflow
+#         VERSION:
+#           - AIRFLOW_VERSION
+#       - BASE:
+#           - library/clickhouse
+#         VERSION:
+#           - CLICKHOUSE_VERSION
+#       - BASE:
+#           - altinity/clickhouse-operator
+#         VERSION:
+#           - CLICHOUSE_OPERATOR_VERSION
 
 # turbovillains-mirror:
 #   interruptible: true

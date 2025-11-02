@@ -25,6 +25,8 @@ type InfraSetup struct {
 	TargetRegistry string
 	// keep as Secret; only decode right before using
 	DockerCfg *dagger.Secret
+	// SSH private key for uploading to storage
+	SshPrivateKey *dagger.Secret
 
 	// cache
 	keychain authn.Keychain
@@ -32,7 +34,7 @@ type InfraSetup struct {
 
 func New(
 	// +defaultPath="."
-	// +ignore=["gitlab", ".git"]
+	// +ignore=["gitlab", "dist", "build", "archive", ".git"]
 	source *dagger.Directory,
 	// +optional
 	// +default="variables.yml"
@@ -57,6 +59,12 @@ type Variables struct {
 func (m *InfraSetup) WithDockerCfg(dockerCfg *dagger.Secret) *InfraSetup {
 	// return a *new* configured object if you prefer immutability patterns
 	m.DockerCfg = dockerCfg
+	return m
+}
+
+// WithSshPrivateKey stores the SSH private key secret on the object so it can be reused.
+func (m *InfraSetup) WithSshPrivateKey(sshPrivateKey *dagger.Secret) *InfraSetup {
+	m.SshPrivateKey = sshPrivateKey
 	return m
 }
 
@@ -257,6 +265,221 @@ func (m *InfraSetup) ImportImages(
 
 	results.WriteString(fmt.Sprintf("\nImported %d image(s)\n", matched))
 	return results.String(), nil
+}
+
+// ArchiveImagesForExport creates compressed tarballs of images from the target registry, optionally filtered by pattern and platform.
+// Images must be imported first (use import-images). Archives are pulled from target registry.
+// Returns a directory containing the archives. Use .export() to save to host.
+func (m *InfraSetup) ArchiveImagesForExport(
+	ctx context.Context,
+	// Pattern to match image names (empty for all images)
+	// +optional
+	pattern string,
+	// Platform to export (e.g., "linux/amd64", "linux/arm64"). Default: multiarch (all platforms)
+	// +optional
+	platform string,
+) (*dagger.Directory, error) {
+	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
+	if err != nil {
+		return nil, err
+	}
+
+	// Default to "all" (multiarch) if platform not specified
+	if platform == "" {
+		platform = "all"
+	}
+
+	imageEntries := m.getImageEntries()
+
+	// Start with empty directory
+	outputDir := dag.Directory()
+
+	for i, entry := range imageEntries {
+		source, prependName, err := m.expandImageEntry(entry, vars)
+		if err != nil {
+			return nil, fmt.Errorf("image entry %d: %w", i+1, err)
+		}
+
+		// If pattern is empty or matches source
+		if pattern == "" || strings.Contains(source, pattern) {
+			// Calculate destination in target registry (where image should be imported)
+			destination := m.buildDestination(source, m.TargetRegistry, prependName)
+
+			dir, archiveName, err := m.archiveImage(ctx, destination, platform)
+			if err != nil {
+				return nil, fmt.Errorf("failed to archive %s (from %s): %w", destination, source, err)
+			}
+
+			// Get the file from the directory and add to output
+			archiveFile := dir.File(archiveName)
+			outputDir = outputDir.WithFile(archiveName, archiveFile)
+		}
+	}
+
+	return outputDir, nil
+}
+
+// ArchiveImagesToStorage creates compressed tarballs of images and uploads them directly to storage.
+// Images must be imported first (use import-images). Archives are pulled from target registry.
+// Uploads to oleksii@tank.noroutine.me:/ifs/attic/infra/{infraBucket}/images/
+func (m *InfraSetup) ArchiveImagesToStorage(
+	ctx context.Context,
+	// Infrastructure bucket name (e.g., version or identifier)
+	infraBucket string,
+	// Pattern to match image names (empty for all images)
+	// +optional
+	pattern string,
+	// Platform to export (e.g., "linux/amd64", "linux/arm64"). Default: multiarch (all platforms)
+	// +optional
+	platform string,
+) (string, error) {
+	if m.SshPrivateKey == nil {
+		return "", fmt.Errorf("sshPrivateKey is required; call WithSshPrivateKey first")
+	}
+
+	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
+	if err != nil {
+		return "", err
+	}
+
+	// Default to "all" (multiarch) if platform not specified
+	if platform == "" {
+		platform = "all"
+	}
+
+	imageEntries := m.getImageEntries()
+	matched := 0
+
+	for i, entry := range imageEntries {
+		source, prependName, err := m.expandImageEntry(entry, vars)
+		if err != nil {
+			return "", fmt.Errorf("image entry %d: %w", i+1, err)
+		}
+
+		// If pattern is empty or matches source
+		if pattern == "" || strings.Contains(source, pattern) {
+			// Calculate destination in target registry (where image should be imported)
+			destination := m.buildDestination(source, m.TargetRegistry, prependName)
+
+			dir, archiveName, err := m.archiveImage(ctx, destination, platform)
+			if err != nil {
+				return "", fmt.Errorf("failed to archive %s (from %s): %w", destination, source, err)
+			}
+
+			// Upload this archive to storage
+			if err := m.uploadArchiveToStorage(ctx, dir, archiveName, infraBucket); err != nil {
+				return "", fmt.Errorf("failed to upload %s: %w", archiveName, err)
+			}
+
+			matched++
+		}
+	}
+
+	if matched == 0 {
+		msg := "No images found"
+		if pattern != "" {
+			msg = fmt.Sprintf("No images matched pattern: %s", pattern)
+		}
+		return msg, nil
+	}
+
+	return fmt.Sprintf("Successfully archived and uploaded %d image(s) to storage (bucket: %s)\n", matched, infraBucket), nil
+}
+
+// uploadArchiveToStorage uploads a single archive to remote storage using rsync
+func (m *InfraSetup) uploadArchiveToStorage(ctx context.Context, archiveDir *dagger.Directory, archiveName string, infraBucket string) error {
+	// Create a container with rsync and ssh
+	container := dag.Container().
+		From("alpine:latest").
+		WithExec([]string{"apk", "add", "--no-cache", "rsync", "openssh-client", "coreutils"})
+
+	// Set up SSH key (base64-encoded secret, needs to be decoded)
+	container = container.
+		WithMountedSecret("/tmp/ssh-key-b64", m.SshPrivateKey).
+		WithExec([]string{"sh", "-c", "mkdir -p /root/.ssh && base64 -d /tmp/ssh-key-b64 > /root/.ssh/id_rsa && chmod 600 /root/.ssh/id_rsa"})
+
+	// Get the archive file from the directory
+	archiveFile := archiveDir.File(archiveName)
+
+	// Mount the archive file
+	container = container.
+		WithFile("/tmp/"+archiveName, archiveFile)
+
+	// Upload using rsync (following the pattern from 02_lib.sh)
+	targetPath := fmt.Sprintf("oleksii@tank.noroutine.me:/ifs/attic/infra/%s/images/%s", infraBucket, archiveName)
+	rsyncCommand := fmt.Sprintf(
+		"rsync -e 'ssh -o StrictHostKeyChecking=no' --rsync-path='sudo mkdir -p /ifs/attic/infra/%s/images && sudo rsync' /tmp/%s %s && rm -f /tmp/%s",
+		infraBucket, archiveName, targetPath, archiveName,
+	)
+
+	container = container.
+		WithExec([]string{"sh", "-c", rsyncCommand})
+
+	// Force execution
+	_, err := container.Stdout(ctx)
+	if err != nil {
+		return err
+	}
+
+	fmt.Fprintf(os.Stdout, "  Uploaded %s to storage (cleaned up)\n", archiveName)
+	return nil
+}
+
+// archiveImage pulls a single image in OCI format and saves it as a compressed tarball
+// Returns the directory containing the archive and the archive filename
+func (m *InfraSetup) archiveImage(ctx context.Context, imageName string, platform string) (*dagger.Directory, string, error) {
+	if m.DockerCfg == nil {
+		return nil, "", fmt.Errorf("dockerCfg is required; call WithDockerCfg first")
+	}
+
+	// Generate archive filename: replace / and : with -
+	archiveName := strings.ReplaceAll(imageName, "/", "-")
+	archiveName = strings.ReplaceAll(archiveName, ":", "-")
+
+	// Default to "all" (multiarch) if platform not specified
+	if platform == "" {
+		platform = "all"
+	}
+
+	// Add platform suffix (multiarch or specific platform)
+	if platform == "all" {
+		archiveName = archiveName + "-multiarch"
+	} else {
+		platformSuffix := strings.ReplaceAll(platform, "/", "-")
+		archiveName = archiveName + "-" + platformSuffix
+	}
+
+	ociDir := archiveName
+	archiveName = archiveName + ".tar.zst"
+
+	// Create a container with crane and zstd
+	container := dag.Container().
+		From("alpine:latest").
+		WithExec([]string{"apk", "add", "--no-cache", "crane", "zstd", "coreutils", "tar"})
+
+	// Set up Docker config for authentication
+	// The secret is base64-encoded, so we need to decode it first
+	container = container.
+		WithMountedSecret("/tmp/docker-config-b64", m.DockerCfg).
+		WithExec([]string{"sh", "-c", "mkdir -p /root/.docker && base64 -d /tmp/docker-config-b64 > /root/.docker/config.json"})
+
+	// Build crane pull command with OCI format and platform
+	craneArgs := []string{"crane", "pull", "--format", "oci", "--platform", platform, imageName, "/tmp/" + ociDir}
+
+	// Pull the image in OCI format (creates a directory)
+	container = container.
+		WithExec(craneArgs)
+
+	// Tar the OCI directory and compress with zstd (using all cores with -T0)
+	// Create output directory, tar the OCI dir, and compress it
+	container = container.
+		WithExec([]string{"sh", "-c", fmt.Sprintf(
+			"mkdir -p /output && cd /tmp && tar -cf - %s | zstd -T0 -o /output/%s",
+			ociDir, archiveName,
+		)})
+
+	// Export the compressed file
+	return container.Directory("/output"), archiveName, nil
 }
 
 func (m *InfraSetup) loadVariables(ctx context.Context, file *dagger.File) (*Variables, error) {
@@ -592,7 +815,7 @@ func (m *InfraSetup) pullAndPush(ctx context.Context, source, destination string
 		return "", err
 	}
 
-	fmt.Fprintf(os.Stdout, "%s -> %s\n", source, destination)
+	fmt.Fprintf(os.Stdout, "imported %s -> %s\n", source, destination)
 
 	return fmt.Sprintf("%s -> %s\n", source, destination), nil
 }
