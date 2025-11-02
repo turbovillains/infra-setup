@@ -578,7 +578,7 @@ func (m *InfraSetup) getImageEntries() []string {
 		"eclipse-mosquitto:${MOSQUITTO_VERSION}:::prepend_name=library/",
 		"sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION}",
 		"caddy:${CADDY_VERSION}:::prepend_name=library/",
-		"azul/zulu-openjdk:${JDK_ZULU_VERSION}",
+		"azul/zulu-openjdk-debian:${JDK_ZULU_VERSION}",
 		"eclipse-temurin:${JDK_TEMURIN_VERSION}:::prepend_name=library/",
 		"elastic/eck-operator:${ECK_OPERATOR_VERSION}",
 		"syncthing/syncthing:${SYNCTHING_VERSION}",

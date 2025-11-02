@@ -17,7 +17,7 @@ curl -sLo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -sL https://d
 # jq
 # https://github.com/stedolan/jq/releases
 # no jq so cannot use JQ_VERSION=$(curl -s "https://api.github.com/repos/jqlang/jq/releases/latest" | jq -r '.tag_name')
-JQ_VERSION=jq-1.7.1
+JQ_VERSION=jq-1.8.1
 curl -sLo /usr/local/bin/jq https://github.com/jqlang/jq/releases/download/${JQ_VERSION}/jq-linux-${ARCHX} && chmod +x /usr/local/bin/jq
 
 # cosign
