@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"regexp"
@@ -211,10 +212,11 @@ func (m *InfraSetup) ListImages(
 	return results.String(), nil
 }
 
-// ImportImage imports images matching a pattern
-func (m *InfraSetup) ImportImage(
+// ImportImages imports images, optionally filtered by pattern
+func (m *InfraSetup) ImportImages(
 	ctx context.Context,
-	// Pattern to match image names (e.g., "golang", "postgres")
+	// Pattern to match image names (empty for all images)
+	// +optional
 	pattern string,
 ) (string, error) {
 	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
@@ -226,14 +228,14 @@ func (m *InfraSetup) ImportImage(
 	var results strings.Builder
 	matched := 0
 
-	for _, entry := range imageEntries {
+	for i, entry := range imageEntries {
 		expanded, prependName, err := m.expandImageEntry(entry, vars)
 		if err != nil {
-			return "", err
+			return "", fmt.Errorf("image entry %d: %w", i+1, err)
 		}
 
-		// Check if the expanded image matches the pattern
-		if strings.Contains(expanded, pattern) {
+		// If pattern is empty or matches
+		if pattern == "" || strings.Contains(expanded, pattern) {
 			source := expanded
 			destination := m.buildDestination(expanded, m.TargetRegistry, prependName)
 
@@ -247,42 +249,13 @@ func (m *InfraSetup) ImportImage(
 	}
 
 	if matched == 0 {
-		return fmt.Sprintf("No images matched pattern: %s\n", pattern), nil
+		if pattern != "" {
+			return fmt.Sprintf("No images matched pattern: %s\n", pattern), nil
+		}
+		return "No images found\n", nil
 	}
 
 	results.WriteString(fmt.Sprintf("\nImported %d image(s)\n", matched))
-	return results.String(), nil
-}
-
-// ImportImages imports all images defined in the configuration
-func (m *InfraSetup) ImportImages(
-	ctx context.Context,
-) (string, error) {
-	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
-	if err != nil {
-		return "", err
-	}
-
-	imageEntries := m.getImageEntries()
-	var results strings.Builder
-
-	for i, entry := range imageEntries {
-		expanded, prependName, err := m.expandImageEntry(entry, vars)
-		if err != nil {
-			return "", fmt.Errorf("image entry %d: %w", i+1, err)
-		}
-
-		source := expanded
-		destination := m.buildDestination(expanded, m.TargetRegistry, prependName)
-
-		if _, err := m.pullAndPush(ctx, source, destination); err != nil {
-			return "", fmt.Errorf("failed to import %s: %w", source, err)
-		}
-
-		results.WriteString(fmt.Sprintf("✓ %s -> %s\n", source, destination))
-	}
-
-	results.WriteString(fmt.Sprintf("\nImported %d image(s)\n", len(imageEntries)))
 	return results.String(), nil
 }
 
@@ -622,4 +595,61 @@ func (m *InfraSetup) pullAndPush(ctx context.Context, source, destination string
 	fmt.Fprintf(os.Stdout, "%s -> %s\n", source, destination)
 
 	return fmt.Sprintf("%s -> %s\n", source, destination), nil
+}
+
+// GenerateArtifacts generates infra.json and Dockerfile for dependency tracking
+func (m *InfraSetup) GenerateArtifacts(
+	ctx context.Context,
+	// Infrastructure version (e.g., "1.0.0", defaults to "dev")
+	// +optional
+	// +default="dev"
+	infraVersion string,
+) (*dagger.Directory, error) {
+	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
+	if err != nil {
+		return nil, err
+	}
+
+	imageEntries := m.getImageEntries()
+
+	// Generate Dockerfile
+	var dockerfile strings.Builder
+	var upstreamImages []string
+
+	for _, entry := range imageEntries {
+		expanded, _, err := m.expandImageEntry(entry, vars)
+		if err != nil {
+			return nil, fmt.Errorf("expanding image entry: %w", err)
+		}
+
+		// Extract image name for comment
+		parts := strings.SplitN(expanded, ":", 2)
+		imageName := parts[0]
+
+		dockerfile.WriteString(fmt.Sprintf("# %s\n", imageName))
+		dockerfile.WriteString(fmt.Sprintf("FROM %s\n", expanded))
+		dockerfile.WriteString(fmt.Sprintf("# %s\n\n", imageName))
+
+		upstreamImages = append(upstreamImages, expanded)
+	}
+
+	// Generate infra.json
+	infraJSON := map[string]interface{}{
+		"version": infraVersion,
+		"upstream": map[string]interface{}{
+			"images": upstreamImages,
+		},
+	}
+
+	jsonBytes, err := json.MarshalIndent(infraJSON, "", "  ")
+	if err != nil {
+		return nil, fmt.Errorf("marshaling infra.json: %w", err)
+	}
+
+	// Create directory with both files
+	dir := dag.Directory().
+		WithNewFile("Dockerfile", dockerfile.String()).
+		WithNewFile("infra.json", string(jsonBytes))
+
+	return dir, nil
 }
