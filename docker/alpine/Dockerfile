@@ -1,13 +1,11 @@
-ARG DOCKER_HUB
+ARG IMAGE_REGISTRY
 ARG ALPINE_VERSION
 ARG INFRA_VERSION
 ARG INFRA_NAMESPACE
 
-FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
+FROM ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
 
-FROM ${DOCKER_HUB}/library/alpine:${ALPINE_VERSION}
-
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
+FROM ${IMAGE_REGISTRY}/library/alpine:${ALPINE_VERSION}
 
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
 

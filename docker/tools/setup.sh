@@ -1,15 +1,5 @@
 #!/bin/bash
 
-export DEBIAN_FRONTEND=noninteractive
-
-cat << SOURCES > /etc/apt/sources.list
-deb https://fs.noroutine.me/attic/debian bookworm main
-deb https://fs.noroutine.me/attic/debian bookworm-updates main
-deb http://security.debian.org/debian-security bookworm-security main
-SOURCES
-
-apt-get update -yyq && apt-get install -yyq unzip zstd curl
-
 # Docker style, used by most
 ARCHX=$(uname -m | sed 's/aarch64/arm64/;s/x86_64/amd64/')
 
@@ -109,8 +99,5 @@ curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/down
 # dagger
 curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh
 
-# brew install nvm
-
-# consul nomad vault envconsul consul-template
 
 chmod +x /usr/local/bin/*

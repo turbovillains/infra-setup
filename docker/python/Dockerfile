@@ -1,13 +1,11 @@
-ARG DOCKER_HUB
-ARG PYTHON_VERSION
-ARG INFRA_VERSION
+ARG IMAGE_REGISTRY
 ARG INFRA_NAMESPACE
+ARG INFRA_VERSION
+ARG PYTHON_VERSION
 
-FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
+FROM ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
 
-FROM ${DOCKER_HUB}/library/python:${PYTHON_VERSION}
-
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
+FROM ${IMAGE_REGISTRY}/library/python:${PYTHON_VERSION}
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 RUN apt-get update && \

@@ -1,8 +1,18 @@
-ARG DOCKER_HUB=docker.io
+ARG IMAGE_REGISTRY
 ARG DEBIAN_VERSION
-FROM ${DOCKER_HUB}/library/debian:${DEBIAN_VERSION} AS download
+ARG INFRA_NAMESPACE
+ARG INFRA_VERSION
 
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
+FROM ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
+
+FROM ${IMAGE_REGISTRY}/library/debian:${DEBIAN_VERSION} AS download
+
+RUN apt-get update && apt-get install -y \
+    curl ca-certificates unzip zstd curl \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
+RUN update-ca-certificates
 
 USER 0
 

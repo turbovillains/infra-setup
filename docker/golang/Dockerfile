@@ -1,13 +1,11 @@
-ARG DOCKER_HUB
+ARG IMAGE_REGISTRY
 ARG GOLANG_VERSION
 ARG INFRA_VERSION
 ARG INFRA_NAMESPACE
 
-FROM ${DOCKER_HUB}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
+FROM ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION} AS rootca
 
-FROM ${DOCKER_HUB}/library/golang:${GOLANG_VERSION}
-
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
+FROM ${IMAGE_REGISTRY}/library/golang:${GOLANG_VERSION}
 
 # full bundle of CA certs set from Mozilla + Noroutine CA certs
 RUN apt-get update && \

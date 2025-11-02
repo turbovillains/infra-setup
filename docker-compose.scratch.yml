@@ -1,0 +1,12 @@
+services:
+  noroutine-ca:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION}
+    build:
+      context: docker/noroutine-ca
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"

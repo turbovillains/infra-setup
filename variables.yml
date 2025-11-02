@@ -1,8 +1,6 @@
 ---
 variables:
   BUILDER_USER: builder
-  INFRA_NAMESPACE: infra
-  INFRA_NAMESPACE_DEV: infra-dev
   WEBSITE_VERSION: v0.2.11
   DEBIAN_VERSION: "trixie-20251020-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_NOBLE_VERSION: "noble-20251001" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
