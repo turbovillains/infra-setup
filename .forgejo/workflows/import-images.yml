@@ -16,19 +16,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Call Dagger Function
+      - name: Import images with Dagger
         uses: https://github.com/dagger/dagger-for-github@v8.2.0
         with:
           version: "latest"
-          args: with-docker-cfg --docker-cfg env://DOCKER_CFG import-images
+          args: with-docker-cfg --docker-cfg env://DOCKER_CFG import-images --pattern alpine
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
         env:
           DOCKER_CFG: ${{ secrets.DOCKER_CFG }}
 
+  mirror:
+    name: mirror
+    runs-on: ubuntu-latest
+    needs: import-images
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up SSH and mirror to remotes
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan git.nrtn.dev >> ~/.ssh/known_hosts
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< '${{ secrets.SSH_PRIVATE_KEY }}'
+
+          # Mirror to GitHub turbovillains (use --mirror for full mirror)
+          git push --mirror --force git@github.com:turbovillains/infra-setup.git
+
+          # Push to GitLab to trigger CI/CD (separate pushes to avoid hidden refs error)
+          git push --all --force git@git.nrtn.dev:infra/infra-setup.git
+          git push --tags --force git@git.nrtn.dev:infra/infra-setup.git
+
   push-artifacts:
     name: push-artifacts
     runs-on: ubuntu-latest
-    needs: hello
+    needs: import-images
     steps:
       - name: Checkout
         uses: actions/checkout@v4
