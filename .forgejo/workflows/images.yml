@@ -2,6 +2,7 @@ name: images
 on:
   push:
     branches: [master]
+    tags: ['*']
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -253,6 +254,10 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Install rsync
+          sudo apt-get update
+          sudo apt-get install -y rsync
+
           # Install yq for YAML processing
           OS=$(uname -s | tr '[:upper:]' '[:lower:]')
           ARCH=$(uname -m)
