@@ -12,9 +12,9 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# ENV CGO_ENABLED 0
-ENV GOARCH ${TARGETARCH}
-ENV CGO_ENABLED 1
+# ENV CGO_ENABLED=0
+ENV GOARCH=${TARGETARCH}
+ENV CGO_ENABLED=1
 
 RUN cd / \
     && git clone https://github.com/soundcloud/ipmi_exporter \
