@@ -11,93 +11,280 @@ ARCHZ=$(uname -m)
 
 set -e
 
-# kubectl
-curl -sLo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/${ARCHX}/kubectl" && chmod +x /usr/local/bin/kubectl
+# Track failed installations
+FAILED_TOOLS=()
+LOCK_FILE="/tmp/tools_install.lock"
 
-# jq
-# https://github.com/stedolan/jq/releases
-# no jq so cannot use JQ_VERSION=$(curl -s "https://api.github.com/repos/jqlang/jq/releases/latest" | jq -r '.tag_name')
-JQ_VERSION=jq-1.8.1
-curl -sLo /usr/local/bin/jq https://github.com/jqlang/jq/releases/download/${JQ_VERSION}/jq-linux-${ARCHX} && chmod +x /usr/local/bin/jq
+# Function to record failures
+record_failure() {
+  local tool=$1
+  flock "$LOCK_FILE" bash -c "echo '$tool' >> /tmp/failed_tools.txt"
+}
 
-# cosign
-# https://github.com/sigstore/cosign/releases
-curl -sLO "https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-${ARCHX}"
-mv cosign-linux-${ARCHX} /usr/local/bin/cosign
-chmod +x /usr/local/bin/cosign
+# Install functions for each tool
+install_kubectl() {
+  echo "Installing kubectl..."
+  curl -sLo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/${ARCHX}/kubectl" && chmod +x /usr/local/bin/kubectl || record_failure "kubectl"
+}
 
-# syft
-# https://github.com/anchore/syft/releases
-curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+install_jq() {
+  echo "Installing jq..."
+  # https://github.com/stedolan/jq/releases
+  # Bootstrap problem: can't use jq to parse JSON for jq's version!
+  # Solution: Use awk to parse the JSON response
+  JQ_VERSION=$(curl -s "https://api.github.com/repos/jqlang/jq/releases/latest" | awk -F'"' '/"tag_name":/ {print $4}' || echo "jq-1.8.1")
+  echo "  Detected version: ${JQ_VERSION} for arch: ${ARCHX}"
 
-# crane
-curl -sLo- "https://github.com/google/go-containerregistry/releases/download/$(curl -s "https://api.github.com/repos/google/go-containerregistry/releases/latest" | jq -r '.tag_name')/go-containerregistry_Linux_${ARCHY}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner -xzv crane krane gcrane
+  if curl -sLo /usr/local/bin/jq "https://github.com/jqlang/jq/releases/download/${JQ_VERSION}/jq-linux-${ARCHX}"; then
+    chmod +x /usr/local/bin/jq
+    # Verify jq actually works
+    if /usr/local/bin/jq --version >/dev/null 2>&1; then
+      echo "  ✓ jq verified: $(/usr/local/bin/jq --version)"
+    else
+      echo "  ✗ jq download failed - binary not executable or corrupted"
+      rm -f /usr/local/bin/jq
+      record_failure "jq"
+      exit 1
+    fi
+  else
+    record_failure "jq"
+    exit 1
+  fi
+}
 
-# trivy
-# https://github.com/aquasecurity/trivy/releases
-curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin latest
+install_cosign() {
+  echo "Installing cosign..."
+  # https://github.com/sigstore/cosign/releases
+  curl -sLO "https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-${ARCHX}" && \
+    mv cosign-linux-${ARCHX} /usr/local/bin/cosign && \
+    chmod +x /usr/local/bin/cosign || record_failure "cosign"
+}
 
-# pack
-# https://github.com/buildpacks/pack/releases
-PACK_VERSION=$(curl -s "https://api.github.com/repos/buildpacks/pack/releases/latest" | jq -r '.tag_name')
-(curl -sSL "https://github.com/buildpacks/pack/releases/download/${PACK_VERSION}/pack-${PACK_VERSION}-linux.tgz" | tar -C /usr/local/bin/ --no-same-owner -xzv pack)
+install_syft() {
+  echo "Installing syft..."
+  # https://github.com/anchore/syft/releases
+  curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin || record_failure "syft"
+}
 
-# helm
-# https://github.com/helm/helm/releases
-HELM_VERSION=$(curl -s "https://api.github.com/repos/helm/helm/releases/latest" | jq -r '.tag_name')
-(curl -sSL "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCHX}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner --strip-components=1 -xzv linux-${ARCHX}/helm)
+install_crane() {
+  echo "Installing crane..."
+  curl -sLo- "https://github.com/google/go-containerregistry/releases/download/$(curl -s "https://api.github.com/repos/google/go-containerregistry/releases/latest" | jq -r '.tag_name')/go-containerregistry_Linux_${ARCHY}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner -xzv crane krane gcrane || record_failure "crane"
+}
 
-# skaffold
-# https://github.com/GoogleContainerTools/skaffold/releases
-SKAFFOLD_VERSION=$(curl -s "https://api.github.com/repos/GoogleContainerTools/skaffold/releases/latest" | jq -r '.tag_name')
-curl -sLo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/${SKAFFOLD_VERSION}/skaffold-linux-${ARCHX} && chmod +x /usr/local/bin/skaffold
+install_trivy() {
+  echo "Installing trivy..."
+  # https://github.com/aquasecurity/trivy/releases
+  curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin latest || record_failure "trivy"
+}
 
-# yq
-# https://github.com/mikefarah/yq/releases
-YQ_VERSION=$(curl -s "https://api.github.com/repos/mikefarah/yq/releases/latest" | jq -r '.tag_name')
-curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCHX} && chmod +x /usr/local/bin/yq
+install_pack() {
+  echo "Installing pack..."
+  # https://github.com/buildpacks/pack/releases
+  PACK_VERSION=$(curl -s "https://api.github.com/repos/buildpacks/pack/releases/latest" | jq -r '.tag_name')
+  curl -sSL "https://github.com/buildpacks/pack/releases/download/${PACK_VERSION}/pack-${PACK_VERSION}-linux.tgz" | tar -C /usr/local/bin/ --no-same-owner -xzv pack || record_failure "pack"
+}
 
-# yj
-# https://github.com/sclevine/yj/releases
-YJ_VERSION=$(curl -s "https://api.github.com/repos/sclevine/yj/releases/latest" | jq -r '.tag_name')
-curl -sLo /usr/local/bin/yj https://github.com/sclevine/yj/releases/download/${YJ_VERSION}/yj-linux-${ARCHX} && chmod +x /usr/local/bin/yj
+install_helm() {
+  echo "Installing helm..."
+  # https://github.com/helm/helm/releases
+  HELM_VERSION=$(curl -s "https://api.github.com/repos/helm/helm/releases/latest" | jq -r '.tag_name')
+  curl -sSL "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCHX}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner --strip-components=1 -xzv linux-${ARCHX}/helm || record_failure "helm"
+}
 
-# ytt
-# https://github.com/carvel-dev/ytt/releases
-YTT_VERSION=$(curl -s "https://api.github.com/repos/carvel-dev/ytt/releases/latest" | jq -r '.tag_name')
-curl -sLo /usr/local/bin/ytt https://github.com/carvel-dev/ytt/releases/download/${YTT_VERSION}/ytt-linux-${ARCHX} && chmod +x /usr/local/bin/ytt
+install_skaffold() {
+  echo "Installing skaffold..."
+  # https://github.com/GoogleContainerTools/skaffold/releases
+  SKAFFOLD_VERSION=$(curl -s "https://api.github.com/repos/GoogleContainerTools/skaffold/releases/latest" | jq -r '.tag_name')
+  curl -sLo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/${SKAFFOLD_VERSION}/skaffold-linux-${ARCHX} && chmod +x /usr/local/bin/skaffold || record_failure "skaffold"
+}
 
-# kustomize
-# https://github.com/kubernetes-sigs/kustomize/releases
-KUSTOMIZE_VERSION=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest" | jq -r '.tag_name' | sed 's/kustomize\///')
-(curl -sSL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_${ARCHX}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner -xzv kustomize)
+install_yq() {
+  echo "Installing yq..."
+  # https://github.com/mikefarah/yq/releases
+  YQ_VERSION=$(curl -s "https://api.github.com/repos/mikefarah/yq/releases/latest" | jq -r '.tag_name')
+  curl -sLo /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_${ARCHX} && chmod +x /usr/local/bin/yq || record_failure "yq"
+}
 
-# argocd
-# https://github.com/argoproj/argo-cd/releases
-ARGOCD_VERSION=$(curl -s "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | jq -r '.tag_name')
-curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/${ARGOCD_VERSION}/argocd-linux-${ARCHX} && chmod +x /usr/local/bin/argocd
+install_yj() {
+  echo "Installing yj..."
+  # https://github.com/sclevine/yj/releases
+  YJ_VERSION=$(curl -s "https://api.github.com/repos/sclevine/yj/releases/latest" | jq -r '.tag_name')
+  curl -sLo /usr/local/bin/yj https://github.com/sclevine/yj/releases/download/${YJ_VERSION}/yj-linux-${ARCHX} && chmod +x /usr/local/bin/yj || record_failure "yj"
+}
 
-# https://github.com/goreleaser/goreleaser/releases
-GORELEASER_VERSION=$(curl -s "https://api.github.com/repos/goreleaser/goreleaser/releases/latest" | jq -r '.tag_name' | sed 's/v//')
-curl -sLo- https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser-${GORELEASER_VERSION}-1-${ARCHZ}.pkg.tar.zst \
-  | tar -C /usr/local/bin/ --no-same-owner --strip-components=2 --use-compress-program=unzstd -xv usr/bin/goreleaser
+install_ytt() {
+  echo "Installing ytt..."
+  # https://github.com/carvel-dev/ytt/releases
+  YTT_VERSION=$(curl -s "https://api.github.com/repos/carvel-dev/ytt/releases/latest" | jq -r '.tag_name')
+  curl -sLo /usr/local/bin/ytt https://github.com/carvel-dev/ytt/releases/download/${YTT_VERSION}/ytt-linux-${ARCHX} && chmod +x /usr/local/bin/ytt || record_failure "ytt"
+}
 
-# terraform
-# https://releases.hashicorp.com/terraform
-TERRAFORM_VERSION=$(curl -s "https://api.github.com/repos/hashicorp/terraform/releases/latest" | jq -r '.tag_name' | sed 's/v//')
-curl -sLo terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCHX}.zip
-unzip terraform.zip
-chmod +x terraform
-mv terraform /usr/local/bin/terraform
-rm terraform.zip
+install_kustomize() {
+  echo "Installing kustomize..."
+  # https://github.com/kubernetes-sigs/kustomize/releases
+  KUSTOMIZE_VERSION=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest" | jq -r '.tag_name' | sed 's/kustomize\///')
+  curl -sSL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_${ARCHX}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner -xzv kustomize || record_failure "kustomize"
+}
 
-# cfssl
-# https://github.com/cloudflare/cfssl/releases
-CFSSL_VERSION=$(curl -s "https://api.github.com/repos/cloudflare/cfssl/releases/latest" | jq -r '.tag_name' | sed 's/v//')
-curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v${CFSSL_VERSION}/cfssl_${CFSSL_VERSION}_linux_${ARCHX} && chmod +x /usr/local/bin/cfssl
+install_argocd() {
+  echo "Installing argocd..."
+  # https://github.com/argoproj/argo-cd/releases
+  ARGOCD_VERSION=$(curl -s "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | jq -r '.tag_name')
+  curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/${ARGOCD_VERSION}/argocd-linux-${ARCHX} && chmod +x /usr/local/bin/argocd || record_failure "argocd"
+}
 
-# dagger
-curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh
+install_goreleaser() {
+  echo "Installing goreleaser..."
+  # https://github.com/goreleaser/goreleaser/releases
+  GORELEASER_VERSION=$(curl -s "https://api.github.com/repos/goreleaser/goreleaser/releases/latest" | jq -r '.tag_name' | sed 's/v//')
+  curl -sLo- https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser-${GORELEASER_VERSION}-1-${ARCHZ}.pkg.tar.zst \
+    | tar -C /usr/local/bin/ --no-same-owner --strip-components=2 --use-compress-program=unzstd -xv usr/bin/goreleaser || record_failure "goreleaser"
+}
 
+install_terraform() {
+  echo "Installing terraform..."
+  # https://releases.hashicorp.com/terraform
+  TERRAFORM_VERSION=$(curl -s "https://api.github.com/repos/hashicorp/terraform/releases/latest" | jq -r '.tag_name' | sed 's/v//')
+  curl -sLo terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCHX}.zip && \
+    unzip -q terraform.zip && \
+    chmod +x terraform && \
+    mv terraform /usr/local/bin/terraform && \
+    rm terraform.zip || record_failure "terraform"
+}
 
-chmod +x /usr/local/bin/*
+install_cfssl() {
+  echo "Installing cfssl..."
+  # https://github.com/cloudflare/cfssl/releases
+  CFSSL_VERSION=$(curl -s "https://api.github.com/repos/cloudflare/cfssl/releases/latest" | jq -r '.tag_name' | sed 's/v//')
+  curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v${CFSSL_VERSION}/cfssl_${CFSSL_VERSION}_linux_${ARCHX} && chmod +x /usr/local/bin/cfssl || record_failure "cfssl"
+}
+
+install_dagger() {
+  echo "Installing dagger..."
+  curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh || record_failure "dagger"
+}
+
+# Create lock file for synchronization
+touch "$LOCK_FILE"
+
+echo "Installing jq first (required by other tools)..."
+echo "================================================"
+
+# Install jq first - it's needed by most other tools to parse GitHub API responses
+install_jq
+
+# Verify jq is working before proceeding
+if ! command -v jq >/dev/null 2>&1; then
+  echo "ERROR: jq installation failed - cannot proceed"
+  exit 1
+fi
+
+echo ""
+echo "Starting batched parallel installation of remaining tools..."
+echo "================================================"
+
+# Batch installations to avoid overwhelming network/rate limits
+# Max 5 concurrent downloads per batch
+
+echo "Batch 1/4: kubectl, cosign, syft, crane, trivy"
+install_kubectl &
+install_cosign &
+install_syft &
+install_crane &
+install_trivy &
+wait
+
+echo "Batch 2/4: pack, helm, skaffold, yq, yj"
+install_pack &
+install_helm &
+install_skaffold &
+install_yq &
+install_yj &
+wait
+
+echo "Batch 3/4: ytt, kustomize, argocd, goreleaser"
+install_ytt &
+install_kustomize &
+install_argocd &
+install_goreleaser &
+wait
+
+echo "Batch 4/4: terraform, cfssl, dagger"
+install_terraform &
+install_cfssl &
+install_dagger &
+wait
+
+echo ""
+echo "All batches completed!"
+
+echo ""
+echo "================================================"
+echo "Installation complete!"
+
+# Check for failures
+if [[ -f /tmp/failed_tools.txt ]]; then
+  echo ""
+  echo "WARNING: The following tools failed to install:"
+  cat /tmp/failed_tools.txt
+  rm /tmp/failed_tools.txt
+  exit 1
+fi
+
+# Final permissions pass
+chmod +x /usr/local/bin/* 2>/dev/null || true
+
+# Cleanup
+rm -f "$LOCK_FILE"
+
+echo ""
+echo "Verifying installed tools..."
+echo "================================================"
+
+# Verify each tool
+TOOLS=(
+  "kubectl:kubectl version --client=true --output=yaml"
+  "jq:jq --version"
+  "cosign:cosign version"
+  "syft:syft version"
+  "crane:crane version"
+  "trivy:trivy --version"
+  "pack:pack --version"
+  "helm:helm version"
+  "skaffold:skaffold version"
+  "yq:yq --version"
+  "yj:yj -v"
+  "ytt:ytt version"
+  "kustomize:kustomize version"
+  "argocd:argocd version --client"
+  "goreleaser:goreleaser --version"
+  "terraform:terraform version"
+  "cfssl:cfssl version"
+  "dagger:dagger version"
+)
+
+FAILED_VERIFY=0
+for tool_info in "${TOOLS[@]}"; do
+  tool_name="${tool_info%%:*}"
+  tool_cmd="${tool_info#*:}"
+
+  if command -v "$tool_name" >/dev/null 2>&1; then
+    if $tool_cmd >/dev/null 2>&1; then
+      echo "  ✓ $tool_name"
+    else
+      echo "  ✗ $tool_name (installed but not working)"
+      FAILED_VERIFY=$((FAILED_VERIFY + 1))
+    fi
+  else
+    echo "  ✗ $tool_name (not found)"
+    FAILED_VERIFY=$((FAILED_VERIFY + 1))
+  fi
+done
+
+echo ""
+if [[ $FAILED_VERIFY -gt 0 ]]; then
+  echo "WARNING: $FAILED_VERIFY tool(s) failed verification"
+  exit 1
+else
+  echo "All tools installed and verified successfully!"
+fi

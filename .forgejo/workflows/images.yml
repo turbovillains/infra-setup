@@ -130,7 +130,7 @@ jobs:
 
       - name: Build and push scratch stage
         run: |
-          ./build-scratch.sh \
+          ./build.sh scratch \
             --registry "${{ env.IMAGE_REGISTRY }}" \
             --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
             --version "${{ needs.import-images.outputs.infra_version }}" \
@@ -142,7 +142,7 @@ jobs:
 
       - name: Build and push base stage
         run: |
-          ./build-base.sh \
+          ./build.sh base \
             --registry "${{ env.IMAGE_REGISTRY }}" \
             --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
             --version "${{ needs.import-images.outputs.infra_version }}" \
@@ -154,7 +154,7 @@ jobs:
 
       - name: Build and push custom stage
         run: |
-          ./build-custom.sh \
+          ./build.sh custom \
             --registry "${{ env.IMAGE_REGISTRY }}" \
             --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
             --version "${{ needs.import-images.outputs.infra_version }}" \
