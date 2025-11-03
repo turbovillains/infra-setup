@@ -1,0 +1,223 @@
+services:
+  airflow:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/airflow:${INFRA_VERSION}
+    build:
+      context: docker/custom/airflow
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        AIRFLOW_VERSION: ${AIRFLOW_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  argocd:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/argocd:${INFRA_VERSION}
+    build:
+      context: docker/custom/argocd
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        ARGOCD_VERSION: ${ARGOCD_VERSION}
+        YTT_VERSION: ${YTT_VERSION}
+        ARGOCD_VAULT_PLUGIN_VERSION: ${ARGOCD_VAULT_PLUGIN_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  boky-postfix:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/boky-postfix:${INFRA_VERSION}
+    build:
+      context: docker/custom/boky-postfix
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        IMAGE_BASE: boky/postfix
+        IMAGE_VERSION: ${BOKY_POSTFIX_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  external-secrets:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/external-secrets:${INFRA_VERSION}
+    build:
+      context: docker/custom/external-secrets
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        EXTERNAL_SECRETS_VERSION: ${EXTERNAL_SECRETS_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  grafana:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/grafana:${INFRA_VERSION}
+    build:
+      context: docker/custom/grafana
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        GRAFANA_VERSION: ${GRAFANA_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  ipmi-exporter:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/ipmi-exporter:${INFRA_VERSION}
+    build:
+      context: docker/custom/ipmi-exporter
+      platforms:
+        - linux/amd64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        IPMI_EXPORTER_VERSION: ${IPMI_EXPORTER_VERSION}
+        GOLANG_VERSION: ${GOLANG_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  netbox:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/netbox:${INFRA_VERSION}
+    build:
+      context: docker/custom/netbox
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        IMAGE_BASE: netboxcommunity/netbox
+        IMAGE_VERSION: ${NETBOX_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  nextcloud:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/nextcloud:${INFRA_VERSION}
+    build:
+      context: docker/custom/nextcloud
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        IMAGE_BASE: library/nextcloud
+        IMAGE_VERSION: ${NEXTCLOUD_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  ocsp-responder:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/ocsp-responder:${INFRA_VERSION}
+    build:
+      context: docker/custom/ocsp-responder
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  powerdns:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/powerdns:${INFRA_VERSION}
+    build:
+      context: docker/custom/powerdns
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  powerdns-dnsdist:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/powerdns-dnsdist:${INFRA_VERSION}
+    build:
+      context: docker/custom/powerdns-dnsdist
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  powerdns-recursor:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/powerdns-recursor:${INFRA_VERSION}
+    build:
+      context: docker/custom/powerdns-recursor
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  wiretraefik:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/wiretraefik:${INFRA_VERSION}
+    build:
+      context: docker/custom/wiretraefik
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
+        INFRA_VERSION: ${INFRA_VERSION}
+        WIREGUARD_VERSION: ${WIREGUARD_VERSION}
+        TRAEFIK_VERSION: ${TRAEFIK_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"

@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-# Scratch Stage Build Script
-# First stage - no dependencies
+# Custom Stage Build Script
+# Depends on: base stage (noroutine-ca, debian, alpine, etc. must be built and pushed first)
 
 # Load variables from variables.yml (required for docker-compose)
 if ! command -v yq &> /dev/null; then
@@ -48,7 +48,7 @@ while [[ $# -gt 0 ]]; do
     --help)
       echo "Usage: $0 [options]"
       echo ""
-      echo "Build scratch stage images (first stage, no dependencies)"
+      echo "Build custom stage images (depends on base stage)"
       echo ""
       echo "Options:"
       echo "  --registry REGISTRY    Container registry (default: cr.nrtn.dev)"
@@ -62,6 +62,10 @@ while [[ $# -gt 0 ]]; do
       echo "  INFRA_NAMESPACE   Override default namespace"
       echo "  INFRA_VERSION     Override default version"
       echo "  PUSH              Set to 'true' to push images"
+      echo ""
+      echo "Prerequisites:"
+      echo "  - base stage must be built and pushed first (noroutine-ca, debian, alpine, etc.)"
+      echo "  - Run: ./build-base.sh --push"
       exit 0
       ;;
     *)
@@ -72,22 +76,25 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# Export for docker-compose
+# Export basic variables for docker-compose
 export IMAGE_REGISTRY
 export INFRA_NAMESPACE
 export INFRA_VERSION
 
-echo "Building SCRATCH stage images..."
+echo ""
+echo "Building CUSTOM stage images..."
 echo "  Registry:  ${IMAGE_REGISTRY}"
 echo "  Namespace: ${INFRA_NAMESPACE}"
 echo "  Version:   ${INFRA_VERSION}"
 echo "  Push:      ${PUSH}"
 echo ""
-echo "Components: noroutine-ca"
+echo "Components: airflow, argocd, boky-postfix, external-secrets, grafana,"
+echo "            ipmi-exporter, netbox, nextcloud, ocsp-responder,"
+echo "            powerdns, powerdns-dnsdist, powerdns-recursor, wiretraefik"
 echo ""
 
 # Build arguments for docker buildx bake
-BAKE_ARGS="-f docker-compose.scratch.yml"
+BAKE_ARGS="-f docker-compose.custom.yml"
 
 if [[ "${PUSH}" == "true" ]]; then
   echo "Building and pushing multi-arch images..."
@@ -98,6 +105,4 @@ else
 fi
 
 echo ""
-echo "Scratch stage build completed successfully!"
-echo ""
-echo "Next: Run ./build-base.sh to build base stage (requires scratch images pushed)"
+echo "Custom stage build completed successfully!"

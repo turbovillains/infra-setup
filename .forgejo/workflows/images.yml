@@ -152,6 +152,18 @@ jobs:
           INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
           INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
 
+      - name: Build and push custom stage
+        run: |
+          ./build-custom.sh \
+            --registry "${{ env.IMAGE_REGISTRY }}" \
+            --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
+            --version "${{ needs.import-images.outputs.infra_version }}" \
+            --push
+        env:
+          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
+          INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
+          INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
+
       - name: Summary
         run: |
           echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
@@ -180,6 +192,13 @@ jobs:
           done < <(yq eval '.variables | to_entries | .[] | .key + "=" + .value' variables.yml)
 
           docker compose -f docker-compose.base.yml config --services | while read service; do
+            echo "- \`${{ env.IMAGE_REGISTRY }}/${{ needs.import-images.outputs.infra_namespace }}/${service}:${{ needs.import-images.outputs.infra_version }}\`" >> $GITHUB_STEP_SUMMARY
+          done
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Custom Stage" >> $GITHUB_STEP_SUMMARY
+
+          docker compose -f docker-compose.custom.yml config --services | while read service; do
             echo "- \`${{ env.IMAGE_REGISTRY }}/${{ needs.import-images.outputs.infra_namespace }}/${service}:${{ needs.import-images.outputs.infra_version }}\`" >> $GITHUB_STEP_SUMMARY
           done
 

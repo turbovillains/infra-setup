@@ -2,7 +2,7 @@ services:
   noroutine-ca:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/noroutine-ca:${INFRA_VERSION}
     build:
-      context: docker/noroutine-ca
+      context: docker/scratch/noroutine-ca
       platforms:
         - linux/amd64
         - linux/arm64

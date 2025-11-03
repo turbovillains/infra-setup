@@ -23,7 +23,7 @@ echo "Loaded $(yq eval '.variables | length' variables.yml) variables from varia
 # Default values
 IMAGE_REGISTRY=${IMAGE_REGISTRY:-cr.nrtn.dev}
 INFRA_NAMESPACE=${INFRA_NAMESPACE:-infra-dev}
-INFRA_VERSION=${INFRA_VERSION:-dev}
+INFRA_VERSION=${INFRA_VERSION:-$(git rev-parse --short=8 HEAD 2>/dev/null || echo "dev")}
 PUSH=${PUSH:-false}
 
 # Parse command line arguments
@@ -52,8 +52,8 @@ while [[ $# -gt 0 ]]; do
       echo ""
       echo "Options:"
       echo "  --registry REGISTRY    Container registry (default: cr.nrtn.dev)"
-      echo "  --namespace NAMESPACE  Image namespace (default: infra)"
-      echo "  --version VERSION      Image version tag (default: dev)"
+      echo "  --namespace NAMESPACE  Image namespace (default: infra-dev)"
+      echo "  --version VERSION      Image version tag (default: git short SHA or 'dev')"
       echo "  --push                 Push images after build (default: false)"
       echo "  --help                 Show this help message"
       echo ""

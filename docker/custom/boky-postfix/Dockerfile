@@ -1,0 +1,9 @@
+ARG IMAGE_REGISTRY=cr.nrtn.dev
+ARG INFRA_NAMESPACE=infra-dev
+ARG INFRA_VERSION=dev
+ARG IMAGE_BASE=debian
+ARG IMAGE_VERSION=dev
+
+FROM ${IMAGE_REGISTRY}/${IMAGE_BASE}:${IMAGE_VERSION}
+
+COPY healthcheck.sh /scripts/healthcheck.sh
