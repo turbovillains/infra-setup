@@ -9,10 +9,8 @@ variables:
   JDK_ZULU_VERSION: 25.0.1-25.30 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   JDK_TEMURIN_VERSION: 25-noble # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
   GOLANG_VERSION: "1.25.3-trixie" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
-  GOLANG_ALPINE_VERSION: "1.25.3-alpine" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.21
   NODE_VERSION: "25.1.0-trixie" # https://hub.docker.com/_/node/tags
   PYTHON_VERSION: 3.14.0-trixie # https://hub.docker.com/_/python/tags?page=1&name=3.13
-  PYTHON_SLIM_VERSION: 3.14.0-slim-trixie # https://hub.docker.com/_/python/tags?page=1&name=3.13
   KUBE_RBAC_PROXY_VERSION: v0.20.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_VERSION: "18.5.1-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
   GITLAB_RUNNER_VERSION: "alpine-v18.5.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine

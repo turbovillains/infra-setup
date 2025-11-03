@@ -1,9 +1,5 @@
 include: variables.yml
 
-stages:
-  - build
-  - build2
-
 before_script:
   - |
     docker info
@@ -26,7 +22,6 @@ before_script:
 ingress-default-backend:
   interruptible: true
   retry: 2
-  stage: build
   script:
     - |
       git clone --depth 1 https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/ingress-default-backend.git
@@ -39,197 +34,9 @@ ingress-default-backend:
         archive_image ${DOCKER_HUB}/${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
       fi
 
-nvidia-cuda:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/cuda
-    IMAGE_VERSION: ${NVIDIA_CUDA_VERSION}
-
-nvidia-dcgm:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/cloud-native/dcgm
-    IMAGE_VERSION: ${NVIDIA_DCGM_VERSION}
-
-nvidia-dcgm-exporter:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/k8s/dcgm-exporter
-    IMAGE_VERSION: ${NVIDIA_DCGM_EXPORTER_VERSION}
-
-nvidia-gpu-feature-discovery:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/gpu-feature-discovery
-    IMAGE_VERSION: ${NVIDIA_GPU_FEATURE_DISCOVERY_VERSION}
-
-nvidia-gpu-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/gpu-operator
-    IMAGE_VERSION: ${NVIDIA_GPU_OPERATOR_VERSION}
-
-nvidia-gpu-operator-validator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/cloud-native/gpu-operator-validator
-    IMAGE_VERSION: ${NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION}
-
-nvidia-k8s-container-toolkit:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/k8s/container-toolkit
-    IMAGE_VERSION: ${NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION}
-
-nvidia-k8s-device-plugin:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/k8s-device-plugin
-    IMAGE_VERSION: ${NVIDIA_K8S_DEVICE_PLUGIN_VERSION}
-
-nvidia-k8s-driver-manager:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/cloud-native/k8s-driver-manager
-    IMAGE_VERSION: ${NVIDIA_K8S_DRIVER_MANAGER_VERSION}
-
-nvidia-k8s-mig-manager:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: nvidia/cloud-native/k8s-mig-manager
-    IMAGE_VERSION: ${NVIDIA_K8S_MIG_MANAGER_VERSION}
-
-forgejo-actions-ubuntu-act:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: catthehacker/ubuntu
-    IMAGE_VERSION: act-24.04
-
-forgejo-actions-ubuntu-runner:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: catthehacker/ubuntu
-    IMAGE_VERSION: runner-24.04
-
-confluent-operator:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: confluentinc/confluent-operator
-    IMAGE_VERSION: ${CONFLUENTINC_OPERATOR_VERSION}
-
-confluent-init-container:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: confluentinc/confluent-init-container
-    IMAGE_VERSION: ${CONFLUENTINC_INIT_CONTAINER_VERSION}
-
-confluent-enterprise-control-center:
-  interruptible: true
-  retry: 2
-  stage: build
-  script:
-    - |
-      ./gitlab/build-image.sh generic ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
-  variables:
-    IMAGE_BASE: confluentinc/cp-enterprise-control-center-next-gen
-    IMAGE_VERSION: ${CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION}
-
-confluent-platform:
-  interruptible: true
-  retry: 2
-  stage: build
-  parallel:
-    matrix:
-      - CONFLUENTINC_CP_COMPONENT:
-          - enterprise-replicator
-          - kafka-rest
-          - ksqldb-server
-          # - ksqldb-cli
-          - schema-registry
-          - server
-          - server-connect
-        DUMMY:
-          - dummy
-  script:
-    - |
-      ./gitlab/build-image.sh confluent-platform ${INFRA_NAMESPACE}/confluentinc-cp-${CONFLUENTINC_CP_COMPONENT}:${INFRA_VERSION} \
-        --build-arg CONFLUENTINC_CP_VERSION \
-        --build-arg CONFLUENTINC_CP_COMPONENT
-
 infra-docs:
   interruptible: true
   retry: 2
-  stage: build2
   script:
     - |
       git clone https://readonly:${INFRA_READONLY_TOKEN}@git.nrtn.dev/infra/infra-docs.git
@@ -241,7 +48,6 @@ infra-docs:
 infra-charts:
   interruptible: true
   retry: 2
-  stage: build2
   script:
     - |
       ./import-charts.sh import-charts.yml docker/infra-charts/charts
@@ -254,7 +60,6 @@ infra-charts:
 
 builder:
   interruptible: true
-  stage: build2
   script:
     - |
       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \

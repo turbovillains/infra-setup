@@ -1,8 +1,7 @@
 ARG IMAGE_REGISTRY=cr.nrtn.dev
-ARG INFRA_NAMESPACE=infra-dev
-ARG INFRA_VERSION=dev
-ARG IPMI_EXPORTER_VERSION=dev
+ARG DEBIAN_VERSION=dev
 ARG GOLANG_VERSION=dev
+ARG IPMI_EXPORTER_VERSION=dev
 
 FROM ${IMAGE_REGISTRY}/library/golang:${GOLANG_VERSION} AS builder
 
@@ -23,7 +22,7 @@ RUN cd / \
     && git checkout ${IPMI_EXPORTER_VERSION} \
     && make
 
-FROM ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/debian:${INFRA_VERSION}
+FROM ${IMAGE_REGISTRY}/library/debian:${DEBIAN_VERSION}
 
 COPY --from=builder /ipmi_exporter/ipmi_exporter /ipmi-exporter
 

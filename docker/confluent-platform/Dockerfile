@@ -1,6 +1,0 @@
-ARG DOCKER_HUB
-ARG CONFLUENTINC_CP_VERSION
-ARG CONFLUENTINC_CP_COMPONENT
-FROM ${DOCKER_HUB}/confluentinc/cp-${CONFLUENTINC_CP_COMPONENT}:${CONFLUENTINC_CP_VERSION}
-
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"

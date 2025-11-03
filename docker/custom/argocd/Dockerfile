@@ -10,7 +10,7 @@ ARG TARGETARCH
 ADD https://github.com/vmware-tanzu/carvel-ytt/releases/download/v${YTT_VERSION}/ytt-linux-${TARGETARCH} /ytt
 
 FROM scratch AS avp
-ARG ARGOCD_VAULT_PLUGIN_VERSION=1.11.0
+ARG ARGOCD_VAULT_PLUGIN_VERSION=1.18.1
 ARG TARGETARCH
 
 ADD https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v${ARGOCD_VAULT_PLUGIN_VERSION}/argocd-vault-plugin_${ARGOCD_VAULT_PLUGIN_VERSION}_linux_${TARGETARCH} /argocd-vault-plugin

@@ -7,6 +7,22 @@
 #     image_version: ${VERSION_VARIABLE_NAME}
 
 components:
+  jdk-zulu:
+    image_base: azul/zulu-openjdk-debian
+    image_version: ${JDK_ZULU_VERSION}
+
+  jdk-temurin:
+    image_base: library/eclipse-temurin
+    image_version: ${JDK_TEMURIN_VERSION}
+
+  golang:
+    image_base: library/golang
+    image_version: ${GOLANG_VERSION}
+
+  node:
+    image_base: library/node
+    image_version: ${NODE_VERSION}
+
   wireguard:
     image_base: masipcat/wireguard-go
     image_version: ${WIREGUARD_VERSION}
@@ -355,6 +371,14 @@ components:
     image_base: forgejo/runner
     image_version: ${FORGEJO_RUNNER_VERSION}
 
+  forgejo-actions-ubuntu-act:
+    image_base: catthehacker/ubuntu
+    image_version: act-24.04
+
+  forgejo-actions-ubuntu-runner:
+    image_base: catthehacker/ubuntu
+    image_version: runner-24.04
+
   cloudflared:
     image_base: cloudflare/cloudflared
     image_version: ${CLOUDFLARED_VERSION}
@@ -463,6 +487,10 @@ components:
     image_base: kbudde/rabbitmq-exporter
     image_version: ${RABBITMQ_EXPORTER_VERSION}
 
+  airflow:
+    image_base: apache/airflow
+    image_version: ${AIRFLOW_VERSION}
+
   prefect:
     image_base: prefecthq/prefect
     image_version: ${PREFECT_VERSION}
@@ -490,3 +518,79 @@ components:
   goflow2:
     image_base: netsampler/goflow2
     image_version: ${GOFLOW2_VERSION}
+
+  nvidia-cuda:
+    image_base: nvidia/cuda
+    image_version: ${NVIDIA_CUDA_VERSION}
+
+  nvidia-dcgm:
+    image_base: nvidia/cloud-native/dcgm
+    image_version: ${NVIDIA_DCGM_VERSION}
+
+  nvidia-dcgm-exporter:
+    image_base: nvidia/k8s/dcgm-exporter
+    image_version: ${NVIDIA_DCGM_EXPORTER_VERSION}
+
+  nvidia-gpu-feature-discovery:
+    image_base: nvidia/gpu-feature-discovery
+    image_version: ${NVIDIA_GPU_FEATURE_DISCOVERY_VERSION}
+
+  nvidia-gpu-operator:
+    image_base: nvidia/gpu-operator
+    image_version: ${NVIDIA_GPU_OPERATOR_VERSION}
+
+  nvidia-gpu-operator-validator:
+    image_base: nvidia/cloud-native/gpu-operator-validator
+    image_version: ${NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION}
+
+  nvidia-k8s-container-toolkit:
+    image_base: nvidia/k8s/container-toolkit
+    image_version: ${NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION}
+
+  nvidia-k8s-device-plugin:
+    image_base: nvidia/k8s-device-plugin
+    image_version: ${NVIDIA_K8S_DEVICE_PLUGIN_VERSION}
+
+  nvidia-k8s-driver-manager:
+    image_base: nvidia/cloud-native/k8s-driver-manager
+    image_version: ${NVIDIA_K8S_DRIVER_MANAGER_VERSION}
+
+  nvidia-k8s-mig-manager:
+    image_base: nvidia/cloud-native/k8s-mig-manager
+    image_version: ${NVIDIA_K8S_MIG_MANAGER_VERSION}
+
+  confluent-operator:
+    image_base: confluentinc/confluent-operator
+    image_version: ${CONFLUENTINC_OPERATOR_VERSION}
+
+  confluent-init-container:
+    image_base: confluentinc/confluent-init-container
+    image_version: ${CONFLUENTINC_INIT_CONTAINER_VERSION}
+
+  confluent-enterprise-control-center:
+    image_base: confluentinc/cp-enterprise-control-center-next-gen
+    image_version: ${CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION}
+
+  confluentinc-cp-enterprise-replicator:
+    image_base: confluentinc/cp-enterprise-replicator
+    image_version: ${CONFLUENTINC_CP_VERSION}
+
+  confluentinc-cp-kafka-rest:
+    image_base: confluentinc/cp-kafka-rest
+    image_version: ${CONFLUENTINC_CP_VERSION}
+
+  confluentinc-cp-ksqldb-server:
+    image_base: confluentinc/cp-ksqldb-server
+    image_version: ${CONFLUENTINC_CP_VERSION}
+
+  confluentinc-cp-schema-registry:
+    image_base: confluentinc/cp-schema-registry
+    image_version: ${CONFLUENTINC_CP_VERSION}
+
+  confluentinc-cp-server:
+    image_base: confluentinc/cp-server
+    image_version: ${CONFLUENTINC_CP_VERSION}
+
+  confluentinc-cp-server-connect:
+    image_base: confluentinc/cp-server-connect
+    image_version: ${CONFLUENTINC_CP_VERSION}

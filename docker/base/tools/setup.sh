@@ -188,32 +188,32 @@ echo "================================================"
 
 echo "Batch 1/4: kubectl, cosign, syft, crane, trivy"
 install_kubectl &
-install_cosign &
-install_syft &
+# install_cosign &
+# install_syft &
 install_crane &
 install_trivy &
 wait
 
 echo "Batch 2/4: pack, helm, skaffold, yq, yj"
-install_pack &
+# install_pack &
 install_helm &
 install_skaffold &
 install_yq &
 install_yj &
 wait
 
-echo "Batch 3/4: ytt, kustomize, argocd, goreleaser"
-install_ytt &
-install_kustomize &
-install_argocd &
-install_goreleaser &
-wait
+# echo "Batch 3/4: ytt, kustomize, argocd, goreleaser"
+# install_ytt &
+# install_kustomize &
+# install_argocd &
+# install_goreleaser &
+# wait
 
-echo "Batch 4/4: terraform, cfssl, dagger"
-install_terraform &
-install_cfssl &
-install_dagger &
-wait
+# echo "Batch 4/4: terraform, cfssl, dagger"
+# install_terraform &
+# install_cfssl &
+# install_dagger &
+# wait
 
 echo ""
 echo "All batches completed!"

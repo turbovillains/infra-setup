@@ -1,14 +1,10 @@
-ARG DOCKER_HUB=cr.nrtn.dev
-ARG INFRA_VERSION=dev
-ARG INFRA_NAMESPACE=infra-dev
+ARG IMAGE_REGISTRY=cr.nrtn.dev
 ARG ALPINE_VERSION=dev
 
-FROM ${DOCKER_HUB}/library/alpine:${ALPINE_VERSION} AS alpine
+FROM ${IMAGE_REGISTRY}/library/alpine:${ALPINE_VERSION} AS alpine
 
 RUN apk update && apk add --no-cache ca-certificates nginx openssl && \
   mkdir -p /usr/share/nginx/html
-
-LABEL org.opencontainers.image.authors="Noroutine GmbH <info@noroutine.com>"
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY certs/ /etc/nginx/certs/

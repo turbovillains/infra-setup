@@ -1,10 +1,7 @@
 ARG IMAGE_REGISTRY=cr.nrtn.dev
-ARG INFRA_NAMESPACE=infra-dev
-ARG INFRA_VERSION=dev
-ARG IMAGE_BASE=dev
-ARG IMAGE_VERSION=dev
+ARG NETBOX_VERSION=dev
 
-FROM ${IMAGE_REGISTRY}/${IMAGE_BASE}:${IMAGE_VERSION}
+FROM ${IMAGE_REGISTRY}/netboxcommunity/netbox:${NETBOX_VERSION}
 
 # See compatibility before changing version https://github.com/peteeckel/netbox-plugin-dns
 RUN . /opt/netbox/venv/bin/activate && \
