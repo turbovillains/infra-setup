@@ -2,11 +2,11 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
-cat << SOURCES > /etc/apt/sources.list
-deb https://fs.noroutine.me/attic/debian bookworm main
-deb https://fs.noroutine.me/attic/debian bookworm-updates main
-deb http://security.debian.org/debian-security bookworm-security main
-SOURCES
+# cat << SOURCES > /etc/apt/sources.list
+# deb https://fs.noroutine.me/attic/debian bookworm main
+# deb https://fs.noroutine.me/attic/debian bookworm-updates main
+# deb http://security.debian.org/debian-security bookworm-security main
+# SOURCES
 
 apt-get update -yyq
 apt-get -yyq install zip zstd unzip \
