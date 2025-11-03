@@ -107,8 +107,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}
 
-  retag-images:
-    name: retag-images
+  retag-generic-images:
+    name: retag-generic-images
     runs-on: ubuntu-latest
     needs: import-images
     steps:
@@ -152,8 +152,8 @@ jobs:
           INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
           INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
 
-  build-images:
-    name: build-images
+  build-custom-images:
+    name: build-custom-images
     runs-on: ubuntu-latest
     needs: import-images
     steps:
