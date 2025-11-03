@@ -606,11 +606,6 @@ func (m *InfraSetup) getImageEntries() []string {
 		"netsampler/goflow2:${GOFLOW2_VERSION}",
 		"ghcr.io/corentinth/it-tools:${ITTOOLS_VERSION}",
 		"quay.io/openbgpd/openbgpd:${OPENBGPD_VERISON}",
-		// jenkins
-		"jenkins/jenkins:${JENKINS_VERSION}",
-		"jenkins/agent:${JENKINS_AGENT_VERSION}",
-		"jenkins/inbound-agent:${JENKINS_INBOUND_AGENT_VERSION}",
-		"quay.io/kiwigrid/k8s-sidecar:${KIWIGRID_K8S_SIDECAR_VERSION}",
 		// cert-manager
 		"quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_VERSION}",
 		"quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_VERSION}",
@@ -642,24 +637,7 @@ func (m *InfraSetup) getImageEntries() []string {
 		"registry.k8s.io/kube-proxy:${K8S_133_VERSION2}:::prepend_name=kubernetes/",
 		"registry.k8s.io/kube-scheduler:${K8S_133_VERSION2}:::prepend_name=kubernetes/",
 		"registry.k8s.io/kube-controller-manager:${K8S_133_VERSION2}:::prepend_name=kubernetes/",
-		// k8s 1.32.x
-		"registry.k8s.io/kube-apiserver:${K8S_132_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_132_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_132_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_132_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-apiserver:${K8S_132_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_132_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_132_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_132_VERSION2}:::prepend_name=kubernetes/",
-		// k8s 1.31.x
-		"registry.k8s.io/kube-apiserver:${K8S_131_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_131_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_131_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_131_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-apiserver:${K8S_131_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_131_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_131_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_131_VERSION2}:::prepend_name=kubernetes/",
+
 		"rancher/kubectl:${KUBECTL_VERSION}",
 		// calico
 		"quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION}",

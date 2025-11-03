@@ -24,10 +24,6 @@ variables:
   K8S_134_VERSION2: "v1.34.0" # https://github.com/kubernetes/kubernetes/releases
   K8S_133_VERSION: "v1.33.4" # https://github.com/kubernetes/kubernetes/releases
   K8S_133_VERSION2: "v1.33.3" # https://github.com/kubernetes/kubernetes/releases
-  K8S_132_VERSION: "v1.32.8" # https://github.com/kubernetes/kubernetes/releases
-  K8S_132_VERSION2: "v1.32.7" # https://github.com/kubernetes/kubernetes/releases
-  K8S_131_VERSION: "v1.31.12" # https://github.com/kubernetes/kubernetes/releases
-  K8S_131_VERSION2: "v1.31.11" # https://github.com/kubernetes/kubernetes/releases
   COREDNS_VERSION: "v1.13.1" # https://hub.docker.com/r/coredns/coredns/tags
   ETCD_35_VERSION: v3.5.23 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
   ETCD_36_VERSION: v3.6.5 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
@@ -100,7 +96,7 @@ variables:
   DEX_VERSION: v2.44.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
   VALKEY_VERSION: "9.0.0" # https://hub.docker.com/r/valkey/valkey/tags
   REDIS_VERSION: "8.2.2" # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
-  REDIS_EXPORTER_VERSION: "v1.79.0" # https://hub.docker.com/r/oliver006/redis_exporter/tags
+  REDIS_EXPORTER_VERSION: "v1.80.0" # https://hub.docker.com/r/oliver006/redis_exporter/tags
   BOKY_POSTFIX_VERSION: v4.4.0 # https://hub.docker.com/r/boky/postfix/tags
   VAULT_VERSION: "1.21.0" # https://hub.docker.com/r/hashicorp/vault
   VAULT_K8S_VERSION: "1.7.0" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
@@ -119,16 +115,11 @@ variables:
   AIRFLOW_VERSION: 3.1.1-python3.13 # https://hub.docker.com/r/apache/airflow/tags
   GIT_SYNC_VERSION: v4.5.0 # registry.k8s.io/git-sync/git-sync
   SYNCTHING_VERSION: "2.0.10" # https://hub.docker.com/r/syncthing/syncthing/tags
-  JELLYFIN_VERSION: "10.11.1" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
+  JELLYFIN_VERSION: "10.11.2" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
   TDARR_VERSION: "2.51.03" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
   CURL_VERSION: "8.16.0" # https://hub.docker.com/r/curlimages/curl/tags
   RESTIC_VERSION: "0.18.1" # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: "4.7.0" # https://hub.docker.com/r/coturn/coturn/tags
-  JENKINS_VERSION: 2.534-jdk21 # https://hub.docker.com/r/jenkins/jenkins/tags
-  KIWIGRID_K8S_SIDECAR_VERSION: "2.0.3" # https://github.com/kiwigrid/k8s-sidecar
-  JENKINS_AGENT_VERSION: trixie-jdk21 # https://hub.docker.com/r/jenkins/agent/tags
-  JENKINS_INBOUND_AGENT_VERSION: trixie-jdk21 # https://hub.docker.com/r/jenkins/inbound-agent/tags
-  JENKINS_OPERATOR_VERSION: v0.8.1 # https://quay.io/repository/jenkins-kubernetes-operator/operator?tab=tags&tag=latest
   NETBOX_VERSION: v4.4.5 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v14.0 # https://hub.docker.com/r/postgrest/postgrest/tags
   CEPHCSI_VERSION: v3.15.0 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest

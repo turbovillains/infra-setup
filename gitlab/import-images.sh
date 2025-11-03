@@ -110,12 +110,6 @@ import_images() {
         "ghcr.io/corentinth/it-tools:${ITTOOLS_VERSION:-2024.5.13-a0bc346}"
         "quay.io/openbgpd/openbgpd:${OPENBGPD_VERISON:-"8.6"}"
 
-        # jenkins
-        "jenkins/jenkins:${JENKINS_VERSION:-2.389-jdk17}"
-        "jenkins/agent:${JENKINS_AGENT_VERSION:-3085.vc4c6977c075a-5-jdk17}"
-        "jenkins/inbound-agent:${JENKINS_INBOUND_AGENT_VERSION:-3273.v4cfe589b_fd83-1-jdk17}"
-        "quay.io/kiwigrid/k8s-sidecar:${KIWIGRID_K8S_SIDECAR_VERSION:-1.28.4}"
-
         # cert-manager
         "quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_VERSION:-v1.8.0}"
         "quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_VERSION:-v1.8.0}"
@@ -152,26 +146,6 @@ import_images() {
         "registry.k8s.io/kube-proxy:${K8S_133_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-scheduler:${K8S_133_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
         "registry.k8s.io/kube-controller-manager:${K8S_133_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-
-        # k8s 1.32.x
-        "registry.k8s.io/kube-apiserver:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-proxy:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-scheduler:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-controller-manager:${K8S_132_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-apiserver:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-proxy:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-scheduler:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-controller-manager:${K8S_132_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-
-        # k8s 1.31.x
-        "registry.k8s.io/kube-apiserver:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-proxy:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-scheduler:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-controller-manager:${K8S_131_VERSION:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-apiserver:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-proxy:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-scheduler:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
-        "registry.k8s.io/kube-controller-manager:${K8S_131_VERSION2:-v1.23.5}:::prepend_name=kubernetes/"
 
         "rancher/kubectl:${KUBECTL_VERSION:-v1.34.1}"
 
