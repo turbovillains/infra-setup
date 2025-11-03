@@ -29,7 +29,7 @@ list_components() {
 
   if [[ ! -f "$compose_file" ]]; then
     echo "Error: Compose file not found: $compose_file" >&2
-    echo "Available stages: scratch, base, custom" >&2
+    echo "Available stages: scratch, custom" >&2
     exit 1
   fi
 
@@ -54,9 +54,8 @@ Usage: $0 [stage] [options]
 Build container images for different stages
 
 Stages:
-  scratch    Build scratch stage (noroutine-ca) - no dependencies
-  base       Build base stage (debian, alpine, etc.) - depends on scratch
-  custom     Build custom stage (airflow, argocd, etc.) - depends on base
+  scratch    Build scratch stage (noroutine-ca, tools) - no dependencies
+  custom     Build custom stage (airflow, argocd, etc.) - depends on scratch
 
   Default: scratch
 
@@ -79,24 +78,23 @@ Examples:
   # Build all scratch stage images
   $0 scratch
 
-  # Build all base stage images and push
-  $0 base --push
+  # Build all scratch stage images and push
+  $0 scratch --push
 
   # Build specific custom components
   $0 custom --components airflow,grafana
 
-  # List available components in base stage
-  $0 base --list
+  # List available components in custom stage
+  $0 custom --list
 
   # Build with custom version
-  $0 base --version v1.2.3 --push
+  $0 custom --version v1.2.3 --push
 
 Dependencies:
-  scratch → base → custom
+  scratch → custom
 
   Build stages in order and push before building the next stage:
     $0 scratch --push
-    $0 base --push
     $0 custom --push
 
 EOF
@@ -111,11 +109,11 @@ fi
 
 # Validate stage
 case "$STAGE" in
-  scratch|base|custom)
+  scratch|custom)
     ;;
   *)
     echo "Error: Invalid stage '$STAGE'" >&2
-    echo "Valid stages: scratch, base, custom" >&2
+    echo "Valid stages: scratch, custom" >&2
     echo "Run '$0 --help' for usage information" >&2
     exit 1
     ;;
@@ -197,11 +195,8 @@ case "$STAGE" in
   scratch)
     DEPENDENCIES="none"
     ;;
-  base)
-    DEPENDENCIES="scratch (noroutine-ca)"
-    ;;
   custom)
-    DEPENDENCIES="base (noroutine-ca, debian, alpine, etc.)"
+    DEPENDENCIES="scratch (noroutine-ca, tools)"
     ;;
 esac
 
@@ -246,16 +241,9 @@ echo ""
 case "$STAGE" in
   scratch)
     if [[ "${PUSH}" == "true" ]]; then
-      echo "Next: Run './build.sh base --push' to build base stage"
-    else
-      echo "Note: Push scratch images before building base stage: './build.sh scratch --push'"
-    fi
-    ;;
-  base)
-    if [[ "${PUSH}" == "true" ]]; then
       echo "Next: Run './build.sh custom --push' to build custom stage"
     else
-      echo "Note: Push base images before building custom stage: './build.sh base --push'"
+      echo "Note: Push scratch images before building custom stage: './build.sh scratch --push'"
     fi
     ;;
   custom)

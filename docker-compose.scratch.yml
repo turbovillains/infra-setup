@@ -10,3 +10,18 @@ services:
         - "org.opencontainers.image.version=${INFRA_VERSION}"
         - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
         - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
+
+  tools:
+    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/tools:${INFRA_VERSION}
+    build:
+      context: docker/scratch/tools
+      platforms:
+        - linux/amd64
+        - linux/arm64
+      args:
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
+        DEBIAN_VERSION: ${DEBIAN_VERSION}
+      labels:
+        - "org.opencontainers.image.version=${INFRA_VERSION}"
+        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
+        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"

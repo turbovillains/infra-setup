@@ -52,36 +52,9 @@ install_jq() {
   fi
 }
 
-install_cosign() {
-  echo "Installing cosign..."
-  # https://github.com/sigstore/cosign/releases
-  curl -sLO "https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-${ARCHX}" && \
-    mv cosign-linux-${ARCHX} /usr/local/bin/cosign && \
-    chmod +x /usr/local/bin/cosign || record_failure "cosign"
-}
-
-install_syft() {
-  echo "Installing syft..."
-  # https://github.com/anchore/syft/releases
-  curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin || record_failure "syft"
-}
-
 install_crane() {
   echo "Installing crane..."
   curl -sLo- "https://github.com/google/go-containerregistry/releases/download/$(curl -s "https://api.github.com/repos/google/go-containerregistry/releases/latest" | jq -r '.tag_name')/go-containerregistry_Linux_${ARCHY}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner -xzv crane krane gcrane || record_failure "crane"
-}
-
-install_trivy() {
-  echo "Installing trivy..."
-  # https://github.com/aquasecurity/trivy/releases
-  curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin latest || record_failure "trivy"
-}
-
-install_pack() {
-  echo "Installing pack..."
-  # https://github.com/buildpacks/pack/releases
-  PACK_VERSION=$(curl -s "https://api.github.com/repos/buildpacks/pack/releases/latest" | jq -r '.tag_name')
-  curl -sSL "https://github.com/buildpacks/pack/releases/download/${PACK_VERSION}/pack-${PACK_VERSION}-linux.tgz" | tar -C /usr/local/bin/ --no-same-owner -xzv pack || record_failure "pack"
 }
 
 install_helm() {
@@ -119,51 +92,6 @@ install_ytt() {
   curl -sLo /usr/local/bin/ytt https://github.com/carvel-dev/ytt/releases/download/${YTT_VERSION}/ytt-linux-${ARCHX} && chmod +x /usr/local/bin/ytt || record_failure "ytt"
 }
 
-install_kustomize() {
-  echo "Installing kustomize..."
-  # https://github.com/kubernetes-sigs/kustomize/releases
-  KUSTOMIZE_VERSION=$(curl -s "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest" | jq -r '.tag_name' | sed 's/kustomize\///')
-  curl -sSL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_${ARCHX}.tar.gz" | tar -C /usr/local/bin/ --no-same-owner -xzv kustomize || record_failure "kustomize"
-}
-
-install_argocd() {
-  echo "Installing argocd..."
-  # https://github.com/argoproj/argo-cd/releases
-  ARGOCD_VERSION=$(curl -s "https://api.github.com/repos/argoproj/argo-cd/releases/latest" | jq -r '.tag_name')
-  curl -sLo /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/${ARGOCD_VERSION}/argocd-linux-${ARCHX} && chmod +x /usr/local/bin/argocd || record_failure "argocd"
-}
-
-install_goreleaser() {
-  echo "Installing goreleaser..."
-  # https://github.com/goreleaser/goreleaser/releases
-  GORELEASER_VERSION=$(curl -s "https://api.github.com/repos/goreleaser/goreleaser/releases/latest" | jq -r '.tag_name' | sed 's/v//')
-  curl -sLo- https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser-${GORELEASER_VERSION}-1-${ARCHZ}.pkg.tar.zst \
-    | tar -C /usr/local/bin/ --no-same-owner --strip-components=2 --use-compress-program=unzstd -xv usr/bin/goreleaser || record_failure "goreleaser"
-}
-
-install_terraform() {
-  echo "Installing terraform..."
-  # https://releases.hashicorp.com/terraform
-  TERRAFORM_VERSION=$(curl -s "https://api.github.com/repos/hashicorp/terraform/releases/latest" | jq -r '.tag_name' | sed 's/v//')
-  curl -sLo terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCHX}.zip && \
-    unzip -q terraform.zip && \
-    chmod +x terraform && \
-    mv terraform /usr/local/bin/terraform && \
-    rm terraform.zip || record_failure "terraform"
-}
-
-install_cfssl() {
-  echo "Installing cfssl..."
-  # https://github.com/cloudflare/cfssl/releases
-  CFSSL_VERSION=$(curl -s "https://api.github.com/repos/cloudflare/cfssl/releases/latest" | jq -r '.tag_name' | sed 's/v//')
-  curl -sLo /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v${CFSSL_VERSION}/cfssl_${CFSSL_VERSION}_linux_${ARCHX} && chmod +x /usr/local/bin/cfssl || record_failure "cfssl"
-}
-
-install_dagger() {
-  echo "Installing dagger..."
-  curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh || record_failure "dagger"
-}
-
 # Create lock file for synchronization
 touch "$LOCK_FILE"
 
@@ -186,34 +114,19 @@ echo "================================================"
 # Batch installations to avoid overwhelming network/rate limits
 # Max 5 concurrent downloads per batch
 
-echo "Batch 1/4: kubectl, cosign, syft, crane, trivy"
+echo "Batch 1/4: kubectl, cosign, crane, ytt"
 install_kubectl &
-# install_cosign &
-# install_syft &
+install_cosign &
 install_crane &
-install_trivy &
+install_ytt &
 wait
 
-echo "Batch 2/4: pack, helm, skaffold, yq, yj"
-# install_pack &
+echo "Batch 2/4: helm, skaffold, yq, yj"
 install_helm &
 install_skaffold &
 install_yq &
 install_yj &
 wait
-
-# echo "Batch 3/4: ytt, kustomize, argocd, goreleaser"
-# install_ytt &
-# install_kustomize &
-# install_argocd &
-# install_goreleaser &
-# wait
-
-# echo "Batch 4/4: terraform, cfssl, dagger"
-# install_terraform &
-# install_cfssl &
-# install_dagger &
-# wait
 
 echo ""
 echo "All batches completed!"
@@ -245,22 +158,12 @@ echo "================================================"
 TOOLS=(
   "kubectl:kubectl version --client=true --output=yaml"
   "jq:jq --version"
-  "cosign:cosign version"
-  "syft:syft version"
   "crane:crane version"
-  "trivy:trivy --version"
-  "pack:pack --version"
   "helm:helm version"
   "skaffold:skaffold version"
   "yq:yq --version"
   "yj:yj -v"
   "ytt:ytt version"
-  "kustomize:kustomize version"
-  "argocd:argocd version --client"
-  "goreleaser:goreleaser --version"
-  "terraform:terraform version"
-  "cfssl:cfssl version"
-  "dagger:dagger version"
 )
 
 FAILED_VERIFY=0

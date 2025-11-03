@@ -7,6 +7,22 @@
 #     image_version: ${VERSION_VARIABLE_NAME}
 
 components:
+  alpine:
+    image_base: library/alpine
+    image_version: ${ALPINE_VERSION}
+
+  busybox:
+    image_base: library/busybox
+    image_version: ${BUSYBOX_VERSION}
+
+  debian:
+    image_base: library/debian
+    image_version: ${DEBIAN_VERSION}
+
+  ubuntu24:
+    image_base: library/ubuntu
+    image_version: ${UBUNTU_NOBLE_VERSION}
+
   jdk-zulu:
     image_base: azul/zulu-openjdk-debian
     image_version: ${JDK_ZULU_VERSION}

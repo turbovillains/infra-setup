@@ -38,8 +38,6 @@ services:
         - linux/arm64
       args:
         IMAGE_REGISTRY: ${IMAGE_REGISTRY}
-        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
-        INFRA_VERSION: ${INFRA_VERSION}
         ARGOCD_VERSION: ${ARGOCD_VERSION}
         YTT_VERSION: ${YTT_VERSION}
         ARGOCD_VAULT_PLUGIN_VERSION: ${ARGOCD_VAULT_PLUGIN_VERSION}
@@ -135,22 +133,6 @@ services:
       args:
         IMAGE_REGISTRY: ${IMAGE_REGISTRY}
         NEXTCLOUD_VERSION: ${NEXTCLOUD_VERSION}
-      labels:
-        - "org.opencontainers.image.version=${INFRA_VERSION}"
-        - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"
-        - "org.opencontainers.image.authors=Noroutine GmbH <info@noroutine.com>"
-
-  ocsp-responder:
-    image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/ocsp-responder:${INFRA_VERSION}
-    build:
-      context: docker/custom/ocsp-responder
-      platforms:
-        - linux/amd64
-        - linux/arm64
-      args:
-        IMAGE_REGISTRY: ${IMAGE_REGISTRY}
-        INFRA_NAMESPACE: ${INFRA_NAMESPACE}
-        INFRA_VERSION: ${INFRA_VERSION}
       labels:
         - "org.opencontainers.image.version=${INFRA_VERSION}"
         - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"

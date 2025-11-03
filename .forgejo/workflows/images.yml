@@ -33,22 +33,27 @@ jobs:
             echo "infra_namespace=infra-dev" >> $GITHUB_OUTPUT
           fi
 
-      - name: Import images with Dagger
+      - name: Install Dagger
         uses: https://github.com/dagger/dagger-for-github@v8.2.0
         with:
           version: "latest"
-          args: with-docker-cfg --docker-cfg env://DOCKER_CFG import-images
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+
+      - name: Import images with Dagger
+        run: |
+          dagger call \
+            with-docker-cfg --docker-cfg env://DOCKER_CFG import-images
         env:
           DOCKER_CFG: ${{ secrets.DOCKER_CFG }}
+          DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}
 
       - name: Generate artifacts with Dagger
         id: generate
-        uses: https://github.com/dagger/dagger-for-github@v8.2.0
-        with:
-          version: "latest"
-          args: generate-artifacts --infra-version="${{ steps.version.outputs.infra_version }}" export --path=./artifacts
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+        run: |
+          dagger call \
+            generate-artifacts --infra-version="${{ steps.version.outputs.infra_version }}" \
+            export --path=./artifacts
+        env:
+          DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}
 
       - name: Set up SSH and push to GitHub upstream repo
         run: |
@@ -189,18 +194,6 @@ jobs:
           INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
           INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
 
-      - name: Build and push base stage
-        run: |
-          ./build.sh base \
-            --registry "${{ env.IMAGE_REGISTRY }}" \
-            --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
-            --version "${{ needs.import-images.outputs.infra_version }}" \
-            --push
-        env:
-          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-          INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
-          INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
-
       - name: Build and push custom stage
         run: |
           ./build.sh custom \
@@ -229,18 +222,6 @@ jobs:
           export INFRA_VERSION="${{ needs.import-images.outputs.infra_version }}"
 
           docker compose -f docker-compose.scratch.yml config --services | while read service; do
-            echo "- \`${{ env.IMAGE_REGISTRY }}/${{ needs.import-images.outputs.infra_namespace }}/${service}:${{ needs.import-images.outputs.infra_version }}\`" >> $GITHUB_STEP_SUMMARY
-          done
-
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Base Stage" >> $GITHUB_STEP_SUMMARY
-
-          # Export variables from variables.yml for base compose
-          while IFS='=' read -r key value; do
-            export "$key=$value"
-          done < <(yq eval '.variables | to_entries | .[] | .key + "=" + .value' variables.yml)
-
-          docker compose -f docker-compose.base.yml config --services | while read service; do
             echo "- \`${{ env.IMAGE_REGISTRY }}/${{ needs.import-images.outputs.infra_namespace }}/${service}:${{ needs.import-images.outputs.infra_version }}\`" >> $GITHUB_STEP_SUMMARY
           done
 
