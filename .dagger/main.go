@@ -704,7 +704,6 @@ func (m *InfraSetup) getImageEntries() []string {
 		"kbudde/rabbitmq-exporter:${RABBITMQ_EXPORTER_VERSION}",
 		// prefect
 		"prefecthq/prefect:${PREFECT_VERSION}",
-		"prefecthq/prefect:${PREFECT_VERSION}-kubernetes",
 		"prefecthq/prometheus-prefect-exporter:${PREFECT_EXPORTER_VERSION}",
 		// forgejo
 		"codeberg.org/forgejo/forgejo:${FORGEJO_VERSION}",

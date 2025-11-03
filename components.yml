@@ -1,0 +1,492 @@
+# Generic components that can be retagged using crane copy
+# These are multi-arch images that don't need rebuilding
+#
+# Format:
+#   component-name:
+#     image_base: source/image/path
+#     image_version: ${VERSION_VARIABLE_NAME}
+
+components:
+  wireguard:
+    image_base: masipcat/wireguard-go
+    image_version: ${WIREGUARD_VERSION}
+
+  gitlab-agentk:
+    image_base: gitlab-org/cluster-integration/gitlab-agent/agentk
+    image_version: ${GITLAB_AGENTK_VERSION}
+
+  gitlab-runner:
+    image_base: gitlab/gitlab-runner
+    image_version: ${GITLAB_RUNNER_VERSION}
+
+  gitlab:
+    image_base: gitlab/gitlab-ce
+    image_version: ${GITLAB_VERSION}
+
+  kube-rbac-proxy:
+    image_base: brancz/kube-rbac-proxy
+    image_version: ${KUBE_RBAC_PROXY_VERSION}
+
+  nexus:
+    image_base: sonatype/nexus3
+    image_version: ${NEXUS_VERSION}
+
+  radius:
+    image_base: freeradius/freeradius-server
+    image_version: ${FREERADIUS_VERSION}
+
+  mkdocs:
+    image_base: squidfunk/mkdocs-material
+    image_version: ${MKDOCS_VERSION}
+
+  traefik:
+    image_base: library/traefik
+    image_version: ${TRAEFIK_VERSION}
+
+  unbound:
+    image_base: klutchell/unbound
+    image_version: ${UNBOUND_VERSION}
+
+  keycloak:
+    image_base: keycloak/keycloak
+    image_version: ${KEYCLOAK_VERSION}
+
+  postgres:
+    image_base: library/postgres
+    image_version: ${POSTGRES_VERSION}
+
+  postgres-exporter:
+    image_base: prometheuscommunity/postgres-exporter
+    image_version: ${POSTGRES_EXPORTER_VERSION}
+
+  minio:
+    image_base: minio/minio
+    image_version: ${MINIO_VERSION}
+
+  minio-client:
+    image_base: minio/mc
+    image_version: ${MINIO_MC_VERSION}
+
+  prometheus:
+    image_base: prometheus/prometheus
+    image_version: ${PROMETHEUS_VERSION}
+
+  prometheus-operator:
+    image_base: prometheus-operator/prometheus-operator
+    image_version: ${PROMETHEUS_OPERATOR_VERSION}
+
+  prometheus-config-reloader:
+    image_base: prometheus-operator/prometheus-config-reloader
+    image_version: ${PROMETHEUS_OPERATOR_VERSION}
+
+  karma:
+    image_base: prymitive/karma
+    image_version: ${KARMA_VERSION}
+
+  alertmanager:
+    image_base: prometheus/alertmanager
+    image_version: ${ALERTMANAGER_VERSION}
+
+  pushgateway:
+    image_base: prometheus/pushgateway
+    image_version: ${PUSHGATEWAY_VERSION}
+
+  blackbox-exporter:
+    image_base: prometheus/blackbox-exporter
+    image_version: ${BLACKBOX_EXPORTER_VERSION}
+
+  snmp-exporter:
+    image_base: prometheus/snmp-exporter
+    image_version: ${SNMP_EXPORTER_VERSION}
+
+  node-exporter:
+    image_base: prometheus/node-exporter
+    image_version: ${NODE_EXPORTER_VERSION}
+
+  metallb-controller:
+    image_base: metallb/controller
+    image_version: ${METALLB_CONTROLLER_VERSION}
+
+  metallb-speaker:
+    image_base: metallb/speaker
+    image_version: ${METALLB_SPEAKER_VERSION}
+
+  metallb-frr:
+    image_base: frrouting/frr
+    image_version: ${METALLB_FRR_VERSION}
+
+  kube-state-metrics:
+    image_base: kube-state-metrics/kube-state-metrics
+    image_version: ${KUBE_STATE_METRICS_VERSION}
+
+  metrics-server:
+    image_base: metrics-server/metrics-server
+    image_version: ${METRICS_SERVER_VERSION}
+
+  nginx-ingress-controller:
+    image_base: ingress-nginx/controller
+    image_version: ${NGINX_INGRESS_CONTROLLER_VERSION}
+
+  nginx-ingress-kube-webhook-certgen:
+    image_base: ingress-nginx/kube-webhook-certgen
+    image_version: ${NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION}
+
+  haproxy:
+    image_base: haproxytech/haproxy-alpine
+    image_version: ${HAPROXY_VERSION}
+
+  haproxy-ingress:
+    image_base: haproxytech/kubernetes-ingress
+    image_version: ${HAPROXY_INGRESS_VERSION}
+
+  trivy:
+    image_base: aquasec/trivy
+    image_version: ${TRIVY_VERSION}
+
+  csi-secrets-store-driver:
+    image_base: csi-secrets-store/driver
+    image_version: ${CSI_SECRETS_STORE_VERSION}
+
+  csi-secrets-store-driver-crds:
+    image_base: csi-secrets-store/driver-crds
+    image_version: ${CSI_SECRETS_STORE_VERSION}
+
+  pihole:
+    image_base: pihole/pihole
+    image_version: ${PIHOLE_VERSION}
+
+  reloader:
+    image_base: stakater/reloader
+    image_version: ${RELOADER_VERSION}
+
+  configmap-reload:
+    image_base: jimmidyson/configmap-reload
+    image_version: ${CONFIGMAP_RELOAD_VERSION}
+
+  docker-registry:
+    image_base: library/registry
+    image_version: ${DOCKER_REGISTRY_VERSION}
+
+  dex:
+    image_base: dexidp/dex
+    image_version: ${DEX_VERSION}
+
+  valkey:
+    image_base: valkey/valkey
+    image_version: ${VALKEY_VERSION}
+
+  redis:
+    image_base: library/redis
+    image_version: ${REDIS_VERSION}
+
+  redis-exporter:
+    image_base: oliver006/redis_exporter
+    image_version: ${REDIS_EXPORTER_VERSION}
+
+  vault:
+    image_base: hashicorp/vault
+    image_version: ${VAULT_VERSION}
+
+  vault-k8s:
+    image_base: hashicorp/vault-k8s
+    image_version: ${VAULT_K8S_VERSION}
+
+  vault-csi-provider:
+    image_base: hashicorp/vault-csi-provider
+    image_version: ${VAULT_CSI_PROVIDER_VERSION}
+
+  nats-operator:
+    image_base: connecteverything/nats-operator
+    image_version: ${NATS_OPERATOR_VERSION}
+
+  nats:
+    image_base: library/nats
+    image_version: ${NATS_VERSION}
+
+  nats-exporter:
+    image_base: natsio/prometheus-nats-exporter
+    image_version: ${NATS_EXPORTER_VERSION}
+
+  nats-server-config-reloader:
+    image_base: natsio/nats-server-config-reloader
+    image_version: ${NATS_SERVER_CONFIG_RELOADER}
+
+  mosquitto:
+    image_base: library/eclipse-mosquitto
+    image_version: ${MOSQUITTO_VERSION}
+
+  mosquitto-exporter:
+    image_base: sapcc/mosquitto-exporter
+    image_version: ${MOSQUITTO_EXPORTER_VERSION}
+
+  cert-manager-controller:
+    image_base: jetstack/cert-manager-controller
+    image_version: ${CERT_MANAGER_VERSION}
+
+  cert-manager-webhook:
+    image_base: jetstack/cert-manager-webhook
+    image_version: ${CERT_MANAGER_VERSION}
+
+  cert-manager-cainjector:
+    image_base: jetstack/cert-manager-cainjector
+    image_version: ${CERT_MANAGER_VERSION}
+
+  cert-manager-csi-driver:
+    image_base: jetstack/cert-manager-csi-driver
+    image_version: ${CERT_MANAGER_CSI_DRIVER_VERSION}
+
+  cert-manager-webhook-pdns:
+    image_base: zachomedia/cert-manager-webhook-pdns
+    image_version: ${CERT_MANAGER_WEBHOOK_PDNS_VERSION}
+
+  caddy:
+    image_base: library/caddy
+    image_version: ${CADDY_VERSION}
+
+  storage-livenessprobe:
+    image_base: sig-storage/livenessprobe
+    image_version: ${LIVENESSPROBE_VERSION}
+
+  storage-csi-node-driver-registrar:
+    image_base: sig-storage/csi-node-driver-registrar
+    image_version: ${CSI_NODE_DRIVER_REGISTRAR_VERSION}
+
+  storage-csi-attacher:
+    image_base: sig-storage/csi-attacher
+    image_version: ${CSI_ATTACHER_VERSION}
+
+  storage-csi-resizer:
+    image_base: sig-storage/csi-resizer
+    image_version: ${CSI_RESIZER_VERSION}
+
+  storage-csi-snapshotter:
+    image_base: sig-storage/csi-snapshotter
+    image_version: ${CSI_SNAPSHOTTER_VERSION}
+
+  storage-snapshot-controller:
+    image_base: sig-storage/snapshot-controller
+    image_version: ${CSI_SNAPSHOT_CONTROLLER_VERSION}
+
+  storage-snapshot-validation-webhook:
+    image_base: sig-storage/snapshot-validation-webhook
+    image_version: ${CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION}
+
+  storage-csi-provisioner:
+    image_base: sig-storage/csi-provisioner
+    image_version: ${CSI_PROVISIONER_VERSION}
+
+  storage-csi-driver-nfs:
+    image_base: sig-storage/nfsplugin
+    image_version: ${CSI_NFSPLUGIN_VERSION}
+
+  tigera-operator:
+    image_base: tigera/operator
+    image_version: ${TIGERA_OPERATOR_VERSION}
+
+  node-feature-discovery:
+    image_base: nfd/node-feature-discovery
+    image_version: ${K8S_NFD_VERSION}
+
+  eck-operator:
+    image_base: elastic/eck-operator
+    image_version: ${ECK_OPERATOR_VERSION}
+
+  git-sync:
+    image_base: git-sync/git-sync
+    image_version: ${GIT_SYNC_VERSION}
+
+  syncthing:
+    image_base: syncthing/syncthing
+    image_version: ${SYNCTHING_VERSION}
+
+  syncthing-discosrv:
+    image_base: syncthing/discosrv
+    image_version: ${SYNCTHING_VERSION}
+
+  syncthing-relaysrv:
+    image_base: syncthing/relaysrv
+    image_version: ${SYNCTHING_VERSION}
+
+  jellyfin:
+    image_base: jellyfin/jellyfin
+    image_version: ${JELLYFIN_VERSION}
+
+  tdarr:
+    image_base: haveagitgat/tdarr
+    image_version: ${TDARR_VERSION}
+
+  tdarr-node:
+    image_base: haveagitgat/tdarr_node
+    image_version: ${TDARR_VERSION}
+
+  curl:
+    image_base: curlimages/curl
+    image_version: ${CURL_VERSION}
+
+  restic:
+    image_base: restic/restic
+    image_version: ${RESTIC_VERSION}
+
+  coturn:
+    image_base: coturn/coturn
+    image_version: ${COTURN_VERSION}
+
+  postgrest:
+    image_base: postgrest/postgrest
+    image_version: ${POSTGREST_VERSION}
+
+  cephcsi:
+    image_base: cephcsi/cephcsi
+    image_version: ${CEPHCSI_VERSION}
+
+  home-assistant:
+    image_base: homeassistant/home-assistant
+    image_version: ${HOMEASSISTANT_VERSION}
+
+  zigbee2mqtt:
+    image_base: koenkk/zigbee2mqtt
+    image_version: ${ZIGBEE2MQTT_VERSION}
+
+  forgejo:
+    image_base: forgejo/forgejo
+    image_version: ${FORGEJO_VERSION}
+
+  forgejo-runner:
+    image_base: forgejo/runner
+    image_version: ${FORGEJO_RUNNER_VERSION}
+
+  cloudflared:
+    image_base: cloudflare/cloudflared
+    image_version: ${CLOUDFLARED_VERSION}
+
+  mailcatcher:
+    image_base: sj26/mailcatcher
+    image_version: ${MAILCATCHER_VERSION}
+
+  frps:
+    image_base: fatedier/frps
+    image_version: ${FRP_VERSION}
+
+  frpc:
+    image_base: fatedier/frpc
+    image_version: ${FRP_VERSION}
+
+  kafdrop:
+    image_base: obsidiandynamics/kafdrop
+    image_version: ${KAFDROP_VERSION}
+
+  akhq:
+    image_base: tchiotludo/akhq
+    image_version: ${AKHQ_VERSION}
+
+  apache-kafka:
+    image_base: apache/kafka
+    image_version: ${APACHE_KAFKA_VERSION}
+
+  strimzi-operator:
+    image_base: strimzi/operator
+    image_version: ${STRIMZI_OPERATOR_VERSION}
+
+  strimzi-kafka:
+    image_base: strimzi/kafka
+    image_version: ${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}
+
+  it-tools:
+    image_base: corentinth/it-tools
+    image_version: ${ITTOOLS_VERSION}
+
+  openbgpd:
+    image_base: openbgpd/openbgpd
+    image_version: ${OPENBGPD_VERISON}
+
+  clickhouse:
+    image_base: library/clickhouse
+    image_version: ${CLICKHOUSE_VERSION}
+
+  clickhouse-operator:
+    image_base: altinity/clickhouse-operator
+    image_version: ${CLICHOUSE_OPERATOR_VERSION}
+
+  kubectl:
+    image_base: rancher/kubectl
+    image_version: ${KUBECTL_VERSION}
+
+  elasticsearch:
+    image_base: elastic/elasticsearch/elasticsearch
+    image_version: ${ELASTICSEARCH_VERSION}
+
+  logstash:
+    image_base: elastic/logstash/logstash
+    image_version: ${LOGSTASH_VERSION}
+
+  kibana:
+    image_base: elastic/kibana/kibana
+    image_version: ${KIBANA_VERSION}
+
+  apm-server:
+    image_base: elastic/apm/apm-server
+    image_version: ${APMSERVER_VERSION}
+
+  elastic-agent:
+    image_base: elastic/beats/elastic-agent
+    image_version: ${ELASTICAGENT_VERSION}
+
+  mongodb:
+    image_base: library/mongo
+    image_version: ${MONGODB_VERSION}
+
+  mongodb-exporter:
+    image_base: percona/mongodb_exporter
+    image_version: ${MONGODB_EXPORTER_VERSION}
+
+  pgadmin:
+    image_base: dpage/pgadmin4
+    image_version: ${PGADMIN_VERSION}
+
+  httpbin:
+    image_base: mccutchen/go-httpbin
+    image_version: ${HTTPBIN_VERSION}
+
+  oauth2-proxy:
+    image_base: oauth2-proxy/oauth2-proxy
+    image_version: ${OAUTH2_PROXY_VERSION}
+
+  dind:
+    image_base: library/docker
+    image_version: ${DIND_VERSION}
+
+  rabbitmq:
+    image_base: library/rabbitmq
+    image_version: ${RABBITMQ_VERSION}
+
+  rabbitmq-exporter:
+    image_base: kbudde/rabbitmq-exporter
+    image_version: ${RABBITMQ_EXPORTER_VERSION}
+
+  prefect:
+    image_base: prefecthq/prefect
+    image_version: ${PREFECT_VERSION}
+
+  prefect-exporter:
+    image_base: prefecthq/prometheus-prefect-exporter
+    image_version: ${PREFECT_EXPORTER_VERSION}
+
+  scylla:
+    image_base: scylladb/scylla
+    image_version: ${SCYLLA_VERSION}
+
+  scylla-manager:
+    image_base: scylladb/scylla-manager
+    image_version: ${SCYLLA_MANAGER_VERSION}
+
+  scylla-operator:
+    image_base: scylladb/scylla-operator
+    image_version: ${SCYLLA_OPERATOR_VERSION}
+
+  n8n:
+    image_base: n8nio/n8n
+    image_version: ${N8N_VERSION}
+
+  goflow2:
+    image_base: netsampler/goflow2
+    image_version: ${GOFLOW2_VERSION}

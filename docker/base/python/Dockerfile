@@ -17,3 +17,7 @@ RUN apt-get update && \
 
 COPY --from=rootca /noroutine /usr/local/share/ca-certificates/noroutine
 RUN update-ca-certificates
+
+# Install uv system-wide
+RUN curl -LsSf https://astral.sh/uv/install.sh | \
+    env UV_INSTALL_DIR=/usr/local/bin sh
