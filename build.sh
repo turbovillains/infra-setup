@@ -5,6 +5,20 @@ set -euo pipefail
 # Unified Build Script for all stages
 # Usage: ./build.sh [stage] [options]
 
+# Discover available stages from docker-compose.*.yml files
+discover_stages() {
+  local stages=()
+  for file in docker-compose.*.yml; do
+    if [[ -f "$file" ]]; then
+      # Extract stage name from docker-compose.STAGE.yml
+      stage="${file#docker-compose.}"
+      stage="${stage%.yml}"
+      stages+=("$stage")
+    fi
+  done
+  echo "${stages[@]}"
+}
+
 # Load variables from variables.yml (required for docker-compose)
 load_variables() {
   if ! command -v yq &> /dev/null; then
@@ -29,7 +43,7 @@ list_components() {
 
   if [[ ! -f "$compose_file" ]]; then
     echo "Error: Compose file not found: $compose_file" >&2
-    echo "Available stages: scratch, custom" >&2
+    echo "Available stages: $(discover_stages)" >&2
     exit 1
   fi
 
@@ -48,16 +62,18 @@ list_components() {
 
 # Show help
 show_help() {
+  local available_stages=$(discover_stages)
+  local first_stage=$(echo "$available_stages" | awk '{print $1}')
+
   cat << EOF
 Usage: $0 [stage] [options]
 
 Build container images for different stages
 
 Stages:
-  scratch    Build scratch stage (noroutine-ca, tools) - no dependencies
-  custom     Build custom stage (airflow, argocd, etc.) - depends on scratch
+  Available stages: ${available_stages}
 
-  Default: scratch
+  Default: ${first_stage}
 
 Options:
   --registry REGISTRY      Container registry (default: cr.nrtn.dev)
@@ -75,49 +91,41 @@ Environment variables:
   PUSH              Set to 'true' to push images
 
 Examples:
-  # Build all scratch stage images
-  $0 scratch
+  # Build all images for a stage
+  $0 ${first_stage}
 
-  # Build all scratch stage images and push
-  $0 scratch --push
+  # Build and push images
+  $0 ${first_stage} --push
 
-  # Build specific custom components
-  $0 custom --components airflow,grafana
+  # Build specific components
+  $0 ${first_stage} --components component1,component2
 
-  # List available components in custom stage
-  $0 custom --list
+  # List available components in a stage
+  $0 ${first_stage} --list
 
   # Build with custom version
-  $0 custom --version v1.2.3 --push
-
-Dependencies:
-  scratch → custom
-
-  Build stages in order and push before building the next stage:
-    $0 scratch --push
-    $0 custom --push
+  $0 ${first_stage} --version v1.2.3 --push
 
 EOF
 }
 
+# Get available stages
+AVAILABLE_STAGES=($(discover_stages))
+
 # Parse stage argument (first positional argument)
-STAGE="scratch"
+STAGE="${AVAILABLE_STAGES[0]}"
 if [[ $# -gt 0 ]] && [[ ! "$1" =~ ^-- ]]; then
   STAGE="$1"
   shift
 fi
 
 # Validate stage
-case "$STAGE" in
-  scratch|custom)
-    ;;
-  *)
-    echo "Error: Invalid stage '$STAGE'" >&2
-    echo "Valid stages: scratch, custom" >&2
-    echo "Run '$0 --help' for usage information" >&2
-    exit 1
-    ;;
-esac
+if [[ ! -f "docker-compose.${STAGE}.yml" ]]; then
+  echo "Error: Invalid stage '$STAGE'" >&2
+  echo "Available stages: ${AVAILABLE_STAGES[*]}" >&2
+  echo "Run '$0 --help' for usage information" >&2
+  exit 1
+fi
 
 # Default values
 IMAGE_REGISTRY=${IMAGE_REGISTRY:-cr.nrtn.dev}
@@ -190,16 +198,6 @@ if [[ ! -f "$COMPOSE_FILE" ]]; then
   exit 1
 fi
 
-# Determine stage dependencies
-case "$STAGE" in
-  scratch)
-    DEPENDENCIES="none"
-    ;;
-  custom)
-    DEPENDENCIES="scratch (noroutine-ca, tools)"
-    ;;
-esac
-
 echo ""
 echo "Building ${STAGE^^} stage images..."
 echo "  Registry:  ${IMAGE_REGISTRY}"
@@ -211,8 +209,6 @@ if [[ -n "$COMPONENTS" ]]; then
 else
   echo "  Components: all"
 fi
-echo ""
-echo "Dependencies: ${DEPENDENCIES}"
 echo ""
 
 # Build arguments for docker buildx bake
@@ -235,19 +231,4 @@ fi
 
 echo ""
 echo "${STAGE^} stage build completed successfully!"
-echo ""
-
-# Show next steps
-case "$STAGE" in
-  scratch)
-    if [[ "${PUSH}" == "true" ]]; then
-      echo "Next: Run './build.sh custom --push' to build custom stage"
-    else
-      echo "Note: Push scratch images before building custom stage: './build.sh scratch --push'"
-    fi
-    ;;
-  custom)
-    echo "All stages complete!"
-    ;;
-esac
 echo ""

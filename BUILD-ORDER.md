@@ -1,93 +1,81 @@
 # Build Order for Infrastructure Images
 
-This document describes the build stages and their dependencies for the infrastructure images.
+This document describes the build system for infrastructure images.
 
-## Build Stages
+## Build System Overview
 
-### Stage 1: Scratch
-**Script:** `./build-scratch.sh`
-**Compose:** `docker-compose.scratch.yml`
-**Dependencies:** None
+The build system uses a single unified script `./build.sh` that automatically discovers stages from `docker-compose.*.yml` files. The script is designed to be simple and non-opinionated about build order or stage dependencies.
 
-Components:
-- `noroutine-ca` - Custom CA certificates bundle
+### Current Stages
+
+Stages are automatically discovered from compose files. Current stages:
+
+- **scratch** (`docker-compose.scratch.yml`) - Base components like CA certificates and tools
+- **custom** (`docker-compose.custom.yml`) - Application images
+
+To see available stages and components:
 
 ```bash
-# Build and push scratch stage (uses cr.nrtn.dev by default)
-./build-scratch.sh --namespace infra --version v1.0.0 --push
-
-# Or with custom registry
-./build-scratch.sh --registry docker.io --namespace infra --version v1.0.0 --push
+./build.sh --help
+./build.sh <stage> --list
 ```
 
-### Stage 2: Base
-**Script:** `./build-base.sh`
-**Compose:** `docker-compose.base.yml`
-**Dependencies:** Scratch stage (noroutine-ca)
+### Adding New Stages
 
-Components:
-- `tools` - Debian-based tools image with custom CA
-- `debian` - Debian base image with custom CA
-- `ubuntu24` - Ubuntu 24.04 base image with custom CA
-- `alpine` - Alpine base image with custom CA
-- `noroutine-buoy` - Custom Alpine-based image
-- `busybox` - Busybox image with custom CA
-- `jdk-zulu` - Azul Zulu OpenJDK with custom CA
-- `jdk-temurin` - Eclipse Temurin JDK with custom CA
-- `golang` - Go language image with custom CA
-- `python` - Python image with custom CA
-- `python-slim` - Python slim image with custom CA
+Simply create a new `docker-compose.newstage.yml` file and the build system will automatically pick it up. No code changes needed.
+
+## Build Script Usage
 
 ```bash
-# Build and push base stage (uses cr.nrtn.dev by default)
-./build-base.sh --namespace infra --version v1.0.0 --push
+./build.sh [stage] [options]
 
-# Or with custom registry
-./build-base.sh --registry docker.io --namespace infra --version v1.0.0 --push
+Options:
+  --registry REGISTRY      Container registry (default: cr.nrtn.dev)
+  --namespace NAMESPACE    Image namespace (default: infra-dev)
+  --version VERSION        Image version tag (default: git SHA or 'dev')
+  --push                   Push images after build
+  --components COMP1,COMP2 Build only specific components
+  --list                   List available components for the stage
 ```
 
-### Stage 3: Build
-**Script:** `./build-build.sh` (TODO)
-**Compose:** `docker-compose.build.yml` (TODO)
-**Dependencies:** Base stage images
-
-Components: Various application images that depend on base images.
-
-### Stage 4: Build2
-**Script:** `./build-build2.sh` (TODO)
-**Compose:** `docker-compose.build2.yml` (TODO)
-**Dependencies:** Build stage images
-
-Components: Final-stage images that depend on build stage images.
-
-## Complete Build Sequence
-
-To build all stages in order (using default registry cr.nrtn.dev):
+## Basic Build Examples
 
 ```bash
-# Stage 1: Scratch
-./build-scratch.sh --push
+# Build scratch stage locally
+./build.sh scratch
 
-# Stage 2: Base (requires scratch pushed)
-./build-base.sh --push
+# Build and push scratch stage
+./build.sh scratch --push
 
-# Stage 3: Build (requires base pushed)
-# TODO: ./build-build.sh --push
+# Build custom stage with specific version
+./build.sh custom --version v1.0.0 --push
 
-# Stage 4: Build2 (requires build pushed)
-# TODO: ./build-build2.sh --push
+# Build only specific components
+./build.sh custom --components argocd,grafana --push
+
+# List components in a stage
+./build.sh scratch --list
+./build.sh custom --list
+
+# Use custom registry
+./build.sh scratch --registry docker.io --namespace myorg --push
 ```
 
-To use a different registry:
+## Build Dependencies
+
+**The build script does NOT enforce or track stage dependencies.** You are responsible for building stages in the correct order and pushing images before building dependent stages.
+
+Generally, if one stage's images use another stage's images as base images, build and push the base stage first:
 
 ```bash
-./build-scratch.sh --registry docker.io --push
-./build-base.sh --registry docker.io --push
+# Example: If custom depends on scratch
+./build.sh scratch --push
+./build.sh custom --push
 ```
 
 ## CI/CD
 
-The Forgejo workflows:
+The Forgejo workflows use the same `./build.sh` script for consistency.
 
 ### images.yml (automatic - runs on push to master)
 **Trigger**:
@@ -96,21 +84,15 @@ The Forgejo workflows:
 - Manual via workflow_dispatch
 
 **Jobs run in sequence**:
-1. **import-images** - Imports base images from upstream registries, generates artifacts
-2. **archive-images** - Archives images to storage (tags only, runs in parallel with build)
-3. **build-images** - Builds scratch and base stages (runs after import-images completes)
-
-**Build stages in build-images job**:
-- Scratch stage: noroutine-ca
-- Base stage: tools, debian, ubuntu24, alpine, noroutine-buoy, busybox, jdk-zulu, jdk-temurin, golang, python, python-slim, node
+1. **import-images** - Imports base images from upstream registries
+2. **archive-images** - Archives images to storage (tags only)
+3. **build-images** - Builds all stages using `./build.sh`
 
 **Features**:
-- Uses `needs:` to enforce job dependencies
+- Uses `./build.sh` for all builds
 - Pushes to `infra-dev` namespace for commits, `infra` for tags
 - Uses `cr.nrtn.dev` as default registry (override with `IMAGE_REGISTRY` variable)
-- Generates build summaries dynamically from docker-compose files
 - Uses existing `DOCKER_CFG` secret for authentication
-- Single checkout per job (efficient)
 
 ### mirror.yml (manual only)
 **Trigger**: Manual only via workflow_dispatch
@@ -118,48 +100,43 @@ The Forgejo workflows:
 **What it does**:
 - Mirrors repository to GitHub (turbovillains/infra-setup)
 - Pushes to GitLab (git.nrtn.dev/infra/infra-setup) to trigger CI/CD
-- Uses full git history (fetch-depth: 0)
 - Requires `SSH_PRIVATE_KEY` secret
-
-**When to use**: Run manually when you want to sync the repository to external mirrors (GitHub and GitLab).
 
 ## Variables
 
-All build variables are loaded from `variables.yml` for stages that need them (base and later).
+Build variables are loaded from `variables.yml` automatically by `./build.sh`.
 
-Required environment variables:
+Key environment variables (can be overridden):
 - `IMAGE_REGISTRY` - Container registry (default: cr.nrtn.dev)
-- `INFRA_NAMESPACE` - Image namespace (default: infra-dev for commits, infra for tags)
-- `INFRA_VERSION` - Version tag (default: dev, or short commit SHA, or tag name)
+- `INFRA_NAMESPACE` - Image namespace (default: infra-dev)
+- `INFRA_VERSION` - Version tag (default: git SHA or 'dev')
+- `PUSH` - Set to 'true' to push images (default: false)
 
 ## Container Registry
 
-The default registry is `cr.nrtn.dev`. In CI/CD workflows, this can be overridden using the `IMAGE_REGISTRY` variable in Forgejo Actions.
+The default registry is `cr.nrtn.dev`. This can be overridden via:
+- `--registry` flag
+- `IMAGE_REGISTRY` environment variable
 
-### Required Secrets
+### Required Secrets (for CI/CD)
 
-For Forgejo Actions workflows, set these secrets:
-- `DOCKER_CFG` - Base64 encoded Docker config.json (contains authentication for all registries)
+For Forgejo Actions workflows:
+- `DOCKER_CFG` - Base64 encoded Docker config.json (authentication)
+- `SSH_PRIVATE_KEY` - SSH key for mirroring (mirror.yml only)
 
-Optionally, set these repository variables:
-- `IMAGE_REGISTRY` - Override the default registry (cr.nrtn.dev)
+Optionally set:
+- `IMAGE_REGISTRY` - Override default registry
 
-The `DOCKER_CFG` secret should be a base64-encoded version of your `~/.docker/config.json` file:
 ```bash
+# Create DOCKER_CFG secret:
 cat ~/.docker/config.json | base64
 ```
-
-This secret is shared with the `import-images` workflow, so no additional authentication configuration is needed.
-
-## Generic Component Builds
-
-The `docker/generic/` folder is used for components that just retag existing images from one registry to another. These are components like `node` in the GitLab pipeline that pull `library/node` and retag to the infrastructure registry. This semantic is maintained for compatibility with the existing GitLab pipeline.
 
 ## Local Development
 
 ### Prerequisites
 
-For local builds, you **must** have `yq` installed to load variables from `variables.yml`:
+**Required:** `yq` must be installed to load variables from `variables.yml`:
 
 ```bash
 # macOS
@@ -172,30 +149,37 @@ chmod +x /usr/local/bin/yq
 # Or see: https://github.com/mikefarah/yq
 ```
 
-The build scripts will fail with an error if `yq` is not found, as the variables are required for docker-compose to work correctly.
-
-### Build locally without pushing:
+### Local Build Examples
 
 ```bash
-# Stage 1
-./build-scratch.sh --namespace infra-dev --version test
+# Build locally without pushing
+./build.sh scratch
+./build.sh custom
 
-# Stage 2
-./build-base.sh --namespace infra-dev --version test
-```
+# Build with custom version
+./build.sh scratch --version test --namespace infra-dev
 
-To test with push (to cr.nrtn.dev):
-
-```bash
+# Build and push to cr.nrtn.dev
 docker login cr.nrtn.dev
-./build-scratch.sh --namespace infra-dev --version test --push
-./build-base.sh --namespace infra-dev --version test --push
+./build.sh scratch --push
+./build.sh custom --push
+
+# Build and push to Docker Hub
+docker login docker.io
+./build.sh scratch --registry docker.io --namespace myorg --push
+./build.sh custom --registry docker.io --namespace myorg --push
+
+# Build specific components only
+./build.sh custom --components argocd,grafana
 ```
 
-Or to push to Docker Hub:
+### Quick Development Workflow
 
 ```bash
-docker login docker.io
-./build-scratch.sh --registry docker.io --namespace infra-dev --version test --push
-./build-base.sh --registry docker.io --namespace infra-dev --version test --push
+# 1. Make changes to Dockerfiles
+# 2. Build locally to test
+./build.sh <stage>
+
+# 3. If good, push
+./build.sh <stage> --push
 ```
