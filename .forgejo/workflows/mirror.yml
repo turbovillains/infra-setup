@@ -25,8 +25,8 @@ jobs:
           git push --mirror --force git@github.com:turbovillains/infra-setup.git
 
           # Push to GitLab to trigger CI/CD (separate pushes to avoid hidden refs error)
-          git push --all --force git@git.nrtn.dev:infra/infra-setup.git
-          git push --tags --force git@git.nrtn.dev:infra/infra-setup.git
+          # git push --all --force git@git.nrtn.dev:infra/infra-setup.git
+          # git push --tags --force git@git.nrtn.dev:infra/infra-setup.git
 
       - name: Summary
         run: |
