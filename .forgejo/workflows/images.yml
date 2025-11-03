@@ -120,15 +120,23 @@ jobs:
           mkdir -p ~/.docker
           echo "${{ secrets.DOCKER_CFG }}" | base64 -d > ~/.docker/config.json
 
-      - name: Install yq
+      - name: Install yq (cross-platform)
+        shell: bash
         run: |
-          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          [ "$ARCH" = "x86_64" ] && ARCH=amd64
+          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
           chmod +x /usr/local/bin/yq
 
-      - name: Install crane
+      - name: Install crane (cross-platform)
+        shell: bash
         run: |
-          wget https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_Linux_x86_64.tar.gz
-          tar -xzf go-containerregistry_Linux_x86_64.tar.gz
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          [ "$ARCH" = "x86_64" ] && ARCH=x86_64
+          curl -sSL "https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_${OS}_${ARCH}.tar.gz" -o crane.tar.gz
+          tar -xzf crane.tar.gz
           sudo mv crane /usr/local/bin/
           sudo chmod +x /usr/local/bin/crane
 
@@ -160,9 +168,13 @@ jobs:
           mkdir -p ~/.docker
           echo "${{ secrets.DOCKER_CFG }}" | base64 -d > ~/.docker/config.json
 
-      - name: Install yq
+      - name: Install yq (cross-platform)
+        shell: bash
         run: |
-          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          [ "$ARCH" = "x86_64" ] && ARCH=amd64
+          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
           chmod +x /usr/local/bin/yq
 
       - name: Build and push scratch stage
