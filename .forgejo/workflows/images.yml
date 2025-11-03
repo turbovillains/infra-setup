@@ -234,3 +234,70 @@ jobs:
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Platforms:** linux/amd64, linux/arm64" >> $GITHUB_STEP_SUMMARY
+
+  import-charts:
+    name: import-charts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set INFRA_VERSION
+        id: version
+        run: |
+          if [[ "${{ github.ref_type }}" == "tag" ]]; then
+            echo "infra_version=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "infra_version=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install dependencies
+        run: |
+          # Install yq for YAML processing
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          [ "$ARCH" = "x86_64" ] && ARCH=amd64
+          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
+          chmod +x /usr/local/bin/yq
+
+          # Install yj (YAML to JSON converter)
+          curl -sSL "https://github.com/sclevine/yj/releases/latest/download/yj-${OS}-${ARCH}" -o /usr/local/bin/yj
+          chmod +x /usr/local/bin/yj
+
+          # Install helm
+          curl -sSL https://get.helm.sh/helm-v3.16.4-${OS}-${ARCH}.tar.gz | tar xz
+          sudo mv ${OS}-${ARCH}/helm /usr/local/bin/helm
+          sudo chmod +x /usr/local/bin/helm
+
+      - name: Import Helm charts
+        run: |
+          ./import-charts.sh import-charts.yml docker/infra-charts/charts
+
+      - name: Upload charts to storage
+        if: github.ref_type == 'tag'
+        run: |
+          # Set up SSH key (base64-encoded secret, needs to be decoded)
+          mkdir -p ~/.ssh
+          ssh-keyscan tank.noroutine.me >> ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          # Upload charts folder to storage
+          rsync -av -e "ssh -o StrictHostKeyChecking=no" \
+            --rsync-path="sudo mkdir -p /ifs/attic/infra/${{ steps.version.outputs.infra_version }}/charts && sudo rsync" \
+            docker/infra-charts/charts/ \
+            oleksii@tank.noroutine.me:/ifs/attic/infra/${{ steps.version.outputs.infra_version }}/charts
+
+          # Clean up SSH key
+          rm -f ~/.ssh/id_rsa
+
+      - name: Summary
+        run: |
+          echo "## Import Charts Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** \`${{ steps.version.outputs.infra_version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Charts imported successfully!" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ github.ref_type }}" == "tag" ]]; then
+            echo "Charts uploaded to storage at: oleksii@tank.noroutine.me:/ifs/attic/infra/${{ steps.version.outputs.infra_version }}/charts" >> $GITHUB_STEP_SUMMARY
+          fi

@@ -19,23 +19,23 @@ before_script:
     [[ -f gitlab/env.sh ]] && source gitlab/env.sh
 
 
-infra-charts:
-  interruptible: true
-  retry: 2
-  script:
-    - |
-      ./import-charts.sh import-charts.yml docker/infra-charts/charts
+# infra-charts:
+#   interruptible: true
+#   retry: 2
+#   script:
+#     - |
+#       ./import-charts.sh import-charts.yml docker/infra-charts/charts
 
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION}
 
-      if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
-          archive_folder docker/infra-charts/charts charts ${INFRA_VERSION}
-      fi
+#       if [[ ! -z "${CI_COMMIT_TAG:-}" ]]; then
+#           archive_folder docker/infra-charts/charts charts ${INFRA_VERSION}
+#       fi
 
-builder:
-  interruptible: true
-  script:
-    - |
-      ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
-        --build-arg HOST_DOCKER_GID
+# builder:
+#   interruptible: true
+#   script:
+#     - |
+#       ./gitlab/build-image.sh ${CI_JOB_NAME} ${INFRA_NAMESPACE}/${CI_JOB_NAME}:${INFRA_VERSION} \
+#         --build-arg HOST_DOCKER_GID
 

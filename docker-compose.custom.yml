@@ -97,6 +97,7 @@ services:
     build:
       context: docker/custom/ipmi-exporter
       platforms:
+        # does not compile for arm
         - linux/amd64
       args:
         IMAGE_REGISTRY: ${IMAGE_REGISTRY}

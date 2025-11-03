@@ -1,169 +1,276 @@
-infra-setup
-===
+# infra-setup
 
-Repository aim is to version and generate pre-deployment artifacts for infra-cluster:
-- imports upstream components images
-- docker images for compoenents
-- builds deployment image
+Repository for versioning and generating pre-deployment artifacts for infra-cluster:
+- Imports upstream container images (215+ images from Docker Hub, Quay, GCR, etc.)
+- Builds custom docker images for infrastructure components
+- Imports Helm charts from upstream repositories
+- Archives artifacts to storage for airgap deployments
 
-##  Overview
+## Quick Start
 
-Idea is to:
-* verision all infra compoenents as one set with the same tag
-* import upstream images internally
-* have a single versioned image for deployment
-* allow to easily customise upstream docker images, or even build our own if necessary, without introducing major changes to other CI jobs
+### Local Development
 
-## What is imported
-Currently following images are imported (see [gitlab/import-images.sh](gitlab/import-images.sh)):
+See [BUILD-ORDER.md](BUILD-ORDER.md) for detailed build instructions.
 
-## Where it goes
+```bash
+# Build images locally
+./build.sh scratch
+./build.sh custom
 
-In [```.gitlab-ci.yml```](.gitlab-ci.yml), every job in build stage is a component name.
+# Build and push to registry
+docker login cr.nrtn.dev
+./build.sh scratch --push
+./build.sh custom --push
 
-During build each image is uploaded to registry under common path ```${DOCKER_NAMESPACE}/${CI_JOB_NAME}``` with tag that is eaither commit hash (for branches) or tag (for tags)
+# Build specific components only
+./build.sh custom --components argocd,grafana
+```
 
-## Deployer image
+### Import Images with Dagger
 
-Deployer image is one that is later used to deploy complete infra stack.
-It has inside Docker, full HashiCorp stack (terraform, nomad, vault, consul, envconsul and consul-template) and python virtualenv with Ansible installed.
+See [.dagger/README.md](.dagger/README.md) for detailed Dagger documentation.
 
-## General setup pipeline overview
+```bash
+# List all images
+dagger call list-images
 
-In a beautiful art:
+# Import images to private registry
+dagger call \
+  with-docker-cfg --docker-cfg env://DOCKER_CFG \
+  import-images
+```
+
+## Overview
+
+This repository provides a unified build system for infrastructure components:
+
+1. **Import upstream images** - 215+ container images copied to private registry (multiarch preserved)
+2. **Build custom images** - Custom Dockerfiles for infrastructure components
+3. **Import Helm charts** - Helm charts from upstream repositories
+4. **Version everything together** - Single version tag for complete infrastructure stack
+5. **Archive for airgap** - Optional archival to storage for offline deployments
+
+## Build System
+
+### Image Builds
+
+Uses `./build.sh` with docker-compose files for automatic stage discovery:
+
+- **scratch stage** (`docker-compose.scratch.yml`) - Base components
+- **custom stage** (`docker-compose.custom.yml`) - Application images
+
+See [BUILD-ORDER.md](BUILD-ORDER.md) for complete documentation.
+
+### Image Imports
+
+Uses Dagger module for importing 215+ upstream images with multiarch support.
+
+See [.dagger/README.md](.dagger/README.md) for complete documentation.
+
+### Helm Charts
+
+Uses `./import-charts.sh` to import Helm charts from upstream repositories.
+
+```bash
+./import-charts.sh import-charts.yml docker/infra-charts/charts
+```
+
+Chart sources are defined in [import-charts.yml](import-charts.yml).
+
+## CI/CD
+
+### Forgejo Workflows
+
+Located in `.forgejo/workflows/`:
+
+#### images.yml (automatic - runs on push to master)
+
+**Jobs:**
+1. **import-images** - Imports base images from upstream registries using Dagger
+2. **archive-images** - Archives images to storage (tags only)
+3. **retag-generic-images** - Retags generic images for consistency
+4. **build-custom-images** - Builds scratch and custom stages using `./build.sh`
+5. **import-charts** - Imports Helm charts and uploads to storage (tags only)
+
+**Triggers:**
+- Automatic on push to master
+- Automatic on pull requests (for testing)
+- Manual via workflow_dispatch
+
+**Features:**
+- Uses Dagger for image imports
+- Uses `./build.sh` for image builds
+- Pushes to `infra-dev` namespace for commits, `infra` for tags
+- Uses `cr.nrtn.dev` as default registry (override with `IMAGE_REGISTRY` variable)
+
+#### mirror.yml (manual only)
+
+**What it does:**
+- Mirrors repository to GitHub (turbovillains/infra-setup)
+- Pushes to GitLab (git.nrtn.dev/infra/infra-setup)
+
+**Trigger:** Manual only via workflow_dispatch
+
+### Required Secrets
+
+For Forgejo Actions workflows:
+- `DOCKER_CFG` - Base64 encoded Docker config.json (authentication)
+- `SSH_PRIVATE_KEY` - SSH key for storage uploads and mirroring
+- `DAGGER_CLOUD_TOKEN` - Dagger Cloud token (optional, for caching)
+
+Optionally set:
+- `IMAGE_REGISTRY` - Override default registry (default: cr.nrtn.dev)
+
+```bash
+# Create DOCKER_CFG secret:
+cat ~/.docker/config.json | base64 -w0
+
+# Create SSH_PRIVATE_KEY secret:
+cat ~/.ssh/id_rsa | base64 -w0
+```
+
+## Configuration
+
+### Build Variables
+
+Build variables are loaded from `variables.yml`. This file contains version definitions for all upstream images and components.
+
+Key environment variables (can be overridden):
+- `IMAGE_REGISTRY` - Container registry (default: cr.nrtn.dev)
+- `INFRA_NAMESPACE` - Image namespace (default: infra-dev)
+- `INFRA_VERSION` - Version tag (default: git SHA or 'dev')
+
+### Container Registry
+
+The default registry is `cr.nrtn.dev`. This can be overridden via:
+- `--registry` flag (for `./build.sh`)
+- `IMAGE_REGISTRY` environment variable (for CI/CD)
+- `--target-registry` flag (for Dagger)
+
+## Architecture
 
 ```mermaid
 graph LR
   subgraph Setup Pipeline
     subgraph upstream
-      A1(upstream image 1)
-      A2(upstream image 2)
-      Ad(...)
-      AN(upstream image N)
+      A1(upstream images)
+      A2(upstream charts)
     end
 
-    B(import-images.sh)
+    B1(Dagger: import-images)
+    B2(import-charts.sh)
 
-    subgraph our nexus
-      C1(image 1)
-      C2(image 2)
-      Cd(...)
-      CN(image N)
+    subgraph our registry
+      C1(imported images)
     end
 
-    subgraph Customize
-      E1(Dockerfile)
-      E2(Dockerfile)
-      Ed(...)
-      EN(Dockerfile)
+    subgraph our storage
+      C2(imported charts)
     end
 
-    subgraph Build
-      D1(Dockerfile)
-      D2(Dockerfile)
-      Dd(...)
-      DM(Dockerfile)
-    end
-
-    subgraph Deployer Build
-      DD(Dockerfile)
+    subgraph Custom Builds
+      D1(./build.sh scratch)
+      D2(./build.sh custom)
     end
 
     subgraph Infra Stack
-      F1(component 1)
-      F2(component 2)
-      Fd(...)
-      FN(component N)
-      FN1(component N+1)
-      FN2(component N+2)
-      FNd(...)
-      FNM(component N+M)
-      FD(deployer)
+      E1(base images)
+      E2(application images)
+      E3(helm charts)
     end
 
-    subgraph our nexus
-      G(single tag)
+    subgraph Storage Archives
+      F(versioned artifacts)
     end
   end
 
   subgraph Deployment Pipeline
-    H(infra-cluster-XYZ)
+    G(infra-cluster-XYZ)
   end
 
-  A1 --> B
-  A2 --> B
-  AN --> B
+  A1 --> B1
+  A2 --> B2
 
-  B --> C1
-  B --> C2
-  B --> CN
+  B1 --> C1
+  B2 --> C2
 
-  C1 --> E1
-  C2 --> E2
-  CN --> EN
+  C1 --> D1
+  D1 --> D2
 
-  E1 --> F1
-  E2 --> F2
-  EN --> FN
-  D1 --> FN1
-  D2 --> FN2
-  DM --> FNM
+  D1 --> E1
+  D2 --> E2
+  C2 --> E3
 
-  DD --> FD
+  E1 --> F
+  E2 --> F
+  E3 --> F
 
-  F1 --> G
-  F2 --> G
-  FN --> G
-
-  FN1 --> G
-  FN2 --> G
-  FNM --> G
-
-  FD --> G
-
-  G --> H
+  F --> G
 ```
 
-## How to use
+## Documentation
 
-### Example building single docker image
+- [BUILD-ORDER.md](BUILD-ORDER.md) - Detailed build system documentation
+- [.dagger/README.md](.dagger/README.md) - Dagger module documentation
+- [import-charts.yml](import-charts.yml) - Helm chart sources
+- [variables.yml](variables.yml) - Version definitions
 
+## Upgrades and Changes
+
+Component versions are defined in [variables.yml](variables.yml).
+
+When updating a component:
+1. Update the version in `variables.yml`
+2. Test the build locally
+3. Push changes to trigger CI/CD pipeline
+4. Tag the release when ready
+
+The CI/CD pipeline will automatically:
+- Import updated upstream images
+- Build custom images with new versions
+- Import updated Helm charts
+- Archive everything for the new version (tags only)
+
+## Local Prerequisites
+
+- Docker with buildx support
+- `yq` for YAML processing (required by `./build.sh`)
+
+For Dagger operations:
+- Dagger CLI installed
+
+For chart imports:
+- `yj` (YAML to JSON converter)
+- `jq` (JSON processor)
+- `helm` CLI
+
+### Installing Prerequisites
+
+```bash
+# macOS
+brew install yq jq helm
+brew install sclevine/tap/yj
+brew install dagger/tap/dagger
+
+# Linux
+# yq
+wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+chmod +x /usr/local/bin/yq
+
+# jq
+sudo apt-get install jq
+
+# yj
+wget https://github.com/sclevine/yj/releases/latest/download/yj-linux-amd64 -O /usr/local/bin/yj
+chmod +x /usr/local/bin/yj
+
+# helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+# dagger
+curl -fsSL https://dl.dagger.io/dagger/install.sh | BIN_DIR=/usr/local/bin sh
 ```
-docker build -t cr.nrtn.dev/sandbox/bitnami-keycloak:v0.0.350-dirty2 \
-  --build-arg INFRA_VERSION=v0.0.350 \
-  --build-arg INFRA_NAMESPACE=infra \
-  --build-arg DOCKER_HUB=cr.nrtn.dev \
-  --build-arg KEYCLOAK_THEMES_IMAGE=cr.nrtn.dev/infra/keycloak-themes:v0.0.350 \
-  --build-arg BITNAMI_KEYCLOAK_VERSION=25.0.4 \
-  --build-arg EMAIL_TOTP_AUTH_VERSION=2.0.0 \
-  --push \
-  .
-```
 
-```
-  docker build -t cr.nrtn.dev/sandbox/keycloak:v0.0.350-dirty2 \
-  --build-arg INFRA_VERSION=v0.0.350 \
-  --build-arg INFRA_NAMESPACE=infra \
-  --build-arg DOCKER_HUB=cr.nrtn.dev \
-  --build-arg KEYCLOAK_THEMES_IMAGE=cr.nrtn.dev/infra/keycloak-themes:v0.0.350 \
-  --build-arg KEYCLOAK_VERSION=25.0.4 \
-  --build-arg EMAIL_TOTP_AUTH_VERSION=2.0.0 \
-  --push \
-  .
-```
+## Legacy GitLab Pipeline
 
-### Upgrades and changes
-
-Component versions are in [```.gitlab-ci.yml```](.gitlab-ci.yml)
-
-Changes may involve custom images, like compiling from source instead of upstream or other similar customizations
-
-1. Whenever update of component happens, build this job, and tag it.
-2. Refer to components with new tag
-
-### Configuration
-
-Variables that shall be setup for this repo are:
-
-* ```DOCKER_HUB``` (mandatory) refers to target docker registry
-* ```DOCKER_CFG``` (mandatory) is base64 encoded auth file for that registry
+The GitLab CI configuration (`.gitlab-ci.yml`) is maintained for historical purposes but is no longer actively used. All CI/CD has been migrated to Forgejo workflows.
