@@ -2,7 +2,7 @@ services:
   tools:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/tools:${INFRA_VERSION}
     build:
-      context: docker/tools
+      context: docker/base/tools
       platforms:
         - linux/amd64
         - linux/arm64
@@ -19,7 +19,7 @@ services:
   debian:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/debian:${INFRA_VERSION}
     build:
-      context: docker/debian
+      context: docker/base/debian
       platforms:
         - linux/amd64
         - linux/arm64
@@ -36,7 +36,7 @@ services:
   ubuntu24:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/ubuntu24:${INFRA_VERSION}
     build:
-      context: docker/ubuntu24
+      context: docker/base/ubuntu24
       platforms:
         - linux/amd64
         - linux/arm64
@@ -53,7 +53,7 @@ services:
   alpine:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/alpine:${INFRA_VERSION}
     build:
-      context: docker/alpine
+      context: docker/base/alpine
       platforms:
         - linux/amd64
         - linux/arm64
@@ -70,7 +70,7 @@ services:
   noroutine-buoy:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/noroutine-buoy:${INFRA_VERSION}
     build:
-      context: docker/noroutine-buoy
+      context: docker/base/noroutine-buoy
       platforms:
         - linux/amd64
         - linux/arm64
@@ -87,7 +87,7 @@ services:
   busybox:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/busybox:${INFRA_VERSION}
     build:
-      context: docker/busybox
+      context: docker/base/busybox
       platforms:
         - linux/amd64
         - linux/arm64
@@ -105,7 +105,7 @@ services:
   jdk-zulu:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/jdk-zulu:${INFRA_VERSION}
     build:
-      context: docker/jdk-zulu
+      context: docker/base/jdk-zulu
       platforms:
         - linux/amd64
         - linux/arm64
@@ -122,7 +122,7 @@ services:
   jdk-temurin:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/jdk-temurin:${INFRA_VERSION}
     build:
-      context: docker/jdk-temurin
+      context: docker/base/jdk-temurin
       platforms:
         - linux/amd64
         - linux/arm64
@@ -139,7 +139,7 @@ services:
   golang:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/golang:${INFRA_VERSION}
     build:
-      context: docker/golang
+      context: docker/base/golang
       platforms:
         - linux/amd64
         - linux/arm64
@@ -156,7 +156,7 @@ services:
   python:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/python:${INFRA_VERSION}
     build:
-      context: docker/python
+      context: docker/base/python
       platforms:
         - linux/amd64
         - linux/arm64
@@ -173,7 +173,7 @@ services:
   python-slim:
     image: ${IMAGE_REGISTRY}/${INFRA_NAMESPACE}/python-slim:${INFRA_VERSION}
     build:
-      context: docker/python
+      context: docker/base/python
       platforms:
         - linux/amd64
         - linux/arm64
