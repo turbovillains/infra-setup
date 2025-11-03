@@ -20,7 +20,7 @@ services:
         - linux/arm64
       args:
         IMAGE_REGISTRY: ${IMAGE_REGISTRY}
-        DEBIAN_VERSION: ${DEBIAN_VERSION}
+        ALPINE_VERSION: ${ALPINE_VERSION}
       labels:
         - "org.opencontainers.image.version=${INFRA_VERSION}"
         - "org.opencontainers.image.source=https://nrtn.dev/infra/infra-setup"

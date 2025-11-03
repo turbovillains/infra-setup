@@ -1,13 +1,11 @@
 ARG IMAGE_REGISTRY=cr.nrtn.dev
-ARG DEBIAN_VERSION=dev
+ARG ALPINE_VERSION=dev
 
-FROM ${IMAGE_REGISTRY}/library/debian:${DEBIAN_VERSION} AS download
+FROM ${IMAGE_REGISTRY}/library/alpine:${ALPINE_VERSION} AS download
 
 USER 0
 
-RUN apt-get update && apt-get install -y \
-  gnupg2 curl ca-certificates \
-  && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache curl bash
 
 ADD setup.sh /setup.sh
 RUN /setup.sh
