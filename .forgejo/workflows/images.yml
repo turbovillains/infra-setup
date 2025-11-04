@@ -214,6 +214,16 @@ jobs:
           echo "**Registry:** \`${{ env.IMAGE_REGISTRY }}\`" >> $GITHUB_STEP_SUMMARY
           echo "**Namespace:** \`${{ needs.import-images.outputs.infra_namespace }}\`" >> $GITHUB_STEP_SUMMARY
           echo "**Version:** \`${{ needs.import-images.outputs.infra_version }}\`" >> $GITHUB_STEP_SUMMARY
+
+          # Determine build type and platforms
+          if [[ "${{ github.ref_type }}" == "tag" ]]; then
+            echo "**Build Type:** Tag build" >> $GITHUB_STEP_SUMMARY
+            echo "**Platforms:** linux/amd64, linux/arm64 (multi-arch)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Build Type:** Development build" >> $GITHUB_STEP_SUMMARY
+            echo "**Platforms:** linux/amd64 (single-arch for speed)" >> $GITHUB_STEP_SUMMARY
+          fi
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Scratch Stage" >> $GITHUB_STEP_SUMMARY
 
@@ -232,9 +242,6 @@ jobs:
           docker compose -f docker-compose.custom.yml config --services | while read service; do
             echo "- \`${{ env.IMAGE_REGISTRY }}/${{ needs.import-images.outputs.infra_namespace }}/${service}:${{ needs.import-images.outputs.infra_version }}\`" >> $GITHUB_STEP_SUMMARY
           done
-
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Platforms:** linux/amd64, linux/arm64" >> $GITHUB_STEP_SUMMARY
 
   import-charts:
     name: import-charts
