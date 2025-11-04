@@ -20,7 +20,7 @@ helm:
     uri: https://helm.altinity.com
     charts:
       - name: altinity-clickhouse-operator
-  - name: strimzi-cluster-operator
+  - name: strimzi-kafka-operator
     type: oci
     uri: oci://quay.io/strimzi-helm/
     charts:
@@ -66,7 +66,7 @@ helm:
     uri: oci://ghcr.io/netbox-community/netbox-chart/
     charts:
       - name: netbox
-        version: 7.1.18
+        version: 7.2.2
   - name: ingress-nginx
     uri: https://kubernetes.github.io/ingress-nginx
     charts:

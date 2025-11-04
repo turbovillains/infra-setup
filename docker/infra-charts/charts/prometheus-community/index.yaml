@@ -7,8 +7,68 @@ entries:
         - name: Chart Source
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
+    appVersion: v0.29.0
+    created: "2025-11-08T00:24:49.568511+01:00"
+    description: The Alertmanager handles alerts sent by client applications such
+      as the Prometheus server.
+    digest: f62bb043aa51d31601b8c8574e985eb357233e4ae56da72504cc783544fe71e0
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - monitoring
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - email: monotek23@gmail.com
+      name: monotek
+      url: https://github.com/monotek
+    - email: naseem@transit.app
+      name: naseemkullah
+      url: https://github.com/naseemkullah
+    name: alertmanager
+    sources:
+    - https://github.com/prometheus/alertmanager
+    type: application
+    urls:
+    - alertmanager-1.28.1.tgz
+    version: 1.28.1
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+    apiVersion: v2
+    appVersion: v0.29.0
+    created: "2025-11-08T00:24:49.567607+01:00"
+    description: The Alertmanager handles alerts sent by client applications such
+      as the Prometheus server.
+    digest: c95313fcaa0e2ee56e235d1d0fb3cd05036d5a35b7aebfacca3db9107932a9a1
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - monitoring
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - email: monotek23@gmail.com
+      name: monotek
+      url: https://github.com/monotek
+    - email: naseem@transit.app
+      name: naseemkullah
+      url: https://github.com/naseemkullah
+    name: alertmanager
+    sources:
+    - https://github.com/prometheus/alertmanager
+    type: application
+    urls:
+    - alertmanager-1.28.0.tgz
+    version: 1.28.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+    apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.156637+01:00"
+    created: "2025-11-08T00:24:49.566785+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: eed28cff5abbe57914ffb8a63655208ea7b5fff61338f5ddd3aefe7591662e8f
@@ -38,7 +98,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.155465+01:00"
+    created: "2025-11-08T00:24:49.565934+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 44fd39d31d9b0ddf0c97a980454e0b8125c9f915583ca90c2db602c9a65951e2
@@ -68,7 +128,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.1534+01:00"
+    created: "2025-11-08T00:24:49.565096+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 875b3ac0f0eb8851fd45ad14ffb03bb4834f2bacffeefbcaf0bf20a8169ac517
@@ -98,7 +158,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.152373+01:00"
+    created: "2025-11-08T00:24:49.564358+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 471a08d57b6c91ee885ffd9f1bdd4fa4f7d446cebfefb02e82bdbb20ff4fa658
@@ -128,7 +188,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.151529+01:00"
+    created: "2025-11-08T00:24:49.56332+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 98ac957de8598b078cc8765f030778ed8fac55d2fc56e081911e5c4de774a0f9
@@ -158,7 +218,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.15027+01:00"
+    created: "2025-11-08T00:24:49.562464+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: c42c321981e9f469bb342edc51088708dd986f549278fdd71523a3c8836110a7
@@ -188,7 +248,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.149177+01:00"
+    created: "2025-11-08T00:24:49.561613+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: f776a6ed405f54168da1c4f32e6eb0a034576a7f26f77cf3efea2656645deeba
@@ -218,7 +278,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.148355+01:00"
+    created: "2025-11-08T00:24:49.560761+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 53d12e620f7543b043df2985c3f34a5c59d08bc6f41e82e78f0f9ec21d297476
@@ -248,7 +308,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.147495+01:00"
+    created: "2025-11-08T00:24:49.559893+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 8cac8912b8a73ca274113737acc5c3aba70caa98d67b4ba37eec51ac8c5288f7
@@ -278,7 +338,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.146394+01:00"
+    created: "2025-11-08T00:24:49.559113+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 75beccc23084dfcfbe8be6f4105dcc3a2a4b45822564935d8d029fc5de9b9c80
@@ -308,7 +368,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.14532+01:00"
+    created: "2025-11-08T00:24:49.558114+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: fe2efcd2e01768dcb0e09ea874fe5793f8bcdb47ab0a6a142ef7be414e9f9dcc
@@ -338,7 +398,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.144073+01:00"
+    created: "2025-11-08T00:24:49.557262+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: f2475e3d9abde91a9bc9e2b2e15b97b6872b66fa1dc2b3f98931dcead860ab9b
@@ -368,7 +428,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.28.1
-    created: "2025-11-03T20:27:11.141725+01:00"
+    created: "2025-11-08T00:24:49.556446+01:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: 2c5fbb4011a28fbc9d43b654c2c6458ecf5b4cd244369bd76e81c6714c1ac431
@@ -399,7 +459,40 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.17.0
-    created: "2025-11-03T20:27:11.171084+01:00"
+    created: "2025-11-08T00:24:49.582404+01:00"
+    description: Install kube-state-metrics to generate and expose cluster-level metrics
+    digest: 7c1fe0f73b4cd2f0dba47be302a7d03909660c23313dafcae10664db9d992e61
+    home: https://github.com/kubernetes/kube-state-metrics/
+    keywords:
+    - metric
+    - monitoring
+    - prometheus
+    - kubernetes
+    maintainers:
+    - email: tariq.ibrahim@mulesoft.com
+      name: tariq1890
+      url: https://github.com/tariq1890
+    - email: manuel@rueg.eu
+      name: mrueg
+      url: https://github.com/mrueg
+    - email: david@0xdc.me
+      name: dotdc
+      url: https://github.com/dotdc
+    name: kube-state-metrics
+    sources:
+    - https://github.com/kubernetes/kube-state-metrics/
+    type: application
+    urls:
+    - kube-state-metrics-6.4.1.tgz
+    version: 6.4.1
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+    apiVersion: v2
+    appVersion: 2.17.0
+    created: "2025-11-08T00:24:49.58145+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: d91887b669c8cf56fb55ffa14501cb1dd6548716126f451cbe68eee00e0f6b43
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -432,7 +525,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.17.0
-    created: "2025-11-03T20:27:11.170042+01:00"
+    created: "2025-11-08T00:24:49.580514+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 982177adfb31951efd54ac94dad892cc2142df48eefddc5986d26e83e1425d46
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -465,7 +558,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.16.0
-    created: "2025-11-03T20:27:11.168946+01:00"
+    created: "2025-11-08T00:24:49.579547+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 7df6bc1eb001515ce74b73debef2731622874ac134617c7976f8f81e1809d2e6
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -498,7 +591,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.16.0
-    created: "2025-11-03T20:27:11.167842+01:00"
+    created: "2025-11-08T00:24:49.578694+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: ea4d23bbfcf0a987c1b81bfc25a61a92ba9e4651dfc45a37dbdc923bb537e1bb
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -531,7 +624,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.16.0
-    created: "2025-11-03T20:27:11.16673+01:00"
+    created: "2025-11-08T00:24:49.577567+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 8f6f49b5a2ebcd10114c8f2fbdc5bbce6eaa2d55cdcbf7cc9f3fe3c64b37e4bb
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -564,7 +657,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.16.0
-    created: "2025-11-03T20:27:11.165535+01:00"
+    created: "2025-11-08T00:24:49.576615+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: dd88b1ee2d88e5e64d3942f31d636b604cdd123bb7dea6513eaa97a30b4c76e9
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -597,7 +690,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.16.0
-    created: "2025-11-03T20:27:11.164618+01:00"
+    created: "2025-11-08T00:24:49.575661+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 56dd011fb7ddb6ccde6303f6e38b8b064af4609d083c53c41556f8196b3be935
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -630,7 +723,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.16.0
-    created: "2025-11-03T20:27:11.163699+01:00"
+    created: "2025-11-08T00:24:49.574666+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: c28dfe56045044c7506d9686597bf6720e55ed91de0bd761e541ed8149226d56
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -663,7 +756,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.15.0
-    created: "2025-11-03T20:27:11.162774+01:00"
+    created: "2025-11-08T00:24:49.573703+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 23c5bfc132ddc91063feccc2b8b3fcce62b983969331633542f0a6845290682b
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -696,7 +789,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.15.0
-    created: "2025-11-03T20:27:11.161654+01:00"
+    created: "2025-11-08T00:24:49.572729+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 887d83ccd466b1da0781c89396bacbd24cd7b38ff90c49cc4db2cbf252ebb525
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -729,7 +822,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.15.0
-    created: "2025-11-03T20:27:11.160456+01:00"
+    created: "2025-11-08T00:24:49.571719+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 975ea2dda6da1980228555892c2027866f0931cb0b22c754818275455f520cea
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -762,7 +855,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.15.0
-    created: "2025-11-03T20:27:11.159373+01:00"
+    created: "2025-11-08T00:24:49.570545+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 8ac292be02be371a39fc489275ce06198c868b277280565336549f63d9bb2f67
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -795,7 +888,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 2.15.0
-    created: "2025-11-03T20:27:11.15776+01:00"
+    created: "2025-11-08T00:24:49.569543+01:00"
     description: Install kube-state-metrics to generate and expose cluster-level metrics
     digest: 60b15a3c218fc05a22d1a56166ac1b9c612800bf2bd507ff45e8915e54a4cd47
     home: https://github.com/kubernetes/kube-state-metrics/
@@ -831,7 +924,131 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.7.3
-    created: "2025-11-03T20:27:11.507685+01:00"
+    created: "2025-11-08T00:24:49.910775+01:00"
+    dependencies:
+    - condition: alertmanager.enabled
+      name: alertmanager
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.28.*
+    - condition: kube-state-metrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 6.4.*
+    - condition: prometheus-node-exporter.enabled
+      name: prometheus-node-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.49.*
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 3.4.*
+    description: Prometheus is a monitoring system and time series database.
+    digest: fd069698199ca815e2b1be413a95543d2c42f2818fe4ad551b64af5a1d339917
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - monitoring
+    - prometheus
+    kubeVersion: '>=1.19.0-0'
+    maintainers:
+    - email: gianrubio@gmail.com
+      name: gianrubio
+      url: https://github.com/gianrubio
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+      url: https://github.com/zanhsieh
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+      url: https://github.com/Xtigyro
+    - email: naseem@transit.app
+      name: naseemkullah
+      url: https://github.com/naseemkullah
+    - email: rootsandtrees@posteo.de
+      name: zeritti
+      url: https://github.com/zeritti
+    name: prometheus
+    sources:
+    - https://github.com/prometheus/alertmanager
+    - https://github.com/prometheus/prometheus
+    - https://github.com/prometheus/pushgateway
+    - https://github.com/prometheus/node_exporter
+    - https://github.com/kubernetes/kube-state-metrics
+    type: application
+    urls:
+    - prometheus-27.44.0.tgz
+    version: 27.44.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus/prometheus
+    apiVersion: v2
+    appVersion: v3.7.3
+    created: "2025-11-08T00:24:49.906687+01:00"
+    dependencies:
+    - condition: alertmanager.enabled
+      name: alertmanager
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.28.*
+    - condition: kube-state-metrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 6.3.*
+    - condition: prometheus-node-exporter.enabled
+      name: prometheus-node-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.49.*
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 3.4.*
+    description: Prometheus is a monitoring system and time series database.
+    digest: 1722e5b4f875691a2634f07d155ae543edb43406c6b1a46d2fcb0a444c58e29d
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - monitoring
+    - prometheus
+    kubeVersion: '>=1.19.0-0'
+    maintainers:
+    - email: gianrubio@gmail.com
+      name: gianrubio
+      url: https://github.com/gianrubio
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+      url: https://github.com/zanhsieh
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+      url: https://github.com/Xtigyro
+    - email: naseem@transit.app
+      name: naseemkullah
+      url: https://github.com/naseemkullah
+    - email: rootsandtrees@posteo.de
+      name: zeritti
+      url: https://github.com/zeritti
+    name: prometheus
+    sources:
+    - https://github.com/prometheus/alertmanager
+    - https://github.com/prometheus/prometheus
+    - https://github.com/prometheus/pushgateway
+    - https://github.com/prometheus/node_exporter
+    - https://github.com/kubernetes/kube-state-metrics
+    type: application
+    urls:
+    - prometheus-27.43.0.tgz
+    version: 27.43.0
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus/prometheus
+    apiVersion: v2
+    appVersion: v3.7.3
+    created: "2025-11-08T00:24:49.902735+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -893,7 +1110,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.7.3
-    created: "2025-11-03T20:27:11.503536+01:00"
+    created: "2025-11-08T00:24:49.898481+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -955,7 +1172,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.7.2
-    created: "2025-11-03T20:27:11.499393+01:00"
+    created: "2025-11-08T00:24:49.894602+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1017,7 +1234,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.7.2
-    created: "2025-11-03T20:27:11.495341+01:00"
+    created: "2025-11-08T00:24:49.890577+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1079,7 +1296,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.7.1
-    created: "2025-11-03T20:27:11.490855+01:00"
+    created: "2025-11-08T00:24:49.886367+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1141,7 +1358,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.7.0
-    created: "2025-11-03T20:27:11.486584+01:00"
+    created: "2025-11-08T00:24:49.882644+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1203,7 +1420,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.6.0
-    created: "2025-11-03T20:27:11.482458+01:00"
+    created: "2025-11-08T00:24:49.878639+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1265,7 +1482,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.6.0
-    created: "2025-11-03T20:27:11.47791+01:00"
+    created: "2025-11-08T00:24:49.874852+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1327,7 +1544,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.6.0
-    created: "2025-11-03T20:27:11.469128+01:00"
+    created: "2025-11-08T00:24:49.866475+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1389,7 +1606,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.464934+01:00"
+    created: "2025-11-08T00:24:49.862752+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1451,7 +1668,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.460902+01:00"
+    created: "2025-11-08T00:24:49.858578+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1513,7 +1730,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.456534+01:00"
+    created: "2025-11-08T00:24:49.854972+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1575,7 +1792,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.45226+01:00"
+    created: "2025-11-08T00:24:49.850935+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1637,7 +1854,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.448211+01:00"
+    created: "2025-11-08T00:24:49.846887+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1699,7 +1916,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.443795+01:00"
+    created: "2025-11-08T00:24:49.843069+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1761,7 +1978,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.439811+01:00"
+    created: "2025-11-08T00:24:49.83888+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1823,7 +2040,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.435534+01:00"
+    created: "2025-11-08T00:24:49.834815+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1885,7 +2102,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.431367+01:00"
+    created: "2025-11-08T00:24:49.831018+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -1947,7 +2164,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.418586+01:00"
+    created: "2025-11-08T00:24:49.818986+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2009,7 +2226,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.41474+01:00"
+    created: "2025-11-08T00:24:49.814932+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2071,7 +2288,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.410557+01:00"
+    created: "2025-11-08T00:24:49.811007+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2133,7 +2350,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.406297+01:00"
+    created: "2025-11-08T00:24:49.807251+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2195,7 +2412,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.401828+01:00"
+    created: "2025-11-08T00:24:49.803203+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2257,7 +2474,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.397018+01:00"
+    created: "2025-11-08T00:24:49.799197+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2319,7 +2536,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.392646+01:00"
+    created: "2025-11-08T00:24:49.795408+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2381,7 +2598,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.5.0
-    created: "2025-11-03T20:27:11.38796+01:00"
+    created: "2025-11-08T00:24:49.791409+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2443,7 +2660,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.2
-    created: "2025-11-03T20:27:11.383425+01:00"
+    created: "2025-11-08T00:24:49.787605+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2505,7 +2722,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.2
-    created: "2025-11-03T20:27:11.379033+01:00"
+    created: "2025-11-08T00:24:49.783552+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2567,7 +2784,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.2
-    created: "2025-11-03T20:27:11.374166+01:00"
+    created: "2025-11-08T00:24:49.779463+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2629,7 +2846,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.1
-    created: "2025-11-03T20:27:11.36969+01:00"
+    created: "2025-11-08T00:24:49.775688+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2691,7 +2908,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.1
-    created: "2025-11-03T20:27:11.365417+01:00"
+    created: "2025-11-08T00:24:49.771713+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2753,7 +2970,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.1
-    created: "2025-11-03T20:27:11.357355+01:00"
+    created: "2025-11-08T00:24:49.764067+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2815,7 +3032,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.1
-    created: "2025-11-03T20:27:11.353136+01:00"
+    created: "2025-11-08T00:24:49.760136+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2877,7 +3094,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.0
-    created: "2025-11-03T20:27:11.348885+01:00"
+    created: "2025-11-08T00:24:49.756415+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -2939,7 +3156,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.4.0
-    created: "2025-11-03T20:27:11.344839+01:00"
+    created: "2025-11-08T00:24:49.752353+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3001,7 +3218,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-11-03T20:27:11.341065+01:00"
+    created: "2025-11-08T00:24:49.748374+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3063,7 +3280,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-11-03T20:27:11.336865+01:00"
+    created: "2025-11-08T00:24:49.744558+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3125,7 +3342,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-11-03T20:27:11.332729+01:00"
+    created: "2025-11-08T00:24:49.740388+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3187,7 +3404,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-11-03T20:27:11.328912+01:00"
+    created: "2025-11-08T00:24:49.73628+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3249,7 +3466,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.1
-    created: "2025-11-03T20:27:11.324518+01:00"
+    created: "2025-11-08T00:24:49.732383+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3311,7 +3528,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.3.0
-    created: "2025-11-03T20:27:11.32021+01:00"
+    created: "2025-11-08T00:24:49.728169+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3373,7 +3590,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-11-03T20:27:11.31632+01:00"
+    created: "2025-11-08T00:24:49.724079+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3435,7 +3652,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-11-03T20:27:11.536969+01:00"
+    created: "2025-11-08T00:24:49.939074+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3497,7 +3714,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-11-03T20:27:11.533008+01:00"
+    created: "2025-11-08T00:24:49.934988+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3559,7 +3776,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-11-03T20:27:11.52881+01:00"
+    created: "2025-11-08T00:24:49.930932+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3621,7 +3838,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-11-03T20:27:11.524611+01:00"
+    created: "2025-11-08T00:24:49.927046+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3683,7 +3900,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-11-03T20:27:11.520552+01:00"
+    created: "2025-11-08T00:24:49.922951+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3745,7 +3962,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.1
-    created: "2025-11-03T20:27:11.516+01:00"
+    created: "2025-11-08T00:24:49.918786+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3807,7 +4024,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.2.0
-    created: "2025-11-03T20:27:11.511788+01:00"
+    created: "2025-11-08T00:24:49.914904+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3869,7 +4086,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-11-03T20:27:11.473803+01:00"
+    created: "2025-11-08T00:24:49.870532+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3931,7 +4148,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-11-03T20:27:11.427395+01:00"
+    created: "2025-11-08T00:24:49.826946+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -3993,7 +4210,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-11-03T20:27:11.422941+01:00"
+    created: "2025-11-08T00:24:49.823143+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4055,7 +4272,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-11-03T20:27:11.361333+01:00"
+    created: "2025-11-08T00:24:49.768078+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4117,7 +4334,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-11-03T20:27:11.312047+01:00"
+    created: "2025-11-08T00:24:49.720203+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4179,7 +4396,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-11-03T20:27:11.307537+01:00"
+    created: "2025-11-08T00:24:49.716182+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4241,7 +4458,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.1.0
-    created: "2025-11-03T20:27:11.303521+01:00"
+    created: "2025-11-08T00:24:49.712136+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4298,7 +4515,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.0.1
-    created: "2025-11-03T20:27:11.299058+01:00"
+    created: "2025-11-08T00:24:49.708151+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4355,7 +4572,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v3.0.0
-    created: "2025-11-03T20:27:11.295104+01:00"
+    created: "2025-11-08T00:24:49.704051+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4412,7 +4629,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.1
-    created: "2025-11-03T20:27:11.291073+01:00"
+    created: "2025-11-08T00:24:49.700147+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4469,7 +4686,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.1
-    created: "2025-11-03T20:27:11.286836+01:00"
+    created: "2025-11-08T00:24:49.696517+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4526,7 +4743,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.1
-    created: "2025-11-03T20:27:11.282752+01:00"
+    created: "2025-11-08T00:24:49.692414+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4583,7 +4800,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.0
-    created: "2025-11-03T20:27:11.278403+01:00"
+    created: "2025-11-08T00:24:49.68827+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4640,7 +4857,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.55.0
-    created: "2025-11-03T20:27:11.274098+01:00"
+    created: "2025-11-08T00:24:49.684247+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4697,7 +4914,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.54.1
-    created: "2025-11-03T20:27:11.270288+01:00"
+    created: "2025-11-08T00:24:49.680247+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4754,7 +4971,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.54.0
-    created: "2025-11-03T20:27:11.266231+01:00"
+    created: "2025-11-08T00:24:49.676496+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4811,7 +5028,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-11-03T20:27:11.262463+01:00"
+    created: "2025-11-08T00:24:49.672849+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4868,7 +5085,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-11-03T20:27:11.258738+01:00"
+    created: "2025-11-08T00:24:49.667879+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4925,7 +5142,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-11-03T20:27:11.254677+01:00"
+    created: "2025-11-08T00:24:49.663734+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -4982,7 +5199,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.1
-    created: "2025-11-03T20:27:11.251006+01:00"
+    created: "2025-11-08T00:24:49.660088+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5039,7 +5256,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.0
-    created: "2025-11-03T20:27:11.246937+01:00"
+    created: "2025-11-08T00:24:49.656183+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5096,7 +5313,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.0
-    created: "2025-11-03T20:27:11.243076+01:00"
+    created: "2025-11-08T00:24:49.652203+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5153,7 +5370,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.53.0
-    created: "2025-11-03T20:27:11.239396+01:00"
+    created: "2025-11-08T00:24:49.648498+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5210,7 +5427,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.52.0
-    created: "2025-11-03T20:27:11.23538+01:00"
+    created: "2025-11-08T00:24:49.644441+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5267,7 +5484,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.52.0
-    created: "2025-11-03T20:27:11.23189+01:00"
+    created: "2025-11-08T00:24:49.640772+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5324,7 +5541,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.2
-    created: "2025-11-03T20:27:11.228035+01:00"
+    created: "2025-11-08T00:24:49.636797+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5381,7 +5598,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.2
-    created: "2025-11-03T20:27:11.224143+01:00"
+    created: "2025-11-08T00:24:49.632935+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5438,7 +5655,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.2
-    created: "2025-11-03T20:27:11.220617+01:00"
+    created: "2025-11-08T00:24:49.629423+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5495,7 +5712,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.1
-    created: "2025-11-03T20:27:11.216723+01:00"
+    created: "2025-11-08T00:24:49.625607+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5552,7 +5769,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.1
-    created: "2025-11-03T20:27:11.212933+01:00"
+    created: "2025-11-08T00:24:49.622239+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5609,7 +5826,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.51.0
-    created: "2025-11-03T20:27:11.208868+01:00"
+    created: "2025-11-08T00:24:49.618424+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5666,7 +5883,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.1
-    created: "2025-11-03T20:27:11.204842+01:00"
+    created: "2025-11-08T00:24:49.614988+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5723,7 +5940,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.1
-    created: "2025-11-03T20:27:11.201034+01:00"
+    created: "2025-11-08T00:24:49.611192+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5780,7 +5997,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.1
-    created: "2025-11-03T20:27:11.197218+01:00"
+    created: "2025-11-08T00:24:49.60746+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5837,7 +6054,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.50.0
-    created: "2025-11-03T20:27:11.193736+01:00"
+    created: "2025-11-08T00:24:49.604028+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5894,7 +6111,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-11-03T20:27:11.189513+01:00"
+    created: "2025-11-08T00:24:49.600264+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -5951,7 +6168,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-11-03T20:27:11.185821+01:00"
+    created: "2025-11-08T00:24:49.59689+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -6008,7 +6225,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-11-03T20:27:11.182455+01:00"
+    created: "2025-11-08T00:24:49.593167+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -6065,7 +6282,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-11-03T20:27:11.178775+01:00"
+    created: "2025-11-08T00:24:49.589492+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -6122,7 +6339,7 @@ entries:
           url: https://github.com/prometheus/prometheus
     apiVersion: v2
     appVersion: v2.49.1
-    created: "2025-11-03T20:27:11.175086+01:00"
+    created: "2025-11-08T00:24:49.586067+01:00"
     dependencies:
     - condition: alertmanager.enabled
       name: alertmanager
@@ -6173,7 +6390,39 @@ entries:
   prometheus-blackbox-exporter:
   - apiVersion: v2
     appVersion: v0.27.0
-    created: "2025-11-03T20:27:11.550445+01:00"
+    created: "2025-11-08T00:24:49.951766+01:00"
+    description: Prometheus Blackbox Exporter
+    digest: 1bb845f9f036e1d382b0d91f6ddda151ac5802707f811a591c3defbd8e531df7
+    home: https://github.com/prometheus/blackbox_exporter
+    keywords:
+    - prometheus
+    - blackbox
+    - monitoring
+    kubeVersion: '>=1.21.0-0'
+    maintainers:
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+      url: https://github.com/desaintmartin
+    - email: gianrubio@gmail.com
+      name: gianrubio
+      url: https://github.com/gianrubio
+    - email: me@sota.sh
+      name: rsotnychenko
+      url: https://github.com/rsotnychenko
+    - email: monotek23@gmail.com
+      name: monotek
+      url: https://github.com/monotek
+    name: prometheus-blackbox-exporter
+    sources:
+    - https://github.com/prometheus/blackbox_exporter
+    - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter
+    type: application
+    urls:
+    - prometheus-blackbox-exporter-11.4.2.tgz
+    version: 11.4.2
+  - apiVersion: v2
+    appVersion: v0.27.0
+    created: "2025-11-08T00:24:49.95087+01:00"
     description: Prometheus Blackbox Exporter
     digest: 32af235d02e1c60c9b2f1dab0ebb0b3fe40f9179f0c9e6a07f3c60501dc92dc8
     home: https://github.com/prometheus/blackbox_exporter
@@ -6205,7 +6454,7 @@ entries:
     version: 11.4.1
   - apiVersion: v2
     appVersion: v0.27.0
-    created: "2025-11-03T20:27:11.54943+01:00"
+    created: "2025-11-08T00:24:49.94996+01:00"
     description: Prometheus Blackbox Exporter
     digest: ea63456df38382544ef9e7b7d44021fe63af58470bc68c175f077bccf457b6f1
     home: https://github.com/prometheus/blackbox_exporter
@@ -6237,7 +6486,7 @@ entries:
     version: 11.4.0
   - apiVersion: v2
     appVersion: v0.27.0
-    created: "2025-11-03T20:27:11.548345+01:00"
+    created: "2025-11-08T00:24:49.949067+01:00"
     description: Prometheus Blackbox Exporter
     digest: 603bafc3688bcc620a602b71f8941e32f8dae963a861da20df085af7864bb120
     home: https://github.com/prometheus/blackbox_exporter
@@ -6269,7 +6518,7 @@ entries:
     version: 11.3.1
   - apiVersion: v2
     appVersion: v0.27.0
-    created: "2025-11-03T20:27:11.547357+01:00"
+    created: "2025-11-08T00:24:49.948276+01:00"
     description: Prometheus Blackbox Exporter
     digest: faec7aa36beb01a7c5962a21d64349ead29a96a7b2f8de7764870b2b5a5db0ba
     home: https://github.com/prometheus/blackbox_exporter
@@ -6301,7 +6550,7 @@ entries:
     version: 11.3.0
   - apiVersion: v2
     appVersion: v0.27.0
-    created: "2025-11-03T20:27:11.546051+01:00"
+    created: "2025-11-08T00:24:49.947198+01:00"
     description: Prometheus Blackbox Exporter
     digest: 2d558c893ddf6569651863b3df9c318abc67af6f408c86c2ef2246cc960a0c47
     home: https://github.com/prometheus/blackbox_exporter
@@ -6333,7 +6582,7 @@ entries:
     version: 11.2.2
   - apiVersion: v2
     appVersion: v0.27.0
-    created: "2025-11-03T20:27:11.545112+01:00"
+    created: "2025-11-08T00:24:49.946313+01:00"
     description: Prometheus Blackbox Exporter
     digest: 7ad426c279f1f0089a7418b9d93deabb7238abe95a8e1c3a5d9b682e34487dd1
     home: https://github.com/prometheus/blackbox_exporter
@@ -6365,7 +6614,7 @@ entries:
     version: 11.2.1
   - apiVersion: v2
     appVersion: v0.27.0
-    created: "2025-11-03T20:27:11.544264+01:00"
+    created: "2025-11-08T00:24:49.945404+01:00"
     description: Prometheus Blackbox Exporter
     digest: eb62aca0a56bc1c6e63ceec3f63b28953854272f6d689ee8f01926777eef3027
     home: https://github.com/prometheus/blackbox_exporter
@@ -6397,7 +6646,7 @@ entries:
     version: 11.2.0
   - apiVersion: v2
     appVersion: v0.26.0
-    created: "2025-11-03T20:27:11.543413+01:00"
+    created: "2025-11-08T00:24:49.944493+01:00"
     description: Prometheus Blackbox Exporter
     digest: 368522a226e71685574b71ef9111772c60086f02b4d1b65cfde807ec3a7b25bd
     home: https://github.com/prometheus/blackbox_exporter
@@ -6429,7 +6678,7 @@ entries:
     version: 11.1.1
   - apiVersion: v2
     appVersion: v0.26.0
-    created: "2025-11-03T20:27:11.542423+01:00"
+    created: "2025-11-08T00:24:49.943568+01:00"
     description: Prometheus Blackbox Exporter
     digest: 20236a346edef029028103b25e4d208da86751a5f892e4bf89afe670f0564e82
     home: https://github.com/prometheus/blackbox_exporter
@@ -6461,7 +6710,7 @@ entries:
     version: 11.1.0
   - apiVersion: v2
     appVersion: v0.26.0
-    created: "2025-11-03T20:27:11.5414+01:00"
+    created: "2025-11-08T00:24:49.942629+01:00"
     description: Prometheus Blackbox Exporter
     digest: 8490faa24da457d85a274e9a26bd21485698fb40153d842328bd80c41ae2c82d
     home: https://github.com/prometheus/blackbox_exporter
@@ -6493,7 +6742,7 @@ entries:
     version: 11.0.1
   - apiVersion: v2
     appVersion: v0.26.0
-    created: "2025-11-03T20:27:11.540314+01:00"
+    created: "2025-11-08T00:24:49.941688+01:00"
     description: Prometheus Blackbox Exporter
     digest: 6735f2ce904073d3d2670208dae3f057664fc40b43fd262429b123f03b010a9e
     home: https://github.com/prometheus/blackbox_exporter
@@ -6525,7 +6774,7 @@ entries:
     version: 11.0.0
   - apiVersion: v2
     appVersion: v0.26.0
-    created: "2025-11-03T20:27:11.53928+01:00"
+    created: "2025-11-08T00:24:49.940806+01:00"
     description: Prometheus Blackbox Exporter
     digest: d68211906ac2f37a534ab298c1a69a9d2bbf709998cc4a45dea67d27a76c3f8a
     home: https://github.com/prometheus/blackbox_exporter
@@ -6557,7 +6806,7 @@ entries:
     version: 10.1.0
   - apiVersion: v2
     appVersion: v0.26.0
-    created: "2025-11-03T20:27:11.538051+01:00"
+    created: "2025-11-08T00:24:49.93992+01:00"
     description: Prometheus Blackbox Exporter
     digest: 512afc5523cda88dd9d688e0228b7d9856196c74a9c202088ac2f9ced5a5c5cc
     home: https://github.com/prometheus/blackbox_exporter
@@ -6590,7 +6839,26 @@ entries:
   prometheus-ipmi-exporter:
   - apiVersion: v2
     appVersion: v1.10.1
-    created: "2025-11-03T20:27:11.557099+01:00"
+    created: "2025-11-08T00:24:49.958484+01:00"
+    description: This is an IPMI exporter for Prometheus.
+    digest: f55f660d9a787d00357dc4f8f2cea2f0457db4698e0df4eb9049dd0844418dbb
+    home: https://github.com/prometheus-community/ipmi_exporter
+    keywords:
+    - metrics
+    - ipmi
+    - monitoring
+    maintainers:
+    - email: f@lex.la
+      name: lexfrei
+      url: https://github.com/lexfrei
+    name: prometheus-ipmi-exporter
+    type: application
+    urls:
+    - prometheus-ipmi-exporter-0.8.0.tgz
+    version: 0.8.0
+  - apiVersion: v2
+    appVersion: v1.10.1
+    created: "2025-11-08T00:24:49.957887+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: 8744dda8998b0f5f7855775db4273556f95fac212355064d51bbd979878c7727
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6609,7 +6877,7 @@ entries:
     version: 0.7.0
   - apiVersion: v2
     appVersion: v1.10.1
-    created: "2025-11-03T20:27:11.556406+01:00"
+    created: "2025-11-08T00:24:49.957319+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: 0a72e71343a9b861247030f85d0b7e896b836deb203a3b6b9293f56d9e9b863e
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6628,7 +6896,7 @@ entries:
     version: 0.6.3
   - apiVersion: v2
     appVersion: v1.10.1
-    created: "2025-11-03T20:27:11.555857+01:00"
+    created: "2025-11-08T00:24:49.956931+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: 320a489897673f6f50f3755261c3d4298181a4ec3a099ec4ece9b7ab0e408ddf
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6647,7 +6915,7 @@ entries:
     version: 0.6.2
   - apiVersion: v2
     appVersion: v1.10.0
-    created: "2025-11-03T20:27:11.555387+01:00"
+    created: "2025-11-08T00:24:49.956147+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: b99e216a855ba0ea8b3906aa68c6a0b7eb71a0bb3360c20fc5e817fe8a9371f6
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6666,7 +6934,7 @@ entries:
     version: 0.6.1
   - apiVersion: v2
     appVersion: v1.10.0
-    created: "2025-11-03T20:27:11.554903+01:00"
+    created: "2025-11-08T00:24:49.955562+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: aa0acc5a8dcd23dfa35deb837fd3fa7f2078b43b3ccc52270acc7496e3688d9d
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6685,7 +6953,7 @@ entries:
     version: 0.6.0
   - apiVersion: v2
     appVersion: v1.9.0
-    created: "2025-11-03T20:27:11.554284+01:00"
+    created: "2025-11-08T00:24:49.955008+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: fb5f67660f00629aebdf783d5f21bb6acd0f8eb03442508b37f6d7aa25ed6532
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6703,7 +6971,7 @@ entries:
     version: 0.5.0
   - apiVersion: v2
     appVersion: v1.8.0
-    created: "2025-11-03T20:27:11.553633+01:00"
+    created: "2025-11-08T00:24:49.954464+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: 778dc74fb05c0b6cddb53664e85be9c5437c4ecad536fffedbab6d01b01b10af
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6721,7 +6989,7 @@ entries:
     version: 0.4.0
   - apiVersion: v2
     appVersion: v1.8.0
-    created: "2025-11-03T20:27:11.552978+01:00"
+    created: "2025-11-08T00:24:49.953905+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: 5826c982883e729be9848a6aff2a5c598019a1842df159cddb6365807da8e5e7
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6739,7 +7007,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: v1.8.0
-    created: "2025-11-03T20:27:11.552381+01:00"
+    created: "2025-11-08T00:24:49.953386+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: 553deb978ff39491c4941f5cb6c76385b5e22e00598f8703e7be7fa4d1ccb32c
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6757,7 +7025,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: v1.7.0
-    created: "2025-11-03T20:27:11.551786+01:00"
+    created: "2025-11-08T00:24:49.952855+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: b008cba6c4250f3bca578b12d20a5d68b16ed3885ca97834316b18bc58918e73
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6775,7 +7043,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.6.1
-    created: "2025-11-03T20:27:11.551098+01:00"
+    created: "2025-11-08T00:24:49.952313+01:00"
     description: This is an IPMI exporter for Prometheus.
     digest: 8a88e9c3a42b5380b905b5f443b26ad6c0de7f245276e3960d927ec4147bc2b0
     home: https://github.com/prometheus-community/ipmi_exporter
@@ -6794,7 +7062,7 @@ entries:
   prometheus-mongodb-exporter:
   - apiVersion: v2
     appVersion: 0.47.1
-    created: "2025-11-03T20:27:11.561635+01:00"
+    created: "2025-11-08T00:24:49.963731+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: ec810147d46493566399c2c7eeecf05a514cd45d9a7a3f8aed329d61a68d338b
     home: https://github.com/percona/mongodb_exporter
@@ -6818,7 +7086,7 @@ entries:
     version: 3.15.0
   - apiVersion: v2
     appVersion: 0.47.1
-    created: "2025-11-03T20:27:11.561076+01:00"
+    created: "2025-11-08T00:24:49.963174+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: 4a01cbd613edbdc3c873a0c410318291ae335fe2ef4845beb5333188ca969f61
     home: https://github.com/percona/mongodb_exporter
@@ -6842,7 +7110,7 @@ entries:
     version: 3.14.0
   - apiVersion: v2
     appVersion: 0.44.0
-    created: "2025-11-03T20:27:11.560673+01:00"
+    created: "2025-11-08T00:24:49.962586+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: d71eb23762ee9e86517e99db2b0e740b4845ab504156926c2253f17ee2fcca79
     home: https://github.com/percona/mongodb_exporter
@@ -6866,7 +7134,7 @@ entries:
     version: 3.13.0
   - apiVersion: v2
     appVersion: 0.44.0
-    created: "2025-11-03T20:27:11.560253+01:00"
+    created: "2025-11-08T00:24:49.962017+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: db43447d22e4e15d9e01ba34fa4be818cd5f29c84703a13d1c34918099643eb1
     home: https://github.com/percona/mongodb_exporter
@@ -6890,7 +7158,7 @@ entries:
     version: 3.12.1
   - apiVersion: v2
     appVersion: 0.44.0
-    created: "2025-11-03T20:27:11.559701+01:00"
+    created: "2025-11-08T00:24:49.961439+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: 138325ac9f63347ee0c3ea42400dd0a388266c2c3879325518bfd53e78efbccf
     home: https://github.com/percona/mongodb_exporter
@@ -6914,7 +7182,7 @@ entries:
     version: 3.12.0
   - apiVersion: v2
     appVersion: 0.43.1
-    created: "2025-11-03T20:27:11.559177+01:00"
+    created: "2025-11-08T00:24:49.96086+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: e4e9e928ffcf7c50ded2fdb5a1368275f13380a2365769637b5a9036fbafb718
     home: https://github.com/percona/mongodb_exporter
@@ -6938,7 +7206,7 @@ entries:
     version: 3.11.2
   - apiVersion: v2
     appVersion: 0.43.1
-    created: "2025-11-03T20:27:11.55864+01:00"
+    created: "2025-11-08T00:24:49.960294+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: e412da02bde83095f2cc9d04f5f2fc3855c1ef62225d584a433c953171545927
     home: https://github.com/percona/mongodb_exporter
@@ -6962,7 +7230,7 @@ entries:
     version: 3.11.1
   - apiVersion: v2
     appVersion: 0.43.1
-    created: "2025-11-03T20:27:11.558223+01:00"
+    created: "2025-11-08T00:24:49.959686+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: 13e09604756cdd2c321b3170712dc005f8bc95c4e486427c895d74fbdce5c6c2
     home: https://github.com/percona/mongodb_exporter
@@ -6984,7 +7252,7 @@ entries:
     version: 3.11.0
   - apiVersion: v2
     appVersion: 0.43.1
-    created: "2025-11-03T20:27:11.557646+01:00"
+    created: "2025-11-08T00:24:49.959049+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: 7bca1c7a79aa60d3550f7e9fbc38ca81f3b0736671d5afc1936eaeec5b759648
     home: https://github.com/percona/mongodb_exporter
@@ -7006,7 +7274,7 @@ entries:
     version: 3.10.0
   - apiVersion: v2
     appVersion: 0.42.0
-    created: "2025-11-03T20:27:11.562546+01:00"
+    created: "2025-11-08T00:24:49.964843+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: 7c70856871697bd65939816b5a5cfe2f605d81e957b33c03365b8e63143b472a
     home: https://github.com/percona/mongodb_exporter
@@ -7028,7 +7296,7 @@ entries:
     version: 3.9.0
   - apiVersion: v2
     appVersion: 0.42.0
-    created: "2025-11-03T20:27:11.562143+01:00"
+    created: "2025-11-08T00:24:49.964268+01:00"
     description: A Prometheus exporter for MongoDB metrics
     digest: e3cabe7901209d4d9a0d83ea39155c7cea2dc0d41b58f0bcad2456f7f527c191
     home: https://github.com/percona/mongodb_exporter
@@ -7051,7 +7319,7 @@ entries:
   prometheus-nats-exporter:
   - apiVersion: v1
     appVersion: 0.17.3
-    created: "2025-11-03T20:27:11.567137+01:00"
+    created: "2025-11-08T00:24:49.969474+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: cdb797712a45e7aeea6174f221addf877473be09d90683b5b9a04982222650ce
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7074,7 +7342,7 @@ entries:
     version: 2.20.2
   - apiVersion: v1
     appVersion: 0.17.3
-    created: "2025-11-03T20:27:11.566731+01:00"
+    created: "2025-11-08T00:24:49.968978+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: 074522e0eb69de36e1d5deb66d2d4e252b799f582b9b53dfc3c91c27dcb7bffe
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7097,7 +7365,7 @@ entries:
     version: 2.20.1
   - apiVersion: v1
     appVersion: 0.17.3
-    created: "2025-11-03T20:27:11.566365+01:00"
+    created: "2025-11-08T00:24:49.96848+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: bdfd893ce663e126b14c392476a28d423a9cd6ac3d4f9278fe5e4e012e78fc80
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7120,7 +7388,7 @@ entries:
     version: 2.20.0
   - apiVersion: v1
     appVersion: 0.17.3
-    created: "2025-11-03T20:27:11.565964+01:00"
+    created: "2025-11-08T00:24:49.967984+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: c8516f9cadc4469ad8a04f90225762e10f71f2e04bff1b15c12309dd994e2f02
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7143,7 +7411,7 @@ entries:
     version: 2.19.0
   - apiVersion: v1
     appVersion: 0.16.0
-    created: "2025-11-03T20:27:11.565554+01:00"
+    created: "2025-11-08T00:24:49.967459+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: 11605500910ef3cae2593232cb0b81051c77643c78e60df0bd1e762fd46f63ca
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7166,7 +7434,7 @@ entries:
     version: 2.18.1
   - apiVersion: v1
     appVersion: 0.16.0
-    created: "2025-11-03T20:27:11.564971+01:00"
+    created: "2025-11-08T00:24:49.966949+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: 6bb6cd9da5acefc0197f94695fef5a6134963b63b52653d058679d051c749424
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7187,7 +7455,7 @@ entries:
     version: 2.18.0
   - apiVersion: v1
     appVersion: 0.15.0
-    created: "2025-11-03T20:27:11.564375+01:00"
+    created: "2025-11-08T00:24:49.966508+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: 158f3c2957af6b61f59d8e82a0ffcd520ee96b4c68209cfcb5f11145e04207b0
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7208,7 +7476,7 @@ entries:
     version: 2.17.0
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2025-11-03T20:27:11.563944+01:00"
+    created: "2025-11-08T00:24:49.966213+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: 4d9538cee298900b7e70ca0090ad12986ebf66325a7997bffbd7d14ae2ecfb88
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7229,7 +7497,7 @@ entries:
     version: 2.16.0
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2025-11-03T20:27:11.563488+01:00"
+    created: "2025-11-08T00:24:49.965866+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: 18fc6280b0ca9fc652123f866f0e5f77411fe4afde1c4a6f9accbb0a9803ded6
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7250,7 +7518,7 @@ entries:
     version: 2.15.0
   - apiVersion: v1
     appVersion: 0.13.0
-    created: "2025-11-03T20:27:11.563053+01:00"
+    created: "2025-11-08T00:24:49.965333+01:00"
     description: A Helm chart for prometheus-nats-exporter
     digest: fd37a58a41f6fc61237362b58dc990ae4373c0ea0c83acdf74cb4baefbf90b15
     home: https://github.com/nats-io/prometheus-nats-exporter
@@ -7277,7 +7545,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.10.2
-    created: "2025-11-03T20:27:11.577845+01:00"
+    created: "2025-11-08T00:24:49.981548+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: e9d38f8a33efc3cc7f53adb4a1ba91f3bbd312c8974db35a4a98f1f8903d6463
     home: https://github.com/prometheus/node_exporter/
@@ -7309,7 +7577,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.10.0
-    created: "2025-11-03T20:27:11.576925+01:00"
+    created: "2025-11-08T00:24:49.980622+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 351243c92944681119267b96975d155fffede787499c37f5626de03e2d63ff89
     home: https://github.com/prometheus/node_exporter/
@@ -7341,7 +7609,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.576096+01:00"
+    created: "2025-11-08T00:24:49.979693+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: d939e3f4819b1962e6a4655f028e63e82f8299d96b39128041186423d8218588
     home: https://github.com/prometheus/node_exporter/
@@ -7373,7 +7641,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.575204+01:00"
+    created: "2025-11-08T00:24:49.978789+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 1029a7eba6df73abd742a82c2c2f3af30427743000a7392e087dc45427b7115d
     home: https://github.com/prometheus/node_exporter/
@@ -7405,7 +7673,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.574328+01:00"
+    created: "2025-11-08T00:24:49.977877+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 0c9944c6ac5a84029f162c45f4421d131d904b6c063ba7d4d74563dfd988159f
     home: https://github.com/prometheus/node_exporter/
@@ -7437,7 +7705,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.573631+01:00"
+    created: "2025-11-08T00:24:49.976987+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: e89c8bab61847292e9cab1a24a0077284ef76af3b9ce24c29ab20d251c81a1f7
     home: https://github.com/prometheus/node_exporter/
@@ -7469,7 +7737,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.572936+01:00"
+    created: "2025-11-08T00:24:49.976049+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 497bab691c9cd532c4bde40d3277a054c78af36028fdb6853e9e1257abd4d7c5
     home: https://github.com/prometheus/node_exporter/
@@ -7501,7 +7769,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.572195+01:00"
+    created: "2025-11-08T00:24:49.975143+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 4285616b5c5055a53c29f4baada8caf642e5fafcb25d9e606a20d52ffbf09ce7
     home: https://github.com/prometheus/node_exporter/
@@ -7533,7 +7801,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.57114+01:00"
+    created: "2025-11-08T00:24:49.974217+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: cee8333217aa6e1fe0fde549e186d56a9b9bb8bd57b3b829e383fcb52fca807f
     home: https://github.com/prometheus/node_exporter/
@@ -7565,7 +7833,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.570381+01:00"
+    created: "2025-11-08T00:24:49.973182+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 3276a101abc3f9656e35a8208f4364cbbb7660dd6a41fc94c7719cf26492e6ac
     home: https://github.com/prometheus/node_exporter/
@@ -7597,7 +7865,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.1
-    created: "2025-11-03T20:27:11.569654+01:00"
+    created: "2025-11-08T00:24:49.972235+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 61197057f93562d875434fb4a47afb79d7ff072493e215b4cde1c86ecd6a1885
     home: https://github.com/prometheus/node_exporter/
@@ -7629,7 +7897,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.0
-    created: "2025-11-03T20:27:11.568932+01:00"
+    created: "2025-11-08T00:24:49.971319+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: 84734d3cf8813c2239032a34170956615f8dcfb935718fc9ccdd65b2a8d5b50a
     home: https://github.com/prometheus/node_exporter/
@@ -7661,7 +7929,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: 1.9.0
-    created: "2025-11-03T20:27:11.568038+01:00"
+    created: "2025-11-08T00:24:49.970382+01:00"
     description: A Helm chart for prometheus node-exporter
     digest: b18dbd46fe216b3b7da78404d2c9a8c7e35f02549bc612065fe6fa859abd693b
     home: https://github.com/prometheus/node_exporter/
@@ -7689,7 +7957,7 @@ entries:
   prometheus-postgres-exporter:
   - apiVersion: v2
     appVersion: v0.18.1
-    created: "2025-11-03T20:27:11.589208+01:00"
+    created: "2025-11-08T00:24:49.990694+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 9e3ade3ab34d9e3d4b4a482cf3683f961db0d36db093b3f2e74de3f6890e84fc
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7716,7 +7984,7 @@ entries:
     version: 7.3.0
   - apiVersion: v2
     appVersion: v0.18.1
-    created: "2025-11-03T20:27:11.588206+01:00"
+    created: "2025-11-08T00:24:49.98994+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 19d3510e3e543ca98d9efe83458142de61e641123962398ca42a28d349681fb1
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7743,7 +8011,7 @@ entries:
     version: 7.2.1
   - apiVersion: v2
     appVersion: v0.18.0
-    created: "2025-11-03T20:27:11.587206+01:00"
+    created: "2025-11-08T00:24:49.989187+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 9b9db092518879125457b662e877784a6fc83c59d40844a412a2fac897458b8c
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7770,7 +8038,7 @@ entries:
     version: 7.2.0
   - apiVersion: v2
     appVersion: v0.17.1
-    created: "2025-11-03T20:27:11.586415+01:00"
+    created: "2025-11-08T00:24:49.988497+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 1cfeb4d09f8245f7218eae9481ee8bef699e54137792dc6c892ee8ab702573c6
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7797,7 +8065,7 @@ entries:
     version: 7.1.1
   - apiVersion: v2
     appVersion: v0.17.1
-    created: "2025-11-03T20:27:11.585552+01:00"
+    created: "2025-11-08T00:24:49.987792+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 5c0da82b572c4071fb34de0b3c73bea38ab9bbb813449773747047299d5b56d3
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7824,7 +8092,7 @@ entries:
     version: 7.0.1
   - apiVersion: v2
     appVersion: v0.17.1
-    created: "2025-11-03T20:27:11.584788+01:00"
+    created: "2025-11-08T00:24:49.987174+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 25614d175e61735e800ab5d492263a783d04fca58263e5750f1e05275467390b
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7851,7 +8119,7 @@ entries:
     version: 7.0.0
   - apiVersion: v2
     appVersion: v0.17.1
-    created: "2025-11-03T20:27:11.580518+01:00"
+    created: "2025-11-08T00:24:49.983971+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 4f60e1be77d8408fdbca24396918d30c8a63736e2c7bdf7cbf30e3c4e532db61
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7878,7 +8146,7 @@ entries:
     version: 6.10.2
   - apiVersion: v2
     appVersion: v0.17.0
-    created: "2025-11-03T20:27:11.579757+01:00"
+    created: "2025-11-08T00:24:49.983275+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 45c4e52fd0e9506b522782ed243c2068c0d090d5e4f8c4ed9485111cd0a69e86
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7905,7 +8173,7 @@ entries:
     version: 6.10.1
   - apiVersion: v2
     appVersion: v0.17.0
-    created: "2025-11-03T20:27:11.57878+01:00"
+    created: "2025-11-08T00:24:49.982642+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 9d677759c82c12fb3aa16ff96f055aa3d21c664a6c8516fb6c2024768b0a11e0
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7932,7 +8200,7 @@ entries:
     version: 6.10.0
   - apiVersion: v2
     appVersion: v0.17.0
-    created: "2025-11-03T20:27:11.583906+01:00"
+    created: "2025-11-08T00:24:49.98653+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: e3b61828b092578de2a8a8603e3ca349ea99f4c29135b166f52dc7fb869ce249
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7959,7 +8227,7 @@ entries:
     version: 6.9.0
   - apiVersion: v2
     appVersion: v0.16.0
-    created: "2025-11-03T20:27:11.583026+01:00"
+    created: "2025-11-08T00:24:49.985803+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 4404f850372f215c4949d3bb0b9daac5b6d36cea1cf4f373a6a04cca1deb5cc2
     home: https://github.com/prometheus-community/postgres_exporter
@@ -7983,7 +8251,7 @@ entries:
     version: 6.8.1
   - apiVersion: v2
     appVersion: v0.16.0
-    created: "2025-11-03T20:27:11.582225+01:00"
+    created: "2025-11-08T00:24:49.985175+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 21ef0bc25b2b0e90fedf0ccf0308d7504162e3997d77e773554780c1e7aa00e7
     home: https://github.com/prometheus-community/postgres_exporter
@@ -8007,7 +8275,7 @@ entries:
     version: 6.8.0
   - apiVersion: v2
     appVersion: v0.16.0
-    created: "2025-11-03T20:27:11.581372+01:00"
+    created: "2025-11-08T00:24:49.984626+01:00"
     description: A Helm chart for prometheus postgres-exporter
     digest: 7cc3455dcc4c6cc893f86f5f6d97080754bac8bd4effeccb6976e6b51a162926
     home: https://github.com/prometheus-community/postgres_exporter
@@ -8037,7 +8305,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.2
-    created: "2025-11-03T20:27:11.597607+01:00"
+    created: "2025-11-08T00:24:49.998895+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: 23a125eb0c86f1a2cf838e5016ca94a9829144a3398ae92431ab91e604650eb9
     home: https://github.com/prometheus/pushgateway
@@ -8068,7 +8336,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.1
-    created: "2025-11-03T20:27:11.596981+01:00"
+    created: "2025-11-08T00:24:49.998144+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: f3e4583f4b8cdb7ac78362448f2d564b92abd118e626153d9d331a2c1f5b0488
     home: https://github.com/prometheus/pushgateway
@@ -8099,7 +8367,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.1
-    created: "2025-11-03T20:27:11.596155+01:00"
+    created: "2025-11-08T00:24:49.997431+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: c605577387f2160768b66cc31d5c81225e5ecefdf361da14a34df3b61120acee
     home: https://github.com/prometheus/pushgateway
@@ -8130,7 +8398,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.1
-    created: "2025-11-03T20:27:11.595487+01:00"
+    created: "2025-11-08T00:24:49.996682+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: 16003da55eb06b8d4136aa8fbf832b201766f7ecc70d3dadb190b4a22791ef12
     home: https://github.com/prometheus/pushgateway
@@ -8161,7 +8429,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.1
-    created: "2025-11-03T20:27:11.594805+01:00"
+    created: "2025-11-08T00:24:49.995956+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: d2d2c115ea77b2a5502fb690aa250bf38623bfe2936daedae5143afbfd352fdd
     home: https://github.com/prometheus/pushgateway
@@ -8192,7 +8460,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.1
-    created: "2025-11-03T20:27:11.594119+01:00"
+    created: "2025-11-08T00:24:49.99524+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: 7215f723c88d2182a5472cb14566274e3ff435b8dff55c76bb37f37b4ea4f4bd
     home: https://github.com/prometheus/pushgateway
@@ -8223,7 +8491,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.1
-    created: "2025-11-03T20:27:11.593454+01:00"
+    created: "2025-11-08T00:24:49.9945+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: 18a92efd905d28cb9cabc2d44db1b83884b2f9928c163ad93175f9cccf20ced8
     home: https://github.com/prometheus/pushgateway
@@ -8254,7 +8522,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.0
-    created: "2025-11-03T20:27:11.592704+01:00"
+    created: "2025-11-08T00:24:49.993767+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: 485208c928c3ebb414fb43dd605a961df707f80e2e1d394ed4199f9a22bdca36
     home: https://github.com/prometheus/pushgateway
@@ -8285,7 +8553,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.0
-    created: "2025-11-03T20:27:11.591952+01:00"
+    created: "2025-11-08T00:24:49.993038+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: e889c218216cab510a0f27b01b5ec13228dd63950684f84f8d07597aa043dadb
     home: https://github.com/prometheus/pushgateway
@@ -8316,7 +8584,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.0
-    created: "2025-11-03T20:27:11.591199+01:00"
+    created: "2025-11-08T00:24:49.992303+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: 2ab2d09df30c5cb90b4e12e250213f4b65ddd2a9505698c0eac82e5956a46dd8
     home: https://github.com/prometheus/pushgateway
@@ -8347,7 +8615,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.11.0
-    created: "2025-11-03T20:27:11.590391+01:00"
+    created: "2025-11-08T00:24:49.991672+01:00"
     description: A Helm chart for prometheus pushgateway
     digest: 7b6c45fd6dabc035e37c640f4d1620ae6a4bb6a7219c13c491ed450fcfeeccc2
     home: https://github.com/prometheus/pushgateway
@@ -8371,7 +8639,7 @@ entries:
   prometheus-redis-exporter:
   - apiVersion: v2
     appVersion: v1.80.0
-    created: "2025-11-03T20:27:11.605379+01:00"
+    created: "2025-11-08T00:24:50.007211+01:00"
     description: Prometheus exporter for Redis metrics
     digest: ec20488327b2ad89b47eccba6d5eead3db1a4614a2b0c194a72b3b057edee72f
     home: https://github.com/oliver006/redis_exporter
@@ -8394,7 +8662,7 @@ entries:
     version: 6.20.0
   - apiVersion: v2
     appVersion: v1.79.0
-    created: "2025-11-03T20:27:11.604945+01:00"
+    created: "2025-11-08T00:24:50.006529+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 26bf377afd61d1114281f19adcf4b8242d71fb82221e6fb19d25c55d0a0e8e04
     home: https://github.com/oliver006/redis_exporter
@@ -8417,7 +8685,7 @@ entries:
     version: 6.19.0
   - apiVersion: v2
     appVersion: v1.78.0
-    created: "2025-11-03T20:27:11.604249+01:00"
+    created: "2025-11-08T00:24:50.005896+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 4d6740730068ae9e47734f90784e3fb040b45435f638ca885a8a75d9a33eac7b
     home: https://github.com/oliver006/redis_exporter
@@ -8440,7 +8708,7 @@ entries:
     version: 6.18.0
   - apiVersion: v2
     appVersion: v1.77.0
-    created: "2025-11-03T20:27:11.60367+01:00"
+    created: "2025-11-08T00:24:50.005246+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 9ed2170fff8f303ce9758835f26481635b3541dbe9b1470c0f9bb768e879233f
     home: https://github.com/oliver006/redis_exporter
@@ -8463,7 +8731,7 @@ entries:
     version: 6.17.0
   - apiVersion: v2
     appVersion: v1.76.0
-    created: "2025-11-03T20:27:11.603222+01:00"
+    created: "2025-11-08T00:24:50.004568+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 41b24c39ad411a433f3dea56f68a8f948ccce43fb361631c96f02afbb0c4598a
     home: https://github.com/oliver006/redis_exporter
@@ -8486,7 +8754,7 @@ entries:
     version: 6.16.0
   - apiVersion: v2
     appVersion: v1.75.0
-    created: "2025-11-03T20:27:11.602772+01:00"
+    created: "2025-11-08T00:24:50.003952+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 040b49963327f2f870c3a3ae98b27cde95a358b9da2ba14ba3b7aec8aa8a9f93
     home: https://github.com/oliver006/redis_exporter
@@ -8509,7 +8777,7 @@ entries:
     version: 6.15.0
   - apiVersion: v2
     appVersion: v1.74.0
-    created: "2025-11-03T20:27:11.602183+01:00"
+    created: "2025-11-08T00:24:50.003307+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 3376d279e4c6e085546f22b6df1466ddb4c16dcc33028567f2f72116b6ca48f2
     home: https://github.com/oliver006/redis_exporter
@@ -8532,7 +8800,7 @@ entries:
     version: 6.14.0
   - apiVersion: v2
     appVersion: v1.74.0
-    created: "2025-11-03T20:27:11.601734+01:00"
+    created: "2025-11-08T00:24:50.002634+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 6557b8cfd9361fbd22f7d0a434320776d911aa3c67290f71fdea062f47f8eed0
     home: https://github.com/oliver006/redis_exporter
@@ -8555,7 +8823,7 @@ entries:
     version: 6.13.1
   - apiVersion: v2
     appVersion: v1.74.0
-    created: "2025-11-03T20:27:11.601279+01:00"
+    created: "2025-11-08T00:24:50.001964+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 9a967fead34ed237e352a9f546e55354bb318c4981b6d34478a1fb526eb55b61
     home: https://github.com/oliver006/redis_exporter
@@ -8578,7 +8846,7 @@ entries:
     version: 6.12.0
   - apiVersion: v2
     appVersion: v1.73.0
-    created: "2025-11-03T20:27:11.600641+01:00"
+    created: "2025-11-08T00:24:50.001283+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 92857db442d9f412e2b004ae8c77ed962be5990ee8c1acd708bce03f26f428e4
     home: https://github.com/oliver006/redis_exporter
@@ -8601,7 +8869,7 @@ entries:
     version: 6.11.0
   - apiVersion: v2
     appVersion: v1.69.0
-    created: "2025-11-03T20:27:11.59994+01:00"
+    created: "2025-11-08T00:24:50.000702+01:00"
     description: Prometheus exporter for Redis metrics
     digest: 547cc4303ce4dce544f5c36b943644bed566b7320fd2ec682e6e64ebdb2eed2f
     home: https://github.com/oliver006/redis_exporter
@@ -8624,7 +8892,7 @@ entries:
     version: 6.10.3
   - apiVersion: v2
     appVersion: v1.69.0
-    created: "2025-11-03T20:27:11.599043+01:00"
+    created: "2025-11-08T00:24:50.000217+01:00"
     description: Prometheus exporter for Redis metrics
     digest: c6d09a6cc6004a19c1ef0b11a81b2358cfb13c2bb7d003ddd9bebf533843b29e
     home: https://github.com/oliver006/redis_exporter
@@ -8647,7 +8915,7 @@ entries:
     version: 6.10.2
   - apiVersion: v2
     appVersion: v1.69.0
-    created: "2025-11-03T20:27:11.598417+01:00"
+    created: "2025-11-08T00:24:49.999478+01:00"
     description: Prometheus exporter for Redis metrics
     digest: d37cf5a390b737ef22bac7111f80f05574cca05f494ba3467588ee74fd680e08
     home: https://github.com/oliver006/redis_exporter
@@ -8671,7 +8939,30 @@ entries:
   prometheus-snmp-exporter:
   - apiVersion: v1
     appVersion: v0.29.0
-    created: "2025-11-03T20:27:11.614494+01:00"
+    created: "2025-11-08T00:24:50.015634+01:00"
+    description: Prometheus SNMP Exporter
+    digest: 22397f1cf931de6d3f04b9b531e68ce377881b281b6f76070c05908368f66caf
+    home: https://github.com/prometheus/snmp_exporter
+    keywords:
+    - prometheus
+    - snmp
+    - monitoring
+    maintainers:
+    - email: github@xiu.io
+      name: xiu
+      url: https://github.com/xiu
+    - email: walker.thomas.p@gmail.com
+      name: walker-tom
+      url: https://github.com/walker-tom
+    name: prometheus-snmp-exporter
+    sources:
+    - https://github.com/prometheus/snmp_exporter
+    urls:
+    - prometheus-snmp-exporter-9.8.2.tgz
+    version: 9.8.2
+  - apiVersion: v1
+    appVersion: v0.29.0
+    created: "2025-11-08T00:24:50.014953+01:00"
     description: Prometheus SNMP Exporter
     digest: 8aacaf140e2289f1f3f9151920aad25876aca856412b4787eebfb0ad3138b18c
     home: https://github.com/prometheus/snmp_exporter
@@ -8694,7 +8985,7 @@ entries:
     version: 9.8.1
   - apiVersion: v1
     appVersion: v0.29.0
-    created: "2025-11-03T20:27:11.613626+01:00"
+    created: "2025-11-08T00:24:50.014282+01:00"
     description: Prometheus SNMP Exporter
     digest: 51efb53074bf59e98eedb4fdddfb57ce28d3518dcfcc7988c444315ca6a9a99b
     home: https://github.com/prometheus/snmp_exporter
@@ -8717,7 +9008,7 @@ entries:
     version: 9.6.2
   - apiVersion: v1
     appVersion: v0.29.0
-    created: "2025-11-03T20:27:11.61276+01:00"
+    created: "2025-11-08T00:24:50.013593+01:00"
     description: Prometheus SNMP Exporter
     digest: 40ba6908a8ec541b168a1b270352caa7f55f359b2beca5e45c411e5ce9106bb8
     home: https://github.com/prometheus/snmp_exporter
@@ -8740,7 +9031,7 @@ entries:
     version: 9.6.1
   - apiVersion: v1
     appVersion: v0.29.0
-    created: "2025-11-03T20:27:11.61196+01:00"
+    created: "2025-11-08T00:24:50.012902+01:00"
     description: Prometheus SNMP Exporter
     digest: c0a88400ae6477d1635f3b731fa58ff744b5eedb02ca5e90773a5031e0cfec6c
     home: https://github.com/prometheus/snmp_exporter
@@ -8763,7 +9054,7 @@ entries:
     version: 9.6.0
   - apiVersion: v1
     appVersion: v0.29.0
-    created: "2025-11-03T20:27:11.611125+01:00"
+    created: "2025-11-08T00:24:50.012246+01:00"
     description: Prometheus SNMP Exporter
     digest: 10bd5f06fc8671abcb0fdb2038eb6414a5ced11b58efae7a25de9b824be6a85a
     home: https://github.com/prometheus/snmp_exporter
@@ -8786,7 +9077,7 @@ entries:
     version: 9.5.0
   - apiVersion: v1
     appVersion: v0.29.0
-    created: "2025-11-03T20:27:11.610334+01:00"
+    created: "2025-11-08T00:24:50.011558+01:00"
     description: Prometheus SNMP Exporter
     digest: 6843c1be30a71cb06c43761bb206bfb4b462f46491a14500db1ebd124d99324f
     home: https://github.com/prometheus/snmp_exporter
@@ -8809,7 +9100,7 @@ entries:
     version: 9.4.0
   - apiVersion: v1
     appVersion: v0.28.0
-    created: "2025-11-03T20:27:11.609614+01:00"
+    created: "2025-11-08T00:24:50.010868+01:00"
     description: Prometheus SNMP Exporter
     digest: e62893d169721e9206ee31ae18d388353d020d49717e6f054328724dccd8b1b1
     home: https://github.com/prometheus/snmp_exporter
@@ -8832,7 +9123,7 @@ entries:
     version: 9.3.1
   - apiVersion: v1
     appVersion: v0.28.0
-    created: "2025-11-03T20:27:11.608937+01:00"
+    created: "2025-11-08T00:24:50.010203+01:00"
     description: Prometheus SNMP Exporter
     digest: 37bf38b07dfaf8ce965367692d886ab60297b74263f64fa4077f344e9084cb6d
     home: https://github.com/prometheus/snmp_exporter
@@ -8855,7 +9146,7 @@ entries:
     version: 9.3.0
   - apiVersion: v1
     appVersion: v0.28.0
-    created: "2025-11-03T20:27:11.607762+01:00"
+    created: "2025-11-08T00:24:50.009536+01:00"
     description: Prometheus SNMP Exporter
     digest: 870109096afe4775c65595a304721643a18b817df3801b65f022af78a57e2560
     home: https://github.com/prometheus/snmp_exporter
@@ -8878,7 +9169,7 @@ entries:
     version: 9.2.1
   - apiVersion: v1
     appVersion: v0.28.0
-    created: "2025-11-03T20:27:11.606949+01:00"
+    created: "2025-11-08T00:24:50.008558+01:00"
     description: Prometheus SNMP Exporter
     digest: 3e36a8e0fbe7d1929c93d187e7bfaa22fbc1991fdc93f12319b1b11605ce6c2b
     home: https://github.com/prometheus/snmp_exporter
@@ -8901,7 +9192,7 @@ entries:
     version: 9.2.0
   - apiVersion: v1
     appVersion: v0.28.0
-    created: "2025-11-03T20:27:11.606137+01:00"
+    created: "2025-11-08T00:24:50.007881+01:00"
     description: Prometheus SNMP Exporter
     digest: e82f54b2f049ba634816a31adb440d0f26b4f2da79c4b9647a238033cb8d459e
     home: https://github.com/prometheus/snmp_exporter
@@ -8922,4 +9213,4 @@ entries:
     urls:
     - prometheus-snmp-exporter-9.1.0.tgz
     version: 9.1.0
-generated: "2025-11-03T20:27:11.140114+01:00"
+generated: "2025-11-08T00:24:49.555494+01:00"

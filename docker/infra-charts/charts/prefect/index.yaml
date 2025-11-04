@@ -2,8 +2,80 @@ apiVersion: v1
 entries:
   prefect-server:
   - apiVersion: v2
+    appVersion: 3.6.0
+    created: "2025-11-08T00:24:49.339275+01:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.31.4
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 22.0.4
+    description: Prefect server application bundle
+    digest: 97411252931763400a9ca145587c6747ee7ca05b5fc876643f2d2d3822e3779a
+    home: https://github.com/PrefectHQ
+    maintainers:
+    - email: jamie@prefect.io
+      name: jamiezieziula
+    - email: jimi@prefect.io
+      name: jimid27
+    - email: edward@prefect.io
+      name: parkedwards
+    - email: mitchell@prefect.io
+      name: mitchnielsen
+    name: prefect-server
+    sources:
+    - https://github.com/PrefectHQ/prefect-helm
+    type: application
+    urls:
+    - prefect-server-2025.11.7171239.tgz
+    version: 2025.11.7171239
+  - apiVersion: v2
     appVersion: 3.5.0
-    created: "2025-11-03T20:27:10.885626+01:00"
+    created: "2025-11-08T00:24:49.332676+01:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.31.4
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 22.0.4
+    description: Prefect server application bundle
+    digest: e19fdc9b7444066b17836232b43f2cf8631cb7ea79283bced89f9425699f6083
+    home: https://github.com/PrefectHQ
+    maintainers:
+    - email: jamie@prefect.io
+      name: jamiezieziula
+    - email: jimi@prefect.io
+      name: jimid27
+    - email: edward@prefect.io
+      name: parkedwards
+    - email: mitchell@prefect.io
+      name: mitchnielsen
+    name: prefect-server
+    sources:
+    - https://github.com/PrefectHQ/prefect-helm
+    type: application
+    urls:
+    - prefect-server-2025.11.5150433.tgz
+    version: 2025.11.5150433
+  - apiVersion: v2
+    appVersion: 3.5.0
+    created: "2025-11-08T00:24:49.305591+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -39,7 +111,7 @@ entries:
     version: 2025.10.31165907
   - apiVersion: v2
     appVersion: 3.4.25
-    created: "2025-11-03T20:27:10.878958+01:00"
+    created: "2025-11-08T00:24:49.298562+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -75,7 +147,7 @@ entries:
     version: 2025.10.23195705
   - apiVersion: v2
     appVersion: 3.4.24
-    created: "2025-11-03T20:27:10.863922+01:00"
+    created: "2025-11-08T00:24:49.284764+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -111,7 +183,7 @@ entries:
     version: 2025.10.16183503
   - apiVersion: v2
     appVersion: 3.4.23
-    created: "2025-11-03T20:27:10.906356+01:00"
+    created: "2025-11-08T00:24:49.326058+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -147,7 +219,7 @@ entries:
     version: 2025.10.9203337
   - apiVersion: v2
     appVersion: 3.4.22
-    created: "2025-11-03T20:27:10.899438+01:00"
+    created: "2025-11-08T00:24:49.319429+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -183,7 +255,7 @@ entries:
     version: 2025.10.3181429
   - apiVersion: v2
     appVersion: 3.4.21
-    created: "2025-11-03T20:27:10.892372+01:00"
+    created: "2025-11-08T00:24:49.312551+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -219,7 +291,7 @@ entries:
     version: 2025.10.3175638
   - apiVersion: v2
     appVersion: 3.4.21
-    created: "2025-11-03T20:27:10.871481+01:00"
+    created: "2025-11-08T00:24:49.291565+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -255,7 +327,7 @@ entries:
     version: 2025.10.2191351
   - apiVersion: v2
     appVersion: 3.4.20
-    created: "2025-11-03T20:27:10.94165+01:00"
+    created: "2025-11-08T00:24:49.371745+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -291,7 +363,7 @@ entries:
     version: 2025.9.29202143
   - apiVersion: v2
     appVersion: 3.4.20
-    created: "2025-11-03T20:27:10.93464+01:00"
+    created: "2025-11-08T00:24:49.36515+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -327,7 +399,7 @@ entries:
     version: 2025.9.25210301
   - apiVersion: v2
     appVersion: 3.4.19
-    created: "2025-11-03T20:27:10.927588+01:00"
+    created: "2025-11-08T00:24:49.358611+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -363,7 +435,7 @@ entries:
     version: 2025.9.24190503
   - apiVersion: v2
     appVersion: 3.4.19
-    created: "2025-11-03T20:27:10.920698+01:00"
+    created: "2025-11-08T00:24:49.352124+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -399,7 +471,7 @@ entries:
     version: 2025.9.19212205
   - apiVersion: v2
     appVersion: 3.4.18
-    created: "2025-11-03T20:27:10.913648+01:00"
+    created: "2025-11-08T00:24:49.345705+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -435,8 +507,64 @@ entries:
     version: 2025.9.12160156
   prefect-worker:
   - apiVersion: v2
+    appVersion: 3.6.0
+    created: "2025-11-08T00:24:49.383364+01:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.31.4
+    description: Prefect Worker application bundle
+    digest: 1e27bb8e4453ae9793359327af7d3b219776b5b195caca672d408be3ef46f146
+    home: https://github.com/PrefectHQ
+    maintainers:
+    - email: jamie@prefect.io
+      name: jamiezieziula
+    - email: jimi@prefect.io
+      name: jimid27
+    - email: edward@prefect.io
+      name: parkedwards
+    - email: mitchell@prefect.io
+      name: mitchnielsen
+    name: prefect-worker
+    sources:
+    - https://github.com/PrefectHQ/prefect-helm
+    type: application
+    urls:
+    - prefect-worker-2025.11.7171239.tgz
+    version: 2025.11.7171239
+  - apiVersion: v2
     appVersion: 3.5.0
-    created: "2025-11-03T20:27:10.947839+01:00"
+    created: "2025-11-08T00:24:49.381828+01:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 2.31.4
+    description: Prefect Worker application bundle
+    digest: ad3c4a5008b4332a733afa7cbf5768072ce0abd3f067ea801b68628b2556e1db
+    home: https://github.com/PrefectHQ
+    maintainers:
+    - email: jamie@prefect.io
+      name: jamiezieziula
+    - email: jimi@prefect.io
+      name: jimid27
+    - email: edward@prefect.io
+      name: parkedwards
+    - email: mitchell@prefect.io
+      name: mitchnielsen
+    name: prefect-worker
+    sources:
+    - https://github.com/PrefectHQ/prefect-helm
+    type: application
+    urls:
+    - prefect-worker-2025.11.5150433.tgz
+    version: 2025.11.5150433
+  - apiVersion: v2
+    appVersion: 3.5.0
+    created: "2025-11-08T00:24:49.376801+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -464,7 +592,7 @@ entries:
     version: 2025.10.31165907
   - apiVersion: v2
     appVersion: 3.4.25
-    created: "2025-11-03T20:27:10.946565+01:00"
+    created: "2025-11-08T00:24:49.375565+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -492,7 +620,7 @@ entries:
     version: 2025.10.23195705
   - apiVersion: v2
     appVersion: 3.4.24
-    created: "2025-11-03T20:27:10.943216+01:00"
+    created: "2025-11-08T00:24:49.373093+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -520,7 +648,7 @@ entries:
     version: 2025.10.16183503
   - apiVersion: v2
     appVersion: 3.4.23
-    created: "2025-11-03T20:27:10.952953+01:00"
+    created: "2025-11-08T00:24:49.380658+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -548,7 +676,7 @@ entries:
     version: 2025.10.9203337
   - apiVersion: v2
     appVersion: 3.4.22
-    created: "2025-11-03T20:27:10.951381+01:00"
+    created: "2025-11-08T00:24:49.379485+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -576,7 +704,7 @@ entries:
     version: 2025.10.3181429
   - apiVersion: v2
     appVersion: 3.4.21
-    created: "2025-11-03T20:27:10.94976+01:00"
+    created: "2025-11-08T00:24:49.378301+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -604,7 +732,7 @@ entries:
     version: 2025.10.3175638
   - apiVersion: v2
     appVersion: 3.4.21
-    created: "2025-11-03T20:27:10.944897+01:00"
+    created: "2025-11-08T00:24:49.37437+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -632,7 +760,7 @@ entries:
     version: 2025.10.2191351
   - apiVersion: v2
     appVersion: 3.4.20
-    created: "2025-11-03T20:27:10.960948+01:00"
+    created: "2025-11-08T00:24:49.38946+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -660,7 +788,7 @@ entries:
     version: 2025.9.29202143
   - apiVersion: v2
     appVersion: 3.4.20
-    created: "2025-11-03T20:27:10.959671+01:00"
+    created: "2025-11-08T00:24:49.388053+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -688,7 +816,7 @@ entries:
     version: 2025.9.25210301
   - apiVersion: v2
     appVersion: 3.4.19
-    created: "2025-11-03T20:27:10.958084+01:00"
+    created: "2025-11-08T00:24:49.386844+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -716,7 +844,7 @@ entries:
     version: 2025.9.24190503
   - apiVersion: v2
     appVersion: 3.4.19
-    created: "2025-11-03T20:27:10.956205+01:00"
+    created: "2025-11-08T00:24:49.385664+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -744,7 +872,7 @@ entries:
     version: 2025.9.19212205
   - apiVersion: v2
     appVersion: 3.4.18
-    created: "2025-11-03T20:27:10.954591+01:00"
+    created: "2025-11-08T00:24:49.384524+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -773,7 +901,7 @@ entries:
   prometheus-prefect-exporter:
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2025-11-03T20:27:10.972788+01:00"
+    created: "2025-11-08T00:24:49.398584+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -803,7 +931,7 @@ entries:
     version: 2025.9.30210854
   - apiVersion: v2
     appVersion: 2.0.1
-    created: "2025-11-03T20:27:10.971562+01:00"
+    created: "2025-11-08T00:24:49.397673+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -833,7 +961,7 @@ entries:
     version: 2025.9.29202359
   - apiVersion: v2
     appVersion: 2.0.1
-    created: "2025-11-03T20:27:10.970104+01:00"
+    created: "2025-11-08T00:24:49.39673+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -863,7 +991,7 @@ entries:
     version: 2025.8.8172658
   - apiVersion: v2
     appVersion: 2.0.1
-    created: "2025-11-03T20:27:10.96908+01:00"
+    created: "2025-11-08T00:24:49.395843+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -893,7 +1021,7 @@ entries:
     version: 2025.7.31143508
   - apiVersion: v2
     appVersion: 2.0.0
-    created: "2025-11-03T20:27:10.968043+01:00"
+    created: "2025-11-08T00:24:49.394982+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -923,7 +1051,7 @@ entries:
     version: 2025.7.24191120
   - apiVersion: v2
     appVersion: 1.7.1
-    created: "2025-11-03T20:27:10.966802+01:00"
+    created: "2025-11-08T00:24:49.393766+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -953,7 +1081,7 @@ entries:
     version: 2025.7.2011013
   - apiVersion: v2
     appVersion: 1.7.0
-    created: "2025-11-03T20:27:10.965848+01:00"
+    created: "2025-11-08T00:24:49.392853+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -983,7 +1111,7 @@ entries:
     version: 2025.4.28181223
   - apiVersion: v2
     appVersion: 1.6.7
-    created: "2025-11-03T20:27:10.964766+01:00"
+    created: "2025-11-08T00:24:49.392008+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1013,7 +1141,7 @@ entries:
     version: 2025.2.5185329
   - apiVersion: v2
     appVersion: 1.6.6
-    created: "2025-11-03T20:27:10.96345+01:00"
+    created: "2025-11-08T00:24:49.391079+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1043,7 +1171,7 @@ entries:
     version: 2025.1.30193245
   - apiVersion: v2
     appVersion: 1.6.6
-    created: "2025-11-03T20:27:10.962301+01:00"
+    created: "2025-11-08T00:24:49.390258+01:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -1071,4 +1199,4 @@ entries:
     urls:
     - prometheus-prefect-exporter-2025.1.24200354.tgz
     version: 2025.1.24200354
-generated: "2025-11-03T20:27:10.85639+01:00"
+generated: "2025-11-08T00:24:49.277928+01:00"

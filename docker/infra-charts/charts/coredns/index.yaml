@@ -7,7 +7,7 @@ entries:
           description: Add default values to chart to fix cluster role name templating issue
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2025-11-03T20:27:06.268756+01:00"
+    created: "2025-11-08T00:24:45.016972+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: f790cc67b9e12d9267c2bbfc63ef4143400b9cc8c48ec4a293ce5683292aa53b
@@ -35,7 +35,7 @@ entries:
           description: Add environment variables on container specs
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2025-11-03T20:27:06.268078+01:00"
+    created: "2025-11-08T00:24:45.016179+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: c625aa58a7f7cae1d2fbbe653dd1252a7d0a82bbca8784ebc3a02b079b39984b
@@ -63,7 +63,7 @@ entries:
           description: Move `trafficDistribution` key to correct path
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2025-11-03T20:27:06.267297+01:00"
+    created: "2025-11-08T00:24:45.015404+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 0af7a146a1b5448ded5fb3ec013b8e4fe3ccd87c54edb69c7e0fda9159df5a0a
@@ -91,7 +91,7 @@ entries:
           description: Support `trafficDistribution` property for service
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2025-11-03T20:27:06.266522+01:00"
+    created: "2025-11-08T00:24:45.01457+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: b2af3779ff14a0b0272802b583adf1b94cdb0df92595b4eb0a934193acfca244
@@ -119,7 +119,7 @@ entries:
           description: Support different service and container ports
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2025-11-03T20:27:06.26567+01:00"
+    created: "2025-11-08T00:24:45.013595+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 951af09ba3d777e52b720dd4e10a2801bb0f5137adba379b7bf6ced3a7682ae3
@@ -147,7 +147,7 @@ entries:
           description: Add support for specifying the service loadBalancerClass.
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2025-11-03T20:27:06.26459+01:00"
+    created: "2025-11-08T00:24:45.012698+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 3567a4fdbd1cb774a13c050d0417856f6d24d6b5d9958155179894e1452384c7
@@ -175,7 +175,7 @@ entries:
           description: Upgrade CoreDNS to 1.11.3
     apiVersion: v2
     appVersion: 1.11.3
-    created: "2025-11-03T20:27:06.263594+01:00"
+    created: "2025-11-08T00:24:45.01145+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 5599ba9de33671243bf93496956eb160fc1aac96728c64e0e33e0f3a35ad4b2b
@@ -205,7 +205,7 @@ entries:
           description: Setting `clusterRole.nameOverride` to allow overriding the ClusterRole name.
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.262791+01:00"
+    created: "2025-11-08T00:24:45.01052+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: a057fed7108dd3e355b5bebeafe2d8b621a20e31e353da1996185ae8595058ff
@@ -233,7 +233,7 @@ entries:
           description: Ability to skip configmap management
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.26211+01:00"
+    created: "2025-11-08T00:24:45.009731+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 8c9018ecfba0a2a8309307df30a9999defc23fb14caf870b5ba0b04c8c653b91
@@ -263,7 +263,7 @@ entries:
           description: Removed deprecated "engine: gotpl" from the Chart.yaml
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.261447+01:00"
+    created: "2025-11-08T00:24:45.008933+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 3c73d9d62313dae6e870abfe357e75059e00b8fef58d65dfd9a8f292614c2c3d
@@ -291,7 +291,7 @@ entries:
           description: add .Release.Namespace in metadata
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.260767+01:00"
+    created: "2025-11-08T00:24:45.008146+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: f64ae3551ca1187264a9421ca61f46b0b4b563333c3cb53d7e25d3b236970cab
@@ -319,7 +319,7 @@ entries:
           description: Added option to override defaultMode for extraSecrets
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.259959+01:00"
+    created: "2025-11-08T00:24:45.007256+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 16ede7be3154a9bd826c83d6b2d797a8d8b8b9b20e473b8969ae513fe6a275d0
@@ -347,7 +347,7 @@ entries:
           description: topologySpreadConstraints can be templated values
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.258858+01:00"
+    created: "2025-11-08T00:24:45.006282+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: f778567b179d4bee3280782b996b16506bc8df842c353e48e6ac577e34eaa350
@@ -375,7 +375,7 @@ entries:
           description: Fixed indentation for sidecar containers
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.257835+01:00"
+    created: "2025-11-08T00:24:45.005565+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 85e58051c926666365fb41e23408778c32111e9fb759e7dc7f830199e9206eb5
@@ -403,7 +403,7 @@ entries:
           description: Added support for sidecar containers via extraContainers
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.257158+01:00"
+    created: "2025-11-08T00:24:45.004563+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 4ee0807012255777a3a4cce783ee55fdb742aaafc1fc3d3b58c7ad8daf472f9e
@@ -431,7 +431,7 @@ entries:
           description: Upgrade CoreDNS to 1.11.1
     apiVersion: v2
     appVersion: 1.11.1
-    created: "2025-11-03T20:27:06.256274+01:00"
+    created: "2025-11-08T00:24:45.003555+01:00"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
     digest: 78093091790c0a193cd9be5fe3f8d69cd82124c3097433811f265522d1755621
@@ -453,4 +453,4 @@ entries:
     urls:
     - coredns-1.26.0.tgz
     version: 1.26.0
-generated: "2025-11-03T20:27:06.255226+01:00"
+generated: "2025-11-08T00:24:45.002349+01:00"

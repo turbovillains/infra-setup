@@ -114,9 +114,8 @@ echo "================================================"
 # Batch installations to avoid overwhelming network/rate limits
 # Max 5 concurrent downloads per batch
 
-echo "Batch 1/4: kubectl, cosign, crane, ytt"
+echo "Batch 1/4: kubectl, crane, ytt"
 install_kubectl &
-install_cosign &
 install_crane &
 install_ytt &
 wait
