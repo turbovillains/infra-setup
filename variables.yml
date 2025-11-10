@@ -43,7 +43,7 @@ variables:
   ARGOCD_VAULT_PLUGIN_VERSION: "1.18.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   NEXUS_VERSION: "3.86.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.8-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v3.5.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  TRAEFIK_VERSION: "v3.6.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "9.6.23" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.4.4" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -76,7 +76,7 @@ variables:
   MONGODB_EXPORTER_VERSION: "0.47.1" # https://hub.docker.com/r/percona/mongodb_exporter/tags
   PGADMIN_VERSION: "9.9" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   HTTPBIN_VERSION: "2.19.0" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
-  OAUTH2_PROXY_VERSION: v7.12.0-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
+  OAUTH2_PROXY_VERSION: v7.13.0-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   PIHOLE_VERSION: "2025.11.0" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
   UNBOUND_VERSION: v1.24.1 # https://github.com/klutchell/unbound-docker/tags
   NEXTCLOUD_VERSION: "32.0.1-apache" # https://hub.docker.com/_/nextcloud
@@ -87,7 +87,7 @@ variables:
   METALLB_FRR_VERSION: "9.1.0" # https://github.com/metallb/metallb/blob/main/charts/metallb/values.yaml
   TRIVY_VERSION: "0.67.2" # https://hub.docker.com/r/aquasec/trivy/tags
   CSI_SECRETS_STORE_VERSION: v1.5.4 # https://github.com/kubernetes-sigs/secrets-store-csi-driver/releases
-  EXTERNAL_SECRETS_VERSION: v0.20.4 # https://github.com/external-secrets/external-secrets/releases
+  EXTERNAL_SECRETS_VERSION: v1.0.0 # https://github.com/external-secrets/external-secrets/releases
   RELOADER_VERSION: "v1.4.10" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   DOCKER_REGISTRY_VERSION: "3.0.0" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
@@ -114,7 +114,7 @@ variables:
   GIT_SYNC_VERSION: v4.5.0 # registry.k8s.io/git-sync/git-sync
   SYNCTHING_VERSION: "2.0.11" # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: "10.11.2" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
-  TDARR_VERSION: "2.51.03" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
+  TDARR_VERSION: "2.53.01" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
   CURL_VERSION: "8.17.0" # https://hub.docker.com/r/curlimages/curl/tags
   RESTIC_VERSION: "0.18.1" # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: "4.7.0" # https://hub.docker.com/r/coturn/coturn/tags
@@ -136,7 +136,7 @@ variables:
   ZIGBEE2MQTT_VERSION: "2.6.3" # https://github.com/Koenkk/zigbee2mqtt/releases
   FORGEJO_VERSION: "13.0.2" # https://codeberg.org/forgejo/forgejo
   FORGEJO_RUNNER_VERSION: "11.3.1" # https://codeberg.org/forgejo/forgejo
-  CLOUDFLARED_VERSION: "2025.10.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
+  CLOUDFLARED_VERSION: "2025.11.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
   MAILCATCHER_VERSION: "v0.10.0" # https://github.com/sj26/mailcatcher/releases
   FRP_VERSION: "v0.65.0" # https://github.com/fatedier/frp/releases/tag/v0.61.1
   ISTIO_VERSION: "1.28.0" # https://github.com/istio/istio/releases/tag/1.27.0
@@ -155,10 +155,10 @@ variables:
   OPENBGPD_VERISON: "8.9" # https://quay.io/repository/openbgpd/openbgpd?tab=tags&tag=latest
   SCYLLA_VERSION: "2025.3.3" # https://hub.docker.com/r/scylladb/scylla/tags
   SCYLLA_MANAGER_VERSION: 3.7.0 # https://hub.docker.com/r/scylladb/scylla-manager/tags
-  SCYLLA_OPERATOR_VERSION: 1.18.1 # https://hub.docker.com/r/scylladb/scylla-operator/tags
+  SCYLLA_OPERATOR_VERSION: "1.19" # https://hub.docker.com/r/scylladb/scylla-operator/tags
   CLICKHOUSE_VERSION: "25.10" # https://hub.docker.com/_/clickhouse
   CLICHOUSE_OPERATOR_VERSION: "0.25.5" # https://hub.docker.com/r/altinity/clickhouse-operator/tags
   RABBITMQ_VERSION: "4.2.0" # https://hub.docker.com/_/rabbitmq/tags
   RABBITMQ_EXPORTER_VERSION: "1.0.0" # https://hub.docker.com/_/rabbitmq/tags
-  PREFECT_VERSION: 3.5.0-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
+  PREFECT_VERSION: 3.6.0-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
   PREFECT_EXPORTER_VERSION: "3.0.0" # https://hub.docker.com/r/prefecthq/prometheus-prefect-exporter/tags
