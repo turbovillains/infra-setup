@@ -18,11 +18,16 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           ssh-keyscan git.nrtn.dev >> ~/.ssh/known_hosts
+          ssh-keyscan codeberg.org >> ~/.ssh/known_hosts
+
           eval "$(ssh-agent -s)"
           echo '${{ secrets.SSH_PRIVATE_KEY }}' | base64 -d | ssh-add -
 
           # Mirror to GitHub turbovillains (use --mirror for full mirror)
           git push --mirror --force git@github.com:turbovillains/infra-setup.git
+
+          # Mirror to Codeberg
+          git push --mirror --force ssh://git@codeberg.org/noroutine/infra-setup.git
 
           # Push to GitLab to trigger CI/CD (separate pushes to avoid hidden refs error)
           # git push --all --force git@git.nrtn.dev:infra/infra-setup.git
