@@ -610,3 +610,19 @@ components:
   confluentinc-cp-server-connect:
     image_base: confluentinc/cp-server-connect
     image_version: ${CONFLUENTINC_CP_VERSION}
+
+  influxdb:
+    image_base: library/influxdb
+    image_version: ${INFLUXDB_VERSION}
+
+  influxdb2:
+    image_base: library/influxdb
+    image_version: ${INFLUXDB2_VERSION}
+
+  influxdb3:
+    image_base: library/influxdb
+    image_version: ${INFLUXDB3_VERSION}
+
+  timescaledb:
+    image_base: timescale/timescaledb-ha
+    image_version: ${TIMESCALEDB_VERSION}

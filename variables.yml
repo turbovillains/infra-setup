@@ -3,7 +3,7 @@ variables:
   BUILDER_USER: builder
   WEBSITE_VERSION: v0.2.11
   DEBIAN_VERSION: "trixie-20251103-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
-  UBUNTU_NOBLE_VERSION: "noble-20251001" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
+  UBUNTU_NOBLE_VERSION: "noble-20251013" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
   ALPINE_VERSION: "3.22.2" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.37.0" # https://hub.docker.com/_/busybox
   JDK_ZULU_VERSION: 25.0.1-25.30 # https://hub.docker.com/r/azul/zulu-openjdk/tags
@@ -16,7 +16,7 @@ variables:
   GITLAB_RUNNER_VERSION: "alpine-v18.5.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_RUNNER_HELPER_VERSION: x86_64-v18.5.0
   GITLAB_AGENTK_VERSION: v18.5.2 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
-  DIND_VERSION: 29.0.0-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
+  DIND_VERSION: 29.0.1-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   K8S_PAUSE_VERSION: "3.10"
   K8S_134_VERSION: "v1.34.2" # https://github.com/kubernetes/kubernetes/releases
   K8S_134_VERSION2: "v1.34.1" # https://github.com/kubernetes/kubernetes/releases
@@ -25,7 +25,7 @@ variables:
   COREDNS_VERSION: "v1.13.1" # https://hub.docker.com/r/coredns/coredns/tags
   ETCD_35_VERSION: v3.5.25 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
   ETCD_36_VERSION: v3.6.6 # https://quay.io/repository/coreos/etcd?tag=latest&tab=tags
-  KUBECTL_VERSION: "v1.34.1" # https://hub.docker.com/r/rancher/kubectl/tags
+  KUBECTL_VERSION: "v1.34.2" # https://hub.docker.com/r/rancher/kubectl/tags
   LIVENESSPROBE_VERSION: v2.17.0
   CSI_NODE_DRIVER_REGISTRAR_VERSION: v2.15.0
   CSI_ATTACHER_VERSION: v4.10.0
@@ -36,18 +36,18 @@ variables:
   CSI_PROVISIONER_VERSION: v6.0.0
   CSI_NFSPLUGIN_VERSION: v4.12.1 # https://github.com/kubernetes-csi/csi-driver-nfs/releases
   K8S_NFD_VERSION: v0.18.3 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
-  TIGERA_OPERATOR_VERSION: "v1.40.0" # https://github.com/tigera/operator/releases
-  CALICO_VERSION: "v3.31.0" # https://hub.docker.com/r/calico/node/tags
+  TIGERA_OPERATOR_VERSION: "v1.40.1" # https://github.com/tigera/operator/releases
+  CALICO_VERSION: "v3.31.1" # https://hub.docker.com/r/calico/node/tags
   ARGOCD_VERSION: v3.2.0 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.52.0" # https://github.com/vmware-tanzu/carvel-ytt/releases
   ARGOCD_VAULT_PLUGIN_VERSION: "1.18.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   NEXUS_VERSION: "3.86.2" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.8-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v3.6.0" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  TRAEFIK_VERSION: "v3.6.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "9.7.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.4.5" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
-  POSTGRES_VERSION: "18.0-trixie" # https://hub.docker.com/_/postgres
+  POSTGRES_VERSION: "18.1-trixie" # https://hub.docker.com/_/postgres
   POSTGRES_EXPORTER_VERSION: v0.18.1 # https://hub.docker.com/r/prometheuscommunity/postgres-exporter/tags
   # last minio release with admin ui
   MINIO_VERSION: RELEASE.2025-04-22T22-12-26Z # https://github.com/minio/minio/releases
@@ -74,7 +74,7 @@ variables:
   ELASTICAGENT_VERSION: "8.19.7"
   MONGODB_VERSION: "8.2.1-noble" # https://hub.docker.com/_/mongo
   MONGODB_EXPORTER_VERSION: "0.47.1" # https://hub.docker.com/r/percona/mongodb_exporter/tags
-  PGADMIN_VERSION: "9.9" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
+  PGADMIN_VERSION: "9.10" # https://hub.docker.com/r/dpage/pgadmin4/tags?page=1&ordering=last_updated
   HTTPBIN_VERSION: "2.19.0" # https://hub.docker.com/r/mccutchen/go-httpbin/tags?page=1&ordering=last_updated
   OAUTH2_PROXY_VERSION: v7.13.0-alpine # https://quay.io/repository/oauth2-proxy/oauth2-proxy?tab=tags
   PIHOLE_VERSION: "2025.11.0" # https://hub.docker.com/r/pihole/pihole/tags?page=1&ordering=last_updated
@@ -100,7 +100,7 @@ variables:
   VAULT_K8S_VERSION: "1.7.0" # https://hub.docker.com/r/hashicorp/vault-k8s/tags
   VAULT_CSI_PROVIDER_VERSION: "1.6.0"  # https://hub.docker.com/r/hashicorp/vault-csi-provider/tags
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
-  NATS_VERSION: "2.12.1-alpine" # https://hub.docker.com/_/nats?tab=tags
+  NATS_VERSION: "2.12.2-alpine" # https://hub.docker.com/_/nats?tab=tags
   NATS_EXPORTER_VERSION: "0.17.3" # https://hub.docker.com/r/natsio/prometheus-nats-exporter/tags
   NATS_SERVER_CONFIG_RELOADER: "0.20.1" # https://hub.docker.com/r/natsio/nats-server-config-reloader/tags
   WIREGUARD_VERSION: "0.0.20230223" # https://hub.docker.com/r/masipcat/wireguard-go/tags
@@ -110,7 +110,7 @@ variables:
   CERT_MANAGER_CSI_DRIVER_VERSION: v0.11.1 # https://quay.io/repository/jetstack/cert-manager-csi-driver?tab=tags&tag=latest
   CERT_MANAGER_WEBHOOK_PDNS_VERSION: v2.5.3 # https://hub.docker.com/r/zachomedia/cert-manager-webhook-pdns/tags
   CADDY_VERSION: 2.10.2-alpine # https://hub.docker.com/_/caddy?tab=description
-  AIRFLOW_VERSION: 3.1.2-python3.13 # https://hub.docker.com/r/apache/airflow/tags
+  AIRFLOW_VERSION: 3.1.3-python3.13 # https://hub.docker.com/r/apache/airflow/tags
   GIT_SYNC_VERSION: v4.5.0 # registry.k8s.io/git-sync/git-sync
   SYNCTHING_VERSION: "2.0.11" # https://hub.docker.com/r/syncthing/syncthing/tags
   JELLYFIN_VERSION: "10.11.2" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
@@ -140,7 +140,7 @@ variables:
   MAILCATCHER_VERSION: "v0.10.0" # https://github.com/sj26/mailcatcher/releases
   FRP_VERSION: "v0.65.0" # https://github.com/fatedier/frp/releases/tag/v0.61.1
   ISTIO_VERSION: "1.28.0" # https://github.com/istio/istio/releases/tag/1.27.0
-  APACHE_KAFKA_VERSION: "4.1.0" # https://hub.docker.com/r/apache/kafka/tags
+  APACHE_KAFKA_VERSION: "4.1.1" # https://hub.docker.com/r/apache/kafka/tags
   STRIMZI_OPERATOR_VERSION: "0.48.0"  # https://quay.io/repository/strimzi/operator?tab=tags
   STRIMZI_KAFKA_VERSION: "4.1.0" # https://quay.io/repository/strimzi/kafka?tab=tags
   CONFLUENTINC_OPERATOR_VERSION: "0.1351.24" # https://hub.docker.com/r/confluentinc/confluent-operator/tags
@@ -149,7 +149,7 @@ variables:
   CONFLUENTINC_CP_VERSION: "8.1.0" # https://hub.docker.com/r/confluentinc/cp-server/tags
   KAFDROP_VERSION: "4.2.0" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
   AKHQ_VERSION: "0.26.0" # https://hub.docker.com/r/tchiotludo/akhq/tags
-  N8N_VERSION: "1.119.1" # https://github.com/n8n-io/n8n/releases
+  N8N_VERSION: "1.119.2" # https://github.com/n8n-io/n8n/releases
   GOFLOW2_VERSION: v2.2.3 # https://hub.docker.com/r/netsampler/goflow2/tags
   ITTOOLS_VERSION: "2024.10.22-7ca5933" # https://github.com/CorentinTh/it-tools/releases
   OPENBGPD_VERISON: "8.9" # https://quay.io/repository/openbgpd/openbgpd?tab=tags&tag=latest
@@ -160,5 +160,9 @@ variables:
   CLICHOUSE_OPERATOR_VERSION: "0.25.5" # https://hub.docker.com/r/altinity/clickhouse-operator/tags
   RABBITMQ_VERSION: "4.2.0" # https://hub.docker.com/_/rabbitmq/tags
   RABBITMQ_EXPORTER_VERSION: "1.0.0" # https://hub.docker.com/_/rabbitmq/tags
-  PREFECT_VERSION: 3.6.1-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
+  PREFECT_VERSION: 3.6.2-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
   PREFECT_EXPORTER_VERSION: "3.0.0" # https://hub.docker.com/r/prefecthq/prometheus-prefect-exporter/tags
+  INFLUXDB_VERSION: "1.12.2" # https://hub.docker.com/_/influxdb/
+  INFLUXDB2_VERSION: "2.7.12" # https://hub.docker.com/_/influxdb/
+  INFLUXDB3_VERSION: "3.6.0-core" # https://hub.docker.com/_/influxdb/
+  TIMESCALEDB_VERSION: "pg17-ts2.23" # https://hub.docker.com/r/timescale/timescaledb-ha/tags?name=pg17&page=2

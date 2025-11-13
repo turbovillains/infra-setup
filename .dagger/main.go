@@ -708,6 +708,14 @@ func (m *InfraSetup) getImageEntries() []string {
 		"code.forgejo.org/forgejo/runner:${FORGEJO_RUNNER_VERSION}",
 		"ghcr.io/catthehacker/ubuntu:act-24.04",
 		"ghcr.io/catthehacker/ubuntu:runner-24.04",
+
+		// influxdb
+		"influxdb:${INFLUXDB_VERSION}:::prepend_name=library/",
+		"influxdb:${INFLUXDB2_VERSION}:::prepend_name=library/",
+		"influxdb:${INFLUXDB3_VERSION}:::prepend_name=library/",
+
+		// timescaledb
+		"timescale/timescaledb-ha:${TIMESCALEDB_VERSION}",
 	}
 }
 
