@@ -2,21 +2,21 @@
 variables:
   BUILDER_USER: builder
   WEBSITE_VERSION: v0.2.11
-  DEBIAN_VERSION: "trixie-20251103-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
+  DEBIAN_VERSION: "trixie-20251117-slim"  # https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated&name=10.10
   UBUNTU_NOBLE_VERSION: "noble-20251013" # https://hub.docker.com/_/ubuntu?tab=tags&page=1&ordering=last_updated&name=noble
   ALPINE_VERSION: "3.22.2" # https://hub.docker.com/_/alpine?tab=tags&page=1&ordering=last_updated&name=3.14
   BUSYBOX_VERSION: "1.37.0" # https://hub.docker.com/_/busybox
   JDK_ZULU_VERSION: 25.0.1-25.30 # https://hub.docker.com/r/azul/zulu-openjdk/tags
   JDK_TEMURIN_VERSION: 25-noble # https://hub.docker.com/_/eclipse-temurin/tags?page=1&name=jammy
   GOLANG_VERSION: "1.25.4-trixie" # https://hub.docker.com/_/golang?tab=tags&page=1&ordering=last_updated&name=1.16
-  NODE_VERSION: "25.2.0-trixie" # https://hub.docker.com/_/node/tags
+  NODE_VERSION: "25.2.1-trixie" # https://hub.docker.com/_/node/tags
   PYTHON_VERSION: 3.14.0-trixie # https://hub.docker.com/_/python/tags?page=1&name=3.13
   KUBE_RBAC_PROXY_VERSION: v0.20.0 # https://quay.io/repository/brancz/kube-rbac-proxy?tab=tags&tag=latest
   GITLAB_VERSION: "18.5.2-ce.0" # https://hub.docker.com/r/gitlab/gitlab-ce/tags?page=1&ordering=last_updated&name=16.
   GITLAB_RUNNER_VERSION: "alpine-v18.5.0" # https://hub.docker.com/r/gitlab/gitlab-runner/tags?page=1&ordering=last_updated&name=alpine
   GITLAB_RUNNER_HELPER_VERSION: x86_64-v18.5.0
   GITLAB_AGENTK_VERSION: v18.5.2 # https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/tags
-  DIND_VERSION: 29.0.1-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
+  DIND_VERSION: 29.0.2-dind # https://hub.docker.com/_/docker?tab=description&page=1&ordering=last_updated
   K8S_PAUSE_VERSION: "3.10"
   K8S_134_VERSION: "v1.34.2" # https://github.com/kubernetes/kubernetes/releases
   K8S_134_VERSION2: "v1.34.1" # https://github.com/kubernetes/kubernetes/releases
@@ -36,14 +36,14 @@ variables:
   CSI_PROVISIONER_VERSION: v6.0.0
   CSI_NFSPLUGIN_VERSION: v4.12.1 # https://github.com/kubernetes-csi/csi-driver-nfs/releases
   K8S_NFD_VERSION: v0.18.3 # https://github.com/kubernetes-sigs/node-feature-discovery/releases
-  TIGERA_OPERATOR_VERSION: "v1.40.1" # https://github.com/tigera/operator/releases
-  CALICO_VERSION: "v3.31.1" # https://hub.docker.com/r/calico/node/tags
+  TIGERA_OPERATOR_VERSION: "v1.40.2" # https://github.com/tigera/operator/releases
+  CALICO_VERSION: "v3.31.2" # https://hub.docker.com/r/calico/node/tags
   ARGOCD_VERSION: v3.2.0 # https://quay.io/repository/argoproj/argocd?tag=latest&tab=tags
   YTT_VERSION: "0.52.0" # https://github.com/vmware-tanzu/carvel-ytt/releases
   ARGOCD_VAULT_PLUGIN_VERSION: "1.18.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   NEXUS_VERSION: "3.86.2" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.8-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v3.6.1" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  TRAEFIK_VERSION: "v3.6.2" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "9.7.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.4.5" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -93,7 +93,7 @@ variables:
   DOCKER_REGISTRY_VERSION: "3.0.0" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
   DEX_VERSION: v2.44.0 # https://hub.docker.com/r/dexidp/dex/tags?page=1&ordering=last_updated
   VALKEY_VERSION: "9.0.0" # https://hub.docker.com/r/valkey/valkey/tags
-  REDIS_VERSION: "8.2.3" # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
+  REDIS_VERSION: "8.4.0" # https://hub.docker.com/_/redis?tab=tags&page=1&ordering=last_updated
   REDIS_EXPORTER_VERSION: "v1.80.0" # https://hub.docker.com/r/oliver006/redis_exporter/tags
   BOKY_POSTFIX_VERSION: v4.4.0 # https://hub.docker.com/r/boky/postfix/tags
   VAULT_VERSION: "1.21.0" # https://hub.docker.com/r/hashicorp/vault
@@ -113,14 +113,14 @@ variables:
   AIRFLOW_VERSION: 3.1.3-python3.13 # https://hub.docker.com/r/apache/airflow/tags
   GIT_SYNC_VERSION: v4.5.0 # registry.k8s.io/git-sync/git-sync
   SYNCTHING_VERSION: "2.0.11" # https://hub.docker.com/r/syncthing/syncthing/tags
-  JELLYFIN_VERSION: "10.11.2" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
-  TDARR_VERSION: "2.55.01" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
+  JELLYFIN_VERSION: "10.11.3" # https://hub.docker.com/r/jellyfin/jellyfin/tags?page=1&name=10.8
+  TDARR_VERSION: "2.57.01" # https://github.com/haveagitgat/Tdarr/pkgs/container/tdarr
   CURL_VERSION: "8.17.0" # https://hub.docker.com/r/curlimages/curl/tags
   RESTIC_VERSION: "0.18.1" # https://hub.docker.com/r/restic/restic/tags
   COTURN_VERSION: "4.7.0" # https://hub.docker.com/r/coturn/coturn/tags
   NETBOX_VERSION: v4.4.6 # https://hub.docker.com/r/netboxcommunity/netbox/tags
   POSTGREST_VERSION: v14.1 # https://hub.docker.com/r/postgrest/postgrest/tags
-  CEPHCSI_VERSION: v3.15.0 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
+  CEPHCSI_VERSION: v3.15.1 # https://quay.io/repository/cephcsi/cephcsi?tab=tags&tag=latest
   NVIDIA_GPU_OPERATOR_VERSION: v25.10.0 # # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-operator/tags
   NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION: v25.3.4 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/gpu-operator-validator/tags
   NVIDIA_K8S_DRIVER_MANAGER_VERSION: v0.9.0 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-driver-manager/tags
@@ -128,7 +128,7 @@ variables:
   NVIDIA_K8S_DEVICE_PLUGIN_VERSION: v0.16.2-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/k8s-device-plugin/tags
   NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION: v1.17.9-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/container-toolkit/tags
   NVIDIA_GPU_FEATURE_DISCOVERY_VERSION: v0.8.2-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/containers/gpu-feature-discovery
-  NVIDIA_DCGM_VERSION: 4.4.1-2-ubi9 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/dcgm/tags
+  NVIDIA_DCGM_VERSION: 4.4.2-1-ubi9 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/dcgm/tags
   NVIDIA_DCGM_EXPORTER_VERSION: 4.4.1-4.6.0-ubi9 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/dcgm-exporter/tags
   NVIDIA_K8S_MIG_MANAGER_VERSION: v0.9.1-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-mig-manager/tags
   ZITADEL_VERSION: v2.65.1 # https://github.com/zitadel/zitadel/pkgs/container/zitadel
@@ -149,7 +149,7 @@ variables:
   CONFLUENTINC_CP_VERSION: "8.1.0" # https://hub.docker.com/r/confluentinc/cp-server/tags
   KAFDROP_VERSION: "4.2.0" # https://hub.docker.com/r/obsidiandynamics/kafdrop/tags
   AKHQ_VERSION: "0.26.0" # https://hub.docker.com/r/tchiotludo/akhq/tags
-  N8N_VERSION: "1.119.2" # https://github.com/n8n-io/n8n/releases
+  N8N_VERSION: "1.121.0" # https://github.com/n8n-io/n8n/releases
   GOFLOW2_VERSION: v2.2.3 # https://hub.docker.com/r/netsampler/goflow2/tags
   ITTOOLS_VERSION: "2024.10.22-7ca5933" # https://github.com/CorentinTh/it-tools/releases
   OPENBGPD_VERISON: "8.9" # https://quay.io/repository/openbgpd/openbgpd?tab=tags&tag=latest
@@ -158,7 +158,7 @@ variables:
   SCYLLA_OPERATOR_VERSION: "1.19" # https://hub.docker.com/r/scylladb/scylla-operator/tags
   CLICKHOUSE_VERSION: "25.10" # https://hub.docker.com/_/clickhouse
   CLICHOUSE_OPERATOR_VERSION: "0.25.5" # https://hub.docker.com/r/altinity/clickhouse-operator/tags
-  RABBITMQ_VERSION: "4.2.0" # https://hub.docker.com/_/rabbitmq/tags
+  RABBITMQ_VERSION: "4.2.1" # https://hub.docker.com/_/rabbitmq/tags
   RABBITMQ_EXPORTER_VERSION: "1.0.0" # https://hub.docker.com/_/rabbitmq/tags
   PREFECT_VERSION: 3.6.2-python3.13 # https://hub.docker.com/r/prefecthq/prefect/tags?name=3.4.24-python3.13
   PREFECT_EXPORTER_VERSION: "3.0.0" # https://hub.docker.com/r/prefecthq/prometheus-prefect-exporter/tags
