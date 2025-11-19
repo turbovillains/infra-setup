@@ -716,6 +716,9 @@ func (m *InfraSetup) getImageEntries() []string {
 
 		// timescaledb
 		"timescale/timescaledb-ha:${TIMESCALEDB_VERSION}",
+
+		// poweradmin
+		"poweradmin/poweradmin:${POWERADMIN_VERSION}",
 	}
 }
 

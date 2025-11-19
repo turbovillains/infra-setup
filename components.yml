@@ -626,3 +626,7 @@ components:
   timescaledb:
     image_base: timescale/timescaledb-ha
     image_version: ${TIMESCALEDB_VERSION}
+
+  poweradmin:
+    image_base: poweradmin/poweradmin
+    image_version: ${POWERADMIN_VERSION}
