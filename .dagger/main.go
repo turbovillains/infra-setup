@@ -548,6 +548,7 @@ func (m *InfraSetup) getImageEntries() []string {
 		"klutchell/unbound:${UNBOUND_VERSION}",
 		"nextcloud:${NEXTCLOUD_VERSION}:::prepend_name=library/",
 		"docker:${DIND_VERSION}:::prepend_name=library/",
+		"registry:${REGISTRY_VERSION}:::prepend_name=library/",
 		"registry.k8s.io/ingress-nginx/controller:${NGINX_INGRESS_CONTROLLER_VERSION}",
 		"registry.k8s.io/ingress-nginx/kube-webhook-certgen:${NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION}",
 		"quay.io/metallb/controller:${METALLB_CONTROLLER_VERSION}",

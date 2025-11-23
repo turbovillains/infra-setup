@@ -495,6 +495,10 @@ components:
     image_base: library/docker
     image_version: ${DIND_VERSION}
 
+  registry:
+    image_base: library/registry
+    image_version: ${REGISTRY_VERSION}
+
   rabbitmq:
     image_base: library/rabbitmq
     image_version: ${RABBITMQ_VERSION}
