@@ -601,7 +601,7 @@ func (m *InfraSetup) getImageEntries() []string {
 		"sj26/mailcatcher:${MAILCATCHER_VERSION}",
 		"fatedier/frps:${FRP_VERSION}",
 		"fatedier/frpc:${FRP_VERSION}",
-		"docker.n8n.io/n8nio/n8n:${N8N_VERSION}",
+		"n8nio/n8n:${N8N_VERSION}",
 		"netsampler/goflow2:${GOFLOW2_VERSION}",
 		"ghcr.io/corentinth/it-tools:${ITTOOLS_VERSION}",
 		"quay.io/openbgpd/openbgpd:${OPENBGPD_VERISON}",

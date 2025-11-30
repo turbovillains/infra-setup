@@ -92,6 +92,13 @@ install_ytt() {
   curl -sLo /usr/local/bin/ytt https://github.com/carvel-dev/ytt/releases/download/${YTT_VERSION}/ytt-linux-${ARCHX} && chmod +x /usr/local/bin/ytt || record_failure "ytt"
 }
 
+install_regctl() {
+  echo "Installing regctl..."
+  # https://github.com/regclient/regclient/releases
+  REGCTL_VERSION=$(curl -s "https://api.github.com/repos/regclient/regclient/releases/latest" | jq -r '.tag_name')
+  curl -sLo /usr/local/bin/regctl https://github.com/regclient/regclient/releases/download/${REGCTL_VERSION}/regctl-linux-${ARCHX} && chmod +x /usr/local/bin/regctl || record_failure "regctl"
+}
+
 # Create lock file for synchronization
 touch "$LOCK_FILE"
 
@@ -114,9 +121,10 @@ echo "================================================"
 # Batch installations to avoid overwhelming network/rate limits
 # Max 5 concurrent downloads per batch
 
-echo "Batch 1/4: kubectl, crane, ytt"
+echo "Batch 1/4: kubectl, crane, regctl, ytt"
 install_kubectl &
 install_crane &
+install_regctl &
 install_ytt &
 wait
 
@@ -163,6 +171,7 @@ TOOLS=(
   "yq:yq --version"
   "yj:yj -v"
   "ytt:ytt version"
+  "regctl:regctl version"
 )
 
 FAILED_VERIFY=0
