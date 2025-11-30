@@ -406,7 +406,7 @@ func (m *InfraSetup) uploadArchiveToStorage(ctx context.Context, archiveDir *dag
 		WithFile("/tmp/"+archiveName, archiveFile)
 
 	// Upload using rsync (following the pattern from 02_lib.sh)
-	targetPath := fmt.Sprintf("oleksii@tank.noroutine.me:/ifs/attic/infra/%s/images/%s", infraBucket, archiveName)
+	targetPath := fmt.Sprintf("oleksii@twix.noroutine.me:/ifs/attic/infra/%s/images/%s", infraBucket, archiveName)
 	rsyncCommand := fmt.Sprintf(
 		"rsync -e 'ssh -o StrictHostKeyChecking=no' --rsync-path='sudo mkdir -p /ifs/attic/infra/%s/images && sudo rsync' /tmp/%s %s && rm -f /tmp/%s",
 		infraBucket, archiveName, targetPath, archiveName,
