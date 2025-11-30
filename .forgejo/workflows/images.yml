@@ -290,15 +290,15 @@ jobs:
         run: |
           # Set up SSH key (base64-encoded secret, needs to be decoded)
           mkdir -p ~/.ssh
-          ssh-keyscan tank.noroutine.me twix.noroutine.me >> ~/.ssh/known_hosts
+          ssh-keyscan tank.noroutine.me twix.noroutine.me mgmt02-vm-core01.noroutine.me >> ~/.ssh/known_hosts
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
           # Upload charts folder to storage
           rsync -av -e "ssh -o StrictHostKeyChecking=no" \
-            --rsync-path="sudo mkdir -p /ifs/attic/infra/${{ steps.version.outputs.infra_version }}/charts && sudo rsync" \
+            --rsync-path="sudo mkdir -p /mnt/data/infra/${{ steps.version.outputs.infra_version }}/charts && sudo rsync" \
             docker/infra-charts/charts/ \
-            oleksii@twix.noroutine.me:/ifs/attic/infra/${{ steps.version.outputs.infra_version }}/charts
+            oleksii@mgmt02-vm-core01.noroutine.me:/mnt/data/infra/${{ steps.version.outputs.infra_version }}/charts
 
           # Clean up SSH key
           rm -f ~/.ssh/id_rsa

@@ -321,7 +321,7 @@ func (m *InfraSetup) ArchiveImagesForExport(
 
 // ArchiveImagesToStorage creates compressed tarballs of images and uploads them directly to storage.
 // Images must be imported first (use import-images). Archives are pulled from target registry.
-// Uploads to oleksii@tank.noroutine.me:/ifs/attic/infra/{infraBucket}/images/
+// Uploads to oleksii@mgmt02-vm-core01.noroutine.me:/mnt/data/infra/{infraBucket}/images/
 func (m *InfraSetup) ArchiveImagesToStorage(
 	ctx context.Context,
 	// Infrastructure bucket name (e.g., version or identifier)
@@ -406,9 +406,9 @@ func (m *InfraSetup) uploadArchiveToStorage(ctx context.Context, archiveDir *dag
 		WithFile("/tmp/"+archiveName, archiveFile)
 
 	// Upload using rsync (following the pattern from 02_lib.sh)
-	targetPath := fmt.Sprintf("oleksii@twix.noroutine.me:/ifs/attic/infra/%s/images/%s", infraBucket, archiveName)
+	targetPath := fmt.Sprintf("oleksii@mgmt02-vm-core01.noroutine.me:/mnt/data/infra/%s/images/%s", infraBucket, archiveName)
 	rsyncCommand := fmt.Sprintf(
-		"rsync -e 'ssh -o StrictHostKeyChecking=no' --rsync-path='sudo mkdir -p /ifs/attic/infra/%s/images && sudo rsync' /tmp/%s %s && rm -f /tmp/%s",
+		"rsync -e 'ssh -o StrictHostKeyChecking=no' --rsync-path='sudo mkdir -p /mnt/data/infra/%s/images && sudo rsync' /tmp/%s %s && rm -f /tmp/%s",
 		infraBucket, archiveName, targetPath, archiveName,
 	)
 
