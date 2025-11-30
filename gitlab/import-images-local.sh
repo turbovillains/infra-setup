@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 import_images() {
-  local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
+  local target_registry=${1:-${DOCKER_HUB:-cr.noroutine.me}}
 
   declare -a images=(
     # "reg.com/namespace/image:tag@sha256:abcd:::k1=v1,k2=v2"

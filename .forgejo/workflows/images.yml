@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_REGISTRY: ${{ vars.IMAGE_REGISTRY || 'cr.nrtn.dev' }}
+  IMAGE_REGISTRY: ${{ vars.IMAGE_REGISTRY || 'cr.noroutine.me' }}
 
 jobs:
   import-images:

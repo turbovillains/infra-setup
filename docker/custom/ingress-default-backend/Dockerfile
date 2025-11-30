@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-ARG IMAGE_REGISTRY=cr.nrtn.dev
+ARG IMAGE_REGISTRY=cr.noroutine.me
 ARG NODE_VERSION=lts
 
 FROM ${IMAGE_REGISTRY}/library/node:${NODE_VERSION} AS base

@@ -44,7 +44,7 @@ This script copies images from their source registry to your target registry
 without rebuilding them. Useful for images that are already multi-arch.
 
 Options:
-  --registry REGISTRY      Container registry (default: cr.nrtn.dev)
+  --registry REGISTRY      Container registry (default: cr.noroutine.me)
   --namespace NAMESPACE    Image namespace (default: infra-dev)
   --version VERSION        Image version tag (default: git 8-char SHA or 'dev')
   --components COMP1,COMP2 Retag only specific components (comma-separated)
@@ -84,7 +84,7 @@ EOF
 }
 
 # Default values
-IMAGE_REGISTRY=${IMAGE_REGISTRY:-cr.nrtn.dev}
+IMAGE_REGISTRY=${IMAGE_REGISTRY:-cr.noroutine.me}
 INFRA_NAMESPACE=${INFRA_NAMESPACE:-infra-dev}
 INFRA_VERSION=${INFRA_VERSION:-$(git rev-parse --short=8 HEAD 2>/dev/null || echo "dev")}
 COMPONENTS=""

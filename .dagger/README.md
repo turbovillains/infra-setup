@@ -68,7 +68,7 @@ func New(
     // +default="variables.yml"
     variablesFile string,
     // +optional
-    // +default="cr.nrtn.dev"
+    // +default="cr.noroutine.me"
     targetRegistry string,
 ) *InfraSetup
 ```
@@ -91,7 +91,7 @@ dagger call --variables-file="other-vars.yml" list-images
 
 ### Target Registry
 
-Default: `cr.nrtn.dev`
+Default: `cr.noroutine.me`
 
 Override:
 ```bash
@@ -153,7 +153,7 @@ dagger call --target-registry="my-registry.io" \
 Import all 215+ images:
 
 ```bash
-# Default registry (cr.nrtn.dev)
+# Default registry (cr.noroutine.me)
 dagger call import-images
 
 # Custom registry
@@ -319,7 +319,7 @@ Images support options via `:::option=value` syntax:
 
 **prepend_name**: Adds a prefix to the destination image name
 - Source: `debian:trixie-20251020-slim`
-- Destination: `cr.nrtn.dev/library/debian:trixie-20251020-slim`
+- Destination: `cr.noroutine.me/library/debian:trixie-20251020-slim`
 
 ## Multiarch Support
 
@@ -343,13 +343,13 @@ This ensures all architectures (amd64, arm64, etc.) are copied, not just the run
 The `buildDestination` function handles different image formats:
 
 1. **No prefix** (e.g., `debian:tag`)
-   → `cr.nrtn.dev/library/debian:tag`
+   → `cr.noroutine.me/library/debian:tag`
 
 2. **Registry prefix** (e.g., `quay.io/minio/minio:tag`)
-   → `cr.nrtn.dev/minio/minio:tag`
+   → `cr.noroutine.me/minio/minio:tag`
 
 3. **Org prefix** (e.g., `gitlab/gitlab-ce:tag`)
-   → `cr.nrtn.dev/gitlab/gitlab-ce:tag`
+   → `cr.noroutine.me/gitlab/gitlab-ce:tag`
 
 Prepend name is applied before the image name in all cases.
 

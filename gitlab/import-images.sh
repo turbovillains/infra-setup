@@ -244,7 +244,7 @@ import_images() {
         "ghcr.io/catthehacker/ubuntu:runner-24.04"
     )
 
-    local target_registry=${1:-${DOCKER_HUB:-cr.nrtn.dev}}
+    local target_registry=${1:-${DOCKER_HUB:-cr.noroutine.me}}
 
     for image_entry in "${images[@]}"; do
         image=$(strip_options ${image_entry})

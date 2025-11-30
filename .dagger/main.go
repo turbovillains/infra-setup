@@ -39,9 +39,9 @@ func New(
 	// +optional
 	// +default="variables.yml"
 	variablesFile string,
-	// Target registry (default: cr.nrtn.dev, use DOCKER_HUB var in GitLab)
+	// Target registry (default: cr.noroutine.me, use DOCKER_HUB var in GitLab)
 	// +optional
-	// +default="cr.nrtn.dev"
+	// +default="cr.noroutine.me"
 	targetRegistry string,
 ) *InfraSetup {
 	return &InfraSetup{

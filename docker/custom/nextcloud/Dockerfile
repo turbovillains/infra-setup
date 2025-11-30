@@ -1,4 +1,4 @@
-ARG IMAGE_REGISTRY=cr.nrtn.dev
+ARG IMAGE_REGISTRY=cr.noroutine.me
 ARG NEXTCLOUD_VERSION=dev
 
 FROM ${IMAGE_REGISTRY}/library/nextcloud:${NEXTCLOUD_VERSION}

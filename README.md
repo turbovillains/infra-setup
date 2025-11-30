@@ -18,7 +18,7 @@ See [BUILD-ORDER.md](BUILD-ORDER.md) for detailed build instructions.
 ./build.sh custom
 
 # Build and push to registry
-docker login cr.nrtn.dev
+docker login cr.noroutine.me
 ./build.sh scratch --push
 ./build.sh custom --push
 
@@ -101,7 +101,7 @@ Located in `.forgejo/workflows/`:
 - Uses Dagger for image imports
 - Uses `./build.sh` for image builds
 - Pushes to `infra-dev` namespace for commits, `infra` for tags
-- Uses `cr.nrtn.dev` as default registry (override with `IMAGE_REGISTRY` variable)
+- Uses `cr.noroutine.me` as default registry (override with `IMAGE_REGISTRY` variable)
 
 #### mirror.yml (manual only)
 
@@ -119,7 +119,7 @@ For Forgejo Actions workflows:
 - `DAGGER_CLOUD_TOKEN` - Dagger Cloud token (optional, for caching)
 
 Optionally set:
-- `IMAGE_REGISTRY` - Override default registry (default: cr.nrtn.dev)
+- `IMAGE_REGISTRY` - Override default registry (default: cr.noroutine.me)
 
 ```bash
 # Create DOCKER_CFG secret:
@@ -136,13 +136,13 @@ cat ~/.ssh/id_rsa | base64 -w0
 Build variables are loaded from `variables.yml`. This file contains version definitions for all upstream images and components.
 
 Key environment variables (can be overridden):
-- `IMAGE_REGISTRY` - Container registry (default: cr.nrtn.dev)
+- `IMAGE_REGISTRY` - Container registry (default: cr.noroutine.me)
 - `INFRA_NAMESPACE` - Image namespace (default: infra-dev)
 - `INFRA_VERSION` - Version tag (default: git SHA or 'dev')
 
 ### Container Registry
 
-The default registry is `cr.nrtn.dev`. This can be overridden via:
+The default registry is `cr.noroutine.me`. This can be overridden via:
 - `--registry` flag (for `./build.sh`)
 - `IMAGE_REGISTRY` environment variable (for CI/CD)
 - `--target-registry` flag (for Dagger)

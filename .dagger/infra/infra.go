@@ -97,7 +97,7 @@ func isHub(h string) bool {
 	}
 }
 
-// Accepts keys like "https://cr.nrtn.dev", "cr.nrtn.dev", "https://index.docker.io/v1/"
+// Accepts keys like "https://cr.noroutine.me", "cr.noroutine.me", "https://index.docker.io/v1/"
 func normHost(key string) string {
 	k := strings.TrimSpace(key)
 	if strings.HasPrefix(k, "http://") || strings.HasPrefix(k, "https://") {

@@ -1,4 +1,4 @@
-ARG IMAGE_REGISTRY=cr.nrtn.dev
+ARG IMAGE_REGISTRY=cr.noroutine.me
 ARG PYTHON_VERSION=dev
 
 FROM ${IMAGE_REGISTRY}/library/python:${PYTHON_VERSION}

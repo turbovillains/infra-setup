@@ -1,4 +1,4 @@
-ARG IMAGE_REGISTRY=cr.nrtn.dev
+ARG IMAGE_REGISTRY=cr.noroutine.me
 ARG NETBOX_VERSION=dev
 
 FROM ${IMAGE_REGISTRY}/netboxcommunity/netbox:${NETBOX_VERSION}

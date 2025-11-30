@@ -30,7 +30,7 @@ Simply create a new `docker-compose.newstage.yml` file and the build system will
 ./build.sh [stage] [options]
 
 Options:
-  --registry REGISTRY      Container registry (default: cr.nrtn.dev)
+  --registry REGISTRY      Container registry (default: cr.noroutine.me)
   --namespace NAMESPACE    Image namespace (default: infra-dev)
   --version VERSION        Image version tag (default: git SHA or 'dev')
   --push                   Push images after build
@@ -91,7 +91,7 @@ The Forgejo workflows use the same `./build.sh` script for consistency.
 **Features**:
 - Uses `./build.sh` for all builds
 - Pushes to `infra-dev` namespace for commits, `infra` for tags
-- Uses `cr.nrtn.dev` as default registry (override with `IMAGE_REGISTRY` variable)
+- Uses `cr.noroutine.me` as default registry (override with `IMAGE_REGISTRY` variable)
 - Uses existing `DOCKER_CFG` secret for authentication
 
 ### mirror.yml (manual only)
@@ -107,14 +107,14 @@ The Forgejo workflows use the same `./build.sh` script for consistency.
 Build variables are loaded from `variables.yml` automatically by `./build.sh`.
 
 Key environment variables (can be overridden):
-- `IMAGE_REGISTRY` - Container registry (default: cr.nrtn.dev)
+- `IMAGE_REGISTRY` - Container registry (default: cr.noroutine.me)
 - `INFRA_NAMESPACE` - Image namespace (default: infra-dev)
 - `INFRA_VERSION` - Version tag (default: git SHA or 'dev')
 - `PUSH` - Set to 'true' to push images (default: false)
 
 ## Container Registry
 
-The default registry is `cr.nrtn.dev`. This can be overridden via:
+The default registry is `cr.noroutine.me`. This can be overridden via:
 - `--registry` flag
 - `IMAGE_REGISTRY` environment variable
 
@@ -159,8 +159,8 @@ chmod +x /usr/local/bin/yq
 # Build with custom version
 ./build.sh scratch --version test --namespace infra-dev
 
-# Build and push to cr.nrtn.dev
-docker login cr.nrtn.dev
+# Build and push to cr.noroutine.me
+docker login cr.noroutine.me
 ./build.sh scratch --push
 ./build.sh custom --push
 

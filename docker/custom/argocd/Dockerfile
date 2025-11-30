@@ -1,4 +1,4 @@
-ARG IMAGE_REGISTRY=cr.nrtn.dev
+ARG IMAGE_REGISTRY=cr.noroutine.me
 ARG ARGOCD_VERSION=dev
 
 FROM scratch AS ytt
