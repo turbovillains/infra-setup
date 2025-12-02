@@ -1,12 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
 	"os"
-	"regexp"
 	"strings"
+	"text/template"
 
 	"dagger/infra-setup/infra"
 	"dagger/infra-setup/internal/dagger"
@@ -55,6 +56,19 @@ type Variables struct {
 	Variables map[string]string `yaml:"variables"`
 }
 
+type ImageEntry struct {
+	Source string
+	Target string
+}
+
+type RegsyncConfig struct {
+	Sync []struct {
+		Source string `yaml:"source"`
+		Target string `yaml:"target"`
+		Type   string `yaml:"type"`
+	} `yaml:"sync"`
+}
+
 // WithDockerCfg stores the secret on the object so it can be reused.
 func (m *InfraSetup) WithDockerCfg(dockerCfg *dagger.Secret) *InfraSetup {
 	// return a *new* configured object if you prefer immutability patterns
@@ -86,21 +100,6 @@ func (m *InfraSetup) ensureKeychain(ctx context.Context) (authn.Keychain, error)
 	}
 	m.keychain = kc
 	return m.keychain, nil
-}
-
-// TestCrane tests crane copy functionality using the library (no external container)
-func (m *InfraSetup) TestCrane(
-	ctx context.Context,
-) (string, error) {
-	src := "alpine:3.22.2"
-	dst := m.buildDestination(src, m.TargetRegistry, "")
-
-	result, err := m.pullAndPush(ctx, src, dst)
-	if err != nil {
-		return "", err
-	}
-
-	return result, nil
 }
 
 // TestPaths helps debug file paths in module
@@ -192,26 +191,18 @@ func (m *InfraSetup) ListImages(
 	// +optional
 	pattern string,
 ) (string, error) {
-	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
+	imageEntries, err := m.getImageEntries(ctx)
 	if err != nil {
 		return "", err
 	}
 
-	imageEntries := m.getImageEntries()
 	var results strings.Builder
 	matched := 0
 
 	for _, entry := range imageEntries {
-		expanded, prependName, err := m.expandImageEntry(entry, vars)
-		if err != nil {
-			return "", err
-		}
-
 		// If pattern is empty or matches
-		if pattern == "" || strings.Contains(expanded, pattern) {
-			source := expanded
-			destination := m.buildDestination(expanded, m.TargetRegistry, prependName)
-			results.WriteString(fmt.Sprintf("%s -> %s\n", source, destination))
+		if pattern == "" || strings.Contains(entry.Source, pattern) {
+			results.WriteString(fmt.Sprintf("%s -> %s\n", entry.Source, entry.Target))
 			matched++
 		}
 	}
@@ -227,31 +218,22 @@ func (m *InfraSetup) ImportImages(
 	// +optional
 	pattern string,
 ) (string, error) {
-	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
+	imageEntries, err := m.getImageEntries(ctx)
 	if err != nil {
 		return "", err
 	}
 
-	imageEntries := m.getImageEntries()
 	var results strings.Builder
 	matched := 0
 
-	for i, entry := range imageEntries {
-		expanded, prependName, err := m.expandImageEntry(entry, vars)
-		if err != nil {
-			return "", fmt.Errorf("image entry %d: %w", i+1, err)
-		}
-
+	for _, entry := range imageEntries {
 		// If pattern is empty or matches
-		if pattern == "" || strings.Contains(expanded, pattern) {
-			source := expanded
-			destination := m.buildDestination(expanded, m.TargetRegistry, prependName)
-
-			if _, err := m.pullAndPush(ctx, source, destination); err != nil {
-				return "", fmt.Errorf("failed to import %s: %w", source, err)
+		if pattern == "" || strings.Contains(entry.Source, pattern) {
+			if _, err := m.pullAndPush(ctx, entry.Source, entry.Target); err != nil {
+				return "", fmt.Errorf("failed to import %s: %w", entry.Source, err)
 			}
 
-			results.WriteString(fmt.Sprintf("✓ %s -> %s\n", source, destination))
+			results.WriteString(fmt.Sprintf("✓ %s -> %s\n", entry.Source, entry.Target))
 			matched++
 		}
 	}
@@ -279,35 +261,25 @@ func (m *InfraSetup) ArchiveImagesForExport(
 	// +optional
 	platform string,
 ) (*dagger.Directory, error) {
-	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
-	if err != nil {
-		return nil, err
-	}
-
 	// Default to "all" (multiarch) if platform not specified
 	if platform == "" {
 		platform = "all"
 	}
 
-	imageEntries := m.getImageEntries()
+	imageEntries, err := m.getImageEntries(ctx)
+	if err != nil {
+		return nil, err
+	}
 
 	// Start with empty directory
 	outputDir := dag.Directory()
 
-	for i, entry := range imageEntries {
-		source, prependName, err := m.expandImageEntry(entry, vars)
-		if err != nil {
-			return nil, fmt.Errorf("image entry %d: %w", i+1, err)
-		}
-
+	for _, entry := range imageEntries {
 		// If pattern is empty or matches source
-		if pattern == "" || strings.Contains(source, pattern) {
-			// Calculate destination in target registry (where image should be imported)
-			destination := m.buildDestination(source, m.TargetRegistry, prependName)
-
-			dir, archiveName, err := m.archiveImage(ctx, destination, platform)
+		if pattern == "" || strings.Contains(entry.Source, pattern) {
+			dir, archiveName, err := m.archiveImage(ctx, entry.Target, platform)
 			if err != nil {
-				return nil, fmt.Errorf("failed to archive %s (from %s): %w", destination, source, err)
+				return nil, fmt.Errorf("failed to archive %s (from %s): %w", entry.Target, entry.Source, err)
 			}
 
 			// Get the file from the directory and add to output
@@ -337,33 +309,23 @@ func (m *InfraSetup) ArchiveImagesToStorage(
 		return "", fmt.Errorf("sshPrivateKey is required; call WithSshPrivateKey first")
 	}
 
-	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
-	if err != nil {
-		return "", err
-	}
-
 	// Default to "all" (multiarch) if platform not specified
 	if platform == "" {
 		platform = "all"
 	}
 
-	imageEntries := m.getImageEntries()
+	imageEntries, err := m.getImageEntries(ctx)
+	if err != nil {
+		return "", err
+	}
 	matched := 0
 
-	for i, entry := range imageEntries {
-		source, prependName, err := m.expandImageEntry(entry, vars)
-		if err != nil {
-			return "", fmt.Errorf("image entry %d: %w", i+1, err)
-		}
-
+	for _, entry := range imageEntries {
 		// If pattern is empty or matches source
-		if pattern == "" || strings.Contains(source, pattern) {
-			// Calculate destination in target registry (where image should be imported)
-			destination := m.buildDestination(source, m.TargetRegistry, prependName)
-
-			dir, archiveName, err := m.archiveImage(ctx, destination, platform)
+		if pattern == "" || strings.Contains(entry.Source, pattern) {
+			dir, archiveName, err := m.archiveImage(ctx, entry.Target, platform)
 			if err != nil {
-				return "", fmt.Errorf("failed to archive %s (from %s): %w", destination, source, err)
+				return "", fmt.Errorf("failed to archive %s (from %s): %w", entry.Target, entry.Source, err)
 			}
 
 			// Upload this archive to storage
@@ -496,293 +458,85 @@ func (m *InfraSetup) loadVariables(ctx context.Context, file *dagger.File) (*Var
 	return &vars, nil
 }
 
-// getImageEntries returns all image entries in the dense format from bash
-func (m *InfraSetup) getImageEntries() []string {
-	return []string{
-		"debian:${DEBIAN_VERSION}:::prepend_name=library/",
-		"ubuntu:${UBUNTU_NOBLE_VERSION}:::prepend_name=library/",
-		"alpine:${ALPINE_VERSION}:::prepend_name=library/",
-		"busybox:${BUSYBOX_VERSION}:::prepend_name=library/",
-		"node:${NODE_VERSION}:::prepend_name=library/",
-		"python:${PYTHON_VERSION}:::prepend_name=library/",
-		"golang:${GOLANG_VERSION}:::prepend_name=library/",
-		"traefik:${TRAEFIK_VERSION}:::prepend_name=library/",
-		"sonatype/nexus3:${NEXUS_VERSION}",
-		"squidfunk/mkdocs-material:${MKDOCS_VERSION}",
-		"freeradius/freeradius-server:${FREERADIUS_VERSION}",
-		"quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}",
-		"postgres:${POSTGRES_VERSION}:::prepend_name=library/",
-		"prometheuscommunity/postgres-exporter:${POSTGRES_EXPORTER_VERSION}",
-		"quay.io/minio/minio:${MINIO_VERSION}",
-		"quay.io/minio/mc:${MINIO_MC_VERSION}",
-		"quay.io/coreos/etcd:${ETCD_35_VERSION}",
-		"quay.io/coreos/etcd:${ETCD_36_VERSION}",
-		"quay.io/prometheus/prometheus:${PROMETHEUS_VERSION}",
-		"quay.io/prometheus/alertmanager:${ALERTMANAGER_VERSION}",
-		"quay.io/prometheus/node-exporter:${NODE_EXPORTER_VERSION}",
-		"quay.io/prometheus/blackbox-exporter:${BLACKBOX_EXPORTER_VERSION}",
-		"quay.io/prometheus/snmp-exporter:${SNMP_EXPORTER_VERSION}",
-		"quay.io/prometheus/pushgateway:${PUSHGATEWAY_VERSION}",
-		"quay.io/prometheus-operator/prometheus-operator:${PROMETHEUS_OPERATOR_VERSION}",
-		"quay.io/prometheus-operator/prometheus-config-reloader:${PROMETHEUS_OPERATOR_VERSION}",
-		"registry.k8s.io/kube-state-metrics/kube-state-metrics:${KUBE_STATE_METRICS_VERSION}",
-		"registry.k8s.io/metrics-server/metrics-server:${METRICS_SERVER_VERSION}",
-		"grafana/grafana:${GRAFANA_VERSION}",
-		"ghcr.io/prymitive/karma:${KARMA_VERSION}",
-		"docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION}:::prepend_name=elastic/",
-		"docker.elastic.co/logstash/logstash:${LOGSTASH_VERSION}:::prepend_name=elastic/",
-		"docker.elastic.co/kibana/kibana:${KIBANA_VERSION}:::prepend_name=elastic/",
-		"docker.elastic.co/apm/apm-server:${APMSERVER_VERSION}:::prepend_name=elastic/",
-		"docker.elastic.co/beats/elastic-agent:${ELASTICAGENT_VERSION}:::prepend_name=elastic/",
-		"mongo:${MONGODB_VERSION}:::prepend_name=library/",
-		"percona/mongodb_exporter:${MONGODB_EXPORTER_VERSION}",
-		"dpage/pgadmin4:${PGADMIN_VERSION}",
-		"mccutchen/go-httpbin:${HTTPBIN_VERSION}",
-		"quay.io/oauth2-proxy/oauth2-proxy:${OAUTH2_PROXY_VERSION}",
-		"gitlab/gitlab-ce:${GITLAB_VERSION}",
-		"gitlab/gitlab-runner:${GITLAB_RUNNER_VERSION}",
-		"registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:${GITLAB_RUNNER_HELPER_VERSION}",
-		"registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/agentk:${GITLAB_AGENTK_VERSION}",
-		"quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}",
-		"pihole/pihole:${PIHOLE_VERSION}",
-		"klutchell/unbound:${UNBOUND_VERSION}",
-		"nextcloud:${NEXTCLOUD_VERSION}:::prepend_name=library/",
-		"docker:${DIND_VERSION}:::prepend_name=library/",
-		"registry:${REGISTRY_VERSION}:::prepend_name=library/",
-		"registry.k8s.io/ingress-nginx/controller:${NGINX_INGRESS_CONTROLLER_VERSION}",
-		"registry.k8s.io/ingress-nginx/kube-webhook-certgen:${NGINX_INGRESS_KUBE_WEBHOOK_CERTGEN_VERSION}",
-		"quay.io/metallb/controller:${METALLB_CONTROLLER_VERSION}",
-		"quay.io/metallb/speaker:${METALLB_SPEAKER_VERSION}",
-		"quay.io/frrouting/frr:${METALLB_FRR_VERSION}",
-		"haproxytech/haproxy-alpine:${HAPROXY_VERSION}",
-		"haproxytech/kubernetes-ingress:${HAPROXY_INGRESS_VERSION}",
-		"aquasec/trivy:${TRIVY_VERSION}",
-		"ghcr.io/external-secrets/external-secrets:${EXTERNAL_SECRETS_VERSION}",
-		"registry.k8s.io/csi-secrets-store/driver:${CSI_SECRETS_STORE_VERSION}",
-		"registry.k8s.io/csi-secrets-store/driver-crds:${CSI_SECRETS_STORE_VERSION}",
-		"stakater/reloader:${RELOADER_VERSION}",
-		"jimmidyson/configmap-reload:${CONFIGMAP_RELOAD_VERSION}",
-		"registry:${DOCKER_REGISTRY_VERSION}:::prepend_name=library/",
-		"ghcr.io/dexidp/dex:${DEX_VERSION}",
-		"quay.io/argoproj/argocd:${ARGOCD_VERSION}",
-		"valkey/valkey:${VALKEY_VERSION}",
-		"redis:${REDIS_VERSION}:::prepend_name=library/",
-		"oliver006/redis_exporter:${REDIS_EXPORTER_VERSION}",
-		"boky/postfix:${BOKY_POSTFIX_VERSION}",
-		"connecteverything/nats-operator:${NATS_OPERATOR_VERSION}",
-		"nats:${NATS_VERSION}:::prepend_name=library/",
-		"natsio/prometheus-nats-exporter:${NATS_EXPORTER_VERSION}",
-		"natsio/nats-server-config-reloader:${NATS_SERVER_CONFIG_RELOADER}",
-		"masipcat/wireguard-go:${WIREGUARD_VERSION}",
-		"eclipse-mosquitto:${MOSQUITTO_VERSION}:::prepend_name=library/",
-		"sapcc/mosquitto-exporter:${MOSQUITTO_EXPORTER_VERSION}",
-		"caddy:${CADDY_VERSION}:::prepend_name=library/",
-		"azul/zulu-openjdk-debian:${JDK_ZULU_VERSION}",
-		"eclipse-temurin:${JDK_TEMURIN_VERSION}:::prepend_name=library/",
-		"elastic/eck-operator:${ECK_OPERATOR_VERSION}",
-		"syncthing/syncthing:${SYNCTHING_VERSION}",
-		"syncthing/discosrv:${SYNCTHING_VERSION}",
-		"syncthing/relaysrv:${SYNCTHING_VERSION}",
-		"jellyfin/jellyfin:${JELLYFIN_VERSION}",
-		"haveagitgat/tdarr:${TDARR_VERSION}",
-		"haveagitgat/tdarr_node:${TDARR_VERSION}",
-		"curlimages/curl:${CURL_VERSION}",
-		"restic/restic:${RESTIC_VERSION}",
-		"coturn/coturn:${COTURN_VERSION}",
-		"netboxcommunity/netbox:${NETBOX_VERSION}",
-		"postgrest/postgrest:${POSTGREST_VERSION}",
-		"quay.io/cephcsi/cephcsi:${CEPHCSI_VERSION}",
-		"homeassistant/home-assistant:${HOMEASSISTANT_VERSION}",
-		"koenkk/zigbee2mqtt:${ZIGBEE2MQTT_VERSION}",
-		"registry.k8s.io/sig-storage/nfsplugin:${CSI_NFSPLUGIN_VERSION}",
-		"cloudflare/cloudflared:${CLOUDFLARED_VERSION}",
-		"registry.k8s.io/git-sync/git-sync:${GIT_SYNC_VERSION}",
-		"apache/airflow:${AIRFLOW_VERSION}",
-		"sj26/mailcatcher:${MAILCATCHER_VERSION}",
-		"fatedier/frps:${FRP_VERSION}",
-		"fatedier/frpc:${FRP_VERSION}",
-		"n8nio/n8n:${N8N_VERSION}",
-		"netsampler/goflow2:${GOFLOW2_VERSION}",
-		"ghcr.io/corentinth/it-tools:${ITTOOLS_VERSION}",
-		"quay.io/openbgpd/openbgpd:${OPENBGPD_VERISON}",
-		// cert-manager
-		"quay.io/jetstack/cert-manager-controller:${CERT_MANAGER_VERSION}",
-		"quay.io/jetstack/cert-manager-cainjector:${CERT_MANAGER_VERSION}",
-		"quay.io/jetstack/cert-manager-webhook:${CERT_MANAGER_VERSION}",
-		"quay.io/jetstack/cert-manager-csi-driver:${CERT_MANAGER_CSI_DRIVER_VERSION}",
-		"zachomedia/cert-manager-webhook-pdns:${CERT_MANAGER_WEBHOOK_PDNS_VERSION}",
-		// vault
-		"hashicorp/vault:${VAULT_VERSION}",
-		"hashicorp/vault-k8s:${VAULT_K8S_VERSION}",
-		"hashicorp/vault-csi-provider:${VAULT_CSI_PROVIDER_VERSION}",
-		// k8s
-		"registry.k8s.io/pause:${K8S_PAUSE_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/coredns/coredns:${COREDNS_VERSION}",
-		// k8s 1.34.x
-		"registry.k8s.io/kube-apiserver:${K8S_134_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_134_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_134_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_134_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-apiserver:${K8S_134_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_134_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_134_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_134_VERSION2}:::prepend_name=kubernetes/",
-		// k8s 1.33.x
-		"registry.k8s.io/kube-apiserver:${K8S_133_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_133_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_133_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_133_VERSION}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-apiserver:${K8S_133_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-proxy:${K8S_133_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-scheduler:${K8S_133_VERSION2}:::prepend_name=kubernetes/",
-		"registry.k8s.io/kube-controller-manager:${K8S_133_VERSION2}:::prepend_name=kubernetes/",
-
-		"rancher/kubectl:${KUBECTL_VERSION}",
-		// calico
-		"quay.io/tigera/operator:${TIGERA_OPERATOR_VERSION}",
-		"calico/typha:${CALICO_VERSION}",
-		"calico/ctl:${CALICO_VERSION}",
-		"calico/node:${CALICO_VERSION}",
-		"calico/cni:${CALICO_VERSION}",
-		"calico/apiserver:${CALICO_VERSION}",
-		"calico/kube-controllers:${CALICO_VERSION}",
-		"calico/dikastes:${CALICO_VERSION}",
-		"calico/pod2daemon-flexvol:${CALICO_VERSION}",
-		"calico/node-driver-registrar:${CALICO_VERSION}",
-		"calico/csi:${CALICO_VERSION}",
-		// istio
-		"istio/pilot:${ISTIO_VERSION}",
-		"istio/proxyv2:${ISTIO_VERSION}",
-		"istio/ztunnel:${ISTIO_VERSION}",
-		// NFD
-		"registry.k8s.io/nfd/node-feature-discovery:${K8S_NFD_VERSION}",
-		// sig-storage
-		"registry.k8s.io/sig-storage/livenessprobe:${LIVENESSPROBE_VERSION}",
-		"registry.k8s.io/sig-storage/csi-node-driver-registrar:${CSI_NODE_DRIVER_REGISTRAR_VERSION}",
-		"registry.k8s.io/sig-storage/csi-attacher:${CSI_ATTACHER_VERSION}",
-		"registry.k8s.io/sig-storage/csi-resizer:${CSI_RESIZER_VERSION}",
-		"registry.k8s.io/sig-storage/csi-provisioner:${CSI_PROVISIONER_VERSION}",
-		"registry.k8s.io/sig-storage/csi-snapshotter:${CSI_SNAPSHOTTER_VERSION}",
-		"registry.k8s.io/sig-storage/snapshot-controller:${CSI_SNAPSHOT_CONTROLLER_VERSION}",
-		"registry.k8s.io/sig-storage/snapshot-validation-webhook:${CSI_SNAPSHOT_VALIDATION_WEBHOOK_VERSION}",
-		// nvidia gpu operator
-		"nvcr.io/nvidia/gpu-operator:${NVIDIA_GPU_OPERATOR_VERSION}",
-		"nvcr.io/nvidia/cloud-native/gpu-operator-validator:${NVIDIA_GPU_OPERATOR_VALIDATOR_VERSION}",
-		"nvcr.io/nvidia/cuda:${NVIDIA_CUDA_VERSION}",
-		"nvcr.io/nvidia/cloud-native/k8s-driver-manager:${NVIDIA_K8S_DRIVER_MANAGER_VERSION}",
-		"nvcr.io/nvidia/k8s/container-toolkit:${NVIDIA_K8S_CONTAINER_TOOLKIT_VERSION}",
-		"nvcr.io/nvidia/k8s-device-plugin:${NVIDIA_K8S_DEVICE_PLUGIN_VERSION}",
-		"nvcr.io/nvidia/cloud-native/dcgm:${NVIDIA_DCGM_VERSION}",
-		"nvcr.io/nvidia/k8s/dcgm-exporter:${NVIDIA_DCGM_EXPORTER_VERSION}",
-		"nvcr.io/nvidia/gpu-feature-discovery:${NVIDIA_GPU_FEATURE_DISCOVERY_VERSION}",
-		"nvcr.io/nvidia/cloud-native/k8s-mig-manager:${NVIDIA_K8S_MIG_MANAGER_VERSION}",
-		// kafka
-		"apache/kafka:${APACHE_KAFKA_VERSION}",
-		"quay.io/strimzi/operator:${STRIMZI_OPERATOR_VERSION}",
-		"quay.io/strimzi/kafka:${STRIMZI_OPERATOR_VERSION}-kafka-${STRIMZI_KAFKA_VERSION}",
-		// confluent
-		"confluentinc/confluent-init-container:${CONFLUENTINC_INIT_CONTAINER_VERSION}",
-		"confluentinc/confluent-operator:${CONFLUENTINC_OPERATOR_VERSION}",
-		"confluentinc/cp-enterprise-control-center-next-gen:${CONFLUENTINC_ENTERPRISE_CONTROL_CENTER_VERSION}",
-		"confluentinc/cp-enterprise-replicator:${CONFLUENTINC_CP_VERSION}",
-		"confluentinc/cp-kafka-rest:${CONFLUENTINC_CP_VERSION}",
-		"confluentinc/cp-ksqldb-server:${CONFLUENTINC_CP_VERSION}",
-		"confluentinc/cp-schema-registry:${CONFLUENTINC_CP_VERSION}",
-		"confluentinc/cp-server:${CONFLUENTINC_CP_VERSION}",
-		"confluentinc/cp-server-connect:${CONFLUENTINC_CP_VERSION}",
-		"obsidiandynamics/kafdrop:${KAFDROP_VERSION}",
-		"tchiotludo/akhq:${AKHQ_VERSION}",
-		// scylladb
-		"scylladb/scylla:${SCYLLA_VERSION}",
-		"scylladb/scylla-manager:${SCYLLA_MANAGER_VERSION}",
-		"scylladb/scylla-operator:${SCYLLA_OPERATOR_VERSION}",
-		// clickhouse
-		"clickhouse:${CLICKHOUSE_VERSION}:::prepend_name=library/",
-		"altinity/clickhouse-operator:${CLICHOUSE_OPERATOR_VERSION}",
-		"rabbitmq:${RABBITMQ_VERSION}:::prepend_name=library/",
-		"kbudde/rabbitmq-exporter:${RABBITMQ_EXPORTER_VERSION}",
-		// prefect
-		"prefecthq/prefect:${PREFECT_VERSION}",
-		"prefecthq/prometheus-prefect-exporter:${PREFECT_EXPORTER_VERSION}",
-		// forgejo
-		"codeberg.org/forgejo/forgejo:${FORGEJO_VERSION}",
-		"code.forgejo.org/forgejo/runner:${FORGEJO_RUNNER_VERSION}",
-		"ghcr.io/catthehacker/ubuntu:act-24.04",
-		"ghcr.io/catthehacker/ubuntu:runner-24.04",
-
-		// influxdb
-		"influxdb:${INFLUXDB_VERSION}:::prepend_name=library/",
-		"influxdb:${INFLUXDB2_VERSION}:::prepend_name=library/",
-		"influxdb:${INFLUXDB3_VERSION}:::prepend_name=library/",
-
-		// timescaledb
-		"timescale/timescaledb-ha:${TIMESCALEDB_VERSION}",
-
-		// poweradmin
-		"poweradmin/poweradmin:${POWERADMIN_VERSION}",
-	}
-}
-
-// expandImageEntry expands variables in an image entry and extracts options
-func (m *InfraSetup) expandImageEntry(entry string, vars *Variables) (string, string, error) {
-	parts := strings.Split(entry, ":::")
-	imageSpec := parts[0]
-	prependName := ""
-
-	// Extract options
-	if len(parts) > 1 {
-		for _, opt := range parts[1:] {
-			if val, ok := strings.CutPrefix(opt, "prepend_name="); ok {
-				prependName = val
-			}
-		}
-	}
-
-	// Expand variables
-	expanded, err := m.expandVariables(imageSpec, vars)
+// parseRegsyncConfig reads regsync.yml and returns parsed image entries
+func (m *InfraSetup) parseRegsyncConfig(ctx context.Context) ([]ImageEntry, error) {
+	// Read regsync.yml from source directory
+	regsyncFile := m.Source.File("regsync.yml")
+	content, err := regsyncFile.Contents(ctx)
 	if err != nil {
-		return "", "", err
+		return nil, fmt.Errorf("failed to read regsync.yml: %w", err)
 	}
 
-	return expanded, prependName, nil
-}
+	// Load variables for template expansion
+	varsFile := m.Source.File(m.VariablesFile)
+	vars, err := m.loadVariables(ctx, varsFile)
+	if err != nil {
+		return nil, fmt.Errorf("failed to load variables: %w", err)
+	}
 
-// expandVariables expands ${VAR} references, throwing error if variable not found
-func (m *InfraSetup) expandVariables(s string, vars *Variables) (string, error) {
-	re := regexp.MustCompile(`\$\{([^}]+)\}`)
+	// Create template function map with env function
+	funcMap := template.FuncMap{
+		"env": func(key string) string {
+			// Check if it's TARGET_REGISTRY
+			if key == "TARGET_REGISTRY" {
+				return m.TargetRegistry
+			}
+			// Otherwise lookup in variables
+			if val, ok := vars.Variables[key]; ok {
+				return val
+			}
+			return ""
+		},
+	}
 
-	result := s
-	matches := re.FindAllStringSubmatch(s, -1)
+	// Parse YAML
+	var config RegsyncConfig
+	if err := yaml.Unmarshal([]byte(content), &config); err != nil {
+		return nil, fmt.Errorf("failed to parse regsync.yml: %w", err)
+	}
 
-	for _, match := range matches {
-		varName := match[1]
-		value, ok := vars.Variables[varName]
-		if !ok {
-			return "", fmt.Errorf("variable not defined: %s", varName)
+	// Process each sync entry
+	var entries []ImageEntry
+	for i, syncEntry := range config.Sync {
+		// Only process image type entries
+		if syncEntry.Type != "image" {
+			continue
 		}
-		result = strings.ReplaceAll(result, match[0], value)
+
+		// Expand source template
+		sourceTmpl, err := template.New(fmt.Sprintf("source-%d", i)).Funcs(funcMap).Parse(syncEntry.Source)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse source template for entry %d: %w", i, err)
+		}
+		var sourceBuf bytes.Buffer
+		if err := sourceTmpl.Execute(&sourceBuf, nil); err != nil {
+			return nil, fmt.Errorf("failed to execute source template for entry %d: %w", i, err)
+		}
+		source := sourceBuf.String()
+
+		// Expand target template
+		targetTmpl, err := template.New(fmt.Sprintf("target-%d", i)).Funcs(funcMap).Parse(syncEntry.Target)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse target template for entry %d: %w", i, err)
+		}
+		var targetBuf bytes.Buffer
+		if err := targetTmpl.Execute(&targetBuf, nil); err != nil {
+			return nil, fmt.Errorf("failed to execute target template for entry %d: %w", i, err)
+		}
+		target := targetBuf.String()
+
+		entries = append(entries, ImageEntry{
+			Source: source,
+			Target: target,
+		})
 	}
 
-	return result, nil
+	return entries, nil
 }
 
-// buildDestination constructs the destination image reference
-func (m *InfraSetup) buildDestination(source, targetRegistry, prependName string) string {
-	parts := strings.SplitN(source, "/", 2)
-
-	var imageName string
-	if len(parts) == 1 {
-		// No registry/org prefix (e.g., "debian:tag")
-		imageName = parts[0]
-	} else if strings.Contains(parts[0], ".") {
-		// Has registry prefix (e.g., "quay.io/minio/minio:tag")
-		imageName = parts[1]
-	} else {
-		// Has org prefix (e.g., "gitlab/gitlab-ce:tag")
-		imageName = source
-	}
-
-	return targetRegistry + "/" + prependName + imageName
+// getImageEntries returns all image entries by reading and parsing regsync.yml
+func (m *InfraSetup) getImageEntries(ctx context.Context) ([]ImageEntry, error) {
+	return m.parseRegsyncConfig(ctx)
 }
 
 // pullAndPush pulls source image and pushes to destination using crane for multiarch support
@@ -815,32 +569,25 @@ func (m *InfraSetup) GenerateArtifacts(
 	// +default="dev"
 	infraVersion string,
 ) (*dagger.Directory, error) {
-	vars, err := m.loadVariables(ctx, m.Source.File(m.VariablesFile))
+	imageEntries, err := m.getImageEntries(ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	imageEntries := m.getImageEntries()
 
 	// Generate Dockerfile
 	var dockerfile strings.Builder
 	var upstreamImages []string
 
 	for _, entry := range imageEntries {
-		expanded, _, err := m.expandImageEntry(entry, vars)
-		if err != nil {
-			return nil, fmt.Errorf("expanding image entry: %w", err)
-		}
-
 		// Extract image name for comment
-		parts := strings.SplitN(expanded, ":", 2)
+		parts := strings.SplitN(entry.Source, ":", 2)
 		imageName := parts[0]
 
 		dockerfile.WriteString(fmt.Sprintf("# %s\n", imageName))
-		dockerfile.WriteString(fmt.Sprintf("FROM %s\n", expanded))
+		dockerfile.WriteString(fmt.Sprintf("FROM %s\n", entry.Source))
 		dockerfile.WriteString(fmt.Sprintf("# %s\n\n", imageName))
 
-		upstreamImages = append(upstreamImages, expanded)
+		upstreamImages = append(upstreamImages, entry.Source)
 	}
 
 	// Generate infra.json

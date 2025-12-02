@@ -15,11 +15,6 @@ jobs:
     name: import-images
     runs-on: ubuntu-latest
     steps:
-      - name: Set up SSH
-        run: |
-          eval "$(ssh-agent -s)"
-          echo '${{ secrets.SSH_PRIVATE_KEY }}' | base64 -d | ssh-add -
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -34,18 +29,48 @@ jobs:
             echo "infra_namespace=infra-dev" >> $GITHUB_OUTPUT
           fi
 
+      - name: Install regctl (includes regsync)
+        shell: bash
+        run: |
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          [ "$ARCH" = "x86_64" ] && ARCH=amd64
+          [ "$ARCH" = "aarch64" ] && ARCH=arm64
+          curl -sSL "https://github.com/regclient/regclient/releases/latest/download/regctl-${OS}-${ARCH}" -o /usr/local/bin/regctl
+          curl -sSL "https://github.com/regclient/regclient/releases/latest/download/regsync-${OS}-${ARCH}" -o /usr/local/bin/regsync
+          sudo chmod +x /usr/local/bin/regctl /usr/local/bin/regsync
+
+      - name: Install yq for variable parsing
+        shell: bash
+        run: |
+          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+          ARCH=$(uname -m)
+          [ "$ARCH" = "x86_64" ] && ARCH=amd64
+          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Setup Docker config
+        run: |
+          mkdir -p ~/.docker
+          echo "${{ secrets.DOCKER_CFG }}" | base64 -d > ~/.docker/config.json
+
+      - name: Import images with regsync
+        run: |
+          # Export all variables from variables.yml
+          eval $(yq eval '.variables | to_entries | .[] | "export " + .key + "=\"" + .value + "\""' variables.yml)
+
+          # Set target registry
+          export TARGET_REGISTRY="${{ env.IMAGE_REGISTRY }}"
+
+          # Run regsync
+          regsync once -c regsync.yml -v info
+        env:
+          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
+
       - name: Install Dagger
         uses: https://github.com/dagger/dagger-for-github@v8.2.0
         with:
           version: "latest"
-
-      - name: Import images with Dagger
-        run: |
-          dagger call \
-            with-docker-cfg --docker-cfg env://DOCKER_CFG import-images
-        env:
-          DOCKER_CFG: ${{ secrets.DOCKER_CFG }}
-          DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}
 
       - name: Generate artifacts with Dagger
         id: generate
