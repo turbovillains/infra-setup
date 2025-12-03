@@ -40,7 +40,7 @@ app = typer.Typer(
     add_completion=False,
     invoke_without_command=True,
 )
-console = Console()
+console = Console(width=120)  # Wider console to prevent wrapping
 
 
 def get_git_versions() -> dict[str, str]:
