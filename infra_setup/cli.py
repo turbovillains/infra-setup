@@ -33,6 +33,11 @@ from .components import (
     build_stage,
     get_compose_services,
 )
+from .github import (
+    get_dependabot_prs,
+    parse_dependabot_title,
+    normalize_image_name,
+)
 
 app = typer.Typer(
     name="infra",
@@ -1244,6 +1249,280 @@ rsync -av {storage_host}:{storage_path}/{version}/images/ ./
         console.print(f"  [dim]Includes: restore-{version}.yml and README.md[/dim]")
         if cleanup_after_upload:
             console.print(f"  [dim]Cleaned up local archives after upload (saved disk space)[/dim]")
+
+
+@app.command()
+def upgrade(
+    upstream_repo: str = typer.Option("noroutine/upstream", "--repo", "-r", help="Upstream GitHub repo (owner/repo)"),
+    regsync_config: str = typer.Option("regsync.yml", "--regsync", help="Path to regsync.yml"),
+    variables_file: str = typer.Option("variables.yml", "--variables", "-v", help="Path to variables.yml"),
+    target_registry: str = typer.Option("cr.noroutine.me", "--registry", help="Target registry"),
+    apply: bool = typer.Option(False, "--apply", help="Apply upgrades to variables.yml"),
+    skip_prerelease: bool = typer.Option(True, "--skip-prerelease/--include-prerelease", help="Skip pre-release versions (dev, alpha, beta, rc)"),
+    github_token: Optional[str] = typer.Option(None, "--token", help="GitHub API token (or use GITHUB_TOKEN env var)", envvar="GITHUB_TOKEN"),
+):
+    """Check Dependabot PRs and suggest version upgrades for variables.yml."""
+    import yaml
+    from pathlib import Path
+    from ruamel.yaml import YAML
+
+    console.print(Panel.fit("🚀  Checking for Upgrades", style="bold blue"))
+
+    # Fetch Dependabot PRs
+    console.print(f"[dim]Fetching Dependabot PRs from {upstream_repo}...[/dim]")
+    try:
+        prs = get_dependabot_prs(upstream_repo, state="open", github_token=github_token)
+        console.print(f"[dim]Found {len(prs)} Dependabot PRs[/dim]\n")
+    except Exception as e:
+        console.print(f"[red]✗ Failed to fetch PRs: {e}[/red]")
+        raise typer.Exit(code=1)
+
+    if not prs:
+        console.print("[green]✓ No Dependabot PRs found - everything is up to date![/green]")
+        return
+
+    # Parse regsync config to build image -> variable mapping
+    console.print(f"[dim]Parsing {regsync_config} to map images to variables...[/dim]")
+    try:
+        variables = load_variables(variables_file)
+
+        # Build mapping: normalized_image_name -> (variable_name, current_value, full_image_path)
+        image_to_variable = {}
+
+        # Load raw regsync.yml (not expanded) to extract variable names
+        with open(regsync_config) as f:
+            regsync_data = yaml.safe_load(f)
+
+        # Extract variable references from sync entries
+        # Pattern: {{ env "VAR_NAME" }}
+        for entry in regsync_data.get("sync", []):
+            source = entry.get("source", "")
+            # Find variables used in this source
+            var_matches = re.findall(r'\{\{\s*env\s+"([^"]+)"\s*\}\}', source)
+
+            # Extract image reference from source (before :version)
+            if ":" not in source:
+                continue  # No version template, skip
+
+            image_ref = source.split(":")[0]
+
+            # Check if image_ref has a registry prefix (domain.tld/)
+            # Registry domains contain dots and come before the first slash
+            if "/" in image_ref:
+                first_part = image_ref.split("/")[0]
+                if "." in first_part:
+                    # Has registry prefix (e.g., docker.elastic.co/logstash/logstash)
+                    # Remove it: docker.elastic.co/logstash/logstash -> logstash/logstash
+                    image_path = "/".join(image_ref.split("/")[1:])
+                else:
+                    # No registry, keep full path (e.g., sonatype/nexus3 -> sonatype/nexus3)
+                    image_path = image_ref
+            else:
+                # Simple image without slash (e.g., postgres -> postgres)
+                image_path = image_ref
+
+            normalized = normalize_image_name(image_path)
+
+            # Find the version variable (usually the last one or one with VERSION in name)
+            version_var = None
+            for var in var_matches:
+                if "VERSION" in var:
+                    version_var = var
+                    break
+
+            if version_var:
+                image_to_variable[normalized] = (
+                    version_var,
+                    variables.get(version_var, "?"),
+                    image_path,
+                    image_ref  # Store full source with registry
+                )
+
+        console.print(f"[dim]Mapped {len(image_to_variable)} images to variables[/dim]\n")
+
+    except Exception as e:
+        console.print(f"[red]✗ Failed to parse regsync config: {e}[/red]")
+        raise typer.Exit(code=1)
+
+    # Helper function to detect pre-release versions
+    def is_prerelease(version: str) -> bool:
+        """Check if version string contains pre-release identifiers."""
+        version_lower = version.lower()
+        prerelease_markers = [
+            '.dev', '-dev',
+            '.alpha', '-alpha',
+            '.beta', '-beta',
+            '.rc', '-rc',
+            'snapshot',
+        ]
+        return any(marker in version_lower for marker in prerelease_markers)
+
+    # Helper function to generate registry URLs
+    def get_registry_url(source: str, image_path: str) -> str | None:
+        """Generate tags page URL for the image registry."""
+        source_lower = source.lower()
+
+        # Quay.io
+        if source_lower.startswith("quay.io/"):
+            # quay.io/prometheus/prometheus -> https://quay.io/repository/prometheus/prometheus?tab=tags
+            return f"https://quay.io/repository/{image_path}?tab=tags"
+
+        # Docker Elastic
+        elif source_lower.startswith("docker.elastic.co/"):
+            # docker.elastic.co/logstash/logstash -> https://www.docker.elastic.co/r/logstash/logstash
+            return f"https://www.docker.elastic.co/r/{image_path}"
+
+        # Docker Hub (no registry prefix or docker.io)
+        elif not "." in source.split("/")[0] or source_lower.startswith("docker.io/"):
+            # Check if it's an official image (no namespace) or has namespace
+            if "/" in image_path:
+                # User/org image: haproxytech/haproxy-alpine
+                return f"https://hub.docker.com/r/{image_path}/tags"
+            else:
+                # Official image: postgres, nginx, etc.
+                return f"https://hub.docker.com/_/{image_path}/tags"
+
+        # Unknown/custom registry
+        return None
+
+    # Parse PRs and find matching upgrades
+    upgrades = []
+    skipped_prerelease = []
+
+    for pr in prs:
+        title = pr.get("title", "")
+        pr_number = pr.get("number")
+        pr_url = pr.get("html_url")
+
+        image, old_version, new_version = parse_dependabot_title(title)
+
+        if not image or not new_version:
+            continue
+
+        normalized_image = normalize_image_name(image)
+
+        # Try to find matching variable
+        if normalized_image in image_to_variable:
+            var_name, current_value, full_image, source_with_registry = image_to_variable[normalized_image]
+
+            # Skip pre-release versions if requested
+            if skip_prerelease and is_prerelease(new_version):
+                skipped_prerelease.append({
+                    "pr_number": pr_number,
+                    "image": full_image,
+                    "variable": var_name,
+                    "new": new_version,
+                })
+                continue
+
+            upgrades.append({
+                "pr_number": pr_number,
+                "pr_url": pr_url,
+                "image": full_image,
+                "source": source_with_registry,
+                "variable": var_name,
+                "current": current_value,
+                "new": new_version,
+                "title": title,
+            })
+
+    # Show skipped pre-release versions
+    if skipped_prerelease:
+        console.print(f"\n[dim]Skipped {len(skipped_prerelease)} pre-release version(s):[/dim]")
+        for skipped in skipped_prerelease:
+            console.print(f"  [dim]#{skipped['pr_number']} {skipped['image']}: {skipped['new']} (pre-release)[/dim]")
+
+    if not upgrades:
+        console.print("[yellow]⚠ No stable upgrades found in Dependabot PRs[/yellow]")
+        if skipped_prerelease:
+            console.print("[dim]All matched PRs were pre-release versions (use --include-prerelease to see them)[/dim]")
+        else:
+            console.print("[dim]PRs might not match any images in regsync.yml[/dim]")
+        return
+
+    # Show upgrades in table
+    table = Table(show_header=True, header_style="bold cyan", title="Available Upgrades")
+    table.add_column("PR", style="dim", width=6)
+    table.add_column("Image", style="yellow")
+    table.add_column("Variable", style="cyan")
+    table.add_column("Current")
+    table.add_column("", justify="center", width=3)
+    table.add_column("New")
+
+    upgrades_needed = 0
+    already_current = 0
+
+    for upgrade in upgrades:
+        is_current = upgrade['current'] == upgrade['new']
+
+        if is_current:
+            # Already up to date
+            current_style = "green"
+            arrow = "="
+            new_style = "green"
+            already_current += 1
+        else:
+            # Needs upgrade
+            current_style = "red"
+            arrow = "→"
+            new_style = "green"
+            upgrades_needed += 1
+
+        # Generate registry URL for image
+        registry_url = get_registry_url(upgrade['source'], upgrade['image'])
+        if registry_url:
+            image_display = f"[link={registry_url}]{upgrade['image']}[/link]"
+        else:
+            image_display = upgrade['image']
+
+        table.add_row(
+            f"[link={upgrade['pr_url']}]#{upgrade['pr_number']}[/link]",
+            image_display,
+            upgrade['variable'],
+            f"[{current_style}]{upgrade['current']}[/{current_style}]",
+            arrow,
+            f"[{new_style}]{upgrade['new']}[/{new_style}]",
+        )
+
+    console.print(table)
+    console.print(f"\n[bold]Total:[/bold] {len(upgrades)} ({upgrades_needed} to upgrade, {already_current} already current)")
+
+    # Apply upgrades if requested
+    if apply:
+        console.print(f"\n[bold cyan]Applying upgrades to {variables_file}...[/bold cyan]")
+
+        # Load variables.yml with ruamel.yaml to preserve comments
+        ryaml = YAML()
+        ryaml.preserve_quotes = True
+        ryaml.width = 4096  # Prevent line wrapping
+
+        with open(variables_file) as f:
+            variables_data = ryaml.load(f)
+
+        applied = 0
+        for upgrade in upgrades:
+            var_name = upgrade['variable']
+            new_value = upgrade['new']
+
+            if var_name in variables_data.get('variables', {}):
+                old_value = variables_data['variables'][var_name]
+                variables_data['variables'][var_name] = new_value
+                console.print(f"  [green]✓[/green] {var_name}: {old_value} → {new_value}")
+                applied += 1
+            else:
+                console.print(f"  [yellow]⚠[/yellow] {var_name} not found in variables")
+
+        # Write back to file with preserved comments and formatting
+        if applied > 0:
+            with open(variables_file, 'w') as f:
+                ryaml.dump(variables_data, f)
+
+            console.print(f"\n[bold green]✓ Applied {applied} upgrades to {variables_file}[/bold green]")
+            console.print(f"[dim]Review changes with: git diff {variables_file}[/dim]")
+        else:
+            console.print(f"\n[yellow]No upgrades applied[/yellow]")
+    else:
+        console.print(f"\n[dim]Run with --apply to update {variables_file}[/dim]")
 
 
 if __name__ == "__main__":
