@@ -2,7 +2,9 @@
 
 import json
 import os
+import re
 import subprocess
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Optional
 
@@ -23,13 +25,80 @@ from .helm import (
     pull_chart,
     create_helm_index,
 )
+from .components import (
+    load_components,
+    expand_version_template,
+    retag_component,
+    discover_stages,
+    build_stage,
+    get_compose_services,
+)
 
 app = typer.Typer(
     name="infra",
     help="Infrastructure image management and artifact generation",
     add_completion=False,
+    invoke_without_command=True,
 )
 console = Console()
+
+
+def get_git_versions() -> dict[str, str]:
+    """
+    Get git version information.
+
+    Returns:
+        Dict with current_sha, last_tag, and next_version
+    """
+    versions = {
+        "current_sha": "unknown",
+        "last_tag": "none",
+        "next_version": "v0.1.0",
+    }
+
+    try:
+        # Current commit SHA
+        result = subprocess.run(
+            ["git", "rev-parse", "--short=8", "HEAD"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        versions["current_sha"] = result.stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+
+    try:
+        # Last tag (semver sorted)
+        result = subprocess.run(
+            ["git", "tag", "--sort=-version:refname"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        tags = [t for t in result.stdout.strip().split("\n") if t]
+        if tags:
+            last_tag = tags[0]
+            versions["last_tag"] = last_tag
+
+            # Calculate next version (increment patch)
+            # Try full semver first (major.minor.patch)
+            match = re.match(r'^v?(\d+)\.(\d+)\.(\d+)', last_tag)
+            if match:
+                major, minor, patch = map(int, match.groups())
+                versions["next_version"] = f"v{major}.{minor}.{patch + 1}"
+            else:
+                # Try major.minor format
+                match = re.match(r'^v?(\d+)\.(\d+)', last_tag)
+                if match:
+                    major, minor = map(int, match.groups())
+                    versions["next_version"] = f"v{major}.{minor}.1"
+                else:
+                    versions["next_version"] = "v0.1.0"
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+
+    return versions
 
 
 @app.command()
@@ -324,6 +393,311 @@ def import_charts(
             console.print(f"  [dim]•[/dim] {error}")
         if len(errors) > 5:
             console.print(f"  [dim]... and {len(errors) - 5} more[/dim]")
+
+
+@app.command()
+def retag_components(
+    components_file: str = typer.Option("components.yml", "--config", "-c", help="Path to components.yml"),
+    variables_file: str = typer.Option("variables.yml", "--variables", "-v", help="Path to variables.yml"),
+    target_registry: str = typer.Option("cr.noroutine.me", "--registry", "-r", help="Target registry"),
+    namespace: str = typer.Option("infra-dev", "--namespace", "-n", help="Image namespace"),
+    version: str = typer.Option(None, "--version", help="Image version tag (default: git 8-char SHA)"),
+    components: Optional[str] = typer.Option(None, "--components", help="Comma-separated list of components to retag"),
+    parallel: int = typer.Option(10, "--parallel", help="Number of parallel operations"),
+):
+    """Retag generic components using regctl."""
+    console.print(Panel.fit("🔄 Retagging Components", style="bold blue"))
+
+    # Determine version
+    if not version:
+        try:
+            result = subprocess.run(
+                ["git", "rev-parse", "--short=8", "HEAD"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            version = result.stdout.strip()
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            version = "dev"
+
+    # Load variables and components
+    variables = load_variables(variables_file)
+    all_components = load_components(components_file)
+
+    console.print(f"[dim]Loaded {len(variables)} variables from {variables_file}[/dim]")
+    console.print(f"[dim]Found {len(all_components)} components in {components_file}[/dim]")
+
+    # Filter components if specified
+    if components:
+        component_list = [c.strip() for c in components.split(",")]
+        filtered = {k: v for k, v in all_components.items() if k in component_list}
+        if not filtered:
+            console.print(f"[red]✗ No matching components found[/red]")
+            raise typer.Exit(code=1)
+        all_components = filtered
+
+    console.print(f"[dim]Registry: {target_registry}[/dim]")
+    console.print(f"[dim]Namespace: {namespace}[/dim]")
+    console.print(f"[dim]Version: {version}[/dim]")
+    console.print(f"[dim]Parallel: {parallel}[/dim]\n")
+
+    # Process components in parallel
+    def process_component(comp_name: str, comp_config: dict) -> tuple[str, bool, str]:
+        """Process a single component. Returns (name, success, error)."""
+        image_base = comp_config.get("image_base")
+        image_version_template = comp_config.get("image_version")
+
+        if not image_base or not image_version_template:
+            return (comp_name, False, "Missing image_base or image_version")
+
+        # Expand version template
+        image_version = expand_version_template(image_version_template, variables)
+
+        # Retag component
+        success, error = retag_component(
+            comp_name,
+            image_base,
+            image_version,
+            target_registry,
+            namespace,
+            version,
+        )
+
+        return (comp_name, success, error)
+
+    console.print(f"[bold]Retagging {len(all_components)} components...[/bold]\n")
+
+    succeeded = 0
+    failed = 0
+    errors = []
+
+    with ThreadPoolExecutor(max_workers=parallel) as executor:
+        futures = [
+            executor.submit(process_component, name, config)
+            for name, config in all_components.items()
+        ]
+
+        for future in as_completed(futures):
+            try:
+                comp_name, success, error = future.result()
+                if success:
+                    console.print(f"  [green]✓[/green] {comp_name}")
+                    succeeded += 1
+                else:
+                    console.print(f"  [red]✗[/red] {comp_name} [dim]({error})[/dim]")
+                    failed += 1
+                    errors.append(f"{comp_name}: {error}")
+            except Exception as e:
+                console.print(f"  [red]✗[/red] Unexpected error: {str(e)[:80]}")
+                failed += 1
+
+    console.print(f"\n[bold green]✓ Retagging complete:[/bold green]")
+    console.print(f"  [green]Succeeded:[/green] {succeeded}")
+    if failed > 0:
+        console.print(f"  [red]Failed:[/red] {failed}")
+
+    if errors:
+        console.print(f"\n[yellow]⚠ {len(errors)} error(s):[/yellow]")
+        for error in errors[:5]:
+            console.print(f"  [dim]•[/dim] {error}")
+        if len(errors) > 5:
+            console.print(f"  [dim]... and {len(errors) - 5} more[/dim]")
+
+    if failed > 0:
+        raise typer.Exit(code=1)
+
+
+@app.command(name="build-stage")
+def build_stage_cmd(
+    stage: str = typer.Argument(..., help="Build stage (e.g., scratch, custom)"),
+    target_registry: str = typer.Option("cr.noroutine.me", "--registry", "-r", help="Target registry"),
+    namespace: str = typer.Option("infra-dev", "--namespace", "-n", help="Image namespace"),
+    version: str = typer.Option(None, "--version", help="Image version tag (default: git 8-char SHA)"),
+    push: bool = typer.Option(False, "--push", help="Push images after build"),
+    components: Optional[str] = typer.Option(None, "--components", help="Comma-separated list of components to build"),
+    multiarch: Optional[bool] = typer.Option(None, "--multiarch/--no-multiarch", help="Force multiarch build"),
+    extra_args: str = typer.Option("", "--bake-args", help="Extra arguments for docker buildx bake"),
+    variables_file: str = typer.Option("variables.yml", "--variables", "-v", help="Path to variables.yml"),
+):
+    """Build container images for a stage using docker buildx bake."""
+    console.print(Panel.fit(f"🔨 Building {stage.upper()} Stage", style="bold blue"))
+
+    # Determine version
+    if not version:
+        try:
+            result = subprocess.run(
+                ["git", "rev-parse", "--short=8", "HEAD"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            version = result.stdout.strip()
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            version = "dev"
+
+    # Load and export variables
+    variables = load_variables(variables_file)
+    env = os.environ.copy()
+    env.update(variables)
+    env["IMAGE_REGISTRY"] = target_registry
+    env["INFRA_NAMESPACE"] = namespace
+    env["INFRA_VERSION"] = version
+
+    # Update environment for subprocess
+    os.environ.update(env)
+
+    console.print(f"[dim]Registry: {target_registry}[/dim]")
+    console.print(f"[dim]Namespace: {namespace}[/dim]")
+    console.print(f"[dim]Version: {version}[/dim]")
+    console.print(f"[dim]Push: {push}[/dim]")
+
+    # Check if multiarch
+    is_tag = bool(re.match(r'^v?[0-9]+\.[0-9]+\.[0-9]+', version))
+    use_multiarch = multiarch if multiarch is not None else is_tag
+
+    if use_multiarch:
+        console.print(f"[dim]Platforms: Multi-arch (linux/amd64, linux/arm64)[/dim]")
+    else:
+        console.print(f"[dim]Platforms: Single-arch (current platform)[/dim]")
+
+    if components:
+        console.print(f"[dim]Components: {components}[/dim]")
+
+    console.print()
+
+    # Parse components
+    component_list = [c.strip() for c in components.split(",")] if components else None
+
+    # Build stage
+    success, error = build_stage(
+        stage=stage,
+        registry=target_registry,
+        namespace=namespace,
+        version=version,
+        push=push,
+        components=component_list,
+        multiarch=use_multiarch,
+        extra_args=extra_args,
+    )
+
+    if success:
+        console.print(f"\n[bold green]✓ {stage.capitalize()} stage build completed![/bold green]")
+    else:
+        console.print(f"\n[red]✗ Build failed: {error}[/red]")
+        raise typer.Exit(code=1)
+
+
+@app.callback()
+def main(ctx: typer.Context):
+    """Infrastructure image management and artifact generation."""
+    # If no command is specified, run summary
+    if ctx.invoked_subcommand is None:
+        summary(
+            variables_file="variables.yml",
+            components_file="components.yml",
+            charts_file="import-charts.yml",
+        )
+
+
+@app.command()
+def summary(
+    variables_file: str = typer.Option("variables.yml", "--variables", "-v", help="Path to variables.yml"),
+    components_file: str = typer.Option("components.yml", "--config", "-c", help="Path to components.yml"),
+    charts_file: str = typer.Option("import-charts.yml", "--charts", help="Path to import-charts.yml"),
+):
+    """Show summary of infrastructure configuration."""
+    import yaml
+
+    console.print(Panel.fit("📊 Infrastructure Setup Summary", style="bold blue"))
+
+    # Git version information
+    versions = get_git_versions()
+    console.print(f"\n[bold cyan]Version Information:[/bold cyan]")
+    console.print(f"  Current commit: [yellow]{versions['current_sha']}[/yellow]")
+    console.print(f"  Last tag:       [green]{versions['last_tag']}[/green]")
+    console.print(f"  Next version:   [blue]{versions['next_version']}[/blue]")
+
+    # Variables
+    try:
+        variables = load_variables(variables_file)
+        console.print(f"\n[bold cyan]Variables ({variables_file}):[/bold cyan]")
+        console.print(f"  Total: {len(variables)} variables")
+
+        # Show first few variables as examples
+        sample = list(variables.items())[:5]
+        for key, value in sample:
+            console.print(f"  [dim]•[/dim] {key}=[yellow]{value}[/yellow]")
+        if len(variables) > 5:
+            console.print(f"  [dim]... and {len(variables) - 5} more[/dim]")
+    except Exception as e:
+        console.print(f"\n[red]✗ Could not load {variables_file}: {e}[/red]")
+
+    # Components
+    try:
+        components = load_components(components_file)
+        console.print(f"\n[bold cyan]Components ({components_file}):[/bold cyan]")
+        console.print(f"  Total: {len(components)} components")
+
+        # Show first few components
+        sample = list(components.items())[:5]
+        for name, config in sample:
+            image_base = config.get("image_base", "?")
+            console.print(f"  [dim]•[/dim] {name} [dim]({image_base})[/dim]")
+        if len(components) > 5:
+            console.print(f"  [dim]... and {len(components) - 5} more[/dim]")
+    except Exception as e:
+        console.print(f"\n[red]✗ Could not load {components_file}: {e}[/red]")
+
+    # Charts
+    try:
+        with open(charts_file) as f:
+            charts_config = yaml.safe_load(f)
+        repos = charts_config.get("helm", [])
+        total_charts = sum(len(r.get("charts", [])) for r in repos)
+
+        console.print(f"\n[bold cyan]Helm Charts ({charts_file}):[/bold cyan]")
+        console.print(f"  Repositories: {len(repos)}")
+        console.print(f"  Total charts: {total_charts}")
+
+        # Show repos
+        for repo in repos[:5]:
+            repo_name = repo.get("name", "?")
+            chart_count = len(repo.get("charts", []))
+            console.print(f"  [dim]•[/dim] {repo_name} [dim]({chart_count} charts)[/dim]")
+        if len(repos) > 5:
+            console.print(f"  [dim]... and {len(repos) - 5} more[/dim]")
+    except FileNotFoundError:
+        console.print(f"\n[yellow]⚠ {charts_file} not found[/yellow]")
+    except Exception as e:
+        console.print(f"\n[red]✗ Could not load {charts_file}: {e}[/red]")
+
+    # Docker Compose Stages
+    console.print(f"\n[bold cyan]Build Stages:[/bold cyan]")
+    stages = discover_stages()
+
+    if stages:
+        # Load variables for docker-compose config
+        variables = load_variables(variables_file)
+        env_vars = {
+            **variables,
+            "IMAGE_REGISTRY": "cr.noroutine.me",
+            "INFRA_NAMESPACE": "infra-dev",
+            "INFRA_VERSION": "dev",
+        }
+
+        for stage in stages:
+            compose_file = Path(f"docker-compose.{stage}.yml")
+            services = get_compose_services(compose_file, env_vars)
+            console.print(f"  [dim]•[/dim] {stage} [dim]({len(services)} services)[/dim]")
+            for svc in services[:3]:
+                console.print(f"    [dim]- {svc}[/dim]")
+            if len(services) > 3:
+                console.print(f"    [dim]... and {len(services) - 3} more[/dim]")
+    else:
+        console.print(f"  [yellow]⚠ No docker-compose.*.yml files found[/yellow]")
+
+    console.print()
 
 
 if __name__ == "__main__":

@@ -134,37 +134,28 @@ jobs:
           mkdir -p ~/.docker
           echo "${{ secrets.DOCKER_CFG }}" | base64 -d > ~/.docker/config.json
 
-      - name: Install yq (cross-platform)
+      - name: Install regctl (cross-platform)
         shell: bash
         run: |
           OS=$(uname -s | tr '[:upper:]' '[:lower:]')
           ARCH=$(uname -m)
           [ "$ARCH" = "x86_64" ] && ARCH=amd64
-          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
-          chmod +x /usr/local/bin/yq
+          [ "$ARCH" = "aarch64" ] && ARCH=arm64
+          curl -sSL "https://github.com/regclient/regclient/releases/latest/download/regctl-${OS}-${ARCH}" -o /usr/local/bin/regctl
+          sudo chmod +x /usr/local/bin/regctl
 
-      - name: Install crane (cross-platform)
-        shell: bash
-        run: |
-          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-          ARCH=$(uname -m)
-          [ "$ARCH" = "x86_64" ] && ARCH=x86_64
-          curl -sSL "https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_${OS}_${ARCH}.tar.gz" -o crane.tar.gz
-          tar -xzf crane.tar.gz
-          sudo mv crane /usr/local/bin/
-          sudo chmod +x /usr/local/bin/crane
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
 
-      - name: Retag generic images
+      - name: Retag generic images with infra CLI
         run: |
-          ./retag.sh \
+          uv run infra retag-components \
             --registry "${{ env.IMAGE_REGISTRY }}" \
             --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
             --version "${{ needs.import-images.outputs.infra_version }}" \
             --parallel 10
-        env:
-          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-          INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
-          INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
 
   build-custom-images:
     name: build-custom-images
@@ -182,38 +173,26 @@ jobs:
           mkdir -p ~/.docker
           echo "${{ secrets.DOCKER_CFG }}" | base64 -d > ~/.docker/config.json
 
-      - name: Install yq (cross-platform)
-        shell: bash
-        run: |
-          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-          ARCH=$(uname -m)
-          [ "$ARCH" = "x86_64" ] && ARCH=amd64
-          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
-          chmod +x /usr/local/bin/yq
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
 
-      - name: Build and push scratch stage
+      - name: Build and push scratch stage with infra CLI
         run: |
-          ./build.sh scratch \
+          uv run infra build-stage scratch \
             --registry "${{ env.IMAGE_REGISTRY }}" \
             --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
             --version "${{ needs.import-images.outputs.infra_version }}" \
             --push
-        env:
-          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-          INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
-          INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
 
-      - name: Build and push custom stage
+      - name: Build and push custom stage with infra CLI
         run: |
-          ./build.sh custom \
+          uv run infra build-stage custom \
             --registry "${{ env.IMAGE_REGISTRY }}" \
             --namespace "${{ needs.import-images.outputs.infra_namespace }}" \
             --version "${{ needs.import-images.outputs.infra_version }}" \
             --push
-        env:
-          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-          INFRA_NAMESPACE: ${{ needs.import-images.outputs.infra_namespace }}
-          INFRA_VERSION: ${{ needs.import-images.outputs.infra_version }}
 
       - name: Summary
         run: |
