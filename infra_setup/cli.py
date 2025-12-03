@@ -715,6 +715,7 @@ def archive_images(
     storage_host: str = typer.Option("oleksii@mgmt02-vm-core01.noroutine.me", "--storage-host", help="Storage host for rsync"),
     storage_path: str = typer.Option("/mnt/data/infra", "--storage-path", help="Storage path on host"),
     upload: bool = typer.Option(False, "--upload", help="Upload archives to storage"),
+    cleanup_after_upload: bool = typer.Option(False, "--cleanup-after-upload", help="Delete local archives after successful upload (saves disk space)"),
 ):
     """Archive images to OCI layout and optionally upload to storage."""
     import tempfile
@@ -840,6 +841,7 @@ def archive_images(
 
         # Generate temporary regsync config
         sync_entries = []
+        batch_archive_dirs = []  # Track directories created in this batch
 
         for img in batch:
             img_name = img["name"]
@@ -860,6 +862,9 @@ def archive_images(
                 "target": target,
                 "type": "image",
             })
+
+            # Track directory for potential cleanup
+            batch_archive_dirs.append(archive_path / archive_name)
 
             # Save for restore config (reverse)
             restore_entries.append({
@@ -935,6 +940,18 @@ def archive_images(
                     text=True,
                 )
                 console.print(f"    [green]✓[/green] Uploaded to {storage_dest}")
+
+                # Cleanup after successful upload if requested
+                if cleanup_after_upload:
+                    import shutil
+                    console.print(f"    [cyan]→[/cyan] Cleaning up local archives...")
+                    cleaned = 0
+                    for archive_dir in batch_archive_dirs:
+                        if archive_dir.exists():
+                            shutil.rmtree(archive_dir)
+                            cleaned += 1
+                    console.print(f"    [green]✓[/green] Cleaned up {cleaned} directories (saved disk space)")
+
             except subprocess.CalledProcessError as e:
                 console.print(f"    [red]✗[/red] Upload failed: {e.stderr[:200]}")
                 console.print(f"    [red]Aborting due to upload failure[/red]")
@@ -1225,6 +1242,8 @@ rsync -av {storage_host}:{storage_path}/{version}/images/ ./
     if upload:
         console.print(f"  Storage: {storage_host}:{storage_path}/{version}/images")
         console.print(f"  [dim]Includes: restore-{version}.yml and README.md[/dim]")
+        if cleanup_after_upload:
+            console.print(f"  [dim]Cleaned up local archives after upload (saved disk space)[/dim]")
 
 
 if __name__ == "__main__":
