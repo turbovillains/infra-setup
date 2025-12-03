@@ -56,6 +56,13 @@ jobs:
           mkdir -p ~/.docker
           echo "${{ secrets.DOCKER_CFG }}" | base64 -d > ~/.docker/config.json
 
+      - name: Setup SSH for storage upload
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan mgmt02-vm-core01.noroutine.me >> ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
       - name: Install dependencies
         shell: bash
         run: |

@@ -911,10 +911,21 @@ def archive_images(
             storage_dest = f"{storage_host}:{storage_path}/{version}/images"
 
             try:
+                # Add SSH host key if needed (first upload only)
+                if batch_num == 1:
+                    # Extract hostname from storage_host (user@host format)
+                    hostname = storage_host.split("@")[-1] if "@" in storage_host else storage_host
+                    subprocess.run(
+                        ["ssh-keyscan", "-H", hostname],
+                        stdout=open(os.path.expanduser("~/.ssh/known_hosts"), "a"),
+                        stderr=subprocess.DEVNULL,
+                        check=False,  # Don't fail if already exists
+                    )
+
                 # Create remote directory and rsync
                 subprocess.run(
                     [
-                        "rsync", "-av",
+                        "rsync", "-av", "-e", "ssh -o StrictHostKeyChecking=accept-new",
                         "--rsync-path", f"sudo mkdir -p {storage_path}/{version}/images && sudo rsync",
                         f"{archive_path}/",
                         storage_dest,
@@ -926,24 +937,62 @@ def archive_images(
                 console.print(f"    [green]✓[/green] Uploaded to {storage_dest}")
             except subprocess.CalledProcessError as e:
                 console.print(f"    [red]✗[/red] Upload failed: {e.stderr[:200]}")
+                console.print(f"    [red]Aborting due to upload failure[/red]")
+                raise typer.Exit(code=1)
             except FileNotFoundError:
                 console.print("    [red]✗[/red] rsync not found")
+                raise typer.Exit(code=1)
 
         console.print()
 
     # Generate restore config
     if restore_entries:
         restore_config_path = archive_path / f"restore-{version}.yml"
-        restore_sync = [
-            {
-                "source": entry["source"],
-                "target": entry["target"],
-                "type": entry["type"],
-            }
-            for entry in restore_entries
-        ]
+
+        # Use env variables for configurable restore
+        restore_sync = []
+        for entry in restore_entries:
+            # Replace registry/namespace with env variables
+            target = entry["target"]
+            # Extract the image path after namespace (e.g., postgres:v1.0.0)
+            # target format: registry/namespace/image:version
+            if "/" in target and ":" in target:
+                parts = target.split("/")
+                if len(parts) >= 3:
+                    image_with_tag = "/".join(parts[2:])  # Everything after namespace
+                    restore_sync.append({
+                        "source": entry["source"],
+                        "target": '{{ env "TARGET_REGISTRY" }}/{{ env "TARGET_NAMESPACE" }}/' + image_with_tag,
+                        "type": entry["type"],
+                    })
+                else:
+                    # Fallback to original if format unexpected
+                    restore_sync.append({
+                        "source": entry["source"],
+                        "target": target,
+                        "type": entry["type"],
+                    })
+            else:
+                restore_sync.append({
+                    "source": entry["source"],
+                    "target": target,
+                    "type": entry["type"],
+                })
 
         with open(restore_config_path, 'w') as f:
+            f.write("# Infrastructure Image Restore Configuration\n")
+            f.write("# Use environment variables to configure target registry and namespace\n")
+            f.write("#\n")
+            f.write("# Example:\n")
+            f.write(f"#   export TARGET_REGISTRY={target_registry}\n")
+            f.write(f"#   export TARGET_NAMESPACE={namespace}\n")
+            f.write("#   regsync once -c restore-{version}.yml\n")
+            f.write("#\n")
+            f.write("# Or restore to different registry:\n")
+            f.write("#   export TARGET_REGISTRY=my-registry.example.com\n")
+            f.write("#   export TARGET_NAMESPACE=backup\n")
+            f.write(f"#   regsync once -c restore-{version}.yml\n")
+            f.write("\n")
             yaml.dump({"sync": restore_sync}, f, default_flow_style=False)
 
         console.print(f"[green]✓[/green] Generated restore config: {restore_config_path}")
@@ -999,11 +1048,13 @@ Total images: **{len(restore_entries)}**
    docker login {target_registry}
    ```
 
-### Restore All Images
+### Restore All Images (Original Registry)
 
-Run the restore config to sync all images back to the registry:
+Set environment variables and run the restore config:
 
 ```bash
+export TARGET_REGISTRY={target_registry}
+export TARGET_NAMESPACE={namespace}
 regsync once -c restore-{version}.yml
 ```
 
@@ -1012,6 +1063,18 @@ This will:
 - Push them to `{target_registry}/{namespace}`
 - Preserve all architectures and layers
 - Resume from where it left off if interrupted
+
+### Restore to Different Registry
+
+You can restore to any registry by changing the environment variables:
+
+```bash
+export TARGET_REGISTRY=my-registry.example.com
+export TARGET_NAMESPACE=backup
+regsync once -c restore-{version}.yml
+```
+
+The restore config uses environment variables, so you can restore the same archive to multiple registries.
 
 ### Restore Specific Images
 
@@ -1134,7 +1197,7 @@ rsync -av {storage_host}:{storage_path}/{version}/images/ ./
             try:
                 subprocess.run(
                     [
-                        "rsync", "-av",
+                        "rsync", "-av", "-e", "ssh -o StrictHostKeyChecking=accept-new",
                         "--rsync-path", f"sudo mkdir -p {storage_path}/{version}/images && sudo rsync",
                         str(restore_config_path),
                         str(readme_path),
@@ -1147,8 +1210,10 @@ rsync -av {storage_host}:{storage_path}/{version}/images/ ./
                 console.print(f"  [green]✓[/green] Uploaded restore-{version}.yml and README.md")
             except subprocess.CalledProcessError as e:
                 console.print(f"  [red]✗[/red] Upload failed: {e.stderr[:200]}")
+                raise typer.Exit(code=1)
             except FileNotFoundError:
                 console.print("  [red]✗[/red] rsync not found")
+                raise typer.Exit(code=1)
 
         console.print()
 
