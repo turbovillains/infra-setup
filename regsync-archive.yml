@@ -1,0 +1,14 @@
+---
+# regsync configuration generated from .dagger/main.go:getImageEntries()
+# Use with: export variables from variables.yml first (see export-vars.sh)
+# Then run: regsync -c regsync.yml
+
+sync:
+  # Base images
+  - source: '{{ env "TARGET_REGISTRY" }}/library/debian:{{ env "DEBIAN_VERSION" }}'
+    target: 'ocidir://./archive/library/debian:{{ env "DEBIAN_VERSION" }}'
+    type: image
+  - source: '{{ env "TARGET_REGISTRY" }}/library/ubuntu:{{ env "UBUNTU_NOBLE_VERSION" }}'
+    target: 'ocidir://./archive/library/ubuntu:{{ env "UBUNTU_NOBLE_VERSION" }}'
+    type: image
+

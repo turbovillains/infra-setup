@@ -1,0 +1,20 @@
+[project]
+name = "infra-setup"
+version = "0.1.0"
+description = "Infrastructure image management and artifact generation"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pyyaml>=6.0",
+    "rich>=13.0",
+    "typer>=0.12",
+    "requests>=2.31",
+    "packaging>=24.0",
+]
+
+[project.scripts]
+infra = "infra_setup.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

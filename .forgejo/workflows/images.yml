@@ -29,57 +29,40 @@ jobs:
             echo "infra_namespace=infra-dev" >> $GITHUB_OUTPUT
           fi
 
-      - name: Install regctl (includes regsync)
+      - name: Install regsync
         shell: bash
         run: |
           OS=$(uname -s | tr '[:upper:]' '[:lower:]')
           ARCH=$(uname -m)
           [ "$ARCH" = "x86_64" ] && ARCH=amd64
           [ "$ARCH" = "aarch64" ] && ARCH=arm64
-          curl -sSL "https://github.com/regclient/regclient/releases/latest/download/regctl-${OS}-${ARCH}" -o /usr/local/bin/regctl
           curl -sSL "https://github.com/regclient/regclient/releases/latest/download/regsync-${OS}-${ARCH}" -o /usr/local/bin/regsync
-          sudo chmod +x /usr/local/bin/regctl /usr/local/bin/regsync
-
-      - name: Install yq for variable parsing
-        shell: bash
-        run: |
-          OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-          ARCH=$(uname -m)
-          [ "$ARCH" = "x86_64" ] && ARCH=amd64
-          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
-          sudo chmod +x /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/regsync
 
       - name: Setup Docker config
         run: |
           mkdir -p ~/.docker
           echo "${{ secrets.DOCKER_CFG }}" | base64 -d > ~/.docker/config.json
 
-      - name: Import images with regsync
-        run: |
-          # Export all variables from variables.yml
-          eval $(yq eval '.variables | to_entries | .[] | "export " + .key + "=\"" + .value + "\""' variables.yml)
-
-          # Set target registry
-          export TARGET_REGISTRY="${{ env.IMAGE_REGISTRY }}"
-
-          # Run regsync
-          regsync once -c regsync.yml -v info
-        env:
-          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
-
-      - name: Install Dagger
-        uses: https://github.com/dagger/dagger-for-github@v8.2.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
           version: "latest"
 
-      - name: Generate artifacts with Dagger
+      - name: Import images with infra CLI
+        run: |
+          uv run infra import-images \
+            --registry "${{ env.IMAGE_REGISTRY }}" \
+            --verbosity info
+        env:
+          IMAGE_REGISTRY: ${{ env.IMAGE_REGISTRY }}
+
+      - name: Generate artifacts with infra CLI
         id: generate
         run: |
-          dagger call \
-            generate-artifacts --infra-version="${{ steps.version.outputs.infra_version }}" \
-            export --path=./artifacts
-        env:
-          DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+          uv run infra generate-artifacts \
+            --output ./artifacts \
+            --version "${{ steps.version.outputs.infra_version }}"
 
       - name: Set up SSH and push to GitHub upstream repo
         run: |
@@ -285,30 +268,38 @@ jobs:
           fi
 
       - name: Install dependencies
+        shell: bash
         run: |
-          # Install rsync
+          # Install rsync (for uploading charts to storage)
           sudo apt-get update
           sudo apt-get install -y rsync
 
-          # Install yq for YAML processing
+          # Detect OS and architecture
           OS=$(uname -s | tr '[:upper:]' '[:lower:]')
           ARCH=$(uname -m)
           [ "$ARCH" = "x86_64" ] && ARCH=amd64
-          curl -sSL "https://github.com/mikefarah/yq/releases/latest/download/yq_${OS}_${ARCH}" -o /usr/local/bin/yq
-          chmod +x /usr/local/bin/yq
-
-          # Install yj (YAML to JSON converter)
-          curl -sSL "https://github.com/sclevine/yj/releases/latest/download/yj-${OS}-${ARCH}" -o /usr/local/bin/yj
-          chmod +x /usr/local/bin/yj
+          [ "$ARCH" = "aarch64" ] && ARCH=arm64
 
           # Install helm
           curl -sSL https://get.helm.sh/helm-v3.16.4-${OS}-${ARCH}.tar.gz | tar xz
           sudo mv ${OS}-${ARCH}/helm /usr/local/bin/helm
           sudo chmod +x /usr/local/bin/helm
 
-      - name: Import Helm charts
+          # Install regctl (for OCI registry support)
+          curl -sSL "https://github.com/regclient/regclient/releases/latest/download/regctl-${OS}-${ARCH}" -o /usr/local/bin/regctl
+          sudo chmod +x /usr/local/bin/regctl
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Import Helm charts with infra CLI
         run: |
-          ./import-charts.sh import-charts.yml docker/infra-charts/charts
+          uv run infra import-charts \
+            --config import-charts.yml \
+            --target docker/infra-charts/charts \
+            --limit 10
 
       - name: Upload charts to storage
         if: github.ref_type == 'tag'
