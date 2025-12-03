@@ -974,32 +974,45 @@ def archive_images(
         # Use env variables for configurable restore
         restore_sync = []
         for entry in restore_entries:
-            # Replace registry/namespace with env variables
             target = entry["target"]
-            # Extract the image path after namespace (e.g., postgres:v1.0.0)
-            # target format: registry/namespace/image:version
-            if "/" in target and ":" in target:
-                parts = target.split("/")
-                if len(parts) >= 3:
-                    image_with_tag = "/".join(parts[2:])  # Everything after namespace
-                    restore_sync.append({
-                        "source": entry["source"],
-                        "target": '{{ env "TARGET_REGISTRY" }}/{{ env "TARGET_NAMESPACE" }}/' + image_with_tag,
-                        "type": entry["type"],
-                    })
-                else:
-                    # Fallback to original if format unexpected
-                    restore_sync.append({
-                        "source": entry["source"],
-                        "target": target,
-                        "type": entry["type"],
-                    })
+            img_type = entry.get("image_type", "unknown")
+
+            # Split registry from path: registry/path -> path
+            # target format: cr.noroutine.me/library/debian:version
+            if "/" in target:
+                # Remove registry (first part before /)
+                parts = target.split("/", 1)
+                image_path = parts[1] if len(parts) >= 2 else target
             else:
-                restore_sync.append({
-                    "source": entry["source"],
-                    "target": target,
-                    "type": entry["type"],
-                })
+                image_path = target
+
+            # Generate restore target based on image type
+            if img_type == "upstream":
+                # Upstream images: preserve original path (library/debian, prometheus/prometheus, etc.)
+                # Restore to: {{ env "TARGET_REGISTRY" }}/library/debian:version
+                restore_target = '{{ env "TARGET_REGISTRY" }}/' + image_path
+            else:
+                # Component/built images: use TARGET_NAMESPACE
+                # Original: infra-dev/postgres:version
+                # Extract just image name and tag (skip original namespace)
+                if "/" in image_path:
+                    path_parts = image_path.split("/", 1)
+                    if len(path_parts) >= 2:
+                        # Skip namespace, keep image:tag
+                        image_name_tag = path_parts[1]
+                    else:
+                        image_name_tag = path_parts[0]
+                else:
+                    image_name_tag = image_path
+
+                # Restore to: {{ env "TARGET_REGISTRY" }}/{{ env "TARGET_NAMESPACE" }}/postgres:version
+                restore_target = '{{ env "TARGET_REGISTRY" }}/{{ env "TARGET_NAMESPACE" }}/' + image_name_tag
+
+            restore_sync.append({
+                "source": entry["source"],
+                "target": restore_target,
+                "type": entry["type"],
+            })
 
         with open(restore_config_path, 'w') as f:
             f.write("# Infrastructure Image Restore Configuration\n")
@@ -1070,6 +1083,18 @@ Total images: **{len(restore_entries)}**
    docker login {target_registry}
    ```
 
+### Understanding Image Types
+
+This archive contains different types of images that restore to different paths:
+
+- **Upstream images**: Original third-party images (e.g., `debian`, `postgres`)
+  - Restore to their original registry paths: `library/debian`, `prometheus/prometheus`, etc.
+  - Use `TARGET_REGISTRY` only (no namespace override)
+
+- **Component/Built images**: Infrastructure-specific images (e.g., custom builds)
+  - Restore to versioned namespace: `{{{{ env "TARGET_NAMESPACE" }}}}/image:{version}`
+  - Use both `TARGET_REGISTRY` and `TARGET_NAMESPACE`
+
 ### Restore All Images (Original Registry)
 
 Set environment variables and run the restore config:
@@ -1081,8 +1106,8 @@ regsync once -c restore-{version}.yml
 ```
 
 This will:
-- Read images from OCI layout directories
-- Push them to `{target_registry}/{namespace}`
+- Restore **upstream images** to their original paths (e.g., `library/debian`, `prometheus/prometheus`)
+- Restore **component/built images** to the specified namespace
 - Preserve all architectures and layers
 - Resume from where it left off if interrupted
 
@@ -1096,7 +1121,7 @@ export TARGET_NAMESPACE=backup
 regsync once -c restore-{version}.yml
 ```
 
-The restore config uses environment variables, so you can restore the same archive to multiple registries.
+The restore config uses environment variables, allowing you to restore the same archive to multiple registries.
 
 ### Restore Specific Images
 
