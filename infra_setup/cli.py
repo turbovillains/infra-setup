@@ -700,5 +700,467 @@ def summary(
     console.print()
 
 
+@app.command()
+def archive_images(
+    mode: str = typer.Option("upstream", "--mode", "-m", help="Archive mode: upstream (regsync only) or complete (regsync + components + builds)"),
+    target_registry: str = typer.Option("cr.noroutine.me", "--registry", "-r", help="Target registry"),
+    namespace: str = typer.Option("infra-dev", "--namespace", "-n", help="Image namespace"),
+    version: str = typer.Option(None, "--version", help="Image version tag (default: current commit SHA)"),
+    regsync_config: str = typer.Option("regsync.yml", "--regsync", help="Path to regsync.yml"),
+    components_file: str = typer.Option("components.yml", "--config", "-c", help="Path to components.yml"),
+    variables_file: str = typer.Option("variables.yml", "--variables", "-v", help="Path to variables.yml"),
+    pattern: Optional[str] = typer.Option(None, "--pattern", "-p", help="Filter components by pattern"),
+    batch_size: int = typer.Option(10, "--batch-size", "-b", help="Number of components per batch"),
+    archive_dir: str = typer.Option("./archive", "--archive-dir", "-a", help="Archive directory"),
+    storage_host: str = typer.Option("oleksii@mgmt02-vm-core01.noroutine.me", "--storage-host", help="Storage host for rsync"),
+    storage_path: str = typer.Option("/mnt/data/infra", "--storage-path", help="Storage path on host"),
+    upload: bool = typer.Option(False, "--upload", help="Upload archives to storage"),
+):
+    """Archive images to OCI layout and optionally upload to storage."""
+    import tempfile
+    import yaml
+    from pathlib import Path
+
+    if mode not in ("upstream", "complete"):
+        console.print(f"[red]✗ Invalid mode: {mode}. Use 'upstream' or 'complete'[/red]")
+        raise typer.Exit(code=1)
+
+    console.print(Panel.fit(f"📦 Archiving Images ({mode.upper()} mode)", style="bold blue"))
+
+    # Determine version
+    if not version:
+        try:
+            result = subprocess.run(
+                ["git", "rev-parse", "--short=8", "HEAD"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            version = result.stdout.strip()
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            version = "dev"
+
+    # Load variables
+    variables = load_variables(variables_file)
+
+    # Collect images to archive based on mode
+    images_to_archive = []
+
+    # 1. UPSTREAM: Images from regsync.yml
+    console.print(f"[dim]Collecting upstream images from {regsync_config}...[/dim]")
+    try:
+        regsync_entries = parse_regsync_config(regsync_config, variables_file, target_registry)
+        for entry in regsync_entries:
+            # entry["target"] is like: cr.noroutine.me/library/debian:trixie-20251117-slim
+            target_img = entry["target"]
+            # Extract image name from target
+            if "/" in target_img and ":" in target_img:
+                parts = target_img.split("/", 2)  # registry / path:tag
+                if len(parts) >= 2:
+                    image_path = parts[-1]  # e.g., library/debian:version
+                    if ":" in image_path:
+                        name_part, tag_part = image_path.rsplit(":", 1)
+                        # Normalize name for archive
+                        archive_name = name_part.replace("/", "-")
+                        images_to_archive.append({
+                            "name": archive_name,
+                            "source": target_img,
+                            "type": "upstream",
+                        })
+        console.print(f"[dim]  Found {len(images_to_archive)} upstream images[/dim]")
+    except Exception as e:
+        console.print(f"[red]✗ Failed to load regsync config: {e}[/red]")
+        raise typer.Exit(code=1)
+
+    # 2. COMPLETE MODE: Add retagged components + built services
+    if mode == "complete":
+        # Add components (retagged)
+        console.print(f"[dim]Collecting retagged components from {components_file}...[/dim]")
+        components = load_components(components_file)
+        for comp_name in components.keys():
+            source = f"{target_registry}/{namespace}/{comp_name}:{version}"
+            images_to_archive.append({
+                "name": comp_name,
+                "source": source,
+                "type": "component",
+            })
+        console.print(f"[dim]  Found {len(components)} retagged components[/dim]")
+
+        # Add built services from docker-compose stages
+        console.print(f"[dim]Collecting built services from docker-compose stages...[/dim]")
+        stages = discover_stages()
+        env_vars = {
+            **variables,
+            "IMAGE_REGISTRY": target_registry,
+            "INFRA_NAMESPACE": namespace,
+            "INFRA_VERSION": version,
+        }
+
+        built_count = 0
+        for stage in stages:
+            compose_file = Path(f"docker-compose.{stage}.yml")
+            services = get_compose_services(compose_file, env_vars)
+            for svc in services:
+                source = f"{target_registry}/{namespace}/{svc}:{version}"
+                images_to_archive.append({
+                    "name": svc,
+                    "source": source,
+                    "type": "built",
+                })
+                built_count += 1
+        console.print(f"[dim]  Found {built_count} built services[/dim]")
+
+    # Filter by pattern if specified
+    if pattern:
+        filtered = [img for img in images_to_archive if pattern in img["name"]]
+        if not filtered:
+            console.print(f"[red]✗ No images match pattern: {pattern}[/red]")
+            raise typer.Exit(code=1)
+        images_to_archive = filtered
+
+    console.print(f"\n[dim]Registry: {target_registry}[/dim]")
+    console.print(f"[dim]Namespace: {namespace}[/dim]")
+    console.print(f"[dim]Version: {version}[/dim]")
+    console.print(f"[dim]Total images: {len(images_to_archive)}[/dim]")
+    console.print(f"[dim]Batch size: {batch_size}[/dim]")
+    console.print(f"[dim]Archive dir: {archive_dir}[/dim]\n")
+
+    archive_path = Path(archive_dir)
+    archive_path.mkdir(parents=True, exist_ok=True)
+
+    # Split into batches
+    batches = [images_to_archive[i:i + batch_size] for i in range(0, len(images_to_archive), batch_size)]
+
+    total_archived = 0
+    total_batches = len(batches)
+    restore_entries = []
+
+    for batch_num, batch in enumerate(batches, 1):
+        console.print(f"[bold]Batch {batch_num}/{total_batches}:[/bold] {len(batch)} images")
+
+        # Generate temporary regsync config
+        sync_entries = []
+
+        for img in batch:
+            img_name = img["name"]
+            source = img["source"]
+
+            # Extract version from source (after last :)
+            if ":" in source:
+                _, img_version = source.rsplit(":", 1)
+            else:
+                img_version = version
+
+            # Target: ocidir://archive/registry-component-version-multiarch
+            archive_name = f"{target_registry.replace('/', '-')}-{img_name}-{img_version}-multiarch"
+            target = f"ocidir://{archive_path}/{archive_name}:{img_version}"
+
+            sync_entries.append({
+                "source": source,
+                "target": target,
+                "type": "image",
+            })
+
+            # Save for restore config (reverse)
+            restore_entries.append({
+                "source": f"ocidir://{archive_name}:{img_version}",
+                "target": source,
+                "type": "image",
+                "name": img_name,
+                "image_type": img["type"],
+            })
+
+        if not sync_entries:
+            console.print(f"  [yellow]⚠[/yellow] No valid entries in batch {batch_num}")
+            continue
+
+        # Write temporary regsync config
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.yml', delete=False) as f:
+            config = {"sync": sync_entries}
+            yaml.dump(config, f, default_flow_style=False)
+            temp_config = f.name
+
+        try:
+            # Run regsync to archive
+            console.print(f"  [cyan]→[/cyan] Archiving {len(sync_entries)} images...")
+            result = subprocess.run(
+                ["regsync", "once", "-c", temp_config, "-v", "info"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+
+            for img in batch:
+                img_name = img["name"]
+                img_type = img["type"]
+                console.print(f"    [green]✓[/green] {img_name} [dim]({img_type})[/dim]")
+                total_archived += 1
+
+        except subprocess.CalledProcessError as e:
+            console.print(f"  [red]✗[/red] Batch {batch_num} failed: {e.stderr[:200]}")
+        except FileNotFoundError:
+            console.print("[red]✗ regsync not found. Install regclient tools.[/red]")
+            raise typer.Exit(code=1)
+        finally:
+            # Clean up temp config
+            Path(temp_config).unlink(missing_ok=True)
+
+        # Upload batch to storage if requested
+        if upload:
+            console.print(f"  [cyan]→[/cyan] Uploading batch to storage...")
+            storage_dest = f"{storage_host}:{storage_path}/{version}/images"
+
+            try:
+                # Create remote directory and rsync
+                subprocess.run(
+                    [
+                        "rsync", "-av",
+                        "--rsync-path", f"sudo mkdir -p {storage_path}/{version}/images && sudo rsync",
+                        f"{archive_path}/",
+                        storage_dest,
+                    ],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+                console.print(f"    [green]✓[/green] Uploaded to {storage_dest}")
+            except subprocess.CalledProcessError as e:
+                console.print(f"    [red]✗[/red] Upload failed: {e.stderr[:200]}")
+            except FileNotFoundError:
+                console.print("    [red]✗[/red] rsync not found")
+
+        console.print()
+
+    # Generate restore config
+    if restore_entries:
+        restore_config_path = archive_path / f"restore-{version}.yml"
+        restore_sync = [
+            {
+                "source": entry["source"],
+                "target": entry["target"],
+                "type": entry["type"],
+            }
+            for entry in restore_entries
+        ]
+
+        with open(restore_config_path, 'w') as f:
+            yaml.dump({"sync": restore_sync}, f, default_flow_style=False)
+
+        console.print(f"[green]✓[/green] Generated restore config: {restore_config_path}")
+        console.print(f"[dim]  Use: regsync once -c {restore_config_path}[/dim]")
+
+        # Generate README.md
+        from datetime import datetime
+
+        # Count by type
+        type_counts = {}
+        for entry in restore_entries:
+            img_type = entry.get("image_type", "unknown")
+            type_counts[img_type] = type_counts.get(img_type, 0) + 1
+
+        readme_content = f"""# Infrastructure Image Archive
+
+**Version:** `{version}`
+**Mode:** `{mode.upper()}`
+**Registry:** `{target_registry}`
+**Namespace:** `{namespace}`
+**Created:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+
+## Archive Contents
+
+Total images: **{len(restore_entries)}**
+
+"""
+
+        if type_counts:
+            readme_content += "### By Type\n\n"
+            for img_type, count in sorted(type_counts.items()):
+                readme_content += f"- **{img_type}**: {count} images\n"
+            readme_content += "\n"
+
+        readme_content += f"""## How to Restore
+
+### Prerequisites
+
+1. Install regclient tools:
+   ```bash
+   # macOS
+   brew install regclient
+
+   # Linux
+   curl -L https://github.com/regclient/regclient/releases/latest/download/regsync-linux-amd64 \\
+     -o /usr/local/bin/regsync
+   chmod +x /usr/local/bin/regsync
+   ```
+
+2. Set up Docker credentials:
+   ```bash
+   # Login to target registry
+   docker login {target_registry}
+   ```
+
+### Restore All Images
+
+Run the restore config to sync all images back to the registry:
+
+```bash
+regsync once -c restore-{version}.yml
+```
+
+This will:
+- Read images from OCI layout directories
+- Push them to `{target_registry}/{namespace}`
+- Preserve all architectures and layers
+- Resume from where it left off if interrupted
+
+### Restore Specific Images
+
+Edit `restore-{version}.yml` and comment out images you don't need:
+
+```yaml
+sync:
+  # - source: ocidir://cr.noroutine.me-postgres-17.2-multiarch:17.2
+  #   target: {target_registry}/{namespace}/postgres:{version}
+  #   type: image
+  - source: ocidir://cr.noroutine.me-redis-7.4-multiarch:7.4
+    target: {target_registry}/{namespace}/redis:{version}
+    type: image
+```
+
+### Verify Restore
+
+Check that images are in the registry:
+
+```bash
+# Using regctl
+regctl image manifest {target_registry}/{namespace}/postgres:{version}
+
+# Using docker
+docker pull {target_registry}/{namespace}/postgres:{version}
+```
+
+## Archive Structure
+
+Each directory is an OCI layout containing a multi-arch image:
+
+```
+"""
+
+        # Show some example directories
+        example_dirs = []
+        for entry in restore_entries[:5]:
+            if "source" in entry:
+                # Extract directory name from ocidir://path:tag
+                oci_path = entry["source"].replace("ocidir://", "").split(":")[0]
+                example_dirs.append(oci_path)
+
+        for dir_name in example_dirs:
+            readme_content += f"{dir_name}/\n"
+
+        if len(restore_entries) > 5:
+            readme_content += f"... and {len(restore_entries) - 5} more\n"
+
+        readme_content += f"""
+```
+
+Each directory contains:
+- `index.json` - OCI index
+- `oci-layout` - OCI layout version
+- `blobs/` - Image layers and manifests
+
+## Storage Location
+
+"""
+
+        if upload:
+            readme_content += f"""This archive has been uploaded to:
+
+```
+{storage_host}:{storage_path}/{version}/images
+```
+
+To download:
+
+```bash
+rsync -av {storage_host}:{storage_path}/{version}/images/ ./
+```
+"""
+        else:
+            readme_content += """This archive is local only and has not been uploaded to storage.
+"""
+
+        readme_content += f"""
+## Notes
+
+- **Mode: {mode.upper()}**
+"""
+
+        if mode == "upstream":
+            readme_content += """  - Contains only upstream images from regsync.yml
+  - Fast restore (no custom builds needed)
+  - Suitable for quick registry recovery
+"""
+        else:
+            readme_content += """  - Contains upstream + retagged components + built images
+  - Complete disaster recovery archive
+  - Large size but fully self-contained
+"""
+
+        readme_content += f"""
+- Images are stored in OCI layout format (no tar/compression)
+- Multi-architecture images preserved
+- Generated by `infra archive-images` command
+
+## Generated Files
+
+- `restore-{version}.yml` - Regsync config for restoration
+- `README.md` - This file
+
+---
+
+*Generated by infra-setup CLI v0.1.0*
+"""
+
+        readme_path = archive_path / "README.md"
+        readme_path.write_text(readme_content)
+
+        console.print(f"[green]✓[/green] Generated README: {readme_path}")
+
+        # Upload restore config and README to storage
+        if upload:
+            console.print(f"\n[cyan]→[/cyan] Uploading restore config and README to storage...")
+            storage_dest = f"{storage_host}:{storage_path}/{version}/images"
+
+            try:
+                subprocess.run(
+                    [
+                        "rsync", "-av",
+                        "--rsync-path", f"sudo mkdir -p {storage_path}/{version}/images && sudo rsync",
+                        str(restore_config_path),
+                        str(readme_path),
+                        storage_dest + "/",
+                    ],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+                console.print(f"  [green]✓[/green] Uploaded restore-{version}.yml and README.md")
+            except subprocess.CalledProcessError as e:
+                console.print(f"  [red]✗[/red] Upload failed: {e.stderr[:200]}")
+            except FileNotFoundError:
+                console.print("  [red]✗[/red] rsync not found")
+
+        console.print()
+
+    console.print(f"[bold green]✓ Archive complete:[/bold green]")
+    console.print(f"  Archived: {total_archived} images")
+    console.print(f"  Batches: {total_batches}")
+    console.print(f"  Location: {archive_path}")
+
+    if upload:
+        console.print(f"  Storage: {storage_host}:{storage_path}/{version}/images")
+        console.print(f"  [dim]Includes: restore-{version}.yml and README.md[/dim]")
+
+
 if __name__ == "__main__":
     app()

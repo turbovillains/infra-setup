@@ -95,32 +95,6 @@ jobs:
       infra_version: ${{ steps.version.outputs.infra_version }}
       infra_namespace: ${{ steps.version.outputs.infra_namespace }}
 
-  archive-images:
-    name: archive-images
-    runs-on: ubuntu-latest
-    needs: import-images
-    if: github.ref_type == 'tag'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Dagger
-        uses: https://github.com/dagger/dagger-for-github@v8.2.0
-        with:
-          version: "latest"
-
-      - name: Archive images to storage
-        run: |
-          dagger call \
-            with-docker-cfg --docker-cfg env://DOCKER_CFG \
-            with-ssh-private-key --ssh-private-key env://SSH_PRIVATE_KEY \
-            archive-images-to-storage \
-              --infra-bucket="${{ needs.import-images.outputs.infra_version }}"
-        env:
-          DOCKER_CFG: ${{ secrets.DOCKER_CFG }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}
-
   retag-generic-images:
     name: retag-generic-images
     runs-on: ubuntu-latest
