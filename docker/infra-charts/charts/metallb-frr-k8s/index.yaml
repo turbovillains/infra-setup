@@ -1,0 +1,204 @@
+apiVersion: v1
+entries:
+  frr-k8s:
+  - apiVersion: v2
+    appVersion: v0.0.21
+    created: "2025-12-03T05:54:50.0588+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.21
+    description: A cloud native wrapper of FRR
+    digest: 649303ebecb13b7706d3c441a749b3f91f81203b2b473b7c236a29ce67b1cc38
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.21.tgz
+    version: 0.0.21
+  - apiVersion: v2
+    appVersion: v0.0.20
+    created: "2025-12-03T05:54:50.056813+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.20
+    description: A cloud native wrapper of FRR
+    digest: 594958f1386fade87ae0235cd859b1932ae4f96318c25d775e6bffe86c301d0d
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.20.tgz
+    version: 0.0.20
+  - apiVersion: v2
+    appVersion: v0.0.19
+    created: "2025-12-03T05:54:50.054762+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.19
+    description: A cloud native wrapper of FRR
+    digest: bd15f56bba30a54efd50ccae91bbcd050cb589c22e0fdea415c4de2f3af43f81
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.19.tgz
+    version: 0.0.19
+  - apiVersion: v2
+    appVersion: v0.0.18
+    created: "2025-12-03T05:54:50.05231+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.18
+    description: A cloud native wrapper of FRR
+    digest: 59833fdce6446bf98a98a26d4031f9c8bf011c9aecf97310de90e5ec5c6bff1d
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.18.tgz
+    version: 0.0.18
+  - apiVersion: v2
+    appVersion: v0.0.17
+    created: "2025-12-03T05:54:50.050177+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.17
+    description: A cloud native wrapper of FRR
+    digest: 1c8f0f6680ce25e36e1354bd51fa1f057f116db299a0899c0b022e4fe7cad4cd
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.17.tgz
+    version: 0.0.17
+  - apiVersion: v2
+    appVersion: v0.0.16
+    created: "2025-12-03T05:54:50.047756+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.16
+    description: A cloud native wrapper of FRR
+    digest: 8b617a54773297ec6899161c7ce488ebebe316bad9653fbc28d7d4be5a174c29
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.16.tgz
+    version: 0.0.16
+  - apiVersion: v2
+    appVersion: v0.0.15
+    created: "2025-12-03T05:54:50.045492+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.15
+    description: A cloud native wrapper of FRR
+    digest: e52498073af165824d5963a6c9ab12d4b96cca416a9793275ff49d27eb59272a
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.15.tgz
+    version: 0.0.15
+  - apiVersion: v2
+    appVersion: v0.0.14
+    created: "2025-12-03T05:54:50.043652+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.14
+    description: A cloud native wrapper of FRR
+    digest: c29307c58c7cd2fa2e2ba3696197adff77f0c9603242623eb044fbfb8263a6c1
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.14.tgz
+    version: 0.0.14
+  - apiVersion: v2
+    appVersion: v0.0.13
+    created: "2025-12-03T05:54:50.041838+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.13
+    description: A cloud native wrapper of FRR
+    digest: d1e97b7f137a1f77186c74fe9cfe511d7b587a0cf55fe64cf25258b6a6067639
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
+    appVersion: v0.0.12
+    created: "2025-12-03T05:54:50.039536+01:00"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.12
+    description: A cloud native wrapper of FRR
+    digest: 44c0e9abf31b963f4994f5be1309774c93f73918c84e8e2ca522eea131022467
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    kubeVersion: '>= 1.19.0-0'
+    name: frr-k8s
+    sources:
+    - https://github.com/metallb/frr-k8s
+    type: application
+    urls:
+    - frr-k8s-0.0.12.tgz
+    version: 0.0.12
+generated: "2025-12-03T05:54:50.036986+01:00"

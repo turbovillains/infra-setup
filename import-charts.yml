@@ -16,6 +16,10 @@ helm:
     uri: https://metallb.github.io/metallb
     charts:
       - name: metallb
+  - name: metallb-frr-k8s
+    uri: https://metallb.github.io/frr-k8s
+    charts:
+      - name: frr-k8s
   - name: altinity
     uri: https://helm.altinity.com
     charts:
@@ -150,6 +154,7 @@ helm:
     charts:
       - name: cert-manager
       - name: cert-manager-csi-driver
+      - name: cert-manager-crds
   - name: zachomedia
     uri: https://zachomedia.github.io/cert-manager-webhook-pdns
     charts:

@@ -1525,5 +1525,153 @@ def upgrade(
         console.print(f"\n[dim]Run with --apply to update {variables_file}[/dim]")
 
 
+@app.command()
+def analyze_charts(
+    charts_dir: str = typer.Option("docker/infra-charts/charts", "--charts-dir", help="Path to charts directory"),
+    show_dependencies: bool = typer.Option(False, "--show-dependencies", "-d", help="Show detailed dependencies per chart"),
+):
+    """Analyze imported Helm charts for versions and dependencies."""
+    import tarfile
+    from pathlib import Path
+    import yaml
+    from packaging import version
+
+    console.print(Panel.fit("📊 Analyzing Helm Charts", style="bold blue"))
+
+    charts_path = Path(charts_dir)
+    if not charts_path.exists():
+        console.print(f"[red]✗ Charts directory not found: {charts_dir}[/red]")
+        raise typer.Exit(code=1)
+
+    # Find all chart namespaces (subdirectories)
+    chart_info = []
+
+    for namespace_dir in sorted(charts_path.iterdir()):
+        if not namespace_dir.is_dir():
+            continue
+
+        # Find all .tgz files in this namespace
+        tgz_files = list(namespace_dir.glob("*.tgz"))
+        if not tgz_files:
+            continue
+
+        # Find the latest version by parsing version from filename
+        # Format: chartname-X.Y.Z.tgz
+        latest_chart = None
+        latest_version = None
+
+        for tgz_file in tgz_files:
+            # Extract version from filename: chartname-1.2.3.tgz
+            filename = tgz_file.stem  # Remove .tgz
+            parts = filename.rsplit("-", 1)
+            if len(parts) == 2:
+                try:
+                    ver = version.parse(parts[1])
+                    if latest_version is None or ver > latest_version:
+                        latest_version = ver
+                        latest_chart = tgz_file
+                except Exception:
+                    continue
+
+        if not latest_chart:
+            continue
+
+        # Extract Chart.yaml from the tarball
+        try:
+            with tarfile.open(latest_chart, "r:gz") as tar:
+                # Chart.yaml is typically at chartname/Chart.yaml
+                chart_yaml_path = None
+                for member in tar.getmembers():
+                    if member.name.endswith("/Chart.yaml") or member.name == "Chart.yaml":
+                        chart_yaml_path = member
+                        break
+
+                if not chart_yaml_path:
+                    console.print(f"[yellow]⚠ No Chart.yaml found in {latest_chart.name}[/yellow]")
+                    continue
+
+                # Extract and parse Chart.yaml
+                chart_file = tar.extractfile(chart_yaml_path)
+                if not chart_file:
+                    console.print(f"[yellow]⚠ Could not extract Chart.yaml from {latest_chart.name}[/yellow]")
+                    continue
+
+                chart_data = yaml.safe_load(chart_file)
+
+                chart_name = chart_data.get("name", namespace_dir.name)
+                chart_version = chart_data.get("version", "?")
+                app_version = chart_data.get("appVersion", "?")
+                dependencies = chart_data.get("dependencies", [])
+
+                chart_info.append({
+                    "namespace": namespace_dir.name,
+                    "name": chart_name,
+                    "chart_version": str(chart_version),
+                    "app_version": str(app_version),
+                    "dependencies": dependencies,
+                    "dep_count": len(dependencies),
+                })
+
+        except Exception as e:
+            console.print(f"[yellow]⚠ Failed to parse {latest_chart.name}: {e}[/yellow]")
+            continue
+
+    if not chart_info:
+        console.print("[yellow]No charts found to analyze[/yellow]")
+        return
+
+    # Show summary table
+    table = Table(show_header=True, header_style="bold cyan", title=f"Chart Analysis Summary ({len(chart_info)} charts)")
+    table.add_column("Chart", style="yellow")
+    table.add_column("Chart Version", style="cyan")
+    table.add_column("App Version", style="green")
+    table.add_column("Dependencies", justify="right", style="magenta")
+
+    for info in sorted(chart_info, key=lambda x: x['name']):
+        dep_display = str(info['dep_count']) if info['dep_count'] > 0 else "[dim]0[/dim]"
+        table.add_row(
+            info['name'],
+            info['chart_version'],
+            info['app_version'],
+            dep_display,
+        )
+
+    console.print(table)
+
+    # Show detailed dependencies if requested
+    if show_dependencies:
+        charts_with_deps = [c for c in chart_info if c['dep_count'] > 0]
+        if charts_with_deps:
+            console.print(f"\n[bold cyan]Dependency Details ({len(charts_with_deps)} charts with dependencies):[/bold cyan]\n")
+
+            for info in sorted(charts_with_deps, key=lambda x: x['name']):
+                console.print(f"[bold yellow]{info['name']}[/bold yellow] [dim]({info['chart_version']})[/dim]")
+
+                for dep in info['dependencies']:
+                    dep_name = dep.get('name', '?')
+                    dep_version = dep.get('version', '?')
+                    dep_repo = dep.get('repository', '')
+
+                    # Format repository URL nicely
+                    if dep_repo.startswith('http'):
+                        repo_display = f"[dim]{dep_repo}[/dim]"
+                    elif dep_repo.startswith('oci://'):
+                        repo_display = f"[dim]{dep_repo}[/dim]"
+                    elif dep_repo.startswith('file://') or dep_repo.startswith('../'):
+                        repo_display = "[dim]local[/dim]"
+                    else:
+                        repo_display = f"[dim]{dep_repo}[/dim]" if dep_repo else ""
+
+                    console.print(f"  [cyan]•[/cyan] {dep_name} [green]{dep_version}[/green] {repo_display}")
+
+                console.print()
+        else:
+            console.print("\n[dim]No charts with dependencies found[/dim]")
+    else:
+        charts_with_deps_count = sum(1 for c in chart_info if c['dep_count'] > 0)
+        if charts_with_deps_count > 0:
+            console.print(f"\n[dim]Use --show-dependencies to see dependency details for {charts_with_deps_count} charts[/dim]")
+
+
 if __name__ == "__main__":
     app()
