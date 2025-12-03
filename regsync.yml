@@ -2,6 +2,12 @@
 # regsync configuration generated from .dagger/main.go:getImageEntries()
 # Use with: export variables from variables.yml first (see export-vars.sh)
 # Then run: regsync -c regsync.yml
+defaults:
+  ratelimit:
+    min: 20
+    retry: 15m
+  parallel: 3
+  interval: 60m
 
 sync:
   # Base images
@@ -647,10 +653,10 @@ sync:
   - source: 'code.forgejo.org/forgejo/runner:{{ env "FORGEJO_RUNNER_VERSION" }}'
     target: '{{ env "TARGET_REGISTRY" }}/forgejo/runner:{{ env "FORGEJO_RUNNER_VERSION" }}'
     type: image
-  - source: 'ghcr.io/catthehacker/ubuntu:act-24.04'
+  - source: "ghcr.io/catthehacker/ubuntu:act-24.04"
     target: '{{ env "TARGET_REGISTRY" }}/catthehacker/ubuntu:act-24.04'
     type: image
-  - source: 'ghcr.io/catthehacker/ubuntu:runner-24.04'
+  - source: "ghcr.io/catthehacker/ubuntu:runner-24.04"
     target: '{{ env "TARGET_REGISTRY" }}/catthehacker/ubuntu:runner-24.04'
     type: image
   # InfluxDB
@@ -670,4 +676,8 @@ sync:
   # PowerAdmin
   - source: 'poweradmin/poweradmin:{{ env "POWERADMIN_VERSION" }}'
     target: '{{ env "TARGET_REGISTRY" }}/poweradmin/poweradmin:{{ env "POWERADMIN_VERSION" }}'
+    type: image
+  # Cryptgeon
+  - source: 'cupcakearmy/cryptgeon:{{ env "CRYPTGEON_VERSION" }}'
+    target: '{{ env "TARGET_REGISTRY" }}/cupcakearmy/cryptgeon:{{ env "CRYPTGEON_VERSION" }}'
     type: image

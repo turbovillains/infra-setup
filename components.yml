@@ -634,3 +634,7 @@ components:
   poweradmin:
     image_base: poweradmin/poweradmin
     image_version: ${POWERADMIN_VERSION}
+
+  cryptgeon:
+    image_base: cupcakearmy/cryptgeon
+    image_version: ${CRYPTGEON_VERSION}
