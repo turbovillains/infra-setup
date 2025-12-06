@@ -1348,12 +1348,18 @@ def upgrade(
 
             normalized = normalize_image_name(image_path)
 
-            # Find the version variable (usually the last one or one with VERSION in name)
+            # Find the version variable
+            # Prefer variables with VERSION in name, but accept any variable
             version_var = None
-            for var in var_matches:
-                if "VERSION" in var:
-                    version_var = var
-                    break
+            if var_matches:
+                # First try to find one with VERSION in name
+                for var in var_matches:
+                    if "VERSION" in var:
+                        version_var = var
+                        break
+                # If not found, use the last variable (most likely to be the version)
+                if not version_var:
+                    version_var = var_matches[-1]
 
             if version_var:
                 image_to_variable[normalized] = (

@@ -87,7 +87,7 @@ variables:
   METALLB_FRR_VERSION: "10.5.0" # https://github.com/metallb/metallb/blob/main/charts/metallb/values.yaml
   TRIVY_VERSION: "0.68.1" # https://hub.docker.com/r/aquasec/trivy/tags
   CSI_SECRETS_STORE_VERSION: v1.5.4 # https://github.com/kubernetes-sigs/secrets-store-csi-driver/releases
-  EXTERNAL_SECRETS_VERSION: v1.1.0 # https://github.com/external-secrets/external-secrets/releases
+  EXTERNAL_SECRETS_VERSION: v1.1.1 # https://github.com/external-secrets/external-secrets/releases
   RELOADER_VERSION: "v1.4.10" # https://hub.docker.com/r/stakater/reloader/tags?page=1&ordering=last_updated&name=v1.
   CONFIGMAP_RELOAD_VERSION: v0.9.0
   DOCKER_REGISTRY_VERSION: "3.0.0" # https://hub.docker.com/_/registry?tab=tags&page=1&ordering=last_updated
@@ -102,7 +102,7 @@ variables:
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
   NATS_VERSION: "2.12.2-alpine" # https://hub.docker.com/_/nats?tab=tags
   NATS_EXPORTER_VERSION: "0.18.0" # https://hub.docker.com/r/natsio/prometheus-nats-exporter/tags
-  NATS_SERVER_CONFIG_RELOADER: "0.20.1" # https://hub.docker.com/r/natsio/nats-server-config-reloader/tags
+  NATS_SERVER_CONFIG_RELOADER: "0.21.0" # https://hub.docker.com/r/natsio/nats-server-config-reloader/tags
   WIREGUARD_VERSION: "0.0.20230223" # https://hub.docker.com/r/masipcat/wireguard-go/tags
   MOSQUITTO_VERSION: "2.0.22-openssl" # https://hub.docker.com/_/eclipse-mosquitto?tab=tags
   MOSQUITTO_EXPORTER_VERSION: "0.8.0" # https://hub.docker.com/r/sapcc/mosquitto-exporter/tags
@@ -135,13 +135,13 @@ variables:
   HOMEASSISTANT_VERSION: "2025.12" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
   ZIGBEE2MQTT_VERSION: "2.7.0" # https://github.com/Koenkk/zigbee2mqtt/releases
   FORGEJO_VERSION: "13.0.3" # https://codeberg.org/forgejo/forgejo
-  FORGEJO_RUNNER_VERSION: "12.1.0" # https://codeberg.org/forgejo/forgejo
+  FORGEJO_RUNNER_VERSION: "12.1.1" # https://codeberg.org/forgejo/forgejo
   CLOUDFLARED_VERSION: "2025.11.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
   MAILCATCHER_VERSION: "v0.10.0" # https://github.com/sj26/mailcatcher/releases
   FRP_VERSION: "v0.65.0" # https://github.com/fatedier/frp/releases/tag/v0.61.1
   ISTIO_VERSION: "1.28.1" # https://github.com/istio/istio/releases/tag/1.27.0
   APACHE_KAFKA_VERSION: "4.1.1" # https://hub.docker.com/r/apache/kafka/tags
-  STRIMZI_OPERATOR_VERSION: "0.49.0"  # https://quay.io/repository/strimzi/operator?tab=tags
+  STRIMZI_OPERATOR_VERSION: "0.49.1"  # https://quay.io/repository/strimzi/operator?tab=tags
   STRIMZI_KAFKA_VERSION: "4.1.1" # https://quay.io/repository/strimzi/kafka?tab=tags
   CONFLUENTINC_OPERATOR_VERSION: "0.1351.24" # https://hub.docker.com/r/confluentinc/confluent-operator/tags
   CONFLUENTINC_INIT_CONTAINER_VERSION: "3.1.0" # https://registry.hub.docker.com/r/confluentinc/confluent-init-container/tags
