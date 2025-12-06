@@ -681,3 +681,7 @@ sync:
   - source: 'cupcakearmy/cryptgeon:{{ env "CRYPTGEON_VERSION" }}'
     target: '{{ env "TARGET_REGISTRY" }}/cupcakearmy/cryptgeon:{{ env "CRYPTGEON_VERSION" }}'
     type: image
+  # TLS Leech
+  - source: 'cr.noroutine.me/catalyst/tls-leech:{{ env "TLS_LEECH_VERSION" }}'
+    target: '{{ env "TARGET_REGISTRY" }}/catalyst/tls-leech:{{ env "TLS_LEECH_VERSION" }}'
+    type: image

@@ -638,3 +638,7 @@ components:
   cryptgeon:
     image_base: cupcakearmy/cryptgeon
     image_version: ${CRYPTGEON_VERSION}
+
+  tls-leech:
+    image_base: catalyst/tls-leech
+    image_version: ${TLS_LEECH_VERSION}
