@@ -43,7 +43,7 @@ variables:
   ARGOCD_VAULT_PLUGIN_VERSION: "1.18.1" # https://github.com/argoproj-labs/argocd-vault-plugin/releases
   NEXUS_VERSION: "3.87.0" # https://hub.docker.com/r/sonatype/nexus3/tags
   FREERADIUS_VERSION: "3.2.8-alpine" # https://hub.docker.com/r/freeradius/freeradius-server/tags?page=1&ordering=last_updated&name=3
-  TRAEFIK_VERSION: "v3.6.2" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
+  TRAEFIK_VERSION: "v3.6.4" # https://hub.docker.com/_/traefik?tab=tags&page=1&ordering=last_updated&name=2.5
   MKDOCS_VERSION: "9.7.0" # https://hub.docker.com/r/squidfunk/mkdocs-material/tags?page=1&ordering=last_updated
   POWERDNS_VERSION: "4.5.0" # https://www.powerdns.com/downloads.html
   KEYCLOAK_VERSION: "26.4.7" # https://quay.io/repository/keycloak/keycloak?tag=latest&tab=tags
@@ -55,7 +55,7 @@ variables:
   PROMETHEUS_VERSION: v3.8.0 # https://prometheus.io/download/
   PROMETHEUS_OPERATOR_VERSION: v0.87.0 # https://quay.io/repository/prometheus-operator/prometheus-operator?tag=latest&tab=tags
   ALERTMANAGER_VERSION: v0.29.0
-  BLACKBOX_EXPORTER_VERSION: v0.27.0
+  BLACKBOX_EXPORTER_VERSION: v0.28.0
   NODE_EXPORTER_VERSION: v1.10.2
   PUSHGATEWAY_VERSION: v1.11.2
   KUBE_STATE_METRICS_VERSION: "v2.17.0" # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-state-metrics/Chart.yaml
@@ -102,7 +102,7 @@ variables:
   NATS_OPERATOR_VERSION: "0.8.0" # https://hub.docker.com/r/connecteverything/nats-operator/tags
   NATS_VERSION: "2.12.2-alpine" # https://hub.docker.com/_/nats?tab=tags
   NATS_EXPORTER_VERSION: "0.18.0" # https://hub.docker.com/r/natsio/prometheus-nats-exporter/tags
-  NATS_SERVER_CONFIG_RELOADER: "0.21.0" # https://hub.docker.com/r/natsio/nats-server-config-reloader/tags
+  NATS_SERVER_CONFIG_RELOADER: "0.21.1" # https://hub.docker.com/r/natsio/nats-server-config-reloader/tags
   WIREGUARD_VERSION: "0.0.20230223" # https://hub.docker.com/r/masipcat/wireguard-go/tags
   MOSQUITTO_VERSION: "2.0.22-openssl" # https://hub.docker.com/_/eclipse-mosquitto?tab=tags
   MOSQUITTO_EXPORTER_VERSION: "0.8.0" # https://hub.docker.com/r/sapcc/mosquitto-exporter/tags
@@ -133,9 +133,9 @@ variables:
   NVIDIA_K8S_MIG_MANAGER_VERSION: v0.9.1-ubi8 # https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/k8s-mig-manager/tags
   ZITADEL_VERSION: v2.65.1 # https://github.com/zitadel/zitadel/pkgs/container/zitadel
   HOMEASSISTANT_VERSION: "2025.12" # https://hub.docker.com/r/homeassistant/home-assistant/tags   https://www.home-assistant.io/blog/categories/core/
-  ZIGBEE2MQTT_VERSION: "2.7.0" # https://github.com/Koenkk/zigbee2mqtt/releases
+  ZIGBEE2MQTT_VERSION: "2.7.1" # https://github.com/Koenkk/zigbee2mqtt/releases
   FORGEJO_VERSION: "13.0.3" # https://codeberg.org/forgejo/forgejo
-  FORGEJO_RUNNER_VERSION: "12.1.1" # https://codeberg.org/forgejo/forgejo
+  FORGEJO_RUNNER_VERSION: "12.1.2" # https://codeberg.org/forgejo/forgejo
   CLOUDFLARED_VERSION: "2025.11.1" # https://hub.docker.com/r/cloudflare/cloudflared/tags
   MAILCATCHER_VERSION: "v0.10.0" # https://github.com/sj26/mailcatcher/releases
   FRP_VERSION: "v0.65.0" # https://github.com/fatedier/frp/releases/tag/v0.61.1
